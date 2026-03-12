@@ -256,11 +256,58 @@
     .summary-table tbody td { padding: .5rem 1rem; vertical-align: top; line-height: 1.5; color: var(--mid); }
     .summary-table tbody td:first-child { font-weight: 700; color: var(--text); }
 
-    .source-note {
-      text-align: center; margin-top: 2rem; font-size: 12px;
-      font-style: italic; color: var(--soft);
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    /* Leseanleitung-Block (vorher Inline-Styles) */
+    .page-read-guide {
+      margin-top: 2.5rem;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid var(--bdr);
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
     }
+    .page-read-guide .prg-header {
+      background: var(--e5);
+      padding: 0.65rem 1.3rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+    }
+    .page-read-guide .prg-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .page-read-guide .prg-cell {
+      padding: 0.9rem 1.2rem;
+      border-right: 1px solid var(--bdr);
+    }
+    .page-read-guide .prg-cell:last-child { border-right: none; }
+    .page-read-guide .prg-cell-label {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 0.45rem;
+    }
+    .page-read-guide .prg-cell-text {
+      font-size: 13px;
+      color: var(--mid);
+      line-height: 1.55;
+    }
+    .page-read-guide .prg-cell-text strong { color: var(--text); }
+    .page-read-guide .prg-note {
+      padding: 0.75rem 1.3rem;
+      background: var(--open-bg);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12.5px;
+      color: var(--open);
+      line-height: 1.55;
+    }
+
   </style>
 </head>
 <body>
@@ -600,30 +647,28 @@
   </table>
 </div>
 
-<div style="margin-top:2.5rem; background:rgba(255,255,255,0.45); border:1px solid var(--bdr); border-radius:10px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.05);">
-  <div style="background:var(--e5); padding:.65rem 1.3rem; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:.03em;">
-    Aufbau dieser Seite — Leseanleitung
-  </div>
-  <div style="display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(0,0,0,0.06);">
-    <div style="padding:.9rem 1.2rem; border-right:1px solid var(--bdr);">
-      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); margin-bottom:.45rem;">① Oben — Theorie</div>
-      <div style="font-size:13px; color:var(--mid); line-height:1.55;">Erklärt den Unterschied zwischen <strong style="color:var(--text)">Anforderungsanalyse (IREB)</strong> und <strong style="color:var(--text)">Testbasis-Analyse (CTFL)</strong> — und warum HA4 korrekt dem IEEE 29119-3 Standard entspricht.</div>
+<div class="page-read-guide">
+  <div class="prg-header">Aufbau dieser Seite — Leseanleitung</div>
+  <div class="prg-grid">
+    <div class="prg-cell">
+      <div class="prg-cell-label">① Oben — Theorie</div>
+      <div class="prg-cell-text">Erklärt den Unterschied zwischen <strong>Anforderungsanalyse (IREB)</strong> und <strong>Testbasis-Analyse (CTFL)</strong> — und warum HA4 korrekt dem IEEE 29119-3 Standard entspricht.</div>
     </div>
-    <div style="padding:.9rem 1.2rem; border-right:1px solid var(--bdr);">
-      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); margin-bottom:.45rem;">② Mitte — Schema</div>
-      <div style="font-size:13px; color:var(--mid); line-height:1.55;">Die <strong style="color:var(--text)">6 Felder einer professionellen Testbasis-Analyse</strong> als wiederverwendbare Vorlage — das generische Muster für jede zukünftige Anforderungsanalyse aus Tester-Sicht.</div>
+    <div class="prg-cell">
+      <div class="prg-cell-label">② Mitte — Schema</div>
+      <div class="prg-cell-text">Die <strong>6 Felder einer professionellen Testbasis-Analyse</strong> als wiederverwendbare Vorlage — das generische Muster für jede zukünftige Anforderungsanalyse aus Tester-Sicht.</div>
     </div>
-    <div style="padding:.9rem 1.2rem;">
-      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); margin-bottom:.45rem;">③ Unten — HA4 Analyse</div>
-      <div style="font-size:13px; color:var(--mid); line-height:1.55;">Alle drei Features ausgefüllt nach diesem Schema: Testfragen &amp; Antworten, Akzeptanzkriterien, Grenzfall-Tags, offene Punkte — plus Zusammenfassungstabelle.</div>
+    <div class="prg-cell">
+      <div class="prg-cell-label">③ Unten — HA4 Analyse</div>
+      <div class="prg-cell-text">Alle drei Features ausgefüllt nach diesem Schema: Testfragen &amp; Antworten, Akzeptanzkriterien, Grenzfall-Tags, offene Punkte — plus Zusammenfassungstabelle.</div>
     </div>
   </div>
-  <div style="padding:.75rem 1.3rem; background:var(--open-bg); border-top:1px solid rgba(0,0,0,0.06); font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--open); line-height:1.55;">
+  <div class="prg-note">
     <strong>Hinweis zu offenen Punkten:</strong> Die als „offen" markierten Punkte sind bewusst so dokumentiert — das ist professionell, kein Mangel. Im Berufsalltag ist eine Analyse mit sauber dokumentierten Unklarheiten wertvoller als eine, die so tut als wäre alles bekannt. Offene Punkte zeigen, wo noch Klärungsbedarf besteht — und geben dem Team eine klare Handlungsliste.
   </div>
 </div>
 
-<p class="source-note">HA4 · Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3 · grocerymate.masterschool.com</p>
+<footer><p class="source-note">HA4 · Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3 · grocerymate.masterschool.com</p></footer>
 
 </main>
 </body>

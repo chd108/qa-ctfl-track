@@ -7,6 +7,12 @@
   --soft:  #7a9090;
   --border: rgba(0,0,0,0.07);
   --bdr:   var(--border);
+  /* Typografie & Abstände (Index + Unterseiten) */
+  --title-size:    1.6rem;
+  --subtitle-size: 1.05rem;
+  --subtitle-margin-top: 0.4rem;
+  --header-margin-bottom: 2rem;
+  --footer-note-margin-top: 1.5rem;
   /* Gemeinsame Karten-/Ebenen-Palette (Index, Glossar, Testuniversum, HA4-Anforderungsanalyse) */
   --e1: #d8e4d0;
   --e2: #bad1dc;

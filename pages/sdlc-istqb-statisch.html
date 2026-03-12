@@ -131,21 +131,16 @@
       </div>
       <div class="desc-card">
         <h2>Technische Konzeption</h2>
-        <p>Die Seite besteht aus einer einzigen HTML&#x2011;Datei ohne externe Abh&#xe4;ngigkeiten.
-        Das gesamte Diagramm wird per JavaScript auf einem HTML5&#x2011;<code>canvas</code>&#x2011;Element
-        (820&#x202F;&times;&#x202F;800&#x202F;px) gezeichnet. In jedem Frame berechnet eine
-        <code>requestAnimationFrame</code>&#x2011;Schleife den Orbitalwinkel &#x3b1; des
-        ISTQB&#x2011;Kreismittelpunkts auf seiner Kreisbahn (Radius 59&#x202F;px um den
-        SDLC&#x2011;Mittelpunkt) sowie die Eigenrotation des rollenden Kreises
-        (wRot&#x202F;=&#x202F;K&#x202F;&#x00B7;&#x202F;&#x3b1;, K&#x202F;=&#x202F;5&#x2F;16), aus der sich der lokale
-        Kontaktwinkel (&#x3b1;&#x202F;&#x2212;&#x202F;wRot&#x202F;=&#x202F;11&#x2F;16&#x202F;&#x00B7;&#x202F;&#x3b1;) ergibt.
-        Segmente werden als pr&#xe4;zise Kreisring&#x2011;Sektoren (<code>arc</code>&#x2011;Pfade)
-        gezeichnet, aktive Segmente werden per Helligkeitswechsel und Shadow&#x2011;Blur
-        hervorgehoben. Ein Info&#x2011;Panel unterhalb des Canvas liest in Echtzeit die
-        Segment&#x2011;Indizes beider Ringe aus und benennt die aktuelle Kombination.
-        Steuerelemente (Pause/Play, Reset, Tempostufe, Spuranzeige) sind als einfache
-        HTML&#x2011;Elemente mit Event&#x2011;Listenern umgesetzt; der gesamte JS&#x2011;Code ist in
-        einer IIFE gekapselt, um den globalen Namensraum sauber zu halten.</p>
+        <p>Die Seite besteht aus einer HTML&#x2011;Datei und einer externen
+        JavaScript&#x2011;Datei (<code>sdlc-hypocycle-statisch.js</code>). Das Diagramm wird
+        <strong>einmalig beim Laden</strong> auf einem HTML5&#x2011;<code>canvas</code>&#x2011;Element
+        (820&#x202F;&times;&#x202F;800&#x202F;px) gezeichnet &#x2014; es gibt keine Animation und
+        keine Steuerelemente. Der dargestellte Zustand ist fest: Kontaktpunkt bei 12 Uhr
+        (Anforderungen &#x2194; Testplanung). Die Geometrie entspricht dem Hypozykel&#x2011;Modell
+        (Radien, Verh&#xe4;ltnis 16&#x202F;:&#x202F;11); Segmente sind Kreisring&#x2011;Sektoren
+        (<code>arc</code>&#x2011;Pfade). Das aktive Segmentpaar (Anforderungen &#x2194; Testplanung)
+        wird durch abgesetzte F&#xfc;llfarbe und leichten Schatten hervorgehoben. Der
+        JavaScript&#x2011;Code liegt in einer externen Datei und ist in einer IIFE gekapselt.</p>
       </div>
     </div>
   </main>
@@ -162,6 +157,8 @@
     <span>11 ISTQB&#x2011;Umdrehungen</span> &#x2014;
     alle <span>36 Kombinationen</span> werden durchlaufen.
   </p>
+
+  <footer><p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB 2025) · SDLC &amp; Testaktivitäten im Lebenszyklus (Hypozykel-Modell)</p></footer>
 
   <script src="../assets/js/sdlc-hypocycle-statisch.js" defer></script>
 </body>

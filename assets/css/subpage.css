@@ -9,16 +9,28 @@
 }
 
 header {
-  margin-bottom: 2rem;
+  margin-bottom: var(--header-margin-bottom);
 }
 
 header h1 {
-  font-size: 1.6rem;
+  font-size: var(--title-size);
 }
 
 /* Wie Testuniversum: Untertitel gleiche Farbe wie Titel (var(--text)), kursiv von base */
 header p {
-  margin-top: 0.4rem;
-  font-size: 1.05rem;
+  margin-top: var(--subtitle-margin-top);
+  font-size: var(--subtitle-size);
+  color: var(--text);
+}
+
+/* Footer/Quellenzeile: gleicher Stil wie Untertitel (kursiv, gleiche Farbe, gleiche Größe) */
+footer {
+  margin: 0;
+}
+.source-note {
+  margin-top: var(--footer-note-margin-top);
+  text-align: center;
+  font-size: var(--subtitle-size);
+  font-style: italic;
   color: var(--text);
 }

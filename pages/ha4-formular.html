@@ -21,8 +21,9 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Rücklink + Header wie alle Unterseiten: Georgia + Basis-Farben (base.css) */
-    .back-link, header, header h1, header p {
+    /* Rücklink + Header + Quellenzeile wie alle Unterseiten: Georgia + Basis-Farben (base.css) */
+    .back-link, header, header h1, header p,
+    .source-note {
       font-family: Georgia, 'Palatino Linotype', serif;
     }
     .back-link a { color: #7a9090; }
@@ -36,6 +37,13 @@
       flex-direction: column;
       align-items: center;
       padding: 2rem 1rem 4rem;
+      gap: 2.5rem;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
       gap: 2.5rem;
     }
 
@@ -769,6 +777,8 @@
   </div>
 
 </div>
+
+<footer><p class="source-note">HA4 · Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3 · grocerymate.masterschool.com</p></footer>
 
 </main>
 </body>
