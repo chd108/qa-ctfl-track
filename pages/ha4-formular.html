@@ -21,12 +21,13 @@
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    /* Rücklink + Header + Quellenzeile wie alle Unterseiten: Georgia + Basis-Farben (base.css) */
-    .back-link, header, header h1, header p,
+    /* Rücklink + Header + Nav + Quellenzeile wie alle Unterseiten: Georgia + Basis-Farben (base.css) */
+    .back-link, .main-nav, header, header h1, header p,
     .source-note {
       font-family: Georgia, 'Palatino Linotype', serif;
     }
-    .back-link a { color: #7a9090; }
+    .back-link a, .main-nav a { color: #7a9090; }
+    .main-nav a.current { color: #283535; }
     header h1, header p { color: #283535; }
 
     body {
@@ -325,7 +326,19 @@
 <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
 <div class="page-chrome">
-<nav class="back-link" aria-label="Rücknavigation"><a href="../index.html">Zur Übersicht</a></nav>
+<nav class="main-nav" aria-label="Hauptnavigation">
+  <ul>
+    <li><a href="../index.html">Übersicht</a></li>
+    <li><a href="testuniversum.html">Testuniversum</a></li>
+    <li><a href="testverfahren-istqb.html">Testverfahren</a></li>
+    <li><a href="glossar.html">Glossar</a></li>
+    <li><a href="ha-einordnung.html">HA-Einordnung</a></li>
+    <li><a href="ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+    <li><a href="ha4-formular.html" class="current">HA4 Formular</a></li>
+    <li><a href="sdlc-istqb-animiert.html">SDLC animiert</a></li>
+    <li><a href="sdlc-istqb-statisch.html">SDLC statisch</a></li>
+  </ul>
+</nav>
 <header>
   <h1>HA4 Formular</h1>
   <p>Testbasis-Analyse GroceryMate · 4 Seiten · CTFL Kap. 4.1 / IEEE 29119-3</p>

@@ -37,7 +37,30 @@ header { text-align: center; }
 header h1 { font-weight: normal; letter-spacing: .05em; }
 header p { font-style: italic; color: var(--soft); }
 
-/* Rücknavigation: einheitlich links oben */
+/* Hauptnavigation: einheitlich auf allen Seiten */
+.main-nav {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--bdr);
+}
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.main-nav a {
+  font-size: 0.95rem;
+  color: var(--soft);
+  text-decoration: none;
+}
+.main-nav a:hover { text-decoration: underline; }
+.main-nav a.current { color: var(--text); font-weight: 600; }
+
+/* Rücknavigation (Legacy/fallback): von Hauptnavigation abgelöst */
 .back-link {
   font-size: 0.875rem;
   margin-bottom: 0.75rem;
