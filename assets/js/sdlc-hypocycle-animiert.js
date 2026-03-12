@@ -240,12 +240,12 @@
     var actIstqb = segIdx(alpha - wRot);
     if (showTrace) collectTrace(icx, icy, wRot);
     drawDotGrid();
-    if (showTrace) drawTrace();
     drawSDLC(actSdlc);
     drawMechanics(icx, icy);
     drawISTQB(icx, icy, wRot, actIstqb);
     drawSDLCLabels(actSdlc);
     drawISTQBLabels(icx, icy, wRot, actIstqb);
+    if (showTrace) drawTrace();
     updateInfo(actSdlc, actIstqb);
   }
 
