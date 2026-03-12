@@ -7,6 +7,13 @@
   --soft:  #7a9090;
   --border: rgba(0,0,0,0.07);
   --bdr:   var(--border);
+  /* Gemeinsame Karten-/Ebenen-Palette (Index, Glossar, Testuniversum, HA4-Anforderungsanalyse) */
+  --e1: #d8e4d0;
+  --e2: #bad1dc;
+  --e3: #e0cec8;
+  --e4: #ddc48a;
+  --e5: #d4c4e0;
+  --e6: #c8d4cc;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
