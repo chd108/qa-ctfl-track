@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SDLC und ISTQB Hypozykel — statische Darstellung.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <title>SDLC + ISTQB &mdash; Hypozykel-Modell</title>
+  <style>
+    :root {
+      --card:    rgba(255,255,255,0.48);
+      --t2:      #c8a96a;
+      --t2-soft: rgba(200,169,106,0.55);
+      --t2-text: #6e4e18;
+    }
+
+    body {
+      font: 1.28rem/1.5 Georgia, serif;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2.5rem 1.5rem 3rem;
+    }
+
+    header { margin-bottom: 1.6rem; }
+    header p  { margin-top: .38rem; letter-spacing: .07em; }
+
+    .canvas-wrap { position: relative; width: 820px; flex: 0 0 820px; }
+    canvas { display: block; }
+
+    .legend {
+      display: flex; justify-content: center; align-items: center;
+      gap: 1.8rem; margin-top: .9rem; flex-wrap: wrap;
+    }
+    .legend-item { display: flex; align-items: center; gap: .45rem; color: var(--mid); }
+    .legend-swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+    .s-sdlc  { background: #b3cdb6; }
+    .s-istqb { background: #a5bfce; }
+    .s-t2    { background: var(--t2); }
+    .s-t2ring { width: 22px; height: 0; border-top: 2px dashed var(--t2-soft); margin-top: 1px; }
+
+    .cycle-note {
+      margin-top: 1.0rem;
+      color: var(--soft);
+      text-align: center;
+      letter-spacing: .04em;
+    }
+    .cycle-note span { color: var(--mid); font-weight: 600; }
+
+    .content-row {
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+    .desc-card {
+      flex: 0 0 640px;
+      max-width: 748px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 5px;
+      padding: 1.1rem 1.25rem 1.2rem;
+    }
+    .desc-card h2 {
+      font-weight: 600;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: .65rem;
+      padding-bottom: .45rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .desc-card p {
+      font-style: italic;
+      color: var(--soft);
+      hyphens: auto;
+    }
+
+    @media (max-width: 2200px) {
+      .content-row { flex-direction: column; align-items: center; }
+      .desc-card { max-width: 800px; flex: 1 1 auto; width: 100%; }
+    }
+    @media (max-width: 900px) {
+      .canvas-wrap { transform: scale(.85); transform-origin: top center; margin-bottom: -120px; }
+      .legend { max-width: 90vw; }
+    }
+    @media (max-width: 730px) {
+      .canvas-wrap { transform: scale(.72); transform-origin: top center; margin-bottom: -224px; }
+    }
+    @media (max-width: 490px) {
+      .canvas-wrap { transform: scale(.50); transform-origin: top center; margin-bottom: -400px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<nav class="back-link" aria-label="Rücknavigation"><a href="../index.html">Zur Übersicht</a></nav>
+<header>
+    <h1>Software&#x2011;Entwicklungslebenszyklus &amp; ISTQB&#x2011;Testprozess</h1>
+    <p>Hypozykel&#x2011;Modell &#x2014; der Testprozess als rollendes Rad</p>
+  </header>
+
+  <main id="main">
+    <div class="content-row">
+      <div class="desc-card">
+        <h2>Fachlicher Inhalt</h2>
+        <p>Die Seite veranschaulicht den Software&#x2011;Entwicklungs&#x00AD;lebenszyklus (SDLC)
+        mit seinen sechs Phasen (Anforderungen, Design, Implementierung, Integration,
+        Test, Betrieb &amp; Wartung) und den ISTQB&#x2011;Testprozess (Foundation Level)
+        mit seinen sechs Aktivit&#xe4;ten (Testplanung, Test&#xfc;berwachung &amp; &#x2011;steuerung,
+        Testanalyse, Testdesign, Testrealisierung, Testdurchf&#xfc;hrung &amp; Testabschluss)
+        als interaktives Hypozykel&#x2011;Modell. Der SDLC bildet einen feststehenden
+        &#xe4;u&#xdf;eren Ring; der Testprozess ist als kleinerer Kreis dargestellt, der auf
+        der Innenwand des SDLC&#x2011;Rings abrollt. Am animierten Kontaktpunkt ist jederzeit
+        ablesbar, welche Testaktivit&#xe4;t gerade auf welche Entwicklungsphase trifft. Da
+        die Radien im Verh&#xe4;ltnis 16&#x202F;:&#x202F;11 stehen (teilerfremd), werden im Verlauf
+        von 16 SDLC&#x2011;Umdrehungen zwingend alle 36 m&#xf6;glichen Kombinationen
+        durchlaufen &#x2014; was das zentrale fachliche Prinzip visualisiert: jede
+        Testaktivit&#xe4;t ist potenziell in jeder Entwicklungsphase relevant.
+        Test&#xfc;berwachung &amp; &#x2011;steuerung (T&#x202F;2) ist als gleichwertige, aber
+        begleitende Querschnittsaktivit&#xe4;t durch einen zus&#xe4;tzlichen gestrichelten Ring
+        kenntlich gemacht.</p>
+      </div>
+      <div class="canvas-wrap">
+        <canvas id="c" width="820" height="800"
+                aria-label="Hypozykel-Diagramm: SDLC-Ring mit ISTQB-Testprozess als innerem Kreis.
+                            Kontaktpunkt bei 12 Uhr: T1 Testplanung trifft Phase 1 Anforderungen."></canvas>
+      </div>
+      <div class="desc-card">
+        <h2>Technische Konzeption</h2>
+        <p>Die Seite besteht aus einer einzigen HTML&#x2011;Datei ohne externe Abh&#xe4;ngigkeiten.
+        Das gesamte Diagramm wird per JavaScript auf einem HTML5&#x2011;<code>canvas</code>&#x2011;Element
+        (820&#x202F;&times;&#x202F;800&#x202F;px) gezeichnet. In jedem Frame berechnet eine
+        <code>requestAnimationFrame</code>&#x2011;Schleife den Orbitalwinkel &#x3b1; des
+        ISTQB&#x2011;Kreismittelpunkts auf seiner Kreisbahn (Radius 59&#x202F;px um den
+        SDLC&#x2011;Mittelpunkt) sowie die Eigenrotation des rollenden Kreises
+        (wRot&#x202F;=&#x202F;K&#x202F;&#x00B7;&#x202F;&#x3b1;, K&#x202F;=&#x202F;5&#x2F;16), aus der sich der lokale
+        Kontaktwinkel (&#x3b1;&#x202F;&#x2212;&#x202F;wRot&#x202F;=&#x202F;11&#x2F;16&#x202F;&#x00B7;&#x202F;&#x3b1;) ergibt.
+        Segmente werden als pr&#xe4;zise Kreisring&#x2011;Sektoren (<code>arc</code>&#x2011;Pfade)
+        gezeichnet, aktive Segmente werden per Helligkeitswechsel und Shadow&#x2011;Blur
+        hervorgehoben. Ein Info&#x2011;Panel unterhalb des Canvas liest in Echtzeit die
+        Segment&#x2011;Indizes beider Ringe aus und benennt die aktuelle Kombination.
+        Steuerelemente (Pause/Play, Reset, Tempostufe, Spuranzeige) sind als einfache
+        HTML&#x2011;Elemente mit Event&#x2011;Listenern umgesetzt; der gesamte JS&#x2011;Code ist in
+        einer IIFE gekapselt, um den globalen Namensraum sauber zu halten.</p>
+      </div>
+    </div>
+  </main>
+
+  <nav class="legend" aria-label="Legende">
+    <div class="legend-item"><span class="legend-swatch s-sdlc"></span>SDLC &#x2014; 6 Phasen</div>
+    <div class="legend-item"><span class="legend-swatch s-istqb"></span>ISTQB &#x2014; 6 Aktivit&#xe4;ten</div>
+    <div class="legend-item"><span class="legend-swatch s-t2"></span>T&#x202F;2 &#x2014; Test&#xFC;berwachung &amp; &#x2011;steuerung</div>
+    <div class="legend-item"><span class="legend-swatch s-t2ring"></span>T&#x202F;2 &#x2014; Querschnittscharakter</div>
+  </nav>
+
+  <p class="cycle-note">
+    Vollst&#xe4;ndiger Zyklus nach <span>16 SDLC&#x2011;Umdrehungen</span> =
+    <span>11 ISTQB&#x2011;Umdrehungen</span> &#x2014;
+    alle <span>36 Kombinationen</span> werden durchlaufen.
+  </p>
+
+  <script src="../assets/js/sdlc-hypocycle-statisch.js" defer></script>
+</body>
+</html>

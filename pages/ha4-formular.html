@@ -1,0 +1,761 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HA4 Testbasis-Analyse GroceryMate als Druckversion (4 Seiten).">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <title>Testbasis-Analyse — GroceryMate HA4</title>
+  <style>
+    :root {
+      --text:  #1a1a1a;
+      --mid:   #444;
+      --soft:  #777;
+      --bdr:   #c8c8c8;
+      --light: #f2f2f2;
+      --head:  #2a3a3a;
+      --acc:   #4a7c59;
+      --open:  #8a5a6a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e8e4de;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11pt;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 4rem;
+      gap: 2.5rem;
+    }
+
+    /* ── A4 Page ── */
+    .a4 {
+      width: 210mm;
+      min-height: 297mm;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      padding: 16mm 18mm 16mm 18mm;
+      position: relative;
+      page-break-after: always;
+    }
+
+    /* ── Document Header ── */
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2.5px solid var(--head);
+      padding-bottom: 6pt;
+      margin-bottom: 10pt;
+    }
+    .doc-header-left h1 {
+      font-size: 14pt;
+      font-weight: 700;
+      color: var(--head);
+      letter-spacing: .02em;
+    }
+    .doc-header-left p {
+      font-size: 8.5pt;
+      color: var(--soft);
+      margin-top: 2pt;
+    }
+    .doc-header-right {
+      text-align: right;
+      font-size: 8pt;
+      color: var(--soft);
+      line-height: 1.6;
+    }
+    .doc-header-right strong {
+      color: var(--text);
+    }
+
+    /* ── Section label ── */
+    .section-label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 4pt;
+      margin-top: 10pt;
+    }
+
+    /* ── Meta fields row ── */
+    .meta-row {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 0;
+      border: 1px solid var(--bdr);
+      margin-bottom: 8pt;
+    }
+    .meta-cell {
+      padding: 4pt 7pt;
+      border-right: 1px solid var(--bdr);
+    }
+    .meta-cell:last-child { border-right: none; }
+    .meta-cell .label {
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 2pt;
+    }
+    .meta-cell .value {
+      font-size: 9.5pt;
+      color: var(--text);
+      font-weight: 600;
+    }
+    .meta-cell .value.light { font-weight: 400; color: var(--mid); font-style: italic; }
+
+    /* ── Vague requirement box ── */
+    .vague-box {
+      border: 1px solid var(--bdr);
+      border-left: 3px solid var(--soft);
+      padding: 5pt 8pt;
+      margin-bottom: 8pt;
+      background: var(--light);
+    }
+    .vague-box .label {
+      font-size: 7pt; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--soft); margin-bottom: 2pt;
+    }
+    .vague-box p { font-size: 9.5pt; color: var(--mid); font-style: italic; }
+
+    /* ── Questions table ── */
+    table.q-table {
+      width: 100%; border-collapse: collapse;
+      border: 1px solid var(--bdr);
+      margin-bottom: 8pt;
+      font-size: 9pt;
+    }
+    table.q-table thead tr {
+      background: var(--head); color: #fff;
+    }
+    table.q-table thead th {
+      padding: 4pt 7pt; text-align: left;
+      font-size: 7.5pt; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    table.q-table tbody tr { border-bottom: 1px solid var(--bdr); }
+    table.q-table tbody tr:last-child { border-bottom: none; }
+    table.q-table tbody tr:nth-child(even) { background: var(--light); }
+    table.q-table tbody td { padding: 4.5pt 7pt; vertical-align: top; line-height: 1.45; }
+    table.q-table td.nr {
+      font-weight: 700; color: var(--soft); width: 1.5rem;
+      text-align: center; font-size: 8pt;
+    }
+    table.q-table td.q { color: var(--text); width: 42%; }
+    table.q-table td.a { color: var(--acc); }
+    table.q-table td.a::before { content: "→ "; font-weight: 700; }
+
+    /* ── Two-col layout ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8pt;
+      margin-bottom: 8pt;
+    }
+
+    /* ── AC box ── */
+    table.ac-table {
+      width: 100%; border-collapse: collapse;
+      border: 1px solid var(--bdr); font-size: 9pt;
+    }
+    table.ac-table thead tr { background: var(--head); color: #fff; }
+    table.ac-table thead th {
+      padding: 4pt 7pt; text-align: left;
+      font-size: 7.5pt; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    table.ac-table tbody tr { border-bottom: 1px solid var(--bdr); }
+    table.ac-table tbody tr:last-child { border-bottom: none; }
+    table.ac-table tbody tr:nth-child(even) { background: var(--light); }
+    table.ac-table tbody td { padding: 4pt 7pt; vertical-align: top; line-height: 1.4; }
+    table.ac-table td.nr {
+      font-weight: 700; color: var(--soft);
+      width: 2rem; text-align: center; font-size: 8pt;
+    }
+
+    /* ── Boundary box ── */
+    .boundary-box {
+      border: 1px solid var(--bdr);
+      padding: 5pt 7pt;
+    }
+    .boundary-box .label {
+      font-size: 7pt; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--soft); margin-bottom: 4pt;
+    }
+    .chip-row { display: flex; flex-wrap: wrap; gap: 3pt; }
+    .chip {
+      font-size: 8pt; padding: 1.5pt 6pt;
+      border: 1px solid var(--bdr);
+      background: var(--light);
+      color: var(--text);
+    }
+
+    /* ── Open points ── */
+    .open-box {
+      border: 1px solid var(--bdr);
+      border-left: 3px solid var(--open);
+      padding: 5pt 8pt;
+    }
+    .open-box .label {
+      font-size: 7pt; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--open); margin-bottom: 4pt;
+    }
+    .open-box ul { list-style: none; }
+    .open-box ul li {
+      font-size: 9pt; color: var(--open);
+      padding: 1.5pt 0; display: flex; gap: 5pt;
+      border-bottom: 1px solid rgba(138,90,106,0.1);
+      line-height: 1.4;
+    }
+    .open-box ul li:last-child { border-bottom: none; }
+    .open-box ul li::before { content: "?"; font-weight: 800; font-size: 8pt; margin-top: 1pt; }
+
+    /* ── Status line ── */
+    .status-bar {
+      display: flex; justify-content: space-between; align-items: center;
+      border-top: 1px solid var(--bdr);
+      margin-top: 10pt; padding-top: 6pt;
+      font-size: 8.5pt; color: var(--soft);
+    }
+    .status-badge {
+      font-size: 8pt; font-weight: 700; padding: 2pt 8pt;
+      border: 1px solid;
+    }
+    .status-open { color: var(--open); border-color: var(--open); background: #f9f0f3; }
+    .status-ok   { color: var(--acc);  border-color: var(--acc);  background: #f0f7f3; }
+
+    /* ── Feature number strip ── */
+    .feature-strip {
+      background: var(--head); color: #fff;
+      padding: 5pt 0 5pt 10pt;
+      font-size: 11pt; font-weight: 700; letter-spacing: .04em;
+      margin-bottom: 8pt;
+      display: flex; align-items: center; gap: 12pt;
+    }
+    .feature-strip .f-num {
+      font-size: 8pt; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; opacity: .6;
+    }
+
+    /* ── Summary table page ── */
+    table.sum-table {
+      width: 100%; border-collapse: collapse;
+      border: 1px solid var(--bdr); font-size: 9pt;
+      margin-top: 10pt;
+    }
+    table.sum-table thead tr { background: var(--head); color: #fff; }
+    table.sum-table thead th {
+      padding: 5pt 8pt; text-align: left;
+      font-size: 7.5pt; font-weight: 700;
+      letter-spacing: .08em; text-transform: uppercase;
+    }
+    table.sum-table tbody tr { border-bottom: 1px solid var(--bdr); }
+    table.sum-table tbody tr:nth-child(even) { background: var(--light); }
+    table.sum-table tbody td { padding: 5pt 8pt; vertical-align: top; line-height: 1.45; }
+    table.sum-table tbody td:first-child { font-weight: 700; }
+
+    /* ── Page guide box (legend) ── */
+    .page-guide {
+      border: 1px solid var(--bdr);
+      margin-top: 14pt;
+      font-size: 8.5pt;
+    }
+    .page-guide-head {
+      background: var(--light); padding: 4pt 8pt;
+      font-weight: 700; font-size: 8pt; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--soft);
+      border-bottom: 1px solid var(--bdr);
+    }
+    .page-guide-body {
+      display: grid; grid-template-columns: repeat(3,1fr);
+    }
+    .pg-cell {
+      padding: 6pt 8pt;
+      border-right: 1px solid var(--bdr);
+      line-height: 1.5; color: var(--mid);
+    }
+    .pg-cell:last-child { border-right: none; }
+    .pg-cell strong { color: var(--text); display: block; margin-bottom: 2pt; }
+    .page-guide-note {
+      padding: 5pt 8pt;
+      border-top: 1px solid var(--bdr);
+      color: var(--open); font-size: 8pt; line-height: 1.5;
+    }
+    .page-guide-note strong { color: var(--open); }
+
+    /* ── Doc footer ── */
+    .doc-footer {
+      border-top: 1px solid var(--bdr);
+      margin-top: 10pt; padding-top: 5pt;
+      display: flex; justify-content: space-between;
+      font-size: 7.5pt; color: var(--soft);
+    }
+
+    @media print {
+      body { background: white; padding: 0; }
+      .a4 { box-shadow: none; margin: 0; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<nav class="back-link" aria-label="Rücknavigation"><a href="../index.html">Zur Übersicht</a></nav>
+
+<main id="main">
+<!-- ══════════════════════════════════════
+     SEITE 1: FEATURE 1 — BEWERTUNGSSYSTEM
+     ══════════════════════════════════════ -->
+<div class="a4">
+
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h1>Testbasis-Analyse</h1>
+      <p>Anforderungsanalyse aus Tester-Sicht · CTFL Kap. 4.1 · IEEE 29119-3</p>
+    </div>
+    <div class="doc-header-right">
+      <strong>Projekt:</strong> GroceryMate (HA4)<br>
+      <strong>Erstellt:</strong> März 2026<br>
+      <strong>Standard:</strong> CTFL v4.0.2 / IEEE 29119-3<br>
+      <strong>Seite:</strong> 1 von 4
+    </div>
+  </div>
+
+  <div class="feature-strip">
+    <span class="f-num">Feature 01 / 03</span>
+    Bewertungssystem für Produkte
+  </div>
+
+  <div class="meta-row">
+    <div class="meta-cell">
+      <div class="label">Feature-ID</div>
+      <div class="value">GM-F01 · Bewertungssystem</div>
+    </div>
+    <div class="meta-cell">
+      <div class="label">Testobjekt</div>
+      <div class="value">grocerymate.masterschool.com</div>
+    </div>
+    <div class="meta-cell">
+      <div class="label">Status</div>
+      <div class="value">Teilweise offen</div>
+    </div>
+  </div>
+
+  <div class="vague-box">
+    <div class="label">Ursprüngliche (vage) Anforderung</div>
+    <p>Nutzer sollen Produkte mit einem 5-Sterne-System bewerten und zusätzlich schriftliches Feedback hinterlassen können.</p>
+  </div>
+
+  <div class="section-label">Testfragen &amp; Antworten (mind. 3)</div>
+  <table class="q-table">
+    <thead>
+      <tr>
+        <th style="width:1.5rem">#</th>
+        <th>Testfrage</th>
+        <th>Antwort (aus Anwendung ermittelt)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="nr">F1</td>
+        <td class="q">Wer darf bewerten — alle Nutzer oder nur eingeloggte?</td>
+        <td class="a">Nur eingeloggte Nutzer; Gäste haben keine Bewertungsoption.</td>
+      </tr>
+      <tr>
+        <td class="nr">F2</td>
+        <td class="q">Ist das Textfeld Pflicht oder optional?</td>
+        <td class="a">Optional — Bewertung nur mit Sternen (1–5) ohne Text möglich.</td>
+      </tr>
+      <tr>
+        <td class="nr">F3</td>
+        <td class="q">Kann ein Nutzer dasselbe Produkt mehrfach bewerten?</td>
+        <td class="a">Nein — max. 1 Bewertung/Nutzer/Produkt. Zweite Bewertung: Block oder Update (zu verifizieren).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="two-col">
+    <div>
+      <div class="section-label">Akzeptanzkriterien</div>
+      <table class="ac-table">
+        <thead><tr><th style="width:2rem">#</th><th>Kriterium</th></tr></thead>
+        <tbody>
+          <tr><td class="nr">AC1</td><td>Eingeloggter Nutzer kann mit 1–5 Sternen bewerten.</td></tr>
+          <tr><td class="nr">AC2</td><td>Textfeld ist optional — Bewertung ohne Text wird akzeptiert.</td></tr>
+          <tr><td class="nr">AC3</td><td>Gast ohne Login erhält keinen Zugang zur Bewertungsfunktion.</td></tr>
+          <tr><td class="nr">AC4</td><td>Max. eine Bewertung pro Nutzer und Produkt.</td></tr>
+          <tr><td class="nr">AC5</td><td>Durchschnittsbewertung wird auf Produktseite angezeigt.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="section-label">Grenzfälle &amp; Risiken</div>
+      <div class="boundary-box" style="margin-bottom:8pt">
+        <div class="label">Identifizierte Grenzfälle</div>
+        <div class="chip-row">
+          <span class="chip">Gast → Bewerten</span>
+          <span class="chip">Stern = 0 / 6</span>
+          <span class="chip">2. Bewertung</span>
+          <span class="chip">Leeres Textfeld</span>
+          <span class="chip">Max. Textlänge</span>
+        </div>
+      </div>
+      <div class="section-label">Offene Punkte</div>
+      <div class="open-box">
+        <ul>
+          <li>Maximale Zeichenanzahl des Feedback-Feldes (nicht spezifiziert)</li>
+          <li>Darstellung Durchschnittsbewertung — Rundungsregel unklar</li>
+          <li>Verhalten bei 2. Bewertung: Block oder Update?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <span>GM-F01 · Bewertungssystem · HA4</span>
+    <span class="status-badge status-open">Offene Punkte vorhanden</span>
+  </div>
+
+  <div class="doc-footer">
+    <span>Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3</span>
+    <span>Seite 1 von 4</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SEITE 2: FEATURE 2 — ALTERSVERIFIKATION
+     ══════════════════════════════════════ -->
+<div class="a4">
+
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h1>Testbasis-Analyse</h1>
+      <p>Anforderungsanalyse aus Tester-Sicht · CTFL Kap. 4.1 · IEEE 29119-3</p>
+    </div>
+    <div class="doc-header-right">
+      <strong>Projekt:</strong> GroceryMate (HA4)<br>
+      <strong>Erstellt:</strong> März 2026<br>
+      <strong>Standard:</strong> CTFL v4.0.2 / IEEE 29119-3<br>
+      <strong>Seite:</strong> 2 von 4
+    </div>
+  </div>
+
+  <div class="feature-strip">
+    <span class="f-num">Feature 02 / 03</span>
+    Altersverifikation für alkoholische Produkte
+  </div>
+
+  <div class="meta-row">
+    <div class="meta-cell">
+      <div class="label">Feature-ID</div>
+      <div class="value">GM-F02 · Altersverifikation</div>
+    </div>
+    <div class="meta-cell">
+      <div class="label">Testobjekt</div>
+      <div class="value">/store (Modal)</div>
+    </div>
+    <div class="meta-cell">
+      <div class="label">Status</div>
+      <div class="value">Teilweise offen</div>
+    </div>
+  </div>
+
+  <div class="vague-box">
+    <div class="label">Ursprüngliche (vage) Anforderung</div>
+    <p>Alkoholische Produkte erfordern eine Altersverifikation. Beim Aufrufen der Kategorie soll ein Modal erscheinen, in dem Nutzer ihr Alter angeben müssen (18+), bevor sie Zugriff erhalten.</p>
+  </div>
+
+  <div class="section-label">Testfragen &amp; Antworten (mind. 3)</div>
+  <table class="q-table">
+    <thead>
+      <tr>
+        <th style="width:1.5rem">#</th>
+        <th>Testfrage</th>
+        <th>Antwort (aus Anwendung ermittelt)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="nr">F1</td>
+        <td class="q">Was genau wird abgefragt — Alter oder Geburtsdatum?</td>
+        <td class="a">Geburtsdatum — Modal zeigt „Please enter your birth date".</td>
+      </tr>
+      <tr>
+        <td class="nr">F2</td>
+        <td class="q">Wann und wo erscheint das Modal?</td>
+        <td class="a">Beim ersten Aufruf von /store — vor Anzeige der Produkte.</td>
+      </tr>
+      <tr>
+        <td class="nr">F3</td>
+        <td class="q">Was passiert bei Eingabe eines Alters unter 18?</td>
+        <td class="a">Zugriff verweigert — Hinweistext statt Produktliste, Bereich gesperrt.</td>
+      </tr>
+      <tr>
+        <td class="nr">F4</td>
+        <td class="q">Muss das Modal bei jedem Aufruf erneut bestätigt werden?</td>
+        <td class="a">Nein — innerhalb derselben Session nicht erneut angezeigt (Session-/Cookie-basiert).</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="two-col">
+    <div>
+      <div class="section-label">Akzeptanzkriterien</div>
+      <table class="ac-table">
+        <thead><tr><th style="width:2rem">#</th><th>Kriterium</th></tr></thead>
+        <tbody>
+          <tr><td class="nr">AC1</td><td>Modal erscheint beim ersten Aufruf von /store vor Produkten.</td></tr>
+          <tr><td class="nr">AC2</td><td>Geburtsdatum &lt; 18 Jahre → Zugriff verweigert, Hinweis.</td></tr>
+          <tr><td class="nr">AC3</td><td>Geburtsdatum ≥ 18 Jahre → Store freigegeben.</td></tr>
+          <tr><td class="nr">AC4</td><td>Innerhalb derselben Session kein erneutes Modal.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="section-label">Grenzfälle &amp; Risiken</div>
+      <div class="boundary-box" style="margin-bottom:8pt">
+        <div class="label">Identifizierte Grenzfälle</div>
+        <div class="chip-row">
+          <span class="chip">Alter = 17</span>
+          <span class="chip">Alter = 18</span>
+          <span class="chip">Alter = 19</span>
+          <span class="chip">Browser-Refresh</span>
+          <span class="chip">Tab-Wechsel</span>
+          <span class="chip">Neues Fenster</span>
+          <span class="chip">Ungültiges Datum</span>
+        </div>
+      </div>
+      <div class="section-label">Offene Punkte</div>
+      <div class="open-box">
+        <ul>
+          <li>Wie lange ist der Session-Status gültig?</li>
+          <li>Verhalten auf verschiedenen Geräten / Browsern</li>
+          <li>Eingabe ungültiges Datum (z.B. 31.02.) — Verhalten?</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <span>GM-F02 · Altersverifikation · HA4</span>
+    <span class="status-badge status-open">Offene Punkte vorhanden</span>
+  </div>
+
+  <div class="doc-footer">
+    <span>Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3</span>
+    <span>Seite 2 von 4</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SEITE 3: FEATURE 3 — VERSANDKOSTEN
+     ══════════════════════════════════════ -->
+<div class="a4">
+
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h1>Testbasis-Analyse</h1>
+      <p>Anforderungsanalyse aus Tester-Sicht · CTFL Kap. 4.1 · IEEE 29119-3</p>
+    </div>
+    <div class="doc-header-right">
+      <strong>Projekt:</strong> GroceryMate (HA4)<br>
+      <strong>Erstellt:</strong> März 2026<br>
+      <strong>Standard:</strong> CTFL v4.0.2 / IEEE 29119-3<br>
+      <strong>Seite:</strong> 3 von 4
+    </div>
+  </div>
+
+  <div class="feature-strip">
+    <span class="f-num">Feature 03 / 03</span>
+    Versandkosten &amp; Freigrenze
+  </div>
+
+  <div class="meta-row">
+    <div class="meta-cell">
+      <div class="label">Feature-ID</div>
+      <div class="value">GM-F03 · Versandkosten</div>
+    </div>
+    <div class="meta-cell">
+      <div class="label">Testobjekt</div>
+      <div class="value">/checkout (eingeloggt)</div>
+    </div>
+    <div class="meta-cell">
+      <div class="label">Status</div>
+      <div class="value">Werte ausstehend</div>
+    </div>
+  </div>
+
+  <div class="vague-box">
+    <div class="label">Ursprüngliche (vage) Anforderung</div>
+    <p>Versandkosten entfallen ab einem bestimmten Bestellwert. Darunter fallen Versandkosten an.</p>
+  </div>
+
+  <div class="section-label">Testfragen &amp; Antworten (mind. 3)</div>
+  <table class="q-table">
+    <thead>
+      <tr>
+        <th style="width:1.5rem">#</th>
+        <th>Testfrage</th>
+        <th>Antwort (aus Anwendung ermittelt)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="nr">F1</td>
+        <td class="q">Wo werden Versandkosten und Freigrenze angezeigt?</td>
+        <td class="a">Im Checkout (/checkout) — nur für eingeloggte Nutzer mit befülltem Warenkorb.</td>
+      </tr>
+      <tr>
+        <td class="nr">F2</td>
+        <td class="q">Werden Versandkosten live bei Warenkorbänderungen aktualisiert?</td>
+        <td class="a">Ja — Mengen- oder Produktänderungen aktualisieren die Versandkosten sofort.</td>
+      </tr>
+      <tr>
+        <td class="nr">F3</td>
+        <td class="q">Ist /checkout ohne Login zugänglich?</td>
+        <td class="a">Nein — ohne Login Weiterleitung zu /auth.</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="two-col">
+    <div>
+      <div class="section-label">Akzeptanzkriterien</div>
+      <table class="ac-table">
+        <thead><tr><th style="width:2rem">#</th><th>Kriterium</th></tr></thead>
+        <tbody>
+          <tr><td class="nr">AC1</td><td>Bestellwert ≥ X € → Versandkosten = 0 €.</td></tr>
+          <tr><td class="nr">AC2</td><td>Bestellwert &lt; X € → Versandkosten = Y €.</td></tr>
+          <tr><td class="nr">AC3</td><td>Jede Warenkorbänderung aktualisiert Versandkosten sofort.</td></tr>
+          <tr><td class="nr">AC4</td><td>Checkout ohne Login → Weiterleitung zu /auth.</td></tr>
+          <tr><td class="nr">AC5</td><td>Leerer Warenkorb → sinnvoller Hinweis, kein Absturz.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div>
+      <div class="section-label">Grenzfälle &amp; Risiken</div>
+      <div class="boundary-box" style="margin-bottom:8pt">
+        <div class="label">Identifizierte Grenzfälle</div>
+        <div class="chip-row">
+          <span class="chip">Wert = X €</span>
+          <span class="chip">Wert = X − 0,01 €</span>
+          <span class="chip">Wert = X + 0,01 €</span>
+          <span class="chip">Leerer Warenkorb</span>
+          <span class="chip">Gast ohne Login</span>
+        </div>
+      </div>
+      <div class="section-label">Offene Punkte</div>
+      <div class="open-box">
+        <ul>
+          <li>Freigrenze X — nur mit Testkonto im Checkout ermittelbar</li>
+          <li>Versandkosten Y — ebenfalls nur im Checkout sichtbar</li>
+          <li>Verhalten leerer Warenkorb noch zu verifizieren</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <div class="status-bar">
+    <span>GM-F03 · Versandkosten · HA4</span>
+    <span class="status-badge status-open">Werte X und Y ausstehend</span>
+  </div>
+
+  <div class="doc-footer">
+    <span>Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3</span>
+    <span>Seite 3 von 4</span>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════
+     SEITE 4: ZUSAMMENFASSUNG + LEGENDE
+     ══════════════════════════════════════ -->
+<div class="a4">
+
+  <div class="doc-header">
+    <div class="doc-header-left">
+      <h1>Testbasis-Analyse — Zusammenfassung</h1>
+      <p>GroceryMate · HA4 · Alle drei Features</p>
+    </div>
+    <div class="doc-header-right">
+      <strong>Projekt:</strong> GroceryMate (HA4)<br>
+      <strong>Erstellt:</strong> März 2026<br>
+      <strong>Standard:</strong> CTFL v4.0.2 / IEEE 29119-3<br>
+      <strong>Seite:</strong> 4 von 4
+    </div>
+  </div>
+
+  <div class="section-label">Analysestatus — Alle Features</div>
+  <table class="sum-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Kernverhalten</th>
+        <th>Grenzfälle</th>
+        <th>Offene Punkte</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GM-F01<br>Bewertungssystem</td>
+        <td>1–5 Sterne, opt. Text, nur Login, 1 Bewertung/Produkt</td>
+        <td>Gast, 2. Bewertung, Textlänge, Stern 0/6</td>
+        <td>Zeichenlimit, Rundungsregel, Block vs. Update</td>
+        <td><span class="status-badge status-open">Teilw. offen</span></td>
+      </tr>
+      <tr>
+        <td>GM-F02<br>Altersverifikation</td>
+        <td>Geburtsdatum-Modal auf /store, 18+, session-basiert</td>
+        <td>17/18/19 J., Refresh, Tab-Wechsel, ungült. Datum</td>
+        <td>Session-Dauer, Gerätewechsel, Fehleingabe</td>
+        <td><span class="status-badge status-open">Teilw. offen</span></td>
+      </tr>
+      <tr>
+        <td>GM-F03<br>Versandkosten</td>
+        <td>Freigrenze X €, Kosten Y €, Live-Update, Login nötig</td>
+        <td>Wert X, X−0,01, X+0,01, leerer Warenkorb</td>
+        <td>Exakte Werte X und Y (Testkonto nötig)</td>
+        <td><span class="status-badge status-open">Werte offen</span></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="page-guide" style="margin-top:18pt">
+    <div class="page-guide-head">Dokumentstruktur &amp; Leseanleitung</div>
+    <div class="page-guide-body">
+      <div class="pg-cell">
+        <strong>① Seiten 1–3 — Feature-Formulare</strong>
+        Je ein Formular pro Feature nach IEEE 29119-3: vage Anforderung, Testfragen &amp; Antworten, Akzeptanzkriterien, Grenzfälle, offene Punkte.
+      </div>
+      <div class="pg-cell">
+        <strong>② Seite 4 — Zusammenfassung</strong>
+        Statusübersicht aller Features auf einen Blick — Grundlage für das weitere Testdesign und Rückfragen ans Team.
+      </div>
+      <div class="pg-cell">
+        <strong>③ Standard &amp; Begriffe</strong>
+        Dieses Dokument folgt CTFL Kap. 4.1 (Testanalyse) und IEEE 29119-3. „Anforderungsanalyse" und „Testbasis-Analyse" werden hier synonym aus Tester-Sicht verwendet.
+      </div>
+    </div>
+    <div class="page-guide-note">
+      <strong>Hinweis zu offenen Punkten:</strong> Bewusst dokumentiert — nicht als Mangel, sondern als professionelle Transparenz. Im Berufsalltag ist eine Analyse mit klar markierten Unklarheiten wertvoller als eine, die so tut als wäre alles bekannt. Offene Punkte sind die Handlungsliste für den nächsten Schritt.
+    </div>
+  </div>
+
+  <div class="doc-footer">
+    <span>Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3</span>
+    <span>Seite 4 von 4</span>
+  </div>
+
+</div>
+
+</main>
+</body>
+</html>

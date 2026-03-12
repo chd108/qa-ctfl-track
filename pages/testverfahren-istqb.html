@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Überblick Testverfahren ISTQB CTFL: black-box, white-box, erfahrungsbasiert.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <title>Testverfahren im Überblick — ISTQB CTFL v4.0.2</title>
+  <style>
+    :root{--card:rgba(255,255,255,0.48);--fs:16px}
+    body{font-family:Georgia,'Palatino Linotype',serif;font-size:var(--fs);min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:2.5rem 1.5rem 3rem}
+    header{margin-bottom:2rem}
+    header h1{font-size:1.6rem}
+    header p{margin-top:.5rem;font-size:1.25rem;letter-spacing:.05em}
+    .diagram-wrap{width:min(1440px,96vw);overflow-x:auto}
+    .diagram-wrap svg{display:block;width:100%;height:auto}
+    .legend{display:flex;justify-content:space-between;align-items:center;gap:0;margin-top:-5rem;flex-wrap:wrap;width:min(1440px,96vw)}
+    .legend-item{display:flex;align-items:center;gap:.5rem;font-size:var(--fs);color:var(--mid)}
+    .legend-swatch{width:14px;height:14px;border-radius:3px;flex-shrink:0}
+    .s-bb{background:#c7ddc9}.s-wb{background:#bad1dc}.s-ex{background:#ddc48a}.s-co{background:#d4c4e0}
+    .description{display:grid;grid-template-columns:1fr 1fr 1fr 1fr;gap:1rem;width:min(1440px,96vw);margin-top:0.8rem}
+    .desc-card{background:var(--card);border:1px solid var(--bdr);border-radius:5px;padding:1.05rem 1.15rem 1.1rem;display:flex;flex-direction:column}
+    .desc-card h2{font-size:var(--fs);font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:600;letter-spacing:.10em;text-transform:uppercase;color:var(--soft);margin-bottom:.6rem;padding-bottom:.4rem;border-bottom:1px solid var(--bdr)}
+    .desc-card p{font-size:var(--fs);font-style:italic;color:#000;line-height:1.85;margin-bottom:.7rem}.desc-card p:last-of-type{margin-bottom:0}
+    .desc-card .tag{display:inline-block;font-size:var(--fs);font-style:normal;font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-weight:600;color:var(--mid);margin-top:auto;padding-top:.8rem;padding-bottom:.1rem;padding-left:.55rem;padding-right:.55rem;border:1px solid var(--bdr);border-radius:2px;letter-spacing:.05em;align-self:flex-start}
+    @media(max-width:1000px){.description{grid-template-columns:1fr 1fr}}
+    @media(max-width:600px){.description{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<nav class="back-link" aria-label="Rücknavigation"><a href="../index.html">Zur Übersicht</a></nav>
+<header>
+    <h1>Testverfahren im Überblick</h1>
+    <p>Test Technique Overview &middot; ISTQB CTFL v4.0.2 &middot; Kapitel&nbsp;4</p>
+  </header>
+  <main id="main">
+    <div class="diagram-wrap">
+      <svg viewBox="0 0 1440 945" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+  <filter id="sh" x="-6%" y="-8%" width="112%" height="122%">
+    <feDropShadow dx="0" dy="2" stdDeviation="4" flood-color="rgba(0,0,0,0.07)"/>
+  </filter>
+</defs>
+  <line x1="720" y1="130" x2="720" y2="148" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="180" y1="148" x2="1260" y2="148" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="180" y1="148" x2="180" y2="161" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="540" y1="148" x2="540" y2="161" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="900" y1="148" x2="900" y2="161" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="1260" y1="148" x2="1260" y2="161" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="180" y1="287" x2="180" y2="681" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="540" y1="287" x2="540" y2="437" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="900" y1="287" x2="900" y2="559" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="1260" y1="287" x2="1260" y2="559" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="180" y1="369" x2="316" y2="369" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="180" y1="491" x2="316" y2="491" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="180" y1="613" x2="316" y2="613" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="180" y1="735" x2="316" y2="735" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="540" y1="369" x2="676" y2="369" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="540" y1="491" x2="676" y2="491" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="900" y1="369" x2="1036" y2="369" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="900" y1="491" x2="1036" y2="491" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="900" y1="613" x2="1036" y2="613" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="1260" y1="369" x2="1396" y2="369" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="1260" y1="491" x2="1396" y2="491" stroke="#aec0c0" stroke-width="1.5"/>
+  <line x1="1260" y1="613" x2="1396" y2="613" stroke="#aec0c0" stroke-width="1.5"/>
+  <rect x="32.0" y="161.0" width="296" height="126" rx="8" fill="#c7ddc9" stroke="#a8cba8" stroke-width="1.4" filter="url(#sh)"/>
+  <text x="42.0" y="176.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.2</text>
+  <line x1="44.0" y1="224.0" x2="316.0" y2="224.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="180" y="210" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Black-Box Test Techniques</text>
+  <text x="180" y="254.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Black-Box-Testverfahren</text>
+  <rect x="392.0" y="161.0" width="296" height="126" rx="8" fill="#bad1dc" stroke="#9bbccc" stroke-width="1.4" filter="url(#sh)"/>
+  <text x="402.0" y="176.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.3</text>
+  <line x1="404.0" y1="224.0" x2="676.0" y2="224.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="540" y="210" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">White-Box Test Techniques</text>
+  <text x="540" y="254.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">White-Box-Testverfahren</text>
+  <rect x="752.0" y="161.0" width="296" height="126" rx="8" fill="#ddc48a" stroke="#c8a96a" stroke-width="1.4" filter="url(#sh)"/>
+  <text x="762.0" y="176.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.4</text>
+  <line x1="764.0" y1="224.0" x2="1036.0" y2="224.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="900" y="210" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Experience-Based Test Techniques</text>
+  <text x="900" y="254.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Erfahrungsbasierter Test</text>
+  <rect x="1112.0" y="161.0" width="296" height="126" rx="8" fill="#d4c4e0" stroke="#b8a8cc" stroke-width="1.4" filter="url(#sh)"/>
+  <text x="1122.0" y="176.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.5</text>
+  <line x1="1124.0" y1="224.0" x2="1396.0" y2="224.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="1260" y="210" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Collaboration-Based Test Approach</text>
+  <text x="1260" y="244.5" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Auf Zusammenarbeit basierender</text>
+  <text x="1260" y="263.5" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Testansatz</text>
+  <rect x="42.0" y="315.0" width="276" height="108" rx="6" fill="#daeedd" stroke="#b8d4ba" stroke-width="1" filter="url(#sh)"/>
+  <text x="50.0" y="330.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.2.1</text>
+  <line x1="52.0" y1="369.0" x2="308.0" y2="369.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="180" y="355.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Equivalence Partitioning</text>
+  <text x="180" y="399.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Äquivalenzklassenbildung</text>
+  <rect x="256" y="323" width="52" height="18" rx="3" fill="#e8c8c8" stroke="#a05050" stroke-width="0.8"/>
+  <text x="304" y="336" text-anchor="end" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#8b3a3a">HA 1 T1</text>
+  <rect x="42.0" y="437.0" width="276" height="108" rx="6" fill="#daeedd" stroke="#b8d4ba" stroke-width="1" filter="url(#sh)"/>
+  <text x="50.0" y="452.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.2.2</text>
+  <line x1="52.0" y1="491.0" x2="308.0" y2="491.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="180" y="477.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Boundary Value Analysis</text>
+  <text x="180" y="521.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Grenzwertanalyse</text>
+  <rect x="236" y="445" width="74" height="18" rx="3" fill="#e8c8c8" stroke="#a05050" stroke-width="0.8"/>
+  <text x="306" y="458" text-anchor="end" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#8b3a3a">HA 1 T2/T3</text>
+  <rect x="42.0" y="559.0" width="276" height="108" rx="6" fill="#daeedd" stroke="#b8d4ba" stroke-width="1" filter="url(#sh)"/>
+  <text x="50.0" y="574.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.2.3</text>
+  <line x1="52.0" y1="613.0" x2="308.0" y2="613.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="180" y="599.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Decision Table Testing</text>
+  <text x="180" y="643.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Entscheidungstabellentest</text>
+  <rect x="272" y="567" width="38" height="18" rx="3" fill="#e8c8c8" stroke="#a05050" stroke-width="0.8"/>
+  <text x="306" y="580" text-anchor="end" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#8b3a3a">HA 2</text>
+  <rect x="42.0" y="681.0" width="276" height="108" rx="6" fill="#daeedd" stroke="#b8d4ba" stroke-width="1" filter="url(#sh)"/>
+  <text x="50.0" y="696.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.2.4</text>
+  <line x1="52.0" y1="735.0" x2="308.0" y2="735.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="180" y="721.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">State Transition Testing</text>
+  <text x="180" y="765.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Zustandsübergangstest</text>
+  <rect x="256" y="689" width="52" height="18" rx="3" fill="#e8c8c8" stroke="#a05050" stroke-width="0.8"/>
+  <text x="304" y="702" text-anchor="end" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#8b3a3a">HA 3 T1</text>
+  <rect x="402.0" y="315.0" width="276" height="108" rx="6" fill="#d8eaf4" stroke="#a8c8dc" stroke-width="1" filter="url(#sh)"/>
+  <text x="410.0" y="330.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.3.1</text>
+  <line x1="412.0" y1="369.0" x2="668.0" y2="369.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="540" y="355.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Statement Testing</text>
+  <text x="540" y="389.5" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Anweisungstest und</text>
+  <text x="540" y="408.5" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Anweisungsüberdeckung</text>
+  <rect x="616" y="323" width="52" height="18" rx="3" fill="#e8c8c8" stroke="#a05050" stroke-width="0.8"/>
+  <text x="664" y="336" text-anchor="end" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#8b3a3a">HA 3 T2</text>
+  <rect x="402.0" y="437.0" width="276" height="108" rx="6" fill="#d8eaf4" stroke="#a8c8dc" stroke-width="1" filter="url(#sh)"/>
+  <text x="410.0" y="452.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.3.2</text>
+  <line x1="412.0" y1="491.0" x2="668.0" y2="491.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="540" y="477.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Branch Testing</text>
+  <text x="540" y="511.5" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Zweigtest und</text>
+  <text x="540" y="530.5" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Zweigüberdeckung</text>
+  <rect x="616" y="445" width="52" height="18" rx="3" fill="#e8c8c8" stroke="#a05050" stroke-width="0.8"/>
+  <text x="664" y="458" text-anchor="end" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#8b3a3a">HA 3 T2</text>
+  <rect x="762.0" y="315.0" width="276" height="108" rx="6" fill="#f0e4c4" stroke="#d4c090" stroke-width="1" filter="url(#sh)"/>
+  <text x="770.0" y="330.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.4.1</text>
+  <line x1="772.0" y1="369.0" x2="1028.0" y2="369.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="900" y="355.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Error Guessing</text>
+  <text x="900" y="399.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Intuitive Testfallermittlung</text>
+  <rect x="762.0" y="437.0" width="276" height="108" rx="6" fill="#f0e4c4" stroke="#d4c090" stroke-width="1" filter="url(#sh)"/>
+  <text x="770.0" y="452.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.4.2</text>
+  <line x1="772.0" y1="491.0" x2="1028.0" y2="491.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="900" y="477.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Exploratory Testing</text>
+  <text x="900" y="521.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Explorativer Test</text>
+  <rect x="762.0" y="559.0" width="276" height="108" rx="6" fill="#f0e4c4" stroke="#d4c090" stroke-width="1" filter="url(#sh)"/>
+  <text x="770.0" y="574.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.4.3</text>
+  <line x1="772.0" y1="613.0" x2="1028.0" y2="613.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="900" y="599.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Checklist-Based Testing</text>
+  <text x="900" y="643.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Checklistenbasierter Test</text>
+  <rect x="1122.0" y="315.0" width="276" height="108" rx="6" fill="#ece4f4" stroke="#c8b8d8" stroke-width="1" filter="url(#sh)"/>
+  <text x="1130.0" y="330.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.5.1</text>
+  <line x1="1132.0" y1="369.0" x2="1388.0" y2="369.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="1260" y="355.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Collaborative User Story Writing</text>
+  <text x="1260" y="389.5" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Gemeinsames Schreiben</text>
+  <text x="1260" y="408.5" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">von User-Storys</text>
+  <rect x="1122.0" y="437.0" width="276" height="108" rx="6" fill="#ece4f4" stroke="#c8b8d8" stroke-width="1" filter="url(#sh)"/>
+  <text x="1130.0" y="452.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.5.2</text>
+  <line x1="1132.0" y1="491.0" x2="1388.0" y2="491.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="1260" y="477.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">Acceptance Criteria</text>
+  <text x="1260" y="521.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Akzeptanzkriterien</text>
+  <rect x="1122.0" y="559.0" width="276" height="108" rx="6" fill="#ece4f4" stroke="#c8b8d8" stroke-width="1" filter="url(#sh)"/>
+  <text x="1130.0" y="574.0" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="rgba(120,140,140,0.75)">4.5.3</text>
+  <line x1="1132.0" y1="613.0" x2="1388.0" y2="613.0" stroke="rgba(255,245,235,0.95)" stroke-width="2.5"/>
+  <text x="1260" y="599.0" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#283535">ATDD</text>
+  <text x="1260" y="633.5" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Abnahmetestgetriebene</text>
+  <text x="1260" y="652.5" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#283535">Entwicklung (ATDD)</text>
+  <rect x="1294" y="567" width="52" height="18" rx="3" fill="#e8c8c8" stroke="#a05050" stroke-width="0.8"/>
+  <text x="1342" y="580" text-anchor="end" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#8b3a3a">HA 1 T4</text>
+  <rect x="1352" y="567" width="36" height="18" rx="3" fill="#e8c8c8" stroke="#a05050" stroke-width="0.8"/>
+  <text x="1384" y="580" text-anchor="end" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="12" font-weight="600" fill="#8b3a3a">HA 4</text>
+  <rect x="490.0" y="26.0" width="460" height="104" rx="10" fill="#d8e4d0" stroke="#b0c8b0" stroke-width="1.6" filter="url(#sh)"/>
+  <text x="720" y="56" text-anchor="middle" font-family="Georgia,'Palatino Linotype',serif" font-size="16" font-weight="normal" letter-spacing="0.5" fill="#283535">Software Testing / Softwaretest</text>
+  <text x="720" y="78" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="normal" fill="#4e6060">Kapitel 4 · Testanalyse und -entwurf</text>
+  <text x="720" y="100" text-anchor="middle" font-family="'Helvetica Neue',Helvetica,Arial,sans-serif" font-size="16" font-weight="bold" fill="#4e6060">4.1 Testverfahren im Überblick</text>
+      </svg>
+    </div>
+  </main>
+  <nav class="legend">
+    <div class="legend-item"><span class="legend-swatch s-bb"></span>4.2 &mdash; Black-Box-Testverfahren</div>
+    <div class="legend-item"><span class="legend-swatch s-wb"></span>4.3 &mdash; White-Box-Testverfahren</div>
+    <div class="legend-item"><span class="legend-swatch s-ex"></span>4.4 &mdash; Erfahrungsbasierter Test</div>
+    <div class="legend-item"><span class="legend-swatch s-co"></span>4.5 &mdash; Auf Zusammenarbeit basierender Testansatz</div>
+  </nav>
+  <section class="description">
+    <div class="desc-card">
+      <h2>Black-Box (4.2)</h2>
+      <p>Testf&auml;lle werden aus der Spezifikation abgeleitet, ohne Kenntnis der internen Struktur.</p><p>&Auml;quivalenzklassenbildung und Grenzwertanalyse reduzieren die Testfallanzahl systematisch.</p><p>Entscheidungstabellentest und Zustands&uuml;bergangstest erfassen Regelwerke und dynamisches Verhalten.</p>
+      <span class="tag">Verhaltensbasiert</span>
+    </div>
+    <div class="desc-card">
+      <h2>White-Box (4.3)</h2>
+      <p>Testf&auml;lle werden aus der internen Codestruktur abgeleitet.</p><p>Der Anweisungstest pr&uuml;ft, ob jede Anweisung mindestens einmal ausgef&uuml;hrt wird.</p><p>Der Zweigtest pr&uuml;ft, ob jeder Entscheidungspfad durchlaufen wird. Zweig&uuml;berdeckung schlie&szlig;t Anweisungs&uuml;berdeckung ein.</p>
+      <span class="tag">Strukturbasiert</span>
+    </div>
+    <div class="desc-card">
+      <h2>Erfahrungsbasiert (4.4)</h2>
+      <p>Techniken, die auf dem Erfahrungswissen der Tester beruhen.</p><p>Intuitive Testfallermittlung antizipiert typische Fehlerquellen.</p><p>Explorativer Test kombiniert Planung, Ausf&uuml;hrung und Auswertung simultan.</p><p>Checklistenbasierter Test sichert Vollst&auml;ndigkeit durch strukturierte Pr&uuml;flisten.</p>
+      <span class="tag">Erfahrungsbasiert</span>
+    </div>
+    <div class="desc-card">
+      <h2>Zusammenarbeit (4.5)</h2>
+      <p>Neu in CTFL 4.0: kollaborative Ans&auml;tze zur gemeinsamen Testfallableitung.</p><p>User-Storys und Akzeptanzkriterien verzahnen Testen mit der Anforderungsanalyse.</p><p>ATDD (Abnahmetestgetriebene Entwicklung) verankert Testf&auml;lle von Beginn an im Sinne des Shift-Left-Prinzips.</p>
+      <span class="tag">Kollaborativ</span>
+    </div>
+  </section>
+</body>
+</html>

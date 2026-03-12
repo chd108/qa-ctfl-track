@@ -1,0 +1,55 @@
+/* Gemeinsames Basis-CSS für die QA-Lernwebseite */
+
+:root {
+  --bg:    #f0ece6;
+  --text:  #283535;
+  --mid:   #4e6060;
+  --soft:  #7a9090;
+  --border: rgba(0,0,0,0.07);
+  --bdr:   var(--border);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, rgba(0,0,0,0.028) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--text);
+  font-family: Georgia, 'Palatino Linotype', serif;
+  min-height: 100vh;
+}
+
+header { text-align: center; }
+header h1 { font-weight: normal; letter-spacing: .05em; }
+header p { font-style: italic; color: var(--soft); }
+
+/* Rücknavigation: einheitlich links oben */
+.back-link {
+  font-size: 0.875rem;
+  margin-bottom: 0.75rem;
+  width: 100%;
+  text-align: left;
+  align-self: flex-start;
+}
+.back-link a { color: var(--soft); text-decoration: none; }
+.back-link a:hover { text-decoration: underline; }
+
+/* Skip-Link: für Tastatur/Screenreader zum Hauptinhalt springen */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.875rem;
+  text-decoration: none;
+  border: 1px solid var(--bdr);
+  border-radius: 4px;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}

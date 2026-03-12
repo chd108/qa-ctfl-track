@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lernmaterialien zum ISTQB CTFL v4.0.2: SDLC, Testverfahren, Glossar, Hausaufgaben und Testuniversum.">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <title>QA Lernwebseite</title>
+  <style>
+    :root {
+      --e1: #d8e4d0;
+      --e2: #bad1dc;
+      --e3: #e0cec8;
+      --e4: #ddc48a;
+      --e5: #d4c4e0;
+      --e6: #c8d4cc;
+    }
+
+    body {
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 3rem 2rem;
+    }
+
+    header {
+      margin-bottom: 2.5rem;
+    }
+    header h1 {
+      font-size: 1.7rem;
+      letter-spacing: .06em;
+      color: var(--text);
+    }
+    header p {
+      margin-top: .5rem;
+      font-size: .95rem;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      max-width: 900px;
+      width: 100%;
+    }
+    @media (max-width: 700px) { .card-grid { grid-template-columns: 1fr; } }
+    @media (max-width: 1000px) and (min-width: 701px) { .card-grid { grid-template-columns: repeat(2, 1fr); } }
+
+    .card {
+      display: block;
+      text-decoration: none;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform .15s ease, box-shadow .15s ease;
+    }
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .card-header {
+      padding: .65rem 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+    }
+    .card-icon {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+    .card-kap {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      opacity: .6;
+    }
+
+    .card-body {
+      padding: .75rem 1.1rem .9rem;
+      background: rgba(255,255,255,0.38);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    .card-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .card-desc {
+      margin-top: .3rem;
+      font-size: 12px;
+      font-style: italic;
+      color: var(--soft);
+      line-height: 1.45;
+    }
+
+    .c1 .card-header { background: var(--e1); }
+    .c2 .card-header { background: var(--e2); }
+    .c3 .card-header { background: var(--e3); }
+    .c4 .card-header { background: var(--e4); }
+    .c5 .card-header { background: var(--e5); }
+    .c6 .card-header { background: var(--e6); }
+
+    footer {
+      margin-top: 2.5rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      color: var(--soft);
+      font-style: italic;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<header>
+  <h1>QA Lernwebseite</h1>
+  <p>Lernmaterialien · ISTQB CTFL v4.0.2</p>
+</header>
+
+<main id="main">
+<div class="card-grid">
+
+  <a class="card c5" href="pages/testuniversum.html">
+    <div class="card-header">
+      <span class="card-icon">✦</span>
+      <span class="card-kap">Kap. 1–6 · Landkarte</span>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Testuniversum</div>
+      <div class="card-desc">Vollständige Landkarte aller CTFL-Inhalte mit MS-Curriculum</div>
+    </div>
+  </a>
+
+  <a class="card c4" href="pages/testverfahren-istqb.html">
+    <div class="card-header">
+      <span class="card-icon">◈</span>
+      <span class="card-kap">Kap. 4 · Testverfahren</span>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Testverfahren (ISTQB)</div>
+      <div class="card-desc">BB · WB · Erfahrungsbasiert — Übersicht aller Verfahren</div>
+    </div>
+  </a>
+
+  <a class="card c6" href="pages/glossar.html">
+    <div class="card-header">
+      <span class="card-icon">§</span>
+      <span class="card-kap">Terminologie</span>
+    </div>
+    <div class="card-body">
+      <div class="card-title">Glossar</div>
+      <div class="card-desc">ISTQB CTFL Schlüsselbegriffe · DE / EN · v4.0.2</div>
+    </div>
+  </a>
+
+  <a class="card c3" href="pages/ha-einordnung.html">
+    <div class="card-header">
+      <span class="card-icon">◆</span>
+      <span class="card-kap">Hausaufgaben</span>
+    </div>
+    <div class="card-body">
+      <div class="card-title">HA-Einordnung</div>
+      <div class="card-desc">Testverfahren ↔ Hausaufgaben — Zuordnung &amp; Überblick</div>
+    </div>
+  </a>
+
+  <a class="card c3" href="pages/ha4-anforderungsanalyse.html">
+    <div class="card-header">
+      <span class="card-icon">◆</span>
+      <span class="card-kap">Hausaufgaben</span>
+    </div>
+    <div class="card-body">
+      <div class="card-title">HA4 Anforderungsanalyse</div>
+      <div class="card-desc">Testbasis-Analyse GroceryMate · Bewertung, Altersverifikation, Versandkosten</div>
+    </div>
+  </a>
+
+  <a class="card c3" href="pages/ha4-formular.html">
+    <div class="card-header">
+      <span class="card-icon">◆</span>
+      <span class="card-kap">Hausaufgaben</span>
+    </div>
+    <div class="card-body">
+      <div class="card-title">HA4 Formular (4 Seiten)</div>
+      <div class="card-desc">Druckversion · Testbasis-Analyse pro Feature + Zusammenfassung</div>
+    </div>
+  </a>
+
+  <a class="card c1" href="pages/sdlc-istqb-statisch.html">
+    <div class="card-header">
+      <span class="card-icon">⬡</span>
+      <span class="card-kap">Visualisierung</span>
+    </div>
+    <div class="card-body">
+      <div class="card-title">SDLC / ISTQB Hypozykel</div>
+      <div class="card-desc">Statische Darstellung — SDLC &amp; Testprozess im Überblick</div>
+    </div>
+  </a>
+
+  <a class="card c2" href="pages/sdlc-istqb-animiert.html">
+    <div class="card-header">
+      <span class="card-icon">◎</span>
+      <span class="card-kap">Visualisierung</span>
+    </div>
+    <div class="card-body">
+      <div class="card-title">SDLC / ISTQB Hypozykel</div>
+      <div class="card-desc">Animierte Darstellung — Zusammenspiel von SDLC &amp; Testen</div>
+    </div>
+  </a>
+
+</div>
+</main>
+
+<footer>ISTQB® Certified Tester Foundation Level v4.0.2 · GTB 2025</footer>
+
+</body>
+</html>

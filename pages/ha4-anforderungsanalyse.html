@@ -1,0 +1,650 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HA4 Testbasis-Analyse GroceryMate: Bewertung, Altersverifikation, Versandkosten.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <title>Anforderungsanalyse — HA4 GroceryMate</title>
+  <style>
+    :root {
+      --bg:       #f0ece6;
+      --text:     #283535;
+      --mid:      #4e6060;
+      --soft:     #7a9090;
+      --bdr:      rgba(0,0,0,0.07);
+
+      --e1: #d8e4d0;
+      --e2: #bad1dc;
+      --e3: #e0cec8;
+      --e4: #ddc48a;
+      --e5: #d4c4e0;
+      --e6: #c8d4cc;
+
+      --ok:       #4a7c59;  --ok-bg:   #cde8d2;
+      --warn:     #9c6a2a;  --warn-bg: #f0dfc0;
+      --note:     #2a547c;  --note-bg: #c4d8ee;
+      --open:     #8a5a6a;  --open-bg: #ead8de;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      background-image: radial-gradient(circle, rgba(0,0,0,0.028) 1px, transparent 1px);
+      background-size: 22px 22px;
+      color: var(--text);
+      font-family: Georgia, 'Palatino Linotype', serif;
+      font-size: 14px;
+      padding: 2.5rem 3rem 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    header { text-align: center; margin-bottom: .6rem; }
+    header h1 { font-size: 1.6rem; font-weight: normal; letter-spacing: .05em; }
+    header p  { margin-top: .4rem; font-style: italic; color: var(--soft); font-size: .95rem; }
+
+    /* ── Meta-Bar ── */
+    .meta-bar {
+      display: flex; align-items: center; gap: 2rem; flex-wrap: wrap;
+      background: rgba(255,255,255,0.55); border: 1px solid var(--bdr);
+      border-radius: 8px; padding: .6rem 1.2rem; margin: 1.2rem 0 2rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; color: var(--mid);
+    }
+    .meta-bar strong { color: var(--text); }
+
+    /* ── Begriffserklärung ── */
+    .explainer {
+      background: rgba(255,255,255,0.45);
+      border: 1px solid var(--bdr); border-radius: 10px;
+      padding: 1.2rem 1.5rem; margin-bottom: 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .explainer h2 {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--soft); margin-bottom: .9rem;
+    }
+    .concept-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    @media(max-width: 700px) { .concept-grid { grid-template-columns: 1fr; } }
+
+    .concept-box {
+      border-radius: 7px; overflow: hidden;
+      border: 1px solid var(--bdr);
+    }
+    .concept-box-head {
+      padding: .5rem .9rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: .04em;
+    }
+    .concept-box-body {
+      padding: .7rem .9rem;
+      font-size: 13px; line-height: 1.6;
+      background: rgba(255,255,255,0.4);
+      color: var(--mid);
+    }
+    .concept-box-body ul {
+      margin: .4rem 0 0 1.1rem;
+    }
+    .concept-box-body li { margin-bottom: .2rem; }
+    .concept-box.ireb .concept-box-head { background: var(--e3); }
+    .concept-box.ctfl .concept-box-head { background: var(--e1); }
+
+    .arrow-note {
+      margin-top: .9rem; padding: .65rem 1rem;
+      background: var(--note-bg); border-left: 3px solid var(--note);
+      border-radius: 0 6px 6px 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12.5px; color: var(--note); line-height: 1.55;
+    }
+    .arrow-note strong { font-weight: 700; }
+
+    /* ── Schema-Erklärung ── */
+    .schema-section {
+      margin-bottom: 2rem;
+    }
+    .schema-section h2 {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--soft); margin-bottom: .9rem;
+    }
+    .schema-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: .7rem;
+    }
+    @media(max-width: 900px) { .schema-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width: 600px) { .schema-grid { grid-template-columns: 1fr; } }
+
+    .schema-field {
+      background: rgba(255,255,255,0.45);
+      border: 1px solid var(--bdr); border-radius: 8px;
+      overflow: hidden;
+    }
+    .schema-field-head {
+      padding: .4rem .8rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+    .schema-field-body {
+      padding: .55rem .8rem;
+      font-size: 12.5px; color: var(--mid); line-height: 1.5;
+    }
+    .sf-1 .schema-field-head { background: var(--e2); }
+    .sf-2 .schema-field-head { background: var(--e1); }
+    .sf-3 .schema-field-head { background: var(--e4); }
+    .sf-4 .schema-field-head { background: var(--e5); }
+    .sf-5 .schema-field-head { background: var(--e3); }
+    .sf-6 .schema-field-head { background: var(--e6); }
+
+    /* ── Trennlinie ── */
+    .divider {
+      border: none; border-top: 2px dashed var(--bdr);
+      margin: 2rem 0;
+    }
+
+    /* ── Feature-Cards ── */
+    .feature-section h2 {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 13px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: var(--soft); margin-bottom: .9rem;
+    }
+    .feature-card {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      margin-bottom: 1.2rem;
+    }
+    .feature-header {
+      display: flex; align-items: baseline; gap: 1rem;
+      padding: .7rem 1.3rem;
+    }
+    .feature-num {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; opacity: .6; white-space: nowrap;
+    }
+    .feature-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 15px; font-weight: 700;
+    }
+    .feature-vague {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-style: italic; opacity: .7; margin-left: auto;
+    }
+    .f1 .feature-header { background: var(--e4); }
+    .f2 .feature-header { background: var(--e2); }
+    .f3 .feature-header { background: var(--e5); }
+
+    .feature-body {
+      display: grid; grid-template-columns: repeat(3,1fr);
+      background: rgba(255,255,255,0.38);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+    @media(max-width: 900px) { .feature-body { grid-template-columns: 1fr; } }
+
+    .feature-field {
+      padding: .85rem 1.1rem;
+      border-right: 1px solid var(--bdr);
+    }
+    .feature-field:last-child { border-right: none; }
+    @media(max-width: 900px) {
+      .feature-field { border-right: none; border-bottom: 1px solid var(--bdr); }
+      .feature-field:last-child { border-bottom: none; }
+    }
+    .ff-label {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: .11em;
+      text-transform: uppercase; color: var(--soft); margin-bottom: .5rem;
+    }
+
+    /* Question list */
+    .q-list { list-style: none; }
+    .q-list li {
+      display: flex; gap: .5rem; align-items: flex-start;
+      font-size: 13px; color: var(--text); line-height: 1.5;
+      margin-bottom: .55rem; padding-bottom: .55rem;
+      border-bottom: 1px solid var(--bdr);
+    }
+    .q-list li:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+    .q-num {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px; font-weight: 800; color: var(--soft);
+      background: rgba(0,0,0,0.05); border-radius: 3px;
+      padding: .1rem .35rem; margin-top: .15rem; white-space: nowrap;
+    }
+    .q-text { flex: 1; }
+    .q-answer {
+      margin-top: .25rem;
+      font-size: 12px; color: var(--ok);
+      font-style: italic;
+    }
+    .q-answer::before { content: "→ "; font-style: normal; }
+
+    /* Tags */
+    .tag-row { display: flex; flex-wrap: wrap; gap: .35rem; }
+    .tag {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px; padding: .18rem .5rem;
+      border-radius: 4px; border: 1px solid rgba(0,0,0,0.08);
+    }
+    .tag-ok   { background: var(--ok-bg);   color: #1a3a1a; }
+    .tag-open { background: var(--open-bg);  color: #3a1a22; }
+    .tag-warn { background: var(--warn-bg);  color: #2e1a0a; }
+    .tag-note { background: var(--note-bg);  color: #0e1e30; }
+
+    /* AC table */
+    .ac-table { width: 100%; border-collapse: collapse; font-size: 12.5px; }
+    .ac-table tr { border-bottom: 1px solid var(--bdr); }
+    .ac-table tr:last-child { border-bottom: none; }
+    .ac-table td { padding: .35rem .1rem; vertical-align: top; line-height: 1.45; color: var(--mid); }
+    .ac-table td:first-child { font-weight: 700; color: var(--text); white-space: nowrap; padding-right: .6rem; width: 2rem; }
+
+    /* Open-points */
+    .open-list { list-style: none; }
+    .open-list li {
+      display: flex; gap: .4rem; align-items: flex-start;
+      font-size: 12.5px; color: var(--open); line-height: 1.45;
+      margin-bottom: .4rem;
+    }
+    .open-list li::before { content: "?"; font-weight: 800; font-size: 11px; margin-top: .1rem; }
+
+    /* Summary table */
+    .summary-card {
+      margin-top: 2rem; border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .summary-card-head {
+      background: var(--e6); padding: .7rem 1.3rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px; font-weight: 700;
+    }
+    .summary-table {
+      width: 100%; border-collapse: collapse;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12.5px; background: rgba(255,255,255,0.38);
+    }
+    .summary-table thead th {
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--soft);
+      padding: .5rem 1rem; border-bottom: 2px solid var(--bdr);
+      text-align: left;
+    }
+    .summary-table tbody tr { border-bottom: 1px solid var(--bdr); }
+    .summary-table tbody tr:last-child { border-bottom: none; }
+    .summary-table tbody td { padding: .5rem 1rem; vertical-align: top; line-height: 1.5; color: var(--mid); }
+    .summary-table tbody td:first-child { font-weight: 700; color: var(--text); }
+
+    .source-note {
+      text-align: center; margin-top: 2rem; font-size: 12px;
+      font-style: italic; color: var(--soft);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<nav class="back-link" aria-label="Rücknavigation"><a href="../index.html">Zur Übersicht</a></nav>
+<header>
+  <h1>Anforderungsanalyse — GroceryMate</h1>
+  <p>HA4 · Testbasis-Analyse drei neuer Features · Masterschool QA-Track</p>
+</header>
+
+<main id="main">
+<div class="meta-bar">
+  <div><strong>Projekt:</strong> GroceryMate (grocerymate.masterschool.com)</div>
+  <div><strong>Features:</strong> Bewertungssystem · Altersverifikation · Versandkosten</div>
+  <div><strong>Standard:</strong> CTFL Kap. 4.1 · IEEE 29119-3 (Testbasis-Analyse)</div>
+  <div><strong>Status:</strong> <span class="tag tag-warn">Teilweise offen — manuelle Prüfung ausstehend</span></div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     BEGRIFFSERKLÄRUNG
+     ══════════════════════════════════════════ -->
+<div class="explainer">
+  <h2>Begriffserklärung — Anforderungsanalyse vs. Testbasis-Analyse</h2>
+  <div class="concept-grid">
+    <div class="concept-box ireb">
+      <div class="concept-box-head">Anforderungsanalyse (IREB / Requirements Engineering)</div>
+      <div class="concept-box-body">
+        Perspektive des <strong>Requirements Engineers</strong>: Anforderungen werden erhoben, strukturiert, dokumentiert und validiert — bevor die Software existiert.
+        <ul>
+          <li>Stakeholder befragen</li>
+          <li>User Stories / Use Cases schreiben</li>
+          <li>Anforderungen priorisieren und freigeben</li>
+        </ul>
+      </div>
+    </div>
+    <div class="concept-box ctfl">
+      <div class="concept-box-head">Testbasis-Analyse (CTFL Kap. 4.1 / IEEE 29119-3)</div>
+      <div class="concept-box-body">
+        Perspektive des <strong>Testers</strong>: Vorhandene Anforderungen (die Testbasis) werden ausgewertet, um daraus Testbedingungen, Akzeptanzkriterien und Grenzfälle abzuleiten.
+        <ul>
+          <li>Was muss getestet werden? (Testbedingungen)</li>
+          <li>Wann gilt es als korrekt? (Akzeptanzkriterien)</li>
+          <li>Wo kann es schiefgehen? (Grenzfälle, Risiken)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="arrow-note">
+    <strong>Was ist HA4?</strong> Die Aufgabenstellung verwendet „Anforderungsanalyse" aus Tester-Sicht — d.h. es ist eine <strong>Testbasis-Analyse</strong>. Du bekommst vage formulierte Anforderungen, analysierst das reale Verhalten der Anwendung, leitest Testbedingungen ab und dokumentierst offene Punkte. Das entspricht professionell dem Standard <strong>IEEE 29119-3</strong> und ist im CTFL die Aktivität <strong>Testanalyse (Kap. 4.1)</strong>. Beide Begriffe werden in der Praxis oft synonym verwendet — der Unterschied liegt in der Rolle, nicht im Werkzeug.
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     SCHEMA-ERKLÄRUNG
+     ══════════════════════════════════════════ -->
+<div class="schema-section">
+  <h2>Schema — Aufbau einer Testbasis-Analyse pro Feature (Vorlage)</h2>
+  <div class="schema-grid">
+    <div class="schema-field sf-1">
+      <div class="schema-field-head">Feature</div>
+      <div class="schema-field-body">Name und eindeutige ID des Features. Referenz zur Anforderung oder User Story.</div>
+    </div>
+    <div class="schema-field sf-2">
+      <div class="schema-field-head">Vage Anforderung</div>
+      <div class="schema-field-body">Die ursprünglich formulierte (oft unvollständige) Anforderung — Ausgangspunkt der Analyse.</div>
+    </div>
+    <div class="schema-field sf-3">
+      <div class="schema-field-head">Testfragen &amp; Antworten</div>
+      <div class="schema-field-body">Mind. 3 testing-relevante Fragen, die aus der Anforderung entstehen, und die gefundenen Antworten (aus der Anwendung oder Spezifikation).</div>
+    </div>
+    <div class="schema-field sf-4">
+      <div class="schema-field-head">Akzeptanzkriterien</div>
+      <div class="schema-field-body">Konkrete, prüfbare Bedingungen: wann gilt das Feature als korrekt implementiert? Grundlage für Testfälle.</div>
+    </div>
+    <div class="schema-field sf-5">
+      <div class="schema-field-head">Grenzfälle &amp; Risiken</div>
+      <div class="schema-field-body">Rand- und Fehlerfälle, die besondere Aufmerksamkeit benötigen — typischerweise Eingaben an Grenzen, Rollenwechsel, unerwartete Zustände.</div>
+    </div>
+    <div class="schema-field sf-6">
+      <div class="schema-field-head">Offene Punkte</div>
+      <div class="schema-field-body">Fragen, die noch nicht beantwortet werden konnten — explizit markiert als „manuell zu prüfen" oder „Rückfrage erforderlich".</div>
+    </div>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ══════════════════════════════════════════
+     FEATURE-ANALYSE
+     ══════════════════════════════════════════ -->
+<div class="feature-section">
+  <h2>Testbasis-Analyse — GroceryMate · Drei neue Features</h2>
+
+  <!-- ── Feature 1 ── -->
+  <div class="feature-card f1">
+    <div class="feature-header">
+      <span class="feature-num">Feature 1</span>
+      <span class="feature-title">Bewertungssystem für Produkte</span>
+      <span class="feature-vague">Vage Anforderung: 5-Sterne + optionales Textfeld</span>
+    </div>
+    <div class="feature-body">
+
+      <div class="feature-field">
+        <div class="ff-label">Testfragen &amp; Antworten</div>
+        <ul class="q-list">
+          <li>
+            <span class="q-num">F1</span>
+            <span class="q-text">Wer darf bewerten — alle Nutzer oder nur eingeloggte?
+              <span class="q-answer">Nur eingeloggte Nutzer; Gäste werden umgeleitet / keine Bewertungsoption sichtbar.</span>
+            </span>
+          </li>
+          <li>
+            <span class="q-num">F2</span>
+            <span class="q-text">Ist das Textfeld Pflicht oder optional?
+              <span class="q-answer">Optional — Bewertung nur mit Sternen (1–5) möglich, ohne Text.</span>
+            </span>
+          </li>
+          <li>
+            <span class="q-num">F3</span>
+            <span class="q-text">Kann ein Nutzer dasselbe Produkt mehrfach bewerten?
+              <span class="q-answer">Nein — max. 1 Bewertung pro Nutzer/Produkt; zweite Bewertung wird blockiert oder als Update behandelt (noch zu verifizieren).</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="feature-field">
+        <div class="ff-label">Akzeptanzkriterien</div>
+        <table class="ac-table">
+          <tr><td>AC1</td><td>Eingeloggter Nutzer kann ein Produkt mit 1–5 Sternen bewerten.</td></tr>
+          <tr><td>AC2</td><td>Textfeld ist optional — Bewertung ohne Text wird akzeptiert.</td></tr>
+          <tr><td>AC3</td><td>Gast ohne Login erhält keinen Zugang zur Bewertungsfunktion.</td></tr>
+          <tr><td>AC4</td><td>Pro Nutzer und Produkt ist maximal eine Bewertung möglich.</td></tr>
+          <tr><td>AC5</td><td>Durchschnittsbewertung wird auf der Produktseite angezeigt.</td></tr>
+        </table>
+      </div>
+
+      <div class="feature-field">
+        <div class="ff-label">Grenzfälle</div>
+        <div class="tag-row" style="margin-bottom:.6rem">
+          <span class="tag tag-note">Gast → Bewerten</span>
+          <span class="tag tag-note">Stern = 0 / 6</span>
+          <span class="tag tag-note">2. Bewertung</span>
+          <span class="tag tag-note">Leeres Textfeld</span>
+          <span class="tag tag-note">Max. Textlänge</span>
+        </div>
+        <div class="ff-label" style="margin-top:.7rem">Offene Punkte</div>
+        <ul class="open-list">
+          <li>Maximale Zeichenanzahl des Feedback-Feldes (nicht in Anforderung spezifiziert)</li>
+          <li>Darstellung der Durchschnittsbewertung — Rundungsregel unklar</li>
+          <li>Verhalten bei zweiter Bewertung: Block oder Update?</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Feature 2 ── -->
+  <div class="feature-card f2">
+    <div class="feature-header">
+      <span class="feature-num">Feature 2</span>
+      <span class="feature-title">Altersverifikation für alkoholische Produkte</span>
+      <span class="feature-vague">Vage Anforderung: Modal bei Kategorie, 18+</span>
+    </div>
+    <div class="feature-body">
+
+      <div class="feature-field">
+        <div class="ff-label">Testfragen &amp; Antworten</div>
+        <ul class="q-list">
+          <li>
+            <span class="q-num">F1</span>
+            <span class="q-text">Was genau wird abgefragt — Alter oder Geburtsdatum?
+              <span class="q-answer">Geburtsdatum — Modal zeigt „Please enter your birth date", nicht nur eine Altersangabe.</span>
+            </span>
+          </li>
+          <li>
+            <span class="q-num">F2</span>
+            <span class="q-text">Wann und wo erscheint das Modal?
+              <span class="q-answer">Beim ersten Aufruf von /store — noch bevor Produkte sichtbar sind.</span>
+            </span>
+          </li>
+          <li>
+            <span class="q-num">F3</span>
+            <span class="q-text">Was passiert bei Eingabe eines Alters unter 18?
+              <span class="q-answer">Zugriff verweigert — Hinweistext statt Produktliste, Bereich gesperrt.</span>
+            </span>
+          </li>
+          <li>
+            <span class="q-num">F4</span>
+            <span class="q-text">Muss das Modal bei jedem Seitenaufruf erneut bestätigt werden?
+              <span class="q-answer">Nein — innerhalb derselben Session wird es nicht erneut angezeigt (Session-/Cookie-basiert).</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="feature-field">
+        <div class="ff-label">Akzeptanzkriterien</div>
+        <table class="ac-table">
+          <tr><td>AC1</td><td>Modal erscheint beim ersten Aufruf von /store vor Anzeige der Produkte.</td></tr>
+          <tr><td>AC2</td><td>Eingabe eines Geburtsdatums &lt; 18 Jahre → Zugriff verweigert, Hinweis angezeigt.</td></tr>
+          <tr><td>AC3</td><td>Eingabe eines Geburtsdatums ≥ 18 Jahre → Store freigegeben.</td></tr>
+          <tr><td>AC4</td><td>Innerhalb derselben Session erscheint das Modal nicht erneut.</td></tr>
+        </table>
+      </div>
+
+      <div class="feature-field">
+        <div class="ff-label">Grenzfälle</div>
+        <div class="tag-row" style="margin-bottom:.6rem">
+          <span class="tag tag-note">Alter = 17</span>
+          <span class="tag tag-note">Alter = 18</span>
+          <span class="tag tag-note">Alter = 19</span>
+          <span class="tag tag-note">Browser-Refresh</span>
+          <span class="tag tag-note">Tab-Wechsel</span>
+          <span class="tag tag-note">Neues Browserfenster</span>
+          <span class="tag tag-note">Ungültiges Datum</span>
+        </div>
+        <div class="ff-label" style="margin-top:.7rem">Offene Punkte</div>
+        <ul class="open-list">
+          <li>Wie lange ist der Session-Status gültig? (Ablaufzeit unklar)</li>
+          <li>Verhalten auf unterschiedlichen Geräten / Browsern mit demselben Account</li>
+          <li>Was passiert bei Eingabe eines ungültigen Datums (z.B. 31.02.)?</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ── Feature 3 ── -->
+  <div class="feature-card f3">
+    <div class="feature-header">
+      <span class="feature-num">Feature 3</span>
+      <span class="feature-title">Versandkosten &amp; Freigrenze</span>
+      <span class="feature-vague">Vage Anforderung: Freigrenze ab X €, darunter Y €</span>
+    </div>
+    <div class="feature-body">
+
+      <div class="feature-field">
+        <div class="ff-label">Testfragen &amp; Antworten</div>
+        <ul class="q-list">
+          <li>
+            <span class="q-num">F1</span>
+            <span class="q-text">Wo werden Versandkosten und Freigrenze angezeigt?
+              <span class="q-answer">Im Checkout-Bereich (/checkout) — sichtbar für eingeloggte Nutzer mit befülltem Warenkorb.</span>
+            </span>
+          </li>
+          <li>
+            <span class="q-num">F2</span>
+            <span class="q-text">Werden Versandkosten live aktualisiert bei Warenkorbänderungen?
+              <span class="q-answer">Ja — Mengenänderung oder Hinzufügen/Entfernen von Produkten aktualisiert die Versandkosten sofort.</span>
+            </span>
+          </li>
+          <li>
+            <span class="q-num">F3</span>
+            <span class="q-text">Ist der Checkout ohne Login zugänglich?
+              <span class="q-answer">Nein — /checkout leitet ohne Login zu /auth um.</span>
+            </span>
+          </li>
+        </ul>
+      </div>
+
+      <div class="feature-field">
+        <div class="ff-label">Akzeptanzkriterien</div>
+        <table class="ac-table">
+          <tr><td>AC1</td><td>Bestellwert ≥ X € → Versandkosten = 0 €, Anzeige im Checkout.</td></tr>
+          <tr><td>AC2</td><td>Bestellwert &lt; X € → Versandkosten = Y €, Anzeige im Checkout.</td></tr>
+          <tr><td>AC3</td><td>Jede Warenkorbänderung aktualisiert die Versandkostenanzeige sofort.</td></tr>
+          <tr><td>AC4</td><td>Checkout ohne Login → Weiterleitung zu /auth.</td></tr>
+          <tr><td>AC5</td><td>Leerer Warenkorb → definiertes Verhalten (kein Absturz, sinnvoller Hinweis).</td></tr>
+        </table>
+      </div>
+
+      <div class="feature-field">
+        <div class="ff-label">Grenzfälle</div>
+        <div class="tag-row" style="margin-bottom:.6rem">
+          <span class="tag tag-note">Wert = X €</span>
+          <span class="tag tag-note">Wert = X − 0,01 €</span>
+          <span class="tag tag-note">Wert = X + 0,01 €</span>
+          <span class="tag tag-note">Leerer Warenkorb</span>
+          <span class="tag tag-note">Gast ohne Login</span>
+        </div>
+        <div class="ff-label" style="margin-top:.7rem">Offene Punkte</div>
+        <ul class="open-list">
+          <li>Konkreter Wert der Freigrenze X — nur mit Testkonto im Checkout ermittelbar</li>
+          <li>Konkreter Wert der Versandkosten Y — ebenfalls nur im Checkout sichtbar</li>
+          <li>Verhalten bei leerem Warenkorb im Checkout noch zu verifizieren</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+
+</div>
+
+<!-- ══════════════════════════════════════════
+     ZUSAMMENFASSUNG
+     ══════════════════════════════════════════ -->
+<div class="summary-card">
+  <div class="summary-card-head">Zusammenfassung — Analysestatus aller Features</div>
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Kernverhalten</th>
+        <th>Grenzfälle identifiziert</th>
+        <th>Offene Punkte</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Bewertungssystem</td>
+        <td>1–5 Sterne, optionales Textfeld, nur eingeloggte Nutzer, 1 Bewertung/Produkt</td>
+        <td>Gast, Mehrfachbewertung, Textlänge</td>
+        <td>Zeichenlimit, Rundungsregel, Block vs. Update</td>
+        <td><span class="tag tag-warn">Teilweise offen</span></td>
+      </tr>
+      <tr>
+        <td>Altersverifikation</td>
+        <td>Geburtsdatum-Modal auf /store, 18+-Grenze, session-basiert</td>
+        <td>17 / 18 / 19 Jahre, Refresh, Tab-Wechsel</td>
+        <td>Session-Dauer, Gerätewechsel, ungültiges Datum</td>
+        <td><span class="tag tag-warn">Teilweise offen</span></td>
+      </tr>
+      <tr>
+        <td>Versandkosten</td>
+        <td>Freigrenze X €, Kosten Y €, Live-Update im Checkout, Login erforderlich</td>
+        <td>Wert = X, X−0,01, X+0,01, leerer Warenkorb</td>
+        <td>Exakte Werte X und Y (Testkonto nötig)</td>
+        <td><span class="tag tag-warn">Werte ausstehend</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div style="margin-top:2.5rem; background:rgba(255,255,255,0.45); border:1px solid var(--bdr); border-radius:10px; overflow:hidden; box-shadow:0 2px 12px rgba(0,0,0,0.05);">
+  <div style="background:var(--e5); padding:.65rem 1.3rem; font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px; font-weight:700; letter-spacing:.03em;">
+    Aufbau dieser Seite — Leseanleitung
+  </div>
+  <div style="display:grid; grid-template-columns:repeat(3,1fr); border-top:1px solid rgba(0,0,0,0.06);">
+    <div style="padding:.9rem 1.2rem; border-right:1px solid var(--bdr);">
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); margin-bottom:.45rem;">① Oben — Theorie</div>
+      <div style="font-size:13px; color:var(--mid); line-height:1.55;">Erklärt den Unterschied zwischen <strong style="color:var(--text)">Anforderungsanalyse (IREB)</strong> und <strong style="color:var(--text)">Testbasis-Analyse (CTFL)</strong> — und warum HA4 korrekt dem IEEE 29119-3 Standard entspricht.</div>
+    </div>
+    <div style="padding:.9rem 1.2rem; border-right:1px solid var(--bdr);">
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); margin-bottom:.45rem;">② Mitte — Schema</div>
+      <div style="font-size:13px; color:var(--mid); line-height:1.55;">Die <strong style="color:var(--text)">6 Felder einer professionellen Testbasis-Analyse</strong> als wiederverwendbare Vorlage — das generische Muster für jede zukünftige Anforderungsanalyse aus Tester-Sicht.</div>
+    </div>
+    <div style="padding:.9rem 1.2rem;">
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:10px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); margin-bottom:.45rem;">③ Unten — HA4 Analyse</div>
+      <div style="font-size:13px; color:var(--mid); line-height:1.55;">Alle drei Features ausgefüllt nach diesem Schema: Testfragen &amp; Antworten, Akzeptanzkriterien, Grenzfall-Tags, offene Punkte — plus Zusammenfassungstabelle.</div>
+    </div>
+  </div>
+  <div style="padding:.75rem 1.3rem; background:var(--open-bg); border-top:1px solid rgba(0,0,0,0.06); font-family:'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:12.5px; color:var(--open); line-height:1.55;">
+    <strong>Hinweis zu offenen Punkten:</strong> Die als „offen" markierten Punkte sind bewusst so dokumentiert — das ist professionell, kein Mangel. Im Berufsalltag ist eine Analyse mit sauber dokumentierten Unklarheiten wertvoller als eine, die so tut als wäre alles bekannt. Offene Punkte zeigen, wo noch Klärungsbedarf besteht — und geben dem Team eine klare Handlungsliste.
+  </div>
+</div>
+
+<p class="source-note">HA4 · Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3 · grocerymate.masterschool.com</p>
+
+</main>
+</body>
+</html>
