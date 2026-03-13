@@ -4,64 +4,68 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="HA5 Testkonzept GroceryMate als Formular/Druckversion nach IEEE 829 / CTFL 4.0.2.">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/subpage.css">
   <title>Testkonzept-Formular — GroceryMate HA5</title>
   <style>
     :root {
-      --bg:       #f0ece6;
-      --text:     #283535;
-      --mid:      #4e6060;
-      --soft:     #7a9090;
-      --bdr:      rgba(0,0,0,0.07);
-      --field:    rgba(255,255,255,0.8);
+      --text:  #1a1a1a;
+      --mid:   #444;
+      --soft:  #777;
+      --bdr:   #c8c8c8;
+      --light: #f2f2f2;
+      --head:  #2a3a3a;
+      --acc:   #4a7c59;
     }
-    
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    
-    @page {
-      size: A4;
-      margin: 15mm;
-    }
-    
+    * { box-sizing: border-box; margin: 0; padding: 0; }
     body {
-      background: var(--bg);
-      color: var(--text);
+      background: #e8e4de;
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-size: 10pt;
-      line-height: 1.4;
-      padding: 20mm;
-      max-width: 210mm;
-      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 4rem;
+      gap: 2.5rem;
     }
-    
-    /* Header */
-    .form-header {
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+    .a4 {
+      width: 210mm;
+      min-height: 297mm;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      padding: 16mm 18mm;
+      position: relative;
+      page-break-after: always;
+    }
+    .doc-header {
       text-align: center;
-      border-bottom: 3px solid var(--text);
-      padding-bottom: 8mm;
-      margin-bottom: 6mm;
+      border-bottom: 3px solid var(--head);
+      padding-bottom: 8pt;
+      margin-bottom: 10pt;
     }
-    .form-title {
+    .doc-title {
       font-size: 16pt;
       font-weight: 700;
       letter-spacing: 0.05em;
-      margin-bottom: 2mm;
+      color: var(--head);
     }
-    .form-subtitle {
-      font-size: 9pt;
-      color: var(--mid);
+    .doc-subtitle {
+      font-size: 8.5pt;
+      color: var(--soft);
       font-style: italic;
+      margin-top: 2pt;
     }
-    
-    /* Meta Info Bar */
     .meta-info {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
       gap: 3mm;
-      margin-bottom: 6mm;
+      margin-bottom: 8pt;
       padding: 3mm;
-      background: rgba(255,255,255,0.5);
+      background: var(--light);
       border: 1px solid var(--bdr);
       border-radius: 2mm;
       font-size: 8.5pt;
@@ -74,27 +78,18 @@
       color: var(--soft);
       margin-bottom: 1mm;
     }
-    
-    /* Section */
-    .section {
-      margin-bottom: 5mm;
-      page-break-inside: avoid;
-    }
+    .section { margin-bottom: 8pt; }
     .section-header {
-      background: var(--text);
+      background: var(--head);
       color: white;
       padding: 2mm 3mm;
       font-size: 9pt;
       font-weight: 700;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      margin-bottom: 2mm;
+      margin-bottom: 4pt;
     }
-    
-    /* Form Field */
-    .form-field {
-      margin-bottom: 3mm;
-    }
+    .form-field { margin-bottom: 4pt; }
     .field-label {
       font-size: 8pt;
       font-weight: 700;
@@ -104,24 +99,23 @@
       letter-spacing: 0.03em;
     }
     .field-value {
-      background: var(--field);
+      background: var(--light);
       border: 1px solid var(--bdr);
       padding: 2mm 3mm;
       min-height: 8mm;
       font-size: 9pt;
       border-radius: 1mm;
+      line-height: 1.4;
     }
-    
-    /* Table */
     .form-table {
       width: 100%;
       border-collapse: collapse;
       font-size: 8.5pt;
       margin: 2mm 0;
-      background: var(--field);
+      background: white;
     }
     .form-table th {
-      background: rgba(0,0,0,0.05);
+      background: var(--light);
       padding: 2mm;
       text-align: left;
       font-size: 7.5pt;
@@ -134,13 +128,8 @@
       padding: 2mm;
       border: 1px solid var(--bdr);
       vertical-align: top;
+      line-height: 1.4;
     }
-    .form-table td.checkbox {
-      text-align: center;
-      width: 8mm;
-    }
-    
-    /* Checkbox */
     .checkbox-item {
       display: flex;
       align-items: center;
@@ -163,8 +152,6 @@
       font-size: 9pt;
       font-weight: 700;
     }
-    
-    /* Grid Layout */
     .grid-2 {
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -175,37 +162,67 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 3mm;
     }
-    
-    /* Compact List */
     .compact-list {
       margin: 1mm 0 1mm 5mm;
       font-size: 8.5pt;
       line-height: 1.5;
     }
-    .compact-list li {
-      margin: 0.5mm 0;
-    }
-    
-    /* Footer */
-    .form-footer {
-      margin-top: 8mm;
-      padding-top: 3mm;
+    .compact-list li { margin: 0.5mm 0; }
+    .page-footer {
+      position: absolute;
+      bottom: 12mm;
+      left: 18mm;
+      right: 18mm;
+      padding-top: 2mm;
       border-top: 1px solid var(--bdr);
       font-size: 7.5pt;
       color: var(--soft);
       text-align: center;
     }
-    
-    /* Page break control */
-    .page-break {
-      page-break-after: always;
+
+    /* ── Obere Navigation (minimal, nur für Bildschirm) ── */
+    .form-page-nav {
+      width: 100%;
+      max-width: 210mm;
+      margin-bottom: 1rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--bdr);
     }
-    
+    .form-page-nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      font-size: 8.5pt;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .form-page-nav a {
+      color: var(--soft);
+      text-decoration: none;
+    }
+    .form-page-nav a:hover { text-decoration: underline; }
+    .form-page-nav a.current { color: var(--head); font-weight: 700; }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 9999;
+      padding: 0.25rem 0.5rem;
+      background: #fff;
+      color: var(--head);
+      font-size: 8pt;
+      text-decoration: none;
+      border: 1px solid var(--bdr);
+    }
+    .skip-link:focus { left: 0.5rem; top: 0.5rem; }
+
     @media print {
-      body {
-        background: white;
-        padding: 0;
-      }
+      body { background: white; padding: 0; }
+      .a4 { box-shadow: none; margin: 0; }
+      .form-page-nav, .skip-link { display: none !important; }
     }
   </style>
 </head>
@@ -213,8 +230,7 @@
 
 <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
-<div class="page-chrome">
-<nav class="main-nav" aria-label="Hauptnavigation">
+<nav class="form-page-nav" aria-label="Hauptnavigation">
   <ul>
     <li><a href="../index.html">Übersicht</a></li>
     <li><a href="testuniversum.html">Testuniversum</a></li>
@@ -226,22 +242,20 @@
     <li><a href="ha5-testkonzept.html">HA5 Testkonzept</a></li>
     <li><a href="ha5-testkonzept-formular.html" class="current">HA5 Testkonzept Formular</a></li>
     <li><a href="ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+    <li><a href="ha5-testfallentwurf-formular.html">HA5 Testfallentwurf Formular</a></li>
     <li><a href="sdlc-istqb-animiert.html">SDLC animiert</a></li>
     <li><a href="sdlc-istqb-statisch.html">SDLC statisch</a></li>
   </ul>
 </nav>
-<header>
-  <h1>Testkonzept-Formular — GroceryMate</h1>
-  <p>HA5 · Druckversion Testkonzept · Masterschool QA-Track</p>
-</header>
-</div>
 
 <main id="main">
-<!-- HEADER -->
-<div class="form-header">
-  <div class="form-title">TESTKONZEPT</div>
-  <div class="form-subtitle">Test Plan nach IEEE 829 / CTFL 4.0.2</div>
-</div>
+
+<!-- PAGE 1 -->
+<div class="a4">
+  <div class="doc-header">
+    <div class="doc-title">TESTKONZEPT</div>
+    <div class="doc-subtitle">Test Plan nach IEEE 829 / CTFL 4.0.2</div>
+  </div>
 
 <!-- META INFO -->
 <div class="meta-info">
@@ -402,9 +416,16 @@
   </div>
 </div>
 
-<!-- 3. TESTZIELE -->
-<div class="section">
-  <div class="section-header">3. Testziele</div>
+  <div class="page-footer">
+    HA5 · Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2 · Seite 1/3
+  </div>
+</div>
+
+<!-- PAGE 2 -->
+<div class="a4">
+  <!-- 3. TESTZIELE -->
+  <div class="section">
+    <div class="section-header">3. Testziele</div>
   
   <div class="grid-2">
     <div class="form-field">
@@ -500,12 +521,16 @@
   </div>
 </div>
 
-<!-- PAGE BREAK -->
-<div class="page-break"></div>
+  <div class="page-footer">
+    HA5 · Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2 · Seite 2/3
+  </div>
+</div>
 
-<!-- 5. RESSOURCEN -->
-<div class="section">
-  <div class="section-header">5. Ressourcen</div>
+<!-- PAGE 3 -->
+<div class="a4">
+  <!-- 5. RESSOURCEN -->
+  <div class="section">
+    <div class="section-header">5. Ressourcen</div>
   
   <div class="form-field">
     <div class="field-label">Personal & Rollen</div>
@@ -808,10 +833,12 @@
   </div>
 </div>
 
-<!-- FOOTER -->
-</main>
+  <div class="page-footer">
+    HA5 · Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2 · Seite 3/3
+  </div>
+</div>
 
-<footer class="form-footer"><p class="source-note">HA5 · Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2 · GroceryMate</p></footer>
+</main>
 
 </body>
 </html>

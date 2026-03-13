@@ -1,0 +1,1100 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Testfallentwurf-Formular — GroceryMate HA5</title>
+  <style>
+    :root {
+      --text:  #1a1a1a;
+      --mid:   #444;
+      --soft:  #777;
+      --bdr:   #c8c8c8;
+      --light: #f2f2f2;
+      --head:  #2a3a3a;
+      
+      --ep:    #d8e4d0;
+      --bva:   #bad1dc;
+      --uc:    #e0cec8;
+      --eg:    #ddc48a;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #e8e4de;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 9pt;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 2rem 1rem 4rem;
+      gap: 2.5rem;
+    }
+
+    main {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 2.5rem;
+    }
+
+    /* ── A4 Page ── */
+    .a4 {
+      width: 210mm;
+      min-height: 297mm;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      padding: 16mm 18mm;
+      position: relative;
+      page-break-after: always;
+    }
+
+    /* ── Document Header ── */
+    .doc-header {
+      text-align: center;
+      border-bottom: 3px solid var(--head);
+      padding-bottom: 8pt;
+      margin-bottom: 10pt;
+    }
+    .doc-title {
+      font-size: 16pt;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      color: var(--head);
+    }
+    .doc-subtitle {
+      font-size: 8.5pt;
+      color: var(--soft);
+      font-style: italic;
+      margin-top: 2pt;
+    }
+
+    /* ── Meta Info Bar ── */
+    .meta-info {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 2mm;
+      margin-bottom: 8pt;
+      padding: 2.5mm;
+      background: var(--light);
+      border: 1px solid var(--bdr);
+      border-radius: 2mm;
+      font-size: 8pt;
+    }
+    .meta-item strong {
+      display: block;
+      font-size: 6.5pt;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--soft);
+      margin-bottom: 0.5mm;
+    }
+
+    /* ── Section ── */
+    .section {
+      margin-bottom: 8pt;
+    }
+    .section-header {
+      background: var(--head);
+      color: white;
+      padding: 2mm 3mm;
+      font-size: 8.5pt;
+      font-weight: 700;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      margin-bottom: 4pt;
+    }
+
+    /* ── Info Box ── */
+    .info-box {
+      background: var(--light);
+      border-left: 3px solid var(--mid);
+      padding: 2mm 3mm;
+      font-size: 7.5pt;
+      margin: 3mm 0;
+      line-height: 1.4;
+    }
+
+    /* ── Summary Table ── */
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 7.5pt;
+      margin: 2mm 0;
+      background: white;
+    }
+    .summary-table th {
+      background: var(--light);
+      padding: 1.5mm;
+      text-align: left;
+      font-size: 6.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+      border: 1px solid var(--bdr);
+    }
+    .summary-table td {
+      padding: 1.5mm;
+      border: 1px solid var(--bdr);
+      vertical-align: middle;
+      line-height: 1.3;
+    }
+    .summary-table td.tc-id {
+      font-weight: 700;
+      font-family: 'Courier New', monospace;
+      font-size: 7pt;
+    }
+    .summary-table td.center {
+      text-align: center;
+    }
+
+    /* ── Badges ── */
+    .tech-badge {
+      display: inline-block;
+      padding: 0.5mm 2mm;
+      border-radius: 1mm;
+      font-size: 6.5pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.03em;
+    }
+    .tech-ep { background: var(--ep); }
+    .tech-bva { background: var(--bva); }
+    .tech-uc { background: var(--uc); }
+    .tech-eg { background: var(--eg); }
+
+    .prio-badge {
+      display: inline-block;
+      padding: 0.5mm 2mm;
+      border-radius: 1mm;
+      font-size: 6.5pt;
+      font-weight: 700;
+    }
+    .prio-high { background: #f8d7da; color: #721c24; }
+    .prio-med { background: #fff3cd; color: #856404; }
+    .prio-low { background: #d1ecf1; color: #0c5460; }
+
+    .auto-yes { color: #155724; font-weight: 700; }
+    .auto-no { color: #721c24; }
+
+    /* ── Test Case Card ── */
+    .testcase-card {
+      border: 2px solid var(--bdr);
+      border-radius: 2mm;
+      padding: 3mm;
+      margin-bottom: 4mm;
+      background: white;
+    }
+    .testcase-header {
+      display: grid;
+      grid-template-columns: auto 1fr auto;
+      gap: 3mm;
+      align-items: center;
+      margin-bottom: 2.5mm;
+      padding-bottom: 2mm;
+      border-bottom: 1px solid var(--bdr);
+    }
+    .testcase-id {
+      font-family: 'Courier New', monospace;
+      font-size: 9pt;
+      font-weight: 700;
+      padding: 1mm 2.5mm;
+      background: var(--light);
+      border-radius: 1mm;
+    }
+    .testcase-title {
+      font-size: 9.5pt;
+      font-weight: 700;
+    }
+
+    /* ── TC Field ── */
+    .tc-field {
+      margin: 2mm 0;
+    }
+    .tc-label {
+      font-size: 7pt;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 1mm;
+      letter-spacing: 0.03em;
+    }
+    .tc-value {
+      font-size: 8.5pt;
+      line-height: 1.5;
+      padding: 2mm;
+      background: var(--light);
+      border: 1px solid var(--bdr);
+      border-radius: 1mm;
+    }
+
+    /* ── Steps ── */
+    .tc-steps {
+      list-style: none;
+      counter-reset: step-counter;
+      padding: 0;
+      margin: 0;
+    }
+    .tc-steps li {
+      counter-increment: step-counter;
+      position: relative;
+      padding-left: 8mm;
+      margin: 1.5mm 0;
+      font-size: 8.5pt;
+      line-height: 1.4;
+    }
+    .tc-steps li::before {
+      content: counter(step-counter);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 6mm;
+      height: 6mm;
+      background: var(--light);
+      border: 1px solid var(--bdr);
+      border-radius: 50%;
+      text-align: center;
+      line-height: 6mm;
+      font-size: 7pt;
+      font-weight: 700;
+    }
+
+    /* ── Grid ── */
+    .grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3mm;
+    }
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2mm;
+    }
+
+    /* ── Footer ── */
+    .page-footer {
+      position: absolute;
+      bottom: 12mm;
+      left: 18mm;
+      right: 18mm;
+      padding-top: 2mm;
+      border-top: 1px solid var(--bdr);
+      font-size: 7.5pt;
+      color: var(--soft);
+      text-align: center;
+    }
+
+    /* ── Obere Navigation (minimal, nur für Bildschirm) ── */
+    .form-page-nav {
+      width: 100%;
+      max-width: 210mm;
+      margin-bottom: 1rem;
+      padding: 0.4rem 0;
+      border-bottom: 1px solid var(--bdr);
+    }
+    .form-page-nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      font-size: 8.5pt;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .form-page-nav a {
+      color: var(--soft);
+      text-decoration: none;
+    }
+    .form-page-nav a:hover { text-decoration: underline; }
+    .form-page-nav a.current { color: var(--head); font-weight: 700; }
+    .skip-link {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      z-index: 9999;
+      padding: 0.25rem 0.5rem;
+      background: #fff;
+      color: var(--head);
+      font-size: 8pt;
+      text-decoration: none;
+      border: 1px solid var(--bdr);
+    }
+    .skip-link:focus { left: 0.5rem; top: 0.5rem; }
+
+    @media print {
+      body {
+        background: white;
+        padding: 0;
+      }
+      .a4 {
+        box-shadow: none;
+        margin: 0;
+      }
+      .form-page-nav, .skip-link { display: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<nav class="form-page-nav" aria-label="Hauptnavigation">
+  <ul>
+    <li><a href="../index.html">Übersicht</a></li>
+    <li><a href="testuniversum.html">Testuniversum</a></li>
+    <li><a href="testverfahren-istqb.html">Testverfahren</a></li>
+    <li><a href="glossar.html">Glossar</a></li>
+    <li><a href="ha-einordnung.html">HA-Einordnung</a></li>
+    <li><a href="ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+    <li><a href="ha4-formular.html">HA4 Formular</a></li>
+    <li><a href="ha5-testkonzept.html">HA5 Testkonzept</a></li>
+    <li><a href="ha5-testkonzept-formular.html">HA5 Testkonzept Formular</a></li>
+    <li><a href="ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+    <li><a href="ha5-testfallentwurf-formular.html" class="current">HA5 Testfallentwurf Formular</a></li>
+    <li><a href="sdlc-istqb-animiert.html">SDLC animiert</a></li>
+    <li><a href="sdlc-istqb-statisch.html">SDLC statisch</a></li>
+  </ul>
+</nav>
+
+<main id="main">
+
+<!-- PAGE 1: TEST CASE SUMMARY -->
+<div class="a4">
+  <div class="doc-header">
+    <div class="doc-title">TESTFALLENTWURF</div>
+    <div class="doc-subtitle">Test Case Specification nach IEEE 829 / CTFL 4.0.2</div>
+  </div>
+
+  <div class="meta-info">
+    <div class="meta-item">
+      <strong>Projekt</strong>
+      <div>GroceryMate</div>
+    </div>
+    <div class="meta-item">
+      <strong>Version</strong>
+      <div>1.0</div>
+    </div>
+    <div class="meta-item">
+      <strong>Datum</strong>
+      <div>13.03.2026</div>
+    </div>
+    <div class="meta-item">
+      <strong>Testfälle gesamt</strong>
+      <div>28</div>
+    </div>
+    <div class="meta-item">
+      <strong>Verantwortlich</strong>
+      <div>QA-Team</div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-header">Teil 1: Test Case Summary — Alle Testfälle im Überblick</div>
+    
+    <div class="info-box">
+      <strong>Legende:</strong> EP = Äquivalenzklassenbildung · BVA = Grenzwertanalyse · UC = Anwendungsfalltest · EG = Fehlerermessen · Prio: H = Hoch, M = Mittel, N = Niedrig
+    </div>
+    
+    <table class="summary-table">
+      <thead>
+        <tr>
+          <th style="width: 10%;">TC-ID</th>
+          <th style="width: 8%;">Feature</th>
+          <th style="width: 35%;">Testfall-Titel</th>
+          <th style="width: 12%;">Technik</th>
+          <th style="width: 8%;">Prio</th>
+          <th style="width: 10%;">Auto?</th>
+          <th style="width: 17%;">Bemerkung</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- GM-F01: Bewertungssystem -->
+        <tr>
+          <td class="tc-id">TC-F01-001</td>
+          <td class="center">GM-F01</td>
+          <td>Bewertung als eingeloggter Nutzer (gültige Klasse)</td>
+          <td><span class="tech-badge tech-ep">EP</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-no">Nein</td>
+          <td>UX-Aspekte manuell</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F01-002</td>
+          <td class="center">GM-F01</td>
+          <td>Bewertung als Gast (ungültige Klasse)</td>
+          <td><span class="tech-badge tech-ep">EP</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Regression wichtig</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F01-003</td>
+          <td class="center">GM-F01</td>
+          <td>Bewertung mit 5 Sternen (Max-Grenzwert)</td>
+          <td><span class="tech-badge tech-bva">BVA</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Kritischer Grenzwert</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F01-004</td>
+          <td class="center">GM-F01</td>
+          <td>Bewertung mit 1 Stern (Min-Grenzwert)</td>
+          <td><span class="tech-badge tech-bva">BVA</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Kritischer Grenzwert</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F01-005</td>
+          <td class="center">GM-F01</td>
+          <td>Textfeld mit max. Zeichenlänge</td>
+          <td><span class="tech-badge tech-bva">BVA</span></td>
+          <td class="center"><span class="prio-badge prio-med">M</span></td>
+          <td class="center auto-no">Nein</td>
+          <td>Limit noch unbekannt</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F01-006</td>
+          <td class="center">GM-F01</td>
+          <td>Durchschnittsbewertung korrekt berechnet</td>
+          <td><span class="tech-badge tech-uc">UC</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Mathematische Logik</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F01-007</td>
+          <td class="center">GM-F01</td>
+          <td>Bewertung ohne Sternauswahl</td>
+          <td><span class="tech-badge tech-eg">EG</span></td>
+          <td class="center"><span class="prio-badge prio-med">M</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Validierung</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F01-008</td>
+          <td class="center">GM-F01</td>
+          <td>Zweite Bewertung (Duplikat)</td>
+          <td><span class="tech-badge tech-eg">EG</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-no">Nein</td>
+          <td>Verhalten unklar</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F01-009</td>
+          <td class="center">GM-F01</td>
+          <td>XSS-Schutz im Textfeld</td>
+          <td><span class="tech-badge tech-eg">EG</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Sicherheit, CI/CD</td>
+        </tr>
+        
+        <!-- GM-F02: Altersverifikation -->
+        <tr style="border-top: 2px solid var(--bdr);">
+          <td class="tc-id">TC-F02-001</td>
+          <td class="center">GM-F02</td>
+          <td>Geburtsdatum über 18 Jahre (gültige Klasse)</td>
+          <td><span class="tech-badge tech-ep">EP</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Standardfall</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F02-002</td>
+          <td class="center">GM-F02</td>
+          <td>Geburtsdatum unter 18 Jahren (ungültige Klasse)</td>
+          <td><span class="tech-badge tech-ep">EP</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Geschäftslogik kritisch</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F02-003</td>
+          <td class="center">GM-F02</td>
+          <td>Geburtsdatum genau 18 Jahre (Grenzwert)</td>
+          <td><span class="tech-badge tech-bva">BVA</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Kritischer Grenzfall</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F02-004</td>
+          <td class="center">GM-F02</td>
+          <td>Zukünftiges Datum (ungültiger Grenzwert)</td>
+          <td><span class="tech-badge tech-bva">BVA</span></td>
+          <td class="center"><span class="prio-badge prio-med">M</span></td>
+          <td class="center auto-no">Nein</td>
+          <td>Edge Case</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F02-005</td>
+          <td class="center">GM-F02</td>
+          <td>Modal nur beim 1. Aufruf (Session)</td>
+          <td><span class="tech-badge tech-uc">UC</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Session-Persistenz</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F02-006</td>
+          <td class="center">GM-F02</td>
+          <td>Modal nach Browser-Neustart erneut</td>
+          <td><span class="tech-badge tech-uc">UC</span></td>
+          <td class="center"><span class="prio-badge prio-med">M</span></td>
+          <td class="center auto-no">Nein</td>
+          <td>Session-Ende manuell</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F02-007</td>
+          <td class="center">GM-F02</td>
+          <td>Modal in neuem Tab/Fenster</td>
+          <td><span class="tech-badge tech-uc">UC</span></td>
+          <td class="center"><span class="prio-badge prio-low">N</span></td>
+          <td class="center auto-no">Nein</td>
+          <td>Verhalten unklar</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F02-008</td>
+          <td class="center">GM-F02</td>
+          <td>Ungültiges Datum (31. Februar)</td>
+          <td><span class="tech-badge tech-eg">EG</span></td>
+          <td class="center"><span class="prio-badge prio-med">M</span></td>
+          <td class="center auto-no">Nein</td>
+          <td>Verhalten explorieren</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F02-009</td>
+          <td class="center">GM-F02</td>
+          <td>Leeres Datumsfeld</td>
+          <td><span class="tech-badge tech-eg">EG</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Validierung</td>
+        </tr>
+        
+        <!-- GM-F03: Versandkosten -->
+        <tr style="border-top: 2px solid var(--bdr);">
+          <td class="tc-id">TC-F03-001</td>
+          <td class="center">GM-F03</td>
+          <td>Checkout als Gast (ungültige Klasse)</td>
+          <td><span class="tech-badge tech-ep">EP</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Regression wichtig</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F03-002</td>
+          <td class="center">GM-F03</td>
+          <td>Niedriger Bestellwert (unter Freigrenze)</td>
+          <td><span class="tech-badge tech-ep">EP</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Standardfall</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F03-003</td>
+          <td class="center">GM-F03</td>
+          <td>Hoher Bestellwert (über Freigrenze)</td>
+          <td><span class="tech-badge tech-ep">EP</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Standardfall</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F03-004</td>
+          <td class="center">GM-F03</td>
+          <td>Bestellwert genau X€ (Freigrenze)</td>
+          <td><span class="tech-badge tech-bva">BVA</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Kritischer Grenzwert</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F03-005</td>
+          <td class="center">GM-F03</td>
+          <td>Bestellwert X - 0,01€</td>
+          <td><span class="tech-badge tech-bva">BVA</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Grenzwert darunter</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F03-006</td>
+          <td class="center">GM-F03</td>
+          <td>Bestellwert X + 0,01€</td>
+          <td><span class="tech-badge tech-bva">BVA</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Grenzwert darüber</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F03-007</td>
+          <td class="center">GM-F03</td>
+          <td>Live-Update bei Produkthinzufügen</td>
+          <td><span class="tech-badge tech-uc">UC</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Dynamik kritisch</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F03-008</td>
+          <td class="center">GM-F03</td>
+          <td>Live-Update bei Mengenänderung</td>
+          <td><span class="tech-badge tech-uc">UC</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Dynamik kritisch</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F03-009</td>
+          <td class="center">GM-F03</td>
+          <td>Live-Update bei Produktentfernen</td>
+          <td><span class="tech-badge tech-uc">UC</span></td>
+          <td class="center"><span class="prio-badge prio-high">H</span></td>
+          <td class="center auto-yes">Ja</td>
+          <td>Bidirektional</td>
+        </tr>
+        <tr>
+          <td class="tc-id">TC-F03-010</td>
+          <td class="center">GM-F03</td>
+          <td>Leerer Warenkorb im Checkout</td>
+          <td><span class="tech-badge tech-eg">EG</span></td>
+          <td class="center"><span class="prio-badge prio-med">M</span></td>
+          <td class="center auto-no">Nein</td>
+          <td>Verhalten explorieren</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <div style="margin-top: 3mm; font-size: 7.5pt; color: var(--mid);">
+      <strong>Zusammenfassung:</strong> EP: 7 (25%) · BVA: 8 (29%) · UC: 7 (25%) · EG: 6 (21%) · Automatisierung: 19/28 (68%)
+    </div>
+  </div>
+
+  <div class="page-footer">
+    HA5 · Masterschool QA-Track · Testfallentwurf nach IEEE 829 / CTFL 4.0.2 · Seite 1/4
+  </div>
+</div>
+
+
+<!-- PAGE 2: DETAILLIERTE TESTFÄLLE - INFO + GM-F01-001 + GM-F01-003 -->
+<div class="a4">
+  <div class="section">
+    <div class="section-header">Teil 2: Detaillierte Testfall-Formulare — Exemplarische Testfälle</div>
+    
+    <div class="info-box">
+      <strong>Hinweis:</strong> Die folgenden 6 Testfälle zeigen das detaillierte Format. Alle 28 Testfälle folgen diesem Schema. Pro Feature werden 2 exemplarische TCs im Detail dargestellt (1× EP/BVA, 1× kritischer Grenzfall).
+    </div>
+  </div>
+
+  <!-- TC-F01-001 -->
+  <div class="testcase-card">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-001</div>
+      <div class="testcase-title">Bewertung als eingeloggter Nutzer (gültige Klasse)</div>
+      <div><span class="tech-badge tech-ep">EP</span></div>
+    </div>
+    
+    <div class="grid-3">
+      <div class="tc-field">
+        <div class="tc-label">Feature</div>
+        <div class="tc-value">GM-F01: Bewertungssystem</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Priorität</div>
+        <div class="tc-value"><span class="prio-badge prio-high">Hoch</span></div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Automatisierung</div>
+        <div class="tc-value auto-no">Nein (UX)</div>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Vorbedingungen</div>
+      <div class="tc-value">Nutzer ist eingeloggt · Produkt vorhanden · Nutzer hat dieses Produkt noch nicht bewertet</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Testdaten</div>
+      <div class="tc-value">Sterne: 4 · Textfeld: "Sehr gute Qualität, schnelle Lieferung. Preis könnte besser sein."</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Schritte</div>
+      <div class="tc-value">
+        <ol class="tc-steps">
+          <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
+          <li>4 Sterne auswählen</li>
+          <li>Detailliertes Feedback im Textfeld eingeben</li>
+          <li>"Bewertung abgeben" klicken</li>
+          <li>Seite neu laden</li>
+          <li>Prüfen, ob eigene Bewertung angezeigt wird</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Erwartetes Ergebnis</div>
+      <div class="tc-value">
+        Bewertung wird gespeichert · Nach Reload wird 4-Sterne-Bewertung mit Feedback-Text angezeigt · Durchschnittsbewertung berücksichtigt neue Bewertung · Nutzername wird bei Bewertung angezeigt
+      </div>
+    </div>
+    
+    <div class="grid-2">
+      <div class="tc-field">
+        <div class="tc-label">Status</div>
+        <div class="tc-value">⬜ Nicht ausgeführt</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Tester</div>
+        <div class="tc-value">________________</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TC-F01-003 -->
+  <div class="testcase-card">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-003</div>
+      <div class="testcase-title">Bewertung mit 5 Sternen (Max-Grenzwert)</div>
+      <div><span class="tech-badge tech-bva">BVA</span></div>
+    </div>
+    
+    <div class="grid-3">
+      <div class="tc-field">
+        <div class="tc-label">Feature</div>
+        <div class="tc-value">GM-F01: Bewertungssystem</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Priorität</div>
+        <div class="tc-value"><span class="prio-badge prio-high">Hoch</span></div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Automatisierung</div>
+        <div class="tc-value auto-yes">Ja (Grenzwert)</div>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Vorbedingungen</div>
+      <div class="tc-value">Nutzer ist eingeloggt · Produkt vorhanden</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Testdaten</div>
+      <div class="tc-value">Sterne: 5 (maximaler Grenzwert) · Textfeld: leer</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Schritte</div>
+      <div class="tc-value">
+        <ol class="tc-steps">
+          <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
+          <li>5 Sterne auswählen (maximaler Grenzwert)</li>
+          <li>Textfeld leer lassen</li>
+          <li>"Bewertung abgeben" klicken</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Erwartetes Ergebnis</div>
+      <div class="tc-value">
+        Bewertung wird erfolgreich gespeichert · 5-Sterne-Bewertung wird auf Produktseite angezeigt · Durchschnittsbewertung wird aktualisiert · Kein Fehler bei leerem Textfeld
+      </div>
+    </div>
+    
+    <div class="grid-2">
+      <div class="tc-field">
+        <div class="tc-label">Status</div>
+        <div class="tc-value">⬜ Nicht ausgeführt</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Tester</div>
+        <div class="tc-value">________________</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    HA5 · Masterschool QA-Track · Testfallentwurf nach IEEE 829 / CTFL 4.0.2 · Seite 2/4
+  </div>
+</div>
+
+<!-- PAGE 3: GM-F02-001 + GM-F02-003 -->
+<div class="a4">
+  <!-- TC-F02-001 -->
+  <div class="testcase-card">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-001</div>
+      <div class="testcase-title">Geburtsdatum über 18 Jahre (gültige Klasse)</div>
+      <div><span class="tech-badge tech-ep">EP</span></div>
+    </div>
+    
+    <div class="grid-3">
+      <div class="tc-field">
+        <div class="tc-label">Feature</div>
+        <div class="tc-value">GM-F02: Altersverifikation</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Priorität</div>
+        <div class="tc-value"><span class="prio-badge prio-high">Hoch</span></div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Automatisierung</div>
+        <div class="tc-value auto-yes">Ja (Standardfall)</div>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Vorbedingungen</div>
+      <div class="tc-value">Neue Browser-Session · Nutzer hat /store noch nicht in dieser Session aufgerufen</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Testdaten</div>
+      <div class="tc-value">Geburtsdatum: 01.01.2000 (26 Jahre alt, deutlich über 18)</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Schritte</div>
+      <div class="tc-value">
+        <ol class="tc-steps">
+          <li>Auf /store navigieren (alkoholische Produkte)</li>
+          <li>Modal mit "Please enter your birth date" erscheint</li>
+          <li>Geburtsdatum eingeben: 01.01.2000</li>
+          <li>"Bestätigen" klicken</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Erwartetes Ergebnis</div>
+      <div class="tc-value">
+        Modal schließt sich · Store-Seite mit alkoholischen Produkten wird vollständig angezeigt · Zugriff gewährt · Keine Fehlermeldung
+      </div>
+    </div>
+    
+    <div class="grid-2">
+      <div class="tc-field">
+        <div class="tc-label">Status</div>
+        <div class="tc-value">⬜ Nicht ausgeführt</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Tester</div>
+        <div class="tc-value">________________</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TC-F02-003 -->
+  <div class="testcase-card">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-003</div>
+      <div class="testcase-title">Geburtsdatum genau 18 Jahre (Grenzwert)</div>
+      <div><span class="tech-badge tech-bva">BVA</span></div>
+    </div>
+    
+    <div class="grid-3">
+      <div class="tc-field">
+        <div class="tc-label">Feature</div>
+        <div class="tc-value">GM-F02: Altersverifikation</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Priorität</div>
+        <div class="tc-value"><span class="prio-badge prio-high">Hoch</span></div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Automatisierung</div>
+        <div class="tc-value auto-yes">Ja (kritisch!)</div>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Vorbedingungen</div>
+      <div class="tc-value">Neue Browser-Session</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Testdaten</div>
+      <div class="tc-value">Geburtsdatum: Heute minus genau 18 Jahre (z.B. 13.03.2008 wenn heute 13.03.2026)</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Schritte</div>
+      <div class="tc-value">
+        <ol class="tc-steps">
+          <li>Auf /store navigieren</li>
+          <li>Modal erscheint</li>
+          <li>Geburtsdatum eingeben: genau 18 Jahre alt (kritischer Grenzwert!)</li>
+          <li>"Bestätigen" klicken</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Erwartetes Ergebnis</div>
+      <div class="tc-value">
+        Modal schließt sich · Store-Seite wird angezeigt · Zugriff gewährt · <strong>WICHTIG: Grenzwert "genau 18" MUSS als gültig akzeptiert werden (≥18, nicht &gt;18)</strong>
+      </div>
+    </div>
+    
+    <div class="grid-2">
+      <div class="tc-field">
+        <div class="tc-label">Status</div>
+        <div class="tc-value">⬜ Nicht ausgeführt</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Tester</div>
+        <div class="tc-value">________________</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    HA5 · Masterschool QA-Track · Testfallentwurf nach IEEE 829 / CTFL 4.0.2 · Seite 3/4
+  </div>
+</div>
+
+<!-- PAGE 4: GM-F03-001 + GM-F03-004 -->
+<div class="a4">
+  <!-- TC-F03-001 -->
+  <div class="testcase-card">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-001</div>
+      <div class="testcase-title">Checkout als Gast (ungültige Klasse)</div>
+      <div><span class="tech-badge tech-ep">EP</span></div>
+    </div>
+    
+    <div class="grid-3">
+      <div class="tc-field">
+        <div class="tc-label">Feature</div>
+        <div class="tc-value">GM-F03: Versandkosten</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Priorität</div>
+        <div class="tc-value"><span class="prio-badge prio-high">Hoch</span></div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Automatisierung</div>
+        <div class="tc-value auto-yes">Ja (Regression)</div>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Vorbedingungen</div>
+      <div class="tc-value">Nutzer ist NICHT eingeloggt (Gast) · Produkte im Warenkorb</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Testdaten</div>
+      <div class="tc-value">Warenkorb: Produkte im Wert &gt; X€ (über Freigrenze)</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Schritte</div>
+      <div class="tc-value">
+        <ol class="tc-steps">
+          <li>Als Gast (nicht eingeloggt) Produkte in Warenkorb legen</li>
+          <li>Versuchen, zu /checkout zu navigieren</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Erwartetes Ergebnis</div>
+      <div class="tc-value">
+        Weiterleitung zu /auth (Login-Seite) · Checkout ist ohne Login nicht möglich · Versandkosten werden NICHT angezeigt · Hinweis "Bitte einloggen" erscheint
+      </div>
+    </div>
+    
+    <div class="grid-2">
+      <div class="tc-field">
+        <div class="tc-label">Status</div>
+        <div class="tc-value">⬜ Nicht ausgeführt</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Tester</div>
+        <div class="tc-value">________________</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TC-F03-004 -->
+  <div class="testcase-card">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-004</div>
+      <div class="testcase-title">Bestellwert genau X€ (Freigrenze)</div>
+      <div><span class="tech-badge tech-bva">BVA</span></div>
+    </div>
+    
+    <div class="grid-3">
+      <div class="tc-field">
+        <div class="tc-label">Feature</div>
+        <div class="tc-value">GM-F03: Versandkosten</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Priorität</div>
+        <div class="tc-value"><span class="prio-badge prio-high">Hoch</span></div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Automatisierung</div>
+        <div class="tc-value auto-yes">Ja (kritisch!)</div>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Vorbedingungen</div>
+      <div class="tc-value">Nutzer ist eingeloggt · Freigrenze X€ bekannt (manuell ermittelt)</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Testdaten</div>
+      <div class="tc-value">Warenkorb: Produkte im Wert von genau X€ (Freigrenze, kritischer Grenzwert!)</div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Schritte</div>
+      <div class="tc-value">
+        <ol class="tc-steps">
+          <li>Als eingeloggter Nutzer Produkte im Wert von genau X€ in Warenkorb legen</li>
+          <li>Zu /checkout navigieren</li>
+          <li>Versandkosten prüfen</li>
+        </ol>
+      </div>
+    </div>
+    
+    <div class="tc-field">
+      <div class="tc-label">Erwartetes Ergebnis</div>
+      <div class="tc-value">
+        Versandkosten = 0€ · Hinweis "Versandkostenfrei ab X€" wird angezeigt · <strong>WICHTIG: Grenzwert "genau X€" MUSS versandkostenfrei sein (≥X, nicht &gt;X)</strong>
+      </div>
+    </div>
+    
+    <div class="grid-2">
+      <div class="tc-field">
+        <div class="tc-label">Status</div>
+        <div class="tc-value">⬜ Nicht ausgeführt</div>
+      </div>
+      <div class="tc-field">
+        <div class="tc-label">Tester</div>
+        <div class="tc-value">________________</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-footer">
+    HA5 · Masterschool QA-Track · Testfallentwurf nach IEEE 829 / CTFL 4.0.2 · Seite 4/4
+  </div>
+</div>
+
+</main>
+
+</body>
+</html>
