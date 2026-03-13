@@ -17,7 +17,7 @@ Kostenlose Lernmaterialien zu Software Testing / QA und ISTQB CTFL. Jede HTML-Se
 | Pfad | Beschreibung |
 |------|--------------|
 | `index.html` | Einstieg, Kartenübersicht aller Lernseiten (Reihenfolge: Testuniversum, Kap. 4, Terminologie → Hausaufgaben → Visualisierungen) |
-| `pages/` | Einzelne Lernseiten: Testuniversum, Testverfahren (Kap. 4), Glossar, HA-Einordnung, HA4 Anforderungsanalyse, HA4 Formular, HA5 Testkonzept, SDLC Hypozykel (statisch/animiert) |
+| `pages/` | Einzelne Lernseiten: Testuniversum, Testverfahren (Kap. 4), Glossar, HA-Einordnung, HA4 Anforderungsanalyse, HA4 Formular, HA5 Testkonzept, HA5 Testfallentwurf, SDLC Hypozykel (statisch/animiert) |
 | `assets/css/` | Gemeinsames CSS (`base.css`: gemeinsame visuelle Basis, Variablen, Reset, Hauptnavigation, Skip-Link) |
 | `assets/js/` | Ausgelagerte Skripte für die Hypozykel-Seiten (`sdlc-hypocycle-statisch.js`, `sdlc-hypocycle-animiert.js`) |
 

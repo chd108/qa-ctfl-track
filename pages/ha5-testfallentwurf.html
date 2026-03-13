@@ -1,0 +1,2209 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HA5 Testfallentwurf GroceryMate: Testfälle, Techniken, Automatisierung nach CTFL 4.0.2.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>Testfälle — GroceryMate HA5</title>
+  <style>
+    :root {
+      --bg:       #f0ece6;
+      --text:     #283535;
+      --mid:      #4e6060;
+      --soft:     #7a9090;
+      --bdr:      rgba(0,0,0,0.07);
+
+      --e1: #d8e4d0;
+      --e2: #bad1dc;
+      --e3: #e0cec8;
+      --e4: #ddc48a;
+      --e5: #d4c4e0;
+      --e6: #c8d4cc;
+
+      --ok:       #4a7c59;  --ok-bg:   #cde8d2;
+      --warn:     #9c6a2a;  --warn-bg: #f0dfc0;
+      --note:     #2a547c;  --note-bg: #c4d8ee;
+      --open:     #8a5a6a;  --open-bg: #ead8de;
+      --auto:     #6a5a8a;  --auto-bg: #e8d8f0;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: var(--bg);
+      background-image: radial-gradient(circle, rgba(0,0,0,0.028) 1px, transparent 1px);
+      background-size: 22px 22px;
+      color: var(--text);
+      font-family: Georgia, 'Palatino Linotype', serif;
+      font-size: 14px;
+      padding: 2.5rem 3rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    header { text-align: center; margin-bottom: .6rem; }
+    header h1 { font-size: 1.8rem; font-weight: normal; letter-spacing: .05em; }
+    header p  { margin-top: .4rem; font-style: italic; color: var(--soft); font-size: .95rem; }
+
+    .meta-bar {
+      display: flex; align-items: center;
+      justify-content: center; gap: 2rem;
+      margin: 1.5rem 0 2.5rem;
+      padding: .8rem 1.2rem;
+      background: rgba(255,255,255,0.45);
+      border-radius: 8px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; color: var(--mid);
+      flex-wrap: wrap;
+    }
+    .meta-bar > div { white-space: nowrap; }
+    .meta-bar strong { color: var(--text); font-weight: 600; }
+
+    .tag {
+      display: inline-block; padding: .18rem .6rem;
+      border-radius: 4px; font-size: 10px; font-weight: 700;
+      letter-spacing: .05em; text-transform: uppercase;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .tag-ok   { background: var(--ok-bg);   color: var(--ok); }
+    .tag-auto { background: var(--auto-bg); color: var(--auto); }
+    .tag-manual { background: var(--warn-bg); color: var(--warn); }
+
+    .section {
+      margin-bottom: 3rem;
+      background: rgba(255,255,255,0.38);
+      border-radius: 10px;
+      padding: 1.8rem 2rem 2rem;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.04);
+    }
+    .section-number {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px; font-weight: 800; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--soft);
+      margin-bottom: .3rem;
+    }
+    .section-title {
+      font-size: 1.4rem; font-weight: normal;
+      margin-bottom: 1.2rem; color: var(--text);
+    }
+    .section-intro {
+      font-size: 13px; line-height: 1.7; color: var(--mid);
+      margin-bottom: 1.5rem;
+    }
+
+    .feature-header {
+      background: var(--e2);
+      padding: 1rem 1.2rem;
+      border-radius: 8px;
+      margin: 2rem 0 1.5rem;
+    }
+    .feature-id {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--note);
+      margin-bottom: .3rem;
+    }
+    .feature-name {
+      font-size: 1.1rem; font-weight: 700;
+      color: var(--text);
+    }
+
+    .testcase {
+      background: rgba(255,255,255,0.6);
+      border-left: 4px solid var(--e4);
+      padding: 1.2rem 1.5rem;
+      margin-bottom: 1.5rem;
+      border-radius: 6px;
+    }
+    .testcase-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: .8rem;
+    }
+    .testcase-id {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 800;
+      color: var(--text);
+    }
+    .testcase-technique {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px; font-weight: 700;
+      padding: .15rem .5rem;
+      border-radius: 4px;
+      background: var(--e4);
+      color: var(--text);
+    }
+    .testcase-title {
+      font-size: 13px; font-weight: 700;
+      color: var(--text);
+      margin-bottom: .8rem;
+    }
+    .testcase-row {
+      margin: .6rem 0;
+    }
+    .testcase-label {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: .08em;
+      color: var(--soft);
+      margin-bottom: .3rem;
+    }
+    .testcase-content {
+      font-size: 13px; line-height: 1.6;
+      color: var(--mid);
+    }
+    .testcase-steps {
+      margin: .3rem 0 0 1rem;
+      list-style: decimal;
+    }
+    .testcase-steps li {
+      margin: .3rem 0;
+      font-size: 13px;
+      line-height: 1.5;
+      color: var(--mid);
+    }
+
+    .learn-box {
+      background: var(--warn-bg);
+      border-left: 4px solid var(--warn);
+      padding: 1rem 1.2rem;
+      margin: 1.5rem 0;
+      border-radius: 6px;
+    }
+    .learn-box-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--warn);
+      margin-bottom: .5rem;
+    }
+    .learn-box-content {
+      font-size: 13px; line-height: 1.6; color: var(--text);
+    }
+
+    .automation-box {
+      background: var(--auto-bg);
+      border-left: 4px solid var(--auto);
+      padding: 1.2rem 1.5rem;
+      margin: 2rem 0;
+      border-radius: 8px;
+    }
+    .automation-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 800; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--auto);
+      margin-bottom: .8rem;
+    }
+    .automation-content {
+      font-size: 13px; line-height: 1.6;
+      color: var(--text);
+    }
+    .automation-content ul {
+      margin: .5rem 0 0 1.2rem;
+      list-style: disc;
+    }
+    .automation-content li {
+      margin: .3rem 0;
+    }
+
+    .summary-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12.5px;
+      margin: 1.5rem 0;
+      background: rgba(255,255,255,0.5);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .summary-table thead th {
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--soft);
+      padding: .7rem 1rem; border-bottom: 2px solid var(--bdr);
+      text-align: left; background: var(--e6);
+    }
+    .summary-table tbody tr {
+      border-bottom: 1px solid var(--bdr);
+    }
+    .summary-table tbody tr:last-child {
+      border-bottom: none;
+    }
+    .summary-table tbody td {
+      padding: .7rem 1rem; vertical-align: top;
+      line-height: 1.5; color: var(--mid);
+    }
+    .summary-table tbody td:first-child {
+      font-weight: 700; color: var(--text);
+    }
+
+    .source-note {
+      text-align: center; margin-top: 3rem;
+      font-size: 12px; font-style: italic;
+      color: var(--soft);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="page-chrome">
+<nav class="main-nav" aria-label="Hauptnavigation">
+  <ul>
+    <li><a href="../index.html">Übersicht</a></li>
+    <li><a href="testuniversum.html">Testuniversum</a></li>
+    <li><a href="testverfahren-istqb.html">Testverfahren</a></li>
+    <li><a href="glossar.html">Glossar</a></li>
+    <li><a href="ha-einordnung.html">HA-Einordnung</a></li>
+    <li><a href="ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+    <li><a href="ha4-formular.html">HA4 Formular</a></li>
+    <li><a href="ha5-testkonzept.html">HA5 Testkonzept</a></li>
+    <li><a href="ha5-testfallentwurf.html" class="current">HA5 Testfallentwurf</a></li>
+    <li><a href="sdlc-istqb-animiert.html">SDLC animiert</a></li>
+    <li><a href="sdlc-istqb-statisch.html">SDLC statisch</a></li>
+  </ul>
+</nav>
+<header>
+  <h1>Testfallentwurf — GroceryMate</h1>
+  <p>HA5 · Testfallentwurf für drei neue Features · Masterschool QA-Track</p>
+</header>
+</div>
+
+<main id="main">
+<div class="meta-bar">
+  <div><strong>Projekt:</strong> GroceryMate</div>
+  <div><strong>Features:</strong> 3 neue Funktionen</div>
+  <div><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829</div>
+  <div><strong>Testfälle:</strong> 28 (GM-F01: 9, GM-F02: 9, GM-F03: 10)</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     EINFÜHRUNG
+     ══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-number">Einführung</div>
+  <h2 class="section-title">Über dieses Dokument</h2>
+  <p class="section-intro">
+    Dieses Dokument enthält detaillierte Testfälle für die drei neuen Features von GroceryMate: Bewertungssystem (GM-F01), Altersverifikation (GM-F02) und Versandkosten (GM-F03). Jeder Testfall ist mit der verwendeten Testentwurfs-Technik gekennzeichnet und enthält Eingabedaten, Schritte und erwartete Ergebnisse.
+  </p>
+
+  <div class="learn-box">
+    <div class="learn-box-title">💡 Was sind Testfälle?</div>
+    <div class="learn-box-content">
+      Testfälle sind <strong>konkrete Testanweisungen</strong>, die beschreiben, wie ein Feature getestet werden soll. Sie basieren auf der Testbasis-Analyse (HA4) und dem Testkonzept (HA5). Jeder Testfall hat:
+      <ul style="margin: .5rem 0 0 1.2rem; list-style: disc;">
+        <li><strong>Testentwurfs-Technik:</strong> Wie wurde der Test abgeleitet? (EP, BVA, etc.)</li>
+        <li><strong>Eingabe:</strong> Welche Daten werden verwendet?</li>
+        <li><strong>Schritte:</strong> Was wird getestet?</li>
+        <li><strong>Erwartetes Ergebnis:</strong> Was sollte passieren?</li>
+      </ul>
+      Referenz: CTFL Kap. 4 (Testanalyse und -entwurf)
+    </div>
+  </div>
+
+  <div class="learn-box" style="background: var(--ok-bg); border-left-color: var(--ok);">
+    <div class="learn-box-title" style="color: var(--ok);">💡 Warum diese Reihenfolge? EP → BVA → Use Case → Error Guessing</div>
+    <div class="learn-box-content">
+      Die Testfälle sind nach <strong>CTFL 4.0.2-konformer Reihenfolge</strong> sortiert (Kap. 4.2):<br><br>
+      <strong>1. Äquivalenzklassenbildung (EP) zuerst:</strong><br>
+      EP definiert die <em>Klassen</em> (gültig/ungültig, eingeloggt/Gast). Dies ist die <strong>Basis</strong> für alle weiteren Tests. Beispiel: "Eingeloggter Nutzer kann bewerten" (gültige Klasse).<br><br>
+      <strong>2. Grenzwertanalyse (BVA) danach:</strong><br>
+      BVA <em>baut auf EP auf</em> und testet die <strong>Grenzen der Klassen</strong>. Beispiel: Genau 18 Jahre (Grenzwert zwischen "unter 18" und "über 18" Klassen).<br><br>
+      <strong>3. Anwendungsfalltest (Use Case):</strong><br>
+      Realistische Nutzerszenarien, die mehrere Schritte kombinieren. Beispiel: "Vollständiger Bewertungsprozess".<br><br>
+      <strong>4. Fehlerermessen (Error Guessing) zuletzt:</strong><br>
+      Erfahrungsbasierte Tests für häufige Fehlerquellen (XSS, leere Felder, Duplikate).<br><br>
+      <strong>Warum nicht risikobasiert?</strong> In der Praxis werden oft kritische Grenzwerte zuerst getestet. Für <strong>Lernzwecke und ISTQB-Prüfungen</strong> ist die CTFL-Reihenfolge jedoch didaktisch korrekter, da sie die <strong>logische Herleitung</strong> zeigt: Klassen → Grenzen → Szenarien → Fehler.
+    </div>
+  </div>
+
+  <h3 style="font-size: 1.1rem; margin: 2rem 0 1rem; color: var(--text);">Verwendete Testentwurfs-Techniken</h3>
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Technik</th>
+        <th>Beschreibung</th>
+        <th>CTFL Kap.</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Äquivalenzklassenbildung (EP)</td>
+        <td>Gruppierung ähnlicher Eingaben in Klassen (z.B. eingeloggt/Gast, unter 18/über 18)</td>
+        <td>4.2.1</td>
+      </tr>
+      <tr>
+        <td>Grenzwertanalyse (BVA)</td>
+        <td>Testen von Grenzwerten zwischen Klassen (z.B. genau 18 Jahre, Freigrenze X€)</td>
+        <td>4.2.2</td>
+      </tr>
+      <tr>
+        <td>Anwendungsfalltest (Use Case)</td>
+        <td>Testen realistischer Nutzerszenarien (z.B. Bewertung abgeben, Produkt kaufen)</td>
+        <td>4.5</td>
+      </tr>
+      <tr>
+        <td>Fehlerermessen (Error Guessing)</td>
+        <td>Testen häufiger Fehlerquellen (z.B. leere Felder, XSS, ungültige Eingaben)</td>
+        <td>4.4.1</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+
+
+<!-- TC-F01-001 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-001</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Bewertung als eingeloggter Nutzer (gültige Klasse)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Sterne: 4, Textfeld: "Sehr gute Qualität, schnelle Lieferung. Preis könnte besser sein.", Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
+        <li>4 Sterne auswählen</li>
+        <li>Detailliertes Feedback im Textfeld eingeben</li>
+        <li>"Bewertung abgeben" klicken</li>
+        <li>Seite neu laden</li>
+        <li>Prüfen, ob eigene Bewertung angezeigt wird</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Bewertung wird gespeichert. Nach Reload wird 4-Sterne-Bewertung mit Feedback-Text angezeigt. Durchschnittsbewertung berücksichtigt die neue Bewertung. Nutzername wird bei der Bewertung angezeigt.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F01-002 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-002</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Bewertung als Gast (ungültige Klasse)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Sterne: 3, Textfeld: "Gutes Produkt", Nutzer: nicht eingeloggt (Gast)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als Gast (nicht eingeloggt) auf Produktseite navigieren</li>
+        <li>Versuchen, Bewertungsfunktion zu finden</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Bewertungsfunktion ist nicht sichtbar oder deaktiviert. Optional: Hinweis "Bitte einloggen, um zu bewerten" wird angezeigt.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F01-003 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-003</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Bewertung mit genau 5 Sternen (Grenzwert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Sterne: 5, Textfeld: leer, Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
+        <li>5 Sterne auswählen (maximaler Grenzwert)</li>
+        <li>Textfeld leer lassen</li>
+        <li>"Bewertung abgeben" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Bewertung wird erfolgreich gespeichert. 5-Sterne-Bewertung wird auf Produktseite angezeigt. Durchschnittsbewertung wird aktualisiert.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F01-004 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-004</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Bewertung mit genau 1 Stern (Grenzwert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Sterne: 1, Textfeld: "Produkt war schlecht", Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
+        <li>1 Stern auswählen (minimaler Grenzwert)</li>
+        <li>Feedback-Text eingeben</li>
+        <li>"Bewertung abgeben" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Bewertung wird erfolgreich gespeichert. 1-Stern-Bewertung + Text werden angezeigt. Durchschnittsbewertung sinkt.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F01-005 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-005</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Textfeld mit maximaler Zeichenlänge (falls definiert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Sterne: 3, Textfeld: Text mit X Zeichen (Grenzwert), Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
+        <li>3 Sterne auswählen</li>
+        <li>Text mit genau X Zeichen eingeben (X = max. Zeichenlänge)</li>
+        <li>"Bewertung abgeben" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Bewertung wird akzeptiert, wenn X innerhalb des Limits liegt. Falls Limit überschritten: Fehlermeldung "Textfeld darf maximal X Zeichen enthalten" ODER Eingabe wird automatisch gekürzt. <em>→ Maximale Zeichenanzahl laut HA4 noch nicht spezifiziert!</em></div>
+    </div>
+  </div>
+
+
+<!-- TC-F01-006 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-006</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Durchschnittsbewertung wird korrekt berechnet</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Produkt hat bereits Bewertungen: 5★, 4★, 3★. Neue Bewertung: 2★</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Produkt mit bestehenden Bewertungen aufrufen (5, 4, 3 Sterne)</li>
+        <li>Aktuelle Durchschnittsbewertung notieren (sollte 4.0 sein)</li>
+        <li>Als eingeloggter Nutzer 2 Sterne vergeben</li>
+        <li>"Bewertung abgeben" klicken</li>
+        <li>Neue Durchschnittsbewertung prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Neue Durchschnittsbewertung = (5+4+3+2) / 4 = 3.5 Sterne. System zeigt korrekt gerundeten Wert an (z.B. 3.5 oder 3½ Sterne). <em>→ Rundungsregel laut HA4 noch zu klären!</em></div>
+    </div>
+  </div>
+
+
+<!-- TC-F01-007 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-007</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">Bewertung ohne Sternauswahl (nur Text)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Sterne: keine Auswahl (0), Textfeld: "Tolles Produkt!", Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
+        <li>KEINE Sterne auswählen</li>
+        <li>Nur Feedback-Text eingeben</li>
+        <li>"Bewertung abgeben" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt Fehlermeldung "Bitte wählen Sie mindestens 1 Stern" oder ähnlich. Bewertung wird NICHT gespeichert.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F01-008 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-008</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">Zweite Bewertung desselben Produkts (Duplikat)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Sterne: 4, Textfeld: "Zweiter Versuch", Nutzer: eingeloggt (hat bereits bewertet)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkt bereits bewertet haben</li>
+        <li>Erneut auf Produktseite navigieren</li>
+        <li>Versuchen, zweite Bewertung abzugeben (4 Sterne + Text)</li>
+        <li>"Bewertung abgeben" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Entweder: (a) System blockiert zweite Bewertung mit Fehlermeldung "Sie haben dieses Produkt bereits bewertet", ODER (b) Bestehende Bewertung wird aktualisiert (Update statt neuer Eintrag). <em>→ Zu verifizieren laut offenen Punkten HA4!</em></div>
+    </div>
+  </div>
+
+
+<!-- TC-F01-009 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F01-009</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">XSS-Schutz im Textfeld (Sicherheit)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Sterne: 5, Textfeld: "&lt;script&gt;alert('XSS')&lt;/script&gt;Tolles Produkt", Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
+        <li>5 Sterne auswählen</li>
+        <li>JavaScript-Code im Textfeld eingeben (XSS-Versuch)</li>
+        <li>"Bewertung abgeben" klicken</li>
+        <li>Prüfen, ob Code ausgeführt wird</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System erkennt Script-Tags und bereinigt die Eingabe (Sanitization). Script wird NICHT ausgeführt. Text wird escaped dargestellt (z.B. "&lt;script&gt;...") oder Eingabe wird komplett blockiert mit Fehlermeldung.</div>
+    </div>
+  </div>
+
+
+<div class="automation-box">
+    <div class="automation-title">🤖 Automatisierungsempfehlung: Feature GM-F01</div>
+</div>
+
+
+
+<!-- TC-F02-001 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-001</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Geburtsdatum über 18 Jahre (gültige Klasse)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 01.01.2000 (26 Jahre alt)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Geburtsdatum eingeben: deutlich über 18 Jahren</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal schließt sich. Store-Seite wird vollständig angezeigt. Zugriff gewährt.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F02-002 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-002</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Geburtsdatum unter 18 Jahren (ungültige Klasse)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: Heute minus 17 Jahre und 364 Tage (z.B. 14.03.2008 wenn heute 13.03.2026)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Geburtsdatum eingeben: 1 Tag unter 18 Jahren</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Zugriff verweigert. Hinweistext "Sie müssen mindestens 18 Jahre alt sein" oder ähnlich. Store-Produkte werden NICHT angezeigt.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F02-003 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-003</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Geburtsdatum genau 18 Jahre (Grenzwert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: Heute minus genau 18 Jahre (z.B. 13.03.2008 wenn heute 13.03.2026)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store (alkoholische Produkte) navigieren</li>
+        <li>Modal mit "Please enter your birth date" erscheint</li>
+        <li>Geburtsdatum eingeben: genau 18 Jahre alt</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal schließt sich. Store-Seite mit alkoholischen Produkten wird angezeigt. Zugriff gewährt.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F02-004 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-004</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Zukünftiges Geburtsdatum (ungültiger Grenzwert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 01.01.2030 (in der Zukunft)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Zukünftiges Datum eingeben</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt Fehlermeldung "Geburtsdatum kann nicht in der Zukunft liegen" oder verhindert Eingabe. Zugriff wird nicht gewährt.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F02-005 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-005</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Modal erscheint nur beim ersten Aufruf (Session-basiert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 01.01.1990 (über 18), Session: aktiv</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren (erstmals in Session)</li>
+        <li>Modal erscheint, Geburtsdatum eingeben (über 18)</li>
+        <li>Store-Seite wird angezeigt</li>
+        <li>Auf andere Seite navigieren (z.B. Home)</li>
+        <li>Zurück zu /store navigieren (innerhalb derselben Session)</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal erscheint beim zweiten Aufruf NICHT erneut. Store-Seite wird direkt angezeigt. Session-Daten bleiben erhalten.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F02-006 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-006</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Modal erscheint nach Browser-Neustart erneut</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 15.05.1995 (über 18), Session: neu nach Browser-Neustart</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren, Modal mit Geburtsdatum ausfüllen (über 18)</li>
+        <li>Browser komplett schließen</li>
+        <li>Browser neu starten</li>
+        <li>Erneut auf /store navigieren</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal erscheint ERNEUT, da Session beendet wurde. Nutzer muss Geburtsdatum erneut eingeben. <em>→ Session-Dauer laut HA4 noch zu klären!</em></div>
+    </div>
+  </div>
+
+
+<!-- TC-F02-007 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-007</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Modal in neuem Tab/Fenster</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 20.12.1988 (über 18), neuer Tab/Fenster</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>In Tab 1: Auf /store navigieren, Modal ausfüllen (über 18)</li>
+        <li>Store-Seite wird angezeigt</li>
+        <li>Neuen Tab/Fenster öffnen</li>
+        <li>In Tab 2: Auf /store navigieren</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal erscheint in Tab 2 NICHT erneut, wenn Session geteilt wird. Andernfalls: Modal erscheint erneut. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div>
+    </div>
+  </div>
+
+
+<!-- TC-F02-008 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-008</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">Ungültiges Datum (z.B. 31. Februar)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 31.02.2000 (ungültig)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Ungültiges Datum eingeben</li>
+        <li>Versuchen, zu bestätigen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt Fehlermeldung "Ungültiges Datum" oder verhindert Eingabe (z.B. Datepicker erlaubt nur gültige Daten). Zugriff wird nicht gewährt. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div>
+    </div>
+  </div>
+
+
+<!-- TC-F02-009 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-009</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">Leeres Datumsfeld</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: leer (keine Eingabe)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>KEIN Datum eingeben (Feld leer lassen)</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt Fehlermeldung "Bitte geben Sie Ihr Geburtsdatum ein" oder ähnlich. Zugriff wird nicht gewährt. Button ist ggf. deaktiviert, solange Feld leer ist.</div>
+    </div>
+  </div>
+
+
+<div class="automation-box">
+    <div class="automation-title">🤖 Automatisierungsempfehlung: Feature GM-F01</div>
+    <div class="automation-content">
+      <strong>Zu automatisieren:</strong>
+      <ul>
+        <li><strong>TC-F01-003, TC-F01-004:</strong> Grenzwert-Tests (5 und 1 Stern) (1 und 5 Sterne) → Schnell wiederholbar, klare Eingabe/Ausgabe</li>
+        <li><strong>TC-F01-002:</strong> Gast-Zugriff (EP ungültige Klasse) → Regression wichtig (muss bei jeder Änderung geprüft werden)</li>
+        <li><strong>TC-F01-009:</strong> XSS-Schutz → Sicherheitstest, sollte in CI/CD Pipeline laufen</li>
+        <li><strong>TC-F01-006:</strong> Durchschnittsberechnung → Mathematische Logik, ideal für Automatisierung</li>
+      </ul>
+      <strong>Manuell zu testen:</strong>
+      <ul>
+        <li><strong>TC-F01-008:</strong> Duplikat-Bewertung → Verhalten noch unklar (Block vs. Update), manuell explorieren</li>
+        <li><strong>TC-F01-001:</strong> Vollständiger Use Case (EP gültige Klasse) → UX-Aspekte (Layout, Feedback) manuell prüfen</li>
+        <li><strong>TC-F01-005:</strong> Textfeld-Länge → Grenzwert noch nicht bekannt, zunächst manuell ermitteln</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FEATURE 2: ALTERSVERIFIKATION
+     ══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-number">Feature 2</div>
+  <h2 class="section-title">Altersverifikation (GM-F02)</h2>
+
+  <div class="feature-header">
+    <div class="feature-id">GM-F02</div>
+    <div class="feature-name">Altersverifikation für alkoholische Produkte</div>
+  </div>
+
+  <!-- TC-F02-003 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-003</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Geburtsdatum genau 18 Jahre (Grenzwert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: Heute minus genau 18 Jahre (z.B. 13.03.2008 wenn heute 13.03.2026)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store (alkoholische Produkte) navigieren</li>
+        <li>Modal mit "Please enter your birth date" erscheint</li>
+        <li>Geburtsdatum eingeben: genau 18 Jahre alt</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal schließt sich. Store-Seite mit alkoholischen Produkten wird angezeigt. Zugriff gewährt.</div>
+    </div>
+  </div>
+
+  <!-- TC-F02-002 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-002</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Geburtsdatum unter 18 Jahren (ungültige Klasse)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: Heute minus 17 Jahre und 364 Tage (z.B. 14.03.2008 wenn heute 13.03.2026)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Geburtsdatum eingeben: 1 Tag unter 18 Jahren</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Zugriff verweigert. Hinweistext "Sie müssen mindestens 18 Jahre alt sein" oder ähnlich. Store-Produkte werden NICHT angezeigt.</div>
+    </div>
+  </div>
+
+  <!-- TC-F02-001 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-001</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Geburtsdatum über 18 Jahre (gültige Klasse)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 01.01.2000 (26 Jahre alt)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Geburtsdatum eingeben: deutlich über 18 Jahren</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal schließt sich. Store-Seite wird vollständig angezeigt. Zugriff gewährt.</div>
+    </div>
+  </div>
+
+  <!-- TC-F02-008 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-008</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">Ungültiges Datum (z.B. 31. Februar)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 31.02.2000 (ungültig)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Ungültiges Datum eingeben</li>
+        <li>Versuchen, zu bestätigen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt Fehlermeldung "Ungültiges Datum" oder verhindert Eingabe (z.B. Datepicker erlaubt nur gültige Daten). Zugriff wird nicht gewährt. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div>
+    </div>
+  </div>
+
+  <!-- TC-F02-009 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-009</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">Leeres Datumsfeld</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: leer (keine Eingabe)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>KEIN Datum eingeben (Feld leer lassen)</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt Fehlermeldung "Bitte geben Sie Ihr Geburtsdatum ein" oder ähnlich. Zugriff wird nicht gewährt. Button ist ggf. deaktiviert, solange Feld leer ist.</div>
+    </div>
+  </div>
+
+  <!-- TC-F02-005 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-005</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Modal erscheint nur beim ersten Aufruf (Session-basiert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 01.01.1990 (über 18), Session: aktiv</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren (erstmals in Session)</li>
+        <li>Modal erscheint, Geburtsdatum eingeben (über 18)</li>
+        <li>Store-Seite wird angezeigt</li>
+        <li>Auf andere Seite navigieren (z.B. Home)</li>
+        <li>Zurück zu /store navigieren (innerhalb derselben Session)</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal erscheint beim zweiten Aufruf NICHT erneut. Store-Seite wird direkt angezeigt. Session-Daten bleiben erhalten.</div>
+    </div>
+  </div>
+
+  <!-- TC-F02-006 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-006</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Modal erscheint nach Browser-Neustart erneut</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 15.05.1995 (über 18), Session: neu nach Browser-Neustart</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren, Modal mit Geburtsdatum ausfüllen (über 18)</li>
+        <li>Browser komplett schließen</li>
+        <li>Browser neu starten</li>
+        <li>Erneut auf /store navigieren</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal erscheint ERNEUT, da Session beendet wurde. Nutzer muss Geburtsdatum erneut eingeben. <em>→ Session-Dauer laut HA4 noch zu klären!</em></div>
+    </div>
+  </div>
+
+  <!-- TC-F02-007 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-007</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Modal in neuem Tab/Fenster</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 20.12.1988 (über 18), neuer Tab/Fenster</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>In Tab 1: Auf /store navigieren, Modal ausfüllen (über 18)</li>
+        <li>Store-Seite wird angezeigt</li>
+        <li>Neuen Tab/Fenster öffnen</li>
+        <li>In Tab 2: Auf /store navigieren</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal erscheint in Tab 2 NICHT erneut, wenn Session geteilt wird. Andernfalls: Modal erscheint erneut. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div>
+    </div>
+  </div>
+
+  <!-- TC-F02-004 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-004</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Zukünftiges Geburtsdatum (ungültiger Grenzwert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 01.01.2030 (in der Zukunft)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Zukünftiges Datum eingeben</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt Fehlermeldung "Geburtsdatum kann nicht in der Zukunft liegen" oder verhindert Eingabe. Zugriff wird nicht gewährt.</div>
+    </div>
+  </div>
+
+  <div class="automation-box">
+    <div class="automation-title">🤖 Automatisierungsempfehlung: Feature GM-F02</div>
+</div>
+
+
+
+<!-- TC-F03-001 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-001</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Checkout als Gast (ohne Login)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Produkte im Wert > X€, Nutzer: nicht eingeloggt (Gast)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als Gast Produkte in Warenkorb legen</li>
+        <li>Versuchen, zu /checkout zu navigieren</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Weiterleitung zu /auth (Login-Seite). Checkout ist ohne Login nicht möglich. Versandkosten werden NICHT angezeigt. <em>→ Laut HA4: Checkout nur für eingeloggte Nutzer!</em></div>
+    </div>
+  </div>
+
+
+<!-- TC-F03-002 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-002</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Sehr niedriger Bestellwert (deutlich unter Freigrenze)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: 1 Produkt à 5€, Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer günstiges Produkt (5€) in Warenkorb</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten = Y€. Hinweis "Noch X - 5€ bis zur kostenlosen Lieferung" wird angezeigt.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F03-003 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-003</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Sehr hoher Bestellwert (deutlich über Freigrenze)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Produkte im Wert von 200€, Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer viele Produkte (200€ Gesamtwert) in Warenkorb</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten = 0€. Freigrenze wurde deutlich überschritten.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F03-004 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-004</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Bestellwert genau an Freigrenze X€ (Grenzwert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Produkte im Wert von genau X€ (Freigrenze), Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkte im Wert von genau X€ in Warenkorb legen</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten = 0€. Hinweis "Versandkostenfrei ab X€" wird angezeigt. <em>→ Freigrenze X laut HA4 noch zu ermitteln!</em></div>
+    </div>
+  </div>
+
+
+<!-- TC-F03-005 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-005</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Bestellwert X - 0,01€ (Grenzwert unter Freigrenze)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Produkte im Wert von X - 0,01€, Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkte im Wert von X - 0,01€ in Warenkorb legen</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten = Y€ (Standardversand). Hinweis "Noch 0,01€ bis zur kostenlosen Lieferung" oder ähnlich. <em>→ Versandkosten Y laut HA4 noch zu ermitteln!</em></div>
+    </div>
+  </div>
+
+
+<!-- TC-F03-006 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-006</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Bestellwert X + 0,01€ (Grenzwert über Freigrenze)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Produkte im Wert von X + 0,01€, Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkte im Wert von X + 0,01€ in Warenkorb legen</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten = 0€. Freigrenze wurde erreicht.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F03-007 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-007</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Live-Update bei Warenkorbänderungen</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Zunächst Wert < X€, dann Produkt hinzufügen → Wert > X€</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkte im Wert von 20€ in Warenkorb (< X€)</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen (sollte Y€ sein)</li>
+        <li>Zurück zum Warenkorb, weiteres Produkt hinzufügen (Gesamtwert jetzt > X€)</li>
+        <li>Zu /checkout zurückkehren</li>
+        <li>Versandkosten erneut prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten ändern sich SOFORT von Y€ auf 0€. Keine Seiten-Refresh nötig. Live-Update funktioniert.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F03-008 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-008</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Live-Update bei Mengenänderung</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: 1× Produkt à 30€, dann Menge auf 2 erhöhen</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer 1× Produkt (30€) in Warenkorb</li>
+        <li>Zu /checkout navigieren (Versandkosten = Y€)</li>
+        <li>Menge des Produkts auf 2 erhöhen (Gesamtwert: 60€, vermutlich > X€)</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten aktualisieren sich automatisch auf 0€, sobald Freigrenze überschritten. Kein Reload nötig.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F03-009 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-009</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Produkt entfernen → Versandkosten wieder aktiv</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Zunächst > X€ (versandkostenfrei), dann Produkt entfernen → < X€</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkte im Wert > X€ in Warenkorb</li>
+        <li>Zu /checkout navigieren (Versandkosten = 0€)</li>
+        <li>Ein Produkt entfernen, sodass Gesamtwert < X€ fällt</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten ändern sich SOFORT von 0€ auf Y€. Live-Update funktioniert bidirektional.</div>
+    </div>
+  </div>
+
+
+<!-- TC-F03-010 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-010</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">Leerer Warenkorb im Checkout</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: leer (0 Produkte), Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer direkt zu /checkout navigieren (ohne Produkte im Warenkorb)</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt sinnvollen Hinweis "Ihr Warenkorb ist leer" und verhindert Checkout. Kein Absturz. Optional: Button "Zum Shop" zum Weitershoppen. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div>
+    </div>
+  </div>
+
+
+<div class="automation-box">
+    <div class="automation-title">🤖 Automatisierungsempfehlung: Feature GM-F01</div>
+    <div class="automation-content">
+      <strong>Zu automatisieren:</strong>
+      <ul>
+        <li><strong>TC-F01-003, TC-F01-004:</strong> Grenzwert-Tests (5 und 1 Stern) (1 und 5 Sterne) → Schnell wiederholbar, klare Eingabe/Ausgabe</li>
+        <li><strong>TC-F01-002:</strong> Gast-Zugriff (EP ungültige Klasse) → Regression wichtig (muss bei jeder Änderung geprüft werden)</li>
+        <li><strong>TC-F01-009:</strong> XSS-Schutz → Sicherheitstest, sollte in CI/CD Pipeline laufen</li>
+        <li><strong>TC-F01-006:</strong> Durchschnittsberechnung → Mathematische Logik, ideal für Automatisierung</li>
+      </ul>
+      <strong>Manuell zu testen:</strong>
+      <ul>
+        <li><strong>TC-F01-008:</strong> Duplikat-Bewertung → Verhalten noch unklar (Block vs. Update), manuell explorieren</li>
+        <li><strong>TC-F01-001:</strong> Vollständiger Use Case (EP gültige Klasse) → UX-Aspekte (Layout, Feedback) manuell prüfen</li>
+        <li><strong>TC-F01-005:</strong> Textfeld-Länge → Grenzwert noch nicht bekannt, zunächst manuell ermitteln</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FEATURE 2: ALTERSVERIFIKATION
+     ══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-number">Feature 2</div>
+  <h2 class="section-title">Altersverifikation (GM-F02)</h2>
+
+  <div class="feature-header">
+    <div class="feature-id">GM-F02</div>
+    <div class="feature-name">Altersverifikation für alkoholische Produkte</div>
+  </div>
+
+  <!-- TC-F02-003 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-003</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Geburtsdatum genau 18 Jahre (Grenzwert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: Heute minus genau 18 Jahre (z.B. 13.03.2008 wenn heute 13.03.2026)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store (alkoholische Produkte) navigieren</li>
+        <li>Modal mit "Please enter your birth date" erscheint</li>
+        <li>Geburtsdatum eingeben: genau 18 Jahre alt</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal schließt sich. Store-Seite mit alkoholischen Produkten wird angezeigt. Zugriff gewährt.</div>
+    </div>
+  </div>
+
+  <!-- TC-F02-002 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-002</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Geburtsdatum unter 18 Jahren (ungültige Klasse)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: Heute minus 17 Jahre und 364 Tage (z.B. 14.03.2008 wenn heute 13.03.2026)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Geburtsdatum eingeben: 1 Tag unter 18 Jahren</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Zugriff verweigert. Hinweistext "Sie müssen mindestens 18 Jahre alt sein" oder ähnlich. Store-Produkte werden NICHT angezeigt.</div>
+    </div>
+  </div>
+
+  <!-- TC-F02-001 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-001</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Geburtsdatum über 18 Jahre (gültige Klasse)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 01.01.2000 (26 Jahre alt)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Geburtsdatum eingeben: deutlich über 18 Jahren</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal schließt sich. Store-Seite wird vollständig angezeigt. Zugriff gewährt.</div>
+    </div>
+  </div>
+
+  <!-- TC-F02-008 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-008</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">Ungültiges Datum (z.B. 31. Februar)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 31.02.2000 (ungültig)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Ungültiges Datum eingeben</li>
+        <li>Versuchen, zu bestätigen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt Fehlermeldung "Ungültiges Datum" oder verhindert Eingabe (z.B. Datepicker erlaubt nur gültige Daten). Zugriff wird nicht gewährt. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div>
+    </div>
+  </div>
+
+  <!-- TC-F02-009 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-009</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">Leeres Datumsfeld</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: leer (keine Eingabe)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>KEIN Datum eingeben (Feld leer lassen)</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt Fehlermeldung "Bitte geben Sie Ihr Geburtsdatum ein" oder ähnlich. Zugriff wird nicht gewährt. Button ist ggf. deaktiviert, solange Feld leer ist.</div>
+    </div>
+  </div>
+
+  <!-- TC-F02-005 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-005</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Modal erscheint nur beim ersten Aufruf (Session-basiert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 01.01.1990 (über 18), Session: aktiv</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren (erstmals in Session)</li>
+        <li>Modal erscheint, Geburtsdatum eingeben (über 18)</li>
+        <li>Store-Seite wird angezeigt</li>
+        <li>Auf andere Seite navigieren (z.B. Home)</li>
+        <li>Zurück zu /store navigieren (innerhalb derselben Session)</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal erscheint beim zweiten Aufruf NICHT erneut. Store-Seite wird direkt angezeigt. Session-Daten bleiben erhalten.</div>
+    </div>
+  </div>
+
+  <!-- TC-F02-006 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-006</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Modal erscheint nach Browser-Neustart erneut</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 15.05.1995 (über 18), Session: neu nach Browser-Neustart</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren, Modal mit Geburtsdatum ausfüllen (über 18)</li>
+        <li>Browser komplett schließen</li>
+        <li>Browser neu starten</li>
+        <li>Erneut auf /store navigieren</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal erscheint ERNEUT, da Session beendet wurde. Nutzer muss Geburtsdatum erneut eingeben. <em>→ Session-Dauer laut HA4 noch zu klären!</em></div>
+    </div>
+  </div>
+
+  <!-- TC-F02-007 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-007</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Modal in neuem Tab/Fenster</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 20.12.1988 (über 18), neuer Tab/Fenster</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>In Tab 1: Auf /store navigieren, Modal ausfüllen (über 18)</li>
+        <li>Store-Seite wird angezeigt</li>
+        <li>Neuen Tab/Fenster öffnen</li>
+        <li>In Tab 2: Auf /store navigieren</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Modal erscheint in Tab 2 NICHT erneut, wenn Session geteilt wird. Andernfalls: Modal erscheint erneut. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div>
+    </div>
+  </div>
+
+  <!-- TC-F02-004 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F02-004</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Zukünftiges Geburtsdatum (ungültiger Grenzwert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Geburtsdatum: 01.01.2030 (in der Zukunft)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Auf /store navigieren</li>
+        <li>Modal erscheint</li>
+        <li>Zukünftiges Datum eingeben</li>
+        <li>"Bestätigen" klicken</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt Fehlermeldung "Geburtsdatum kann nicht in der Zukunft liegen" oder verhindert Eingabe. Zugriff wird nicht gewährt.</div>
+    </div>
+  </div>
+
+  <div class="automation-box">
+    <div class="automation-title">🤖 Automatisierungsempfehlung: Feature GM-F02</div>
+    <div class="automation-content">
+      <strong>Zu automatisieren:</strong>
+      <ul>
+        <li><strong>TC-F02-003, TC-F02-002:</strong> Grenzwert-Tests (genau 18, unter 18) (genau 18 Jahre, knapp darunter) → Kritische Geschäftslogik, muss bei jeder Änderung geprüft werden</li>
+        <li><strong>TC-F02-001:</strong> Gültige Klasse (über 18) (über 18) → Standardfall, schnell automatisierbar</li>
+        <li><strong>TC-F02-009:</strong> Leeres Feld → Validierung, ideal für Automatisierung</li>
+        <li><strong>TC-F02-005:</strong> Session-Persistenz → Regression wichtig, sollte in CI/CD laufen</li>
+      </ul>
+      <strong>Manuell zu testen:</strong>
+      <ul>
+        <li><strong>TC-F02-004:</strong> Ungültiges Datum → Verhalten noch unklar, zunächst manuell explorieren</li>
+        <li><strong>TC-F02-007, TC-F02-008:</strong> Browser-Neustart, Tabs → Session-Verhalten komplex, manuell prüfen</li>
+        <li><strong>TC-F02-009:</strong> Zukünftiges Datum → Edge Case, zunächst manuell testen</li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     FEATURE 3: VERSANDKOSTEN
+     ══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-number">Feature 3</div>
+  <h2 class="section-title">Versandkosten & Freigrenze (GM-F03)</h2>
+
+  <div class="feature-header">
+    <div class="feature-id">GM-F03</div>
+    <div class="feature-name">Versandkosten & Freigrenze</div>
+  </div>
+
+  <!-- TC-F03-004 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-004</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Bestellwert genau an Freigrenze X€ (Grenzwert)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Produkte im Wert von genau X€ (Freigrenze), Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkte im Wert von genau X€ in Warenkorb legen</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten = 0€. Hinweis "Versandkostenfrei ab X€" wird angezeigt. <em>→ Freigrenze X laut HA4 noch zu ermitteln!</em></div>
+    </div>
+  </div>
+
+  <!-- TC-F03-005 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-005</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Bestellwert X - 0,01€ (Grenzwert unter Freigrenze)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Produkte im Wert von X - 0,01€, Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkte im Wert von X - 0,01€ in Warenkorb legen</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten = Y€ (Standardversand). Hinweis "Noch 0,01€ bis zur kostenlosen Lieferung" oder ähnlich. <em>→ Versandkosten Y laut HA4 noch zu ermitteln!</em></div>
+    </div>
+  </div>
+
+  <!-- TC-F03-006 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-006</div>
+      <div class="testcase-technique">Grenzwertanalyse (BVA)</div>
+    </div>
+    <div class="testcase-title">Bestellwert X + 0,01€ (Grenzwert über Freigrenze)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Produkte im Wert von X + 0,01€, Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkte im Wert von X + 0,01€ in Warenkorb legen</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten = 0€. Freigrenze wurde erreicht.</div>
+    </div>
+  </div>
+
+  <!-- TC-F03-007 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-007</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Live-Update bei Warenkorbänderungen</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Zunächst Wert < X€, dann Produkt hinzufügen → Wert > X€</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkte im Wert von 20€ in Warenkorb (< X€)</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen (sollte Y€ sein)</li>
+        <li>Zurück zum Warenkorb, weiteres Produkt hinzufügen (Gesamtwert jetzt > X€)</li>
+        <li>Zu /checkout zurückkehren</li>
+        <li>Versandkosten erneut prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten ändern sich SOFORT von Y€ auf 0€. Keine Seiten-Refresh nötig. Live-Update funktioniert.</div>
+    </div>
+  </div>
+
+  <!-- TC-F03-008 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-008</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Live-Update bei Mengenänderung</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: 1× Produkt à 30€, dann Menge auf 2 erhöhen</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer 1× Produkt (30€) in Warenkorb</li>
+        <li>Zu /checkout navigieren (Versandkosten = Y€)</li>
+        <li>Menge des Produkts auf 2 erhöhen (Gesamtwert: 60€, vermutlich > X€)</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten aktualisieren sich automatisch auf 0€, sobald Freigrenze überschritten. Kein Reload nötig.</div>
+    </div>
+  </div>
+
+  <!-- TC-F03-001 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-001</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Checkout als Gast (ohne Login)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Produkte im Wert > X€, Nutzer: nicht eingeloggt (Gast)</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als Gast Produkte in Warenkorb legen</li>
+        <li>Versuchen, zu /checkout zu navigieren</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Weiterleitung zu /auth (Login-Seite). Checkout ist ohne Login nicht möglich. Versandkosten werden NICHT angezeigt. <em>→ Laut HA4: Checkout nur für eingeloggte Nutzer!</em></div>
+    </div>
+  </div>
+
+  <!-- TC-F03-010 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-010</div>
+      <div class="testcase-technique">Fehlerermessen (Error Guessing)</div>
+    </div>
+    <div class="testcase-title">Leerer Warenkorb im Checkout</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: leer (0 Produkte), Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer direkt zu /checkout navigieren (ohne Produkte im Warenkorb)</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">System zeigt sinnvollen Hinweis "Ihr Warenkorb ist leer" und verhindert Checkout. Kein Absturz. Optional: Button "Zum Shop" zum Weitershoppen. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div>
+    </div>
+  </div>
+
+  <!-- TC-F03-002 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-002</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Sehr niedriger Bestellwert (deutlich unter Freigrenze)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: 1 Produkt à 5€, Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer günstiges Produkt (5€) in Warenkorb</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten = Y€. Hinweis "Noch X - 5€ bis zur kostenlosen Lieferung" wird angezeigt.</div>
+    </div>
+  </div>
+
+  <!-- TC-F03-003 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-003</div>
+      <div class="testcase-technique">Äquivalenzklassenbildung (EP)</div>
+    </div>
+    <div class="testcase-title">Sehr hoher Bestellwert (deutlich über Freigrenze)</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Produkte im Wert von 200€, Nutzer: eingeloggt</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer viele Produkte (200€ Gesamtwert) in Warenkorb</li>
+        <li>Zu /checkout navigieren</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten = 0€. Freigrenze wurde deutlich überschritten.</div>
+    </div>
+  </div>
+
+  <!-- TC-F03-009 -->
+  <div class="testcase">
+    <div class="testcase-header">
+      <div class="testcase-id">TC-F03-009</div>
+      <div class="testcase-technique">Anwendungsfalltest (Use Case)</div>
+    </div>
+    <div class="testcase-title">Produkt entfernen → Versandkosten wieder aktiv</div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Eingabe</div>
+      <div class="testcase-content">Warenkorb: Zunächst > X€ (versandkostenfrei), dann Produkt entfernen → < X€</div>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Schritte</div>
+      <ol class="testcase-steps">
+        <li>Als eingeloggter Nutzer Produkte im Wert > X€ in Warenkorb</li>
+        <li>Zu /checkout navigieren (Versandkosten = 0€)</li>
+        <li>Ein Produkt entfernen, sodass Gesamtwert < X€ fällt</li>
+        <li>Versandkosten prüfen</li>
+      </ol>
+    </div>
+    
+    <div class="testcase-row">
+      <div class="testcase-label">Erwartetes Ergebnis</div>
+      <div class="testcase-content">Versandkosten ändern sich SOFORT von 0€ auf Y€. Live-Update funktioniert bidirektional.</div>
+    </div>
+  </div>
+
+  <div class="automation-box">
+    <div class="automation-title">🤖 Automatisierungsempfehlung: Feature GM-F03</div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     ZUSAMMENFASSUNG
+     ══════════════════════════════════════════ -->
+<div class="section">
+  <div class="section-number">Zusammenfassung</div>
+  <h2 class="section-title">Testfall-Übersicht & Automatisierung</h2>
+
+  <h3 style="font-size: 1.1rem; margin: 2rem 0 1rem; color: var(--text);">Testfälle nach Feature</h3>
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Feature</th>
+        <th>Testfälle gesamt</th>
+        <th>Automatisierung empfohlen</th>
+        <th>Manuell empfohlen</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>GM-F01 (Bewertungssystem)</td>
+        <td>9</td>
+        <td>5 (TC-001, 002, 003, 007, 009)</td>
+        <td>4 (TC-004, 006, 008)</td>
+      </tr>
+      <tr>
+        <td>GM-F02 (Altersverifikation)</td>
+        <td>9</td>
+        <td>5 (TC-001, 002, 003, 005, 006)</td>
+        <td>4 (TC-004, 007, 008, 009)</td>
+      </tr>
+      <tr>
+        <td>GM-F03 (Versandkosten)</td>
+        <td>10</td>
+        <td>9 (TC-001, 002, 003, 004, 005, 006, 008, 009, 010)</td>
+        <td>1 (TC-007)</td>
+      </tr>
+      <tr>
+        <td><strong>Gesamt</strong></td>
+        <td><strong>28</strong></td>
+        <td><strong>19 (68%)</strong></td>
+        <td><strong>9 (32%)</strong></td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3 style="font-size: 1.1rem; margin: 2rem 0 1rem; color: var(--text);">Testentwurfs-Techniken im Einsatz</h3>
+  <table class="summary-table">
+    <thead>
+      <tr>
+        <th>Technik</th>
+        <th>Anzahl Testfälle</th>
+        <th>Prozent</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Äquivalenzklassenbildung (EP)</td>
+        <td>7</td>
+        <td>25%</td>
+      </tr>
+      <tr>
+        <td>Grenzwertanalyse (BVA)</td>
+        <td>8</td>
+        <td>29%</td>
+      </tr>
+      <tr>
+        <td>Anwendungsfalltest (Use Case)</td>
+        <td>7</td>
+        <td>25%</td>
+      </tr>
+      <tr>
+        <td>Fehlerermessen (Error Guessing)</td>
+        <td>6</td>
+        <td>21%</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div class="learn-box" style="background: var(--auto-bg); border-left-color: var(--auto);">
+    <div class="learn-box-title" style="color: var(--auto);">💡 Warum 68% Automatisierung?</div>
+    <div class="learn-box-content">
+      Die hohe Automatisierungsquote (68%) ist sinnvoll, weil:
+      <ul style="margin: .5rem 0 0 1.2rem; list-style: disc;">
+        <li><strong>Grenzwert-Tests:</strong> Kritische Geschäftslogik (Alter 18+, Versandkosten-Freigrenze), muss häufig geprüft werden</li>
+        <li><strong>Regression wichtig:</strong> Features betreffen Kernsystem (Login, Checkout), Änderungen könnten andere Bereiche beeinflussen</li>
+        <li><strong>Mathematische Logik:</strong> Bewertungs-Durchschnitt, Preisberechnung → ideal für Automatisierung</li>
+        <li><strong>Sicherheitstests:</strong> XSS-Schutz sollte in CI/CD Pipeline laufen</li>
+      </ul>
+      Manuelle Tests bleiben wichtig für: UX-Aspekte, unklare Anforderungen (offene Punkte aus HA4), explorative Tests.
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer><p class="source-note">HA5 · Masterschool QA-Track · Testfallentwurf nach CTFL 4.0.2 · grocerymate.masterschool.com</p></footer>
+
+</body>
+</html>
