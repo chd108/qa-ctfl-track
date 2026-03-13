@@ -5,42 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="HA5 Testkonzept GroceryMate als Formular/Druckversion nach IEEE 829 / CTFL 4.0.2.">
   <title>Testkonzept-Formular — GroceryMate HA5</title>
+  <link rel="stylesheet" href="../assets/css/formular-base.css">
   <style>
-    :root {
-      --text:  #1a1a1a;
-      --mid:   #444;
-      --soft:  #777;
-      --bdr:   #c8c8c8;
-      --light: #f2f2f2;
-      --head:  #2a3a3a;
-      --acc:   #4a7c59;
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: #e8e4de;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 10pt;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem 4rem;
-      gap: 2.5rem;
-    }
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.5rem;
-    }
-    .a4 {
-      width: 210mm;
-      min-height: 297mm;
-      background: #fff;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-      padding: 16mm 18mm;
-      position: relative;
-      page-break-after: always;
-    }
+    /* Lokale Ergänzungen: Akzentfarbe, Grundschriftgröße; Rest aus formular-base.css */
+    :root { --acc: #4a7c59; }
+    body { font-size: 10pt; }
     .doc-header {
       text-align: center;
       border-bottom: 3px solid var(--head);
@@ -168,62 +137,6 @@
       line-height: 1.5;
     }
     .compact-list li { margin: 0.5mm 0; }
-    .page-footer {
-      position: absolute;
-      bottom: 12mm;
-      left: 18mm;
-      right: 18mm;
-      padding-top: 2mm;
-      border-top: 1px solid var(--bdr);
-      font-size: 7.5pt;
-      color: var(--soft);
-      text-align: center;
-    }
-
-    /* ── Obere Navigation (minimal, nur für Bildschirm) ── */
-    .form-page-nav {
-      width: 100%;
-      max-width: 210mm;
-      margin-bottom: 1rem;
-      padding: 0.4rem 0;
-      border-bottom: 1px solid var(--bdr);
-    }
-    .form-page-nav ul {
-      list-style: none;
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.35rem 0.75rem;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-      font-size: 8.5pt;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-    }
-    .form-page-nav a {
-      color: var(--soft);
-      text-decoration: none;
-    }
-    .form-page-nav a:hover { text-decoration: underline; }
-    .form-page-nav a.current { color: var(--head); font-weight: 700; }
-    .skip-link {
-      position: absolute;
-      left: -9999px;
-      top: 0;
-      z-index: 9999;
-      padding: 0.25rem 0.5rem;
-      background: #fff;
-      color: var(--head);
-      font-size: 8pt;
-      text-decoration: none;
-      border: 1px solid var(--bdr);
-    }
-    .skip-link:focus { left: 0.5rem; top: 0.5rem; }
-
-    @media print {
-      body { background: white; padding: 0; }
-      .a4 { box-shadow: none; margin: 0; }
-      .form-page-nav, .skip-link { display: none !important; }
-    }
   </style>
 </head>
 <body>
