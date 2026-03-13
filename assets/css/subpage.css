@@ -1,12 +1,5 @@
 /* Gemeinsame Layout-Schicht für alle Unterseiten (pages/)
-   Rücklink, Überschrift und Untertitel einheitlich.
-   .page-chrome umschließt Rücklink + Header, damit z. B. body { gap } den Abstand
-   Rücklink → Titel nicht vergrößert (Abstand kommt aus .back-link margin-bottom in base). */
-
-.back-link {
-  text-align: center;
-  font-size: 1.05rem;
-}
+   Überschrift und Untertitel einheitlich. */
 
 header {
   margin-bottom: var(--header-margin-bottom);
