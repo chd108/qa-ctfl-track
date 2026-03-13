@@ -4,60 +4,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="HA4 Testbasis-Analyse GroceryMate als Druckversion (4 Seiten).">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <link rel="stylesheet" href="../assets/css/formular-base.css">
   <title>Testbasis-Analyse — GroceryMate HA4</title>
   <style>
+    /* Lokale Ergänzungen: Schriftgröße, HA4-Farben, page-chrome; Basis aus formular-base.css */
     :root {
-      --text:  #1a1a1a;
-      --mid:   #444;
-      --soft:  #777;
-      --bdr:   #c8c8c8;
-      --light: #f2f2f2;
-      --head:  #2a3a3a;
-      --acc:   #4a7c59;
-      --open:  #8a5a6a;
+      --acc:  #4a7c59;
+      --open: #8a5a6a;
     }
+    body { font-size: 11pt; }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-
-    /* Rücklink + Header + Nav + Quellenzeile wie alle Unterseiten: Georgia + Basis-Farben (base.css) */
-    .back-link, .main-nav, header, header h1, header p,
+    /* Page-Chrome (Nav + Header) — Bildschirm, bei Druck ausgeblendet */
+    .page-chrome {
+      width: 100%;
+      max-width: 210mm;
+      margin-bottom: 1rem;
+    }
+    .page-chrome .form-page-nav { font-family: Georgia, 'Palatino Linotype', serif; font-size: 0.95rem; }
+    .page-chrome .form-page-nav ul { gap: 0.5rem 1rem; }
+    .page-chrome .form-page-nav a { color: #7a9090; }
+    .page-chrome .form-page-nav a.current { color: #283535; }
+    .page-chrome header, .page-chrome header h1, .page-chrome header p,
     .source-note {
       font-family: Georgia, 'Palatino Linotype', serif;
     }
-    .back-link a, .main-nav a { color: #7a9090; }
-    .main-nav a.current { color: #283535; }
-    header h1, header p { color: #283535; }
+    .page-chrome header { text-align: center; margin-bottom: 1rem; }
+    .page-chrome header h1 { font-size: 1.6rem; font-weight: normal; letter-spacing: .05em; color: #283535; }
+    .page-chrome header p { margin-top: 0.4rem; font-size: 1.05rem; font-style: italic; color: #283535; }
+    .source-note { margin-top: 1.5rem; text-align: center; font-size: 1.05rem; font-style: italic; color: #283535; }
 
-    body {
-      background: #e8e4de;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 11pt;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 2rem 1rem 4rem;
-      gap: 2.5rem;
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 2.5rem;
-    }
-
-    /* ── A4 Page ── */
-    .a4 {
-      width: 210mm;
-      min-height: 297mm;
-      background: #fff;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-      padding: 16mm 18mm 16mm 18mm;
-      position: relative;
-      page-break-after: always;
-    }
+    /* HA4-Seitenfuß: flex statt zentriert (zwei Spalten) */
+    .page-footer { display: flex; justify-content: space-between; text-align: left; }
 
     /* ── Document Header ── */
     .doc-header {
@@ -307,17 +284,8 @@
     }
     .page-guide-note strong { color: var(--open); }
 
-    /* ── Doc footer ── */
-    .doc-footer {
-      border-top: 1px solid var(--bdr);
-      margin-top: 10pt; padding-top: 5pt;
-      display: flex; justify-content: space-between;
-      font-size: 7.5pt; color: var(--soft);
-    }
-
     @media print {
-      body { background: white; padding: 0; }
-      .a4 { box-shadow: none; margin: 0; }
+      .page-chrome, footer { display: none !important; }
     }
   </style>
 </head>
@@ -326,7 +294,7 @@
 <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
 <div class="page-chrome">
-<nav class="main-nav" aria-label="Hauptnavigation">
+<nav class="form-page-nav" aria-label="Hauptnavigation">
   <ul>
     <li><a href="../index.html">Übersicht</a></li>
     <li><a href="testuniversum.html">Testuniversum</a></li>
@@ -462,7 +430,7 @@
     <span class="status-badge status-open">Offene Punkte vorhanden</span>
   </div>
 
-  <div class="doc-footer">
+  <div class="page-footer">
     <span>Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3</span>
     <span>Seite 1 von 4</span>
   </div>
@@ -587,7 +555,7 @@
     <span class="status-badge status-open">Offene Punkte vorhanden</span>
   </div>
 
-  <div class="doc-footer">
+  <div class="page-footer">
     <span>Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3</span>
     <span>Seite 2 von 4</span>
   </div>
@@ -706,7 +674,7 @@
     <span class="status-badge status-open">Werte X und Y ausstehend</span>
   </div>
 
-  <div class="doc-footer">
+  <div class="page-footer">
     <span>Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3</span>
     <span>Seite 3 von 4</span>
   </div>
@@ -787,11 +755,10 @@
     </div>
   </div>
 
-  <div class="doc-footer">
+  <div class="page-footer">
     <span>Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3</span>
     <span>Seite 4 von 4</span>
   </div>
-
 </div>
 
 <footer><p class="source-note">HA4 · Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3 · grocerymate.masterschool.com</p></footer>
