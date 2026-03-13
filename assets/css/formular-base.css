@@ -16,12 +16,14 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 body {
-  background: #e8e4de;
+  background: var(--bg);
+  background-image: radial-gradient(circle, rgba(0,0,0,0.028) 1px, transparent 1px);
+  background-size: 22px 22px;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 2rem 1rem 4rem;
+  padding: 2.5rem 3rem 4rem;
   gap: 2.5rem;
 }
 
@@ -54,30 +56,23 @@ main {
   text-align: center;
 }
 
-.form-page-nav {
-  width: 100%;
-  max-width: 210mm;
-  margin-bottom: 1rem;
-  padding: 0.4rem 0;
-  border-bottom: 1px solid var(--bdr);
+/* Obere Navigation: Optik wie base.css (Font/Farben), body/:root nicht überschreiben */
+.top-nav-zone .main-nav,
+.top-nav-zone .main-nav a {
+  font-family: Georgia, 'Palatino Linotype', serif;
 }
-.form-page-nav ul {
-  list-style: none;
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.35rem 0.75rem;
-  justify-content: center;
-  margin: 0;
-  padding: 0;
-  font-size: 8.5pt;
-  font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+.top-nav-zone .main-nav a {
+  color: #7a9090;
+  line-height: 1.35;
 }
-.form-page-nav a {
-  color: var(--soft);
-  text-decoration: none;
+.top-nav-zone .main-nav a:hover { text-decoration: underline; }
+.top-nav-zone .main-nav a.current {
+  color: #283535;
+  font-weight: normal;
+  border-bottom-color: #283535;
 }
-.form-page-nav a:hover { text-decoration: underline; }
-.form-page-nav a.current { color: var(--head); font-weight: 700; }
+
+/* page-chrome: Optik aus base.css */
 
 .skip-link {
   position: absolute;
@@ -96,5 +91,5 @@ main {
 @media print {
   body { background: white; padding: 0; }
   .a4 { box-shadow: none; margin: 0; }
-  .form-page-nav, .skip-link { display: none !important; }
+  .top-nav-zone, .main-nav, .skip-link { display: none !important; }
 }

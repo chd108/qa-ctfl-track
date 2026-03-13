@@ -20,6 +20,8 @@
   --e4: #ddc48a;
   --e5: #d4c4e0;
   --e6: #c8d4cc;
+  /* Formularseiten (Hausaufgaben-Druckversionen): leicht dunklere Nuance von --e3 */
+  --e3form: #cfbdb6;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -37,11 +39,31 @@ header { text-align: center; }
 header h1 { font-weight: normal; letter-spacing: .05em; }
 header p { font-style: italic; color: var(--soft); }
 
-/* Hauptnavigation: einheitlich auf allen Seiten */
+/* Globale obere Navigationszone: volle Viewport-Breite, feste Optik (kein Variablen-Erbe) */
+.top-nav-zone {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: var(--bg);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+.top-nav-zone .main-nav { margin-bottom: 0; border-bottom: none; }
+
+/* Oberer Rahmen unter der Nav: einheitlich auf allen Unterseiten (normal, Formular, Visualisierung) */
+.page-chrome {
+  width: 100%;
+  align-self: stretch;
+  background: var(--bg);
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+}
+
+main { width: 100%; }
+
+/* Hauptnavigation: einheitlich auf allen Seiten, unabhängig von body (Höhe, Schrift) */
 .main-nav {
   margin-bottom: 1rem;
   padding: 0.5rem 0;
   border-bottom: 1px solid var(--bdr);
+  font-family: Georgia, 'Palatino Linotype', serif;
 }
 .main-nav ul {
   list-style: none;
@@ -53,12 +75,15 @@ header p { font-style: italic; color: var(--soft); }
   padding: 0;
 }
 .main-nav a {
+  font-family: Georgia, 'Palatino Linotype', serif;
   font-size: 0.95rem;
-  color: var(--soft);
+  line-height: 1.35;
+  color: #7a9090;
   text-decoration: none;
+  border-bottom: 1px solid transparent;
 }
 .main-nav a:hover { text-decoration: underline; }
-.main-nav a.current { color: var(--text); font-weight: 600; }
+.main-nav a.current { color: #283535; font-weight: normal; border-bottom-color: #283535; }
 
 /* Skip-Link: für Tastatur/Screenreader zum Hauptinhalt springen */
 .skip-link {

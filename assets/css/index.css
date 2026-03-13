@@ -145,6 +145,7 @@ header p {
 .c1 .card-header { background: var(--e1); }
 .c2 .card-header { background: var(--e2); }
 .c3 .card-header { background: var(--e3); }
+.c-form .card-header { background: var(--e3form); }
 .c4 .card-header { background: var(--e4); }
 .c5 .card-header { background: var(--e5); }
 .c6 .card-header { background: var(--e6); }

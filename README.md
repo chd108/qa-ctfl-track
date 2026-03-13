@@ -16,8 +16,8 @@ Kostenlose Lernmaterialien zu Software Testing / QA und ISTQB CTFL. Jede HTML-Se
 
 | Pfad | Beschreibung |
 |------|--------------|
-| `index.html` | Einstieg, Kartenübersicht aller Lernseiten (Reihenfolge: Testuniversum, Kap. 4, Terminologie → Hausaufgaben → Visualisierungen) |
-| `pages/` | Einzelne Lernseiten: Testuniversum, Testverfahren (Kap. 4), Glossar, HA-Einordnung, HA4 Anforderungsanalyse, HA4 Formular, HA5 Testkonzept, HA5 Testkonzept Formular, HA5 Testfallentwurf, HA5 Testfallentwurf Formular, SDLC Hypozykel (statisch/animiert) |
+| `index.html` | Einstieg, Kartenübersicht aller Lernseiten – Karten ersetzen die obere Nav; bewusste Ausnahme vom gemeinsamen Seitenrahmen der Unterseiten (Reihenfolge: Testuniversum, Kap. 4, Terminologie → Hausaufgaben → Visualisierungen) |
+| `pages/` | Einzelne Lernseiten: Testuniversum, Testverfahren (Kap. 4), Glossar, HA-Einordnung, HA4 Anforderungsanalyse, HA4 Testbasis-Analyse Formular, HA5 Testkonzept, HA5 Testkonzept Formular, HA5 Testfallentwurf, HA5 Testfallentwurf Formular, SDLC Hypozykel (statisch/animiert) |
 | `assets/css/` | Gemeinsames CSS: `base.css` (Hauptseiten), `formular-base.css` (HA5-Formularseiten: A4, Druck, Nav, page-footer) |
 | `assets/js/` | Ausgelagerte Skripte für die Hypozykel-Seiten (`sdlc-hypocycle-statisch.js`, `sdlc-hypocycle-animiert.js`) |
 

@@ -5,11 +5,19 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="HA5 Testkonzept GroceryMate als Formular/Druckversion nach IEEE 829 / CTFL 4.0.2.">
   <title>Testkonzept-Formular — GroceryMate HA5</title>
+  <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/formular-base.css">
   <style>
-    /* Lokale Ergänzungen: Akzentfarbe, Grundschriftgröße; Rest aus formular-base.css */
+    /* Lokale Ergänzungen: Akzentfarbe, Grundschriftgröße, sichtbarer Rahmen; Rest aus formular-base.css */
     :root { --acc: #4a7c59; }
     body { font-size: 10pt; }
+
+    /* Page-Chrome: bei Druck ausgeblendet; Optik aus base.css */
+    .page-chrome header { text-align: center; margin-bottom: 2rem; }
+    .page-chrome header h1 { font-size: 1.6rem; font-weight: normal; letter-spacing: .05em; color: #283535; }
+    .page-chrome header p { margin-top: 0.4rem; font-size: 1.05rem; font-style: italic; color: #283535; }
+    .source-note { margin-top: 1.5rem; text-align: center; font-size: 1.05rem; font-style: italic; color: #283535; font-family: Georgia, 'Palatino Linotype', serif; }
+    @media print { .top-nav-zone, .page-chrome, footer { display: none !important; } }
     .doc-header {
       text-align: center;
       border-bottom: 3px solid var(--head);
@@ -143,7 +151,8 @@
 
 <a href="#main" class="skip-link">Zum Inhalt springen</a>
 
-<nav class="form-page-nav" aria-label="Hauptnavigation">
+<div class="top-nav-zone">
+<nav class="main-nav" aria-label="Hauptnavigation">
   <ul>
     <li><a href="../index.html">Übersicht</a></li>
     <li><a href="testuniversum.html">Testuniversum</a></li>
@@ -151,15 +160,22 @@
     <li><a href="glossar.html">Glossar</a></li>
     <li><a href="ha-einordnung.html">HA-Einordnung</a></li>
     <li><a href="ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
-    <li><a href="ha4-formular.html">HA4 Formular</a></li>
+    <li><a href="ha4-formular.html">HA4 Testbasis-Analyse Formular</a></li>
     <li><a href="ha5-testkonzept.html">HA5 Testkonzept</a></li>
     <li><a href="ha5-testkonzept-formular.html" class="current">HA5 Testkonzept Formular</a></li>
     <li><a href="ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
     <li><a href="ha5-testfallentwurf-formular.html">HA5 Testfallentwurf Formular</a></li>
-    <li><a href="sdlc-istqb-animiert.html">SDLC animiert</a></li>
     <li><a href="sdlc-istqb-statisch.html">SDLC statisch</a></li>
+    <li><a href="sdlc-istqb-animiert.html">SDLC animiert</a></li>
   </ul>
 </nav>
+</div>
+<div class="page-chrome">
+<header>
+  <h1>HA5 Testkonzept Formular</h1>
+  <p>Testkonzept GroceryMate · 3 Seiten · CTFL 4.0.2 / IEEE 829</p>
+</header>
+</div>
 
 <main id="main">
 
@@ -752,6 +768,8 @@
 </div>
 
 </main>
+
+<footer><p class="source-note">HA5 · Masterschool QA-Track · Testkonzept nach CTFL 4.0.2 / IEEE 829 · grocerymate.masterschool.com</p></footer>
 
 </body>
 </html>
