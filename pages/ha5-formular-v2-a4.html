@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HA5 Testkonzept Formular GroceryMate — A4-/Dokumentmodus (V2).">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>HA5 Testkonzept Formular — A4-Dokument (V2)</title>
+  <style>
+    /* ─── V2-Rahmen: unverändert; A4-Modus nur im Hauptinhalt ─── */
+    body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
+
+    /* ─── Dokumentmodus: Farben und Maßsystem (wie HA4 A4) ─── */
+    .doc-mode {
+      --doc-text:  #1a1a1a;
+      --doc-mid:   #444;
+      --doc-soft:  #777;
+      --doc-bdr:   #c8c8c8;
+      --doc-light: #f2f2f2;
+      --doc-head:  #2a3a3a;
+      --doc-acc:   #4a7c59;
+      --doc-open:  #8a5a6a;
+    }
+
+    /* ─── A4-Dokumentblock ─── */
+    .doc-a4 {
+      width: 210mm;
+      min-height: 297mm;
+      background: #fff;
+      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+      padding: 16mm 18mm;
+      position: relative;
+      page-break-after: always;
+      margin-bottom: 2rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11pt;
+      color: var(--doc-text);
+    }
+    .doc-a4:last-of-type { margin-bottom: 0; }
+
+    /* ─── Dokumentkopf (pro Blatt) ─── */
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2.5px solid var(--doc-head);
+      padding-bottom: 6pt;
+      margin-bottom: 10pt;
+    }
+    .doc-header__left h1 {
+      font-size: 14pt;
+      font-weight: 700;
+      color: var(--doc-head);
+      letter-spacing: .02em;
+      margin: 0;
+    }
+    .doc-header__left p {
+      font-size: 8.5pt;
+      color: var(--doc-soft);
+      margin-top: 2pt;
+    }
+    .doc-header__right {
+      text-align: right;
+      font-size: 8pt;
+      color: var(--doc-soft);
+      line-height: 1.6;
+    }
+    .doc-header__right strong { color: var(--doc-text); }
+
+    /* ─── Abschnitts-Streifen (wie Feature-Strip bei HA4) ─── */
+    .doc-section-strip {
+      background: var(--doc-head);
+      color: #fff;
+      padding: 5pt 0 5pt 10pt;
+      font-size: 11pt;
+      font-weight: 700;
+      letter-spacing: .04em;
+      margin-bottom: 8pt;
+      display: flex;
+      align-items: center;
+      gap: 12pt;
+    }
+    .doc-section-strip__num {
+      font-size: 8pt;
+      font-weight: 700;
+      letter-spacing: .14em;
+      text-transform: uppercase;
+      opacity: .8;
+    }
+
+    /* ─── Dokumentinhalt (V2-Struktur, Dokumentoptik) ─── */
+    .doc-body { padding: 0; }
+
+    .doc-body .form-meta {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      border: 1px solid var(--doc-bdr);
+      margin-bottom: 8pt;
+    }
+    .doc-body .form-meta__cell {
+      padding: 4pt 7pt;
+      border-right: 1px solid var(--doc-bdr);
+    }
+    .doc-body .form-meta__cell:last-child { border-right: none; }
+    .doc-body .form-meta__label {
+      font-size: 7pt;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--doc-soft);
+      margin-bottom: 2pt;
+    }
+    .doc-body .form-meta__value {
+      font-size: 9.5pt;
+      color: var(--doc-text);
+      font-weight: 600;
+    }
+
+    .doc-body .form-field { margin-bottom: 8pt; }
+    .doc-body .form-field__label {
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--doc-soft);
+      margin-bottom: 2pt;
+    }
+    .doc-body .form-field__value {
+      font-size: 9.5pt;
+      color: var(--doc-text);
+      line-height: 1.45;
+      border: 1px solid var(--doc-bdr);
+      padding: 5pt 7pt;
+      background: var(--doc-light);
+    }
+
+    .doc-body .doc-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8pt;
+      margin-bottom: 8pt;
+    }
+    .doc-body .doc-grid-3 {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 8pt;
+      margin-bottom: 8pt;
+    }
+
+    .doc-body .ref-table table {
+      width: 100%;
+      border-collapse: collapse;
+      border: 1px solid var(--doc-bdr);
+      margin-bottom: 8pt;
+      font-size: 9pt;
+    }
+    .doc-body .ref-table thead tr { background: var(--doc-head); color: #fff; }
+    .doc-body .ref-table thead th {
+      padding: 4pt 7pt;
+      text-align: left;
+      font-size: 7.5pt;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+    }
+    .doc-body .ref-table tbody tr { border-bottom: 1px solid var(--doc-bdr); }
+    .doc-body .ref-table tbody tr:last-child { border-bottom: none; }
+    .doc-body .ref-table tbody tr:nth-child(even) { background: var(--doc-light); }
+    .doc-body .ref-table tbody td {
+      padding: 4.5pt 7pt;
+      vertical-align: top;
+      line-height: 1.45;
+    }
+
+    .doc-body .checkbox-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 6pt;
+      margin: 2pt 0;
+      font-size: 9pt;
+      line-height: 1.4;
+    }
+    .doc-body .checkbox-row__box {
+      width: 3.5mm;
+      height: 3.5mm;
+      border: 1px solid var(--doc-mid);
+      background: #fff;
+      flex-shrink: 0;
+      margin-top: 1.5pt;
+    }
+    .doc-body .checkbox-row__box.checked {
+      background: var(--doc-acc);
+      border-color: var(--doc-acc);
+    }
+    .doc-body .checkbox-row__box.checked::after {
+      content: "✓";
+      display: block;
+      text-align: center;
+      line-height: 3mm;
+      font-size: 8pt;
+      font-weight: 700;
+      color: #fff;
+    }
+
+    .doc-body .compact-list {
+      margin: 0;
+      padding-left: 1.2em;
+      font-size: 9pt;
+      line-height: 1.5;
+      color: var(--doc-text);
+    }
+    .doc-body .compact-list li { margin: 1.5pt 0; }
+
+    /* ─── Seitenfuß pro A4-Blatt ─── */
+    .doc-footer {
+      position: absolute;
+      bottom: 12mm;
+      left: 18mm;
+      right: 18mm;
+      padding-top: 2mm;
+      border-top: 1px solid var(--doc-bdr);
+      font-size: 7.5pt;
+      color: var(--doc-soft);
+      display: flex;
+      justify-content: space-between;
+      text-align: left;
+    }
+
+    /* ─── Meta-Bar (nur Bildschirm) ─── */
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      padding: .6rem 1rem;
+      margin-bottom: 1rem;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+    .meta-bar strong { color: var(--text); }
+
+    /* ─── Druck: Rahmen ausblenden, A4-Blöcke als Seiten ─── */
+    @media print {
+      .top-nav-zone,
+      .page-chrome,
+      .meta-bar,
+      main > footer { display: none !important; }
+      body { padding: 0; margin: 0; background: #fff; }
+      main { max-width: none; }
+      .doc-a4 {
+        box-shadow: none;
+        margin: 0;
+        page-break-after: always;
+        min-height: 0;
+      }
+      .doc-a4:last-of-type { page-break-after: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index.html">Übersicht</a></li>
+      <li><a href="testuniversum.html">Testuniversum</a></li>
+      <li><a href="testuniversum-v2.html">Testuniversum V2</a></li>
+      <li><a href="testverfahren-istqb.html">Testverfahren</a></li>
+      <li><a href="glossar.html">Glossar</a></li>
+      <li><a href="glossar-v2.html">Glossar V2</a></li>
+      <li><a href="testverfahren-v2.html">Testverfahren V2</a></li>
+      <li><a href="ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="ha4-anforderungsanalyse-v2.html">HA4 Anforderungsanalyse V2</a></li>
+      <li><a href="ha4-formular.html">HA4 Testbasis-Analyse Formular</a></li>
+      <li><a href="ha4-formular-v2.html">HA4 Formular V2</a></li>
+      <li><a href="ha4-formular-v2-a4.html">HA4 Formular A4 (V2)</a></li>
+      <li><a href="ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="ha5-testkonzept-v2.html">HA5 Testkonzept V2</a></li>
+      <li><a href="ha5-testkonzept-formular.html">HA5 Testkonzept Formular</a></li>
+      <li><a href="ha5-formular-v2-a4.html" class="current">HA5 Formular A4 (V2)</a></li>
+      <li><a href="ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="ha5-testfallentwurf-v2.html">HA5 Testfallentwurf V2</a></li>
+      <li><a href="ha5-testfallentwurf-formular.html">HA5 Testfallentwurf Formular</a></li>
+      <li><a href="ha5-testfallentwurf-formular-v2-a4.html">HA5 Testfallentwurf A4 (V2)</a></li>
+      <li><a href="sdlc-istqb-statisch.html">SDLC statisch</a></li>
+      <li><a href="sdlc-istqb-animiert.html">SDLC animiert</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>HA5 Testkonzept Formular — A4-Dokument</h1>
+    <p>Testkonzept GroceryMate · CTFL 4.0.2 / IEEE 829 · V2 Dokumentmodus</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Modushinweis">
+    <span><strong>Modus:</strong> A4-/Dokumentansicht</span>
+    <span><strong>Seiten:</strong> 3</span>
+    <span><strong>Projekt:</strong> GroceryMate (HA5)</span>
+    <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829</span>
+  </div>
+
+  <div class="doc-mode">
+    <!-- ═══ Blatt 1: Produktanalyse & Testumfang, Teststrategie ═══ -->
+    <article class="doc-a4" id="sheet-1" aria-labelledby="sheet1-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet1-heading">Testkonzept</h1>
+          <p>Test Plan nach IEEE 829 / CTFL 4.0.2</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> März 2026<br>
+          <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
+          <strong>Seite:</strong> 1 von 3
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="form-meta">
+          <div class="form-meta__cell"><div class="form-meta__label">Projekt</div><div class="form-meta__value">GroceryMate</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Version</div><div class="form-meta__value">1.0</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Datum</div><div class="form-meta__value">13.03.2026</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Verantwortlich</div><div class="form-meta__value">QA-Team</div></div>
+        </div>
+
+        <div class="doc-section-strip">
+          <span class="doc-section-strip__num">Abschnitt 1 / 8</span>
+          Produktanalyse &amp; Testumfang
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Testobjekt</div>
+          <div class="form-field__value">GroceryMate Online-Lebensmittel-Shop (grocerymate.masterschool.com)</div>
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Features im Test-Scope</div>
+          <div class="form-field__value">
+            <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F01:</strong> Bewertungssystem (1–5 Sterne, opt. Text, Login-Pflicht)</span></div>
+            <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F02:</strong> Altersverifikation (Geburtsdatum-Modal, 18+, session-basiert)</span></div>
+            <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F03:</strong> Versandkosten (Freigrenze X€, Live-Update, Login nötig)</span></div>
+          </div>
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Hardware/Software-Anforderungen</div>
+          <div class="ref-table">
+            <table>
+              <thead><tr><th>Kategorie</th><th>Spezifikation</th></tr></thead>
+              <tbody>
+                <tr><td>Browser</td><td>Chrome, Firefox, Safari, Edge (neueste 2 Versionen)</td></tr>
+                <tr><td>Geräte</td><td>Desktop (Windows, macOS), Mobile (iOS, Android), Tablets</td></tr>
+                <tr><td>Backend</td><td>grocerymate.masterschool.com, Session-Management (Cookie)</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="doc-section-strip">
+          <span class="doc-section-strip__num">Abschnitt 2 / 8</span>
+          Teststrategie
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Testarten</div>
+          <div class="doc-grid-2">
+            <div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Funktionstest</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Regressionstest</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Grenzwerttest</span></div>
+            </div>
+            <div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Usability-Test</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Kompatibilitätstest</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Sicherheitstest</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Testentwurfs-Techniken (CTFL 4.2)</div>
+          <div class="doc-grid-2">
+            <div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Äquivalenzklassenbildung (EP)</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Grenzwertanalyse (BVA)</span></div>
+            </div>
+            <div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Anwendungsfalltest</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Fehlerermessen</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Hauptrisiken &amp; Maßnahmen</div>
+          <div class="ref-table">
+            <table>
+              <thead><tr><th style="width:40%">Risiko</th><th>Maßnahme</th></tr></thead>
+              <tbody>
+                <tr><td>Unklare Anforderungen (Freigrenze X€, Versandkosten Y€)</td><td>Manuell ermitteln, mit PO abstimmen</td></tr>
+                <tr><td>Session-Persistenz unklar</td><td>Tests: Browser-Refresh, Tab-Wechsel, Neustart</td></tr>
+                <tr><td>Duplikat-Bewertungen (Block vs. Update)</td><td>Beide Szenarien testen, mit PO klären</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
+        <span>Seite 1 von 3</span>
+      </div>
+    </article>
+
+    <!-- ═══ Blatt 2: Testziele, Testkriterien ═══ -->
+    <article class="doc-a4" id="sheet-2" aria-labelledby="sheet2-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet2-heading">Testkonzept</h1>
+          <p>Test Plan nach IEEE 829 / CTFL 4.0.2</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> März 2026<br>
+          <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
+          <strong>Seite:</strong> 2 von 3
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-section-strip">
+          <span class="doc-section-strip__num">Abschnitt 3 / 8</span>
+          Testziele
+        </div>
+        <div class="doc-grid-2">
+          <div class="form-field">
+            <div class="form-field__label">Primäre Ziele</div>
+            <ul class="compact-list">
+              <li>Alle 3 Features funktionieren gemäß Spezifikation</li>
+              <li>Akzeptanzkriterien aus Testbasis-Analyse erfüllt</li>
+              <li>Keine Regression in bestehenden Features</li>
+              <li>Cross-Browser/Device Kompatibilität</li>
+            </ul>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Sekundäre Ziele</div>
+            <ul class="compact-list">
+              <li>Modal-UI intuitiv verständlich</li>
+              <li>Live-Update &lt;1 Sekunde</li>
+              <li>Keine XSS-Schwachstellen</li>
+              <li>Session-Daten sicher</li>
+            </ul>
+          </div>
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Erwartete Ergebnisse (messbar)</div>
+          <div class="ref-table">
+            <table>
+              <thead><tr><th style="width:60%">Metrik</th><th>Ziel</th></tr></thead>
+              <tbody>
+                <tr><td>Testfall-Ausführungsquote</td><td>≥ 95%</td></tr>
+                <tr><td>Testfall-Erfolgsquote</td><td>≥ 90%</td></tr>
+                <tr><td>Kritische Fehler (Severity 1)</td><td>0</td></tr>
+                <tr><td>Hochprioritäre Fehler (Severity 2)</td><td>Alle behoben</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="doc-section-strip">
+          <span class="doc-section-strip__num">Abschnitt 4 / 8</span>
+          Testkriterien
+        </div>
+        <div class="doc-grid-3">
+          <div class="form-field">
+            <div class="form-field__label">Entry Criteria</div>
+            <div class="form-field__value">
+              <ul class="compact-list">
+                <li>Features deployed</li>
+                <li>Testbasis-Analyse freigegeben</li>
+                <li>Testfälle reviewed</li>
+                <li>Testumgebung bereit</li>
+                <li>Login funktioniert</li>
+                <li>Testdaten vorhanden</li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Exit Criteria</div>
+            <div class="form-field__value">
+              <ul class="compact-list">
+                <li>≥95% Tests ausgeführt</li>
+                <li>≥90% Tests bestanden</li>
+                <li>0 Severity-1-Fehler</li>
+                <li>Max. 2 Severity-2-Fehler</li>
+                <li>Browser-Tests erfolgreich</li>
+                <li>UAT abgeschlossen</li>
+              </ul>
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Suspension Criteria</div>
+            <div class="form-field__value">
+              <ul class="compact-list">
+                <li>Kritische Blocker</li>
+                <li>Umgebung instabil</li>
+                <li>Build fehlgeschlagen</li>
+                <li>&gt;50% Team ausgefallen</li>
+                <li>&gt;10 kritische Fehler</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
+        <span>Seite 2 von 3</span>
+      </div>
+    </article>
+
+    <!-- ═══ Blatt 3: Ressourcen, Testumgebung, Zeitplan, Deliverables ═══ -->
+    <article class="doc-a4" id="sheet-3" aria-labelledby="sheet3-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet3-heading">Testkonzept</h1>
+          <p>Test Plan nach IEEE 829 / CTFL 4.0.2</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> März 2026<br>
+          <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
+          <strong>Seite:</strong> 3 von 3
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-section-strip">
+          <span class="doc-section-strip__num">Abschnitt 5 / 8</span>
+          Ressourcen
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Personal &amp; Rollen</div>
+          <div class="ref-table">
+            <table>
+              <thead><tr><th style="width:28%">Rolle</th><th>Verantwortung</th><th style="width:12%">Personen</th></tr></thead>
+              <tbody>
+                <tr><td>Testmanager</td><td>Planung, Koordination, Reporting, Risikomanagement</td><td>1</td></tr>
+                <tr><td>QA Engineer (Funktional)</td><td>Testfallentwurf, -durchführung, Regression</td><td>2</td></tr>
+                <tr><td>QA Engineer (Automatisierung)</td><td>Automatisierung, CI/CD-Integration</td><td>1</td></tr>
+                <tr><td>UX-Tester</td><td>Usability-Tests</td><td>1</td></tr>
+                <tr><td>Endnutzer (UAT)</td><td>User Acceptance Testing</td><td>3–5</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="doc-grid-2">
+          <div class="form-field">
+            <div class="form-field__label">Hardware</div>
+            <ul class="compact-list">
+              <li>Windows 10/11 PC (2×)</li>
+              <li>macOS (1×)</li>
+              <li>iPhone iOS 16+ (1×)</li>
+              <li>Android 12+ Smartphone (1×)</li>
+              <li>Tablet (1×)</li>
+            </ul>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Software &amp; Tools</div>
+            <ul class="compact-list">
+              <li>Browser: Chrome, Firefox, Safari, Edge</li>
+              <li>Testmanagement: JIRA/TestRail</li>
+              <li>Automatisierung: Selenium/Cypress</li>
+              <li>API-Testing: Postman</li>
+              <li>Performance: Google Lighthouse</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section-strip">
+          <span class="doc-section-strip__num">Abschnitt 6 / 8</span>
+          Testumgebung
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Umgebungen</div>
+          <div class="ref-table">
+            <table>
+              <thead><tr><th style="width:18%">Umgebung</th><th>Zweck</th><th style="width:32%">URL</th></tr></thead>
+              <tbody>
+                <tr><td>DEV</td><td>Entwicklung</td><td>dev.grocerymate.masterschool.com</td></tr>
+                <tr><td>TEST</td><td>QA-Tests (Funktional, Regression, Usability)</td><td>test.grocerymate.masterschool.com</td></tr>
+                <tr><td>ACC</td><td>UAT (User Acceptance Testing)</td><td>acc.grocerymate.masterschool.com</td></tr>
+                <tr><td>PROD</td><td>Live-System (nur Smoke-Tests)</td><td>grocerymate.masterschool.com</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Testdaten</div>
+          <div class="doc-grid-2">
+            <ul class="compact-list">
+              <li>10 Test-Accounts (eingeloggt)</li>
+              <li>2 Gast-Accounts</li>
+              <li>Min. 20 Produkte (inkl. Alkohol in /store)</li>
+            </ul>
+            <ul class="compact-list">
+              <li>Vorhandene Bewertungen (Durchschnitt testen)</li>
+              <li>Warenkorb-Szenarien (leer, 1–10 Produkte, Grenzwerte)</li>
+              <li>Geburtsdaten: &lt;18, =18, &gt;18 Jahre</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="doc-section-strip">
+          <span class="doc-section-strip__num">Abschnitt 7 / 8</span>
+          Zeitplan &amp; Aufwandsschätzung
+        </div>
+        <div class="ref-table">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:22%">Aktivität</th>
+                <th style="width:10%">Start</th>
+                <th style="width:10%">Ende</th>
+                <th style="width:10%">Umgebung</th>
+                <th style="width:20%">Verantwortlich</th>
+                <th style="width:10%">Aufwand (h)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>Testplanung</td><td>01.04.26</td><td>05.04.26</td><td>Alle</td><td>Testmanager</td><td>20</td></tr>
+              <tr><td>Testfallentwurf</td><td>06.04.26</td><td>12.04.26</td><td>Alle</td><td>QA-Team</td><td>40</td></tr>
+              <tr><td>Testdaten-Vorbereitung</td><td>13.04.26</td><td>15.04.26</td><td>TEST</td><td>QA-Team</td><td>15</td></tr>
+              <tr><td>Funktionstest (GM-F01, F02, F03)</td><td>16.04.26</td><td>24.04.26</td><td>TEST</td><td>QA Engineer</td><td>65</td></tr>
+              <tr><td>Regressionstest</td><td>25.04.26</td><td>28.04.26</td><td>TEST</td><td>QA-Team</td><td>30</td></tr>
+              <tr><td>Cross-Browser-Test</td><td>29.04.26</td><td>01.05.26</td><td>TEST</td><td>QA-Team</td><td>25</td></tr>
+              <tr><td>Usability-Test</td><td>02.05.26</td><td>03.05.26</td><td>TEST</td><td>UX-Tester</td><td>15</td></tr>
+              <tr><td>Bug-Fixing</td><td>04.05.26</td><td>08.05.26</td><td>DEV</td><td>Entwickler</td><td>40</td></tr>
+              <tr><td>Retest</td><td>09.05.26</td><td>11.05.26</td><td>TEST</td><td>QA-Team</td><td>20</td></tr>
+              <tr><td>UAT</td><td>12.05.26</td><td>16.05.26</td><td>ACC</td><td>Endnutzer</td><td>30</td></tr>
+              <tr><td>Abschlussbericht</td><td>17.05.26</td><td>18.05.26</td><td>—</td><td>Testmanager</td><td>10</td></tr>
+              <tr><td>Produktionsfreigabe</td><td>19.05.26</td><td>19.05.26</td><td>PROD</td><td>DevOps</td><td>5</td></tr>
+              <tr><td colspan="5" style="text-align: right; font-weight: 700;">GESAMT:</td><td style="font-weight: 700;">~315 h</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p style="font-size: 8pt; color: var(--doc-soft); margin-top: 2pt;">Projektdauer: 7 Wochen (01.04.2026 – 19.05.2026) · ca. 40 Arbeitstage</p>
+
+        <div class="doc-section-strip">
+          <span class="doc-section-strip__num">Abschnitt 8 / 8</span>
+          Test-Deliverables
+        </div>
+        <div class="ref-table">
+          <table>
+            <thead><tr><th style="width:28%">Deliverable</th><th>Beschreibung</th><th style="width:18%">Verantwortlich</th></tr></thead>
+            <tbody>
+              <tr><td>Testkonzept</td><td>Vollständiger Testplan mit 8 Abschnitten (IEEE 829 / CTFL 4.0.2)</td><td>Testmanager</td></tr>
+              <tr><td>Testbasis-Analyse (HA4)</td><td>Anforderungsanalyse der 3 Features nach IEEE 29119-3</td><td>Testmanager</td></tr>
+              <tr><td>Testfallentwurf</td><td>Detaillierte Testfälle (mind. 3 pro Feature), inkl. Testentwurfs-Technik</td><td>QA-Team</td></tr>
+              <tr><td>Testdaten-Dokumentation</td><td>Übersicht: Test-Accounts, Produkte, Warenkorb-Szenarien</td><td>QA-Team</td></tr>
+              <tr><td>Testausführungs-Protokoll</td><td>Log aller Tests mit Status (Pass/Fail/Blocked)</td><td>QA-Team</td></tr>
+              <tr><td>Bug-Reports</td><td>Fehlerberichte mit Screenshots, Steps to Reproduce, Severity/Priority</td><td>QA-Team</td></tr>
+              <tr><td>Testabschlussbericht</td><td>Zusammenfassung: Metriken, Coverage, offene Risiken</td><td>Testmanager</td></tr>
+              <tr><td>UAT-Signoff</td><td>Freigabe durch Endnutzer</td><td>Testmanager + Endnutzer</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="form-field" style="margin-top: 6pt;">
+          <div class="form-field__label">Metriken (im Abschlussbericht)</div>
+          <div class="doc-grid-2">
+            <ul class="compact-list">
+              <li>Test Execution Rate (%)</li>
+              <li>Pass Rate (%)</li>
+              <li>Defect Density (Fehler/Feature)</li>
+            </ul>
+            <ul class="compact-list">
+              <li>Defect Distribution (Severity 1–4)</li>
+              <li>Retest Success Rate (%)</li>
+              <li>Coverage (Akzeptanzkriterien %)</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
+        <span>Seite 3 von 3</span>
+      </div>
+    </article>
+  </div>
+
+  <footer>
+    <p class="source-note">HA5 · Masterschool QA-Track · Testkonzept nach CTFL 4.0.2 / IEEE 829 · grocerymate.masterschool.com · V2 A4-Dokumentmodus</p>
+  </footer>
+</main>
+</body>
+</html>
