@@ -40,7 +40,7 @@ Die Trennung schafft klare Zuständigkeiten, reduziert Rollenvermischung und erm
 
 ---
 
-*Ab Abschnitt 4: offene Klärungsfelder und Arbeitshypothesen – noch keine verbindlichen Festlegungen.*
+*Ab Abschnitt 4: konzeptioneller Arbeitsbereich – festgelegte Punkte (z. B. Abschn. 4), Arbeitsfassungen (Abschn. 5–7) und Sollableitungen (Abschn. 8).*
 
 ---
 
@@ -68,51 +68,85 @@ Die Trennung schafft klare Zuständigkeiten, reduziert Rollenvermischung und erm
 
 ---
 
-## 5. Seitentypen *(Klärungsfeld)*
+## 5. Seitentypen *(geklärt)*
 
-**Bereits erkennbar (Bestand):** Es gibt eine Startseite, Inhaltsseiten mit gemeinsamen Rahmenelementen und Formularseiten mit speziellem Inhaltsbereich.
+**Klärungsstand:** Punkt 5 ist inhaltlich weiter geklärt. Es gibt einen kanonischen Hauptseitentyp und einen definierten Sonderfall; die Einstiegsseite ist als Variante des Haupttyps eingeordnet.
 
-**Offen / zu klären:**
-- Welche Seitentypen wollen wir überhaupt unterscheiden (nur 2–3 oder feiner)? Noch nicht festgelegt.
-- Soll der Index dauerhaft als eigener Seitentyp mit Ausnahme vom „gemeinsamen Rahmen“ gelten – oder ist das nur aktueller Stand zur Diskussion?
-- Formularseiten: Ist die heutige Aufteilung (sichtbarer Rahmen vs. A4-/Formular-Bereich) endgültig oder nur Arbeitshypothese? Welche Alternativen (ein Rahmen für alles, stärkere Trennung, andere technische Modellierung)?
-- Gibt es weitere Seitentypen oder Varianten (z. B. reine Referenzseiten, Druckansichten), die noch nicht modelliert sind?
+**Geklärter Stand:**
+- ein kanonischer **Hauptseitentyp** / Hauptsystem
+- die **Einstiegs-/Übersichtsseite** ist keine eigene Typdefinition, sondern eine **Variante des Haupttyps**
+- der **Dokument-/Formular-Sonderfall** bzw. Dokument-/A4-Modus bleibt der **eigentliche Sonderfall**
 
-**Noch zu entscheiden:** Verbindliche Definition der Seitentypen und ihrer Grenzen; ob und welche Sonderrollen bestehen bleiben.
-
----
-
-## 6. Komponenten *(Klärungsfeld)*
-
-**Bereits erkennbar (Bestand):** Im Bestand tauchen u. a. Navigation, Titel, Untertitel, Footer, Inhaltsblöcke (Text, Tabellen, Code, Visualisierungen) und formularspezifische Elemente (z. B. A4-Container, page-footer) auf.
-
-**Offen / zu klären:**
-- Welche Elemente zählen wir als „Rahmen“, welche als „Inhalt“, welche als formularspezifisch? Noch keine verbindliche Einteilung.
-- Soll es einen festen Komponentenkatalog geben – und wenn ja, auf welcher Abstraktionsebene (logisch vs. technisch)?
-- Sind die jetzigen formularspezifischen Komponenten (z. B. formular-base.css, form-page-nav) das endgültige Modell oder nur ein möglicher Weg?
-
-**Noch zu entscheiden:** Komponentenbegriff schärfen; Katalog und Wiederverwendungsregeln; Abgrenzung zu Seitentypen und Benennung.
+**Klarstellungen:**
+- Die Einstiegsseite hat funktional eine eigene Rolle (Orientierung / Einstieg), gehört aber technisch und gestalterisch in dasselbe Hauptsystem.
+- Lernkontrolle / Prüfungsvorbereitung bleibt didaktische Funktion, kein eigener Seitentyp.
+- Visualisierung und Praxis / Anwendung sind weiterhin keine automatisch eigenen kanonischen Seitentypen.
 
 ---
 
-## 7. Benennungslogik *(Klärungsfeld)*
+## 6. Komponenten *(Arbeitsfassung)*
 
-**Bereits erkennbar (Bestand):** Dateien und Ordner folgen teilweise Kebab-Case; CSS ist in base, subpage, formular-base, index etc. aufgeteilt; es gibt wiederkehrende Begriffe in der Projektsteuerung.
+**Klärungsstand:** Die Frage der Komponenten wurde weiter geklärt. Es wird unterschieden zwischen: (1) klar kanonischen Komponenten, (2) Komponenten in Vereinheitlichung / Grauzone, (3) lokalem / seitengebundenem Inhalt.
 
-**Offen / zu klären:**
-- Welche Benennungskonvention für Dateien/Ordner soll verbindlich sein (Kebab-Case, andere)? Noch nicht festgelegt.
-- CSS: BEM, andere Methodik oder bewusst keine strenge Konvention? Zuordnung zu Basis / Layout / Komponenten / seiten-spezifisch ist offen.
-- IDs und Klassen: Semantik vs. Präsentation; Präfixe pro Bereich – alles noch zu definieren.
-- Glossar der fachlichen und technischen Begriffe (SYSTEMKONZEPT, Projektsteuerung, Code): fehlt noch.
+**Arbeitsfassung Komponenten:**
 
-**Noch zu entscheiden:** Verbindliche Regeln für Dateien, CSS, IDs/Klassen und Begriffe; Konsistenz zwischen Dokumentation und Code.
+- **Klar kanonische Komponenten:** Navigation / oberer Rahmen, Source-Note, Dokument-/A4-Page-Footer.
+- **Komponenten in Vereinheitlichung / Grauzone:** Section, Card, Tag, Meta-Bereich / Meta-Bar, Info-Box, Legende, Tabellen-Muster.
+- **Lokaler / seitengebundener Inhalt:** Diagramme / SVG-Einzelkonstruktionen, Canvas-/JS-Visualisierungen, einmalige Grids, spezielle Formularfelder und Speziallayouts.
+
+**Klarstellungen:**
+- Nicht alle wiederkehrenden Bausteine sind bereits als technisch einheitliche Komponente ausformuliert.
+- Mehrere Elemente sind aktuell eher als konzeptionell wiederkehrende Muster zu verstehen.
+- Der Zweck dieses Abschnitts ist noch nicht die endgültige Komponentenbibliothek, sondern eine saubere Unterscheidung zwischen kanonisch, in Vereinheitlichung und lokal.
 
 ---
 
-## 8. Nächste Schritte *(Arbeitsorientierung)*
+## 7. Benennungslogik *(Arbeitsfassung)*
 
-- Bestand (Seiten, CSS, JS) sichten und mit diesem Gerüst abgleichen; Lücken und Widersprüche dokumentieren.
-- Informationsarchitektur: offene Punkte (s. Abschn. 4) klären und Entscheidungen festhalten.
-- Seitentypen: offene Punkte (s. Abschn. 5) klären; keine Vorentscheidung für Index-Sonderrolle oder Formularmodell.
-- Komponenten und Benennungslogik: Klärungsfelder (Abschn. 6 und 7) ausarbeiten; Entscheidungen erst nach Klärung treffen.
-- Soll-Architektur und Umsetzungsreihenfolge erst festlegen, wenn die Klärungsfelder ausreichend entschieden sind.
+**Klärungsstand:** Die Benennungslogik wurde weiter geklärt. Relevant sind mehrere Benennungsebenen: Browser-/Seitentitel (`<title>`), sichtbarer Haupttitel (`<h1>`), Navigationstitel, Dateiname, CSS-Klassenname, konzeptioneller Komponentenname.
+
+**Arbeitsfassung Benennungslogik:**
+- Navigationstitel und Dateiname sollen möglichst denselben deutschen Wortstamm teilen.
+- Der Browser-/Seitentitel darf den Navigationstitel um Kontext erweitern.
+- Der sichtbare Haupttitel (`<h1>`) ist eine eigene Ebene und muss nicht wortgleich mit dem `<title>` sein.
+- CSS-Klassennamen sollen funktionsbezogen statt inhaltsbezogen gedacht werden.
+- Konzeptionelle Komponentennamen sind von den konkreten CSS-Klassen zu unterscheiden.
+
+**Klarstellungen:**
+- Die aktuelle Bestandslage ist noch nicht vollständig vereinheitlicht.
+- Bei Formularseiten können Dateiname und sichtbare Benennung stärker auseinanderfallen als bei normalen Seiten.
+- Die Regel für CSS-Klassennamen ist aktuell als Soll-Richtung zu verstehen, nicht als bereits vollständig erreichter Ist-Zustand.
+- Ziel dieses Abschnitts ist eine belastbare Arbeitslogik, noch keine abschließende Naming-Convention bis auf Casing-Ebene.
+
+*Formale Schreibweisen (z. B. für Klassen, Dateien, Komponenten) können in einem späteren Schritt präzisiert werden.*
+
+---
+
+## 8. Nächste Schritte *(Sollstruktur Version 2)*
+
+**1. Erste Sollstruktur Version 2**
+- Die Website folgt der festgelegten Informationsarchitektur (Abschn. 4).
+- Primärachse: ISTQB / CTFL-Lehrplan als normativer Kern.
+- Sekundäre Ebenen strukturieren die Inhalte: Orientierung / Überblick, Nachschlagen / Begriffe / Übersetzung, Praxis / Anwendung, Visualisierung / Veranschaulichung.
+- Die didaktische Zusatzebene (Selbstkontrolle / Prüfungsvorbereitung) ist keine eigene Hauptstruktur, sondern wird innerhalb von Seiten und Komponenten umgesetzt.
+
+**2. Grundformen der Seiten**
+- **Hauptsystem** als kanonischer Standard für normale Inhaltsseiten.
+- **Dokument-/A4-Modus** als definierter Sonderfall.
+- **Einstiegs-/Übersichtsseite** als Variante des Haupttyps (funktionale Sonderrolle Orientierung / Einstieg, technisch im Hauptsystem).
+
+**3. Rolle der Komponenten**
+- Kanonische Komponenten (Abschn. 6) bilden die verbindliche gemeinsame Basis.
+- Komponenten in Vereinheitlichung / Grauzone werden schrittweise geklärt.
+- Lokaler Inhalt bleibt möglich und muss nicht künstlich generalisiert werden.
+
+**4. Rolle der Benennungslogik**
+- Benennung (Abschn. 7) dient der Konsistenz und Skalierbarkeit.
+- Neue oder überführte Inhalte sollen derselben Benennungslogik folgen.
+- Formale Schreibweisen können in einem späteren Schritt präzisiert werden.
+
+**5. Logische nächste Schritte**
+- Grauzonen-Komponenten konkretisieren.
+- Formale Benennungsregeln präzisieren.
+- Bestand gegen Sollstruktur abgleichen.
+- Danach Migrations- und Umsetzungsreihenfolge festlegen.
