@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HA5 Testfallentwurf GroceryMate: Testfälle, Techniken, Automatisierung nach CTFL 4.0.2 (V2).">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>Testfälle — GroceryMate HA5 (V2)</title>
+  <style>
+    :root {
+      --fs: 14px;
+      --ok: #4a7c59; --ok-bg: #cde8d2;
+      --warn: #9c6a2a; --warn-bg: #f0dfc0;
+      --note: #2a547c; --note-bg: #c4d8ee;
+      --auto: #6a5a8a; --auto-bg: #e8d8f0;
+    }
+    body { font-size: var(--fs); padding: 2.5rem 3rem 4rem; max-width: 1400px; margin: 0 auto; }
+    .meta-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; padding: .6rem 1rem; margin-bottom: 1.25rem; background: rgba(255,255,255,0.5); border: 1px solid var(--bdr); border-radius: 8px; font-size: 0.9rem; color: var(--mid); }
+    .meta-bar strong { color: var(--text); }
+    .info-box { padding: .9rem 1.1rem; margin: 1rem 0; background: var(--warn-bg); border-left: 4px solid var(--warn); border-radius: 4px; font-size: 0.9rem; line-height: 1.55; }
+    .info-box--note { background: var(--note-bg); border-left-color: var(--note); }
+    .info-box--ok { background: var(--ok-bg); border-left-color: var(--ok); }
+    .info-box--auto { background: var(--auto-bg); border-left-color: var(--auto); }
+    .info-box__title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; margin-bottom: .5rem; color: var(--warn); }
+    .info-box--note .info-box__title { color: var(--note); }
+    .info-box--ok .info-box__title { color: var(--ok); }
+    .info-box--auto .info-box__title { color: var(--auto); }
+    .info-box__content { font-size: 13px; line-height: 1.6; }
+    .info-box ul { margin: .5rem 0 0 1.2rem; list-style: disc; }
+    .info-box li { margin: .3rem 0; }
+    .section { margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .section__header { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; padding: .7rem 1.2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: rgba(0,0,0,0.04); border-bottom: 1px solid var(--bdr); }
+    .section__num { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); white-space: nowrap; }
+    .section__title { font-size: 15px; font-weight: 700; }
+    .section__body { padding: 1rem 1.2rem; background: rgba(255,255,255,0.35); }
+    .section__intro { font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1.25rem; }
+    .section__subhead { font-size: 1.1rem; margin: 1.5rem 0 .75rem; color: var(--text); }
+    .feature-intro { background: var(--e2); padding: 1rem 1.2rem; border-radius: 8px; margin-bottom: 1rem; }
+    .feature-intro__id { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--note); margin-bottom: .3rem; }
+    .feature-intro__name { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .tc-list { margin: 1rem 0; }
+    .tc { background: rgba(255,255,255,0.6); border-left: 4px solid var(--e4); padding: 1rem 1.2rem; margin-bottom: 1rem; border-radius: 6px; }
+    .tc__header { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: .5rem; margin-bottom: .6rem; }
+    .tc__id { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 800; color: var(--text); }
+    .tc__technique { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 700; padding: .15rem .5rem; border-radius: 4px; background: var(--e4); color: var(--text); }
+    .tc__title { font-size: 13px; font-weight: 700; color: var(--text); margin-bottom: .6rem; }
+    .tc__row { margin: .5rem 0; }
+    .tc__label { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .08em; color: var(--soft); display: block; margin-bottom: .25rem; }
+    .tc__content { font-size: 13px; line-height: 1.6; color: var(--mid); }
+    .tc__steps { margin: .3rem 0 0 1rem; list-style: decimal; }
+    .tc__steps li { margin: .3rem 0; font-size: 13px; line-height: 1.5; color: var(--mid); }
+    .ref-table { overflow-x: auto; margin: 1rem 0; }
+    .ref-table table { width: 100%; border-collapse: collapse; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12.5px; background: rgba(255,255,255,0.5); }
+    .ref-table thead th { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); padding: .6rem 1rem; border-bottom: 2px solid var(--bdr); text-align: left; background: var(--e6); }
+    .ref-table tbody tr { border-bottom: 1px solid var(--bdr); }
+    .ref-table tbody tr:last-child { border-bottom: none; }
+    .ref-table tbody td { padding: .6rem 1rem; vertical-align: top; line-height: 1.5; color: var(--mid); }
+    .ref-table tbody td:first-child { font-weight: 700; color: var(--text); }
+    .section--e1 .section__header { background: var(--e1); }
+    .section--e2 .section__header { background: var(--e2); }
+    .section--e3 .section__header { background: var(--e3); }
+    .section--e4 .section__header { background: var(--e4); }
+    .section--e6 .section__header { background: var(--e6); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index.html">Übersicht</a></li>
+      <li><a href="testuniversum.html">Testuniversum</a></li>
+      <li><a href="testuniversum-v2.html">Testuniversum V2</a></li>
+      <li><a href="testverfahren-istqb.html">Testverfahren</a></li>
+      <li><a href="glossar.html">Glossar</a></li>
+      <li><a href="glossar-v2.html">Glossar V2</a></li>
+      <li><a href="testverfahren-v2.html">Testverfahren V2</a></li>
+      <li><a href="ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="ha4-anforderungsanalyse-v2.html">HA4 Anforderungsanalyse V2</a></li>
+      <li><a href="ha4-formular.html">HA4 Testbasis-Analyse Formular</a></li>
+      <li><a href="ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="ha5-testkonzept-v2.html">HA5 Testkonzept V2</a></li>
+      <li><a href="ha5-testkonzept-formular.html">HA5 Testkonzept Formular</a></li>
+      <li><a href="ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="ha5-testfallentwurf-v2.html" class="current">HA5 Testfallentwurf V2</a></li>
+      <li><a href="ha5-testfallentwurf-formular.html">HA5 Testfallentwurf Formular</a></li>
+      <li><a href="sdlc-istqb-statisch.html">SDLC statisch</a></li>
+      <li><a href="sdlc-istqb-animiert.html">SDLC animiert</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Testfallentwurf — GroceryMate</h1>
+    <p>HA5 · Testfallentwurf für drei neue Features · Masterschool QA-Track · V2</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Seitenkontext">
+    <span><strong>Projekt:</strong> GroceryMate</span>
+    <span><strong>Features:</strong> 3 neue Funktionen</span>
+    <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829</span>
+    <span><strong>Testfälle:</strong> 28 (GM-F01: 9, GM-F02: 9, GM-F03: 10)</span>
+  </div>
+
+  <section class="section section--e1" aria-labelledby="sec-intro-heading">
+    <div class="section__header">
+      <span class="section__num">Einführung</span>
+      <h2 class="section__title" id="sec-intro-heading">Über dieses Dokument</h2>
+    </div>
+    <div class="section__body">
+      <p class="section__intro">Dieses Dokument enthält detaillierte Testfälle für die drei neuen Features von GroceryMate: Bewertungssystem (GM-F01), Altersverifikation (GM-F02) und Versandkosten (GM-F03). Jeder Testfall ist mit der verwendeten Testentwurfs-Technik gekennzeichnet und enthält Eingabedaten, Schritte und erwartete Ergebnisse.</p>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Was sind Testfälle?</div>
+        <div class="info-box__content">Testfälle sind <strong>konkrete Testanweisungen</strong>, die beschreiben, wie ein Feature getestet werden soll. Sie basieren auf der Testbasis-Analyse (HA4) und dem Testkonzept (HA5). Jeder Testfall hat: <ul><li><strong>Testentwurfs-Technik:</strong> Wie wurde der Test abgeleitet? (EP, BVA, etc.)</li><li><strong>Eingabe:</strong> Welche Daten werden verwendet?</li><li><strong>Schritte:</strong> Was wird getestet?</li><li><strong>Erwartetes Ergebnis:</strong> Was sollte passieren?</li></ul>Referenz: CTFL Kap. 4 (Testanalyse und -entwurf)</div>
+      </div>
+      <div class="info-box info-box--ok" role="note">
+        <div class="info-box__title">Warum diese Reihenfolge? EP → BVA → Use Case → Error Guessing</div>
+        <div class="info-box__content">Die Testfälle sind nach <strong>CTFL 4.0.2-konformer Reihenfolge</strong> sortiert (Kap. 4.2): <strong>1. Äquivalenzklassenbildung (EP) zuerst</strong> — EP definiert die Klassen (gültig/ungültig, eingeloggt/Gast). <strong>2. Grenzwertanalyse (BVA) danach</strong> — BVA testet die Grenzen der Klassen. <strong>3. Anwendungsfalltest (Use Case)</strong> — realistische Nutzerszenarien. <strong>4. Fehlerermessen (Error Guessing) zuletzt</strong> — häufige Fehlerquellen. Für Lernzwecke und ISTQB-Prüfungen ist diese Reihenfolge didaktisch korrekt (Klassen → Grenzen → Szenarien → Fehler).</div>
+      </div>
+      <h3 class="section__subhead">Verwendete Testentwurfs-Techniken</h3>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th>Technik</th><th>Beschreibung</th><th>CTFL Kap.</th></tr></thead>
+          <tbody>
+            <tr><td>Äquivalenzklassenbildung (EP)</td><td>Gruppierung ähnlicher Eingaben in Klassen (z.B. eingeloggt/Gast, unter 18/über 18)</td><td>4.2.1</td></tr>
+            <tr><td>Grenzwertanalyse (BVA)</td><td>Testen von Grenzwerten zwischen Klassen (z.B. genau 18 Jahre, Freigrenze X€)</td><td>4.2.2</td></tr>
+            <tr><td>Anwendungsfalltest (Use Case)</td><td>Testen realistischer Nutzerszenarien (z.B. Bewertung abgeben, Produkt kaufen)</td><td>4.5</td></tr>
+            <tr><td>Fehlerermessen (Error Guessing)</td><td>Testen häufiger Fehlerquellen (z.B. leere Felder, XSS, ungültige Eingaben)</td><td>4.4.1</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e2" aria-labelledby="sec-f01-heading">
+    <div class="section__header">
+      <span class="section__num">Feature 1</span>
+      <h2 class="section__title" id="sec-f01-heading">Bewertungssystem (GM-F01)</h2>
+    </div>
+    <div class="section__body">
+      <div class="feature-intro">
+        <div class="feature-intro__id">GM-F01</div>
+        <div class="feature-intro__name">Bewertungssystem für Produkte</div>
+      </div>
+      <div class="tc-list">
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F01-001</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
+          <div class="tc__title">Bewertung als eingeloggter Nutzer (gültige Klasse)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: 4, Textfeld: "Sehr gute Qualität, schnelle Lieferung. Preis könnte besser sein.", Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktseite navigieren</li><li>4 Sterne auswählen</li><li>Detailliertes Feedback im Textfeld eingeben</li><li>"Bewertung abgeben" klicken</li><li>Seite neu laden</li><li>Prüfen, ob eigene Bewertung angezeigt wird</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bewertung wird gespeichert. Nach Reload wird 4-Sterne-Bewertung mit Feedback-Text angezeigt. Durchschnittsbewertung berücksichtigt die neue Bewertung. Nutzername wird bei der Bewertung angezeigt.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F01-002</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
+          <div class="tc__title">Bewertung als Gast (ungültige Klasse)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: 3, Textfeld: "Gutes Produkt", Nutzer: nicht eingeloggt (Gast)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als Gast (nicht eingeloggt) auf Produktseite navigieren</li><li>Versuchen, Bewertungsfunktion zu finden</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bewertungsfunktion ist nicht sichtbar oder deaktiviert. Optional: Hinweis "Bitte einloggen, um zu bewerten" wird angezeigt.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F01-003</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">Bewertung mit genau 5 Sternen (Grenzwert)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: 5, Textfeld: leer, Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktseite navigieren</li><li>5 Sterne auswählen (maximaler Grenzwert)</li><li>Textfeld leer lassen</li><li>"Bewertung abgeben" klicken</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bewertung wird erfolgreich gespeichert. 5-Sterne-Bewertung wird auf Produktseite angezeigt. Durchschnittsbewertung wird aktualisiert.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F01-004</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">Bewertung mit genau 1 Stern (Grenzwert)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: 1, Textfeld: "Produkt war schlecht", Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktseite navigieren</li><li>1 Stern auswählen (minimaler Grenzwert)</li><li>Feedback-Text eingeben</li><li>"Bewertung abgeben" klicken</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bewertung wird erfolgreich gespeichert. 1-Stern-Bewertung + Text werden angezeigt. Durchschnittsbewertung sinkt.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F01-005</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">Textfeld mit maximaler Zeichenlänge (falls definiert)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: 3, Textfeld: Text mit X Zeichen (Grenzwert), Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktseite navigieren</li><li>3 Sterne auswählen</li><li>Text mit genau X Zeichen eingeben (X = max. Zeichenlänge)</li><li>"Bewertung abgeben" klicken</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bewertung wird akzeptiert, wenn X innerhalb des Limits liegt. Falls Limit überschritten: Fehlermeldung oder Eingabe wird gekürzt. <em>→ Maximale Zeichenanzahl laut HA4 noch nicht spezifiziert!</em></div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F01-006</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Durchschnittsbewertung wird korrekt berechnet</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Produkt hat bereits Bewertungen: 5★, 4★, 3★. Neue Bewertung: 2★</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Produkt mit bestehenden Bewertungen aufrufen</li><li>Aktuelle Durchschnittsbewertung notieren (sollte 4.0 sein)</li><li>Als eingeloggter Nutzer 2 Sterne vergeben</li><li>"Bewertung abgeben" klicken</li><li>Neue Durchschnittsbewertung prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Neue Durchschnittsbewertung = (5+4+3+2) / 4 = 3.5 Sterne. <em>→ Rundungsregel laut HA4 noch zu klären!</em></div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F01-007</span><span class="tc__technique">Fehlerermessen (Error Guessing)</span></div>
+          <div class="tc__title">Bewertung ohne Sternauswahl (nur Text)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: keine Auswahl (0), Textfeld: "Tolles Produkt!", Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktseite navigieren</li><li>KEINE Sterne auswählen</li><li>Nur Feedback-Text eingeben</li><li>"Bewertung abgeben" klicken</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">System zeigt Fehlermeldung "Bitte wählen Sie mindestens 1 Stern" oder ähnlich. Bewertung wird NICHT gespeichert.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F01-008</span><span class="tc__technique">Fehlerermessen (Error Guessing)</span></div>
+          <div class="tc__title">Zweite Bewertung desselben Produkts (Duplikat)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: 4, Textfeld: "Zweiter Versuch", Nutzer: eingeloggt (hat bereits bewertet)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkt bereits bewertet haben</li><li>Erneut auf Produktseite navigieren</li><li>Versuchen, zweite Bewertung abzugeben (4 Sterne + Text)</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Entweder: (a) System blockiert mit Fehlermeldung "Sie haben dieses Produkt bereits bewertet", ODER (b) Bestehende Bewertung wird aktualisiert. <em>→ Zu verifizieren laut offenen Punkten HA4!</em></div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F01-009</span><span class="tc__technique">Fehlerermessen (Error Guessing)</span></div>
+          <div class="tc__title">XSS-Schutz im Textfeld (Sicherheit)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: 5, Textfeld: "&lt;script&gt;alert('XSS')&lt;/script&gt;Tolles Produkt", Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktseite navigieren</li><li>5 Sterne auswählen</li><li>JavaScript-Code im Textfeld eingeben (XSS-Versuch)</li><li>"Bewertung abgeben" klicken</li><li>Prüfen, ob Code ausgeführt wird</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">System bereinigt die Eingabe (Sanitization). Script wird NICHT ausgeführt. Text wird escaped dargestellt oder Eingabe wird blockiert.</div></div>
+        </div>
+      </div>
+      <div class="info-box info-box--auto" role="note">
+        <div class="info-box__title">Automatisierungempfehlung: GM-F01</div>
+        <div class="info-box__content"><strong>Zu automatisieren:</strong> TC-F01-003, 004 (Grenzwerte 5/1 Stern), TC-F01-002 (Gast-Zugriff), TC-F01-009 (XSS-Schutz), TC-F01-006 (Durchschnittsberechnung). <strong>Manuell:</strong> TC-F01-008 (Duplikat — Verhalten unklar), TC-F01-001 (UX), TC-F01-005 (Textlänge noch unbekannt).</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e3" aria-labelledby="sec-f02-heading">
+    <div class="section__header">
+      <span class="section__num">Feature 2</span>
+      <h2 class="section__title" id="sec-f02-heading">Altersverifikation (GM-F02)</h2>
+    </div>
+    <div class="section__body">
+      <div class="feature-intro">
+        <div class="feature-intro__id">GM-F02</div>
+        <div class="feature-intro__name">Altersverifikation für alkoholische Produkte</div>
+      </div>
+      <div class="tc-list">
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F02-001</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
+          <div class="tc__title">Geburtsdatum über 18 Jahre (gültige Klasse)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: 01.01.2000 (26 Jahre alt)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren</li><li>Modal erscheint</li><li>Geburtsdatum eingeben: deutlich über 18 Jahren</li><li>"Bestätigen" klicken</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Modal schließt sich. Store-Seite wird vollständig angezeigt. Zugriff gewährt.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F02-002</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
+          <div class="tc__title">Geburtsdatum unter 18 Jahren (ungültige Klasse)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: Heute minus 17 Jahre und 364 Tage</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren</li><li>Modal erscheint</li><li>Geburtsdatum eingeben: 1 Tag unter 18 Jahren</li><li>"Bestätigen" klicken</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Zugriff verweigert. Hinweistext "Sie müssen mindestens 18 Jahre alt sein" oder ähnlich. Store-Produkte werden NICHT angezeigt.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F02-003</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">Geburtsdatum genau 18 Jahre (Grenzwert)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: Heute minus genau 18 Jahre</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren</li><li>Modal mit "Please enter your birth date" erscheint</li><li>Geburtsdatum eingeben: genau 18 Jahre alt</li><li>"Bestätigen" klicken</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Modal schließt sich. Store-Seite mit alkoholischen Produkten wird angezeigt. Zugriff gewährt.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F02-004</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">Zukünftiges Geburtsdatum (ungültiger Grenzwert)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: 01.01.2030 (in der Zukunft)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren</li><li>Modal erscheint</li><li>Zukünftiges Datum eingeben</li><li>"Bestätigen" klicken</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">System zeigt Fehlermeldung "Geburtsdatum kann nicht in der Zukunft liegen" oder verhindert Eingabe. Zugriff wird nicht gewährt.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F02-005</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Modal erscheint nur beim ersten Aufruf (Session-basiert)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: 01.01.1990 (über 18), Session: aktiv</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren (erstmals in Session)</li><li>Modal erscheint, Geburtsdatum eingeben (über 18)</li><li>Store-Seite wird angezeigt</li><li>Auf andere Seite navigieren (z.B. Home)</li><li>Zurück zu /store navigieren (innerhalb derselben Session)</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Modal erscheint beim zweiten Aufruf NICHT erneut. Store-Seite wird direkt angezeigt.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F02-006</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Modal erscheint nach Browser-Neustart erneut</div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren, Modal mit Geburtsdatum ausfüllen (über 18)</li><li>Browser komplett schließen und neu starten</li><li>Erneut auf /store navigieren</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Modal erscheint ERNEUT, da Session beendet wurde. <em>→ Session-Dauer laut HA4 noch zu klären!</em></div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F02-007</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Modal in neuem Tab/Fenster</div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>In Tab 1: Auf /store navigieren, Modal ausfüllen (über 18)</li><li>Neuen Tab öffnen</li><li>In Tab 2: Auf /store navigieren</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Modal erscheint in Tab 2 NICHT erneut, wenn Session geteilt wird. Andernfalls: Modal erscheint erneut. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F02-008</span><span class="tc__technique">Fehlerermessen (Error Guessing)</span></div>
+          <div class="tc__title">Ungültiges Datum (z.B. 31. Februar)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: 31.02.2000 (ungültig)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren</li><li>Modal erscheint</li><li>Ungültiges Datum eingeben</li><li>Versuchen, zu bestätigen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">System zeigt Fehlermeldung "Ungültiges Datum" oder verhindert Eingabe. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F02-009</span><span class="tc__technique">Fehlerermessen (Error Guessing)</span></div>
+          <div class="tc__title">Leeres Datumsfeld</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: leer (keine Eingabe)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren</li><li>Modal erscheint</li><li>KEIN Datum eingeben</li><li>"Bestätigen" klicken</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">System zeigt Fehlermeldung "Bitte geben Sie Ihr Geburtsdatum ein" oder ähnlich. Zugriff wird nicht gewährt.</div></div>
+        </div>
+      </div>
+      <div class="info-box info-box--auto" role="note">
+        <div class="info-box__title">Automatisierungempfehlung: GM-F02</div>
+        <div class="info-box__content"><strong>Zu automatisieren:</strong> TC-F02-003, 002 (Grenzwert 18, unter 18), TC-F02-001 (gültige Klasse), TC-F02-009 (leeres Feld), TC-F02-005 (Session-Persistenz). <strong>Manuell:</strong> TC-F02-004 (ungültiges Datum), TC-F02-007, 006 (Browser/Tabs), TC-F02-009 (zukünftiges Datum).</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e4" aria-labelledby="sec-f03-heading">
+    <div class="section__header">
+      <span class="section__num">Feature 3</span>
+      <h2 class="section__title" id="sec-f03-heading">Versandkosten &amp; Freigrenze (GM-F03)</h2>
+    </div>
+    <div class="section__body">
+      <div class="feature-intro">
+        <div class="feature-intro__id">GM-F03</div>
+        <div class="feature-intro__name">Versandkosten &amp; Freigrenze</div>
+      </div>
+      <div class="tc-list">
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F03-001</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
+          <div class="tc__title">Checkout als Gast (ohne Login)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: Produkte im Wert &gt; X€, Nutzer: nicht eingeloggt (Gast)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als Gast Produkte in Warenkorb legen</li><li>Versuchen, zu /checkout zu navigieren</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Weiterleitung zu /auth (Login-Seite). Checkout ist ohne Login nicht möglich. <em>→ Laut HA4: Checkout nur für eingeloggte Nutzer!</em></div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F03-002</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
+          <div class="tc__title">Sehr niedriger Bestellwert (deutlich unter Freigrenze)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: 1 Produkt à 5€, Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer günstiges Produkt (5€) in Warenkorb</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = Y€. Hinweis "Noch X - 5€ bis zur kostenlosen Lieferung" wird angezeigt.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F03-003</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
+          <div class="tc__title">Sehr hoher Bestellwert (deutlich über Freigrenze)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: Produkte im Wert von 200€, Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer viele Produkte (200€ Gesamtwert) in Warenkorb</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 0€. Freigrenze wurde deutlich überschritten.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F03-004</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">Bestellwert genau an Freigrenze X€ (Grenzwert)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: Produkte im Wert von genau X€ (Freigrenze), Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von genau X€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 0€. <em>→ Freigrenze X laut HA4 noch zu ermitteln!</em></div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F03-005</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">Bestellwert X − 0,01€ (Grenzwert unter Freigrenze)</div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von X − 0,01€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = Y€. Hinweis "Noch 0,01€ bis zur kostenlosen Lieferung" oder ähnlich. <em>→ Versandkosten Y laut HA4 noch zu ermitteln!</em></div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F03-006</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">Bestellwert X + 0,01€ (Grenzwert über Freigrenze)</div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von X + 0,01€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 0€. Freigrenze wurde erreicht.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F03-007</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Live-Update bei Warenkorbänderungen</div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von 20€ in Warenkorb (&lt; X€)</li><li>Zu /checkout navigieren, Versandkosten prüfen (sollte Y€ sein)</li><li>Zurück zum Warenkorb, weiteres Produkt hinzufügen (Gesamtwert &gt; X€)</li><li>Zu /checkout zurückkehren, Versandkosten erneut prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten ändern sich SOFORT von Y€ auf 0€. Keine Seiten-Refresh nötig.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F03-008</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Live-Update bei Mengenänderung</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: 1× Produkt à 30€, dann Menge auf 2 erhöhen</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer 1× Produkt (30€) in Warenkorb</li><li>Zu /checkout navigieren (Versandkosten = Y€)</li><li>Menge des Produkts auf 2 erhöhen (Gesamtwert: 60€)</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten aktualisieren sich automatisch auf 0€, sobald Freigrenze überschritten.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F03-009</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Produkt entfernen → Versandkosten wieder aktiv</div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert &gt; X€ in Warenkorb</li><li>Zu /checkout navigieren (Versandkosten = 0€)</li><li>Ein Produkt entfernen, sodass Gesamtwert &lt; X€ fällt</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten ändern sich SOFORT von 0€ auf Y€. Live-Update funktioniert bidirektional.</div></div>
+        </div>
+        <div class="tc">
+          <div class="tc__header"><span class="tc__id">TC-F03-010</span><span class="tc__technique">Fehlerermessen (Error Guessing)</span></div>
+          <div class="tc__title">Leerer Warenkorb im Checkout</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: leer (0 Produkte), Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer direkt zu /checkout navigieren (ohne Produkte im Warenkorb)</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">System zeigt sinnvollen Hinweis "Ihr Warenkorb ist leer" und verhindert Checkout. Kein Absturz. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div></div>
+        </div>
+      </div>
+      <div class="info-box info-box--auto" role="note">
+        <div class="info-box__title">Automatisierungempfehlung: GM-F03</div>
+        <div class="info-box__content">Grenzwert-Tests (TC-F03-004, 005, 006) und EP-Tests (001, 002, 003) gut automatisierbar. Live-Update (007, 008, 009) je nach Tool. TC-F03-010 (leerer Warenkorb) manuell prüfen, bis Verhalten geklärt.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e6" aria-labelledby="sec-summary-heading">
+    <div class="section__header">
+      <span class="section__num">Zusammenfassung</span>
+      <h2 class="section__title" id="sec-summary-heading">Testfall-Übersicht &amp; Automatisierung</h2>
+    </div>
+    <div class="section__body">
+      <h3 class="section__subhead">Testfälle nach Feature</h3>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th>Feature</th><th>Testfälle gesamt</th><th>Automatisierung empfohlen</th><th>Manuell empfohlen</th></tr></thead>
+          <tbody>
+            <tr><td>GM-F01 (Bewertungssystem)</td><td>9</td><td>5 (TC-001, 002, 003, 006, 009)</td><td>4 (TC-004, 005, 007, 008)</td></tr>
+            <tr><td>GM-F02 (Altersverifikation)</td><td>9</td><td>5 (TC-001, 002, 003, 005, 009)</td><td>4 (TC-004, 006, 007, 008)</td></tr>
+            <tr><td>GM-F03 (Versandkosten)</td><td>10</td><td>9</td><td>1 (TC-007)</td></tr>
+            <tr><td><strong>Gesamt</strong></td><td><strong>28</strong></td><td><strong>19 (68%)</strong></td><td><strong>9 (32%)</strong></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="section__subhead">Testentwurfs-Techniken im Einsatz</h3>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th>Technik</th><th>Anzahl Testfälle</th><th>Prozent</th></tr></thead>
+          <tbody>
+            <tr><td>Äquivalenzklassenbildung (EP)</td><td>7</td><td>25%</td></tr>
+            <tr><td>Grenzwertanalyse (BVA)</td><td>8</td><td>29%</td></tr>
+            <tr><td>Anwendungsfalltest (Use Case)</td><td>7</td><td>25%</td></tr>
+            <tr><td>Fehlerermessen (Error Guessing)</td><td>6</td><td>21%</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="info-box info-box--auto" role="note">
+        <div class="info-box__title">Warum 68% Automatisierung?</div>
+        <div class="info-box__content">Grenzwert-Tests sind kritische Geschäftslogik und müssen häufig geprüft werden. Regression ist wichtig (Login, Checkout). Mathematische Logik (Bewertungs-Durchschnitt, Preisberechnung) ist ideal für Automatisierung. XSS-Schutz sollte in CI/CD laufen. Manuelle Tests bleiben wichtig für: UX, unklare Anforderungen (offene Punkte HA4), explorative Tests.</div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="source-note">HA5 · Masterschool QA-Track · Testfallentwurf nach CTFL 4.0.2 · grocerymate.masterschool.com · V2</p>
+  </footer>
+</main>
+</body>
+</html>
