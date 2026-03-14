@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Zuordnung Testverfahren und Hausaufgaben — ISTQB CTFL Kap. 4 (V2).">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>HA-Einordnung — Testverfahren &amp; Hausaufgaben (V2)</title>
+  <style>
+    body { padding: 2.5rem 3rem 4rem; max-width: 1400px; margin: 0 auto; font-size: 15px; }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      padding: .6rem 1rem;
+      margin-bottom: 1.5rem;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+    .meta-bar strong { color: var(--text); }
+
+    .info-box {
+      padding: .9rem 1.1rem;
+      margin-bottom: 1.5rem;
+      background: #f0efe8;
+      border-left: 4px solid var(--mid);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .section { margin-bottom: 1.5rem; }
+    .section__header { margin-bottom: .75rem; }
+    .section__title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      color: var(--text);
+    }
+
+    .comparison-table-wrap {
+      overflow-x: auto;
+      margin-bottom: 1rem;
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      background: rgba(255,255,255,0.4);
+    }
+    .comparison-table-wrap table {
+      width: 100%;
+      min-width: 800px;
+      border-collapse: collapse;
+      font-size: 0.95rem;
+    }
+    .comparison-table-wrap thead th {
+      background: rgba(0,0,0,0.04);
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      color: var(--soft);
+      padding: .5rem .75rem;
+      text-align: left;
+      border-bottom: 2px solid var(--bdr);
+    }
+    .comparison-table-wrap tbody tr { border-bottom: 1px solid var(--bdr); }
+    .comparison-table-wrap tbody tr:last-child { border-bottom: none; }
+    .comparison-table-wrap tbody tr:hover td { background: rgba(255,255,255,0.5); }
+    .comparison-table-wrap td {
+      padding: .5rem .75rem;
+      vertical-align: top;
+      line-height: 1.55;
+      color: var(--text);
+    }
+
+    .comparison-table-wrap .row--bb td { border-left: 4px solid #a8cba8; }
+    .comparison-table-wrap .row--wb td { border-left: 4px solid #9bbccc; }
+    .comparison-table-wrap .row--co td { border-left: 4px solid #b8a8cc; }
+    .comparison-table-wrap .cell--cat { font-weight: 600; }
+    .comparison-table-wrap .row--bb .cell--cat { background: #e4f0e5; }
+    .comparison-table-wrap .row--wb .cell--cat { background: #dceef6; }
+    .comparison-table-wrap .row--co .cell--cat { background: #ede4f5; }
+
+    .tag {
+      display: inline-block;
+      font-size: 13px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 600;
+      padding: .15rem .5rem;
+      border-radius: 3px;
+      letter-spacing: .04em;
+    }
+    .tag--bb { background: #c7ddc9; color: #1a1a1a; }
+    .tag--wb { background: #bad1dc; color: #1a1a1a; }
+    .tag--co { background: #d4c4e0; color: #1a1a1a; }
+
+    .cell--chapter {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-weight: 700;
+      font-size: 14px;
+      white-space: nowrap;
+      text-align: center;
+    }
+    .cell--term-en { display: block; font-style: italic; color: var(--mid); }
+    .cell--term-de { display: block; font-weight: 700; margin-top: 2px; }
+    .cell--model, .cell--result { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .ha-badge {
+      display: inline-block;
+      font-size: 13px;
+      font-weight: 700;
+      background: rgba(0,0,0,0.07);
+      padding: .12rem .45rem;
+      border-radius: 3px;
+      letter-spacing: .03em;
+    }
+    .cell--tool span { display: block; }
+    .cell--tool span::before { content: '· '; color: var(--mid); }
+    .cell--context { font-style: italic; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: center;
+      padding: .7rem 1rem;
+      margin-top: 0.5rem;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--mid);
+    }
+    .legend__item { display: flex; align-items: center; gap: .5rem; }
+    .legend__swatch { width: 12px; height: 12px; border-radius: 3px; }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index-v2.html">Einstieg</a></li>
+      <li><a href="testuniversum-v2.html">Testuniversum</a></li>
+      <li><a href="testverfahren-v2.html">Testverfahren</a></li>
+      <li><a href="glossar-v2.html">Glossar</a></li>
+      <li><a href="ha-einordnung-v2.html" class="current">HA-Einordnung</a></li>
+      <li><a href="ha4-anforderungsanalyse-v2.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="ha4-formular-v2-a4.html">HA4 Formular A4</a></li>
+      <li><a href="ha5-testkonzept-v2.html">HA5 Testkonzept</a></li>
+      <li><a href="ha5-formular-v2-a4.html">HA5 Formular A4</a></li>
+      <li><a href="ha5-testfallentwurf-v2.html">HA5 Testfallentwurf</a></li>
+      <li><a href="ha5-testfallentwurf-formular-v2-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="sdlc-istqb-statisch-v2.html">SDLC statisch</a></li>
+      <li><a href="sdlc-istqb-animiert-v2.html">SDLC animiert</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Testverfahren &amp; Hausaufgaben — Einordnung und Praxisbezug</h1>
+    <p>Test Technique Overview · ISTQB CTFL v4.0.2 · Kapitel 4 · HA-Einordnung · V2</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Seitenkontext">
+    <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 · Kapitel 4 (Testanalyse und -entwurf)</span>
+    <span><strong>Zweck:</strong> Zuordnung Testverfahren ↔ Hausaufgaben · Überblick &amp; Praxisbezug</span>
+  </div>
+
+  <div class="info-box" role="note">
+    <strong>Einordnung:</strong> Diese Seite ordnet die Testverfahren aus CTFL Kap. 4 den Hausaufgaben (HA) des Curriculums zu. Pro Verfahren: Kapitel, Kategorie, Testmodell, Ergebnis der Testanalyse, HA-Referenz, Werkzeuge in der Praxis und Kontext. Die Farben kennzeichnen Black-Box (4.2), White-Box (4.3) und kollaborative Ansätze (4.5).
+  </div>
+
+  <section class="section" aria-labelledby="comparison-heading">
+    <div class="section__header">
+      <h2 id="comparison-heading" class="section__title">Zuordnung Testverfahren ↔ Hausaufgaben</h2>
+    </div>
+    <div class="comparison-table-wrap">
+      <table>
+        <colgroup>
+          <col style="width:48px">
+          <col style="width:90px">
+          <col style="width:150px">
+          <col style="width:165px">
+          <col style="width:125px">
+          <col style="width:80px">
+          <col style="width:125px">
+          <col style="width:550px">
+        </colgroup>
+        <thead>
+          <tr>
+            <th>Kapitel</th>
+            <th>Kategorie</th>
+            <th>Testverfahren</th>
+            <th>Testmodell</th>
+            <th>Ergebnis der Testanalyse</th>
+            <th>HA</th>
+            <th>Werkzeuge in der Praxis</th>
+            <th>Kontext &amp; Einbettung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="row--bb">
+            <td><span class="cell--chapter">4.2.1</span></td>
+            <td class="cell--cat"><span class="tag tag--bb">Black-Box</span></td>
+            <td>
+              <span class="cell--term-en">Equivalence Partitioning</span>
+              <span class="cell--term-de">Äquivalenzklassenbildung</span>
+            </td>
+            <td class="cell--model">Partitionierung des Eingaberaums in gültige &amp; ungültige Klassen</td>
+            <td class="cell--result">Äquivalenzklassentabelle</td>
+            <td><span class="ha-badge">HA 1 T1</span></td>
+            <td class="cell--tool">
+              <span>Excel / Google Sheets</span>
+              <span>TestRail</span>
+              <span>Jira + Xray</span>
+              <span>Azure DevOps</span>
+            </td>
+            <td class="cell--context"><strong>Grundlage jedes funktionalen Tests.</strong> <strong>Rückverfolgbarkeit zur Anforderung</strong> (Testbasis) notwendig. In agilen Teams oft direkt aus <strong>Akzeptanzkriterien</strong> abgeleitet.</td>
+          </tr>
+          <tr class="row--bb">
+            <td><span class="cell--chapter">4.2.2</span></td>
+            <td class="cell--cat"><span class="tag tag--bb">Black-Box</span></td>
+            <td>
+              <span class="cell--term-en">Boundary Value Analysis</span>
+              <span class="cell--term-de">Grenzwertanalyse</span>
+            </td>
+            <td class="cell--model">Intervalle &amp; Grenzwerte (2-wertig oder 3-wertig)</td>
+            <td class="cell--result">Grenzwerttabelle (Testfallspezifikation)</td>
+            <td><span class="ha-badge">HA 1 T2/T3</span></td>
+            <td class="cell--tool">
+              <span>Excel / Google Sheets</span>
+              <span>TestRail</span>
+              <span>Jira + Xray</span>
+            </td>
+            <td class="cell--context"><strong>Ergänzt immer die Äquivalenzklassenbildung.</strong> <strong>2-wertig (FL-Standard)</strong>; <strong>3-wertig</strong> für höhere Überdeckung. Besonders relevant bei <strong>numerischen Eingabefeldern</strong> &amp; Formularvalidierungen.</td>
+          </tr>
+          <tr class="row--bb">
+            <td><span class="cell--chapter">4.2.3</span></td>
+            <td class="cell--cat"><span class="tag tag--bb">Black-Box</span></td>
+            <td>
+              <span class="cell--term-en">Decision Table Testing</span>
+              <span class="cell--term-de">Entscheidungstabellentest</span>
+            </td>
+            <td class="cell--model">Kombination aller Bedingungen &amp; Aktionen</td>
+            <td class="cell--result">Entscheidungstabelle</td>
+            <td><span class="ha-badge">HA 2</span></td>
+            <td class="cell--tool">
+              <span>Excel / Confluence</span>
+              <span>TestRail</span>
+              <span>Jira + Xray</span>
+            </td>
+            <td class="cell--context"><strong>Ideal für Geschäftsregeln</strong> mit mehreren Bedingungen. In <strong>regulierten Branchen</strong> (Banken, Versicherungen) häufig <strong>Pflicht</strong>. <strong>Reduziert Kombinationsexplosion</strong> systematisch.</td>
+          </tr>
+          <tr class="row--bb">
+            <td><span class="cell--chapter">4.2.4</span></td>
+            <td class="cell--cat"><span class="tag tag--bb">Black-Box</span></td>
+            <td>
+              <span class="cell--term-en">State Transition Testing</span>
+              <span class="cell--term-de">Zustandsübergangstest</span>
+            </td>
+            <td class="cell--model">Zustandsübergangsdiagramm (gerichteter Graph)</td>
+            <td class="cell--result">Zustandsübergangstabelle</td>
+            <td><span class="ha-badge">HA 3 T1</span></td>
+            <td class="cell--tool">
+              <span>draw.io / Lucidchart</span>
+              <span>UML-Tools</span>
+              <span>Confluence</span>
+              <span>TestRail</span>
+            </td>
+            <td class="cell--context">Für <strong>zustandsabhängige Systeme</strong>: Login-Flows, Bestellprozesse, Automaten. <strong>Diagramm als Kommunikationsmittel</strong> mit Entwicklung &amp; Produktmanagement.</td>
+          </tr>
+          <tr class="row--wb">
+            <td><span class="cell--chapter">4.3.1</span></td>
+            <td class="cell--cat"><span class="tag tag--wb">White-Box</span></td>
+            <td>
+              <span class="cell--term-en">Statement Testing</span>
+              <span class="cell--term-de">Anweisungstest</span>
+            </td>
+            <td class="cell--model">Kontrollflussgraph (KFG)</td>
+            <td class="cell--result">Überdeckungsanalyse (Anweisungsüberdeckung)</td>
+            <td><span class="ha-badge">HA 3 T2</span></td>
+            <td class="cell--tool">
+              <span>SonarQube</span>
+              <span>JaCoCo (Java)</span>
+              <span>Coverage.py</span>
+              <span>Istanbul / nyc (JS)</span>
+            </td>
+            <td class="cell--context">Wird oft durch <strong>CI/CD-Pipelines automatisch gemessen.</strong> <strong>Schwellenwert</strong> (z.B. 80&nbsp;% Überdeckung) als <strong>Quality Gate</strong>. <strong>Schwächstes White-Box-Kriterium</strong> — notwendig, aber nicht hinreichend.</td>
+          </tr>
+          <tr class="row--wb">
+            <td><span class="cell--chapter">4.3.2</span></td>
+            <td class="cell--cat"><span class="tag tag--wb">White-Box</span></td>
+            <td>
+              <span class="cell--term-en">Branch Testing</span>
+              <span class="cell--term-de">Zweigtest</span>
+            </td>
+            <td class="cell--model">Kontrollflussgraph (KFG)</td>
+            <td class="cell--result">Überdeckungsanalyse (Zweigüberdeckung)</td>
+            <td><span class="ha-badge">HA 3 T2</span></td>
+            <td class="cell--tool">
+              <span>SonarQube</span>
+              <span>JaCoCo (Java)</span>
+              <span>Coverage.py</span>
+              <span>Istanbul / nyc (JS)</span>
+            </td>
+            <td class="cell--context"><strong>Stärker als Anweisungstest:</strong> jeder Entscheidungspfad wird geprüft. <strong>Zweigüberdeckung schließt Anweisungsüberdeckung ein.</strong> <strong>Standard</strong> in professionellen Projekten &amp; regulierten Umgebungen.</td>
+          </tr>
+          <tr class="row--co">
+            <td><span class="cell--chapter">4.2.2 + 4.5.3</span></td>
+            <td class="cell--cat"><span class="tag tag--co">BB + Kollab.</span></td>
+            <td>
+              <span class="cell--term-en">BVA in ATDD context</span>
+              <span class="cell--term-de">Grenzwertanalyse im ATDD-Ansatz</span>
+            </td>
+            <td class="cell--model">User Story + Grenzwerte (Intervallpartition)</td>
+            <td class="cell--result">Testfälle aus Akzeptanzkriterien + BVA</td>
+            <td><span class="ha-badge">HA 1 T4</span></td>
+            <td class="cell--tool">
+              <span>Jira + Confluence</span>
+              <span>Cucumber / Gherkin</span>
+              <span>Excel</span>
+            </td>
+            <td class="cell--context"><strong>Einzige HA, die zwei Verfahren kombiniert.</strong> BVA (4.2.2) wird auf eine User Story angewendet — eingebettet in den <strong>ATDD-Ansatz (4.5.3)</strong>. Zeigt wie Grenzwertanalyse direkt aus Akzeptanzkriterien abgeleitet wird. <strong>Shift-Left in der Praxis</strong>: Testfalldenken beginnt bei der Anforderung.</td>
+          </tr>
+          <tr class="row--co">
+            <td><span class="cell--chapter">4.5.3</span></td>
+            <td class="cell--cat"><span class="tag tag--co">Kollaborativ</span></td>
+            <td>
+              <span class="cell--term-en">ATDD</span>
+              <span class="cell--term-de">Abnahmetestgetriebene Entwicklung</span>
+            </td>
+            <td class="cell--model">User Stories + Akzeptanzkriterien</td>
+            <td class="cell--result">Testfallspezifikation (aus Akzeptanzkriterien)</td>
+            <td><span class="ha-badge">HA 4</span></td>
+            <td class="cell--tool">
+              <span>Cucumber / Gherkin</span>
+              <span>SpecFlow (.NET)</span>
+              <span>Jira + Confluence</span>
+              <span>Notion</span>
+            </td>
+            <td class="cell--context"><strong>Neu in CTFL 4.0.</strong> <strong>Testen beginnt bei der Anforderung</strong> — nicht beim Code. Verzahnt Product Owner, Entwicklung &amp; Test von Beginn an. <strong>Shift-Left-Prinzip</strong> in der Praxis. <strong>Gherkin-Syntax</strong> (Given / When / Then) als Industriestandard.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <nav class="legend" aria-label="Legende Kategorien">
+      <div class="legend__item"><span class="legend__swatch" style="background:#c7ddc9" aria-hidden="true"></span>4.2 Black-Box-Testverfahren</div>
+      <div class="legend__item"><span class="legend__swatch" style="background:#bad1dc" aria-hidden="true"></span>4.3 White-Box-Testverfahren</div>
+      <div class="legend__item"><span class="legend__swatch" style="background:#d4c4e0" aria-hidden="true"></span>4.5 Kollaborativer Testansatz</div>
+      <div class="legend__item"><span class="legend__swatch" style="background:linear-gradient(90deg,#c7ddc9 50%,#d4c4e0 50%)" aria-hidden="true"></span>4.2 + 4.5 — Black-Box + Kollaborativ</div>
+    </nav>
+  </section>
+</main>
+
+<footer>
+  <p class="source-note">Masterschool QA-Track · Einordnung Testverfahren &amp; Hausaufgaben nach ISTQB CTFL Kap. 4 · V2</p>
+</footer>
+
+</body>
+</html>

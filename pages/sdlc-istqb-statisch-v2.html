@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SDLC und ISTQB Hypozykel — statische Darstellung (V2).">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>SDLC + ISTQB Hypozykel — statisch (V2)</title>
+  <style>
+    body { padding: 2.5rem 3rem 4rem; max-width: 900px; margin: 0 auto; font-size: 15px; }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      padding: .6rem 1rem;
+      margin-bottom: 1.5rem;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+    .meta-bar strong { color: var(--text); }
+
+    .info-box {
+      padding: .9rem 1.1rem;
+      margin-bottom: 1.5rem;
+      background: #f0efe8;
+      border-left: 4px solid var(--mid);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .section { margin-bottom: 1.5rem; }
+    .section__header { margin-bottom: .75rem; }
+    .section__title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      color: var(--text);
+    }
+    .section p {
+      margin: 0;
+      font-style: italic;
+      color: var(--soft);
+      hyphens: auto;
+      line-height: 1.55;
+    }
+
+    /* Visualisierungsbereich: Diagramm-Container (Canvas fest 820×800, JS zeichnet einmalig) */
+    .diagram-wrap {
+      position: relative;
+      width: 820px;
+      max-width: 100%;
+      margin: 1.25rem auto;
+      flex: 0 0 820px;
+    }
+    .diagram-wrap canvas { display: block; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      padding: .7rem 1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--mid);
+    }
+    .legend__item { display: flex; align-items: center; gap: .5rem; }
+    .legend__swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+    .legend__swatch--sdlc { background: #b3cdb6; }
+    .legend__swatch--istqb { background: #a5bfce; }
+    .legend__swatch--t2 { background: #c8a96a; }
+    .legend__swatch--t2ring {
+      width: 22px;
+      height: 0;
+      border-top: 2px dashed rgba(200,169,106,0.55);
+      margin-top: 1px;
+    }
+
+    .cycle-note {
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--soft);
+      text-align: center;
+      letter-spacing: .04em;
+      font-size: 0.9rem;
+    }
+    .cycle-note span { color: var(--mid); font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .diagram-wrap { transform: scale(0.85); transform-origin: top center; margin-bottom: -120px; }
+      .legend { max-width: 90vw; }
+    }
+    @media (max-width: 730px) {
+      .diagram-wrap { transform: scale(0.72); transform-origin: top center; margin-bottom: -224px; }
+    }
+    @media (max-width: 490px) {
+      .diagram-wrap { transform: scale(0.50); transform-origin: top center; margin-bottom: -400px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index-v2.html">Einstieg</a></li>
+      <li><a href="testuniversum-v2.html">Testuniversum</a></li>
+      <li><a href="testverfahren-v2.html">Testverfahren</a></li>
+      <li><a href="glossar-v2.html">Glossar</a></li>
+      <li><a href="ha-einordnung-v2.html">HA-Einordnung</a></li>
+      <li><a href="ha4-anforderungsanalyse-v2.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="ha4-formular-v2-a4.html">HA4 Formular A4</a></li>
+      <li><a href="ha5-testkonzept-v2.html">HA5 Testkonzept</a></li>
+      <li><a href="ha5-formular-v2-a4.html">HA5 Formular A4</a></li>
+      <li><a href="ha5-testfallentwurf-v2.html">HA5 Testfallentwurf</a></li>
+      <li><a href="ha5-testfallentwurf-formular-v2-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="sdlc-istqb-statisch-v2.html" class="current">SDLC statisch</a></li>
+      <li><a href="sdlc-istqb-animiert-v2.html">SDLC animiert</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Software&#x2011;Entwicklungslebenszyklus &amp; ISTQB&#x2011;Testprozess</h1>
+    <p>Hypozykel&#x2011;Modell &#x2014; statische Darstellung · SDLC statisch · V2</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Seitenkontext">
+    <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB 2025) · SDLC &amp; Testaktivitäten im Lebenszyklus</span>
+    <span><strong>Zweck:</strong> Statische Visualisierung des Hypozykel&#x2011;Modells (einmalige Darstellung bei 12 Uhr)</span>
+  </div>
+
+  <div class="info-box" role="note">
+    <strong>Inhalt:</strong> Diese Seite zeigt das Hypozykel&#x2011;Modell als statisches Diagramm: SDLC mit sechs Phasen als äußerer Ring, ISTQB&#x2011;Testprozess mit sechs Aktivitäten als innerer Kreis. Kontaktpunkt bei 12 Uhr: Anforderungen &#x2194; Testplanung. Die animierte Variante finden Sie unter „SDLC animiert“.
+  </div>
+
+  <section class="section" aria-labelledby="fachlich-heading">
+    <div class="section__header">
+      <h2 id="fachlich-heading" class="section__title">Fachlicher Inhalt</h2>
+    </div>
+    <p>Die Seite veranschaulicht den Software&#x2011;Entwicklungs&#x00AD;lebenszyklus (SDLC)
+    mit seinen sechs Phasen (Anforderungen, Design, Implementierung, Integration,
+    Test, Betrieb &amp; Wartung) und den ISTQB&#x2011;Testprozess (Foundation Level)
+    mit seinen sechs Aktivitäten (Testplanung, Test&#xfc;berwachung &amp; &#x2011;steuerung,
+    Testanalyse, Testdesign, Testrealisierung, Testdurchf&#xfc;hrung &amp; Testabschluss)
+    als Hypozykel&#x2011;Modell. Der SDLC bildet einen feststehenden
+    &#xe4;u&#xdf;eren Ring; der Testprozess ist als kleinerer Kreis dargestellt, der auf
+    der Innenwand des SDLC&#x2011;Rings abrollt. Der dargestellte Zustand ist fest: Kontaktpunkt bei 12 Uhr
+    (Anforderungen &#x2194; Testplanung). Da
+    die Radien im Verh&#xe4;ltnis 16&#x202F;:&#x202F;11 stehen (teilerfremd), werden im Verlauf
+    von 16 SDLC&#x2011;Umdrehungen zwingend alle 36 m&#xf6;glichen Kombinationen
+    durchlaufen &#x2014; jede Testaktivit&#xe4;t ist potenziell in jeder Entwicklungsphase relevant.
+    Test&#xfc;berwachung &amp; &#x2011;steuerung (T&#x202F;2) ist als gleichwertige, aber
+    begleitende Querschnittsaktivit&#xe4;t durch einen zus&#xe4;tzlichen gestrichelten Ring
+    kenntlich gemacht.</p>
+  </section>
+
+  <section class="section" aria-labelledby="diagram-heading">
+    <div class="section__header">
+      <h2 id="diagram-heading" class="section__title">Hypozykel&#x2011;Diagramm</h2>
+    </div>
+    <div class="diagram-wrap">
+      <canvas id="c" width="820" height="800"
+              aria-label="Hypozykel-Diagramm: SDLC-Ring mit ISTQB-Testprozess als innerem Kreis. Kontaktpunkt bei 12 Uhr: T1 Testplanung trifft Phase 1 Anforderungen."></canvas>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="technisch-heading">
+    <div class="section__header">
+      <h2 id="technisch-heading" class="section__title">Technische Konzeption</h2>
+    </div>
+    <p>Die Seite besteht aus einer HTML&#x2011;Datei und einer externen
+    JavaScript&#x2011;Datei (<code>sdlc-hypocycle-statisch.js</code>). Das Diagramm wird
+    <strong>einmalig beim Laden</strong> auf einem HTML5&#x2011;<code>canvas</code>&#x2011;Element
+    (820&#x202F;&times;&#x202F;800&#x202F;px) gezeichnet &#x2014; es gibt keine Animation und
+    keine Steuerelemente. Der dargestellte Zustand ist fest: Kontaktpunkt bei 12 Uhr
+    (Anforderungen &#x2194; Testplanung). Die Geometrie entspricht dem Hypozykel&#x2011;Modell
+    (Radien, Verh&#xe4;ltnis 16&#x202F;:&#x202F;11); Segmente sind Kreisring&#x2011;Sektoren
+    (<code>arc</code>&#x2011;Pfade). Das aktive Segmentpaar (Anforderungen &#x2194; Testplanung)
+    wird durch abgesetzte F&#xfc;llfarbe und leichten Schatten hervorgehoben. Der
+    JavaScript&#x2011;Code liegt in einer externen Datei und ist in einer IIFE gekapselt.</p>
+  </section>
+
+  <nav class="legend" aria-label="Legende">
+    <div class="legend__item"><span class="legend__swatch legend__swatch--sdlc" aria-hidden="true"></span>SDLC &#x2014; 6 Phasen</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--istqb" aria-hidden="true"></span>ISTQB &#x2014; 6 Aktivit&#xe4;ten</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--t2" aria-hidden="true"></span>T&#x202F;2 &#x2014; Test&#xfc;berwachung &amp; &#x2011;steuerung</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--t2ring" aria-hidden="true"></span>T&#x202F;2 &#x2014; Querschnittscharakter</div>
+  </nav>
+
+  <p class="cycle-note">
+    Vollst&#xe4;ndiger Zyklus nach <span>16 SDLC&#x2011;Umdrehungen</span> =
+    <span>11 ISTQB&#x2011;Umdrehungen</span> &#x2014;
+    alle <span>36 Kombinationen</span> werden durchlaufen.
+  </p>
+</main>
+
+<footer>
+  <p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB 2025) · SDLC &amp; Testaktivitäten im Lebenszyklus (Hypozykel-Modell) · SDLC statisch V2</p>
+</footer>
+
+<script src="../assets/js/sdlc-hypocycle-statisch.js" defer></script>
+</body>
+</html>

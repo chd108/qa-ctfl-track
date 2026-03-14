@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="SDLC und ISTQB Hypozykel — animierte Darstellung (V2).">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>SDLC + ISTQB Hypozykel — animiert (V2)</title>
+  <style>
+    body { padding: 2.5rem 3rem 4rem; max-width: 900px; margin: 0 auto; font-size: 15px; }
+
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      padding: .6rem 1rem;
+      margin-bottom: 1.5rem;
+      background: rgba(255,255,255,0.55);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+    .meta-bar strong { color: var(--text); }
+
+    .info-box {
+      padding: .9rem 1.1rem;
+      margin-bottom: 1.5rem;
+      background: #f0efe8;
+      border-left: 4px solid var(--mid);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+
+    .section { margin-bottom: 1.5rem; }
+    .section__header { margin-bottom: .75rem; }
+    .section__title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      color: var(--text);
+    }
+    .section p {
+      margin: 0;
+      font-style: italic;
+      color: var(--soft);
+      hyphens: auto;
+      line-height: 1.55;
+    }
+
+    /* Visualisierungs-/Animationsbereich: Diagramm + Info-Panel + Steuerung */
+    .diagram-wrap {
+      position: relative;
+      width: 820px;
+      max-width: 100%;
+      margin: 1.25rem auto 0;
+      flex: 0 0 820px;
+    }
+    .diagram-wrap canvas { display: block; }
+
+    .viz-controls {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 0.55rem;
+      margin-bottom: 1rem;
+    }
+    .info-panel {
+      width: 100%;
+      max-width: 820px;
+      padding: .45rem 1rem;
+      margin-bottom: .5rem;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--bdr);
+      border-radius: 4px;
+      color: var(--mid);
+      text-align: center;
+      min-height: 2.4em;
+      letter-spacing: .02em;
+      line-height: 1.7;
+      transition: border-color .3s;
+    }
+    .info-panel.t2-active { border-color: rgba(200,169,106,0.50); }
+    .info-panel .t     { color: #4a8caa; font-weight: 600; }
+    .info-panel .t.t2c { color: #6e4e18; }
+    .info-panel .s     { color: #4a7a50; font-weight: 600; }
+    .info-panel .arr   { color: var(--soft); padding: 0 .5em; }
+
+    .controls {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: .9rem;
+      flex-wrap: wrap;
+    }
+    .btn {
+      background: none;
+      border: 1px solid rgba(78,96,96,.28);
+      border-radius: 3px;
+      padding: .28rem .75rem;
+      color: var(--mid);
+      cursor: pointer;
+      letter-spacing: .07em;
+      transition: background .12s;
+      user-select: none;
+    }
+    .btn:hover { background: rgba(78,96,96,.07); }
+    .ctrl-group {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      color: var(--soft);
+    }
+    .ctrl-group input[type=range] { width: 78px; accent-color: #7a9090; cursor: pointer; }
+    .ctrl-group label { display: flex; align-items: center; gap: .35rem; cursor: pointer; }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      padding: .7rem 1rem;
+      margin-top: 0.5rem;
+      margin-bottom: 1rem;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      font-size: 0.85rem;
+      color: var(--mid);
+    }
+    .legend__item { display: flex; align-items: center; gap: .5rem; }
+    .legend__swatch { width: 12px; height: 12px; border-radius: 3px; flex-shrink: 0; }
+    .legend__swatch--sdlc { background: #b3cdb6; }
+    .legend__swatch--istqb { background: #a5bfce; }
+    .legend__swatch--t2 { background: #c8a96a; }
+    .legend__swatch--t2ring {
+      width: 22px;
+      height: 0;
+      border-top: 2px dashed rgba(200,169,106,0.55);
+      margin-top: 1px;
+    }
+
+    .cycle-note {
+      margin-top: 0.5rem;
+      margin-bottom: 1.5rem;
+      color: var(--soft);
+      text-align: center;
+      letter-spacing: .04em;
+      font-size: 0.9rem;
+    }
+    .cycle-note span { color: var(--mid); font-weight: 600; }
+
+    @media (max-width: 900px) {
+      .diagram-wrap { transform: scale(0.85); transform-origin: top center; margin-bottom: -120px; }
+      .legend, .controls, .info-panel { max-width: 90vw; }
+    }
+    @media (max-width: 730px) {
+      .diagram-wrap { transform: scale(0.72); transform-origin: top center; margin-bottom: -224px; }
+    }
+    @media (max-width: 490px) {
+      .diagram-wrap { transform: scale(0.50); transform-origin: top center; margin-bottom: -400px; }
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index-v2.html">Einstieg</a></li>
+      <li><a href="testuniversum-v2.html">Testuniversum</a></li>
+      <li><a href="testverfahren-v2.html">Testverfahren</a></li>
+      <li><a href="glossar-v2.html">Glossar</a></li>
+      <li><a href="ha-einordnung-v2.html">HA-Einordnung</a></li>
+      <li><a href="ha4-anforderungsanalyse-v2.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="ha4-formular-v2-a4.html">HA4 Formular A4</a></li>
+      <li><a href="ha5-testkonzept-v2.html">HA5 Testkonzept</a></li>
+      <li><a href="ha5-formular-v2-a4.html">HA5 Formular A4</a></li>
+      <li><a href="ha5-testfallentwurf-v2.html">HA5 Testfallentwurf</a></li>
+      <li><a href="ha5-testfallentwurf-formular-v2-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="sdlc-istqb-statisch-v2.html">SDLC statisch</a></li>
+      <li><a href="sdlc-istqb-animiert-v2.html" class="current">SDLC animiert</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Software&#x2011;Entwicklungslebenszyklus &amp; ISTQB&#x2011;Testprozess</h1>
+    <p>Animiertes Hypozykel&#x2011;Modell &#x2014; SDLC animiert · V2</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Seitenkontext">
+    <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB 2025) · SDLC &amp; Testaktivitäten im Lebenszyklus</span>
+    <span><strong>Zweck:</strong> Animierte Visualisierung des Hypozykel&#x2011;Modells mit Steuerung (Pause, Tempo, Spur)</span>
+  </div>
+
+  <div class="info-box" role="note">
+    <strong>Inhalt:</strong> Diese Seite zeigt das Hypozykel&#x2011;Modell als Animation: Der innere ISTQB&#x2011;Kreis rollt auf dem SDLC&#x2011;Ring. Unter dem Diagramm sehen Sie die aktuelle Kombination (Testaktivität &#x2194; Phase). Steuerung: Pause/Abspielen, Zurücksetzen, Tempo, optionale Spuranzeige. Statische Variante: „SDLC statisch“.
+  </div>
+
+  <section class="section" aria-labelledby="fachlich-heading">
+    <div class="section__header">
+      <h2 id="fachlich-heading" class="section__title">Fachlicher Inhalt</h2>
+    </div>
+    <p>Die Seite veranschaulicht den Software&#x2011;Entwicklungs&#x00AD;lebenszyklus (SDLC)
+    mit seinen sechs Phasen (Anforderungen, Design, Implementierung, Integration,
+    Test, Betrieb &amp; Wartung) und den ISTQB&#x2011;Testprozess (Foundation Level)
+    mit seinen sechs Aktivitäten (Testplanung, Test&#xfc;berwachung &amp; &#x2011;steuerung,
+    Testanalyse, Testdesign, Testrealisierung, Testdurchf&#xfc;hrung &amp; Testabschluss)
+    als interaktives Hypozykel&#x2011;Modell. Der SDLC bildet einen feststehenden
+    &#xe4;u&#xdf;eren Ring; der Testprozess ist als kleinerer Kreis dargestellt, der auf
+    der Innenwand des SDLC&#x2011;Rings abrollt. Am animierten Kontaktpunkt ist jederzeit
+    ablesbar, welche Testaktivit&#xe4;t gerade auf welche Entwicklungsphase trifft. Da
+    die Radien im Verh&#xe4;ltnis 16&#x202F;:&#x202F;11 stehen (teilerfremd), werden im Verlauf
+    von 16 SDLC&#x2011;Umdrehungen zwingend alle 36 m&#xf6;glichen Kombinationen
+    durchlaufen &#x2014; jede Testaktivit&#xe4;t ist potenziell in jeder Entwicklungsphase relevant.
+    Test&#xfc;berwachung &amp; &#x2011;steuerung (T&#x202F;2) ist als gleichwertige, aber
+    begleitende Querschnittsaktivit&#xe4;t durch einen zus&#xe4;tzlichen gestrichelten Ring
+    kenntlich gemacht.</p>
+  </section>
+
+  <section class="section" aria-labelledby="diagram-heading">
+    <div class="section__header">
+      <h2 id="diagram-heading" class="section__title">Hypozykel&#x2011;Diagramm (animiert)</h2>
+    </div>
+    <div class="diagram-wrap">
+      <canvas id="c" width="820" height="800"
+              aria-label="Animiertes Hypozykel-Diagramm SDLC und ISTQB-Testprozess"></canvas>
+    </div>
+    <div class="viz-controls">
+      <div class="info-panel" id="info">&#x2015;</div>
+      <div class="controls">
+        <button type="button" class="btn" id="btn-play">&#x23F8;&#xFE0E; Pause</button>
+        <button type="button" class="btn" id="btn-reset">&#x21BA; Zur&#xFC;cksetzen</button>
+        <div class="ctrl-group">
+          <span>Tempo</span>
+          <input type="range" id="speed" min="1" max="8" step="1" value="3" aria-label="Tempo">
+          <span id="speed-label"></span>
+        </div>
+        <div class="ctrl-group">
+          <label><input type="checkbox" id="trace"> Spur anzeigen</label>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" aria-labelledby="technisch-heading">
+    <div class="section__header">
+      <h2 id="technisch-heading" class="section__title">Technische Konzeption</h2>
+    </div>
+    <p>Die Seite besteht aus einer HTML&#x2011;Datei und einer externen
+    JavaScript&#x2011;Datei (<code>sdlc-hypocycle-animiert.js</code>). Das Diagramm wird
+    per JavaScript auf einem HTML5&#x2011;<code>canvas</code>&#x2011;Element
+    (820&#x202F;&times;&#x202F;800&#x202F;px) gezeichnet. In jedem Frame berechnet eine
+    <code>requestAnimationFrame</code>&#x2011;Schleife den Orbitalwinkel &#x3b1; des
+    ISTQB&#x2011;Kreismittelpunkts auf seiner Kreisbahn (Radius 59&#x202F;px um den
+    SDLC&#x2011;Mittelpunkt) sowie die Eigenrotation des rollenden Kreises
+    (wRot&#x202F;=&#x202F;K&#x202F;&#x00B7;&#x202F;&#x3b1;, K&#x202F;=&#x202F;5&#x2F;16). Segmente werden als
+    Kreisring&#x2011;Sektoren (<code>arc</code>&#x2011;Pfade) gezeichnet, aktive Segmente
+    werden per Helligkeitswechsel und Shadow&#x2011;Blur hervorgehoben. Das Info&#x2011;Panel
+    unterhalb des Canvas zeigt in Echtzeit die aktuelle Kombination. Steuerelemente
+    (Pause/Play, Reset, Tempostufe, Spuranzeige) sind als HTML&#x2011;Elemente mit
+    Event&#x2011;Listenern umgesetzt; der JS&#x2011;Code ist in einer IIFE gekapselt.</p>
+  </section>
+
+  <nav class="legend" aria-label="Legende">
+    <div class="legend__item"><span class="legend__swatch legend__swatch--sdlc" aria-hidden="true"></span>SDLC &#x2014; 6 Phasen</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--istqb" aria-hidden="true"></span>ISTQB &#x2014; 6 Aktivit&#xe4;ten</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--t2" aria-hidden="true"></span>T&#x202F;2 &#x2014; Test&#xfc;berwachung &amp; &#x2011;steuerung</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--t2ring" aria-hidden="true"></span>T&#x202F;2 &#x2014; Querschnittscharakter</div>
+  </nav>
+
+  <p class="cycle-note">
+    Vollst&#xe4;ndiger Zyklus nach <span>16 SDLC&#x2011;Umdrehungen</span> =
+    <span>11 ISTQB&#x2011;Umdrehungen</span> &#x2014;
+    alle <span>36 Kombinationen</span> werden durchlaufen.
+  </p>
+</main>
+
+<footer>
+  <p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB 2025) · SDLC &amp; Testaktivitäten im Lebenszyklus (Hypozykel, animiert) · SDLC animiert V2</p>
+</footer>
+
+<script src="../assets/js/sdlc-hypocycle-animiert.js" defer></script>
+</body>
+</html>
