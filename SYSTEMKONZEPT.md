@@ -6,16 +6,16 @@ Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage f�
 
 ## Aktueller Stand (März 2026)
 
-**Wo wir stehen:** Die Greenfield-Denkphase ist praktisch durchgeführt; das V2-Hauptsystem ist aufgebaut und an mehreren Seiten erprobt. Der Dokument-/A4-Modus ist als Präsentationsmodus bestätigt; die Einstiegsseite wurde als Variante des Haupttyps umgesetzt. Wir stehen am **Übergang vom V2-Aufbau zur Systembereinigung und Aktivierung** – nicht mehr in der offenen Findungsphase.
+**Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert auf V2 (index-v2.html, V2-Seiten in pages/). Die alten HTML-Seiten wurden in **archive/** abgegrenzt und sind dort referenzierbar. Die Referenzvorlage wurde unter **templates/** eingeordnet (v2-referenz-hauptsystem.html). Ergänzend zur bereits weit fortgeschrittenen V2-Migration wurden die drei zuvor noch offenen, im ersten Aktivierungsschritt vergessenen Seiten nachträglich in das V2-Hauptsystem überführt: HA-Einordnung, SDLC statisch und SDLC animiert. Wir stehen damit **nach Abschluss der Migrationsphase**; nächste Schritte sind Benennungs-/Aufräumfragen und danach Komponentenstil / V2-Designsystem light.
 
 **Reihenfolge der nächsten Schritte:**
-1. **Dokumentation aktualisieren** (Steuerungs- und Statusdokumente, SYSTEMKONZEPT)
-2. **V2 aktivieren / Altseiten deaktivieren** (z. B. Index-V2 zum Einstieg machen, Altseiten erhalten aber nicht mehr als Standard anbieten)
-3. **Benennungs-/Aufräumfragen** klären
-4. **Komponentenstil / V2-Designsystem light** ausarbeiten (Darstellungsregeln der kanonischen Komponenten)
-5. **Rückkehr zur Konsistenz- und Darstellungsregel-Ebene** auf höherem Niveau
+1. **Benennungs-/Aufräumfragen** klären
+2. **Komponentenstil / V2-Designsystem light** ausarbeiten (Darstellungsregeln der kanonischen Komponenten)
+3. **Rückkehr zur Konsistenz- und Darstellungsregel-Ebene** auf höherem Niveau
 
-**Meta-Einordnung:** Wir sind nicht vom Thema Design- und Konsistenz-Harmonisierung weggegangen, sondern auf tieferer Ebene **durch** das Thema hindurchgegangen (Architektur, Seitentypen, Modus). Jetzt kehren wir mit einer klaren Architekturgrundlage dorthin zurück.
+*(Erledigt: Dokumentation aktualisieren; V2 aktivieren / Altseiten deaktivieren – V2 ist Standard, Altbestand in archive/.)*
+
+**Meta-Einordnung:** Wir sind nicht vom Thema Design- und Konsistenz-Harmonisierung weggegangen, sondern auf tieferer Ebene **durch** das Thema hindurchgegangen (Architektur, Seitentypen, Modus). Die Migrationsphase ist als eigener Meilenstein abgeschlossen; mit der klaren Architekturgrundlage folgen nun Aufräum- und Stilfragen.
 
 **Dokument-/A4-Modus (Kurzfassung):** Kein eigener Wissens- oder Inhalts-Seitentyp, sondern ein **eigener Präsentations-/Layoutmodus** innerhalb desselben Systems. Für normale Webnutzung bleibt das Hauptsystem; für A4-/Druckdarstellung gilt der bewusste Dokument-/A4-Modus mit eigenen Layout- und Darstellungsregeln.
 
@@ -188,11 +188,11 @@ Kurz: Kein eigener Wissens- oder Inhalts-Seitentyp, aber ein eigener Präsentati
 - Formale Schreibweisen können in einem späteren Schritt präzisiert werden.
 
 **5. Logische nächste Schritte (aktualisiert)**
-- Dokumentation auf aktuellen Stand bringen (erledigt mit dieser Aktualisierung).
-- V2 aktivieren / Altseiten deaktivieren (V2 zum Standard machen, Altbestand erhalten).
-- Benennungs-/Aufräumfragen klären.
-- Komponentenstil / V2-Designsystem light ausarbeiten.
+- **Benennungs-/Aufräumfragen** klären.
+- **Komponentenstil / V2-Designsystem light** ausarbeiten.
 - Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene auf höherem Niveau.
+
+*(Erledigt: Dokumentation auf aktuellen Stand bringen; V2 aktivieren / Altseiten deaktivieren – V2 ist Standard, Altbestand in archive/, Referenzvorlage unter templates/, drei nachgezogene Seiten im V2-Hauptsystem.)*
 
 ---
 
