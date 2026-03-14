@@ -150,3 +150,36 @@ Die Trennung schafft klare Zuständigkeiten, reduziert Rollenvermischung und erm
 - Formale Benennungsregeln präzisieren.
 - Bestand gegen Sollstruktur abgleichen.
 - Danach Migrations- und Umsetzungsreihenfolge festlegen.
+
+---
+
+## 9. Komponentenstil / V2-Designsystem light *(Darstellungsregeln der kanonischen Komponenten)*
+
+Dieser Abschnitt dokumentiert eine Erkenntnis, die beim praktischen Neubau der ersten V2-Seiten (testuniversum-v2.html, glossar-v2.html) sichtbar wurde. Er gehört zum konzeptionellen Arbeitsbereich und beschreibt den nächsten Architekturpunkt nach der Sollstruktur Version 2.
+
+**1. Entstehung der Erkenntnis**
+- Beim praktischen Neubau der ersten V2-Seiten zeigte sich: Das System funktioniert strukturell – gemeinsame Grundform, klare Komponenten, sinnvolle Überführung der Inhalte.
+- Gleichzeitig wurden Unterschiede in der konkreten visuellen Ausprägung wiederkehrender Komponenten sichtbar (z. B. Meta-Bereich, Hinweis-/Info-Box, Legende, Tabellen-/Referenzbereich; Größen, Abstände, Stilnuancen).
+- Diese Unterschiede liegen nicht primär an der Informationsarchitektur oder am Template, sondern daran, dass die Darstellungsregeln der kanonischen Komponenten noch nicht explizit als eigener Standard festgehalten sind.
+- Das ist kein Mangel des Templates, sondern ein eigenständiger nächster Systemschritt: die explizite Festlegung eines Komponentenstils bzw. eines V2-Designsystems light.
+
+**2. Fachliche Einordnung**
+- Der Punkt gehört nicht mehr primär zur Informationsarchitektur (Abschn. 4) und auch nicht nur zur Frage der Seitentypen (Abschn. 5).
+- Er betrifft die **standardisierte Darstellung** wiederkehrender Komponenten und kann als **Komponentenstil**, **V2-Designsystem light** oder **Darstellungsregelwerk der kanonischen Komponenten** verstanden werden.
+- Abgrenzung: Das Template beantwortet die **Grundform** der Seite (Rahmen, Hauptbereiche). Die Komponenten (Abschn. 6) beantworten, **welche** Bausteine es gibt. Dieser neue Punkt beantwortet, **wie** diese Bausteine systemweit aussehen und variieren sollen.
+
+**3. Warum das wichtig ist**
+- Ohne einen solchen Standard kann das System strukturell richtig, in der Ausprägung aber uneinheitlich bleiben.
+- Für Konsistenz, Wartbarkeit und professionelle Weiterentwicklung braucht das System deshalb nicht nur Struktur-, sondern auch **Darstellungsregeln auf Komponentenebene**.
+
+**4. Warum es bisher nicht explizit festgehalten war**
+- Zuerst mussten die groben Systemfragen geklärt werden: Informationsarchitektur, Seitentypen, Komponenten, Benennungslogik, Sollstruktur Version 2.
+- Die Stilfrage der Komponenten wurde dadurch nicht ignoriert; sie war bisher implizit mitgedacht.
+- Erst durch den praktischen V2-Bau wurde deutlich, dass sie als eigener nächster Architekturpunkt **explizit** benannt und verankert werden sollte.
+
+**5. Strategischer Umgang ab jetzt**
+- Dieser Punkt ist wichtig, aber aktuell **nicht blockierend**. Die Migration wird nicht gestoppt.
+- Vorgehen: Zunächst werden weitere Seiten im V2-System gebaut, um wiederkehrende Stilabweichungen und Muster belastbarer zu beobachten.
+- Daraus wird danach ein **kompakter Stilstandard / Darstellungsstandard** für die kanonischen Komponenten abgeleitet.
+- Dieser Schritt soll zeitnah erfolgen und als **nächste größere Baustelle** nach den ersten weiteren V2-Migrationen behandelt werden.
+- Es geht hier um die Verankerung der Erkenntnis und der Strategie; konkrete Detail-Designregeln werden in diesem Abschnitt bewusst noch nicht festgelegt.

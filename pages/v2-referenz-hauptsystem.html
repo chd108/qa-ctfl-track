@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="V2-Referenzvorlage: Grundform des kanonischen Hauptseitentyps (Hauptsystem). Keine Inhaltsseite, sondern technische Referenz.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>V2-Referenz Hauptsystem — QA Lernwebseite</title>
+  <style>
+    /* Minimale Platzhalter-Optik für Referenzbereiche (V2-Vorlage) */
+    body { padding: 2.5rem 3rem 4rem; }
+    .ref-meta-bar { display: flex; flex-wrap: wrap; gap: 1rem; padding: .6rem 1rem; margin-bottom: 1.5rem; background: rgba(255,255,255,0.5); border: 1px solid var(--bdr); border-radius: 8px; font-size: 0.9rem; color: var(--mid); }
+    .ref-section { margin-bottom: 1.5rem; padding: 1rem; background: rgba(255,255,255,0.35); border: 1px dashed var(--bdr); border-radius: 6px; }
+    .ref-section-title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 0.95rem; font-weight: 600; color: var(--soft); margin-bottom: 0.5rem; letter-spacing: .05em; }
+    .ref-card { padding: 1rem 1.2rem; margin-bottom: 1rem; background: var(--e1); border: 1px solid var(--bdr); border-radius: 8px; max-width: 480px; }
+    .ref-card-title { font-weight: 600; margin-bottom: 0.35rem; }
+    .ref-info-box { padding: 0.9rem 1.1rem; margin-bottom: 1.5rem; background: #f0dfc0; border-left: 4px solid #9c6a2a; border-radius: 4px; font-size: 0.9rem; }
+    .ref-legend { display: flex; flex-wrap: wrap; gap: 1rem; padding: .6rem 1rem; margin-bottom: 1.5rem; background: rgba(255,255,255,0.45); border: 1px solid var(--bdr); border-radius: 8px; font-size: 0.85rem; color: var(--mid); }
+    .ref-legend-item { display: flex; align-items: center; gap: .4rem; }
+    .ref-legend-swatch { width: 12px; height: 12px; border-radius: 3px; background: var(--e4); }
+    .ref-table-wrap { overflow-x: auto; margin-bottom: 1.5rem; border: 1px solid var(--bdr); border-radius: 8px; background: rgba(255,255,255,0.4); }
+    .ref-table-wrap table { width: 100%; border-collapse: collapse; font-size: 0.9rem; }
+    .ref-table-wrap th, .ref-table-wrap td { padding: .5rem .75rem; text-align: left; border-bottom: 1px solid var(--bdr); }
+    .ref-table-wrap th { background: rgba(0,0,0,0.04); font-weight: 600; color: var(--soft); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index.html">Übersicht</a></li>
+      <li><a href="v2-referenz-hauptsystem.html" class="current">V2-Referenz Hauptsystem</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>V2-Referenz: Hauptsystem</h1>
+    <p>Grundform des kanonischen Hauptseitentyps · Referenzvorlage (keine Inhaltsseite)</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="ref-meta-bar" aria-label="Platzhalter Meta-Bereich">
+    <span><strong>Platzhalter:</strong> Meta-Bereich</span>
+    <span>z. B. Status, Quelle, Kontext</span>
+  </div>
+
+  <section class="ref-section" aria-labelledby="ref-section-1">
+    <div class="ref-section-title" id="ref-section-1">Platzhalter: Section</div>
+    <p>Abschnitt mit optionalem Titel. Hier fließt später inhaltsbezogener Text ein.</p>
+  </section>
+
+  <div class="ref-card">
+    <div class="ref-card-title">Platzhalter: Card</div>
+    <p>Karten- bzw. Containerbereich für kompakte Informationseinheiten.</p>
+  </div>
+
+  <div class="ref-info-box" role="note">
+    <strong>Platzhalter: Info-Box</strong> — Hinweis, Warnung oder Kontexthinweis (Zusammenhang / Praxis). Kein eigener Seitentyp, sondern Komponente.
+  </div>
+
+  <div class="ref-legend" aria-label="Platzhalter Legende">
+    <div class="ref-legend-item"><span class="ref-legend-swatch" aria-hidden="true"></span>Platzhalter: Legende</div>
+    <div class="ref-legend-item"><span class="ref-legend-swatch" aria-hidden="true"></span>Farben / Kategorien erläutern</div>
+  </div>
+
+  <div class="ref-table-wrap">
+    <table>
+      <thead>
+        <tr>
+          <th>Platzhalter: Tabellenbereich</th>
+          <th>Spalte 2</th>
+          <th>Spalte 3</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Zeile 1</td><td>—</td><td>—</td></tr>
+        <tr><td>Zeile 2</td><td>—</td><td>—</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</main>
+
+<footer>
+  <p class="source-note">V2-Referenzvorlage Hauptsystem · QA Lernwebseite · SYSTEMKONZEPT Abschn. 5–8 · Keine Inhaltsseite</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ISTQB CTFL Glossar und Terminologie (DE/EN) nach v4.0.2 (V2).">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>ISTQB CTFL — Glossar &amp; Terminologie (V2)</title>
+  <style>
+    :root {
+      --fs: 14px;
+      --ok: #4a7c59; --ok-bg: #cde8d2;
+      --warn: #9c6a2a; --warn-bg: #f0dfc0;
+      --note: #2a547c; --note-bg: #c4d8ee;
+    }
+    body { font-size: var(--fs); padding: 2.5rem 3rem 4rem; max-width: 1400px; margin: 0 auto; }
+    .meta-bar { display: flex; align-items: center; gap: 2rem; flex-wrap: wrap; background: rgba(255,255,255,0.55); border: 1px solid var(--bdr); border-radius: 8px; padding: .6rem 1.2rem; margin-bottom: 1.5rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: var(--mid); }
+    .meta-bar strong { color: var(--text); }
+    .info-box { padding: .9rem 1.1rem; margin-bottom: 1.25rem; background: var(--note-bg); border-left: 4px solid var(--note); border-radius: 4px; font-size: 0.9rem; }
+    .section { margin-bottom: 1.4rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .section__header { display: flex; align-items: baseline; gap: 1rem; padding: .7rem 1.2rem; flex-wrap: wrap; }
+    .section__num { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .65; white-space: nowrap; }
+    .section__title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 15px; font-weight: 700; letter-spacing: .03em; }
+    .section__title .ref { font-size: 11px; font-weight: 400; opacity: .55; letter-spacing: .04em; margin-left: .5em; }
+    .section__sub { font-family: Georgia, serif; font-size: 13px; font-style: italic; opacity: .7; }
+    .section__body { background: rgba(255,255,255,0.38); border-top: 1px solid rgba(0,0,0,0.06); }
+    .section--e1 .section__header { background: var(--e1); }
+    .section--e2 .section__header { background: var(--e2); }
+    .section--e3 .section__header { background: var(--e3); }
+    .section--e4 .section__header { background: var(--e4); }
+    .section--e5 .section__header { background: var(--e5); }
+    .section--e6 .section__header { background: var(--e6); }
+    .ref-table { overflow-x: auto; }
+    .ref-table table { width: 100%; border-collapse: collapse; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; }
+    .ref-table thead th { font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--soft); padding: .5rem .9rem; border-bottom: 2px solid var(--bdr); text-align: left; background: rgba(255,255,255,0.3); }
+    .ref-table thead th:nth-child(1) { width: 22%; }
+    .ref-table thead th:nth-child(2) { width: 22%; }
+    .ref-table thead th:nth-child(3) { width: 8%; }
+    .ref-table thead th:nth-child(4) { width: 48%; }
+    .ref-table tbody tr { border-bottom: 1px solid var(--bdr); }
+    .ref-table tbody tr:last-child { border-bottom: none; }
+    .ref-table tbody tr:hover { background: rgba(255,255,255,0.45); }
+    .ref-table tbody td { padding: .45rem .9rem; vertical-align: top; line-height: 1.5; }
+    .ref-table .cell-de { font-weight: 600; color: var(--text); }
+    .ref-table .cell-en { color: var(--mid); font-style: italic; }
+    .ref-table .cell-abk { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-weight: 800; font-size: 11px; letter-spacing: .06em; color: var(--ok); }
+    .ref-table .cell-note { color: var(--mid); font-size: 12.5px; line-height: 1.55; }
+    .ref-table .note-syn { color: var(--note); font-size: 11px; display: block; margin-top: .15rem; }
+    .ref-table .note-nvw { color: var(--warn); font-size: 11px; display: block; margin-top: .15rem; }
+    .ref-table .note-def { color: var(--mid); font-size: 12.5px; }
+    .ref-table .note-trap { color: #8a3030; font-size: 11px; display: block; margin-top: .15rem; }
+    .badge { display: inline-flex; align-items: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 700; padding: .08rem .35rem; border-radius: 3px; margin-right: .2rem; }
+    .badge--syn { background: var(--note-bg); color: var(--note); }
+    .badge--nvw { background: var(--warn-bg); color: var(--warn); }
+    .badge--trap { background: #f5d5d5; color: #8a3030; }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index.html">Übersicht</a></li>
+      <li><a href="testuniversum.html">Testuniversum</a></li>
+      <li><a href="testuniversum-v2.html">Testuniversum V2</a></li>
+      <li><a href="testverfahren-istqb.html">Testverfahren</a></li>
+      <li><a href="glossar.html">Glossar</a></li>
+      <li><a href="glossar-v2.html" class="current">Glossar V2</a></li>
+      <li><a href="ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="ha4-formular.html">HA4 Testbasis-Analyse Formular</a></li>
+      <li><a href="ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="ha5-testkonzept-formular.html">HA5 Testkonzept Formular</a></li>
+      <li><a href="ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="ha5-testfallentwurf-formular.html">HA5 Testfallentwurf Formular</a></li>
+      <li><a href="sdlc-istqb-statisch.html">SDLC statisch</a></li>
+      <li><a href="sdlc-istqb-animiert.html">SDLC animiert</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>ISTQB CTFL — Glossar &amp; Terminologie</h1>
+    <p>Offizielle Schlüsselbegriffe · Deutsch / Englisch · v4.0.2 · V2</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar">
+    <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</span>
+    <span><strong>Umfang:</strong> Alle K1-Schlüsselbegriffe aus Kap. 1–6</span>
+    <span><strong>Legende:</strong>
+      <span class="badge badge--syn">Syn</span> Synonym ·
+      <span class="badge badge--nvw">✗</span> Nicht verwenden ·
+      <span class="badge badge--trap">⚠</span> Häufige Verwechslung
+    </span>
+  </div>
+
+  <div class="info-box" role="note">
+    <strong>Nachschlagen:</strong> Jedes Kapitel enthält die K1-Pflichtbegriffe des CTFL-Lehrplans. DE/EN und Abkürzungen sind normativ; Hinweise dienen der Einordnung und Abgrenzung.
+  </div>
+
+  <section class="section section--e1" aria-labelledby="glossar-section-1">
+    <div class="section__header">
+      <span class="section__num">Kap. 1</span>
+      <span class="section__title" id="glossar-section-1">Grundlagen des Testens <span class="ref">30 Schlüsselbegriffe</span></span>
+      <span class="section__sub">Kernvokabular des Softwaretestens</span>
+    </div>
+    <div class="section__body">
+      <div class="ref-table">
+        <table>
+          <thead><tr><th>Deutsch</th><th>Englisch</th><th>Abk.</th><th>Hinweise</th></tr></thead>
+          <tbody>
+            <tr><td class="cell-de">Debugging</td><td class="cell-en">Debugging</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Prozess der Fehlersuche und -behebung im Code durch den Entwickler.</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Testen ≠ Debugging. Testen findet Fehlerwirkungen; Debugging sucht und behebt Fehlerzustände.</span></td></tr>
+            <tr><td class="cell-de">Fehlerwirkung</td><td class="cell-en">Failure</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Sichtbares Versagen des Systems — das, was der Nutzer bemerkt.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> umgangssprachlich: Bug, Fehler</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Nicht dasselbe wie Fehlerzustand (Defect).</span></td></tr>
+            <tr><td class="cell-de">Fehlerzustand</td><td class="cell-en">Defect / Fault</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Mangel im Code oder Arbeitsergebnis, der zu einer Fehlerwirkung führen kann.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> Bug (informell), Fault</span><span class="note-nvw"><span class="badge badge--nvw">✗</span> „Fehler" allein ist zu unspezifisch — immer qualifizieren.</span></td></tr>
+            <tr><td class="cell-de">Fehlhandlung</td><td class="cell-en">Error / Mistake</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Menschliche Handlung, die einen Fehlerzustand erzeugt (z.B. Tippfehler, Denkfehler).</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Kette: Fehlhandlung → Fehlerzustand → Fehlerwirkung</span></td></tr>
+            <tr><td class="cell-de">Grundursache</td><td class="cell-en">Root Cause</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Ursprüngliche Ursache eines Fehlerzustands — nicht die Symptom-Ebene.</span></td></tr>
+            <tr><td class="cell-de">Qualität</td><td class="cell-en">Quality</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Grad, in dem ein Objekt die Erwartungen und Bedürfnisse der Stakeholder erfüllt.</span></td></tr>
+            <tr><td class="cell-de">Qualitätssicherung</td><td class="cell-en">Quality Assurance</td><td class="cell-abk">QA</td><td class="cell-note"><span class="note-def">Prozessorientierte Aktivitäten zur Sicherstellung, dass Qualitätsziele erreicht werden.</span><span class="note-trap"><span class="badge badge--trap">⚠</span> QA ≠ Testen. Testen ist qualitätskontrollorientiert (QC), QA ist prozessorientiert.</span></td></tr>
+            <tr><td class="cell-de">Testablauf</td><td class="cell-en">Test Procedure</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Sequenz von Testfällen in der Ausführungsreihenfolge.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> Test Script (bei Automatisierung)</span></td></tr>
+            <tr><td class="cell-de">Testabschluss</td><td class="cell-en">Test Completion</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Letzte Testaktivität: Archivierung, Lessons Learned, Testabschlussbericht.</span></td></tr>
+            <tr><td class="cell-de">Testanalyse</td><td class="cell-en">Test Analysis</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Analyse der Testbasis zur Identifikation von Testbedingungen (Was testen?).</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Testanalyse ≠ Testentwurf. Analyse = Was; Entwurf = Wie.</span></td></tr>
+            <tr><td class="cell-de">Testbasis</td><td class="cell-en">Test Basis</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Dokumente und Anforderungen, aus denen Testfälle abgeleitet werden (z.B. Spezifikation, User Stories).</span></td></tr>
+            <tr><td class="cell-de">Testbedingung</td><td class="cell-en">Test Condition</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Testbares Merkmal oder Aspekt eines Testobjekts — Ergebnis der Testanalyse.</span></td></tr>
+            <tr><td class="cell-de">Testdaten</td><td class="cell-en">Test Data</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Eingabe- und Referenzwerte für die Testdurchführung.</span></td></tr>
+            <tr><td class="cell-de">Testdurchführung</td><td class="cell-en">Test Execution</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Aktivität: Ausführen von Tests und Protokollieren der Ergebnisse.</span></td></tr>
+            <tr><td class="cell-de">Testen</td><td class="cell-en">Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Prozess zur Bewertung von Softwarequalität durch Planung, Vorbereitung und Ausführung von Tests.</span></td></tr>
+            <tr><td class="cell-de">Testentwurf</td><td class="cell-en">Test Design</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Ausarbeitung der Testbedingungen zu konkreten Testfällen (Wie testen?).</span></td></tr>
+            <tr><td class="cell-de">Testergebnis</td><td class="cell-en">Test Result</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Ist-Ergebnis eines Testablaufs — verglichen mit dem Soll-Ergebnis.</span></td></tr>
+            <tr><td class="cell-de">Testfall</td><td class="cell-en">Test Case</td><td class="cell-abk">TC</td><td class="cell-note"><span class="note-def">Spezifikation von Eingaben, Vorbedingungen, erwarteten Ergebnissen und Nachbedingungen.</span></td></tr>
+            <tr><td class="cell-de">Testmittel</td><td class="cell-en">Test Work Product</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Alle Artefakte, die im Testprozess entstehen (Testkonzept, Testfälle, Berichte, etc.).</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Nicht zu verwechseln mit Testwerkzeug (Test Tool).</span></td></tr>
+            <tr><td class="cell-de">Testobjekt</td><td class="cell-en">Test Object</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Das zu testende Element (Komponente, System, Dokument).</span><span class="note-syn"><span class="badge badge--syn">Syn</span> System under Test (SUT), Item under Test (IUT)</span></td></tr>
+            <tr><td class="cell-de">Testplanung</td><td class="cell-en">Test Planning</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Aktivität zur Festlegung von Zielen, Umfang, Ansatz und Ressourcen des Testens.</span></td></tr>
+            <tr><td class="cell-de">Testprozess</td><td class="cell-en">Test Process</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Gesamtheit aller Testaktivitäten: Planung, Analyse, Entwurf, Realisierung, Durchführung, Abschluss.</span></td></tr>
+            <tr><td class="cell-de">Testrealisierung</td><td class="cell-en">Test Implementation</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Erstellung und Vorbereitung aller Testmittel für die Durchführung.</span></td></tr>
+            <tr><td class="cell-de">Teststeuerung</td><td class="cell-en">Test Control</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Korrigierende Maßnahmen bei Abweichungen vom Testplan.</span></td></tr>
+            <tr><td class="cell-de">Testüberwachung</td><td class="cell-en">Test Monitoring</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Laufende Überprüfung des Testfortschritts gegenüber dem Testplan.</span></td></tr>
+            <tr><td class="cell-de">Testziel</td><td class="cell-en">Test Objective</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Grund oder Zweck für das Testen (z.B. Fehlerzustände finden, Vertrauen aufbauen, regulatorisch).</span></td></tr>
+            <tr><td class="cell-de">Überdeckung</td><td class="cell-en">Coverage</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Grad, zu dem Überdeckungselemente durch Tests ausgeführt wurden.</span></td></tr>
+            <tr><td class="cell-de">Validierung</td><td class="cell-en">Validation</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Prüfung ob das richtige Produkt gebaut wurde — erfüllt es die Nutzerbedürfnisse?</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Validierung ≠ Verifizierung: „Bauen wir das richtige Produkt?" vs. „Bauen wir das Produkt richtig?"</span></td></tr>
+            <tr><td class="cell-de">Verfolgbarkeit</td><td class="cell-en">Traceability</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Nachvollziehbarkeit der Beziehung zwischen Testmitteln und Testbasis.</span></td></tr>
+            <tr><td class="cell-de">Verifizierung</td><td class="cell-en">Verification</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Prüfung ob das Produkt korrekt gebaut wurde — entspricht es der Spezifikation?</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e2" aria-labelledby="glossar-section-2">
+    <div class="section__header">
+      <span class="section__num">Kap. 2</span>
+      <span class="section__title" id="glossar-section-2">Testen im SDLC <span class="ref">17 Schlüsselbegriffe</span></span>
+      <span class="section__sub">Teststufen · Testarten · Entwicklungsmodelle</span>
+    </div>
+    <div class="section__body">
+      <div class="ref-table">
+        <table>
+          <thead><tr><th>Deutsch</th><th>Englisch</th><th>Abk.</th><th>Hinweise</th></tr></thead>
+          <tbody>
+            <tr><td class="cell-de">Abnahmetest</td><td class="cell-en">Acceptance Testing</td><td class="cell-abk">UAT</td><td class="cell-note"><span class="note-def">Teststufe zur Prüfung ob das System für den Betrieb und die Nutzung geeignet ist.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> UAT (User Acceptance Testing) — Praxisbegriff</span></td></tr>
+            <tr><td class="cell-de">Black-Box-Test</td><td class="cell-en">Black-Box Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Testen ohne Kenntnis der internen Struktur — nur Ein-/Ausgabeverhalten.</span><span class="note-nvw"><span class="badge badge--nvw">✗</span> Nicht: Schwarzbox-Test</span></td></tr>
+            <tr><td class="cell-de">Fehlernachtest</td><td class="cell-en">Confirmation Testing</td><td class="cell-abk">CT</td><td class="cell-note"><span class="note-def">Test zur Bestätigung, dass ein behobener Fehlerzustand nicht mehr auftritt.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> Re-Test (informell)</span></td></tr>
+            <tr><td class="cell-de">funktionaler Test</td><td class="cell-en">Functional Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Test von Funktionen und Features des Systems (Was tut es?).</span></td></tr>
+            <tr><td class="cell-de">Integrationstest</td><td class="cell-en">Integration Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Oberbegriff für Tests, die Schnittstellen zwischen Komponenten oder Systemen prüfen.</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Umfasst Komponenten-Integrationstest UND Systemintegrationstest.</span></td></tr>
+            <tr><td class="cell-de">Komponentenintegrationstest</td><td class="cell-en">Component Integration Testing</td><td class="cell-abk">CIT</td><td class="cell-note"><span class="note-def">Test der Schnittstellen und Interaktionen zwischen integrierten Komponenten.</span></td></tr>
+            <tr><td class="cell-de">Komponententest</td><td class="cell-en">Component Testing</td><td class="cell-abk">UT</td><td class="cell-note"><span class="note-def">Test einzelner Softwarekomponenten in Isolation.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> Unit Test (Entwicklerbegriff), Modultest</span></td></tr>
+            <tr><td class="cell-de">nicht-funktionaler Test</td><td class="cell-en">Non-Functional Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Test von Qualitätsmerkmalen wie Performance, Sicherheit, Usability (Wie gut tut es es?).</span></td></tr>
+            <tr><td class="cell-de">Regressionstest</td><td class="cell-en">Regression Testing</td><td class="cell-abk">RT</td><td class="cell-note"><span class="note-def">Wiederholung von Tests nach Änderungen, um unbeabsichtigte Seiteneffekte zu entdecken.</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Regressionstest ≠ Fehlernachtest: Regression prüft ob Neues etwas Altes kaputt gemacht hat.</span></td></tr>
+            <tr><td class="cell-de">Shift-Left</td><td class="cell-en">Shift-Left</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Prinzip: Testen früher im SDLC beginnen, um Fehlerzustände frühzeitig zu finden.</span></td></tr>
+            <tr><td class="cell-de">Systemintegrationstest</td><td class="cell-en">System Integration Testing</td><td class="cell-abk">SIT</td><td class="cell-note"><span class="note-def">Test der Schnittstellen zwischen dem System und externen Systemen / Diensten.</span></td></tr>
+            <tr><td class="cell-de">Systemtest</td><td class="cell-en">System Testing</td><td class="cell-abk">ST</td><td class="cell-note"><span class="note-def">Test des Gesamtsystems gegen die Systemanforderungen.</span></td></tr>
+            <tr><td class="cell-de">Testart</td><td class="cell-en">Test Type</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Gruppe von Testaktivitäten nach einem bestimmten Testziel (funktional, nicht-funktional, Regression).</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Testart ≠ Teststufe: Testart = Was wird geprüft; Teststufe = Wo im SDLC.</span></td></tr>
+            <tr><td class="cell-de">Testobjekt</td><td class="cell-en">Test Object</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Das zu testende Element — auf Stufe 2 typisch: Komponente, System, Schnittstelle.</span></td></tr>
+            <tr><td class="cell-de">Teststufe</td><td class="cell-en">Test Level</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Instanz des Testprozesses im SDLC (Komponente → Integration → System → Abnahme).</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Teststufe ≠ Testart — orthogonale Konzepte (wo vs. was).</span></td></tr>
+            <tr><td class="cell-de">Wartungstest</td><td class="cell-en">Maintenance Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Testen nach Änderungen an einem bereits im Betrieb befindlichen System.</span></td></tr>
+            <tr><td class="cell-de">White-Box-Test</td><td class="cell-en">White-Box Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Testen mit Kenntnis der internen Struktur (Code, Architektur).</span><span class="note-nvw"><span class="badge badge--nvw">✗</span> Nicht: Weißbox-Test</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e3" aria-labelledby="glossar-section-3">
+    <div class="section__header">
+      <span class="section__num">Kap. 3</span>
+      <span class="section__title" id="glossar-section-3">Statischer Test <span class="ref">10 Schlüsselbegriffe</span></span>
+      <span class="section__sub">Reviews · Statische Analyse</span>
+    </div>
+    <div class="section__body">
+      <div class="ref-table">
+        <table>
+          <thead><tr><th>Deutsch</th><th>Englisch</th><th>Abk.</th><th>Hinweise</th></tr></thead>
+          <tbody>
+            <tr><td class="cell-de">Anomalie</td><td class="cell-en">Anomaly</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Jede Abweichung vom Erwarteten bei einem Review — nicht zwingend ein Fehlerzustand.</span></td></tr>
+            <tr><td class="cell-de">dynamischer Test</td><td class="cell-en">Dynamic Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Testen durch Ausführen des Testobjekts.</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Dynamisch ≠ statisch: Statisch = ohne Ausführung.</span></td></tr>
+            <tr><td class="cell-de">formales Review</td><td class="cell-en">Formal Review</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Review mit definiertem Prozess, Rollen und Dokumentation. Höchste Formalitätsstufe: Inspektion.</span></td></tr>
+            <tr><td class="cell-de">informelles Review</td><td class="cell-en">Informal Review</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Review ohne definierten Prozess — z.B. Kollegen-Feedback, Pair Review.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> Peer Review (teilweise)</span></td></tr>
+            <tr><td class="cell-de">Inspektion</td><td class="cell-en">Inspection</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Formalste Reviewart: vollständiger Prozess nach ISO/IEC 20246, mit Metriken und Nachverfolgung.</span></td></tr>
+            <tr><td class="cell-de">Review</td><td class="cell-en">Review</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Oberbegriff für alle Arten statischer Prüfung von Arbeitsergebnissen durch Personen.</span></td></tr>
+            <tr><td class="cell-de">statische Analyse</td><td class="cell-en">Static Analysis</td><td class="cell-abk">SA</td><td class="cell-note"><span class="note-def">Werkzeuggestützte Prüfung von Code oder Modellen ohne Ausführung (z.B. Linting).</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Statische Analyse ≠ Review: Analyse = werkzeuggestützt; Review = menschlich.</span></td></tr>
+            <tr><td class="cell-de">statischer Test</td><td class="cell-en">Static Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Oberbegriff: Testen ohne Ausführung — umfasst Reviews UND statische Analyse.</span></td></tr>
+            <tr><td class="cell-de">Technisches Review</td><td class="cell-en">Technical Review</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Review durch technische Experten unter Moderation — Konsens über technische Entscheidungen.</span></td></tr>
+            <tr><td class="cell-de">Walkthrough</td><td class="cell-en">Walkthrough</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Vom Autor geleitetes Review — Erklärung des Arbeitsergebnisses, Feedback sammeln.</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e4" aria-labelledby="glossar-section-4">
+    <div class="section__header">
+      <span class="section__num">Kap. 4</span>
+      <span class="section__title" id="glossar-section-4">Testanalyse &amp; -entwurf <span class="ref">18 Schlüsselbegriffe</span></span>
+      <span class="section__sub">Testverfahren · Überdeckung · Kollaboration</span>
+    </div>
+    <div class="section__body">
+      <div class="ref-table">
+        <table>
+          <thead><tr><th>Deutsch</th><th>Englisch</th><th>Abk.</th><th>Hinweise</th></tr></thead>
+          <tbody>
+            <tr><td class="cell-de">Abnahmetestgetriebene Entwicklung</td><td class="cell-en">Acceptance Test-Driven Development</td><td class="cell-abk">ATDD</td><td class="cell-note"><span class="note-def">Testfälle aus Akzeptanzkriterien werden vor der Implementierung definiert.</span></td></tr>
+            <tr><td class="cell-de">Akzeptanzkriterien</td><td class="cell-en">Acceptance Criteria</td><td class="cell-abk">AK</td><td class="cell-note"><span class="note-def">Bedingungen, die eine User Story erfüllen muss, um als fertig zu gelten.</span><span class="note-nvw"><span class="badge badge--nvw">✗</span> Nicht: Abnahmekriterien (veraltete DE-Übersetzung, korrigiert in v4.0.2)</span></td></tr>
+            <tr><td class="cell-de">Anweisungsüberdeckung</td><td class="cell-en">Statement Coverage</td><td class="cell-abk">SC</td><td class="cell-note"><span class="note-def">Anteil der ausgeführten ausführbaren Anweisungen an allen ausführbaren Anweisungen.</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Schwächeres Kriterium als Zweigüberdeckung — 100% Anweisungsüberdeckung garantiert nicht 100% Zweigüberdeckung.</span></td></tr>
+            <tr><td class="cell-de">Äquivalenzklassenbildung</td><td class="cell-en">Equivalence Partitioning</td><td class="cell-abk">EP</td><td class="cell-note"><span class="note-def">Eingabebereich wird in Partitionen unterteilt, in denen alle Werte gleiches Verhalten erwarten.</span></td></tr>
+            <tr><td class="cell-de">auf Zusammenarbeit basierender Testansatz</td><td class="cell-en">Collaborative Test Approach</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Oberbegriff für User Stories, Akzeptanzkriterien und ATDD — teamübergreifende Testentwurfsmethoden.</span></td></tr>
+            <tr><td class="cell-de">Black-Box-Testverfahren</td><td class="cell-en">Black-Box Test Technique</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Testverfahren ohne Kenntnis der internen Struktur — basiert nur auf der Spezifikation.</span><span class="note-nvw"><span class="badge badge--nvw">✗</span> Nicht: Schwarzbox-Testverfahren</span></td></tr>
+            <tr><td class="cell-de">checklistenbasierter Test</td><td class="cell-en">Checklist-Based Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Erfahrungsbasiertes Verfahren: Checklisten leiten den Tester bei der Testdurchführung.</span></td></tr>
+            <tr><td class="cell-de">Entscheidungstabellentest</td><td class="cell-en">Decision Table Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Systematische Kombination von Bedingungen und Aktionen in einer Tabelle.</span></td></tr>
+            <tr><td class="cell-de">erfahrungsbasiertes Testverfahren</td><td class="cell-en">Experience-Based Test Technique</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Oberbegriff: intuitive Testfallermittlung, explorativer Test, checklistenbasierter Test.</span></td></tr>
+            <tr><td class="cell-de">explorativer Test</td><td class="cell-en">Exploratory Testing</td><td class="cell-abk">ET</td><td class="cell-note"><span class="note-def">Simultanes Lernen, Testdesign und Testdurchführung — oft sitzungsbasiert.</span></td></tr>
+            <tr><td class="cell-de">Grenzwertanalyse</td><td class="cell-en">Boundary Value Analysis</td><td class="cell-abk">BVA</td><td class="cell-note"><span class="note-def">Testfälle an den Grenzen von Äquivalenzklassen — 2-wertig oder 3-wertig.</span></td></tr>
+            <tr><td class="cell-de">intuitive Testfallermittlung</td><td class="cell-en">Error Guessing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Fehlerzustände werden auf Basis von Erfahrung und Intuition antizipiert.</span></td></tr>
+            <tr><td class="cell-de">Testverfahren</td><td class="cell-en">Test Technique</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Systematische Methode zur Ableitung und Auswahl von Testfällen.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> Testentwurfsverfahren, Testdesignverfahren</span></td></tr>
+            <tr><td class="cell-de">Überdeckung</td><td class="cell-en">Coverage</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Grad der Abdeckung von Überdeckungselementen durch ausgeführte Tests.</span></td></tr>
+            <tr><td class="cell-de">Überdeckungselement</td><td class="cell-en">Coverage Item</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Messbare Einheit für Überdeckung (z.B. Anweisung, Zweig, Äquivalenzklasse, Zustand).</span></td></tr>
+            <tr><td class="cell-de">White-Box-Testverfahren</td><td class="cell-en">White-Box Test Technique</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Testverfahren mit Kenntnis der internen Struktur — basiert auf Code oder Architektur.</span><span class="note-nvw"><span class="badge badge--nvw">✗</span> Nicht: Weißbox-Testverfahren</span></td></tr>
+            <tr><td class="cell-de">Zustandsübergangstest</td><td class="cell-en">State Transition Testing</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Testverfahren für zustandsbasierte Systeme — basiert auf Zustandsübergangsdiagramm/-tabelle.</span></td></tr>
+            <tr><td class="cell-de">Zweigüberdeckung</td><td class="cell-en">Branch Coverage</td><td class="cell-abk">BC</td><td class="cell-note"><span class="note-def">Anteil der ausgeführten Zweige (Kanten im KFG) an allen Zweigen.</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Zweigüberdeckung ist stärker als Anweisungsüberdeckung: 100% Branch Coverage impliziert 100% Statement Coverage.</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e5" aria-labelledby="glossar-section-5">
+    <div class="section__header">
+      <span class="section__num">Kap. 5</span>
+      <span class="section__title" id="glossar-section-5">Management der Testaktivitäten <span class="ref">26 Schlüsselbegriffe</span></span>
+      <span class="section__sub">Planung · Risiko · Metriken · Berichte</span>
+    </div>
+    <div class="section__body">
+      <div class="ref-table">
+        <table>
+          <thead><tr><th>Deutsch</th><th>Englisch</th><th>Abk.</th><th>Hinweise</th></tr></thead>
+          <tbody>
+            <tr><td class="cell-de">Eingangskriterien</td><td class="cell-en">Entry Criteria</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Bedingungen, die erfüllt sein müssen, bevor eine Testaktivität beginnt.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> Definition of Ready (agil)</span></td></tr>
+            <tr><td class="cell-de">Endekriterien</td><td class="cell-en">Exit Criteria</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Bedingungen, die erfüllt sein müssen, bevor eine Testaktivität abgeschlossen wird.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> Definition of Done (agil)</span></td></tr>
+            <tr><td class="cell-de">Fehlerbericht</td><td class="cell-en">Defect Report</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Dokumentation eines gefundenen Fehlerzustands mit Reproduktionsschritten und Kontext.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> Bug Report (informell)</span></td></tr>
+            <tr><td class="cell-de">Fehlermanagement</td><td class="cell-en">Defect Management</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Prozess zur Erfassung, Klassifizierung, Verfolgung und Behebung von Fehlerzuständen.</span></td></tr>
+            <tr><td class="cell-de">Produktrisiko</td><td class="cell-en">Product Risk</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Risiko, dass das Testobjekt nicht die erwartete Qualität erreicht.</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Produktrisiko ≠ Projektrisiko: Produkt = Qualität; Projekt = Termine/Budget/Team.</span></td></tr>
+            <tr><td class="cell-de">Projektrisiko</td><td class="cell-en">Project Risk</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Risiko, das den Erfolg des Projekts gefährdet (Ressourcen, Termine, Stakeholder).</span></td></tr>
+            <tr><td class="cell-de">Risiko</td><td class="cell-en">Risk</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Mögliches Ereignis mit negativen Konsequenzen — charakterisiert durch Wahrscheinlichkeit und Schadensausmaß.</span></td></tr>
+            <tr><td class="cell-de">Risikoanalyse</td><td class="cell-en">Risk Analysis</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Identifizierung und Bewertung von Risiken.</span></td></tr>
+            <tr><td class="cell-de">risikobasierter Test</td><td class="cell-en">Risk-Based Testing</td><td class="cell-abk">RBT</td><td class="cell-note"><span class="note-def">Testansatz, bei dem Umfang und Intensität des Testens durch Produktrisikoanalyse gesteuert werden.</span></td></tr>
+            <tr><td class="cell-de">Risikobewertung</td><td class="cell-en">Risk Assessment</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Bewertung identifizierter Risiken nach Eintrittswahrscheinlichkeit und Schadensausmaß.</span></td></tr>
+            <tr><td class="cell-de">Risikoidentifizierung</td><td class="cell-en">Risk Identification</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Erkennung und Erfassung aller relevanten Risiken.</span></td></tr>
+            <tr><td class="cell-de">Risikomanagement</td><td class="cell-en">Risk Management</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Übergeordneter Prozess: Identifizierung, Bewertung, Steuerung und Überwachung von Risiken.</span></td></tr>
+            <tr><td class="cell-de">Risikominderung</td><td class="cell-en">Risk Mitigation</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Maßnahmen zur Reduzierung von Eintrittswahrscheinlichkeit oder Schadensausmaß eines Risikos.</span></td></tr>
+            <tr><td class="cell-de">Risikosteuerung</td><td class="cell-en">Risk Control</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Umsetzung und Überwachung von Maßnahmen zur Risikobehandlung.</span></td></tr>
+            <tr><td class="cell-de">Risikostufe</td><td class="cell-en">Risk Level</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Kombination aus Eintrittswahrscheinlichkeit und Schadensausmaß — bestimmt Priorität.</span></td></tr>
+            <tr><td class="cell-de">Risikoüberwachung</td><td class="cell-en">Risk Monitoring</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Laufende Überprüfung des Risikostatus und der Wirksamkeit von Maßnahmen.</span></td></tr>
+            <tr><td class="cell-de">Testabschlussbericht</td><td class="cell-en">Test Completion Report</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Zusammenfassung aller Testaktivitäten nach Abschluss — Lessons Learned, Metriken.</span></td></tr>
+            <tr><td class="cell-de">Testansatz</td><td class="cell-en">Test Approach</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Konkrete Umsetzung der Teststrategie für ein bestimmtes Projekt.</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Testansatz ≠ Teststrategie: Strategie = organisationsweit; Ansatz = projektspezifisch.</span></td></tr>
+            <tr><td class="cell-de">Testfortschrittsbericht</td><td class="cell-en">Test Progress Report</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Regelmäßiger Statusbericht während der Testdurchführung für Stakeholder.</span><span class="note-syn"><span class="badge badge--syn">Syn</span> Test Status Report</span></td></tr>
+            <tr><td class="cell-de">Testkonzept</td><td class="cell-en">Test Plan</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Dokument mit Testzielen, Umfang, Ansatz, Ressourcen und Zeitplan.</span><span class="note-nvw"><span class="badge badge--nvw">✗</span> Nicht: Testplan — „Testkonzept" ist die CTFL v4-konforme DE-Bezeichnung.</span></td></tr>
+            <tr><td class="cell-de">Testplanung</td><td class="cell-en">Test Planning</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Aktivität zur Erstellung und Pflege des Testkonzepts.</span></td></tr>
+            <tr><td class="cell-de">Testpyramide</td><td class="cell-en">Test Pyramid</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Modell zur Testverteilung: viele Unit Tests, weniger Integrationstests, noch weniger E2E-Tests.</span></td></tr>
+            <tr><td class="cell-de">Testquadranten</td><td class="cell-en">Test Quadrants</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Modell zur Kategorisierung von Tests nach Zweck (Unterstützung Team vs. Produktkritik) und Art (Business vs. Technologie).</span></td></tr>
+            <tr><td class="cell-de">Teststeuerung</td><td class="cell-en">Test Control</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Korrigierende Maßnahmen bei Abweichungen vom Testplan.</span></td></tr>
+            <tr><td class="cell-de">Teststrategie</td><td class="cell-en">Test Strategy</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Organisationsweite Leitlinie für das Testen — abgeleitet aus der Testrichtlinie.</span></td></tr>
+            <tr><td class="cell-de">Testüberwachung</td><td class="cell-en">Test Monitoring</td><td class="cell-abk">—</td><td class="cell-note"><span class="note-def">Laufende Messung des Testfortschritts gegenüber dem Testkonzept.</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e6" aria-labelledby="glossar-section-6">
+    <div class="section__header">
+      <span class="section__num">Kap. 6</span>
+      <span class="section__title" id="glossar-section-6">Testwerkzeuge <span class="ref">1 Schlüsselbegriff</span></span>
+      <span class="section__sub">Automatisierung · Werkzeugunterstützung</span>
+    </div>
+    <div class="section__body">
+      <div class="ref-table">
+        <table>
+          <thead><tr><th>Deutsch</th><th>Englisch</th><th>Abk.</th><th>Hinweise</th></tr></thead>
+          <tbody>
+            <tr><td class="cell-de">Testautomatisierung</td><td class="cell-en">Test Automation</td><td class="cell-abk">TA</td><td class="cell-note"><span class="note-def">Einsatz von Werkzeugen zur Ausführung von Tests und Vergleich von Ist- und Soll-Ergebnissen.</span><span class="note-trap"><span class="badge badge--trap">⚠</span> Automatisierung ersetzt nicht menschliches kritisches Denken — nur wiederholbare Aufgaben.</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025) · Alle Schlüsselbegriffe K1-Pflicht · EN-Äquivalente nach ISTQB Glossary v4 · V2</p>
+  </footer>
+</main>
+</body>
+</html>
