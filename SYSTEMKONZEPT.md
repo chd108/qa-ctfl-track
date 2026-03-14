@@ -1,6 +1,23 @@
 Erstellt am: 2026-03-14
 Zuletzt aktualisiert am: 2026-03-14
-Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage für Greenfield-Denkphase, Re-Architecture und Template-Strategie. Enthält verbindlichen Stand (Abschn. 1–3) und offene Klärungsfelder (ab Abschn. 4).
+Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage für Greenfield-Denkphase, Re-Architecture und Template-Strategie. Enthält verbindlichen Stand (Abschn. 1–3) und geklärte bzw. offene Arbeitsbereiche (ab Abschn. 4).
+
+---
+
+## Aktueller Stand (März 2026)
+
+**Wo wir stehen:** Die Greenfield-Denkphase ist praktisch durchgeführt; das V2-Hauptsystem ist aufgebaut und an mehreren Seiten erprobt. Der Dokument-/A4-Modus ist als Präsentationsmodus bestätigt; die Einstiegsseite wurde als Variante des Haupttyps umgesetzt. Wir stehen am **Übergang vom V2-Aufbau zur Systembereinigung und Aktivierung** – nicht mehr in der offenen Findungsphase.
+
+**Reihenfolge der nächsten Schritte:**
+1. **Dokumentation aktualisieren** (Steuerungs- und Statusdokumente, SYSTEMKONZEPT)
+2. **V2 aktivieren / Altseiten deaktivieren** (z. B. Index-V2 zum Einstieg machen, Altseiten erhalten aber nicht mehr als Standard anbieten)
+3. **Benennungs-/Aufräumfragen** klären
+4. **Komponentenstil / V2-Designsystem light** ausarbeiten (Darstellungsregeln der kanonischen Komponenten)
+5. **Rückkehr zur Konsistenz- und Darstellungsregel-Ebene** auf höherem Niveau
+
+**Meta-Einordnung:** Wir sind nicht vom Thema Design- und Konsistenz-Harmonisierung weggegangen, sondern auf tieferer Ebene **durch** das Thema hindurchgegangen (Architektur, Seitentypen, Modus). Jetzt kehren wir mit einer klaren Architekturgrundlage dorthin zurück.
+
+**Dokument-/A4-Modus (Kurzfassung):** Kein eigener Wissens- oder Inhalts-Seitentyp, sondern ein **eigener Präsentations-/Layoutmodus** innerhalb desselben Systems. Für normale Webnutzung bleibt das Hauptsystem; für A4-/Druckdarstellung gilt der bewusste Dokument-/A4-Modus mit eigenen Layout- und Darstellungsregeln.
 
 ---
 
@@ -170,11 +187,12 @@ Kurz: Kein eigener Wissens- oder Inhalts-Seitentyp, aber ein eigener Präsentati
 - Neue oder überführte Inhalte sollen derselben Benennungslogik folgen.
 - Formale Schreibweisen können in einem späteren Schritt präzisiert werden.
 
-**5. Logische nächste Schritte**
-- Grauzonen-Komponenten konkretisieren.
-- Formale Benennungsregeln präzisieren.
-- Bestand gegen Sollstruktur abgleichen.
-- Danach Migrations- und Umsetzungsreihenfolge festlegen.
+**5. Logische nächste Schritte (aktualisiert)**
+- Dokumentation auf aktuellen Stand bringen (erledigt mit dieser Aktualisierung).
+- V2 aktivieren / Altseiten deaktivieren (V2 zum Standard machen, Altbestand erhalten).
+- Benennungs-/Aufräumfragen klären.
+- Komponentenstil / V2-Designsystem light ausarbeiten.
+- Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene auf höherem Niveau.
 
 ---
 
@@ -202,9 +220,7 @@ Dieser Abschnitt dokumentiert eine Erkenntnis, die beim praktischen Neubau der e
 - Die Stilfrage der Komponenten wurde dadurch nicht ignoriert; sie war bisher implizit mitgedacht.
 - Erst durch den praktischen V2-Bau wurde deutlich, dass sie als eigener nächster Architekturpunkt **explizit** benannt und verankert werden sollte.
 
-**5. Strategischer Umgang ab jetzt**
-- Dieser Punkt ist wichtig, aber aktuell **nicht blockierend**. Die Migration wird nicht gestoppt.
-- Vorgehen: Zunächst werden weitere Seiten im V2-System gebaut, um wiederkehrende Stilabweichungen und Muster belastbarer zu beobachten.
-- Daraus wird danach ein **kompakter Stilstandard / Darstellungsstandard** für die kanonischen Komponenten abgeleitet.
-- Dieser Schritt soll zeitnah erfolgen und als **nächste größere Baustelle** nach den ersten weiteren V2-Migrationen behandelt werden.
-- Es geht hier um die Verankerung der Erkenntnis und der Strategie; konkrete Detail-Designregeln werden in diesem Abschnitt bewusst noch nicht festgelegt.
+**5. Strategischer Umgang**
+- Dieser Punkt ist wichtig, aber **nach** V2-Aktivierung und ggf. Benennungsaufräumung die nächste größere Baustelle.
+- Vorgehen: Nach Aktivierung von V2 werden die wiederkehrenden Stilabweichungen und Muster aus den gebauten V2-Seiten ausgewertet; daraus wird ein **kompakter Stilstandard / Darstellungsstandard** für die kanonischen Komponenten abgeleitet.
+- Konkrete Detail-Designregeln werden in diesem Abschnitt bewusst noch nicht festgelegt.
