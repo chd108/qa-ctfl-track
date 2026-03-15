@@ -418,7 +418,7 @@
         <div class="section__subhead">Testfragen &amp; Antworten (mind. 3)</div>
         <div class="ref-table">
           <table>
-            <thead><tr><th style="width:1.5rem">#</th><th>Testfrage</th><th>Antwort (aus Anwendung ermittelt)</th></tr></thead>
+            <thead><tr><th scope="col" style="width:1.5rem">#</th><th scope="col">Testfrage</th><th scope="col">Antwort (aus Anwendung ermittelt)</th></tr></thead>
             <tbody>
               <tr><td class="cell-nr">F1</td><td class="cell-q">Wer darf bewerten — alle Nutzer oder nur eingeloggte?</td><td class="cell-a">Nur eingeloggte Nutzer; Gäste haben keine Bewertungsoption.</td></tr>
               <tr><td class="cell-nr">F2</td><td class="cell-q">Ist das Textfeld Pflicht oder optional?</td><td class="cell-a">Optional — Bewertung nur mit Sternen (1–5) ohne Text möglich.</td></tr>
@@ -431,7 +431,7 @@
             <div class="section__subhead">Akzeptanzkriterien</div>
             <div class="ref-table">
               <table>
-                <thead><tr><th style="width:2rem">#</th><th>Kriterium</th></tr></thead>
+                <thead><tr><th scope="col" style="width:2rem">#</th><th scope="col">Kriterium</th></tr></thead>
                 <tbody>
                   <tr><td class="cell-nr">AC1</td><td>Eingeloggter Nutzer kann mit 1–5 Sternen bewerten.</td></tr>
                   <tr><td class="cell-nr">AC2</td><td>Textfeld ist optional — Bewertung ohne Text wird akzeptiert.</td></tr>
@@ -502,7 +502,7 @@
         <div class="section__subhead">Testfragen &amp; Antworten (mind. 3)</div>
         <div class="ref-table">
           <table>
-            <thead><tr><th style="width:1.5rem">#</th><th>Testfrage</th><th>Antwort (aus Anwendung ermittelt)</th></tr></thead>
+            <thead><tr><th scope="col" style="width:1.5rem">#</th><th scope="col">Testfrage</th><th scope="col">Antwort (aus Anwendung ermittelt)</th></tr></thead>
             <tbody>
               <tr><td class="cell-nr">F1</td><td class="cell-q">Was genau wird abgefragt — Alter oder Geburtsdatum?</td><td class="cell-a">Geburtsdatum — Modal zeigt „Please enter your birth date".</td></tr>
               <tr><td class="cell-nr">F2</td><td class="cell-q">Wann und wo erscheint das Modal?</td><td class="cell-a">Beim ersten Aufruf von /store — vor Anzeige der Produkte.</td></tr>
@@ -516,7 +516,7 @@
             <div class="section__subhead">Akzeptanzkriterien</div>
             <div class="ref-table">
               <table>
-                <thead><tr><th style="width:2rem">#</th><th>Kriterium</th></tr></thead>
+                <thead><tr><th scope="col" style="width:2rem">#</th><th scope="col">Kriterium</th></tr></thead>
                 <tbody>
                   <tr><td class="cell-nr">AC1</td><td>Modal erscheint beim ersten Aufruf von /store vor Produkten.</td></tr>
                   <tr><td class="cell-nr">AC2</td><td>Geburtsdatum &lt; 18 Jahre → Zugriff verweigert, Hinweis.</td></tr>
@@ -586,7 +586,7 @@
         <div class="section__subhead">Testfragen &amp; Antworten (mind. 3)</div>
         <div class="ref-table">
           <table>
-            <thead><tr><th style="width:1.5rem">#</th><th>Testfrage</th><th>Antwort (aus Anwendung ermittelt)</th></tr></thead>
+            <thead><tr><th scope="col" style="width:1.5rem">#</th><th scope="col">Testfrage</th><th scope="col">Antwort (aus Anwendung ermittelt)</th></tr></thead>
             <tbody>
               <tr><td class="cell-nr">F1</td><td class="cell-q">Wo werden Versandkosten und Freigrenze angezeigt?</td><td class="cell-a">Im Checkout (/checkout) — nur für eingeloggte Nutzer mit befülltem Warenkorb.</td></tr>
               <tr><td class="cell-nr">F2</td><td class="cell-q">Werden Versandkosten live bei Warenkorbänderungen aktualisiert?</td><td class="cell-a">Ja — Mengen- oder Produktänderungen aktualisieren die Versandkosten sofort.</td></tr>
@@ -599,7 +599,7 @@
             <div class="section__subhead">Akzeptanzkriterien</div>
             <div class="ref-table">
               <table>
-                <thead><tr><th style="width:2rem">#</th><th>Kriterium</th></tr></thead>
+                <thead><tr><th scope="col" style="width:2rem">#</th><th scope="col">Kriterium</th></tr></thead>
                 <tbody>
                   <tr><td class="cell-nr">AC1</td><td>Bestellwert ≥ X € → Versandkosten = 0 €.</td></tr>
                   <tr><td class="cell-nr">AC2</td><td>Bestellwert &lt; X € → Versandkosten = Y €.</td></tr>
@@ -659,11 +659,11 @@
           <table class="sum-table">
             <thead>
               <tr>
-                <th>Feature</th>
-                <th>Kernverhalten</th>
-                <th>Grenzfälle</th>
-                <th>Offene Punkte</th>
-                <th>Status</th>
+                <th scope="col">Feature</th>
+                <th scope="col">Kernverhalten</th>
+                <th scope="col">Grenzfälle</th>
+                <th scope="col">Offene Punkte</th>
+                <th scope="col">Status</th>
               </tr>
             </thead>
             <tbody>
@@ -706,7 +706,7 @@
             Dieses Dokument folgt CTFL Kap. 4.1 (Testanalyse) und IEEE 29119-3. „Anforderungsanalyse" und „Testbasis-Analyse" werden hier synonym aus Tester-Sicht verwendet.
           </div>
         </div>
-        <div class="read-guide__note">
+        <div class="read-guide__note" role="note">
           <strong>Hinweis zu offenen Punkten:</strong> Bewusst dokumentiert — nicht als Mangel, sondern als professionelle Transparenz. Im Berufsalltag ist eine Analyse mit klar markierten Unklarheiten wertvoller als eine, die so tut als wäre alles bekannt. Offene Punkte sind die Handlungsliste für den nächsten Schritt.
         </div>
       </div>
