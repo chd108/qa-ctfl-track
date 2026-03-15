@@ -1,5 +1,5 @@
 Erstellt am: 2026-03-14
-Zuletzt aktualisiert am: 2026-03-14
+Zuletzt aktualisiert am: 2026-03-15
 Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage für Greenfield-Denkphase, Re-Architecture und Template-Strategie. Enthält verbindlichen Stand (Abschn. 1–3) und geklärte bzw. offene Arbeitsbereiche (ab Abschn. 4).
 
 ---
@@ -9,9 +9,8 @@ Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage f�
 **Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert auf V2: **index.html** im Root ist die einzige Einstiegsseite (kein Redirect, index-v2.html wurde abgelöst und entfernt); alle V2-Seiten in pages/ verlinken auf diese Root-index. archive/ und templates/ sind eingeordnet. Die Root-/Einstiegslogik ist damit bereinigt und konsolidiert. Der **aktuelle Arbeitsfokus** liegt auf **Punkt 7 – Benennungslogik**. Punkt 6 (Komponenten / Komponentenstil / V2-Designsystem light) ist bewusst zurückgestellt, nicht verworfen – folgt als nächster großer Block danach.
 
 **Konkrete Arbeitslogik (Benennung):**
-1. Benennungslogik fachlich weiter präzisieren (Abschn. 7).
-2. Daraus eine **Benennungsmatrix pro aktiver V2-Seite** ableiten. Die Matrix umfasst mindestens: Dateiname, Navigationstitel, Browser-Titel (`<title>`), sichtbarer Haupttitel (`<h1>`), Untertitel / Einordnung.
-3. Erst nach dieser Matrix: technische Umbenennung sowie Link- und Titel-Anpassung.
+- **Strukturelle Benennungslogik** ist festgezurrt (Runde 1, Abschn. 7). **Benennungsmatrix** ist der aktuelle Arbeitsraum: Die fünf Felder (Dateiname, Navigationstitel, `<title>`, `<h1>`, Untertitel/Einordnung) sind für die bisherigen Gruppen 1–4 fachlich geklärt und im Abschn. 7 dokumentiert. Der **Einstieg** ist bereits live: index.html im Root ist die einzige Einstiegsseite mit den festgezurrten Feldern (Nav: Einstieg, title: Einstieg — QA Lernwebseite, h1: QA Lernwebseite, Untertitel: Überblick und Navigation); Ziel-Dateiname nach Matrix: 00-index.html (Umbenennung mit der technischen Gesamtumbenennung).
+- **Nächster konkreter Schritt:** Technische Umsetzung der Benennungsmatrix – Umbenennung aller betroffenen Dateien nach der festgezurrten Liste, Anpassung aller Links und Titel. Semantischer Feinschliff einzelner Wortstämme kann später noch erfolgen.
 
 **Reihenfolge der nächsten Schritte:**
 1. **Technische Umsetzung der Benennungsmatrix** – Umbenennung der Dateien und Anpassung von Links/Titeln nach der festgezurrten Matrix (00-index.html, 00a-ha-einordnung.html, 01-landkarte.html usw.); die Matrix ist für alle Gruppen dokumentiert, der Umsetzungsplan folgt.
@@ -169,7 +168,7 @@ Kurz: Kein eigener Wissens- oder Inhalts-Seitentyp, aber ein eigener Präsentati
 
 **Erste Runde – Dateibenennungslogik (Abschlussergebnis)**
 
-Die erste Runde der Benennungslogik ist fachlich abgeschlossen. Das folgende Ergebnis zieht die **strukturelle** Benennungslogik fest. Semantischer Feinschliff einzelner Wortstämme kann später noch folgen. Nächster konkreter Schritt: Benennungsmatrix pro aktiver V2-Seite; erst danach die technische Gesamtumbenennung nach dem nummerierten Zielsystem.
+Die erste Runde der Benennungslogik ist fachlich abgeschlossen. Das folgende Ergebnis zieht die **strukturelle** Benennungslogik fest. **Klare Trennung:** (1) Die strukturelle Logik (Regeln, finale Dateiliste, Matrix pro Seite) ist fest. (2) Die **technische Gesamtumbenennung** (Dateinamen, Links, Titel anpassen) ist der nächste Schritt. (3) **Semantischer Feinschliff** einzelner Wortstämme kann später noch erfolgen.
 
 **Dateibenennungslogik QA-Lernwebseite — Abschlussergebnis**
 
@@ -240,10 +239,12 @@ pages/
 **Bewertung**  
 Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft tragfähig. Die Primärachse CTFL ist stabil — Kapitelzahlen werden sich nicht ändern. Erweiterungen sind jederzeit möglich über den nächsten freien Buchstaben. Technisch entstehen keine Nachteile, solange interne Links beim Umbenennen konsequent mitgepflegt werden. Das System ist für eine Person gut beherrschbar und für die Übergabe an ChatGPT und Cursor klar genug dokumentiert.
 
-**Benennungsmatrix – festgezurrter Stand (Gruppe 1 und 2)**
+**Benennungsmatrix – festgezurrter Stand (Gruppen 1 bis 4)**
+
+*Die folgenden Gruppen sind fachlich geklärt und festgezurrt. Die Einstiegsseite liegt bereits als index.html im Root mit den vereinbarten Feldern; die Ziel-Dateinamen (00-index.html usw.) werden mit der technischen Gesamtumbenennung umgesetzt.*
 
 *Gruppe 1:*  
-- **Einstieg:** Dateiname 00-index.html · Nav: Einstieg · `<title>`: Einstieg — QA Lernwebseite · `<h1>`: Einstieg · Untertitel: QA Lernwebseite · Überblick und Navigation  
+- **Einstieg:** Dateiname 00-index.html · Nav: Einstieg · `<title>`: Einstieg — QA Lernwebseite · `<h1>`: QA Lernwebseite · Untertitel: Überblick und Navigation  
 - **HA-Einordnung:** 00a-ha-einordnung.html · Nav: HA-Einordnung · `<title>`: HA-Einordnung — QA Lernwebseite · `<h1>`: HA-Einordnung · Untertitel: Zuordnung der Hausaufgaben im Kontext von CTFL  
 - **Landkarte:** 01-landkarte.html · Nav: Landkarte · `<title>`: Landkarte — QA Lernwebseite · `<h1>`: Landkarte · Untertitel: Inhaltsverzeichnis des ISTQB CTFL Lehrplans v4.0.2  
 - **Glossar:** 01a-glossar.html · Nav: Glossar · `<title>`: Glossar — QA Lernwebseite · `<h1>`: Glossar · Untertitel: Alle offiziellen Schlüsselbegriffe des ISTQB CTFL v4.0.2  
@@ -288,11 +289,11 @@ Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft
 - Formale Schreibweisen können in einem späteren Schritt präzisiert werden.
 
 **5. Logische nächste Schritte (aktualisiert)**
-- **Benennungs-/Aufräumfragen** klären.
-- **Komponentenstil / V2-Designsystem light** ausarbeiten.
-- Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene auf höherem Niveau.
+1. **Technische Umsetzung der Benennungsmatrix** – Umbenennung der Dateien (00-index.html, 00a-ha-einordnung.html, 01-landkarte.html usw.), Anpassung aller Links und Titel nach der festgezurrten Matrix (Gruppen 1–4 dokumentiert).
+2. **Komponentenstil / V2-Designsystem light** ausarbeiten – nächster großer Block nach der Benennung.
+3. Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene auf höherem Niveau.
 
-*(Erledigt: Dokumentation auf aktuellen Stand bringen; V2 aktivieren / Altseiten deaktivieren – V2 ist Standard, Altbestand in archive/, Referenzvorlage unter templates/, drei nachgezogene Seiten im V2-Hauptsystem.)*
+*(Erledigt: V2-Migration; V2 aktivieren / Altseiten deaktivieren – V2 ist Standard, Altbestand in archive/, Referenzvorlage unter templates/; drei nachgezogene Seiten ins V2-Hauptsystem; Root-Index bereinigt – index.html einzige Einstiegsseite, index-v2.html entfernt, alle V2-Seiten verlinken auf index.html; Benennungslogik Runde 1 festgezurrt; Benennungsmatrix Gruppen 1–4 fachlich geklärt und dokumentiert.)*
 
 ---
 
@@ -321,6 +322,6 @@ Dieser Abschnitt dokumentiert eine Erkenntnis, die beim praktischen Neubau der e
 - Erst durch den praktischen V2-Bau wurde deutlich, dass sie als eigener nächster Architekturpunkt **explizit** benannt und verankert werden sollte.
 
 **5. Strategischer Umgang**
-- Dieser Punkt ist wichtig, aber **nach** V2-Aktivierung und ggf. Benennungsaufräumung die nächste größere Baustelle.
-- Vorgehen: Nach Aktivierung von V2 werden die wiederkehrenden Stilabweichungen und Muster aus den gebauten V2-Seiten ausgewertet; daraus wird ein **kompakter Stilstandard / Darstellungsstandard** für die kanonischen Komponenten abgeleitet.
+- Dieser Punkt ist wichtig, aber **nach** der technischen Umsetzung der Benennungsmatrix die nächste größere Baustelle.
+- Vorgehen: Nach Abschluss der Benennungsumstellung werden die wiederkehrenden Stilabweichungen und Muster aus den V2-Seiten ausgewertet; daraus wird ein **kompakter Stilstandard / Darstellungsstandard** für die kanonischen Komponenten abgeleitet.
 - Konkrete Detail-Designregeln werden in diesem Abschnitt bewusst noch nicht festgelegt.
