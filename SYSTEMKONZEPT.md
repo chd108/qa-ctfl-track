@@ -6,7 +6,7 @@ Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage f�
 
 ## Aktueller Stand (März 2026)
 
-**Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert auf V2 (index-v2.html, V2-Seiten in pages/); archive/ und templates/ sind eingeordnet. Der **aktuelle Arbeitsfokus** liegt auf **Punkt 7 – Benennungslogik**. Punkt 6 (Komponenten / Komponentenstil / V2-Designsystem light) ist bewusst zurückgestellt, nicht verworfen – folgt als nächster großer Block danach.
+**Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert auf V2: **index.html** im Root ist die einzige Einstiegsseite (kein Redirect, index-v2.html wurde abgelöst und entfernt); alle V2-Seiten in pages/ verlinken auf diese Root-index. archive/ und templates/ sind eingeordnet. Die Root-/Einstiegslogik ist damit bereinigt und konsolidiert. Der **aktuelle Arbeitsfokus** liegt auf **Punkt 7 – Benennungslogik**. Punkt 6 (Komponenten / Komponentenstil / V2-Designsystem light) ist bewusst zurückgestellt, nicht verworfen – folgt als nächster großer Block danach.
 
 **Konkrete Arbeitslogik (Benennung):**
 1. Benennungslogik fachlich weiter präzisieren (Abschn. 7).
@@ -14,11 +14,11 @@ Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage f�
 3. Erst nach dieser Matrix: technische Umbenennung sowie Link- und Titel-Anpassung.
 
 **Reihenfolge der nächsten Schritte:**
-1. **Benennungslogik** – Präzisierung, dann Matrix pro Seite, dann technische Umsetzung
+1. **Technische Umsetzung der Benennungsmatrix** – Umbenennung der Dateien und Anpassung von Links/Titeln nach der festgezurrten Matrix (00-index.html, 00a-ha-einordnung.html, 01-landkarte.html usw.); die Matrix ist für alle Gruppen dokumentiert, der Umsetzungsplan folgt.
 2. **Komponentenstil / V2-Designsystem light** (zurückgestellt, nächster großer Block)
 3. **Rückkehr zur Konsistenz- und Darstellungsregel-Ebene** auf höherem Niveau
 
-*(Erledigt: V2-Migration, Dokumentation, V2-Aktivierung.)*
+*(Erledigt: V2-Migration, Dokumentation, V2-Aktivierung; Root-Index bereinigt – index.html als einzige Einstiegsseite, Redirect und index-v2.html entfernt, alle V2-Seiten verlinken auf index.html.)*
 
 **Meta-Einordnung:** Migrationsphase abgeschlossen; mit der Architekturgrundlage folgt nun die Benennungslogik, danach der Komponentenstil.
 
@@ -239,6 +239,28 @@ pages/
 
 **Bewertung**  
 Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft tragfähig. Die Primärachse CTFL ist stabil — Kapitelzahlen werden sich nicht ändern. Erweiterungen sind jederzeit möglich über den nächsten freien Buchstaben. Technisch entstehen keine Nachteile, solange interne Links beim Umbenennen konsequent mitgepflegt werden. Das System ist für eine Person gut beherrschbar und für die Übergabe an ChatGPT und Cursor klar genug dokumentiert.
+
+**Benennungsmatrix – festgezurrter Stand (Gruppe 1 und 2)**
+
+*Gruppe 1:*  
+- **Einstieg:** Dateiname 00-index.html · Nav: Einstieg · `<title>`: Einstieg — QA Lernwebseite · `<h1>`: Einstieg · Untertitel: QA Lernwebseite · Überblick und Navigation  
+- **HA-Einordnung:** 00a-ha-einordnung.html · Nav: HA-Einordnung · `<title>`: HA-Einordnung — QA Lernwebseite · `<h1>`: HA-Einordnung · Untertitel: Zuordnung der Hausaufgaben im Kontext von CTFL  
+- **Landkarte:** 01-landkarte.html · Nav: Landkarte · `<title>`: Landkarte — QA Lernwebseite · `<h1>`: Landkarte · Untertitel: Inhaltsverzeichnis des ISTQB CTFL Lehrplans v4.0.2  
+- **Glossar:** 01a-glossar.html · Nav: Glossar · `<title>`: Glossar — QA Lernwebseite · `<h1>`: Glossar · Untertitel: Alle offiziellen Schlüsselbegriffe des ISTQB CTFL v4.0.2  
+
+*Gruppe 2:*  
+- **SDLC statisch:** 02a-sdlc-statisch.html · Nav: SDLC & Testprozess (statisch) · `<title>`: SDLC statisch — QA Lernwebseite · `<h1>`: Software-Entwicklungslebenszyklus & ISTQB-Testprozess — Statische Übersicht · Untertitel: Statische Visualisierung des Software Development Life Cycle im Kontext von CTFL Kapitel 2  
+- **SDLC animiert:** 02b-sdlc-animiert.html · Nav: SDLC & Testprozess (animiert) · `<title>`: SDLC animiert — QA Lernwebseite · `<h1>`: Software-Entwicklungslebenszyklus & ISTQB-Testprozess — Animierte Übersicht · Untertitel: Animierte Visualisierung des Software Development Life Cycle im Kontext von CTFL Kapitel 2  
+
+*Gruppe 3:*  
+- **HA4 Erklärseite:** 04a-ha4-anforderungsanalyse.html · Nav: HA4 Anforderungsanalyse · `<title>`: HA4 Anforderungsanalyse — QA Lernwebseite · `<h1>`: Anforderungsanalyse · Untertitel: HA4 · Testbasis-Analyse dreier neuer Features im Kontext von CTFL Kapitel 4.1  
+- **HA4 A4-Dokument:** 04b-ha4-testbasisanalyse-a4.html · Nav: HA4 Testbasis-Analyse A4 · `<title>`: HA4 Testbasis-Analyse A4 — QA Lernwebseite · `<h1>`: Testbasis-Analyse A4 · Untertitel: HA4 · Testbasis-Analyse für GroceryMate im Kontext von CTFL Kapitel 4.1  
+- **HA5 Erklärseite:** 04c-ha5-testfallentwurf.html · Nav: HA5 Testfallentwurf · `<title>`: HA5 Testfallentwurf — QA Lernwebseite · `<h1>`: Testfallentwurf · Untertitel: HA5 · Testfallentwurf für drei neue Features im Kontext von CTFL Kapitel 4  
+- **HA5 A4-Dokument:** 04d-ha5-testfallentwurf-a4.html · Nav: HA5 Testfallentwurf A4 · `<title>`: HA5 Testfallentwurf A4 — QA Lernwebseite · `<h1>`: Testfallentwurf A4 · Untertitel: HA5 · Testfallentwurf für GroceryMate im Kontext von CTFL Kapitel 4  
+
+*Gruppe 4:*  
+- **HA5 Erklärseite:** 05a-ha5-testkonzept.html · Nav: HA5 Testkonzept · `<title>`: HA5 Testkonzept — QA Lernwebseite · `<h1>`: Testkonzept · Untertitel: HA5 · Testkonzept für GroceryMate im Kontext von CTFL Kapitel 5  
+- **HA5 A4-Dokument:** 05b-ha5-testkonzept-a4.html · Nav: HA5 Testkonzept A4 · `<title>`: HA5 Testkonzept A4 — QA Lernwebseite · `<h1>`: Testkonzept A4 · Untertitel: HA5 · Testkonzept für GroceryMate im Kontext von CTFL Kapitel 5 · IEEE 829  
 
 ---
 
