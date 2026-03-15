@@ -6,16 +6,21 @@ Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage f�
 
 ## Aktueller Stand (März 2026)
 
-**Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert auf V2 (index-v2.html, V2-Seiten in pages/). Die alten HTML-Seiten wurden in **archive/** abgegrenzt und sind dort referenzierbar. Die Referenzvorlage wurde unter **templates/** eingeordnet (v2-referenz-hauptsystem.html). Ergänzend zur bereits weit fortgeschrittenen V2-Migration wurden die drei zuvor noch offenen, im ersten Aktivierungsschritt vergessenen Seiten nachträglich in das V2-Hauptsystem überführt: HA-Einordnung, SDLC statisch und SDLC animiert. Wir stehen damit **nach Abschluss der Migrationsphase**; nächste Schritte sind Benennungs-/Aufräumfragen und danach Komponentenstil / V2-Designsystem light.
+**Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert auf V2 (index-v2.html, V2-Seiten in pages/); archive/ und templates/ sind eingeordnet. Der **aktuelle Arbeitsfokus** liegt auf **Punkt 7 – Benennungslogik**. Punkt 6 (Komponenten / Komponentenstil / V2-Designsystem light) ist bewusst zurückgestellt, nicht verworfen – folgt als nächster großer Block danach.
+
+**Konkrete Arbeitslogik (Benennung):**
+1. Benennungslogik fachlich weiter präzisieren (Abschn. 7).
+2. Daraus eine **Benennungsmatrix pro aktiver V2-Seite** ableiten. Die Matrix umfasst mindestens: Dateiname, Navigationstitel, Browser-Titel (`<title>`), sichtbarer Haupttitel (`<h1>`), Untertitel / Einordnung.
+3. Erst nach dieser Matrix: technische Umbenennung sowie Link- und Titel-Anpassung.
 
 **Reihenfolge der nächsten Schritte:**
-1. **Benennungs-/Aufräumfragen** klären
-2. **Komponentenstil / V2-Designsystem light** ausarbeiten (Darstellungsregeln der kanonischen Komponenten)
+1. **Benennungslogik** – Präzisierung, dann Matrix pro Seite, dann technische Umsetzung
+2. **Komponentenstil / V2-Designsystem light** (zurückgestellt, nächster großer Block)
 3. **Rückkehr zur Konsistenz- und Darstellungsregel-Ebene** auf höherem Niveau
 
-*(Erledigt: Dokumentation aktualisieren; V2 aktivieren / Altseiten deaktivieren – V2 ist Standard, Altbestand in archive/.)*
+*(Erledigt: V2-Migration, Dokumentation, V2-Aktivierung.)*
 
-**Meta-Einordnung:** Wir sind nicht vom Thema Design- und Konsistenz-Harmonisierung weggegangen, sondern auf tieferer Ebene **durch** das Thema hindurchgegangen (Architektur, Seitentypen, Modus). Die Migrationsphase ist als eigener Meilenstein abgeschlossen; mit der klaren Architekturgrundlage folgen nun Aufräum- und Stilfragen.
+**Meta-Einordnung:** Migrationsphase abgeschlossen; mit der Architekturgrundlage folgt nun die Benennungslogik, danach der Komponentenstil.
 
 **Dokument-/A4-Modus (Kurzfassung):** Kein eigener Wissens- oder Inhalts-Seitentyp, sondern ein **eigener Präsentations-/Layoutmodus** innerhalb desselben Systems. Für normale Webnutzung bleibt das Hauptsystem; für A4-/Druckdarstellung gilt der bewusste Dokument-/A4-Modus mit eigenen Layout- und Darstellungsregeln.
 
