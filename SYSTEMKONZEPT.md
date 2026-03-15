@@ -1,25 +1,25 @@
 Erstellt am: 2026-03-14
-Zuletzt aktualisiert am: 2026-03-15
+Zuletzt aktualisiert am: 2026-03-15 (Stand nach Abschluss Benennungsmatrix-Umsetzung und Einstiegsfeinschliff)
 Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage für Greenfield-Denkphase, Re-Architecture und Template-Strategie. Enthält verbindlichen Stand (Abschn. 1–3) und geklärte bzw. offene Arbeitsbereiche (ab Abschn. 4).
 
 ---
 
 ## Aktueller Stand (März 2026)
 
-**Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert auf V2: **index.html** im Root ist die einzige Einstiegsseite (kein Redirect, index-v2.html wurde abgelöst und entfernt); alle V2-Seiten in pages/ verlinken auf diese Root-index. archive/ und templates/ sind eingeordnet. Die Root-/Einstiegslogik ist damit bereinigt und konsolidiert. Der **aktuelle Arbeitsfokus** liegt auf **Punkt 7 – Benennungslogik**. Punkt 6 (Komponenten / Komponentenstil / V2-Designsystem light) ist bewusst zurückgestellt, nicht verworfen – folgt als nächster großer Block danach.
+**Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert vollständig auf V2. **Punkt 7 – Benennungslogik** wurde in der Arbeitsreihenfolge vorgezogen und ist **weitgehend abgeschlossen**: Die strukturelle Logik ist festgezurrt, die Benennungsmatrix (Gruppen 1–4) ist dokumentiert, und die **technische Umsetzung** wurde durchgeführt – alle aktiven Seiten in pages/ tragen die festgezurrten Dateinamen (00a-ha-einordnung.html, 01-landkarte.html, 01a-glossar.html, 02a/02b, 04, 04a–04d, 05a/05b), Titel/Navigation/Untertitel entsprechen der Matrix, Root-index.html bleibt als Einstieg (Root-Sonderregel), alle Verlinkungen sind angepasst. Der **Einstieg** ist final: index.html im Root mit vereinbarten Feldern; die **12 Einstiegskarten** stehen in der fachlich/logischen Reihenfolge der Benennungslogik, und die **Kartentitel** orientieren sich an den Navigationstiteln der Zielseiten. **Nächster großer Arbeitsblock:** **Punkt 6 – Komponenten / Komponentenstil / V2-Designsystem light** (Abschn. 6 und 9). Die Reihenfolge im Dokument (zuerst Abschn. 6, dann Abschn. 7) bleibt unverändert; in der Umsetzung wurde Abschn. 7 vorgezogen und abgeschlossen.
 
-**Konkrete Arbeitslogik (Benennung):**
-- **Strukturelle Benennungslogik** ist festgezurrt (Runde 1, Abschn. 7). **Benennungsmatrix** ist der aktuelle Arbeitsraum: Die fünf Felder (Dateiname, Navigationstitel, `<title>`, `<h1>`, Untertitel/Einordnung) sind für die bisherigen Gruppen 1–4 fachlich geklärt und im Abschn. 7 dokumentiert. Der **Einstieg** ist bereits live: index.html im Root ist die einzige Einstiegsseite mit den festgezurrten Feldern (Nav: Einstieg, title: Einstieg — QA Lernwebseite, h1: QA Lernwebseite, Untertitel: Überblick und Navigation); Ziel-Dateiname nach Matrix: 00-index.html (Umbenennung mit der technischen Gesamtumbenennung).
-- **Nächster konkreter Schritt:** Technische Umsetzung der Benennungsmatrix – Umbenennung aller betroffenen Dateien nach der festgezurrten Liste, Anpassung aller Links und Titel. Semantischer Feinschliff einzelner Wortstämme kann später noch erfolgen.
+**Konkrete Arbeitslogik (aktuell):**
+- **Benennungslogik (Abschn. 7):** Strukturell festgezurrt und technisch umgesetzt. Semantischer Feinschliff einzelner Wortstämme kann bei Bedarf später erfolgen; keine offenen Umsetzungsschritte.
+- **Nächster konkreter Schritt:** **Komponentenstil / V2-Designsystem light** ausarbeiten – Darstellungsregeln der kanonischen Komponenten festhalten, Stilabweichungen in den bestehenden Seiten auswerten, kompakter Stilstandard ableiten (Abschn. 6 und 9).
+- **Danach:** Rückkehr zur Konsistenz- und Darstellungsregel-Ebene auf höherem Niveau.
 
 **Reihenfolge der nächsten Schritte:**
-1. **Technische Umsetzung der Benennungsmatrix** – Umbenennung der Dateien und Anpassung von Links/Titeln nach der festgezurrten Matrix (00-index.html, 00a-ha-einordnung.html, 01-landkarte.html usw.); die Matrix ist für alle Gruppen dokumentiert, der Umsetzungsplan folgt.
-2. **Komponentenstil / V2-Designsystem light** (zurückgestellt, nächster großer Block)
-3. **Rückkehr zur Konsistenz- und Darstellungsregel-Ebene** auf höherem Niveau
+1. **Komponentenstil / V2-Designsystem light** – nächster großer Block (Abschn. 6 und 9).
+2. Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene.
 
-*(Erledigt: V2-Migration, Dokumentation, V2-Aktivierung; Root-Index bereinigt – index.html als einzige Einstiegsseite, Redirect und index-v2.html entfernt, alle V2-Seiten verlinken auf index.html.)*
+*(Erledigt: V2-Migration; V2-Aktivierung; Root-Index bereinigt – index.html einzige Einstiegsseite, index-v2.html entfernt; Benennungslogik Runde 1 festgezurrt; Benennungsmatrix Gruppen 1–4 dokumentiert; technische Umsetzung der Matrix – Umbenennung aller aktiven Seiten, Anpassung Titel/Nav/Untertitel/Links; Root-Index final – Kartenreihenfolge und Kartentitel an Benennungslogik angepasst.)*
 
-**Meta-Einordnung:** Migrationsphase abgeschlossen; mit der Architekturgrundlage folgt nun die Benennungslogik, danach der Komponentenstil.
+**Meta-Einordnung:** Migrationsphase und Benennungsumstellung abgeschlossen. Der nächste sichtbare Meilenstein ist das V2-Designsystem light / Komponentenstil.
 
 **Dokument-/A4-Modus (Kurzfassung):** Kein eigener Wissens- oder Inhalts-Seitentyp, sondern ein **eigener Präsentations-/Layoutmodus** innerhalb desselben Systems. Für normale Webnutzung bleibt das Hauptsystem; für A4-/Druckdarstellung gilt der bewusste Dokument-/A4-Modus mit eigenen Layout- und Darstellungsregeln.
 
@@ -130,7 +130,9 @@ Kurz: Kein eigener Wissens- oder Inhalts-Seitentyp, aber ein eigener Präsentati
 
 ---
 
-## 6. Komponenten *(Arbeitsfassung)*
+## 6. Komponenten *(Arbeitsfassung – nächster großer Arbeitsblock)*
+
+**Hinweis zur Reihenfolge:** In der Umsetzung wurde Abschn. 7 (Benennungslogik) vorgezogen und ist abgeschlossen. Abschn. 6 (Komponenten) und Abschn. 9 (Komponentenstil / V2-Designsystem light) bilden zusammen den **nächsten großen Arbeitsblock** – Komponenten inventarisieren und Darstellungsregeln festhalten.
 
 **Klärungsstand:** Die Frage der Komponenten wurde weiter geklärt. Es wird unterschieden zwischen: (1) klar kanonischen Komponenten, (2) Komponenten in Vereinheitlichung / Grauzone, (3) lokalem / seitengebundenem Inhalt.
 
@@ -147,11 +149,11 @@ Kurz: Kein eigener Wissens- oder Inhalts-Seitentyp, aber ein eigener Präsentati
 
 ---
 
-## 7. Benennungslogik *(Arbeitsfassung)*
+## 7. Benennungslogik *(strukturell festgezurrt, technisch umgesetzt)*
 
-**Klärungsstand:** Die Benennungslogik wurde weiter geklärt. Relevant sind mehrere Benennungsebenen: Browser-/Seitentitel (`<title>`), sichtbarer Haupttitel (`<h1>`), Navigationstitel, Dateiname, CSS-Klassenname, konzeptioneller Komponentenname.
+**Stand:** Die Benennungslogik wurde in der Arbeitsreihenfolge vorgezogen bearbeitet und ist **strukturell festgezurrt und technisch umgesetzt**. Die folgenden Regeln und die Benennungsmatrix (Gruppen 1–4) sind verbindlich; alle aktiven Seiten in pages/ entsprechen der Matrix (Dateinamen, Navigationstitel, `<title>`, `<h1>`, Untertitel). Root-index.html bleibt als index.html (Root-Sonderregel). Einstiegskarten auf der index.html folgen der gleichen Reihenfolge und Kartentitel = Navigationstitel. Relevant sind mehrere Benennungsebenen: Browser-/Seitentitel (`<title>`), sichtbarer Haupttitel (`<h1>`), Navigationstitel, Dateiname, CSS-Klassenname, konzeptioneller Komponentenname.
 
-**Arbeitsfassung Benennungslogik:**
+**Arbeitsfassung Benennungslogik (Regeln, unverändert gültig):**
 - Navigationstitel und Dateiname sollen möglichst denselben deutschen Wortstamm teilen.
 - Der Browser-/Seitentitel darf den Navigationstitel um Kontext erweitern.
 - Der sichtbare Haupttitel (`<h1>`) ist eine eigene Ebene und muss nicht wortgleich mit dem `<title>` sein.
@@ -166,9 +168,9 @@ Kurz: Kein eigener Wissens- oder Inhalts-Seitentyp, aber ein eigener Präsentati
 
 *Formale Schreibweisen (z. B. für Klassen, Dateien, Komponenten) können in einem späteren Schritt präzisiert werden.*
 
-**Erste Runde – Dateibenennungslogik (Abschlussergebnis)**
+**Erste Runde – Dateibenennungslogik (Abschlussergebnis, umgesetzt)**
 
-Die erste Runde der Benennungslogik ist fachlich abgeschlossen. Das folgende Ergebnis zieht die **strukturelle** Benennungslogik fest. **Klare Trennung:** (1) Die strukturelle Logik (Regeln, finale Dateiliste, Matrix pro Seite) ist fest. (2) Die **technische Gesamtumbenennung** (Dateinamen, Links, Titel anpassen) ist der nächste Schritt. (3) **Semantischer Feinschliff** einzelner Wortstämme kann später noch erfolgen.
+Die erste Runde der Benennungslogik ist fachlich abgeschlossen und **technisch umgesetzt**. (1) Die strukturelle Logik (Regeln, finale Dateiliste, Matrix pro Seite) ist fest. (2) Die **technische Umsetzung** (Umbenennung der Dateien in pages/, Anpassung aller Links, Titel, Navigation, Untertitel; Root-index mit Kartenreihenfolge und Kartentiteln) wurde durchgeführt. (3) **Semantischer Feinschliff** einzelner Wortstämme kann bei Bedarf später noch erfolgen.
 
 **Dateibenennungslogik QA-Lernwebseite — Abschlussergebnis**
 
@@ -227,12 +229,15 @@ pages/
 06-testwerkzeuge.html                  Kap. 6 — Testwerkzeuge
 ```
 
-**Offene Bauliste**
+**Umsetzungsstand**
+
+Die in der Benennungsmatrix (Gruppen 1–4) dokumentierten Seiten sind **technisch umgesetzt**: 00a-ha-einordnung.html, 01-landkarte.html, 01a-glossar.html, 02a-sdlc-statisch.html, 02b-sdlc-animiert.html, 04-testverfahren.html, 04a bis 04d, 05a-ha5-testkonzept.html, 05b-ha5-testkonzept-a4.html. Root-Einstieg bleibt index.html (Root-Sonderregel).
+
+**Offene Bauliste (Erweiterungen, nicht Teil der aktuellen Matrix)**
 
 - 01b-grundlagen.html — neu zu bauen — Kap. 1 Grundlagen  
 - 01c-testmittel.html — Migration ausstehend — Kap. 1.4.3  
 - 03-statisches-testen.html — Migration ausstehend — Kap. 3  
-- 04-testverfahren.html — Migration ausstehend — Kap. 4  
 - 05-testmanagement.html — Migration ausstehend — Kap. 5  
 - 06-testwerkzeuge.html — neu zu bauen — Kap. 6  
 
@@ -241,7 +246,9 @@ Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft
 
 **Benennungsmatrix – festgezurrter Stand (Gruppen 1 bis 4)**
 
-*Die folgenden Gruppen sind fachlich geklärt und festgezurrt. Die Einstiegsseite liegt bereits als index.html im Root mit den vereinbarten Feldern; die Ziel-Dateinamen (00-index.html usw.) werden mit der technischen Gesamtumbenennung umgesetzt.*
+*Die folgenden Gruppen sind fachlich geklärt, festgezurrt und technisch umgesetzt. Die Einstiegsseite liegt als index.html im Root mit den vereinbarten Feldern; alle übrigen Seiten in pages/ tragen die genannten Dateinamen und Felder.*
+
+**Root-Sonderregel:** Logisch gehört der Einstieg zur Benennungslogik als 00-index.html. Technisch bleibt die echte Root-Datei trotzdem **index.html** (Root-Einstieg / GitHub-Pages-Default / praktische Stabilität). Daraus folgt: 00-index.html ist die logische Matrix-Bezeichnung für den Einstieg, aber **keine reale Umbenennung** der Root-Datei – die Root-Datei heißt weiterhin index.html.
 
 *Gruppe 1:*  
 - **Einstieg:** Dateiname 00-index.html · Nav: Einstieg · `<title>`: Einstieg — QA Lernwebseite · `<h1>`: QA Lernwebseite · Untertitel: Überblick und Navigation  
@@ -252,6 +259,8 @@ Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft
 *Gruppe 2:*  
 - **SDLC statisch:** 02a-sdlc-statisch.html · Nav: SDLC & Testprozess (statisch) · `<title>`: SDLC statisch — QA Lernwebseite · `<h1>`: Software-Entwicklungslebenszyklus & ISTQB-Testprozess — Statische Übersicht · Untertitel: Statische Visualisierung des Software Development Life Cycle im Kontext von CTFL Kapitel 2  
 - **SDLC animiert:** 02b-sdlc-animiert.html · Nav: SDLC & Testprozess (animiert) · `<title>`: SDLC animiert — QA Lernwebseite · `<h1>`: Software-Entwicklungslebenszyklus & ISTQB-Testprozess — Animierte Übersicht · Untertitel: Animierte Visualisierung des Software Development Life Cycle im Kontext von CTFL Kapitel 2  
+
+- **Testverfahren:** 04-testverfahren.html · Nav: Testverfahren · `<title>`: Testverfahren — QA Lernwebseite · `<h1>`: Testverfahren im Überblick · Untertitel: Testentwurfsverfahren im Kontext von CTFL Kapitel 4  
 
 *Gruppe 3:*  
 - **HA4 Erklärseite:** 04a-ha4-anforderungsanalyse.html · Nav: HA4 Anforderungsanalyse · `<title>`: HA4 Anforderungsanalyse — QA Lernwebseite · `<h1>`: Anforderungsanalyse · Untertitel: HA4 · Testbasis-Analyse dreier neuer Features im Kontext von CTFL Kapitel 4.1  
@@ -267,42 +276,41 @@ Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft
 
 ## 8. Nächste Schritte *(Sollstruktur Version 2)*
 
-**1. Erste Sollstruktur Version 2**
+**1. Erste Sollstruktur Version 2 (umgesetzt)**
 - Die Website folgt der festgelegten Informationsarchitektur (Abschn. 4).
 - Primärachse: ISTQB / CTFL-Lehrplan als normativer Kern.
 - Sekundäre Ebenen strukturieren die Inhalte: Orientierung / Überblick, Nachschlagen / Begriffe / Übersetzung, Praxis / Anwendung, Visualisierung / Veranschaulichung.
 - Die didaktische Zusatzebene (Selbstkontrolle / Prüfungsvorbereitung) ist keine eigene Hauptstruktur, sondern wird innerhalb von Seiten und Komponenten umgesetzt.
 
-**2. Grundformen der Seiten**
+**2. Grundformen der Seiten (umgesetzt)**
 - **Hauptsystem** als kanonischer Standard für normale Inhaltsseiten.
 - **Dokument-/A4-Modus** als definierter Sonderfall.
 - **Einstiegs-/Übersichtsseite** als Variante des Haupttyps (funktionale Sonderrolle Orientierung / Einstieg, technisch im Hauptsystem).
 
 **3. Rolle der Komponenten**
 - Kanonische Komponenten (Abschn. 6) bilden die verbindliche gemeinsame Basis.
-- Komponenten in Vereinheitlichung / Grauzone werden schrittweise geklärt.
+- Komponenten in Vereinheitlichung / Grauzone werden schrittweise geklärt – **nächster großer Block: Komponentenstil / V2-Designsystem light** (Abschn. 9).
 - Lokaler Inhalt bleibt möglich und muss nicht künstlich generalisiert werden.
 
-**4. Rolle der Benennungslogik**
-- Benennung (Abschn. 7) dient der Konsistenz und Skalierbarkeit.
+**4. Rolle der Benennungslogik (umgesetzt)**
+- Benennung (Abschn. 7) ist strukturell festgezurrt und technisch umgesetzt.
 - Neue oder überführte Inhalte sollen derselben Benennungslogik folgen.
-- Formale Schreibweisen können in einem späteren Schritt präzisiert werden.
+- Formale Schreibweisen können bei Bedarf in einem späteren Schritt präzisiert werden.
 
-**5. Logische nächste Schritte (aktualisiert)**
-1. **Technische Umsetzung der Benennungsmatrix** – Umbenennung der Dateien (00-index.html, 00a-ha-einordnung.html, 01-landkarte.html usw.), Anpassung aller Links und Titel nach der festgezurrten Matrix (Gruppen 1–4 dokumentiert).
-2. **Komponentenstil / V2-Designsystem light** ausarbeiten – nächster großer Block nach der Benennung.
-3. Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene auf höherem Niveau.
+**5. Logische nächste Schritte (aktuell)**
+1. **Komponentenstil / V2-Designsystem light** ausarbeiten (Abschn. 6 und 9) – Darstellungsregeln der kanonischen Komponenten festhalten, Stilstandard ableiten.
+2. Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene auf höherem Niveau.
 
-*(Erledigt: V2-Migration; V2 aktivieren / Altseiten deaktivieren – V2 ist Standard, Altbestand in archive/, Referenzvorlage unter templates/; drei nachgezogene Seiten ins V2-Hauptsystem; Root-Index bereinigt – index.html einzige Einstiegsseite, index-v2.html entfernt, alle V2-Seiten verlinken auf index.html; Benennungslogik Runde 1 festgezurrt; Benennungsmatrix Gruppen 1–4 fachlich geklärt und dokumentiert.)*
+*(Erledigt: V2-Migration; V2-Aktivierung; Root-Index bereinigt; Benennungslogik Runde 1 festgezurrt; Benennungsmatrix Gruppen 1–4 dokumentiert; technische Umsetzung der Matrix – alle aktiven Seiten umbenannt, Links/Titel/Nav/Untertitel angepasst; Root-Index final – Kartenreihenfolge und Kartentitel an Benennungslogik angepasst.)*
 
 ---
 
-## 9. Komponentenstil / V2-Designsystem light *(Darstellungsregeln der kanonischen Komponenten)*
+## 9. Komponentenstil / V2-Designsystem light *(Darstellungsregeln der kanonischen Komponenten – nächster Arbeitsblock)*
 
-Dieser Abschnitt dokumentiert eine Erkenntnis, die beim praktischen Neubau der ersten V2-Seiten (testuniversum-v2.html, glossar-v2.html) sichtbar wurde. Er gehört zum konzeptionellen Arbeitsbereich und beschreibt den nächsten Architekturpunkt nach der Sollstruktur Version 2.
+Dieser Abschnitt dokumentiert eine Erkenntnis, die beim praktischen Neubau der ersten V2-Seiten (heute z. B. Landkarte, Glossar) sichtbar wurde. Er gehört zum konzeptionellen Arbeitsbereich und beschreibt den **nächsten Architekturpunkt**: die explizite Festlegung eines Komponentenstils. **Aktueller Stand:** Die Benennungslogik (Abschn. 7) ist umgesetzt; der Komponentenstil / V2-Designsystem light ist damit der **nächste große Arbeitsblock**.
 
 **1. Entstehung der Erkenntnis**
-- Beim praktischen Neubau der ersten V2-Seiten zeigte sich: Das System funktioniert strukturell – gemeinsame Grundform, klare Komponenten, sinnvolle Überführung der Inhalte.
+- Beim praktischen Neubau der V2-Seiten zeigte sich: Das System funktioniert strukturell – gemeinsame Grundform, klare Komponenten, sinnvolle Überführung der Inhalte.
 - Gleichzeitig wurden Unterschiede in der konkreten visuellen Ausprägung wiederkehrender Komponenten sichtbar (z. B. Meta-Bereich, Hinweis-/Info-Box, Legende, Tabellen-/Referenzbereich; Größen, Abstände, Stilnuancen).
 - Diese Unterschiede liegen nicht primär an der Informationsarchitektur oder am Template, sondern daran, dass die Darstellungsregeln der kanonischen Komponenten noch nicht explizit als eigener Standard festgehalten sind.
 - Das ist kein Mangel des Templates, sondern ein eigenständiger nächster Systemschritt: die explizite Festlegung eines Komponentenstils bzw. eines V2-Designsystems light.
@@ -310,18 +318,18 @@ Dieser Abschnitt dokumentiert eine Erkenntnis, die beim praktischen Neubau der e
 **2. Fachliche Einordnung**
 - Der Punkt gehört nicht mehr primär zur Informationsarchitektur (Abschn. 4) und auch nicht nur zur Frage der Seitentypen (Abschn. 5).
 - Er betrifft die **standardisierte Darstellung** wiederkehrender Komponenten und kann als **Komponentenstil**, **V2-Designsystem light** oder **Darstellungsregelwerk der kanonischen Komponenten** verstanden werden.
-- Abgrenzung: Das Template beantwortet die **Grundform** der Seite (Rahmen, Hauptbereiche). Die Komponenten (Abschn. 6) beantworten, **welche** Bausteine es gibt. Dieser neue Punkt beantwortet, **wie** diese Bausteine systemweit aussehen und variieren sollen.
+- Abgrenzung: Das Template beantwortet die **Grundform** der Seite (Rahmen, Hauptbereiche). Die Komponenten (Abschn. 6) beantworten, **welche** Bausteine es gibt. Dieser Punkt beantwortet, **wie** diese Bausteine systemweit aussehen und variieren sollen.
 
 **3. Warum das wichtig ist**
 - Ohne einen solchen Standard kann das System strukturell richtig, in der Ausprägung aber uneinheitlich bleiben.
 - Für Konsistenz, Wartbarkeit und professionelle Weiterentwicklung braucht das System deshalb nicht nur Struktur-, sondern auch **Darstellungsregeln auf Komponentenebene**.
 
-**4. Warum es bisher nicht explizit festgehalten war**
-- Zuerst mussten die groben Systemfragen geklärt werden: Informationsarchitektur, Seitentypen, Komponenten, Benennungslogik, Sollstruktur Version 2.
+**4. Warum es als nächster Block ansteht**
+- Zuerst mussten die groben Systemfragen geklärt und umgesetzt werden: Informationsarchitektur, Seitentypen, Komponenten, Benennungslogik, technische Umsetzung der Matrix.
 - Die Stilfrage der Komponenten wurde dadurch nicht ignoriert; sie war bisher implizit mitgedacht.
-- Erst durch den praktischen V2-Bau wurde deutlich, dass sie als eigener nächster Architekturpunkt **explizit** benannt und verankert werden sollte.
+- Durch den praktischen V2-Bau wurde deutlich, dass sie als eigener Architekturpunkt **explizit** benannt und verankert werden soll – jetzt, da die Benennungsumstellung abgeschlossen ist.
 
-**5. Strategischer Umgang**
-- Dieser Punkt ist wichtig, aber **nach** der technischen Umsetzung der Benennungsmatrix die nächste größere Baustelle.
-- Vorgehen: Nach Abschluss der Benennungsumstellung werden die wiederkehrenden Stilabweichungen und Muster aus den V2-Seiten ausgewertet; daraus wird ein **kompakter Stilstandard / Darstellungsstandard** für die kanonischen Komponenten abgeleitet.
-- Konkrete Detail-Designregeln werden in diesem Abschnitt bewusst noch nicht festgelegt.
+**5. Strategischer Umgang (nächster Schritt)**
+- Dieser Punkt ist der **nächste große Arbeitsblock**.
+- Vorgehen: Die wiederkehrenden Stilabweichungen und Muster in den bestehenden V2-Seiten (pages/) auswerten; daraus einen **kompakten Stilstandard / Darstellungsstandard** für die kanonischen Komponenten ableiten und dokumentieren.
+- Konkrete Detail-Designregeln werden in diesem Abschnitt bewusst noch nicht festgelegt; sie folgen aus der Ausarbeitung.
