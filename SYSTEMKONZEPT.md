@@ -167,6 +167,79 @@ Kurz: Kein eigener Wissens- oder Inhalts-Seitentyp, aber ein eigener Präsentati
 
 *Formale Schreibweisen (z. B. für Klassen, Dateien, Komponenten) können in einem späteren Schritt präzisiert werden.*
 
+**Erste Runde – Dateibenennungslogik (Abschlussergebnis)**
+
+Die erste Runde der Benennungslogik ist fachlich abgeschlossen. Das folgende Ergebnis zieht die **strukturelle** Benennungslogik fest. Semantischer Feinschliff einzelner Wortstämme kann später noch folgen. Nächster konkreter Schritt: Benennungsmatrix pro aktiver V2-Seite; erst danach die technische Gesamtumbenennung nach dem nummerierten Zielsystem.
+
+**Dateibenennungslogik QA-Lernwebseite — Abschlussergebnis**
+
+**Grundprinzip**  
+Die Dateibenennungslogik folgt der Informationsarchitektur des Projekts. Die Primärachse ist der ISTQB CTFL-Lehrplan als normativer Kern. Dateinamen machen die fachliche Einordnung, die inhaltliche Reihenfolge und die Kapitelzugehörigkeit direkt sichtbar — im Explorer, in der Navigation und im Index.
+
+**Die Regeln**
+
+**Regel 1 — Numerisches Präfix**  
+Jede Datei beginnt mit einer zweistelligen Zahl, die dem CTFL-Kapitel entspricht. 01 bis 06 folgen dem Lehrplan. 00 ist reserviert für Seiten außerhalb der Primärachse (Einstieg, Überblick, Hausaufgaben-Einordnung).
+
+**Regel 2 — Buchstaben-Suffix**  
+Gibt es mehrere Seiten innerhalb desselben Kapitels, erhalten sie einen Buchstaben-Suffix: a, b, c usw. Der Buchstabe bestimmt die Reihenfolge innerhalb des Kapitels, trägt aber keine inhaltliche Hierarchie. Unterkapitel-Zuordnung wird über den inhaltlichen Namen im Dateinamen erkennbar gemacht, nicht über zusätzliche Nummern.
+
+**Regel 3 — A4-Suffix**  
+Formulare und Druckdokumente im A4-Modus erhalten den Zusatz -a4 am Ende des Dateinamens. Das unterscheidet Erklärseite und Dokumentseite innerhalb eines Paares eindeutig.
+
+**Regel 4 — Kebab-case, Deutsch, knapp**  
+Alle Dateinamen sind kleingeschrieben, Wörter durch Bindestriche getrennt, inhaltlich so kurz wie möglich aber so präzise wie nötig. Keine Versionsnummern (-v2), keine technischen Krücken.
+
+**Regel 5 — Erweiterbarkeit**  
+Neue Seiten zu einem bestehenden Kapitel bekommen den nächsten freien Buchstaben. Neue Kapitel sind nicht zu erwarten, da der CTFL-Lehrplan stabil ist. Das System ist damit innerhalb seiner Primärachse dauerhaft erweiterbar ohne Umbenennungen.
+
+**Regel 6 — HA-Paare**  
+Hausaufgaben-Seiten existieren als Paare: eine fachliche Erklärseite und eine A4-Dokumentseite. Beide gehören zum selben Kapitel und werden als aufeinanderfolgende Buchstaben geführt.
+
+**Finale Dateiliste**
+
+```
+00-index.html                          Einstieg / Root
+
+pages/
+00a-ha-einordnung.html                 Hausaufgaben-Übersicht
+
+01-landkarte.html                      Kap. 1 — Überblick / Testuniversum
+01a-glossar.html                       Kap. 1 — Glossar & Terminologie
+01b-grundlagen.html                    Kap. 1 — Grundlagen des Testens
+01c-testmittel.html                    Kap. 1.4.3 — Testmittel
+
+02a-sdlc-statisch.html                 Kap. 2 — SDLC statisch
+02b-sdlc-animiert.html                 Kap. 2 — SDLC animiert
+02c-teststufen.html                    Kap. 2.2/2.3 — Teststufen & Testarten
+
+03-statisches-testen.html              Kap. 3 — Statisches Testen
+
+04-testverfahren.html                  Kap. 4 — Testverfahren
+04a-ha4-anforderungsanalyse.html       Kap. 4 — HA4 Erklärseite
+04b-ha4-testbasisanalyse-a4.html       Kap. 4 — HA4 Formular A4
+04c-ha5-testfallentwurf.html           Kap. 4 — HA5 Testfallentwurf Erklärseite
+04d-ha5-testfallentwurf-a4.html        Kap. 4 — HA5 Testfallentwurf Formular A4
+
+05-testmanagement.html                 Kap. 5 — Testmanagement
+05a-ha5-testkonzept.html               Kap. 5 — HA5 Testkonzept Erklärseite
+05b-ha5-testkonzept-a4.html            Kap. 5 — HA5 Testkonzept Formular A4
+
+06-testwerkzeuge.html                  Kap. 6 — Testwerkzeuge
+```
+
+**Offene Bauliste**
+
+- 01b-grundlagen.html — neu zu bauen — Kap. 1 Grundlagen  
+- 01c-testmittel.html — Migration ausstehend — Kap. 1.4.3  
+- 03-statisches-testen.html — Migration ausstehend — Kap. 3  
+- 04-testverfahren.html — Migration ausstehend — Kap. 4  
+- 05-testmanagement.html — Migration ausstehend — Kap. 5  
+- 06-testwerkzeuge.html — neu zu bauen — Kap. 6  
+
+**Bewertung**  
+Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft tragfähig. Die Primärachse CTFL ist stabil — Kapitelzahlen werden sich nicht ändern. Erweiterungen sind jederzeit möglich über den nächsten freien Buchstaben. Technisch entstehen keine Nachteile, solange interne Links beim Umbenennen konsequent mitgepflegt werden. Das System ist für eine Person gut beherrschbar und für die Übergabe an ChatGPT und Cursor klar genug dokumentiert.
+
 ---
 
 ## 8. Nächste Schritte *(Sollstruktur Version 2)*
