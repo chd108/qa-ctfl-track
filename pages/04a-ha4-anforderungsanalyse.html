@@ -300,41 +300,39 @@
         <div class="analysis-card__header">
           <span class="analysis-card__num">Feature 3</span>
           <span class="analysis-card__title">Versandkosten &amp; Freigrenze</span>
-          <span class="analysis-card__sub">Vage Anforderung: Freigrenze ab X €, darunter Y €</span>
+          <span class="analysis-card__sub">Vage Anforderung: Freigrenze 20€, darunter 5€</span>
         </div>
         <div class="analysis-card__body">
           <div class="analysis-field">
             <div class="analysis-field__label">Testfragen &amp; Antworten</div>
             <ul class="q-list">
               <li><span class="q-num">F1</span><span class="q-text">Wo werden Versandkosten und Freigrenze angezeigt? <span class="q-answer">Im Checkout-Bereich (/checkout) — sichtbar für eingeloggte Nutzer mit befülltem Warenkorb.</span></span></li>
-              <li><span class="q-num">F2</span><span class="q-text">Werden Versandkosten live aktualisiert bei Warenkorbänderungen? <span class="q-answer">Ja — Mengenänderung oder Hinzufügen/Entfernen von Produkten aktualisiert die Versandkosten sofort.</span></span></li>
+              <li><span class="q-num">F2</span><span class="q-text">Werden Versandkosten live aktualisiert bei Warenkorbänderungen? <span class="q-answer">Teilweise — beim Erreichen der Freigrenze (≥20€) verschwinden Versandkosten automatisch. Beim Unterschreiten (&lt;20€) erscheinen sie NICHT wieder, Seite muss neu geladen werden.</span></span></li>
               <li><span class="q-num">F3</span><span class="q-text">Ist der Checkout ohne Login zugänglich? <span class="q-answer">Nein — /checkout leitet ohne Login zu /auth um.</span></span></li>
             </ul>
           </div>
           <div class="analysis-field">
             <div class="analysis-field__label">Akzeptanzkriterien</div>
             <table class="ac-table">
-              <tr><td>AC1</td><td>Bestellwert ≥ X € → Versandkosten = 0 €, Anzeige im Checkout.</td></tr>
-              <tr><td>AC2</td><td>Bestellwert &lt; X € → Versandkosten = Y €, Anzeige im Checkout.</td></tr>
-              <tr><td>AC3</td><td>Jede Warenkorbänderung aktualisiert die Versandkostenanzeige sofort.</td></tr>
+              <tr><td>AC1</td><td>Bestellwert ≥ 20€ → Versandkosten = 0€, Anzeige im Checkout.</td></tr>
+              <tr><td>AC2</td><td>Bestellwert &lt; 20€ → Versandkosten = 5€, Anzeige im Checkout.</td></tr>
+              <tr><td>AC3</td><td>Versandkosten aktualisieren sich bidirektional bei Warenkorbänderungen (hoch UND runter).</td></tr>
               <tr><td>AC4</td><td>Checkout ohne Login → Weiterleitung zu /auth.</td></tr>
-              <tr><td>AC5</td><td>Leerer Warenkorb → definiertes Verhalten (kein Absturz, sinnvoller Hinweis).</td></tr>
+              <tr><td>AC5</td><td>Leerer Warenkorb → sinnvoller Hinweis („Your cart is empty…“), kein Absturz.</td></tr>
             </table>
           </div>
           <div class="analysis-field">
             <div class="analysis-field__label">Grenzfälle</div>
             <div class="tag-row">
-              <span class="tag tag--note">Wert = X €</span>
-              <span class="tag tag--note">Wert = X − 0,01 €</span>
-              <span class="tag tag--note">Wert = X + 0,01 €</span>
+              <span class="tag tag--note">Wert = 20,00€</span>
+              <span class="tag tag--note">Wert = 19,99€</span>
+              <span class="tag tag--note">Wert = 20,01€</span>
               <span class="tag tag--note">Leerer Warenkorb</span>
               <span class="tag tag--note">Gast ohne Login</span>
             </div>
             <div class="analysis-field__label" style="margin-top:.7rem">Offene Punkte</div>
             <ul class="open-list">
-              <li>Konkreter Wert der Freigrenze X — nur mit Testkonto im Checkout ermittelbar</li>
-              <li>Konkreter Wert der Versandkosten Y — ebenfalls nur im Checkout sichtbar</li>
-              <li>Verhalten bei leerem Warenkorb im Checkout noch zu verifizieren</li>
+              <li>Versandkosten-Update nur unidirektional (Hinzufügen → 0€ funktioniert, Entfernen → 5€ funktioniert NICHT) — Bug oder Absicht? Mit PO klären.</li>
             </ul>
           </div>
         </div>
@@ -373,10 +371,10 @@
             </tr>
             <tr>
               <td>Versandkosten</td>
-              <td>Freigrenze X €, Kosten Y €, Live-Update im Checkout, Login erforderlich</td>
-              <td>Wert = X, X−0,01, X+0,01, leerer Warenkorb</td>
-              <td>Exakte Werte X und Y (Testkonto nötig)</td>
-              <td><span class="tag tag--warn">Werte ausstehend</span></td>
+              <td>Freigrenze 20€, Versand 5€, Update nur unidirektional, Login erforderlich</td>
+              <td>Wert 20€, 19,99€, 20,01€, leerer Warenkorb, Gast</td>
+              <td>Versandkosten-Update nur unidirektional (Bug? Mit PO klären)</td>
+              <td><span class="tag tag--warn">Teilweise offen</span></td>
             </tr>
           </tbody>
         </table>
