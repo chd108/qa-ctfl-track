@@ -1,5 +1,5 @@
 Erstellt am: 2026-03-14
-Zuletzt aktualisiert am: 2026-03-15 (Stand nach Abschluss Benennungsmatrix-Umsetzung und Einstiegsfeinschliff)
+Zuletzt aktualisiert am: 2026-03-16 (Stand nach Abschluss Benennungsmatrix-Umsetzung und Einstiegsfeinschliff)
 Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage für Greenfield-Denkphase, Re-Architecture und Template-Strategie. Enthält verbindlichen Stand (Abschn. 1–3) und geklärte bzw. offene Arbeitsbereiche (ab Abschn. 4).
 
 ---
@@ -256,7 +256,7 @@ Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft
 - **HA-Einordnung:** 00a-ha-einordnung.html · Nav: HA-Einordnung · `<title>`: HA-Einordnung — QA Lernwebseite · `<h1>`: HA-Einordnung · Untertitel: Zuordnung der Hausaufgaben im Kontext von CTFL  
 - **Landkarte:** 01-landkarte.html · Nav: Landkarte · `<title>`: Landkarte — QA Lernwebseite · `<h1>`: Landkarte · Untertitel: Inhaltsverzeichnis des ISTQB CTFL Lehrplans v4.0.2  
 - **Glossar:** 01a-glossar.html · Nav: Glossar · `<title>`: Glossar — QA Lernwebseite · `<h1>`: Glossar · Untertitel: Alle offiziellen Schlüsselbegriffe des ISTQB CTFL v4.0.2  
-- **Standards:** 00b-standards.html · Nav: Standards · `<title>`: Standards — QA Lernwebseite · `<h1>`: Standards · Untertitel: Anerkannte Standards · Projektstatus · Potenzial — Stand 15.03.2026  
+- **Standards:** 00b-standards.html · Nav: Standards · `<title>`: Standards — QA Lernwebseite · `<h1>`: Standards · Untertitel: Anerkannte Standards · Projektstatus · Potenzial — Stand 16.03.2026  
 
 *Gruppe 2:*  
 - **SDLC statisch:** 02a-sdlc-statisch.html · Nav: SDLC & Testprozess (statisch) · `<title>`: SDLC statisch — QA Lernwebseite · `<h1>`: Software-Entwicklungslebenszyklus & ISTQB-Testprozess — Statische Übersicht · Untertitel: Statische Visualisierung des Software Development Life Cycle im Kontext von CTFL Kapitel 2  
