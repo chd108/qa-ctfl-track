@@ -580,7 +580,7 @@
         <div class="form-meta">
           <div class="form-meta__cell"><div class="form-meta__label">Feature-ID</div><div class="form-meta__value">GM-F03 · Versandkosten</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Testobjekt</div><div class="form-meta__value">/checkout (eingeloggt)</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="form-meta__value light">Werte ausstehend</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="form-meta__value">Teilweise offen</div></div>
         </div>
         <div class="vague-block">
           <div class="vague-block__label">Ursprüngliche (vage) Anforderung</div>
@@ -592,7 +592,7 @@
             <thead><tr><th scope="col" style="width:1.5rem">#</th><th scope="col">Testfrage</th><th scope="col">Antwort (aus Anwendung ermittelt)</th></tr></thead>
             <tbody>
               <tr><td class="cell-nr">F1</td><td class="cell-q">Wo werden Versandkosten und Freigrenze angezeigt?</td><td class="cell-a">Im Checkout (/checkout) — nur für eingeloggte Nutzer mit befülltem Warenkorb.</td></tr>
-              <tr><td class="cell-nr">F2</td><td class="cell-q">Werden Versandkosten live bei Warenkorbänderungen aktualisiert?</td><td class="cell-a">Ja — Mengen- oder Produktänderungen aktualisieren die Versandkosten sofort.</td></tr>
+              <tr><td class="cell-nr">F2</td><td class="cell-q">Werden Versandkosten live bei Warenkorbänderungen aktualisiert?</td><td class="cell-a">Teilweise — beim Erreichen der Freigrenze (≥20€) verschwinden Versandkosten automatisch. Beim Unterschreiten (&lt;20€) erscheinen sie NICHT wieder — Seite muss neu geladen werden.</td></tr>
               <tr><td class="cell-nr">F3</td><td class="cell-q">Ist /checkout ohne Login zugänglich?</td><td class="cell-a">Nein — ohne Login Weiterleitung zu /auth.</td></tr>
             </tbody>
           </table>
@@ -604,11 +604,11 @@
               <table>
                 <thead><tr><th scope="col" style="width:2rem">#</th><th scope="col">Kriterium</th></tr></thead>
                 <tbody>
-                  <tr><td class="cell-nr">AC1</td><td>Bestellwert ≥ X € → Versandkosten = 0 €.</td></tr>
-                  <tr><td class="cell-nr">AC2</td><td>Bestellwert &lt; X € → Versandkosten = Y €.</td></tr>
-                  <tr><td class="cell-nr">AC3</td><td>Jede Warenkorbänderung aktualisiert Versandkosten sofort.</td></tr>
+                  <tr><td class="cell-nr">AC1</td><td>Bestellwert ≥ 20€ → Versandkosten = 0€.</td></tr>
+                  <tr><td class="cell-nr">AC2</td><td>Bestellwert &lt; 20€ → Versandkosten = 5€.</td></tr>
+                  <tr><td class="cell-nr">AC3</td><td>Versandkosten aktualisieren sich bidirektional bei Warenkorbänderungen (hoch UND runter).</td></tr>
                   <tr><td class="cell-nr">AC4</td><td>Checkout ohne Login → Weiterleitung zu /auth.</td></tr>
-                  <tr><td class="cell-nr">AC5</td><td>Leerer Warenkorb → sinnvoller Hinweis, kein Absturz.</td></tr>
+                  <tr><td class="cell-nr">AC5</td><td>Leerer Warenkorb → sinnvoller Hinweis („Your cart is empty…“), kein Absturz.</td></tr>
                 </tbody>
               </table>
             </div>
@@ -618,22 +618,20 @@
             <div class="boundary-box">
               <div class="boundary-box__label">Identifizierte Grenzfälle</div>
               <div class="chip-row">
-                <span class="chip">Wert = X €</span><span class="chip">Wert = X − 0,01 €</span><span class="chip">Wert = X + 0,01 €</span><span class="chip">Leerer Warenkorb</span><span class="chip">Gast ohne Login</span>
+                <span class="chip">Wert = 20,00€</span><span class="chip">Wert = 19,99€</span><span class="chip">Wert = 20,01€</span><span class="chip">Leerer Warenkorb</span><span class="chip">Gast ohne Login</span>
               </div>
             </div>
             <div class="section__subhead">Offene Punkte</div>
             <div class="open-box">
               <ul class="open-list">
-                <li>Freigrenze X — nur mit Testkonto im Checkout ermittelbar</li>
-                <li>Versandkosten Y — ebenfalls nur im Checkout sichtbar</li>
-                <li>Verhalten leerer Warenkorb noch zu verifizieren</li>
+                <li>Versandkosten-Update nur unidirektional (Hinzufügen → 0€ funktioniert, Entfernen → 5€ funktioniert NICHT) — Bug oder Absicht? Mit PO klären.</li>
               </ul>
             </div>
           </div>
         </div>
         <div class="status-bar">
           <span>GM-F03 · Versandkosten · HA4</span>
-          <span class="status-badge status-badge--open">Werte X und Y ausstehend</span>
+          <span class="status-badge status-badge--open">Offene Punkte vorhanden</span>
         </div>
       </div>
       <div class="doc-footer">
@@ -686,10 +684,10 @@
               </tr>
               <tr>
                 <td>GM-F03<br>Versandkosten</td>
-                <td>Freigrenze X €, Kosten Y €, Live-Update, Login nötig</td>
-                <td>Wert X, X−0,01, X+0,01, leerer Warenkorb</td>
-                <td>Exakte Werte X und Y (Testkonto nötig)</td>
-                <td><span class="status-badge status-badge--open">Werte offen</span></td>
+                <td>Freigrenze 20€, Versand 5€, Update nur unidirektional, Login nötig</td>
+                <td>Wert 20€, 19,99€, 20,01€, leerer Warenkorb, Gast</td>
+                <td>Versandkosten-Update nur unidirektional (Bug? Mit PO klären)</td>
+                <td><span class="status-badge status-badge--open">Teilw. offen</span></td>
               </tr>
             </tbody>
           </table>
