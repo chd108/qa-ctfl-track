@@ -29,6 +29,9 @@
     .info-box__content { font-size: 13px; line-height: 1.6; }
     .info-box ul { margin: .5rem 0 0 1.2rem; list-style: disc; }
     .info-box li { margin: .3rem 0; }
+    .info-box p { margin: .5rem 0; }
+    .info-box p:first-child { margin-top: 0; }
+    .info-box p:last-child { margin-bottom: 0; }
     .section { margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .section__header { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; padding: .7rem 1.2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: rgba(0,0,0,0.04); border-bottom: 1px solid var(--bdr); }
     .section__num { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); white-space: nowrap; }
@@ -102,6 +105,24 @@
     <span><strong>Features:</strong> 3 neue Funktionen</span>
     <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829</span>
     <span><strong>Testfälle:</strong> 28 (GM-F01: 9, GM-F02: 9, GM-F03: 10)</span>
+  </div>
+
+  <div class="info-box info-box--note" role="note">
+    <p><strong>Testkonzept oder Testfallentwurf — was kommt zuerst?</strong></p>
+    <p><strong>Die Frage</strong><br>Bei der Arbeit mit CTFL 4.0.2 entsteht Verwirrung: Kapitel 4 behandelt Testentwurf (inkl. Testfallentwurf), Kapitel 5 behandelt Testplanung (inkl. Testkonzept). Widerspricht die Kapitelreihenfolge der praktischen Arbeitsreihenfolge?</p>
+    <p><strong>Die offiziellen Standards</strong><br>IEEE 829-2008 und ISO/IEC/IEEE 29119-3:2013 definieren die Prozessreihenfolge eindeutig:</p>
+    <ul>
+      <li><strong>Test Plan (Testkonzept)</strong> — strategische Planung</li>
+      <li><strong>Test Design Specification (Testfallentwurf)</strong> — operativer Entwurf</li>
+      <li><strong>Test Case Specification (Testfälle)</strong> — konkrete Ausführung</li>
+    </ul>
+    <p><strong>Die Auflösung</strong><br>CTFL ist ein Lehrplan, kein Prozessstandard:</p>
+    <ul>
+      <li>Kapitelreihenfolge = didaktisch: Erst Techniken lernen (Kap. 4), dann Management lernen (Kap. 5)</li>
+      <li>Prozessreihenfolge = praktisch: Erst planen (Testkonzept), dann entwerfen (Testfälle)</li>
+    </ul>
+    <p>In der Praxis: Testkonzept → Testfallentwurf (oft iterativ)<br>Im Lehrplan: Entwurf vor Konzept (didaktische Reihenfolge)</p>
+    <p><strong>Fazit</strong><br>Beide Reihenfolgen sind korrekt — mit unterschiedlichem Zweck. Die Kapitelstruktur im CTFL optimiert das Lernen, während IEEE/ISO die reale Arbeitsreihenfolge beschreiben.</p>
   </div>
 
   <section class="section section--e1" aria-labelledby="sec-intro-heading">
