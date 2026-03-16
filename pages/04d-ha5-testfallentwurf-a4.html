@@ -441,13 +441,13 @@
               <tr style="border-top: 2px solid var(--doc-bdr);"><td class="cell-id">TC-F03-001</td><td class="cell-center">GM-F03</td><td>Checkout als Gast (ungültige Klasse)</td><td><span class="tech-badge">EP</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Regression wichtig</td></tr>
               <tr><td class="cell-id">TC-F03-002</td><td class="cell-center">GM-F03</td><td>Niedriger Bestellwert (unter Freigrenze)</td><td><span class="tech-badge">EP</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Standardfall</td></tr>
               <tr><td class="cell-id">TC-F03-003</td><td class="cell-center">GM-F03</td><td>Hoher Bestellwert (über Freigrenze)</td><td><span class="tech-badge">EP</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Standardfall</td></tr>
-              <tr><td class="cell-id">TC-F03-004</td><td class="cell-center">GM-F03</td><td>Bestellwert genau X€ (Freigrenze)</td><td><span class="tech-badge">BVA</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Kritischer Grenzwert</td></tr>
-              <tr><td class="cell-id">TC-F03-005</td><td class="cell-center">GM-F03</td><td>Bestellwert X − 0,01€</td><td><span class="tech-badge">BVA</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Grenzwert darunter</td></tr>
-              <tr><td class="cell-id">TC-F03-006</td><td class="cell-center">GM-F03</td><td>Bestellwert X + 0,01€</td><td><span class="tech-badge">BVA</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Grenzwert darüber</td></tr>
+              <tr><td class="cell-id">TC-F03-004</td><td class="cell-center">GM-F03</td><td>Bestellwert genau 20€ (Freigrenze)</td><td><span class="tech-badge">BVA</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Kritischer Grenzwert</td></tr>
+              <tr><td class="cell-id">TC-F03-005</td><td class="cell-center">GM-F03</td><td>Bestellwert 19,99€</td><td><span class="tech-badge">BVA</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Grenzwert darunter</td></tr>
+              <tr><td class="cell-id">TC-F03-006</td><td class="cell-center">GM-F03</td><td>Bestellwert 20,01€</td><td><span class="tech-badge">BVA</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Grenzwert darüber</td></tr>
               <tr><td class="cell-id">TC-F03-007</td><td class="cell-center">GM-F03</td><td>Live-Update bei Produkthinzufügen</td><td><span class="tech-badge">UC</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Dynamik kritisch</td></tr>
               <tr><td class="cell-id">TC-F03-008</td><td class="cell-center">GM-F03</td><td>Live-Update bei Mengenänderung</td><td><span class="tech-badge">UC</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Dynamik kritisch</td></tr>
-              <tr><td class="cell-id">TC-F03-009</td><td class="cell-center">GM-F03</td><td>Live-Update bei Produktentfernen</td><td><span class="tech-badge">UC</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Bidirektional</td></tr>
-              <tr><td class="cell-id">TC-F03-010</td><td class="cell-center">GM-F03</td><td>Leerer Warenkorb im Checkout</td><td><span class="tech-badge">EG</span></td><td class="cell-center"><span class="prio-badge prio-badge--med">M</span></td><td class="cell-auto-no">Nein</td><td>Verhalten explorieren</td></tr>
+              <tr><td class="cell-id">TC-F03-009</td><td class="cell-center">GM-F03</td><td>Live-Update bei Produktentfernen</td><td><span class="tech-badge">UC</span></td><td class="cell-center"><span class="prio-badge prio-badge--high">H</span></td><td class="cell-auto-yes">Ja</td><td>Unidirektional (Reload nötig)</td></tr>
+              <tr><td class="cell-id">TC-F03-010</td><td class="cell-center">GM-F03</td><td>Leerer Warenkorb im Checkout</td><td><span class="tech-badge">EG</span></td><td class="cell-center"><span class="prio-badge prio-badge--med">M</span></td><td class="cell-auto-no">Nein</td><td>„Your cart is empty“ (geklärt)</td></tr>
             </tbody>
           </table>
         </div>
@@ -775,7 +775,7 @@
           </div>
           <div class="form-field">
             <div class="form-field__label">Testdaten</div>
-            <div class="form-field__value">Warenkorb: Produkte im Wert &gt; X€ (über Freigrenze)</div>
+            <div class="form-field__value">Warenkorb: Produkte im Wert &gt; 20€ (über Freigrenze)</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Schritte</div>
@@ -805,7 +805,7 @@
         <div class="doc-tc-card">
           <div class="doc-tc-card__header">
             <span class="doc-tc-card__id">TC-F03-004</span>
-            <span class="doc-tc-card__title">Bestellwert genau X€ (Freigrenze)</span>
+            <span class="doc-tc-card__title">Bestellwert genau 20€ (Freigrenze)</span>
             <span class="tech-badge">BVA</span>
           </div>
           <div class="doc-grid-3">
@@ -824,17 +824,17 @@
           </div>
           <div class="form-field">
             <div class="form-field__label">Vorbedingungen</div>
-            <div class="form-field__value">Nutzer ist eingeloggt · Freigrenze X€ bekannt (manuell ermittelt)</div>
+            <div class="form-field__value">Nutzer ist eingeloggt · Freigrenze 20€</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Testdaten</div>
-            <div class="form-field__value">Warenkorb: Produkte im Wert von genau X€ (Freigrenze, kritischer Grenzwert!)</div>
+            <div class="form-field__value">Warenkorb: Produkte im Wert von genau 20€ (Freigrenze, kritischer Grenzwert!)</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Schritte</div>
             <div class="form-field__value">
               <ol class="doc-steps">
-                <li>Als eingeloggter Nutzer Produkte im Wert von genau X€ in Warenkorb legen</li>
+                <li>Als eingeloggter Nutzer Produkte im Wert von genau 20€ in Warenkorb legen</li>
                 <li>Zu /checkout navigieren</li>
                 <li>Versandkosten prüfen</li>
               </ol>
@@ -842,7 +842,7 @@
           </div>
           <div class="form-field">
             <div class="form-field__label">Erwartetes Ergebnis</div>
-            <div class="form-field__value">Versandkosten = 0€ · Hinweis „Versandkostenfrei ab X€“ wird angezeigt · <strong>WICHTIG: Grenzwert „genau X€“ MUSS versandkostenfrei sein (≥X, nicht &gt;X)</strong></div>
+            <div class="form-field__value">Versandkosten = 0€ · Hinweis „Versandkostenfrei ab 20€“ oder ähnlich · <strong>WICHTIG: Grenzwert „genau 20€“ MUSS versandkostenfrei sein (≥20, nicht &gt;20)</strong></div>
           </div>
           <div class="doc-grid-2">
             <div class="form-field">

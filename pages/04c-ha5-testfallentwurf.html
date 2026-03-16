@@ -331,7 +331,7 @@
         <div class="tc">
           <div class="tc__header"><span class="tc__id">TC-F03-001</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
           <div class="tc__title">Checkout als Gast (ohne Login)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: Produkte im Wert &gt; X€, Nutzer: nicht eingeloggt (Gast)</div></div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: Produkte im Wert &gt; 20€, Nutzer: nicht eingeloggt (Gast)</div></div>
           <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als Gast Produkte in Warenkorb legen</li><li>Versuchen, zu /checkout zu navigieren</li></ol></div>
           <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Weiterleitung zu /auth (Login-Seite). Checkout ist ohne Login nicht möglich. <em>→ Laut HA4: Checkout nur für eingeloggte Nutzer!</em></div></div>
         </div>
@@ -340,7 +340,7 @@
           <div class="tc__title">Sehr niedriger Bestellwert (deutlich unter Freigrenze)</div>
           <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: 1 Produkt à 5€, Nutzer: eingeloggt</div></div>
           <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer günstiges Produkt (5€) in Warenkorb</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = Y€. Hinweis "Noch X - 5€ bis zur kostenlosen Lieferung" wird angezeigt.</div></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 5€. Hinweis „Noch 15€ bis zur kostenlosen Lieferung“ oder ähnlich wird angezeigt.</div></div>
         </div>
         <div class="tc">
           <div class="tc__header"><span class="tc__id">TC-F03-003</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
@@ -351,53 +351,53 @@
         </div>
         <div class="tc">
           <div class="tc__header"><span class="tc__id">TC-F03-004</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
-          <div class="tc__title">Bestellwert genau an Freigrenze X€ (Grenzwert)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: Produkte im Wert von genau X€ (Freigrenze), Nutzer: eingeloggt</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von genau X€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 0€. <em>→ Freigrenze X laut HA4 noch zu ermitteln!</em></div></div>
+          <div class="tc__title">Bestellwert genau an Freigrenze 20€ (Grenzwert)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: Produkte im Wert von genau 20€ (Freigrenze), Nutzer: eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von genau 20€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 0€.</div></div>
         </div>
         <div class="tc">
           <div class="tc__header"><span class="tc__id">TC-F03-005</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
-          <div class="tc__title">Bestellwert X − 0,01€ (Grenzwert unter Freigrenze)</div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von X − 0,01€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = Y€. Hinweis "Noch 0,01€ bis zur kostenlosen Lieferung" oder ähnlich. <em>→ Versandkosten Y laut HA4 noch zu ermitteln!</em></div></div>
+          <div class="tc__title">Bestellwert 19,99€ (Grenzwert unter Freigrenze)</div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von 19,99€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 5€. Hinweis „Noch 0,01€ bis zur kostenlosen Lieferung“ oder ähnlich.</div></div>
         </div>
         <div class="tc">
           <div class="tc__header"><span class="tc__id">TC-F03-006</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
-          <div class="tc__title">Bestellwert X + 0,01€ (Grenzwert über Freigrenze)</div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von X + 0,01€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__title">Bestellwert 20,01€ (Grenzwert über Freigrenze)</div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von 20,01€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
           <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 0€. Freigrenze wurde erreicht.</div></div>
         </div>
         <div class="tc">
           <div class="tc__header"><span class="tc__id">TC-F03-007</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
-          <div class="tc__title">Live-Update bei Warenkorbänderungen</div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von 20€ in Warenkorb (&lt; X€)</li><li>Zu /checkout navigieren, Versandkosten prüfen (sollte Y€ sein)</li><li>Zurück zum Warenkorb, weiteres Produkt hinzufügen (Gesamtwert &gt; X€)</li><li>Zu /checkout zurückkehren, Versandkosten erneut prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten ändern sich SOFORT von Y€ auf 0€. Keine Seiten-Refresh nötig.</div></div>
+          <div class="tc__title">Live-Update bei Warenkorbänderungen (Hinzufügen)</div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von 19€ in Warenkorb (&lt; 20€)</li><li>Zu /checkout navigieren, Versandkosten prüfen (sollte 5€ sein)</li><li>Zurück zum Warenkorb, weiteres Produkt hinzufügen (Gesamtwert ≥ 20€)</li><li>Zu /checkout zurückkehren, Versandkosten erneut prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten ändern sich von 5€ auf 0€, sobald Gesamtwert ≥ 20€ (Hinzufügen funktioniert ohne Reload).</div></div>
         </div>
         <div class="tc">
           <div class="tc__header"><span class="tc__id">TC-F03-008</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
-          <div class="tc__title">Live-Update bei Mengenänderung</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: 1× Produkt à 30€, dann Menge auf 2 erhöhen</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer 1× Produkt (30€) in Warenkorb</li><li>Zu /checkout navigieren (Versandkosten = Y€)</li><li>Menge des Produkts auf 2 erhöhen (Gesamtwert: 60€)</li><li>Versandkosten prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten aktualisieren sich automatisch auf 0€, sobald Freigrenze überschritten.</div></div>
+          <div class="tc__title">Live-Update bei Mengenänderung (Hinzufügen)</div>
+          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: 1× Produkt à 15€, dann Menge auf 2 erhöhen (30€)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer 1× Produkt (15€) in Warenkorb</li><li>Zu /checkout navigieren (Versandkosten = 5€)</li><li>Menge des Produkts auf 2 erhöhen (Gesamtwert: 30€)</li><li>Versandkosten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten aktualisieren sich auf 0€, sobald Gesamtwert ≥ 20€ (Erhöhen funktioniert ohne Reload).</div></div>
         </div>
         <div class="tc">
           <div class="tc__header"><span class="tc__id">TC-F03-009</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
           <div class="tc__title">Produkt entfernen → Versandkosten wieder aktiv</div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert &gt; X€ in Warenkorb</li><li>Zu /checkout navigieren (Versandkosten = 0€)</li><li>Ein Produkt entfernen, sodass Gesamtwert &lt; X€ fällt</li><li>Versandkosten prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten ändern sich SOFORT von 0€ auf Y€. Live-Update funktioniert bidirektional.</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert &gt; 20€ in Warenkorb</li><li>Zu /checkout navigieren (Versandkosten = 0€)</li><li>Ein Produkt entfernen, sodass Gesamtwert &lt; 20€ fällt</li><li>Versandkosten prüfen (ohne Reload)</li><li>Seite neu laden, Versandkosten erneut prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Aktuelles Verhalten: Ohne Reload erscheinen Versandkosten (5€) NICHT wieder. Nach Seiten-Reload: Versandkosten = 5€. Offener Punkt HA4: Bug oder Absicht? Mit PO klären.</div></div>
         </div>
         <div class="tc">
           <div class="tc__header"><span class="tc__id">TC-F03-010</span><span class="tc__technique">Fehlerermessen (Error Guessing)</span></div>
           <div class="tc__title">Leerer Warenkorb im Checkout</div>
           <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: leer (0 Produkte), Nutzer: eingeloggt</div></div>
           <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer direkt zu /checkout navigieren (ohne Produkte im Warenkorb)</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">System zeigt sinnvollen Hinweis "Ihr Warenkorb ist leer" und verhindert Checkout. Kein Absturz. <em>→ Verhalten laut HA4 noch zu verifizieren!</em></div></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Hinweis „Your cart is empty…“ wird angezeigt. Checkout wird verhindert. Kein Absturz.</div></div>
         </div>
       </div>
       <div class="info-box info-box--auto" role="note">
         <div class="info-box__title">Automatisierungempfehlung: GM-F03</div>
-        <div class="info-box__content">Grenzwert-Tests (TC-F03-004, 005, 006) und EP-Tests (001, 002, 003) gut automatisierbar. Live-Update (007, 008, 009) je nach Tool. TC-F03-010 (leerer Warenkorb) manuell prüfen, bis Verhalten geklärt.</div>
+        <div class="info-box__content">Grenzwert-Tests (TC-F03-004, 005, 006) und EP-Tests (001, 002, 003) gut automatisierbar. Live-Update (007, 008, 009) je nach Tool. TC-F03-010 (leerer Warenkorb) manuell prüfen.</div>
       </div>
     </div>
   </section>
