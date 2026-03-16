@@ -372,7 +372,7 @@
 <main id="main">
   <div class="meta-bar" aria-label="Modushinweis">
     <span><strong>Modus:</strong> A4-/Dokumentansicht</span>
-    <span><strong>Seiten:</strong> 4</span>
+    <span><strong>Seiten:</strong> 11</span>
     <span><strong>Projekt:</strong> GroceryMate (HA5)</span>
     <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829</span>
   </div>
@@ -390,14 +390,14 @@
           <strong>Erstellt:</strong> 16.03.2026<br>
           <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
           <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
-          <strong>Seite:</strong> 1 von 4
+          <strong>Seite:</strong> 1 von 11
         </div>
       </div>
 
       <div class="doc-body">
         <div class="doc-section-strip">
           <span class="doc-section-strip__num">Teil 1</span>
-          <span>Summary-Tabelle (alle 28 Testfälle)</span>
+          <span>Summary-Tabelle (18 Testfälle)</span>
         </div>
 
         <div class="form-meta">
@@ -419,7 +419,7 @@
           </div>
           <div class="form-meta__cell">
             <div class="form-meta__label">Testfälle</div>
-            <div class="form-meta__value">28 gesamt</div>
+            <div class="form-meta__value">18 gesamt</div>
           </div>
         </div>
 
@@ -427,9 +427,13 @@
           <strong>Legende:</strong> EP = Äquivalenzklassen · BVA = Grenzwertanalyse · UC = Use Case / Scenario · EG = Error Guessing · <strong>Requirements:</strong> Referenz zu Akzeptanzkriterien aus HA4 (Testbasis-Analyse) gemäß ISO/IEC/IEEE 29119-3 Section 7.2.5.5 (Traceability)
         </div>
 
-        <!-- GM-F01: Bewertungssystem (9 TCs) -->
+        <div class="doc-info-box">
+          <strong>Prioritätsfestlegung:</strong> <strong>HOCH</strong> = Grenzwerte, Compliance (Jugendschutz), Hauptfunktionen, bekannte Bugs, Business Impact hoch · <strong>MITTEL</strong> = Standard-Äquivalenzklassen, weniger kritische Pfade, geringeres Risiko · <strong>NIEDRIG</strong> = Seltene Edge Cases, geringer Business Impact
+        </div>
+
+        <!-- GM-F01: Bewertungssystem (6 TCs) -->
         <div class="doc-section-strip" style="font-size: 9pt; padding: 3pt 0 3pt 8pt;">
-          <span>GM-F01: Bewertungssystem (9 Testfälle)</span>
+          <span>GM-F01: Bewertungssystem (6 Testfälle)</span>
         </div>
 
         <div class="ref-table">
@@ -448,92 +452,88 @@
             <tbody>
               <tr>
                 <td class="cell-id">TC-F01-001</td>
-                <td>5 Sterne (gültig, Max)</td>
+                <td>Eingeloggt, 3 Sterne, OHNE Text</td>
                 <td><span class="tech-badge">EP</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC1, AC2</td>
-                <td>Gültige Äquivalenzklasse · Maximaler Grenzwert · Regression</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F01-002</td>
-                <td>1 Stern (gültig, Min)</td>
-                <td><span class="tech-badge">EP</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--med">Mittel</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC1</td>
-                <td>Gültige Äquivalenzklasse · Minimaler Wert</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F01-003</td>
-                <td>6 Sterne (ungültig)</td>
-                <td><span class="tech-badge">BVA</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC1</td>
-                <td>Ungültige Äquivalenzklasse · Fehlerbehandlung · Grenzwert &gt;5</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F01-004</td>
-                <td>3.5 Sterne (Halbstern)</td>
-                <td><span class="tech-badge">BVA</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
                 <td class="cell-req">AC2</td>
-                <td>Halbstern-Funktionalität testen · Kritisches Feature</td>
+                <td><strong>Priorität:</strong> F2 testen (Textfeld optional) · Kritisches Akzeptanzkriterium · Happy Path ohne Text<br><strong>Automatisierung:</strong> Regression · Textfeld-Validierung · Häufiger Use Case</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F01-002</td>
+                <td>Eingeloggt, 5 Sterne (Max), mit Text</td>
+                <td><span class="tech-badge">EP</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC1</td>
+                <td><strong>Priorität:</strong> F1 testen (nur eingeloggt) + Grenzwert Max · Hauptfunktion<br><strong>Automatisierung:</strong> Grenzwert-Test · End-to-End Happy Path</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F01-003</td>
+                <td>Gast versucht zu bewerten (ungültig)</td>
+                <td><span class="tech-badge">UC</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC3</td>
+                <td><strong>Priorität:</strong> F1 testen (Gast ungültig) · Auth-Check · Negativer Pfad<br><strong>Automatisierung:</strong> Sicherheit · Auth-Regression</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F01-004</td>
+                <td>Eingeloggt, sehr langer Text (Zeichenlimit)</td>
+                <td><span class="tech-badge">BVA</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--med">Mittel</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC2</td>
+                <td><strong>Priorität:</strong> Offener Punkt aus HA4 (Zeichenlimit unklar) · Input-Validierung · Grenzwert<br><strong>Automatisierung:</strong> Textfeld-Grenze · Fehlerbehandlung · Regression</td>
               </tr>
               <tr>
                 <td class="cell-id">TC-F01-005</td>
-                <td>Als Gast bewerten (ungültig)</td>
+                <td>2. Bewertung desselben Produkts (Block/Update)</td>
                 <td><span class="tech-badge">UC</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC3, AC4</td>
-                <td>Authentifizierung · Negative Use Case · Regression</td>
+                <td class="cell-req">AC4</td>
+                <td><strong>Priorität:</strong> F3 testen (max. 1x) · Offener Punkt aus HA4 · Business-Regel<br><strong>Automatisierung:</strong> Datenintegrität · DB-Constraint-Test</td>
               </tr>
               <tr>
                 <td class="cell-id">TC-F01-006</td>
-                <td>Eingeloggt bewerten (gültig)</td>
-                <td><span class="tech-badge">UC</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC4, AC5</td>
-                <td>Hauptszenario · Happy Path · Datenpersistenz</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F01-007</td>
-                <td>Session läuft ab während Bewertung</td>
-                <td><span class="tech-badge">UC</span></td>
+                <td>Eingeloggt, 1 Stern (Min)</td>
+                <td><span class="tech-badge">BVA</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--med">Mittel</span></td>
-                <td class="cell-center cell-auto-no">Nein</td>
-                <td class="cell-req">AC4</td>
-                <td>Negativer Pfad · Session-Management · Fehlerbehandlung</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F01-008</td>
-                <td>XSS in Bewertungstext</td>
-                <td><span class="tech-badge">EG</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">Security</td>
-                <td>Sicherheitstest · XSS-Injection · Input-Validierung</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F01-009</td>
-                <td>SQL Injection in Bewertungstext</td>
-                <td><span class="tech-badge">EG</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">Security</td>
-                <td>Sicherheitstest · SQL-Injection · DB-Schutz</td>
+                <td class="cell-req">AC1</td>
+                <td><strong>Priorität:</strong> Grenzwert Min · Gültige Äquivalenzklasse<br><strong>Automatisierung:</strong> Rauchtest · Einfach</td>
               </tr>
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
+        <span>Seite 1 von 11</span>
+      </div>
+    </article>
 
-        <!-- GM-F02: Altersverifikation (9 TCs) -->
+    <!-- ═══ Blatt 2: Summary GM-F02, GM-F03 ═══ -->
+    <article class="doc-a4" id="sheet-2" aria-labelledby="sheet2-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet2-heading">Testfallentwurf</h1>
+          <p>Test Case Specification nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
+          <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
+          <strong>Seite:</strong> 2 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <!-- GM-F02: Altersverifikation (6 TCs) -->
         <div class="doc-section-strip" style="font-size: 9pt; padding: 3pt 0 3pt 8pt;">
-          <span>GM-F02: Altersverifikation (9 Testfälle)</span>
+          <span>GM-F02: Altersverifikation (6 Testfälle)</span>
         </div>
 
         <div class="ref-table">
@@ -552,92 +552,65 @@
             <tbody>
               <tr>
                 <td class="cell-id">TC-F02-001</td>
-                <td>&lt;18 Jahre (17, ungültig)</td>
+                <td>Geburtsdatum &lt;18 Jahre (17 J.)</td>
                 <td><span class="tech-badge">EP</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC1</td>
-                <td>Ungültige Äquivalenzklasse · Zugriff verweigern · Kritisch</td>
+                <td class="cell-req">AC2</td>
+                <td><strong>Priorität:</strong> F3 testen · Compliance (Jugendschutz) · Ungültige Klasse<br><strong>Automatisierung:</strong> Compliance-Test jedes Release</td>
               </tr>
               <tr>
                 <td class="cell-id">TC-F02-002</td>
-                <td>&lt;18 Jahre (17.99, Grenze)</td>
+                <td>Geburtsdatum 17 J., 364 Tage (1 Tag vor 18.)</td>
                 <td><span class="tech-badge">BVA</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC1</td>
-                <td>Grenzwert &lt;18 · Randfall · Regression</td>
+                <td class="cell-req">AC2</td>
+                <td><strong>Priorität:</strong> F3 testen · Kritischer Grenzwert knapp &lt;18 · Compliance<br><strong>Automatisierung:</strong> Off-by-One Fehler häufig · Regression</td>
               </tr>
               <tr>
                 <td class="cell-id">TC-F02-003</td>
-                <td>=18 Jahre (Grenzwert, gültig)</td>
+                <td>Geburtsdatum =18 Jahre (Grenze)</td>
                 <td><span class="tech-badge">BVA</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC2</td>
-                <td>Kritischer Grenzwert =18 · Muss gültig sein (≥18)</td>
+                <td class="cell-req">AC3</td>
+                <td><strong>Priorität:</strong> F3 testen · Grenzwert =18 MUSS gültig sein (≥18)<br><strong>Automatisierung:</strong> Höchstes Off-by-One Risiko · Business-kritisch</td>
               </tr>
               <tr>
                 <td class="cell-id">TC-F02-004</td>
-                <td>&gt;18 Jahre (25, gültig)</td>
+                <td>Geburtsdatum &gt;18 Jahre (25 J., gültig)</td>
                 <td><span class="tech-badge">EP</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--med">Mittel</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC2</td>
-                <td>Gültige Äquivalenzklasse · Zugriff gewähren</td>
+                <td class="cell-req">AC3</td>
+                <td><strong>Priorität:</strong> F3 testen · Happy Path · Positive Äquivalenzklasse<br><strong>Automatisierung:</strong> Rauchtest · Grundfunktion</td>
               </tr>
               <tr>
                 <td class="cell-id">TC-F02-005</td>
-                <td>Session-Persistenz (gültig)</td>
+                <td>Session-Persistenz - kein erneutes Modal</td>
                 <td><span class="tech-badge">UC</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
                 <td class="cell-req">AC4</td>
-                <td>Session-Management · Datenpersistenz · Regression</td>
+                <td><strong>Priorität:</strong> F4 testen · Session-Management · Datenpersistenz<br><strong>Automatisierung:</strong> Session-Tests · Cookie-Handling</td>
               </tr>
               <tr>
                 <td class="cell-id">TC-F02-006</td>
-                <td>Ablehnung → Weiterleitung</td>
+                <td>Modal erscheint beim ersten Aufruf /store</td>
                 <td><span class="tech-badge">UC</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC5</td>
-                <td>Negativer Pfad · Weiterleitung zu / · Fehlerbehandlung</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F02-007</td>
-                <td>Modal erscheint beim ersten Besuch</td>
-                <td><span class="tech-badge">UC</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC3</td>
-                <td>UI-Element · Erstbesuch · Hauptszenario</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F02-008</td>
-                <td>Ungültiges Datum (31.02.2000)</td>
-                <td><span class="tech-badge">EG</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--med">Mittel</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">Validation</td>
-                <td>Fehlerhafte Eingabe · Input-Validierung · Fehlerbehandlung</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F02-009</td>
-                <td>XSS in Datumsfeld</td>
-                <td><span class="tech-badge">EG</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">Security</td>
-                <td>Sicherheitstest · XSS-Injection · Input-Validierung</td>
+                <td class="cell-req">AC1</td>
+                <td><strong>Priorität:</strong> F2 testen · UI-Element · Hauptszenario Erstbesuch<br><strong>Automatisierung:</strong> UI-Element-Check · Rauchtest</td>
               </tr>
             </tbody>
           </table>
         </div>
 
-        <!-- GM-F03: Versandkosten (10 TCs) -->
+        <!-- GM-F03: Versandkosten (6 TCs) -->
         <div class="doc-section-strip" style="font-size: 9pt; padding: 3pt 0 3pt 8pt;">
-          <span>GM-F03: Versandkosten (10 Testfälle)</span>
+          <span>GM-F03: Versandkosten (6 Testfälle)</span>
         </div>
 
         <div class="ref-table">
@@ -656,93 +629,57 @@
             <tbody>
               <tr>
                 <td class="cell-id">TC-F03-001</td>
-                <td>Checkout als Gast (ungültig)</td>
+                <td>Checkout als Gast (ohne Login)</td>
                 <td><span class="tech-badge">EP</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
                 <td class="cell-req">AC4</td>
-                <td>Ungültige Äquivalenzklasse · Weiterleitung /auth · Regression</td>
+                <td><strong>Priorität:</strong> F1+F3 testen · Auth-Check · Sicherheit · Weiterleitung<br><strong>Automatisierung:</strong> Auth-Regression · Jedes Release</td>
               </tr>
               <tr>
                 <td class="cell-id">TC-F03-002</td>
-                <td>Bestellwert &gt; 20€ (z.B. 25€)</td>
+                <td>Bestellwert &gt;20€ (z.B. 25€)</td>
                 <td><span class="tech-badge">EP</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--med">Mittel</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
                 <td class="cell-req">AC1</td>
-                <td>Gültige Äquivalenzklasse · Versandkostenfrei</td>
+                <td><strong>Priorität:</strong> Gültige Äquivalenzklasse · Standardfall<br><strong>Automatisierung:</strong> Rauchtest · Einfach</td>
               </tr>
               <tr>
                 <td class="cell-id">TC-F03-003</td>
-                <td>Bestellwert &lt; 20€ (z.B. 15€)</td>
-                <td><span class="tech-badge">EP</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--med">Mittel</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC2</td>
-                <td>Gültige Äquivalenzklasse · Versandkosten 5€</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F03-004</td>
-                <td>Bestellwert genau 20€ (Freigrenze)</td>
+                <td>Bestellwert =20€ (Freigrenze)</td>
                 <td><span class="tech-badge">BVA</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
                 <td class="cell-req">AC1</td>
-                <td>Kritischer Grenzwert =20€ · Muss versandkostenfrei sein (≥20)</td>
+                <td><strong>Priorität:</strong> Kritischer Grenzwert =20€ · Business-kritisch<br><strong>Automatisierung:</strong> Off-by-One Risiko · Kundenakzeptanz</td>
               </tr>
               <tr>
-                <td class="cell-id">TC-F03-005</td>
+                <td class="cell-id">TC-F03-004</td>
                 <td>Bestellwert 19,99€ (unter Grenze)</td>
                 <td><span class="tech-badge">BVA</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
                 <td class="cell-req">AC2</td>
-                <td>Grenzwert &lt;20€ · Versandkosten 5€ · Regression</td>
+                <td><strong>Priorität:</strong> Grenzwert &lt;20€ · Versandkosten 5€ müssen erscheinen<br><strong>Automatisierung:</strong> Preisberechnung · Business-Logik</td>
               </tr>
               <tr>
-                <td class="cell-id">TC-F03-006</td>
-                <td>Bestellwert 20,01€ (über Grenze)</td>
-                <td><span class="tech-badge">BVA</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--med">Mittel</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC1</td>
-                <td>Grenzwert &gt;20€ · Versandkostenfrei</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F03-007</td>
+                <td class="cell-id">TC-F03-005</td>
                 <td>Produkt hinzufügen (Live-Update ↑)</td>
                 <td><span class="tech-badge">UC</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
                 <td class="cell-req">AC3</td>
-                <td>Live-Update nach oben · Bidirektional · Funktioniert ✓</td>
+                <td><strong>Priorität:</strong> F2 testen (Update funktioniert nach oben) · UX-kritisch<br><strong>Automatisierung:</strong> UI-Interaktion · DOM-Check</td>
               </tr>
               <tr>
-                <td class="cell-id">TC-F03-008</td>
-                <td>Menge ändern (Live-Update)</td>
-                <td><span class="tech-badge">UC</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--med">Mittel</span></td>
-                <td class="cell-center cell-auto-no">Nein</td>
-                <td class="cell-req">AC3</td>
-                <td>Mengenänderung · Dynamische Berechnung</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F03-009</td>
-                <td>Produkt entfernen (Unidirektional)</td>
+                <td class="cell-id">TC-F03-006</td>
+                <td>Produkt entfernen (BUG! Update ↓)</td>
                 <td><span class="tech-badge">UC</span></td>
                 <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
                 <td class="cell-center cell-auto-yes">Ja</td>
                 <td class="cell-req">AC3</td>
-                <td>Live-Update nach unten · BUG: Reload nötig · Regression!</td>
-              </tr>
-              <tr>
-                <td class="cell-id">TC-F03-010</td>
-                <td>Leerer Warenkorb (geklärt)</td>
-                <td><span class="tech-badge">EG</span></td>
-                <td class="cell-center"><span class="prio-badge prio-badge--low">Niedrig</span></td>
-                <td class="cell-center cell-auto-yes">Ja</td>
-                <td class="cell-req">AC5</td>
-                <td>Grenzfall · Zeigt „Your cart is empty" · Fehlerbehandlung</td>
+                <td><strong>Priorität:</strong> F2 testen · BEKANNTER BUG aus HA4 · Muss gefixed werden<br><strong>Automatisierung:</strong> Bug-Regression · Prüfen ob Fix deployed</td>
               </tr>
             </tbody>
           </table>
@@ -750,15 +687,15 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
-        <span>Seite 1 von 4</span>
+        <span>Seite 2 von 11</span>
       </div>
     </article>
 
-    <!-- ═══ Blatt 2: TC-F01-001, TC-F01-006 (Details) ═══ -->
-    <article class="doc-a4" id="sheet-2" aria-labelledby="sheet2-heading">
+    <!-- ═══ Blatt 3: TC-F01-001 ═══ -->
+    <article class="doc-a4" id="sheet-3" aria-labelledby="sheet3-heading">
       <div class="doc-header">
         <div class="doc-header__left">
-          <h1 id="sheet2-heading">Testfallentwurf</h1>
+          <h1 id="sheet3-heading">Testfallentwurf</h1>
           <p>Test Case Specification nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</p>
         </div>
         <div class="doc-header__right">
@@ -766,20 +703,20 @@
           <strong>Erstellt:</strong> 16.03.2026<br>
           <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
           <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
-          <strong>Seite:</strong> 2 von 4
+          <strong>Seite:</strong> 3 von 11
         </div>
       </div>
 
       <div class="doc-body">
         <div class="doc-section-strip">
           <span class="doc-section-strip__num">Teil 2</span>
-          <span>Detaillierte Testfälle (6 exemplarisch: 2 pro Feature)</span>
+          <span>Detaillierte Testfälle (9 Testfälle: 3 pro Feature)</span>
         </div>
 
         <div class="doc-tc-card">
           <div class="doc-tc-card__header">
             <span class="doc-tc-card__id">TC-F01-001</span>
-            <span class="doc-tc-card__title">5 Sterne (gültige Äquivalenzklasse, Maximum)</span>
+            <span class="doc-tc-card__title">Eingeloggt, 3 Sterne, OHNE Text (Textfeld optional)</span>
             <span class="tech-badge">EP</span>
           </div>
           <div class="doc-grid-3">
@@ -793,16 +730,20 @@
             </div>
             <div class="form-field">
               <div class="form-field__label">Automatisierung</div>
-              <div class="form-field__value auto-yes">Ja (Regression)</div>
+              <div class="form-field__value auto-yes">Ja (kritisch!)</div>
             </div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Prioritätsbegründung</div>
-            <div class="form-field__value">Maximaler Grenzwert der Bewertungsskala · Hauptfunktion des Features · Regression-relevant für künftige Releases</div>
+            <div class="form-field__value">Testet Testfrage F2 aus HA4 (Ist Textfeld Pflicht oder optional?) · Kritisches Akzeptanzkriterium AC2 · Happy Path OHNE Text · Häufiger Use Case (viele Nutzer bewerten nur mit Sternen)</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Automatisierungsbegründung</div>
+            <div class="form-field__value">Regression-relevant: Textfeld-Validierung muss in jedem Release funktionieren · Häufiger Use Case muss automatisiert getestet werden · UI-Validierung (leeres Textfeld darf nicht blockieren)</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Testet (Traceability zu HA4)</div>
-            <div class="form-field__value"><strong>AC1:</strong> 1-5 Sterne möglich · <strong>AC2:</strong> Halbsterne möglich (wird mit 5.0 getestet)</div>
+            <div class="form-field__value"><strong>AC2:</strong> Textfeld ist optional — Bewertung ohne Text wird akzeptiert · <strong>F2:</strong> Ist das Textfeld Pflicht oder optional? → Optional</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Vorbedingungen</div>
@@ -810,7 +751,7 @@
           </div>
           <div class="form-field">
             <div class="form-field__label">Testdaten</div>
-            <div class="form-field__value">Sternebewertung: 5 (maximaler Wert) · Optionaler Bewertungstext: „Excellent product!"</div>
+            <div class="form-field__value">Sternebewertung: 3 Sterne · Bewertungstext: LEER (kein Text eingegeben)</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Schritte</div>
@@ -818,79 +759,15 @@
               <ol class="doc-steps">
                 <li>Als eingeloggter Nutzer auf Produktdetailseite navigieren</li>
                 <li>Bewertungs-Widget lokalisieren</li>
-                <li>5 Sterne auswählen</li>
-                <li>Optional: Bewertungstext eingeben</li>
+                <li>3 Sterne auswählen</li>
+                <li>Textfeld LEER lassen (nichts eingeben!)</li>
                 <li>„Bewertung absenden" klicken</li>
               </ol>
             </div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Erwartetes Ergebnis</div>
-            <div class="form-field__value">Bewertung wird gespeichert · Erfolgsmeldung wird angezeigt · 5-Sterne-Bewertung wird auf der Produktseite sichtbar · Bei erneutem Laden der Seite bleibt die Bewertung erhalten</div>
-          </div>
-          <div class="doc-grid-2">
-            <div class="form-field">
-              <div class="form-field__label">Status</div>
-              <div class="form-field__value">⬜ Nicht ausgeführt</div>
-            </div>
-            <div class="form-field">
-              <div class="form-field__label">Tester</div>
-              <div class="form-field__value">________________</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="doc-tc-card">
-          <div class="doc-tc-card__header">
-            <span class="doc-tc-card__id">TC-F01-006</span>
-            <span class="doc-tc-card__title">Eingeloggt bewerten (Happy Path)</span>
-            <span class="tech-badge">UC</span>
-          </div>
-          <div class="doc-grid-3">
-            <div class="form-field">
-              <div class="form-field__label">Feature</div>
-              <div class="form-field__value">GM-F01: Bewertungssystem</div>
-            </div>
-            <div class="form-field">
-              <div class="form-field__label">Priorität</div>
-              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
-            </div>
-            <div class="form-field">
-              <div class="form-field__label">Automatisierung</div>
-              <div class="form-field__value auto-yes">Ja (Regression)</div>
-            </div>
-          </div>
-          <div class="form-field">
-            <div class="form-field__label">Prioritätsbegründung</div>
-            <div class="form-field__value">Hauptszenario (Happy Path) · Kritischer Use Case für Kernfunktionalität · Datenpersistenz muss gewährleistet sein</div>
-          </div>
-          <div class="form-field">
-            <div class="form-field__label">Testet (Traceability zu HA4)</div>
-            <div class="form-field__value"><strong>AC4:</strong> Nur eingeloggt bewerten · <strong>AC5:</strong> Bewertung wird gespeichert</div>
-          </div>
-          <div class="form-field">
-            <div class="form-field__label">Vorbedingungen</div>
-            <div class="form-field__value">Nutzer ist eingeloggt · Produktdetailseite geöffnet</div>
-          </div>
-          <div class="form-field">
-            <div class="form-field__label">Testdaten</div>
-            <div class="form-field__value">Sternebewertung: 4 · Bewertungstext: „Great value for money"</div>
-          </div>
-          <div class="form-field">
-            <div class="form-field__label">Schritte</div>
-            <div class="form-field__value">
-              <ol class="doc-steps">
-                <li>Als eingeloggter Nutzer auf Produktdetailseite navigieren</li>
-                <li>4 Sterne auswählen</li>
-                <li>Bewertungstext eingeben: „Great value for money"</li>
-                <li>„Bewertung absenden" klicken</li>
-                <li>Seite neu laden</li>
-              </ol>
-            </div>
-          </div>
-          <div class="form-field">
-            <div class="form-field__label">Erwartetes Ergebnis</div>
-            <div class="form-field__value">Bewertung wird gespeichert · Erfolgsmeldung erscheint · Nach Reload wird Bewertung angezeigt · Daten bleiben persistent</div>
+            <div class="form-field__value">Bewertung wird OHNE Text akzeptiert und gespeichert · Erfolgsmeldung wird angezeigt · 3-Sterne-Bewertung wird auf der Produktseite sichtbar (ohne Bewertungstext) · Bei erneutem Laden bleibt die Bewertung erhalten</div>
           </div>
           <div class="doc-grid-2">
             <div class="form-field">
@@ -906,15 +783,15 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
-        <span>Seite 2 von 4</span>
+        <span>Seite 3 von 11</span>
       </div>
     </article>
 
-    <!-- ═══ Blatt 3: TC-F02-002, TC-F02-003 ═══ -->
-    <article class="doc-a4" id="sheet-3" aria-labelledby="sheet3-heading">
+    <!-- ═══ Blatt 4: TC-F01-004 ═══ -->
+    <article class="doc-a4" id="sheet-4" aria-labelledby="sheet4-heading">
       <div class="doc-header">
         <div class="doc-header__left">
-          <h1 id="sheet3-heading">Testfallentwurf</h1>
+          <h1 id="sheet4-heading">Testfallentwurf</h1>
           <p>Test Case Specification nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</p>
         </div>
         <div class="doc-header__right">
@@ -922,7 +799,187 @@
           <strong>Erstellt:</strong> 16.03.2026<br>
           <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
           <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
-          <strong>Seite:</strong> 3 von 4
+          <strong>Seite:</strong> 4 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F01-003</span>
+            <span class="doc-tc-card__title">Gast versucht zu bewerten (ungültig, Auth-Check)</span>
+            <span class="tech-badge">UC</span>
+          </div>
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Feature</div>
+              <div class="form-field__value">GM-F01: Bewertungssystem</div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierung</div>
+              <div class="form-field__value auto-yes">Ja (Security!)</div>
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Prioritätsbegründung</div>
+            <div class="form-field__value">Testet Testfrage F1 aus HA4 (Wer darf bewerten? Nur eingeloggte!) · Auth-Check kritisch · Negativer Pfad · Sicherheitsrelevant (Gäste dürfen NICHT bewerten) · AC3 aus HA4</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Automatisierungsbegründung</div>
+            <div class="form-field__value">Sicherheits-Test muss automatisiert laufen · Auth-Regression in jedem Release prüfen · Verhindert Regressions-Bugs bei Auth-Änderungen · Schneller Rauchtest</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Testet (Traceability zu HA4)</div>
+            <div class="form-field__value"><strong>AC3:</strong> Gast ohne Login erhält keinen Zugang zur Bewertungsfunktion · <strong>F1:</strong> Wer darf bewerten? → Nur eingeloggte Nutzer</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingungen</div>
+            <div class="form-field__value">Nutzer ist NICHT eingeloggt (Gast) · Produkt-Detailseite eines beliebigen Produkts</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Keine Login-Daten · Gast-Session aktiv</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Schritte</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+                <li>Browser im Inkognito-Modus öffnen (oder ausloggen)</li>
+                <li>Als Gast auf Produktdetailseite navigieren</li>
+                <li>Bewertungs-Bereich suchen</li>
+                <li>Versuch, Sterne auszuwählen oder Bewertung abzugeben</li>
+              </ol>
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis</div>
+            <div class="form-field__value">Gast erhält KEINEN Zugang zur Bewertungsfunktion · Bewertungs-Widget ist entweder nicht sichtbar ODER ausgegraut/deaktiviert · Alternativ: Hinweis „Bitte einloggen, um zu bewerten" · Kein API-Call möglich (Security-Check)</div>
+          </div>
+          <div class="doc-grid-2">
+            <div class="form-field">
+              <div class="form-field__label">Status</div>
+              <div class="form-field__value">⬜ Nicht ausgeführt</div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Tester</div>
+              <div class="form-field__value">________________</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
+        <span>Seite 4 von 11</span>
+      </div>
+    </article>
+
+    <!-- ═══ Blatt 5: TC-F01-006 ═══ -->
+    <article class="doc-a4" id="sheet-5" aria-labelledby="sheet5-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet5-heading">Testfallentwurf</h1>
+          <p>Test Case Specification nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
+          <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
+          <strong>Seite:</strong> 5 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F01-005</span>
+            <span class="doc-tc-card__title">2. Bewertung desselben Produkts (Block oder Update?)</span>
+            <span class="tech-badge">UC</span>
+          </div>
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Feature</div>
+              <div class="form-field__value">GM-F01: Bewertungssystem</div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierung</div>
+              <div class="form-field__value auto-yes">Ja (DB-Check!)</div>
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Prioritätsbegründung</div>
+            <div class="form-field__value">Testet Testfrage F3 aus HA4 (Kann Nutzer mehrfach bewerten? → Max. 1x) · Offener Punkt aus HA4 (Block vs. Update unklar) · Business-Regel kritisch · Datenintegrität</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Automatisierungsbegründung</div>
+            <div class="form-field__value">Datenintegrität-Test (DB-Constraint) · Regression-relevant · Verhindert doppelte Bewertungen (Business-Logik) · DB-Constraint muss getestet werden</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Testet (Traceability zu HA4)</div>
+            <div class="form-field__value"><strong>AC4:</strong> Max. eine Bewertung pro Nutzer und Produkt · <strong>F3:</strong> Kann Nutzer dasselben Produkt mehrfach bewerten? → Nein, max. 1x (Block oder Update?)</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingungen</div>
+            <div class="form-field__value">Nutzer ist eingeloggt · Nutzer hat BEREITS eine Bewertung für dieses Produkt abgegeben (z.B. 3 Sterne)</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Erste Bewertung: 3 Sterne · Zweite Bewertung (Versuch): 5 Sterne</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Schritte</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+                <li>Als eingeloggter Nutzer auf Produktdetailseite mit BESTEHENDER Bewertung navigieren</li>
+                <li>Versuch, ERNEUT zu bewerten (z.B. 5 Sterne auswählen)</li>
+                <li>„Bewertung absenden" klicken (falls möglich)</li>
+                <li>Verhalten beobachten</li>
+              </ol>
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis</div>
+            <div class="form-field__value">ENTWEDER: Zweite Bewertung wird BLOCKIERT (Fehlermeldung „Sie haben bereits bewertet") ODER: Erste Bewertung wird GEUPDATET (3 → 5 Sterne) · NICHT: Beide Bewertungen gespeichert! · Offener Punkt aus HA4 muss mit PO geklärt werden</div>
+          </div>
+          <div class="doc-grid-2">
+            <div class="form-field">
+              <div class="form-field__label">Status</div>
+              <div class="form-field__value">⬜ Nicht ausgeführt</div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Tester</div>
+              <div class="form-field__value">________________</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
+        <span>Seite 5 von 11</span>
+      </div>
+    </article>
+
+    <!-- ═══ Blatt 6: TC-F02-002 ═══ -->
+    <article class="doc-a4" id="sheet-6" aria-labelledby="sheet6-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet6-heading">Testfallentwurf</h1>
+          <p>Test Case Specification nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
+          <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
+          <strong>Seite:</strong> 6 von 11
         </div>
       </div>
 
@@ -930,7 +987,7 @@
         <div class="doc-tc-card">
           <div class="doc-tc-card__header">
             <span class="doc-tc-card__id">TC-F02-002</span>
-            <span class="doc-tc-card__title">Geburtsdatum &lt; 18 Jahre (Grenzwert: 17 Jahre, 364 Tage)</span>
+            <span class="doc-tc-card__title">Geburtsdatum &lt; 18 Jahre (Grenzwert: 17 J., 364 Tage)</span>
             <span class="tech-badge">BVA</span>
           </div>
           <div class="doc-grid-3">
@@ -949,7 +1006,11 @@
           </div>
           <div class="form-field">
             <div class="form-field__label">Prioritätsbegründung</div>
-            <div class="form-field__value">Kritischer Grenzwert knapp unter 18 Jahren · Compliance-relevant (Jugendschutz) · Fehler hätte rechtliche Konsequenzen</div>
+            <div class="form-field__value">Kritischer Grenzwert knapp unter 18 Jahren (17 J., 364 Tage = 1 Tag vor 18. Geburtstag) · Compliance-relevant (Jugendschutzgesetz) · Fehler hätte rechtliche Konsequenzen · Grenzwerttest für <18 Äquivalenzklasse</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Automatisierungsbegründung</div>
+            <div class="form-field__value">Compliance-Test muss in jedem Release geprüft werden (gesetzliche Pflicht) · Off-by-One Fehler sind häufig bei Altersberechnungen · Datum-Arithmetik anfällig für Fehler · Regression nach jeder Änderung an Altersverifikation</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Testet (Traceability zu HA4)</div>
@@ -961,7 +1022,7 @@
           </div>
           <div class="form-field">
             <div class="form-field__label">Testdaten</div>
-            <div class="form-field__value">Geburtsdatum: Heute minus 17 Jahre, 364 Tage (z. B. 14.03.2008 wenn heute 13.03.2026)</div>
+            <div class="form-field__value">Geburtsdatum: Heute minus 17 Jahre, 364 Tage (z. B. 17.03.2008 wenn heute 16.03.2026)</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Schritte</div>
@@ -969,14 +1030,14 @@
               <ol class="doc-steps">
                 <li>Auf /store navigieren</li>
                 <li>Modal „Altersverifikation" erscheint</li>
-                <li>Geburtsdatum eingeben: 17 Jahre, 364 Tage alt (kritischer Grenzwert!)</li>
+                <li>Geburtsdatum eingeben: 17 Jahre, 364 Tage alt (1 Tag vor 18. Geburtstag!)</li>
                 <li>„Bestätigen" klicken</li>
               </ol>
             </div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Erwartetes Ergebnis</div>
-            <div class="form-field__value">Modal schließt sich · Store-Seite mit alkoholischen Produkten wird vollständig angezeigt · Zugriff gewährt · Keine Fehlermeldung</div>
+            <div class="form-field__value">Modal zeigt Fehlermeldung „Sie müssen mindestens 18 Jahre alt sein" · Zugriff zu /store wird verweigert · Weiterleitung zu / (Startseite) · Keine alkoholischen Produkte sichtbar</div>
           </div>
           <div class="doc-grid-2">
             <div class="form-field">
@@ -989,7 +1050,30 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
+        <span>Seite 6 von 11</span>
+      </div>
+    </article>
 
+    <!-- ═══ Blatt 7: TC-F02-003 ═══ -->
+    <article class="doc-a4" id="sheet-7" aria-labelledby="sheet7-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet7-heading">Testfallentwurf</h1>
+          <p>Test Case Specification nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
+          <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
+          <strong>Seite:</strong> 7 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
         <div class="doc-tc-card">
           <div class="doc-tc-card__header">
             <span class="doc-tc-card__id">TC-F02-003</span>
@@ -1012,7 +1096,11 @@
           </div>
           <div class="form-field">
             <div class="form-field__label">Prioritätsbegründung</div>
-            <div class="form-field__value">Kritischer Grenzwert genau 18 Jahre · Off-by-One-Fehler (≥ vs. >) häufig bei Entwicklern · Business-kritisch</div>
+            <div class="form-field__value">Kritischer Grenzwert exakt 18 Jahre (18. Geburtstag = erste gültige Grenze) · Compliance-relevant (Jugendschutzgesetz §9) · Off-by-One Fehler extrem wahrscheinlich (≥18 vs. >18) · Business-kritisch für Zugang zu Store</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Automatisierungsbegründung</div>
+            <div class="form-field__value">Höchstes Off-by-One Risiko bei Grenzwertberechnungen (exakte 18 Jahre) · Compliance-Test für jedes Release · Business-kritische Grenze zwischen ungültig/gültig · Regression nach Änderungen an Alterslogik</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Testet (Traceability zu HA4)</div>
@@ -1055,15 +1143,15 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
-        <span>Seite 3 von 4</span>
+        <span>Seite 7 von 11</span>
       </div>
     </article>
 
-    <!-- ═══ Blatt 4: TC-F03-001, TC-F03-004 ═══ -->
-    <article class="doc-a4" id="sheet-4" aria-labelledby="sheet4-heading">
+    <!-- ═══ Blatt 8: TC-F02-006 ═══ -->
+    <article class="doc-a4" id="sheet-8" aria-labelledby="sheet8-heading">
       <div class="doc-header">
         <div class="doc-header__left">
-          <h1 id="sheet4-heading">Testfallentwurf</h1>
+          <h1 id="sheet8-heading">Testfallentwurf</h1>
           <p>Test Case Specification nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</p>
         </div>
         <div class="doc-header__right">
@@ -1071,7 +1159,97 @@
           <strong>Erstellt:</strong> 16.03.2026<br>
           <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
           <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
-          <strong>Seite:</strong> 4 von 4
+          <strong>Seite:</strong> 8 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F02-005</span>
+            <span class="doc-tc-card__title">Session-Persistenz - kein erneutes Modal</span>
+            <span class="tech-badge">UC</span>
+          </div>
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Feature</div>
+              <div class="form-field__value">GM-F02: Altersverifikation</div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierung</div>
+              <div class="form-field__value auto-yes">Ja (Session!)</div>
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Prioritätsbegründung</div>
+            <div class="form-field__value">Testet Testfrage F4 aus HA4 (Muss Modal bei jedem Aufruf bestätigt werden? → Nein, session-basiert) · Session-Management kritisch · Datenpersistenz · UX (Modal nervt bei jedem Aufruf!)</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Automatisierungsbegründung</div>
+            <div class="form-field__value">Session-Tests müssen automatisiert werden · Cookie-Handling prüfen · Regression-relevant (Session-Logik oft bei Änderungen betroffen) · Browser-Storage-Check</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Testet (Traceability zu HA4)</div>
+            <div class="form-field__value"><strong>AC4:</strong> Innerhalb derselben Session kein erneutes Modal · <strong>F4:</strong> Muss Modal bei jedem Aufruf bestätigt werden? → Nein, session-basiert</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingungen</div>
+            <div class="form-field__value">Nutzer hat Modal bereits einmal ausgefüllt (Geburtsdatum ≥18 Jahre) · Dieselbe Browser-Session ist aktiv</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Geburtsdatum: 25 Jahre (gültig) · Bereits in Session gespeichert</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Schritte</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+                <li>Auf /store navigieren → Modal erscheint → Geburtsdatum ≥18 Jahre eingeben → Store wird freigegeben</li>
+                <li>Zu anderer Seite navigieren (z.B. /home)</li>
+                <li>ERNEUT auf /store navigieren (in derselben Session!)</li>
+                <li>Beobachten: Erscheint Modal erneut?</li>
+              </ol>
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis</div>
+            <div class="form-field__value">Modal erscheint NICHT erneut · Nutzer hat direkt Zugriff auf /store · Session-Cookie/Storage speichert Verifizierung · Bei neuem Tab (gleiche Session) ebenfalls kein Modal</div>
+          </div>
+          <div class="doc-grid-2">
+            <div class="form-field">
+              <div class="form-field__label">Status</div>
+              <div class="form-field__value">⬜ Nicht ausgeführt</div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Tester</div>
+              <div class="form-field__value">________________</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
+        <span>Seite 8 von 11</span>
+      </div>
+    </article>
+
+    <!-- ═══ Blatt 9: TC-F03-001 ═══ -->
+    <article class="doc-a4" id="sheet-9" aria-labelledby="sheet9-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet9-heading">Testfallentwurf</h1>
+          <p>Test Case Specification nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
+          <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
+          <strong>Seite:</strong> 9 von 11
         </div>
       </div>
 
@@ -1098,7 +1276,11 @@
           </div>
           <div class="form-field">
             <div class="form-field__label">Prioritätsbegründung</div>
-            <div class="form-field__value">Authentifizierungs-Check · Sicherheit (Checkout nur für eingeloggte Nutzer) · Hauptpfad-Validierung</div>
+            <div class="form-field__value">Authentifizierungs-Check ist sicherheitskritisch · Checkout-Funktion darf nur für eingeloggte Nutzer zugänglich sein · Negative Äquivalenzklasse (Gast) · Weiterleitung zu /auth muss funktionieren</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Automatisierungsbegründung</div>
+            <div class="form-field__value">Auth-Check muss in jedem Release getestet werden (Sicherheit) · Regression-Test nach Änderungen an Auth-System · Navigation-Prüfung (Redirect) einfach automatisierbar · Häufig getestet</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Testet (Traceability zu HA4)</div>
@@ -1136,10 +1318,33 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
+        <span>Seite 9 von 11</span>
+      </div>
+    </article>
 
+    <!-- ═══ Blatt 10: TC-F03-004 ═══ -->
+    <article class="doc-a4" id="sheet-10" aria-labelledby="sheet10-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet10-heading">Testfallentwurf</h1>
+          <p>Test Case Specification nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
+          <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
+          <strong>Seite:</strong> 10 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
         <div class="doc-tc-card">
           <div class="doc-tc-card__header">
-            <span class="doc-tc-card__id">TC-F03-004</span>
+            <span class="doc-tc-card__id">TC-F03-003</span>
             <span class="doc-tc-card__title">Bestellwert genau 20€ (Freigrenze)</span>
             <span class="tech-badge">BVA</span>
           </div>
@@ -1159,7 +1364,11 @@
           </div>
           <div class="form-field">
             <div class="form-field__label">Prioritätsbegründung</div>
-            <div class="form-field__value">Kritischer Grenzwert genau 20€ (Freigrenze) · Business-kritisch für Kundenakzeptanz · Off-by-One-Risiko (≥ vs. >)</div>
+            <div class="form-field__value">Kritischer Grenzwert exakt 20€ (Freigrenze für kostenlosen Versand) · Business-kritisch für Kundenakzeptanz und Umsatz · Off-by-One Risiko extrem hoch (≥20€ vs. >20€) · Hauptverkaufsargument (kostenloser Versand ab 20€)</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Automatisierungsbegründung</div>
+            <div class="form-field__value">Off-by-One Fehler bei Grenzwertberechnungen häufig · Business-Logik-Test für Preisberechnung · Regression nach Änderungen an Versandkostenlogik · Kundenbeschwerde-Risiko bei Fehler</div>
           </div>
           <div class="form-field">
             <div class="form-field__label">Testet (Traceability zu HA4)</div>
@@ -1201,7 +1410,98 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
-        <span>Seite 4 von 4</span>
+        <span>Seite 10 von 11</span>
+      </div>
+    </article>
+
+    <!-- ═══ Blatt 11: TC-F03-009 ═══ -->
+    <article class="doc-a4" id="sheet-11" aria-labelledby="sheet11-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet11-heading">Testfallentwurf</h1>
+          <p>Test Case Specification nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
+          <strong>Standard:</strong> ISO 29119-3 / IEEE 829<br>
+          <strong>Seite:</strong> 11 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F03-006</span>
+            <span class="doc-tc-card__title">Produkt entfernen (BUG! Update ↓)</span>
+            <span class="tech-badge">UC</span>
+          </div>
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Feature</div>
+              <div class="form-field__value">GM-F03: Versandkosten</div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierung</div>
+              <div class="form-field__value auto-yes">Ja (BUG!)</div>
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Prioritätsbegründung</div>
+            <div class="form-field__value">⚠️ BEKANNTER BUG ⚠️ Live-Update funktioniert nur unidirektional (nach oben ✓, nach unten ❌) · Bug muss dokumentiert und gefixed werden · Business-Impact: Nutzer sieht falsche Versandkosten bis Reload · UX-kritisch</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Automatisierungsbegründung</div>
+            <div class="form-field__value">Bug-Regression: Prüfen ob Fix deployed wurde · Automatischer Test erkennt sofort wenn Bug wieder auftritt · Live-Update-Logik muss bidirektional funktionieren · Regression nach Änderungen an Warenkorb-Logik</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Testet (Traceability zu HA4)</div>
+            <div class="form-field__value"><strong>AC3:</strong> Warenkorb-Änderungen → Live-Update Versandkosten (⚠️ Bug: funktioniert nur nach oben, nicht nach unten!)</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingungen</div>
+            <div class="form-field__value">Nutzer ist eingeloggt · Warenkorb mit Produkten Wert ≥20€ (versandkostenfrei)</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Warenkorb: 2 Produkte à 15€ = 30€ gesamt (versandkostenfrei) · Produkt entfernen → 15€ übrig (<20€, sollte 5€ Versandkosten haben!)</div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Schritte</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+                <li>Als eingeloggter Nutzer Warenkorb mit 2 Produkten à 15€ füllen (30€ gesamt)</li>
+                <li>Checkout-Seite öffnen</li>
+                <li>Versandkosten prüfen: 0€ (weil 30€ > 20€) ✓</li>
+                <li>Ein Produkt (15€) aus Warenkorb entfernen</li>
+                <li>Versandkosten OHNE Reload prüfen (Live-Update!)</li>
+              </ol>
+            </div>
+          </div>
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis</div>
+            <div class="form-field__value">⚠️ <strong>BUG ERWARTET:</strong> Versandkosten bleiben bei 0€ (falsch!) · <strong>KORREKT wäre:</strong> Versandkosten → 5€ (weil 15€ < 20€) · <strong>Workaround:</strong> Seite neu laden → dann korrekt 5€ · ⚠️ Bug muss gefixed werden!</div>
+          </div>
+          <div class="doc-grid-2">
+            <div class="form-field">
+              <div class="form-field__label">Status</div>
+              <div class="form-field__value">⬜ Nicht ausgeführt</div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Tester</div>
+              <div class="form-field__value">________________</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829 / CTFL 4.0.2)</span>
+        <span>Seite 11 von 11</span>
       </div>
     </article>
   </div>
