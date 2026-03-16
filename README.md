@@ -51,6 +51,7 @@ Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz.
 | `05b-ha5-testkonzept-a4.html` | HA5 — Testkonzept Formular (A4) | Kap. 5 |
 | `06-testwerkzeuge.html` | Testwerkzeuge im Überblick | Kap. 6 |
 | `00a-ha-einordnung.html` | Einordnung der Hausaufgaben im CTFL-Kontext | — |
+| `00b-standardlandkarte.html` | Standardlandkarte — anerkannte Web- und Projektstandards, Projektstatus | — |
 
 Die Tabelle bildet den Zielstand der Lernmodule ab; nicht alle genannten Dateien sind bereits im Repo vorhanden.
 

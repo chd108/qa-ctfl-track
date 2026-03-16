@@ -204,6 +204,7 @@ Hausaufgaben-Seiten existieren als Paare: eine fachliche Erklärseite und eine A
 
 pages/
 00a-ha-einordnung.html                 Hausaufgaben-Übersicht
+00b-standardlandkarte.html             Standardlandkarte — Web- & Projektstandards, Projektstatus
 
 01-landkarte.html                      Kap. 1 — Überblick / Testuniversum
 01a-glossar.html                       Kap. 1 — Glossar & Terminologie
@@ -255,6 +256,7 @@ Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft
 - **HA-Einordnung:** 00a-ha-einordnung.html · Nav: HA-Einordnung · `<title>`: HA-Einordnung — QA Lernwebseite · `<h1>`: HA-Einordnung · Untertitel: Zuordnung der Hausaufgaben im Kontext von CTFL  
 - **Landkarte:** 01-landkarte.html · Nav: Landkarte · `<title>`: Landkarte — QA Lernwebseite · `<h1>`: Landkarte · Untertitel: Inhaltsverzeichnis des ISTQB CTFL Lehrplans v4.0.2  
 - **Glossar:** 01a-glossar.html · Nav: Glossar · `<title>`: Glossar — QA Lernwebseite · `<h1>`: Glossar · Untertitel: Alle offiziellen Schlüsselbegriffe des ISTQB CTFL v4.0.2  
+- **Standardlandkarte:** 00b-standardlandkarte.html · Nav: Standardlandkarte · `<title>`: Standardlandkarte — QA Lernwebseite · `<h1>`: Standardlandkarte · Untertitel: Anerkannte Standards · Projektstatus · Potenzial — Stand 15.03.2026  
 
 *Gruppe 2:*  
 - **SDLC statisch:** 02a-sdlc-statisch.html · Nav: SDLC & Testprozess (statisch) · `<title>`: SDLC statisch — QA Lernwebseite · `<h1>`: Software-Entwicklungslebenszyklus & ISTQB-Testprozess — Statische Übersicht · Untertitel: Statische Visualisierung des Software Development Life Cycle im Kontext von CTFL Kapitel 2  
