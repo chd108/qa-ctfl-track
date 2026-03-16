@@ -342,7 +342,7 @@
           <div class="form-field__value">
             <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F01:</strong> Bewertungssystem (1–5 Sterne, opt. Text, Login-Pflicht)</span></div>
             <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F02:</strong> Altersverifikation (Geburtsdatum-Modal, 18+, session-basiert)</span></div>
-            <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F03:</strong> Versandkosten (Freigrenze X€, Live-Update, Login nötig)</span></div>
+            <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F03:</strong> Versandkosten (Freigrenze 20€, Versandkosten 5€, Live-Update)</span></div>
           </div>
         </div>
         <div class="form-field">
@@ -397,9 +397,9 @@
             <table>
               <thead><tr><th scope="col" style="width:40%">Risiko</th><th scope="col">Maßnahme</th></tr></thead>
               <tbody>
-                <tr><td>Unklare Anforderungen (Freigrenze X€, Versandkosten Y€)</td><td>Manuell ermitteln, mit PO abstimmen</td></tr>
-                <tr><td>Session-Persistenz unklar</td><td>Tests: Browser-Refresh, Tab-Wechsel, Neustart</td></tr>
-                <tr><td>Duplikat-Bewertungen (Block vs. Update)</td><td>Beide Szenarien testen, mit PO klären</td></tr>
+                <tr><td>Versandkosten Live-Update Bug (unidirektional)</td><td>Bekannter Bug aus HA4: Update funktioniert nur ↑, nicht ↓ · TC-F03-006 prüft Bug</td></tr>
+                <tr><td>Zeichenlimit Bewertungs-Textfeld unklar</td><td>Offener Punkt aus HA4 · TC-F01-004 testet Grenzwert · Mit Mentor klären</td></tr>
+                <tr><td>2. Bewertung: Block oder Update?</td><td>Offener Punkt aus HA4 · TC-F01-005 testet beide Szenarien</td></tr>
               </tbody>
             </table>
           </div>
@@ -476,12 +476,11 @@
             <div class="form-field__label">Entry Criteria</div>
             <div class="form-field__value">
               <ul class="compact-list">
-                <li>Features deployed</li>
-                <li>Testbasis-Analyse freigegeben</li>
-                <li>Testfälle reviewed</li>
-                <li>Testumgebung bereit</li>
-                <li>Login funktioniert</li>
-                <li>Testdaten vorhanden</li>
+                <li>grocerymate.com erreichbar</li>
+                <li>Testbasis-Analyse (HA4) vorhanden</li>
+                <li>Testfallentwurf (HA5) vorhanden</li>
+                <li>Test-Account funktioniert</li>
+                <li>Browser (Chrome) installiert</li>
               </ul>
             </div>
           </div>
@@ -489,12 +488,11 @@
             <div class="form-field__label">Exit Criteria</div>
             <div class="form-field__value">
               <ul class="compact-list">
-                <li>≥95% Tests ausgeführt</li>
-                <li>≥90% Tests bestanden</li>
-                <li>0 Severity-1-Fehler</li>
-                <li>Max. 2 Severity-2-Fehler</li>
-                <li>Browser-Tests erfolgreich</li>
-                <li>UAT abgeschlossen</li>
+                <li>≥17/18 TCs ausgeführt (≥95%)</li>
+                <li>≥16/18 TCs bestanden (≥90%)</li>
+                <li>Alle Fehler dokumentiert</li>
+                <li>Testprotokoll vollständig</li>
+                <li>Abschlussbericht erstellt</li>
               </ul>
             </div>
           </div>
@@ -502,11 +500,10 @@
             <div class="form-field__label">Suspension Criteria</div>
             <div class="form-field__value">
               <ul class="compact-list">
-                <li>Kritische Blocker</li>
-                <li>Umgebung instabil</li>
-                <li>Build fehlgeschlagen</li>
-                <li>&gt;50% Team ausgefallen</li>
-                <li>&gt;10 kritische Fehler</li>
+                <li>grocerymate.com nicht erreichbar</li>
+                <li>Login funktioniert nicht</li>
+                <li>Kritischer Blocker (z.B. /store nicht zugänglich)</li>
+                <li>Gesundheitliche Gründe</li>
               </ul>
             </div>
           </div>
@@ -545,11 +542,8 @@
             <table>
               <thead><tr><th scope="col" style="width:28%">Rolle</th><th scope="col">Verantwortung</th><th scope="col" style="width:12%">Personen</th></tr></thead>
               <tbody>
-                <tr><td>Testmanager</td><td>Planung, Koordination, Reporting, Risikomanagement</td><td>1</td></tr>
-                <tr><td>QA Engineer (Funktional)</td><td>Testfallentwurf, -durchführung, Regression</td><td>2</td></tr>
-                <tr><td>QA Engineer (Automatisierung)</td><td>Automatisierung, CI/CD-Integration</td><td>1</td></tr>
-                <tr><td>UX-Tester</td><td>Usability-Tests</td><td>1</td></tr>
-                <tr><td>Endnutzer (UAT)</td><td>User Acceptance Testing</td><td>3–5</td></tr>
+                <tr><td>QA Tester (Student)</td><td>Testdurchführung (18 TCs), Bug-Dokumentation, Abschlussbericht</td><td>1</td></tr>
+                <tr><td>Reviewer (Mentor)</td><td>Review Testprotokoll, Feedback (optional, minimal)</td><td>0–1</td></tr>
               </tbody>
             </table>
           </div>
@@ -558,21 +552,17 @@
           <div class="form-field">
             <div class="form-field__label">Hardware</div>
             <ul class="compact-list">
-              <li>Windows 10/11 PC (2×)</li>
-              <li>macOS (1×)</li>
-              <li>iPhone iOS 16+ (1×)</li>
-              <li>Android 12+ Smartphone (1×)</li>
-              <li>Tablet (1×)</li>
+              <li>Desktop/Laptop (Windows oder macOS)</li>
+              <li>Optional: Smartphone für Mobile-Tests</li>
             </ul>
           </div>
           <div class="form-field">
             <div class="form-field__label">Software &amp; Tools</div>
             <ul class="compact-list">
-              <li>Browser: Chrome, Firefox, Safari, Edge</li>
-              <li>Testmanagement: JIRA/TestRail</li>
-              <li>Automatisierung: Selenium/Cypress</li>
-              <li>API-Testing: Postman</li>
-              <li>Performance: Google Lighthouse</li>
+              <li>Browser: Chrome (primär)</li>
+              <li>Dokumentation: Google Docs/Excel</li>
+              <li>Screenshots: Snipping Tool/macOS Screenshots</li>
+              <li>Optional: Browser DevTools (Debugging)</li>
             </ul>
           </div>
         </div>
@@ -587,10 +577,7 @@
             <table>
               <thead><tr><th scope="col" style="width:18%">Umgebung</th><th scope="col">Zweck</th><th scope="col" style="width:32%">URL</th></tr></thead>
               <tbody>
-                <tr><td>DEV</td><td>Entwicklung</td><td>dev.grocerymate.masterschool.com</td></tr>
-                <tr><td>TEST</td><td>QA-Tests (Funktional, Regression, Usability)</td><td>test.grocerymate.masterschool.com</td></tr>
-                <tr><td>ACC</td><td>UAT (User Acceptance Testing)</td><td>acc.grocerymate.masterschool.com</td></tr>
-                <tr><td>PROD</td><td>Live-System (nur Smoke-Tests)</td><td>grocerymate.masterschool.com</td></tr>
+                <tr><td>LIVE</td><td>Produktiv-System (manuelle Funktionstests)</td><td>grocerymate.masterschool.com</td></tr>
               </tbody>
             </table>
           </div>
@@ -599,14 +586,14 @@
           <div class="form-field__label">Testdaten</div>
           <div class="doc-grid-2">
             <ul class="compact-list">
-              <li>10 Test-Accounts (eingeloggt)</li>
-              <li>2 Gast-Accounts</li>
-              <li>Min. 20 Produkte (inkl. Alkohol in /store)</li>
+              <li>1 Test-Account (eingeloggt)</li>
+              <li>Gast-Modus (nicht eingeloggt)</li>
+              <li>Produkte auf grocerymate.com (bereits vorhanden)</li>
             </ul>
             <ul class="compact-list">
-              <li>Vorhandene Bewertungen (Durchschnitt testen)</li>
-              <li>Warenkorb-Szenarien (leer, 1–10 Produkte, Grenzwerte)</li>
-              <li>Geburtsdaten: &lt;18, =18, &gt;18 Jahre</li>
+              <li>Warenkorb-Szenarien: &lt;20€, =20€, &gt;20€</li>
+              <li>Geburtsdaten testen: 17 J. 364 T., =18 J., &gt;18 J.</li>
+              <li>Browser: Chrome (primär), optional Firefox/Safari</li>
             </ul>
           </div>
         </div>
@@ -628,23 +615,15 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Testplanung</td><td>01.04.26</td><td>05.04.26</td><td>Alle</td><td>Testmanager</td><td>20</td></tr>
-              <tr><td>Testfallentwurf</td><td>06.04.26</td><td>12.04.26</td><td>Alle</td><td>QA-Team</td><td>40</td></tr>
-              <tr><td>Testdaten-Vorbereitung</td><td>13.04.26</td><td>15.04.26</td><td>TEST</td><td>QA-Team</td><td>15</td></tr>
-              <tr><td>Funktionstest (GM-F01, F02, F03)</td><td>16.04.26</td><td>24.04.26</td><td>TEST</td><td>QA Engineer</td><td>65</td></tr>
-              <tr><td>Regressionstest</td><td>25.04.26</td><td>28.04.26</td><td>TEST</td><td>QA-Team</td><td>30</td></tr>
-              <tr><td>Cross-Browser-Test</td><td>29.04.26</td><td>01.05.26</td><td>TEST</td><td>QA-Team</td><td>25</td></tr>
-              <tr><td>Usability-Test</td><td>02.05.26</td><td>03.05.26</td><td>TEST</td><td>UX-Tester</td><td>15</td></tr>
-              <tr><td>Bug-Fixing</td><td>04.05.26</td><td>08.05.26</td><td>DEV</td><td>Entwickler</td><td>40</td></tr>
-              <tr><td>Retest</td><td>09.05.26</td><td>11.05.26</td><td>TEST</td><td>QA-Team</td><td>20</td></tr>
-              <tr><td>UAT</td><td>12.05.26</td><td>16.05.26</td><td>ACC</td><td>Endnutzer</td><td>30</td></tr>
-              <tr><td>Abschlussbericht</td><td>17.05.26</td><td>18.05.26</td><td>—</td><td>Testmanager</td><td>10</td></tr>
-              <tr><td>Produktionsfreigabe</td><td>19.05.26</td><td>19.05.26</td><td>PROD</td><td>DevOps</td><td>5</td></tr>
-              <tr><td colspan="5" style="text-align: right; font-weight: 700;">GESAMT:</td><td style="font-weight: 700;">~315 h</td></tr>
+              <tr><td>Testvorbereitung</td><td>20.03.26</td><td>20.03.26</td><td>LIVE</td><td>QA Tester</td><td>2</td></tr>
+              <tr><td>Testdurchführung (18 TCs)</td><td>21.03.26</td><td>24.03.26</td><td>LIVE</td><td>QA Tester</td><td>10</td></tr>
+              <tr><td>Bug-Dokumentation</td><td>25.03.26</td><td>26.03.26</td><td>LIVE</td><td>QA Tester</td><td>3</td></tr>
+              <tr><td>Testabschlussbericht</td><td>26.03.26</td><td>27.03.26</td><td>—</td><td>QA Tester</td><td>3</td></tr>
+              <tr><td colspan="5" style="text-align: right; font-weight: 700;">GESAMT:</td><td style="font-weight: 700;">~18 h</td></tr>
             </tbody>
           </table>
         </div>
-        <p style="font-size: 8pt; color: var(--doc-soft); margin-top: 2pt;">Projektdauer: 7 Wochen (01.04.2026 – 19.05.2026) · ca. 40 Arbeitstage</p>
+        <p style="font-size: 8pt; color: var(--doc-soft); margin-top: 2pt;">Projektdauer: 1 Woche (20.03.2026 – 27.03.2026) · 18 Stunden Aufwand (ca. 3-4h/Tag) · Solo-Projekt</p>
 
         <div class="doc-section-strip">
           <span class="doc-section-strip__num">Abschnitt 8 / 8</span>
@@ -654,14 +633,12 @@
           <table>
             <thead><tr><th scope="col" style="width:28%">Deliverable</th><th scope="col">Beschreibung</th><th scope="col" style="width:18%">Verantwortlich</th></tr></thead>
             <tbody>
-              <tr><td>Testkonzept</td><td>Vollständiger Testplan mit 8 Abschnitten (IEEE 829 / CTFL 4.0.2)</td><td>Testmanager</td></tr>
-              <tr><td>Testbasis-Analyse (HA4)</td><td>Anforderungsanalyse der 3 Features nach IEEE 29119-3</td><td>Testmanager</td></tr>
-              <tr><td>Testfallentwurf</td><td>Detaillierte Testfälle (mind. 3 pro Feature), inkl. Testentwurfs-Technik</td><td>QA-Team</td></tr>
-              <tr><td>Testdaten-Dokumentation</td><td>Übersicht: Test-Accounts, Produkte, Warenkorb-Szenarien</td><td>QA-Team</td></tr>
-              <tr><td>Testausführungs-Protokoll</td><td>Log aller Tests mit Status (Pass/Fail/Blocked)</td><td>QA-Team</td></tr>
-              <tr><td>Bug-Reports</td><td>Fehlerberichte mit Screenshots, Steps to Reproduce, Severity/Priority</td><td>QA-Team</td></tr>
-              <tr><td>Testabschlussbericht</td><td>Zusammenfassung: Metriken, Coverage, offene Risiken</td><td>Testmanager</td></tr>
-              <tr><td>UAT-Signoff</td><td>Freigabe durch Endnutzer</td><td>Testmanager + Endnutzer</td></tr>
+              <tr><td>Testkonzept (HA5)</td><td>Vollständiger Testplan mit 8 Abschnitten (IEEE 829 / CTFL 4.0.2)</td><td>QA Tester</td></tr>
+              <tr><td>Testbasis-Analyse (HA4)</td><td>Anforderungsanalyse der 3 Features nach IEEE 29119-3 (bereits vorhanden)</td><td>QA Tester</td></tr>
+              <tr><td>Testfallentwurf (HA5)</td><td>18 detaillierte Testfälle (6 pro Feature), vollständig automatisierbar, Traceability zu HA4 (bereits vorhanden)</td><td>QA Tester</td></tr>
+              <tr><td>Testprotokoll</td><td>Durchführungs-Log der 18 TCs mit Status (Pass/Fail), Screenshots bei Fehlern</td><td>QA Tester</td></tr>
+              <tr><td>Bug-Reports</td><td>Fehlerberichte mit Screenshots, Steps to Reproduce, Severity (falls Fehler gefunden)</td><td>QA Tester</td></tr>
+              <tr><td>Testabschlussbericht</td><td>Zusammenfassung: Ausführungsrate, Pass-Rate, gefundene Fehler, Empfehlungen</td><td>QA Tester</td></tr>
             </tbody>
           </table>
         </div>

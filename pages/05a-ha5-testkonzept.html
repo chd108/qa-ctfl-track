@@ -175,7 +175,7 @@
       <div class="plan-list">
         <div class="plan-item"><div class="plan-item__id">GM-F01</div><div class="plan-item__title">Bewertungssystem für Produkte</div><div class="plan-item__desc">Eingeloggte Nutzer können Produkte mit 1-5 Sternen bewerten und optionales schriftliches Feedback hinterlassen. Max. eine Bewertung pro Nutzer und Produkt. Durchschnittsbewertung wird auf Produktseite angezeigt.</div></div>
         <div class="plan-item"><div class="plan-item__id">GM-F02</div><div class="plan-item__title">Altersverifikation für alkoholische Produkte</div><div class="plan-item__desc">Beim ersten Aufruf der Kategorie /store erscheint ein Geburtsdatum-Modal. Nutzer unter 18 Jahren erhalten keinen Zugriff. Verifikation ist session-basiert (kein erneutes Modal innerhalb der Session).</div></div>
-        <div class="plan-item"><div class="plan-item__id">GM-F03</div><div class="plan-item__title">Versandkosten &amp; Freigrenze</div><div class="plan-item__desc">Versandkosten entfallen ab einem bestimmten Bestellwert (Freigrenze X€). Darunter fallen Versandkosten Y€ an. Live-Update bei Warenkorbänderungen. Nur für eingeloggte Nutzer im Checkout sichtbar.</div></div>
+        <div class="plan-item"><div class="plan-item__id">GM-F03</div><div class="plan-item__title">Versandkosten &amp; Freigrenze</div><div class="plan-item__desc">Versandkosten entfallen ab einem Bestellwert ≥20€ (Freigrenze). Darunter fallen Versandkosten von 5€ an. Live-Update bei Warenkorbänderungen (⚠️ Bug: nur unidirektional ↑). Nur für eingeloggte Nutzer im Checkout sichtbar.</div></div>
       </div>
     </div>
   </section>
@@ -212,9 +212,9 @@
       </div>
       <h3 class="section__subhead">Risiken und Maßnahmen</h3>
       <div class="risk-list">
-        <div class="risk-item"><div class="risk-item__label">Risiko: Unklare Anforderungen</div><div class="risk-item__content"><strong>Details:</strong> Freigrenze X€ und Versandkosten Y€ nicht spezifiziert (GM-F03).<br><strong>Maßnahme:</strong> Werte manuell im Checkout ermitteln, dokumentieren und mit PO abstimmen.</div></div>
-        <div class="risk-item"><div class="risk-item__label">Risiko: Session-Persistenz</div><div class="risk-item__content"><strong>Details:</strong> Unklar, wie lange Session-Daten (GM-F02) gültig bleiben.<br><strong>Maßnahme:</strong> Tests mit Browser-Refresh, Tab-Wechsel, Neustart durchführen.</div></div>
-        <div class="risk-item"><div class="risk-item__label">Risiko: Duplikate-Bewertungen</div><div class="risk-item__content"><strong>Details:</strong> Unklar, ob 2. Bewertung blockiert oder Update erfolgt (GM-F01).<br><strong>Maßnahme:</strong> Beide Szenarien testen, Verhalten dokumentieren, mit PO klären.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Versandkosten Live-Update Bug</div><div class="risk-item__content"><strong>Details:</strong> Bekannter Bug aus HA4 (GM-F03): Live-Update funktioniert nur unidirektional (↑ funktioniert, ↓ nicht) · Versandkosten bleiben bei 0€ nach Produktentfernung.<br><strong>Maßnahme:</strong> Testfall TC-F03-006 dokumentiert Bug · Mit Mentor klären ob Fix möglich · Workaround: Seite neu laden.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Zeichenlimit Bewertungs-Textfeld</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt aus HA4 (GM-F01): Maximale Zeichenanzahl des Feedback-Feldes nicht spezifiziert.<br><strong>Maßnahme:</strong> Grenzwerttest TC-F01-004 (sehr langer Text) · Verhalten dokumentieren · Mit Mentor Limit klären (z.B. 500 Zeichen?).</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: 2. Bewertung - Block oder Update?</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt aus HA4 (GM-F01): Verhalten bei 2. Bewertung desselben Produkts unklar (Blockieren mit Fehlermeldung ODER Update der bestehenden Bewertung?).<br><strong>Maßnahme:</strong> Testfall TC-F01-005 testet beide Szenarien · Verhalten dokumentieren · DB-Constraint prüfen.</div></div>
       </div>
     </div>
   </section>
@@ -269,42 +269,36 @@
       <h3 class="section__subhead">Entry Criteria (Startkriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, die erfüllt sein müssen, bevor Tests beginnen können:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li>Alle drei Features (GM-F01, F02, F03) sind in der Testumgebung deployed</li>
-        <li>Testbasis-Analyse (HA4) ist abgeschlossen und freigegeben</li>
-        <li>Testfälle sind entworfen und reviewed</li>
-        <li>Testumgebung ist eingerichtet (Browser, Devices, Testdaten)</li>
-        <li>Login-Funktionalität funktioniert (Voraussetzung für GM-F01, F03)</li>
-        <li>Testdaten sind vorhanden (Test-Accounts, Produkte, Kategorien)</li>
+        <li>grocerymate.com ist erreichbar und funktionsfähig</li>
+        <li>Testbasis-Analyse (HA4) ist vorhanden</li>
+        <li>Testfallentwurf (HA5) mit 18 TCs ist vorhanden</li>
+        <li>Test-Account (eingeloggt) funktioniert</li>
+        <li>Browser (Chrome) ist installiert</li>
       </ul>
       <h3 class="section__subhead">Exit Criteria (Abnahmekriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, die erfüllt sein müssen, um Tests abzuschließen:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li><strong>Ausführungsquote:</strong> Mind. 95% der geplanten Testfälle ausgeführt</li>
-        <li><strong>Bestehensquote:</strong> Mind. 90% der ausgeführten Testfälle bestanden</li>
-        <li><strong>Fehler-Status:</strong> Keine offenen Severity-1-Fehler (kritisch)</li>
-        <li><strong>Fehler-Status:</strong> Max. 2 offene Severity-2-Fehler (hoch), alle priorisiert und im Backlog</li>
-        <li><strong>Grenzfälle getestet:</strong> Alle in Testbasis-Analyse identifizierten Grenzfälle abgedeckt</li>
-        <li><strong>Browser-Tests:</strong> Erfolgreiche Tests auf Chrome, Firefox, Safari, Edge (Desktop + Mobile)</li>
-        <li><strong>Regression:</strong> Bestehende Features funktionieren fehlerfrei</li>
-        <li><strong>UAT:</strong> User Acceptance Test abgeschlossen und freigegeben</li>
-        <li><strong>Offene Punkte:</strong> Alle offenen Punkte aus HA4 geklärt oder dokumentiert</li>
+        <li><strong>Ausführungsquote:</strong> Mind. 17/18 Testfälle ausgeführt (≥95%)</li>
+        <li><strong>Bestehensquote:</strong> Mind. 16/18 Testfälle bestanden (≥90%)</li>
+        <li><strong>Fehler dokumentiert:</strong> Alle gefundenen Fehler sind dokumentiert (Bug-Reports)</li>
+        <li><strong>Testprotokoll vollständig:</strong> Alle 18 TCs haben einen Status (Pass/Fail)</li>
+        <li><strong>Abschlussbericht erstellt:</strong> Zusammenfassung mit Metriken und Empfehlungen</li>
       </ul>
       <h3 class="section__subhead">Suspension Criteria (Aussetzungskriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Gründe, um Tests zu pausieren:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li><strong>Kritische Blocker:</strong> Severity-1-Fehler, die das Testen unmöglich machen (z.B. Login funktioniert nicht)</li>
-        <li><strong>Umgebungs-Ausfall:</strong> Testumgebung nicht erreichbar oder instabil</li>
-        <li><strong>Build-Probleme:</strong> Deployment fehlgeschlagen, Features nicht verfügbar</li>
-        <li><strong>Ressourcenmangel:</strong> Mehr als 50% des QA-Teams krankheitsbedingt ausgefallen</li>
-        <li><strong>Massenhaft Fehler:</strong> Mehr als 10 kritische Fehler in kurzer Zeit entdeckt → Build muss überarbeitet werden</li>
+        <li><strong>Website nicht erreichbar:</strong> grocerymate.com offline oder nicht zugänglich</li>
+        <li><strong>Login funktioniert nicht:</strong> Test-Account nicht verwendbar, Authentifizierung fehlgeschlagen</li>
+        <li><strong>Kritischer Blocker:</strong> Kernfunktion nicht testbar (z.B. /store komplett nicht zugänglich)</li>
+        <li><strong>Gesundheitliche Gründe:</strong> Tester kann Tests nicht fortsetzen</li>
       </ul>
       <h3 class="section__subhead">Resumption Criteria (Fortsetzungskriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, um Tests nach Aussetzung fortzusetzen:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem;">
-        <li>Kritische Blocker behoben und verifiziert</li>
-        <li>Testumgebung wieder stabil und erreichbar</li>
-        <li>Neuer Build deployed und Smoke-Tests erfolgreich</li>
-        <li>Ressourcen wieder verfügbar (Team komplett oder Ersatzressourcen identifiziert)</li>
+        <li>Website wieder erreichbar und stabil</li>
+        <li>Login funktioniert wieder</li>
+        <li>Kritische Blocker behoben</li>
+        <li>Tester wieder arbeitsfähig</li>
       </ul>
     </div>
   </section>
@@ -326,18 +320,14 @@
           <thead><tr><th scope="col">Rolle</th><th scope="col">Verantwortung</th><th scope="col">Personen</th></tr></thead>
           <tbody>
             <tr><td>Testmanager</td><td>Testplanung, Koordination, Reporting, Risikomanagement</td><td>1 Person</td></tr>
-            <tr><td>QA Engineer (Funktional)</td><td>Testfallentwurf, Testdurchführung (GM-F01, F02, F03), Regression</td><td>2 Personen</td></tr>
-            <tr><td>QA Engineer (Automatisierung)</td><td>Automatisierung von Regressionstests, CI/CD-Integration</td><td>1 Person</td></tr>
-            <tr><td>UX-Tester</td><td>Usability-Tests (GM-F01 UI, GM-F02 Modal)</td><td>1 Person</td></tr>
-            <tr><td>Endnutzer (UAT)</td><td>User Acceptance Testing, Feedback aus Nutzerperspektive</td><td>3-5 Personen</td></tr>
-            <tr><td>Entwicklerteam</td><td>Bug-Fixes, Support bei technischen Fragen</td><td>Nach Bedarf</td></tr>
+            <tr><td>QA Tester (Student)</td><td>Testdurchführung (18 TCs), Bug-Dokumentation, Testprotokoll, Abschlussbericht</td><td>1 Person</td></tr>
+            <tr><td>Reviewer (Mentor)</td><td>Optional: Review Testprotokoll, Feedback, Fragen klären</td><td>0-1 Person</td></tr>
           </tbody>
         </table>
       </div>
       <h3 class="section__subhead">Hardware</h3>
       <div class="card-grid">
-        <div class="card"><div class="card__title">Desktop-Geräte</div><div class="card__body"><ul><li>Windows 10/11 PC (2x)</li><li>macOS (1x)</li><li>Linux Ubuntu (optional, für CI/CD)</li></ul></div></div>
-        <div class="card"><div class="card__title">Mobile Geräte</div><div class="card__body"><ul><li>iPhone (iOS 16+) - 1x</li><li>Android Smartphone (Android 12+) - 1x</li><li>iPad / Android Tablet - 1x</li></ul></div></div>
+        <div class="card"><div class="card__title">Hardware</div><div class="card__body"><ul><li>Desktop oder Laptop (Windows oder macOS)</li><li>Optional: Smartphone für Mobile-Tests</li></ul></div></div>
       </div>
       <h3 class="section__subhead">Software &amp; Tools</h3>
       <div class="ref-table">
@@ -427,24 +417,14 @@
             <tr><th scope="col">Aktivität</th><th scope="col">Start</th><th scope="col">Ende</th><th scope="col">Umgebung</th><th scope="col">Verantwortlich</th><th scope="col">Aufwand (Std.)</th></tr>
           </thead>
           <tbody>
-            <tr><td>Testplanung</td><td>01.04.2026</td><td>05.04.2026</td><td>Alle</td><td>Testmanager</td><td>20</td></tr>
-            <tr><td>Testfallentwurf</td><td>06.04.2026</td><td>12.04.2026</td><td>Alle</td><td>QA-Team</td><td>40</td></tr>
-            <tr><td>Testdaten-Vorbereitung</td><td>13.04.2026</td><td>15.04.2026</td><td>TEST</td><td>QA-Team</td><td>15</td></tr>
-            <tr><td>Funktionstest (GM-F01)</td><td>16.04.2026</td><td>18.04.2026</td><td>TEST</td><td>QA Engineer (Funktional)</td><td>25</td></tr>
-            <tr><td>Funktionstest (GM-F02)</td><td>19.04.2026</td><td>21.04.2026</td><td>TEST</td><td>QA Engineer (Funktional)</td><td>20</td></tr>
-            <tr><td>Funktionstest (GM-F03)</td><td>22.04.2026</td><td>24.04.2026</td><td>TEST</td><td>QA Engineer (Funktional)</td><td>20</td></tr>
-            <tr><td>Regressionstest</td><td>25.04.2026</td><td>28.04.2026</td><td>TEST</td><td>QA-Team</td><td>30</td></tr>
-            <tr><td>Cross-Browser-Test</td><td>29.04.2026</td><td>01.05.2026</td><td>TEST</td><td>QA-Team</td><td>25</td></tr>
-            <tr><td>Usability-Test</td><td>02.05.2026</td><td>03.05.2026</td><td>TEST</td><td>UX-Tester</td><td>15</td></tr>
-            <tr><td>Bug-Fixing (Dev)</td><td>04.05.2026</td><td>08.05.2026</td><td>DEV</td><td>Entwicklerteam</td><td>40</td></tr>
-            <tr><td>Retest (Bugfixes)</td><td>09.05.2026</td><td>11.05.2026</td><td>TEST</td><td>QA-Team</td><td>20</td></tr>
-            <tr><td>UAT (User Acceptance)</td><td>12.05.2026</td><td>16.05.2026</td><td>ACC</td><td>Endnutzer + Testmanager</td><td>30</td></tr>
-            <tr><td>Abschlussbericht</td><td>17.05.2026</td><td>18.05.2026</td><td>—</td><td>Testmanager</td><td>10</td></tr>
-            <tr><td>Produktionsfreigabe</td><td>19.05.2026</td><td>19.05.2026</td><td>PROD</td><td>DevOps-Team</td><td>5</td></tr>
+            <tr><td>Testvorbereitung</td><td>20.03.2026</td><td>20.03.2026</td><td>LIVE</td><td>QA Tester</td><td>2</td></tr>
+            <tr><td>Testdurchführung (18 TCs)</td><td>21.03.2026</td><td>24.03.2026</td><td>LIVE</td><td>QA Tester</td><td>10</td></tr>
+            <tr><td>Bug-Dokumentation</td><td>25.03.2026</td><td>26.03.2026</td><td>LIVE</td><td>QA Tester</td><td>3</td></tr>
+            <tr><td>Testabschlussbericht</td><td>26.03.2026</td><td>27.03.2026</td><td>—</td><td>QA Tester</td><td>3</td></tr>
           </tbody>
         </table>
       </div>
-      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-top: 1rem;"><strong>Gesamt-Aufwand:</strong> ~315 Stunden (ca. 40 Arbeitstage)<br><strong>Projektdauer:</strong> 7 Wochen (01.04.2026 - 19.05.2026)</p>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-top: 1rem;"><strong>Gesamt-Aufwand:</strong> ~18 Stunden (ca. 3-4h/Tag über 1 Woche)<br><strong>Projektdauer:</strong> 1 Woche (20.03.2026 - 27.03.2026) · Solo-Projekt</p>
     </div>
   </section>
 
@@ -466,7 +446,7 @@
           <tbody>
             <tr><td>Testkonzept (dieses Dokument)</td><td>Vollständiges Testkonzept mit 8 Abschnitten (CTFL 4.0.2 / IEEE 829)</td><td>Testmanager</td></tr>
             <tr><td>Testbasis-Analyse (HA4)</td><td>Anforderungsanalyse der 3 Features (GM-F01, F02, F03) nach CTFL/IEEE 29119-3</td><td>Testmanager</td></tr>
-            <tr><td>Testfälle (HA5)</td><td>Detaillierte Testfälle für alle 3 Features (mind. 3 pro Feature), inkl. Testentwurfs-Technik</td><td>QA-Team</td></tr>
+            <tr><td>Testfälle (HA5)</td><td>18 detaillierte Testfälle (6 pro Feature), vollständig automatisierbar, inkl. Testentwurfs-Technik (EP/BVA/UC), Traceability zu HA4-Testfragen</td><td>QA Tester</td></tr>
             <tr><td>Testdaten-Dokumentation</td><td>Übersicht über Test-Accounts, Produkte, Warenkorb-Szenarien</td><td>QA-Team</td></tr>
             <tr><td>Testausführungs-Protokoll</td><td>Log aller durchgeführten Tests mit Status (Pass/Fail/Blocked)</td><td>QA-Team</td></tr>
             <tr><td>Bug-Reports</td><td>Detaillierte Fehlerberichte mit Screenshots, Steps to Reproduce, Severity/Priority</td><td>QA-Team</td></tr>
