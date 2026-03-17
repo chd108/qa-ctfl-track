@@ -53,7 +53,7 @@ Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz.
 | `00a-ha-einordnung.html` | Einordnung der Hausaufgaben im CTFL-Kontext | — |
 | `00b-standards.html` | Standards — anerkannte Web- und Projektstandards, Projektstatus | — |
 
-Die Tabelle bildet den Zielstand der Lernmodule ab; nicht alle genannten Dateien sind bereits im Repo vorhanden.
+Die Tabelle bildet den Zielstand der Lernmodule ab. **Aktuell im Repo:** Einstieg, 00a, 00b, 01-landkarte, 01a-glossar, 01c-testmittel, 02a, 02b, 02c, 03-statisches-testen, 04, 04a–04d, **05-testmanagement**, 05a, 05b. Noch nicht umgesetzt: 01b, 06.
 
 ---
 
@@ -71,4 +71,6 @@ Die Tabelle bildet den Zielstand der Lernmodule ab; nicht alle genannten Dateien
 ## Stand
 
 Erstellt: 2026-03-12  
-Zuletzt aktualisiert: 2026-03-16
+Zuletzt aktualisiert: 2026-03-17  
+
+**Aktuell (17.03.2026):** Die Seite **02c-teststufen.html** (Teststufen & Testarten, Kap. 2.2–2.3) ist migriert, an das gemeinsame System (base.css/subpage.css, Sections, Meta-Bar, Footer) angepasst und in die Hauptnavigation sowie die Einstiegsseite (13 Karten) integriert. Die Tabelle „Lernmodule“ unten enthält alle derzeit aktiven sowie geplanten Seiten; 02c ist im Repo vorhanden.

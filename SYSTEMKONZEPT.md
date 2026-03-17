@@ -1,12 +1,12 @@
 Erstellt am: 2026-03-14
-Zuletzt aktualisiert am: 2026-03-16 (Stand nach Abschluss Benennungsmatrix-Umsetzung und Einstiegsfeinschliff)
+Zuletzt aktualisiert am: 2026-03-17 (Stand nach Migration 02c Teststufen & Testarten, Systemanpassung, Index-Integration)
 Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage für Greenfield-Denkphase, Re-Architecture und Template-Strategie. Enthält verbindlichen Stand (Abschn. 1–3) und geklärte bzw. offene Arbeitsbereiche (ab Abschn. 4).
 
 ---
 
 ## Aktueller Stand (März 2026)
 
-**Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert vollständig auf V2. **Punkt 7 – Benennungslogik** wurde in der Arbeitsreihenfolge vorgezogen und ist **weitgehend abgeschlossen**: Die strukturelle Logik ist festgezurrt, die Benennungsmatrix (Gruppen 1–4) ist dokumentiert, und die **technische Umsetzung** wurde durchgeführt – alle aktiven Seiten in pages/ tragen die festgezurrten Dateinamen (00a-ha-einordnung.html, 01-landkarte.html, 01a-glossar.html, 02a/02b, 04, 04a–04d, 05a/05b), Titel/Navigation/Untertitel entsprechen der Matrix, Root-index.html bleibt als Einstieg (Root-Sonderregel), alle Verlinkungen sind angepasst. Der **Einstieg** ist final: index.html im Root mit vereinbarten Feldern; die **12 Einstiegskarten** stehen in der fachlich/logischen Reihenfolge der Benennungslogik, und die **Kartentitel** orientieren sich an den Navigationstiteln der Zielseiten. **Nächster großer Arbeitsblock:** **Punkt 6 – Komponenten / Komponentenstil / V2-Designsystem light** (Abschn. 6 und 9). Die Reihenfolge im Dokument (zuerst Abschn. 6, dann Abschn. 7) bleibt unverändert; in der Umsetzung wurde Abschn. 7 vorgezogen und abgeschlossen.
+**Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert vollständig auf V2. **Punkt 7 – Benennungslogik** wurde in der Arbeitsreihenfolge vorgezogen und ist **weitgehend abgeschlossen**: Die strukturelle Logik ist festgezurrt, die Benennungsmatrix (Gruppen 1–4) ist dokumentiert, und die **technische Umsetzung** wurde durchgeführt – alle aktiven Seiten in pages/ tragen die festgezurrten Dateinamen (00a-ha-einordnung.html, 01-landkarte.html, 01a-glossar.html, 02a/02b/02c, 04, 04a–04d, 05a/05b), Titel/Navigation/Untertitel entsprechen der Matrix, Root-index.html bleibt als Einstieg (Root-Sonderregel), alle Verlinkungen sind angepasst. Der **Einstieg** ist final: index.html im Root mit vereinbarten Feldern; die **13 Einstiegskarten** stehen in der fachlich/logischen Reihenfolge der Benennungslogik, und die **Kartentitel** orientieren sich an den Navigationstiteln der Zielseiten. **Nächster großer Arbeitsblock:** **Punkt 6 – Komponenten / Komponentenstil / V2-Designsystem light** (Abschn. 6 und 9). Die Reihenfolge im Dokument (zuerst Abschn. 6, dann Abschn. 7) bleibt unverändert; in der Umsetzung wurde Abschn. 7 vorgezogen und abgeschlossen.
 
 **Konkrete Arbeitslogik (aktuell):**
 - **Benennungslogik (Abschn. 7):** Strukturell festgezurrt und technisch umgesetzt. Semantischer Feinschliff einzelner Wortstämme kann bei Bedarf später erfolgen; keine offenen Umsetzungsschritte.
@@ -17,7 +17,7 @@ Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage f�
 1. **Komponentenstil / V2-Designsystem light** – nächster großer Block (Abschn. 6 und 9).
 2. Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene.
 
-*(Erledigt: V2-Migration; V2-Aktivierung; Root-Index bereinigt – index.html einzige Einstiegsseite, index-v2.html entfernt; Benennungslogik Runde 1 festgezurrt; Benennungsmatrix Gruppen 1–4 dokumentiert; technische Umsetzung der Matrix – Umbenennung aller aktiven Seiten, Anpassung Titel/Nav/Untertitel/Links; Root-Index final – Kartenreihenfolge und Kartentitel an Benennungslogik angepasst.)*
+*(Erledigt: V2-Migration; V2-Aktivierung; Root-Index bereinigt – index.html einzige Einstiegsseite, index-v2.html entfernt; Benennungslogik Runde 1 festgezurrt; Benennungsmatrix Gruppen 1–4 dokumentiert; technische Umsetzung der Matrix – Umbenennung aller aktiven Seiten, Anpassung Titel/Nav/Untertitel/Links; Root-Index final – Kartenreihenfolge und Kartentitel an Benennungslogik angepasst; Migration 02c Teststufen & Testarten – neue Seite 02c-teststufen.html, Systemanpassung, Nav und Index um 02c ergänzt, 13 Einstiegskarten.)*
 
 **Meta-Einordnung:** Migrationsphase und Benennungsumstellung abgeschlossen. Der nächste sichtbare Meilenstein ist das V2-Designsystem light / Komponentenstil.
 
@@ -232,14 +232,14 @@ pages/
 
 **Umsetzungsstand**
 
-Die in der Benennungsmatrix (Gruppen 1–4) dokumentierten Seiten sind **technisch umgesetzt**: 00a-ha-einordnung.html, 01-landkarte.html, 01a-glossar.html, 02a-sdlc-statisch.html, 02b-sdlc-animiert.html, 04-testverfahren.html, 04a bis 04d, 05a-ha5-testkonzept.html, 05b-ha5-testkonzept-a4.html. Root-Einstieg bleibt index.html (Root-Sonderregel).
+Die in der Benennungsmatrix (Gruppen 1–4) dokumentierten Seiten sind **technisch umgesetzt**: 00a-ha-einordnung.html, 01-landkarte.html, 01a-glossar.html, 02a-sdlc-statisch.html, 02b-sdlc-animiert.html, 02c-teststufen.html, 03-statisches-testen.html, 04-testverfahren.html, 04a bis 04d, 05-testmanagement.html, 05a-ha5-testkonzept.html, 05b-ha5-testkonzept-a4.html. Root-Einstieg bleibt index.html (Root-Sonderregel).
 
 **Offene Bauliste (Erweiterungen, nicht Teil der aktuellen Matrix)**
 
 - 01b-grundlagen.html — neu zu bauen — Kap. 1 Grundlagen  
 - 01c-testmittel.html — Migration ausstehend — Kap. 1.4.3  
-- 03-statisches-testen.html — Migration ausstehend — Kap. 3  
-- 05-testmanagement.html — Migration ausstehend — Kap. 5  
+- 03-statisches-testen.html — migriert — Kap. 3  
+- 05-testmanagement.html — migriert — Kap. 5  
 - 06-testwerkzeuge.html — neu zu bauen — Kap. 6  
 
 **Bewertung**  
@@ -256,11 +256,12 @@ Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft
 - **HA-Einordnung:** 00a-ha-einordnung.html · Nav: HA-Einordnung · `<title>`: HA-Einordnung — QA Lernwebseite · `<h1>`: HA-Einordnung · Untertitel: Zuordnung der Hausaufgaben im Kontext von CTFL  
 - **Landkarte:** 01-landkarte.html · Nav: Landkarte · `<title>`: Landkarte — QA Lernwebseite · `<h1>`: Landkarte · Untertitel: Inhaltsverzeichnis des ISTQB CTFL Lehrplans v4.0.2  
 - **Glossar:** 01a-glossar.html · Nav: Glossar · `<title>`: Glossar — QA Lernwebseite · `<h1>`: Glossar · Untertitel: Alle offiziellen Schlüsselbegriffe des ISTQB CTFL v4.0.2  
-- **Standards:** 00b-standards.html · Nav: Standards · `<title>`: Standards — QA Lernwebseite · `<h1>`: Standards · Untertitel: Anerkannte Standards · Projektstatus · Potenzial — Stand 16.03.2026  
+- **Standards:** 00b-standards.html · Nav: Standards · `<title>`: Standards — QA Lernwebseite · `<h1>`: Standards · Untertitel: Anerkannte Standards · Projektstatus · Potenzial — Stand 17.03.2026  
 
 *Gruppe 2:*  
 - **SDLC statisch:** 02a-sdlc-statisch.html · Nav: SDLC & Testprozess (statisch) · `<title>`: SDLC statisch — QA Lernwebseite · `<h1>`: Software-Entwicklungslebenszyklus & ISTQB-Testprozess — Statische Übersicht · Untertitel: Statische Visualisierung des Software Development Life Cycle im Kontext von CTFL Kapitel 2  
 - **SDLC animiert:** 02b-sdlc-animiert.html · Nav: SDLC & Testprozess (animiert) · `<title>`: SDLC animiert — QA Lernwebseite · `<h1>`: Software-Entwicklungslebenszyklus & ISTQB-Testprozess — Animierte Übersicht · Untertitel: Animierte Visualisierung des Software Development Life Cycle im Kontext von CTFL Kapitel 2  
+- **Teststufen & Testarten:** 02c-teststufen.html · Nav: Teststufen & Testarten · `<title>`: Teststufen & Testarten — QA Lernwebseite · `<h1>`: Teststufen & Testarten · Untertitel: Kap. 2.2 · Struktur, Zusammenhänge und typische Fehlerzustände  
 
 - **Testverfahren:** 04-testverfahren.html · Nav: Testverfahren · `<title>`: Testverfahren — QA Lernwebseite · `<h1>`: Testverfahren im Überblick · Untertitel: Testentwurfsverfahren im Kontext von CTFL Kapitel 4  
 

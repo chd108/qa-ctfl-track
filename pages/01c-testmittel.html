@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Testmittel (Test Work Products) nach ISTQB CTFL Kap. 1.4.3 — Arbeitsergebnisse des Testprozesses, zugeordnet zu den sieben Testaktivitäten.">
+  <title>Testmittel — QA Lernwebseite</title>
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <style>
+    :root {
+      /* --e1..--e6, --ok, --warn, --note aus base.css bzw. seitenspezifisch */
+      --e1: #d8e4d0;
+      --e2: #bad1dc;
+      --e3: #e0cec8;
+      --e4: #ddc48a;
+      --e5: #d4c4e0;
+      --e6: #c8d4cc;
+
+      --ok:    #4a7c59;  --ok-bg:   #cde8d2;
+      --warn:  #9c6a2a;  --warn-bg: #f0dfc0;
+      --note:  #2a547c;  --note-bg: #c4d8ee;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      padding: 2.5rem 3rem 4rem;
+      max-width: 1300px;
+      margin: 0 auto;
+      font-size: 14px;
+    }
+
+    .meta-bar {
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+      background: rgba(255,255,255,0.55); border: 1px solid var(--bdr);
+      border-radius: 8px; padding: .6rem 1rem; margin-bottom: 1.5rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.9rem; color: var(--mid);
+    }
+    .meta-bar strong { color: var(--text); }
+
+    /* Intro-Box */
+    .intro-box {
+      background: rgba(255,255,255,0.45); border: 1px solid var(--bdr);
+      border-radius: 10px; padding: 1rem 1.3rem; margin-bottom: 1.8rem;
+      font-size: 13px; color: var(--mid); line-height: 1.6;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.04);
+    }
+    .intro-box strong { color: var(--text); }
+
+    /* Korrekturhinweis */
+    .correction-bar {
+      background: var(--warn-bg); border: 1px solid rgba(156,106,42,0.25);
+      border-left: 3px solid var(--warn); border-radius: 0 8px 8px 0;
+      padding: .7rem 1.1rem; margin-bottom: 1.8rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; color: var(--warn); line-height: 1.6;
+    }
+    .correction-bar strong { font-weight: 700; }
+    .correction-bar table {
+      width: 100%; border-collapse: collapse; margin-top: .5rem; font-size: 11.5px;
+    }
+    .correction-bar td { padding: .2rem .6rem; vertical-align: top; }
+    .correction-bar td:first-child { font-weight: 700; color: #8a5a2a; white-space: nowrap; }
+    .correction-bar td:nth-child(2) { color: #5a3a10; }
+    .correction-bar td:nth-child(3) { color: var(--ok); font-weight: 600; }
+
+    /* Aktivitäten-Grid */
+    .activity-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+    @media(max-width: 1100px) { .activity-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width: 700px)  { .activity-grid { grid-template-columns: 1fr; } }
+
+    .activity-card {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .activity-header {
+      display: flex; align-items: baseline; gap: .7rem;
+      padding: .65rem 1.1rem;
+    }
+    .activity-num {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; opacity: .6; white-space: nowrap;
+    }
+    .activity-title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 13.5px; font-weight: 700; letter-spacing: .02em;
+    }
+    .activity-ref {
+      font-size: 10px; font-weight: 400; opacity: .5;
+      letter-spacing: .04em; margin-left: .3em;
+    }
+
+    .a1 .activity-header { background: var(--e5); }
+    .a2 .activity-header { background: var(--e2); }
+    .a3 .activity-header { background: var(--e1); }
+    .a4 .activity-header { background: var(--e4); }
+    .a5 .activity-header { background: var(--e6); }
+    .a6 .activity-header { background: var(--e3); }
+    .a7 .activity-header { background: var(--e2); }
+
+    .activity-body {
+      padding: .8rem 1.1rem 1rem;
+      background: rgba(255,255,255,0.38);
+      border-top: 1px solid rgba(0,0,0,0.06);
+    }
+
+    .mittel-list { list-style: none; }
+    .mittel-list li {
+      display: flex; gap: .6rem; align-items: flex-start;
+      padding: .35rem 0; border-bottom: 1px solid var(--bdr);
+      font-size: 13px; line-height: 1.45;
+    }
+    .mittel-list li:last-child { border-bottom: none; padding-bottom: 0; }
+
+    .mittel-dot {
+      width: 6px; height: 6px; border-radius: 50%;
+      margin-top: .45rem; flex-shrink: 0;
+      background: var(--soft);
+    }
+    .mittel-name { font-weight: 600; color: var(--text); }
+    .mittel-desc { color: var(--mid); font-size: 12px; margin-top: .1rem; }
+
+    /* Korrektur-Tag im Item */
+    .ctfl-fix {
+      display: inline-flex; align-items: center;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 9px; font-weight: 700; padding: .05rem .35rem;
+      border-radius: 3px; margin-left: .4rem;
+      background: var(--ok-bg); color: var(--ok);
+      border: 1px solid rgba(74,124,89,0.3);
+      vertical-align: middle; white-space: nowrap;
+    }
+
+    /* Übersichtstabelle */
+    .overview-section {
+      margin-top: .5rem;
+    }
+    .overview-section h2 {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--soft); margin-bottom: .8rem;
+    }
+    .overview-card {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .overview-head {
+      background: var(--text); color: #f0ece6;
+      padding: .6rem 1.1rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: .04em;
+    }
+    table.ov {
+      width: 100%; border-collapse: collapse;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12.5px; background: rgba(255,255,255,0.38);
+    }
+    table.ov thead th {
+      font-size: 10px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--soft);
+      padding: .45rem 1rem; border-bottom: 2px solid var(--bdr);
+      text-align: left;
+    }
+    table.ov tbody tr { border-bottom: 1px solid var(--bdr); }
+    table.ov tbody tr:last-child { border-bottom: none; }
+    table.ov tbody tr:hover { background: rgba(255,255,255,0.4); }
+    table.ov tbody td { padding: .45rem 1rem; vertical-align: top; line-height: 1.5; color: var(--mid); }
+    table.ov tbody td:first-child {
+      font-weight: 700; color: var(--text); white-space: nowrap; width: 18%;
+    }
+    .ov-dot {
+      display: inline-block; width: 8px; height: 8px;
+      border-radius: 50%; margin-right: 6px; vertical-align: middle;
+    }
+
+    /* Verfolgbarkeit-Box */
+    .traceability-box {
+      margin-top: 1.2rem;
+      background: var(--note-bg); border: 1px solid rgba(42,84,124,0.2);
+      border-left: 3px solid var(--note); border-radius: 0 8px 8px 0;
+      padding: .8rem 1.1rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12.5px; color: var(--note); line-height: 1.6;
+    }
+    .traceability-box strong { font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01c-testmittel.html" class="current">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC &amp; Testprozess (statisch)</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC &amp; Testprozess (animiert)</a></li>
+      <li><a href="02c-teststufen.html">Teststufen &amp; Testarten</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Testmittel (Test Work Products)</h1>
+    <p>Arbeitsergebnisse des Testprozesses entlang des STLC · Kap. 1.4.3</p>
+  </header>
+</div>
+
+<main id="main">
+<div class="meta-bar" aria-label="Seitenkontext">
+  <div><strong>CTFL-Referenz:</strong> Kap. 1.4.3 (FL-1.4.3 K2)</div>
+  <div><strong>Lernziel:</strong> Testmittel, die die Testaktivitäten unterstützen, benennen</div>
+  <div><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</div>
+  <div><strong>Kursreferenz:</strong> Udemy Kap. 2.5 → entspricht CTFL Kap. 1.4.3</div>
+</div>
+
+<div class="intro-box">
+  <strong>Was sind Testmittel?</strong> Testmittel sind Arbeitsergebnisse (<em>Test Work Products</em>), die im Verlauf des Testprozesses entstehen. Sie werden den jeweiligen Testaktivitäten zugeordnet und sind Grundlage für Testüberwachung, Verfolgbarkeit und Qualitätssicherung. Die folgende Auflistung erhebt laut Lehrplan keinen Anspruch auf Vollständigkeit — je nach Organisation und Kontext können Umfang und Form variieren.
+</div>
+
+<div class="correction-bar">
+  <strong>⚠ Terminologische Korrekturen gegenüber Kursmaterial (Udemy):</strong> Der Kurs verwendet teilweise ältere oder informelle Begriffe. Die folgenden Begriffe wurden auf CTFL v4.0.2 korrigiert und sind auf dieser Seite mit <span style="background:#cde8d2;color:#4a7c59;font-size:10px;padding:.05rem .3rem;border-radius:3px;font-weight:700;">CTFL</span> markiert.
+  <table>
+    <tr><td>Udemy-Begriff</td><td>→</td><td>CTFL v4.0.2 korrekt</td></tr>
+    <tr><td>Testplan</td><td>→</td><td>Testkonzept</td></tr>
+    <tr><td>Testimplementierung</td><td>→</td><td>Testrealisierung</td></tr>
+    <tr><td>Testbeschreibungen</td><td>→</td><td>Test-Chartas</td></tr>
+    <tr><td>Abdeckungsmerkmale</td><td>→</td><td>Überdeckungselemente</td></tr>
+    <tr><td>Testverfahren</td><td>→</td><td>Testabläufe</td></tr>
+    <tr><td>Test-Suites</td><td>→</td><td>Testsuiten</td></tr>
+    <tr><td>Zusammenfassender Testbericht</td><td>→</td><td>Testabschlussbericht</td></tr>
+    <tr><td>To-Do-Liste</td><td>→</td><td>Maßnahmen zur Verbesserung</td></tr>
+    <tr><td>Kap. 2.5 (Udemy)</td><td>→</td><td>Kap. 1.4.3 (CTFL v4.0.2)</td></tr>
+  </table>
+</div>
+
+<!-- ═══ AKTIVITÄTEN-KARTEN ═══ -->
+<div class="activity-grid">
+
+  <!-- 1. Testplanung -->
+  <div class="activity-card a1">
+    <div class="activity-header">
+      <span class="activity-num">1</span>
+      <span class="activity-title">Testplanung <span class="activity-ref">1.4.1</span></span>
+    </div>
+    <div class="activity-body">
+      <ul class="mittel-list">
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testkonzept <span class="ctfl-fix">CTFL</span></div>
+            <div class="mittel-desc">Definiert Ziele, Umfang, Vorgehen, Ressourcen — früher „Testplan"</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testzeitplan</div>
+            <div class="mittel-desc">Grafische/tabellarische Darstellung der geplanten Testaktivitäten</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Risikoverzeichnis</div>
+            <div class="mittel-desc">Liste identifizierter Risiken mit Bewertung</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Eingangskriterien &amp; Endekriterien</div>
+            <div class="mittel-desc">Bedingungen für Start bzw. Abschluss der Tests (→ Kap. 5.1)</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 2. Testüberwachung & -steuerung -->
+  <div class="activity-card a2">
+    <div class="activity-header">
+      <span class="activity-num">2</span>
+      <span class="activity-title">Testüberwachung &amp; -steuerung <span class="activity-ref">1.4.1</span></span>
+    </div>
+    <div class="activity-body">
+      <ul class="mittel-list">
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testfortschrittsberichte</div>
+            <div class="mittel-desc">Tatsächlicher Fortschritt im Vergleich zum Plan (→ Kap. 5.3.2)</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Dokumentation der Steuerungsmaßnahmen</div>
+            <div class="mittel-desc">Richtlinien und Verfahren zur Überwachung des Testablaufs (→ Kap. 5.3)</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Risikoinformationen</div>
+            <div class="mittel-desc">Aktualisierte Informationen zu identifizierten Risiken</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 3. Testanalyse -->
+  <div class="activity-card a3">
+    <div class="activity-header">
+      <span class="activity-num">3</span>
+      <span class="activity-title">Testanalyse <span class="activity-ref">1.4.1</span></span>
+    </div>
+    <div class="activity-body">
+      <ul class="mittel-list">
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testbedingungen</div>
+            <div class="mittel-desc">Priorisiert — z.B. Akzeptanzkriterien (→ Kap. 4.5.2)</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Fehlerberichte</div>
+            <div class="mittel-desc">Fehlerzustände in der Testbasis (z.B. Anforderungen, Spezifikationen) — falls nicht-dynamisch gefunden</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 4. Testentwurf -->
+  <div class="activity-card a4">
+    <div class="activity-header">
+      <span class="activity-num">4</span>
+      <span class="activity-title">Testentwurf <span class="activity-ref">1.4.1</span></span>
+    </div>
+    <div class="activity-body">
+      <ul class="mittel-list">
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testfälle</div>
+            <div class="mittel-desc">Priorisiert — ausgearbeitete Testbedingungen</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Test-Chartas <span class="ctfl-fix">CTFL</span></div>
+            <div class="mittel-desc">Beschreibungen für explorative Tests — früher „Testbeschreibungen"</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Überdeckungselemente <span class="ctfl-fix">CTFL</span></div>
+            <div class="mittel-desc">Informationen zur Testabdeckung — früher „Abdeckungsmerkmale"</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Anforderungen an Testdaten &amp; Testumgebungen</div>
+            <div class="mittel-desc">Spezifikation der benötigten Daten und Umgebungskonfiguration</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 5. Testrealisierung -->
+  <div class="activity-card a5">
+    <div class="activity-header">
+      <span class="activity-num">5</span>
+      <span class="activity-title">Testrealisierung <span class="ctfl-fix" style="font-size:9px">CTFL</span> <span class="activity-ref">1.4.1</span></span>
+    </div>
+    <div class="activity-body">
+      <ul class="mittel-list">
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testabläufe <span class="ctfl-fix">CTFL</span></div>
+            <div class="mittel-desc">Ablaufbeschreibungen für die Testausführung — früher „Testverfahren"</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Manuelle &amp; automatisierte Testskripte</div>
+            <div class="mittel-desc">Skripte für manuelle und automatisierte Testausführung</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testsuiten <span class="ctfl-fix">CTFL</span></div>
+            <div class="mittel-desc">Sammlung von Testfällen — früher „Test-Suites"</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testdaten</div>
+            <div class="mittel-desc">Für die Ausführung benötigte Eingabe- und Referenzwerte</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testausführungspläne</div>
+            <div class="mittel-desc">Reihenfolge der Ausführung von Testfällen und Testsuiten</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Bestandteile der Testumgebung</div>
+            <div class="mittel-desc">Infrastruktur, Stubs, Treiber, Simulatoren etc.</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 6. Testdurchführung -->
+  <div class="activity-card a6">
+    <div class="activity-header">
+      <span class="activity-num">6</span>
+      <span class="activity-title">Testdurchführung <span class="activity-ref">1.4.1</span></span>
+    </div>
+    <div class="activity-body">
+      <ul class="mittel-list">
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testprotokolle</div>
+            <div class="mittel-desc">Testergebnisse und durchgeführte Testaktivitäten (→ Kap. 5.5)</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Fehlerberichte</div>
+            <div class="mittel-desc">Details zu Fehlerzuständen, die während der Ausführung gefunden wurden (→ Kap. 5.5)</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <!-- 7. Testabschluss -->
+  <div class="activity-card a7">
+    <div class="activity-header">
+      <span class="activity-num">7</span>
+      <span class="activity-title">Testabschluss <span class="activity-ref">1.4.1</span></span>
+    </div>
+    <div class="activity-body">
+      <ul class="mittel-list">
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Testabschlussbericht <span class="ctfl-fix">CTFL</span></div>
+            <div class="mittel-desc">Zusammenfassung aller Testergebnisse — früher „Zusammenfassender Testbericht" (→ Kap. 5.3.2)</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Maßnahmen zur Verbesserung <span class="ctfl-fix">CTFL</span></div>
+            <div class="mittel-desc">Für nachfolgende Projekte oder Iterationen — früher „To-Do-Liste"</div>
+          </div>
+        </li>
+        <li>
+          <span class="mittel-dot"></span>
+          <div>
+            <div class="mittel-name">Dokumentierte Lessons Learned</div>
+            <div class="mittel-desc">Erkenntnisse und Änderungsanträge für den Testprozess</div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</div>
+
+<!-- ═══ ÜBERSICHTSTABELLE ═══ -->
+<div class="overview-section">
+  <h2>Übersicht — Testmittel nach Testaktivität</h2>
+  <div class="overview-card">
+    <div class="overview-head">Testmittel nach Testaktivität (STLC) · CTFL Kap. 1.4.3</div>
+    <table class="ov">
+      <thead>
+        <tr><th>Testaktivität</th><th>Testmittel (Arbeitsergebnisse)</th></tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><span class="ov-dot" style="background:var(--e5)"></span>Testplanung</td>
+          <td>Testkonzept · Testzeitplan · Risikoverzeichnis · Eingangs-/Endekriterien</td>
+        </tr>
+        <tr>
+          <td><span class="ov-dot" style="background:var(--e2)"></span>Testüberwachung &amp; -steuerung</td>
+          <td>Testfortschrittsberichte · Steuerungsmaßnahmen · Risikoinformationen</td>
+        </tr>
+        <tr>
+          <td><span class="ov-dot" style="background:var(--e1)"></span>Testanalyse</td>
+          <td>Testbedingungen · Fehlerberichte (Testbasis)</td>
+        </tr>
+        <tr>
+          <td><span class="ov-dot" style="background:var(--e4)"></span>Testentwurf</td>
+          <td>Testfälle · Test-Chartas · Überdeckungselemente · Anforderungen an Testdaten &amp; Testumgebungen</td>
+        </tr>
+        <tr>
+          <td><span class="ov-dot" style="background:var(--e6)"></span>Testrealisierung</td>
+          <td>Testabläufe · Testskripte · Testsuiten · Testdaten · Testausführungspläne · Bestandteile der Testumgebung</td>
+        </tr>
+        <tr>
+          <td><span class="ov-dot" style="background:var(--e3)"></span>Testdurchführung</td>
+          <td>Testprotokolle · Fehlerberichte (ausgeführte Tests)</td>
+        </tr>
+        <tr>
+          <td><span class="ov-dot" style="background:var(--e2)"></span>Testabschluss</td>
+          <td>Testabschlussbericht · Maßnahmen zur Verbesserung · Lessons Learned</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="traceability-box">
+    <strong>Verfolgbarkeit (Traceability) · Kap. 1.4.4:</strong> Für eine effektive Testüberwachung und -steuerung ist eine durchgängige Verfolgbarkeit zwischen Testbasis, Testbedingungen, Testfällen und Testergebnissen essenziell. Sie ermöglicht Überdeckungsbewertung, Änderungsanalyse und unterstützt IT-Governance-Anforderungen.
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025) · Kap. 1.4.3 · FL-1.4.3 (K2) · Kursmaterial: Udemy ISTQB-Vorbereitung Kap. 2.5</p>
+</footer>
+
+</body>
+</html>
