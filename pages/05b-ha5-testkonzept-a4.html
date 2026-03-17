@@ -101,6 +101,31 @@
       border: 1px solid var(--doc-bdr);
       margin-bottom: 8pt;
     }
+    .doc-body .form-meta__row {
+      display: contents;
+    }
+    .doc-body .form-meta__cell--border-top {
+      border-top: 1px solid var(--doc-bdr);
+    }
+    .status-options {
+      display: flex;
+      gap: 6pt;
+      flex-wrap: wrap;
+      margin-top: 2pt;
+    }
+    .status-option {
+      font-size: 7.5pt;
+      padding: 1pt 5pt;
+      border: 1px solid var(--doc-bdr);
+      color: var(--doc-soft);
+      background: var(--doc-light);
+    }
+    .status-option--active {
+      border-color: var(--doc-acc);
+      color: var(--doc-acc);
+      background: #eaf4ee;
+      font-weight: 700;
+    }
     .doc-body .form-meta__cell {
       padding: 4pt 7pt;
       border-right: 1px solid var(--doc-bdr);
@@ -315,7 +340,7 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 17.03.2026<br>
           <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
           <strong>Seite:</strong> 1 von 3
         </div>
@@ -325,8 +350,11 @@
         <div class="form-meta">
           <div class="form-meta__cell"><div class="form-meta__label">Projekt</div><div class="form-meta__value">GroceryMate</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Version</div><div class="form-meta__value">1.0</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Datum</div><div class="form-meta__value">13.03.2026</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Verantwortlich</div><div class="form-meta__value">QA-Team</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Testf&auml;lle gesamt</div><div class="form-meta__value">18 TC (9 detailliert)</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Teststufe</div><div class="form-meta__value">Systemtest</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Scope</div><div class="form-meta__value">GM-F01 &middot; F02 &middot; F03</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top" style="grid-column: span 2"><div class="form-meta__label">Status</div><div class="status-options"><span class="status-option status-option--active">&#10003; In Bearbeitung</span><span class="status-option">Abgeschlossen</span><span class="status-option">Review ausstehend</span></div></div>
         </div>
 
         <div class="doc-section-strip">
@@ -344,6 +372,10 @@
             <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F02:</strong> Altersverifikation (Geburtsdatum-Modal, 18+, session-basiert)</span></div>
             <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F03:</strong> Versandkosten (Freigrenze 20€, Versandkosten 5€, Live-Update)</span></div>
           </div>
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Testf&auml;lle gesamt</div>
+          <div class="form-field__value">18 TC gesamt (6 pro Feature) &middot; 15 TC Priorit&auml;t Hoch &middot; 3 TC Priorit&auml;t Mittel &middot; 9 TC vollst&auml;ndig spezifiziert (3 pro Feature) &middot; 9 TC als Summary &middot; Spezifikationstiefe nach Priorit&auml;t &mdash; g&auml;ngige Praxis gem&auml;&szlig; ISO/IEC/IEEE 29119-3 (Testdokumentation)<br><span style="font-size:8pt;color:var(--doc-soft)">Nicht alle Testf&auml;lle m&uuml;ssen gleich detailliert ausgearbeitet werden &mdash; hochpriore Testf&auml;lle werden vollst&auml;ndig spezifiziert, mittlere Priorit&auml;t als kompakte Zusammenfassung.</span></div>
         </div>
         <div class="form-field">
           <div class="form-field__label">Hardware/Software-Anforderungen</div>
@@ -364,17 +396,15 @@
           Teststrategie
         </div>
         <div class="form-field">
-          <div class="form-field__label">Testarten</div>
+          <div class="form-field__label">Testarten (CTFL 4.0.2 Kap. 2.2.2 — alle vier kanonischen Testarten)</div>
           <div class="doc-grid-2">
             <div>
-              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Funktionstest</span></div>
-              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Regressionstest</span></div>
-              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Grenzwerttest</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Funktionaler Test</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Nicht-funktionaler Test</span></div>
             </div>
             <div>
-              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Usability-Test</span></div>
-              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Kompatibilitätstest</span></div>
-              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Sicherheitstest</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Black-Box-Test</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box" aria-hidden="true" style="border-color:#b04040;background:#fdf0f0;"></span><span style="color:var(--doc-soft);text-decoration:line-through">White-Box-Test</span></div>
             </div>
           </div>
         </div>
@@ -386,8 +416,7 @@
               <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Grenzwertanalyse (BVA)</span></div>
             </div>
             <div>
-              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Anwendungsfalltest</span></div>
-              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Fehlerermessen</span></div>
+              <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span>Anwendungsfalltest (UC)</span></div>
             </div>
           </div>
         </div>
@@ -398,7 +427,7 @@
               <thead><tr><th scope="col" style="width:40%">Risiko</th><th scope="col">Maßnahme</th></tr></thead>
               <tbody>
                 <tr><td>Versandkosten Live-Update Bug (unidirektional)</td><td>Bekannter Bug aus HA4: Update funktioniert nur ↑, nicht ↓ · TC-F03-006 prüft Bug</td></tr>
-                <tr><td>Zeichenlimit Bewertungs-Textfeld unklar</td><td>Offener Punkt aus HA4 · TC-F01-004 testet Grenzwert · Mit Mentor klären</td></tr>
+                <tr><td>Zeichenlimit Bewertungs-Textfeld unklar</td><td>Offener Punkt aus HA4 · TC-F01-004 testet Grenzwert · Mit Product Owner klären</td></tr>
                 <tr><td>2. Bewertung: Block oder Update?</td><td>Offener Punkt aus HA4 · TC-F01-005 testet beide Szenarien</td></tr>
               </tbody>
             </table>
@@ -421,7 +450,7 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 17.03.2026<br>
           <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
           <strong>Seite:</strong> 2 von 3
         </div>
@@ -438,17 +467,13 @@
             <ul class="compact-list">
               <li>Alle 3 Features funktionieren gemäß Spezifikation</li>
               <li>Akzeptanzkriterien aus Testbasis-Analyse erfüllt</li>
-              <li>Keine Regression in bestehenden Features</li>
-              <li>Cross-Browser/Device Kompatibilität</li>
+              <li>Live-Update Versandkosten bidirektional korrekt (inkl. bekannter Bug TC-F03-006)</li>
             </ul>
           </div>
           <div class="form-field">
             <div class="form-field__label">Sekundäre Ziele</div>
             <ul class="compact-list">
-              <li>Modal-UI intuitiv verständlich</li>
-              <li>Live-Update &lt;1 Sekunde</li>
-              <li>Keine XSS-Schwachstellen</li>
-              <li>Session-Daten sicher</li>
+              <li>Live-Update &lt;1 Sekunde (Performance-Ziel)</li>
             </ul>
           </div>
         </div>
@@ -525,7 +550,7 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 17.03.2026<br>
           <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
           <strong>Seite:</strong> 3 von 3
         </div>
@@ -552,7 +577,7 @@
           <div class="form-field">
             <div class="form-field__label">Hardware</div>
             <ul class="compact-list">
-              <li>Desktop/Laptop (Windows oder macOS)</li>
+              <li>Desktop/Laptop (Windows, macOS oder Linux)</li>
               <li>Optional: Smartphone für Mobile-Tests</li>
             </ul>
           </div>
@@ -560,7 +585,7 @@
             <div class="form-field__label">Software &amp; Tools</div>
             <ul class="compact-list">
               <li>Browser: Chrome (primär)</li>
-              <li>Dokumentation: Google Docs/Excel</li>
+              <li>Dokumentation: Excel oder vergleichbare Office-Anwendung</li>
               <li>Screenshots: Snipping Tool/macOS Screenshots</li>
               <li>Optional: Browser DevTools (Debugging)</li>
             </ul>
@@ -606,24 +631,22 @@
           <table>
             <thead>
               <tr>
-                <th scope="col" style="width:22%">Aktivität</th>
-                <th scope="col" style="width:10%">Start</th>
-                <th scope="col" style="width:10%">Ende</th>
-                <th scope="col" style="width:10%">Umgebung</th>
-                <th scope="col" style="width:20%">Verantwortlich</th>
-                <th scope="col" style="width:10%">Aufwand (h)</th>
+                <th scope="col" style="width:28%">Aktivität</th>
+                <th scope="col" style="width:14%">Datum</th>
+                <th scope="col" style="width:12%">Umgebung</th>
+                <th scope="col" style="width:22%">Verantwortlich</th>
+                <th scope="col" style="width:12%">Aufwand (h)</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td>Testvorbereitung</td><td>20.03.26</td><td>20.03.26</td><td>LIVE</td><td>QA Tester</td><td>2</td></tr>
-              <tr><td>Testdurchführung (18 TCs)</td><td>21.03.26</td><td>24.03.26</td><td>LIVE</td><td>QA Tester</td><td>10</td></tr>
-              <tr><td>Bug-Dokumentation</td><td>25.03.26</td><td>26.03.26</td><td>LIVE</td><td>QA Tester</td><td>3</td></tr>
-              <tr><td>Testabschlussbericht</td><td>26.03.26</td><td>27.03.26</td><td>—</td><td>QA Tester</td><td>3</td></tr>
-              <tr><td colspan="5" style="text-align: right; font-weight: 700;">GESAMT:</td><td style="font-weight: 700;">~18 h</td></tr>
+              <tr><td>Testvorbereitung + Testdurchführung TC 1–6 (GM-F01)</td><td>Fr 20.03.26</td><td>LIVE</td><td>QA Tester</td><td>6</td></tr>
+              <tr><td>Testdurchführung TC 7–18 (GM-F02 + GM-F03)</td><td>Sa 21.03.26</td><td>LIVE</td><td>QA Tester</td><td>6</td></tr>
+              <tr><td>Bug-Dokumentation + Testabschlussbericht</td><td>Mo 23.03.26</td><td>—</td><td>QA Tester</td><td>6</td></tr>
+              <tr><td colspan="4" style="text-align: right; font-weight: 700;">GESAMT:</td><td style="font-weight: 700;">18 h</td></tr>
             </tbody>
           </table>
         </div>
-        <p style="font-size: 8pt; color: var(--doc-soft); margin-top: 2pt;">Projektdauer: 1 Woche (20.03.2026 – 27.03.2026) · 18 Stunden Aufwand (ca. 3-4h/Tag) · Solo-Projekt</p>
+        <p style="font-size: 8pt; color: var(--doc-soft); margin-top: 2pt;">Testzeitraum: 20.–23.03.2026 &middot; 18 Stunden &middot; 3 Tage &agrave; 6 h &middot; Solo-Projekt</p>
 
         <div class="doc-section-strip">
           <span class="doc-section-strip__num">Abschnitt 8 / 8</span>
@@ -646,14 +669,14 @@
           <div class="form-field__label">Metriken (im Abschlussbericht)</div>
           <div class="doc-grid-2">
             <ul class="compact-list">
-              <li>Test Execution Rate (%)</li>
-              <li>Pass Rate (%)</li>
-              <li>Defect Density (Fehler/Feature)</li>
+              <li>Test Execution Rate (%) <br><span style="font-size:7.5pt;color:var(--doc-soft);font-weight:400">Anteil ausgeführter Testfälle — Ziel: ≥ 95 %</span></li>
+              <li>Pass Rate (%) <br><span style="font-size:7.5pt;color:var(--doc-soft);font-weight:400">Anteil bestandener Testfälle — Ziel: ≥ 90 %</span></li>
+              <li>Defect Density (Fehler/Feature) <br><span style="font-size:7.5pt;color:var(--doc-soft);font-weight:400">Anzahl gefundener Fehler je Feature</span></li>
             </ul>
             <ul class="compact-list">
-              <li>Defect Distribution (Severity 1–4)</li>
-              <li>Retest Success Rate (%)</li>
-              <li>Coverage (Akzeptanzkriterien %)</li>
+              <li>Defect Distribution (Severity 1–4) <br><span style="font-size:7.5pt;color:var(--doc-soft);font-weight:400">Verteilung der Fehler nach Schweregrad</span></li>
+              <li>Retest Success Rate (%) <br><span style="font-size:7.5pt;color:var(--doc-soft);font-weight:400">Anteil erfolgreich nachgetesteter Fehler</span></li>
+              <li>Coverage (Akzeptanzkriterien %) <br><span style="font-size:7.5pt;color:var(--doc-soft);font-weight:400">Abgedeckte AC — Ziel: 100 %</span></li>
             </ul>
           </div>
         </div>
