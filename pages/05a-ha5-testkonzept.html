@@ -106,9 +106,9 @@
 <main id="main">
   <div class="meta-bar" aria-label="Seitenkontext">
     <span><strong>Projekt:</strong> GroceryMate</span>
-    <span><strong>Features:</strong> 3 neue Funktionen</span>
+    <span><strong>Testfälle:</strong> 18 TC (9 detailliert)</span>
     <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829</span>
-    <span><strong>Status:</strong> <span class="tag tag--ok">Planung abgeschlossen</span></span>
+    <span><strong>Status:</strong> <span class="tag tag--warn">In Bearbeitung</span></span>
   </div>
 
   <div class="info-box info-box--note" role="note">
@@ -164,10 +164,9 @@
         <table>
           <thead><tr><th scope="col">Kategorie</th><th scope="col">Spezifikation</th></tr></thead>
           <tbody>
+            <tr><td>Browser</td><td>Chrome, Firefox, Safari, Edge (neueste 2 Versionen)</td></tr>
             <tr><td>Geräte</td><td>Desktop (Windows, macOS), Mobile (iOS, Android), Tablets</td></tr>
-            <tr><td>Browser</td><td>Chrome (neueste 2 Versionen), Firefox (neueste 2 Versionen), Safari (neueste 2 Versionen), Edge (neueste Version)</td></tr>
-            <tr><td>Mindestanforderungen</td><td>4 GB RAM, stabiles Internet (min. 1 Mbps)</td></tr>
-            <tr><td>Backend</td><td>grocerymate.masterschool.com (Server-Side), Session-Management (Cookie-basiert)</td></tr>
+            <tr><td>Backend</td><td>grocerymate.masterschool.com, Session-Management (Cookie)</td></tr>
           </tbody>
         </table>
       </div>
@@ -177,6 +176,8 @@
         <div class="plan-item"><div class="plan-item__id">GM-F02</div><div class="plan-item__title">Altersverifikation für alkoholische Produkte</div><div class="plan-item__desc">Beim ersten Aufruf der Kategorie /store erscheint ein Geburtsdatum-Modal. Nutzer unter 18 Jahren erhalten keinen Zugriff. Verifikation ist session-basiert (kein erneutes Modal innerhalb der Session).</div></div>
         <div class="plan-item"><div class="plan-item__id">GM-F03</div><div class="plan-item__title">Versandkosten &amp; Freigrenze</div><div class="plan-item__desc">Versandkosten entfallen ab einem Bestellwert ≥20€ (Freigrenze). Darunter fallen Versandkosten von 5€ an. Live-Update bei Warenkorbänderungen (⚠️ Bug: nur unidirektional ↑). Nur für eingeloggte Nutzer im Checkout sichtbar.</div></div>
       </div>
+      <h3 class="section__subhead">Testfälle gesamt</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1rem;">18 TC gesamt (6 pro Feature) · 15 TC Priorität Hoch · 3 TC Priorität Mittel · 9 TC vollständig spezifiziert (3 pro Feature) · 9 TC als Summary. Spezifikationstiefe nach Priorität — gängige Praxis gemäß ISO/IEC/IEEE 29119-3 (Testdokumentation). Nicht alle Testfälle müssen gleich detailliert ausgearbeitet werden: hochpriore Testfälle werden vollständig spezifiziert, mittlere Priorität als kompakte Zusammenfassung.</p>
     </div>
   </section>
 
@@ -196,25 +197,25 @@
         <div class="card"><div class="card__title">Im Umfang enthalten</div><div class="card__body"><ul><li>Bewertungssystem (GM-F01): 1-5 Sterne, Textfeld optional, Login-Pflicht, Duplikatprüfung</li><li>Altersverifikation (GM-F02): Geburtsdatum-Modal, 18+ Prüfung, Session-Persistenz</li><li>Versandkosten (GM-F03): Freigrenze, Live-Update, Login-Pflicht</li><li>Integration mit bestehenden Features: Login/Registrierung, Warenkorb, Checkout</li></ul></div></div>
         <div class="card"><div class="card__title">Außerhalb des Umfangs</div><div class="card__body"><ul><li>Backend-Datenbankoperationen ohne UI-Einfluss</li><li>Zahlungsabwicklung (separate Schnittstelle)</li><li>E-Mail-Benachrichtigungen</li><li>Performance-Tests unter extremer Last (&gt;10.000 gleichzeitige Nutzer)</li></ul></div></div>
       </div>
-      <h3 class="section__subhead">Testarten</h3>
+      <h3 class="section__subhead">Testarten (CTFL 4.0.2 Kap. 2.2.2 — vier kanonische Testarten)</h3>
       <div class="ref-table">
         <table>
           <thead><tr><th scope="col">Testart</th><th scope="col">Beschreibung</th><th scope="col">Anwendung</th></tr></thead>
           <tbody>
-            <tr><td>Funktionstest</td><td>Prüfung, ob Features gemäß Spezifikation funktionieren</td><td>Alle 3 Features (GM-F01, F02, F03)</td></tr>
-            <tr><td>Regressionstest</td><td>Sicherstellen, dass bestehende Features nicht beeinträchtigt werden</td><td>Login, Warenkorb, Produktsuche</td></tr>
-            <tr><td>Grenzwerttest</td><td>Testen von Grenzwerten (z.B. Alter 17/18/19, Freigrenze X±0,01€)</td><td>GM-F02, GM-F03</td></tr>
-            <tr><td>Usability-Test</td><td>Prüfung der Benutzerfreundlichkeit (z.B. Modal-Verständlichkeit)</td><td>GM-F02 (Modal), GM-F01 (Bewertungs-UI)</td></tr>
-            <tr><td>Kompatibilitätstest</td><td>Cross-Browser &amp; Cross-Device Testing</td><td>Alle Features auf Chrome, Firefox, Safari, Edge (Desktop + Mobile)</td></tr>
-            <tr><td>Sicherheitstest</td><td>Prüfung auf Schwachstellen (z.B. Session-Hijacking, XSS)</td><td>GM-F02 (Session), GM-F01 (Textfeld-Injection)</td></tr>
+            <tr><td>Funktionaler Test</td><td>Prüfung, ob Features gemäß Spezifikation funktionieren</td><td>Alle 3 Features (GM-F01, F02, F03)</td></tr>
+            <tr><td>Nicht-funktionaler Test</td><td>Performance, Usability, Kompatibilität (z.B. Live-Update &lt;1 s)</td><td>GM-F03 (Versandkosten-Update), GM-F02 (Modal)</td></tr>
+            <tr><td>Black-Box-Test</td><td>Test auf Basis von Spezifikation ohne Codekenntnis</td><td>Alle Features</td></tr>
+            <tr><td>White-Box-Test</td><td>Nicht angewendet (kein Code-Zugriff im Scope)</td><td>—</td></tr>
           </tbody>
         </table>
       </div>
+      <h3 class="section__subhead">Testentwurfs-Techniken (CTFL 4.2)</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;">Äquivalenzklassenbildung (EP) · Grenzwertanalyse (BVA) · Anwendungsfalltest (UC).</p>
       <h3 class="section__subhead">Risiken und Maßnahmen</h3>
       <div class="risk-list">
-        <div class="risk-item"><div class="risk-item__label">Risiko: Versandkosten Live-Update Bug</div><div class="risk-item__content"><strong>Details:</strong> Bekannter Bug aus HA4 (GM-F03): Live-Update funktioniert nur unidirektional (↑ funktioniert, ↓ nicht) · Versandkosten bleiben bei 0€ nach Produktentfernung.<br><strong>Maßnahme:</strong> Testfall TC-F03-006 dokumentiert Bug · Mit Mentor klären ob Fix möglich · Workaround: Seite neu laden.</div></div>
-        <div class="risk-item"><div class="risk-item__label">Risiko: Zeichenlimit Bewertungs-Textfeld</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt aus HA4 (GM-F01): Maximale Zeichenanzahl des Feedback-Feldes nicht spezifiziert.<br><strong>Maßnahme:</strong> Grenzwerttest TC-F01-004 (sehr langer Text) · Verhalten dokumentieren · Mit Mentor Limit klären (z.B. 500 Zeichen?).</div></div>
-        <div class="risk-item"><div class="risk-item__label">Risiko: 2. Bewertung - Block oder Update?</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt aus HA4 (GM-F01): Verhalten bei 2. Bewertung desselben Produkts unklar (Blockieren mit Fehlermeldung ODER Update der bestehenden Bewertung?).<br><strong>Maßnahme:</strong> Testfall TC-F01-005 testet beide Szenarien · Verhalten dokumentieren · DB-Constraint prüfen.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Versandkosten Live-Update Bug</div><div class="risk-item__content"><strong>Details:</strong> Bekannter Bug aus HA4 (GM-F03): Live-Update funktioniert nur unidirektional (↑ funktioniert, ↓ nicht) · Versandkosten bleiben bei 0€ nach Produktentfernung.<br><strong>Maßnahme:</strong> Testfall TC-F03-006 prüft Bug · Workaround: Seite neu laden.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Zeichenlimit Bewertungs-Textfeld</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt aus HA4 (GM-F01): Maximale Zeichenanzahl des Feedback-Feldes nicht spezifiziert.<br><strong>Maßnahme:</strong> TC-F01-004 testet Grenzwert · Mit Product Owner klären.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: 2. Bewertung — Block oder Update?</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt aus HA4 (GM-F01): Verhalten bei 2. Bewertung desselben Produkts unklar.<br><strong>Maßnahme:</strong> TC-F01-005 testet beide Szenarien.</div></div>
       </div>
     </div>
   </section>
@@ -231,27 +232,27 @@
         <div class="info-box__content">Testziele beschreiben <strong>was erreicht werden soll</strong>. Sie sind messbar (z.B. "95% der Testfälle bestanden") und dienen als Erfolgskriterium für den Testprozess. Referenz: CTFL Kap. 5.1 (Testplanung).</div>
       </div>
       <h3 class="section__subhead">Primäre Ziele</h3>
-      <div class="card-grid">
-        <div class="card"><div class="card__title">Funktionalität</div><div class="card__body">Alle drei neuen Features (GM-F01, F02, F03) funktionieren gemäß Spezifikation. Akzeptanzkriterien aus Testbasis-Analyse sind erfüllt.</div></div>
-        <div class="card"><div class="card__title">Regression</div><div class="card__body">Bestehende Features (Login, Produktsuche, Warenkorb, Checkout) funktionieren nach Integration der neuen Features weiterhin fehlerfrei.</div></div>
-        <div class="card"><div class="card__title">Kompatibilität</div><div class="card__body">Features funktionieren auf allen unterstützten Browsern (Chrome, Firefox, Safari, Edge) und Geräten (Desktop, Mobile, Tablet).</div></div>
-      </div>
-      <h3 class="section__subhead">Sekundäre Ziele</h3>
-      <div class="card-grid">
-        <div class="card"><div class="card__title">Usability</div><div class="card__body">Das Altersverifikations-Modal (GM-F02) ist intuitiv verständlich. Bewertungs-UI (GM-F01) ist benutzerfreundlich und klar strukturiert.</div></div>
-        <div class="card"><div class="card__title">Performance</div><div class="card__body">Live-Update der Versandkosten (GM-F03) erfolgt ohne spürbare Verzögerung (&lt;1 Sekunde). Bewertungen werden schnell geladen.</div></div>
-        <div class="card"><div class="card__title">Sicherheit</div><div class="card__body">Keine XSS-Schwachstellen im Bewertungs-Textfeld. Session-Daten (GM-F02) sind sicher vor Hijacking geschützt.</div></div>
-      </div>
-      <h3 class="section__subhead">Erwartete Ergebnisse</h3>
-      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem;">
-        <li>Alle Features erfüllen ihre Akzeptanzkriterien (siehe Testbasis-Analyse HA4)</li>
-        <li>Mind. 95% der geplanten Testfälle wurden erfolgreich ausgeführt</li>
-        <li>Mind. 90% der ausgeführten Testfälle bestanden</li>
-        <li>Keine kritischen Fehler (Severity 1) mehr offen</li>
-        <li>Alle hochpriorisierten Fehler (Severity 2) behoben und geschlossen</li>
-        <li>Performance-Metriken erfüllt (Response Time &lt;1s für Live-Updates)</li>
-        <li>UAT (User Acceptance Test) erfolgreich abgeschlossen und freigegeben</li>
+      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Alle 3 Features funktionieren gemäß Spezifikation</li>
+        <li>Akzeptanzkriterien aus Testbasis-Analyse erfüllt</li>
+        <li>Live-Update Versandkosten bidirektional korrekt (inkl. bekannter Bug TC-F03-006)</li>
       </ul>
+      <h3 class="section__subhead">Sekundäre Ziele</h3>
+      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Live-Update &lt;1 Sekunde (Performance-Ziel)</li>
+      </ul>
+      <h3 class="section__subhead">Erwartete Ergebnisse (messbar)</h3>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col" style="width:60%">Metrik</th><th scope="col">Ziel</th></tr></thead>
+          <tbody>
+            <tr><td>Testfall-Ausführungsquote</td><td>≥ 95%</td></tr>
+            <tr><td>Testfall-Erfolgsquote</td><td>≥ 90%</td></tr>
+            <tr><td>Kritische Fehler (Severity 1)</td><td>0</td></tr>
+            <tr><td>Hochprioritäre Fehler (Severity 2)</td><td>Alle behoben</td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </section>
 
@@ -269,36 +270,28 @@
       <h3 class="section__subhead">Entry Criteria (Startkriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, die erfüllt sein müssen, bevor Tests beginnen können:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li>grocerymate.com ist erreichbar und funktionsfähig</li>
-        <li>Testbasis-Analyse (HA4) ist vorhanden</li>
-        <li>Testfallentwurf (HA5) mit 18 TCs ist vorhanden</li>
-        <li>Test-Account (eingeloggt) funktioniert</li>
-        <li>Browser (Chrome) ist installiert</li>
+        <li>grocerymate.com erreichbar</li>
+        <li>Testbasis-Analyse (HA4) vorhanden</li>
+        <li>Testfallentwurf (HA5) vorhanden</li>
+        <li>Test-Account funktioniert</li>
+        <li>Browser (Chrome) installiert</li>
       </ul>
       <h3 class="section__subhead">Exit Criteria (Abnahmekriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, die erfüllt sein müssen, um Tests abzuschließen:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li><strong>Ausführungsquote:</strong> Mind. 17/18 Testfälle ausgeführt (≥95%)</li>
-        <li><strong>Bestehensquote:</strong> Mind. 16/18 Testfälle bestanden (≥90%)</li>
-        <li><strong>Fehler dokumentiert:</strong> Alle gefundenen Fehler sind dokumentiert (Bug-Reports)</li>
-        <li><strong>Testprotokoll vollständig:</strong> Alle 18 TCs haben einen Status (Pass/Fail)</li>
-        <li><strong>Abschlussbericht erstellt:</strong> Zusammenfassung mit Metriken und Empfehlungen</li>
+        <li>≥17/18 TCs ausgeführt (≥95%)</li>
+        <li>≥16/18 TCs bestanden (≥90%)</li>
+        <li>Alle Fehler dokumentiert</li>
+        <li>Testprotokoll vollständig</li>
+        <li>Abschlussbericht erstellt</li>
       </ul>
       <h3 class="section__subhead">Suspension Criteria (Aussetzungskriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Gründe, um Tests zu pausieren:</strong></p>
-      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li><strong>Website nicht erreichbar:</strong> grocerymate.com offline oder nicht zugänglich</li>
-        <li><strong>Login funktioniert nicht:</strong> Test-Account nicht verwendbar, Authentifizierung fehlgeschlagen</li>
-        <li><strong>Kritischer Blocker:</strong> Kernfunktion nicht testbar (z.B. /store komplett nicht zugänglich)</li>
-        <li><strong>Gesundheitliche Gründe:</strong> Tester kann Tests nicht fortsetzen</li>
-      </ul>
-      <h3 class="section__subhead">Resumption Criteria (Fortsetzungskriterien)</h3>
-      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, um Tests nach Aussetzung fortzusetzen:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem;">
-        <li>Website wieder erreichbar und stabil</li>
-        <li>Login funktioniert wieder</li>
-        <li>Kritische Blocker behoben</li>
-        <li>Tester wieder arbeitsfähig</li>
+        <li>grocerymate.com nicht erreichbar</li>
+        <li>Login funktioniert nicht</li>
+        <li>Kritischer Blocker (z.B. /store nicht zugänglich)</li>
+        <li>Gesundheitliche Gründe</li>
       </ul>
     </div>
   </section>
@@ -319,37 +312,22 @@
         <table>
           <thead><tr><th scope="col">Rolle</th><th scope="col">Verantwortung</th><th scope="col">Personen</th></tr></thead>
           <tbody>
-            <tr><td>Testmanager</td><td>Testplanung, Koordination, Reporting, Risikomanagement</td><td>1 Person</td></tr>
-            <tr><td>QA Tester (Student)</td><td>Testdurchführung (18 TCs), Bug-Dokumentation, Testprotokoll, Abschlussbericht</td><td>1 Person</td></tr>
-            <tr><td>Reviewer (Mentor)</td><td>Optional: Review Testprotokoll, Feedback, Fragen klären</td><td>0-1 Person</td></tr>
+            <tr><td>QA Tester (Student)</td><td>Testdurchführung (18 TCs), Bug-Dokumentation, Abschlussbericht</td><td>1</td></tr>
+            <tr><td>Reviewer (Mentor)</td><td>Review Testprotokoll, Feedback (optional, minimal)</td><td>0–1</td></tr>
           </tbody>
         </table>
       </div>
       <h3 class="section__subhead">Hardware</h3>
-      <div class="card-grid">
-        <div class="card"><div class="card__title">Hardware</div><div class="card__body"><ul><li>Desktop oder Laptop (Windows oder macOS)</li><li>Optional: Smartphone für Mobile-Tests</li></ul></div></div>
-      </div>
+      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Desktop/Laptop (Windows, macOS oder Linux)</li>
+        <li>Optional: Smartphone für Mobile-Tests</li>
+      </ul>
       <h3 class="section__subhead">Software &amp; Tools</h3>
-      <div class="ref-table">
-        <table>
-          <thead><tr><th scope="col">Kategorie</th><th scope="col">Tool/Software</th><th scope="col">Zweck</th></tr></thead>
-          <tbody>
-            <tr><td>Browser</td><td>Chrome, Firefox, Safari, Edge (jeweils neueste 2 Versionen)</td><td>Cross-Browser-Testing</td></tr>
-            <tr><td>Testmanagement</td><td>JIRA / TestRail / Zephyr</td><td>Testfall-Verwaltung, Bug-Tracking, Reporting</td></tr>
-            <tr><td>Automatisierung</td><td>Selenium / Cypress / Playwright</td><td>Automatisierte Regressionstests</td></tr>
-            <tr><td>API-Testing</td><td>Postman / Insomnia</td><td>Backend-Validierung (Session-Daten, Bewertungen)</td></tr>
-            <tr><td>Browser DevTools</td><td>Chrome DevTools, Firefox Developer Tools</td><td>Debugging, Network-Analyse, Console-Logs</td></tr>
-            <tr><td>Performance</td><td>Google Lighthouse</td><td>Performance-Metriken, Usability-Score</td></tr>
-            <tr><td>Screenshot/Video</td><td>Snagit / OBS Studio</td><td>Dokumentation von Bugs</td></tr>
-          </tbody>
-        </table>
-      </div>
-      <h3 class="section__subhead">Infrastruktur</h3>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem;">
-        <li><strong>Testumgebung:</strong> grocerymate.masterschool.com (DEV/TEST/ACC/PROD-Umgebungen)</li>
-        <li><strong>Testdaten:</strong> Mock-Nutzerkonten, Produktkatalog, Test-Zahlungsmethoden</li>
-        <li><strong>CI/CD:</strong> GitHub Actions / Jenkins für automatisierte Regressionstests</li>
-        <li><strong>Netzwerk:</strong> Stabiles Internet (min. 1 Mbps) für alle Teammitglieder</li>
+        <li>Browser: Chrome (primär)</li>
+        <li>Dokumentation: Excel oder vergleichbare Office-Anwendung</li>
+        <li>Screenshots: Snipping Tool / macOS Screenshots</li>
+        <li>Optional: Browser DevTools (Debugging)</li>
       </ul>
     </div>
   </section>
@@ -370,31 +348,14 @@
         <table>
           <thead><tr><th scope="col">Umgebung</th><th scope="col">Zweck</th><th scope="col">URL</th></tr></thead>
           <tbody>
-            <tr><td>DEV (Development)</td><td>Entwicklerteam testet neue Features während Entwicklung</td><td>dev.grocerymate.masterschool.com</td></tr>
-            <tr><td>TEST (Testing)</td><td>QA-Team führt Funktions-, Regressions- und Usability-Tests durch</td><td>test.grocerymate.masterschool.com</td></tr>
-            <tr><td>ACC (Acceptance)</td><td>UAT (User Acceptance Testing) mit Endnutzern</td><td>acc.grocerymate.masterschool.com</td></tr>
-            <tr><td>PROD (Production)</td><td>Live-System — nur Smoke-Tests nach Deployment</td><td>grocerymate.masterschool.com</td></tr>
+            <tr><td>LIVE</td><td>Produktiv-System (manuelle Funktionstests)</td><td>grocerymate.masterschool.com</td></tr>
           </tbody>
         </table>
-      </div>
-      <h3 class="section__subhead">Browser &amp; Devices</h3>
-      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .8rem;">Tests werden auf realen Geräten und Browsern durchgeführt (nicht nur Emulatoren):</p>
-      <div class="card-grid">
-        <div class="card"><div class="card__title">Desktop</div><div class="card__body"><ul><li>Chrome (neueste 2 Versionen)</li><li>Firefox (neueste 2 Versionen)</li><li>Safari (neueste 2 Versionen, macOS)</li><li>Edge (neueste Version, Windows)</li></ul></div></div>
-        <div class="card"><div class="card__title">Mobile</div><div class="card__body"><ul><li>iOS: Safari (iPhone, iOS 16+)</li><li>Android: Chrome (Android 12+)</li><li>Tablet: Safari (iPad), Chrome (Android Tablet)</li></ul></div></div>
       </div>
       <h3 class="section__subhead">Testdaten</h3>
-      <div class="ref-table">
-        <table>
-          <thead><tr><th scope="col">Datentyp</th><th scope="col">Beschreibung</th></tr></thead>
-          <tbody>
-            <tr><td>Nutzerkonten</td><td>10 Test-Accounts (eingeloggt), 2 Gast-Accounts (nicht eingeloggt)</td></tr>
-            <tr><td>Produkte</td><td>Min. 20 Produkte in verschiedenen Kategorien (inkl. alkoholische Produkte in /store)</td></tr>
-            <tr><td>Bewertungen</td><td>Vorhandene Bewertungen für einige Produkte (zum Testen der Durchschnittsberechnung)</td></tr>
-            <tr><td>Warenkorb</td><td>Verschiedene Szenarien: leerer Warenkorb, Warenkorb mit 1-10 Produkten, Grenzwerte für Versandkosten</td></tr>
-            <tr><td>Geburtsdaten</td><td>Test-Accounts mit Geburtsdaten: &lt;18 Jahre, genau 18 Jahre, &gt;18 Jahre (für GM-F02)</td></tr>
-          </tbody>
-        </table>
+      <div class="card-grid">
+        <div class="card"><div class="card__title">Konten &amp; Produkte</div><div class="card__body"><ul><li>1 Test-Account (eingeloggt)</li><li>Gast-Modus (nicht eingeloggt)</li><li>Produkte auf grocerymate.com (bereits vorhanden)</li></ul></div></div>
+        <div class="card"><div class="card__title">Szenarien</div><div class="card__body"><ul><li>Warenkorb: &lt;20€, =20€, &gt;20€</li><li>Geburtsdaten: 17 J. 364 T., =18 J., &gt;18 J.</li><li>Browser: Chrome (primär), optional Firefox/Safari</li></ul></div></div>
       </div>
     </div>
   </section>
@@ -414,17 +375,17 @@
       <div class="ref-table">
         <table class="timeline-table">
           <thead>
-            <tr><th scope="col">Aktivität</th><th scope="col">Start</th><th scope="col">Ende</th><th scope="col">Umgebung</th><th scope="col">Verantwortlich</th><th scope="col">Aufwand (Std.)</th></tr>
+            <tr><th scope="col">Aktivität</th><th scope="col">Datum</th><th scope="col">Umgebung</th><th scope="col">Verantwortlich</th><th scope="col">Aufwand (h)</th></tr>
           </thead>
           <tbody>
-            <tr><td>Testvorbereitung</td><td>20.03.2026</td><td>20.03.2026</td><td>LIVE</td><td>QA Tester</td><td>2</td></tr>
-            <tr><td>Testdurchführung (18 TCs)</td><td>21.03.2026</td><td>24.03.2026</td><td>LIVE</td><td>QA Tester</td><td>10</td></tr>
-            <tr><td>Bug-Dokumentation</td><td>25.03.2026</td><td>26.03.2026</td><td>LIVE</td><td>QA Tester</td><td>3</td></tr>
-            <tr><td>Testabschlussbericht</td><td>26.03.2026</td><td>27.03.2026</td><td>—</td><td>QA Tester</td><td>3</td></tr>
+            <tr><td>Testvorbereitung + Testdurchführung TC 1–6 (GM-F01)</td><td>Fr 20.03.26</td><td>LIVE</td><td>QA Tester</td><td>6</td></tr>
+            <tr><td>Testdurchführung TC 7–18 (GM-F02 + GM-F03)</td><td>Sa 21.03.26</td><td>LIVE</td><td>QA Tester</td><td>6</td></tr>
+            <tr><td>Bug-Dokumentation + Testabschlussbericht</td><td>Mo 23.03.26</td><td>—</td><td>QA Tester</td><td>6</td></tr>
+            <tr><td colspan="4" style="text-align: right; font-weight: 700;">GESAMT:</td><td style="font-weight: 700;">18 h</td></tr>
           </tbody>
         </table>
       </div>
-      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-top: 1rem;"><strong>Gesamt-Aufwand:</strong> ~18 Stunden (ca. 3-4h/Tag über 1 Woche)<br><strong>Projektdauer:</strong> 1 Woche (20.03.2026 - 27.03.2026) · Solo-Projekt</p>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-top: 1rem;">Testzeitraum: 20.–23.03.2026 · 18 Stunden · 3 Tage à 6 h · Solo-Projekt</p>
     </div>
   </section>
 
@@ -444,27 +405,17 @@
         <table>
           <thead><tr><th scope="col">Deliverable</th><th scope="col">Beschreibung</th><th scope="col">Verantwortlich</th></tr></thead>
           <tbody>
-            <tr><td>Testkonzept (dieses Dokument)</td><td>Vollständiges Testkonzept mit 8 Abschnitten (CTFL 4.0.2 / IEEE 829)</td><td>Testmanager</td></tr>
-            <tr><td>Testbasis-Analyse (HA4)</td><td>Anforderungsanalyse der 3 Features (GM-F01, F02, F03) nach CTFL/IEEE 29119-3</td><td>Testmanager</td></tr>
-            <tr><td>Testfälle (HA5)</td><td>18 detaillierte Testfälle (6 pro Feature), vollständig automatisierbar, inkl. Testentwurfs-Technik (EP/BVA/UC), Traceability zu HA4-Testfragen</td><td>QA Tester</td></tr>
-            <tr><td>Testdaten-Dokumentation</td><td>Übersicht über Test-Accounts, Produkte, Warenkorb-Szenarien</td><td>QA-Team</td></tr>
-            <tr><td>Testausführungs-Protokoll</td><td>Log aller durchgeführten Tests mit Status (Pass/Fail/Blocked)</td><td>QA-Team</td></tr>
-            <tr><td>Bug-Reports</td><td>Detaillierte Fehlerberichte mit Screenshots, Steps to Reproduce, Severity/Priority</td><td>QA-Team</td></tr>
-            <tr><td>Testabschlussbericht</td><td>Zusammenfassung: Testmetriken, erreichte vs. geplante Coverage, offene Risiken</td><td>Testmanager</td></tr>
-            <tr><td>UAT-Signoff</td><td>Freigabe durch Endnutzer nach erfolgreichem User Acceptance Test</td><td>Testmanager + Endnutzer</td></tr>
+            <tr><td>Testkonzept (HA5)</td><td>Vollständiger Testplan mit 8 Abschnitten (IEEE 829 / CTFL 4.0.2)</td><td>QA Tester</td></tr>
+            <tr><td>Testbasis-Analyse (HA4)</td><td>Anforderungsanalyse der 3 Features nach IEEE 29119-3 (bereits vorhanden)</td><td>QA Tester</td></tr>
+            <tr><td>Testfallentwurf (HA5)</td><td>18 detaillierte Testfälle (6 pro Feature), vollständig automatisierbar, Traceability zu HA4 (bereits vorhanden)</td><td>QA Tester</td></tr>
+            <tr><td>Testprotokoll</td><td>Durchführungs-Log der 18 TCs mit Status (Pass/Fail), Screenshots bei Fehlern</td><td>QA Tester</td></tr>
+            <tr><td>Bug-Reports</td><td>Fehlerberichte mit Screenshots, Steps to Reproduce, Severity (falls Fehler gefunden)</td><td>QA Tester</td></tr>
+            <tr><td>Testabschlussbericht</td><td>Zusammenfassung: Ausführungsrate, Pass-Rate, gefundene Fehler, Empfehlungen</td><td>QA Tester</td></tr>
           </tbody>
         </table>
       </div>
-      <h3 class="section__subhead">Metriken &amp; Reports</h3>
-      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;">Folgende Metriken werden während des Testprozesses erfasst und im Abschlussbericht dokumentiert:</p>
-      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem;">
-        <li><strong>Test Execution Rate:</strong> Anzahl ausgeführter Testfälle / Geplante Testfälle (%)</li>
-        <li><strong>Pass Rate:</strong> Anzahl bestandener Testfälle / Ausgeführte Testfälle (%)</li>
-        <li><strong>Defect Density:</strong> Anzahl Fehler / Feature (GM-F01, F02, F03)</li>
-        <li><strong>Defect Distribution:</strong> Verteilung nach Severity (1-4) und Priority (Hoch/Mittel/Niedrig)</li>
-        <li><strong>Retest Success Rate:</strong> Erfolgreich behobene Bugs / Gemeldete Bugs (%)</li>
-        <li><strong>Coverage:</strong> Abgedeckte Akzeptanzkriterien / Gesamt Akzeptanzkriterien (%)</li>
-      </ul>
+      <h3 class="section__subhead">Metriken (im Abschlussbericht)</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;">Test Execution Rate (%) — Ziel: ≥ 95% · Pass Rate (%) — Ziel: ≥ 90% · Defect Density (Fehler/Feature) · Defect Distribution (Severity 1–4) · Retest Success Rate (%) · Coverage (Akzeptanzkriterien %) — Ziel: 100%</p>
     </div>
   </section>
 </main>
