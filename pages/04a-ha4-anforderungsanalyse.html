@@ -220,35 +220,41 @@
           <div class="analysis-field">
             <div class="analysis-field__label">Testfragen &amp; Antworten</div>
             <ul class="q-list">
-              <li><span class="q-num">F1</span><span class="q-text">Wer darf bewerten — alle Nutzer oder nur eingeloggte? <span class="q-answer">Nur eingeloggte Nutzer; Gäste werden umgeleitet / keine Bewertungsoption sichtbar.</span></span></li>
-              <li><span class="q-num">F2</span><span class="q-text">Ist das Textfeld Pflicht oder optional? <span class="q-answer">Optional — Bewertung nur mit Sternen (1–5) möglich, ohne Text.</span></span></li>
-              <li><span class="q-num">F3</span><span class="q-text">Kann ein Nutzer dasselbe Produkt mehrfach bewerten? <span class="q-answer">Nein — max. 1 Bewertung pro Nutzer/Produkt; zweite Bewertung wird blockiert oder als Update behandelt (noch zu verifizieren).</span></span></li>
+              <li><span class="q-num">F1</span><span class="q-text">Funktioniert das 5-Sterne-System (1 Stern Minimum)? <span class="q-answer">Ja - 1 Stern möglich</span></span></li>
+              <li><span class="q-num">F1</span><span class="q-text">Funktioniert das 5-Sterne-System (5 Sterne Maximum)? <span class="q-answer">Ja - 5 Sterne möglich</span></span></li>
+              <li><span class="q-num">F2</span><span class="q-text">Wer darf bewerten — alle Nutzer oder nur eingeloggte? <span class="q-answer">Nur eingeloggte Nutzer; Gäste haben keine Bewertungsoption</span></span></li>
+              <li><span class="q-num">F4</span><span class="q-text">Ist das Textfeld Pflicht oder optional? <span class="q-answer">Optional - Bewertung nur mit Sternen (ohne Text) möglich</span></span></li>
+              <li><span class="q-num">F3</span><span class="q-text">Wird die Durchschnittsbewertung visuell angezeigt? <span class="q-answer">Ja - als ausgefüllte Sterne auf Produktseite</span></span></li>
+              <li><span class="q-num">F5</span><span class="q-text">Kann ein Nutzer dasselbe Produkt mehrfach bewerten? <span class="q-answer">Nein - max. 1 Bewertung/Nutzer/Produkt</span></span></li>
+              <li><span class="q-num">F6</span><span class="q-text">Gibt es eine maximale Zeichenanzahl für Feedback? <span class="q-answer">Nicht in Anforderung spezifiziert - muss im Test ermittelt werden</span></span></li>
             </ul>
           </div>
           <div class="analysis-field">
             <div class="analysis-field__label">Akzeptanzkriterien</div>
             <table class="ac-table">
-              <tr><td>AC1</td><td>Eingeloggter Nutzer kann ein Produkt mit 1–5 Sternen bewerten.</td></tr>
-              <tr><td>AC2</td><td>Textfeld ist optional — Bewertung ohne Text wird akzeptiert.</td></tr>
-              <tr><td>AC3</td><td>Gast ohne Login erhält keinen Zugang zur Bewertungsfunktion.</td></tr>
-              <tr><td>AC4</td><td>Pro Nutzer und Produkt ist maximal eine Bewertung möglich.</td></tr>
-              <tr><td>AC5</td><td>Durchschnittsbewertung wird auf der Produktseite angezeigt.</td></tr>
+              <tr><td>AC1</td><td>Eingeloggter Nutzer kann mit 1–5 Sternen bewerten</td></tr>
+              <tr><td>AC2</td><td>Gast ohne Login erhält keinen Zugang zur Bewertungsfunktion</td></tr>
+              <tr><td>AC3</td><td>Durchschnittsbewertung wird auf Produktseite angezeigt</td></tr>
+              <tr><td>AC4</td><td>Textfeld ist optional - Bewertung ohne Text wird akzeptiert</td></tr>
+              <tr><td>AC5</td><td>Max. eine Bewertung pro Nutzer und Produkt</td></tr>
+              <tr><td>AC6</td><td>Textfeld hat maximale Zeichenanzahl (im Test zu ermitteln)</td></tr>
             </table>
           </div>
           <div class="analysis-field">
             <div class="analysis-field__label">Grenzfälle</div>
             <div class="tag-row">
+              <span class="tag tag--note">Stern = 0, Stern = 6</span>
               <span class="tag tag--note">Gast → Bewerten</span>
-              <span class="tag tag--note">Stern = 0 / 6</span>
-              <span class="tag tag--note">2. Bewertung</span>
               <span class="tag tag--note">Leeres Textfeld</span>
+              <span class="tag tag--note">0 Bewertungen, Rundung, Halber Stern</span>
+              <span class="tag tag--note">2. Bewertung</span>
               <span class="tag tag--note">Max. Textlänge</span>
             </div>
             <div class="analysis-field__label" style="margin-top:.7rem">Offene Punkte</div>
             <ul class="open-list">
-              <li>Maximale Zeichenanzahl des Feedback-Feldes (nicht in Anforderung spezifiziert)</li>
-              <li>Darstellung der Durchschnittsbewertung — Rundungsregel unklar</li>
-              <li>Verhalten bei zweiter Bewertung: Block oder Update?</li>
+              <li>Rundungsregel unklar</li>
+              <li>Block oder Update?</li>
+              <li>Zeichenanzahl nicht spezifiziert</li>
             </ul>
           </div>
         </div>
@@ -264,37 +270,40 @@
           <div class="analysis-field">
             <div class="analysis-field__label">Testfragen &amp; Antworten</div>
             <ul class="q-list">
-              <li><span class="q-num">F1</span><span class="q-text">Was genau wird abgefragt — Alter oder Geburtsdatum? <span class="q-answer">Geburtsdatum — Modal zeigt „Please enter your birth date", nicht nur eine Altersangabe.</span></span></li>
-              <li><span class="q-num">F2</span><span class="q-text">Wann und wo erscheint das Modal? <span class="q-answer">Beim ersten Aufruf von /store — noch bevor Produkte sichtbar sind.</span></span></li>
-              <li><span class="q-num">F3</span><span class="q-text">Was passiert bei Eingabe eines Alters unter 18? <span class="q-answer">Zugriff verweigert — Hinweistext statt Produktliste, Bereich gesperrt.</span></span></li>
-              <li><span class="q-num">F4</span><span class="q-text">Muss das Modal bei jedem Seitenaufruf erneut bestätigt werden? <span class="q-answer">Nein — innerhalb derselben Session wird es nicht erneut angezeigt (Session-/Cookie-basiert).</span></span></li>
+              <li><span class="q-num">F1</span><span class="q-text">Wird jemand mit 17J 364T korrekt abgelehnt (1 Tag vor 18)? <span class="q-answer">Ja - Zugriff verweigert (tagesgenau)</span></span></li>
+              <li><span class="q-num">F1</span><span class="q-text">Wird jemand mit exakt 18 Jahren korrekt zugelassen? <span class="q-answer">Ja - Store freigegeben</span></span></li>
+              <li><span class="q-num">F2</span><span class="q-text">Erscheint das Modal beim ersten /store Aufruf? <span class="q-answer">Ja - vor Produktanzeige</span></span></li>
+              <li><span class="q-num">F3</span><span class="q-text">Muss das Modal bei jedem Seitenaufruf erneut bestätigt werden? <span class="q-answer">Nein - innerhalb Session nicht erneut</span></span></li>
+              <li><span class="q-num">F6</span><span class="q-text">Wie lange bleibt die Verifikation gespeichert? <span class="q-answer">Nicht spezifiziert - im Test zu ermitteln</span></span></li>
+              <li><span class="q-num">F4</span><span class="q-text">Wird Datumsformat (TT.MM.JJJJ) verlangt? <span class="q-answer">Ja - Modal zeigt Datumsfelder</span></span></li>
+              <li><span class="q-num">F5</span><span class="q-text">Was passiert bei ungültigem Datum (z.B. 31.02.)? <span class="q-answer">Nicht spezifiziert - im Test zu ermitteln</span></span></li>
             </ul>
           </div>
           <div class="analysis-field">
             <div class="analysis-field__label">Akzeptanzkriterien</div>
             <table class="ac-table">
-              <tr><td>AC1</td><td>Modal erscheint beim ersten Aufruf von /store vor Anzeige der Produkte.</td></tr>
-              <tr><td>AC2</td><td>Eingabe eines Geburtsdatums &lt; 18 Jahre → Zugriff verweigert, Hinweis angezeigt.</td></tr>
-              <tr><td>AC3</td><td>Eingabe eines Geburtsdatums ≥ 18 Jahre → Store freigegeben.</td></tr>
-              <tr><td>AC4</td><td>Innerhalb derselben Session erscheint das Modal nicht erneut.</td></tr>
+              <tr><td>AC1</td><td>Geburtsdatum &lt; 18 Jahre → Zugriff verweigert</td></tr>
+              <tr><td>AC2</td><td>Geburtsdatum ≥ 18 Jahre → Store freigegeben</td></tr>
+              <tr><td>AC3</td><td>Modal erscheint beim ersten Aufruf von /store vor Produkten</td></tr>
+              <tr><td>AC4</td><td>Innerhalb derselben Session kein erneutes Modal</td></tr>
+              <tr><td>AC5</td><td>System verlangt Geburtsdatum im Datumsformat</td></tr>
+              <tr><td>AC6</td><td>Ungültige Datumseingaben werden abgefangen</td></tr>
+              <tr><td>AC7</td><td>Verifikations-Status hat definierte Gültigkeitsdauer</td></tr>
             </table>
           </div>
           <div class="analysis-field">
             <div class="analysis-field__label">Grenzfälle</div>
             <div class="tag-row">
-              <span class="tag tag--note">Alter = 17</span>
-              <span class="tag tag--note">Alter = 18</span>
-              <span class="tag tag--note">Alter = 19</span>
-              <span class="tag tag--note">Browser-Refresh</span>
-              <span class="tag tag--note">Tab-Wechsel</span>
-              <span class="tag tag--note">Neues Browserfenster</span>
-              <span class="tag tag--note">Ungültiges Datum</span>
+              <span class="tag tag--note">17J 364T, =18J</span>
+              <span class="tag tag--note">Browser-Refresh, Tab-Wechsel</span>
+              <span class="tag tag--note">Session-Ende, Browser-Neustart</span>
+              <span class="tag tag--note">Ungültiges Datum (31.02.)</span>
             </div>
             <div class="analysis-field__label" style="margin-top:.7rem">Offene Punkte</div>
             <ul class="open-list">
-              <li>Wie lange ist der Session-Status gültig? (Ablaufzeit unklar)</li>
-              <li>Verhalten auf unterschiedlichen Geräten / Browsern mit demselben Account</li>
-              <li>Was passiert bei Eingabe eines ungültigen Datums (z.B. 31.02.)?</li>
+              <li>Session-Dauer unklar</li>
+              <li>Cookie-Dauer nicht spezifiziert</li>
+              <li>Verhalten bei ungültigem Datum unklar</li>
             </ul>
           </div>
         </div>
@@ -318,25 +327,24 @@
           <div class="analysis-field">
             <div class="analysis-field__label">Akzeptanzkriterien</div>
             <table class="ac-table">
-              <tr><td>AC1</td><td>Bestellwert ≥ 20€ → Versandkosten = 0€, Anzeige im Checkout.</td></tr>
-              <tr><td>AC2</td><td>Bestellwert &lt; 20€ → Versandkosten = 5€, Anzeige im Checkout.</td></tr>
-              <tr><td>AC3</td><td>Versandkosten aktualisieren sich bidirektional bei Warenkorbänderungen (hoch UND runter).</td></tr>
-              <tr><td>AC4</td><td>Checkout ohne Login → Weiterleitung zu /auth.</td></tr>
-              <tr><td>AC5</td><td>Leerer Warenkorb → sinnvoller Hinweis („Your cart is empty…“), kein Absturz.</td></tr>
+              <tr><td>AC1</td><td>Bestellwert ≥ 20€ → Versandkosten = 0€</td></tr>
+              <tr><td>AC2</td><td>Bestellwert &lt; 20€ → Versandkosten = 5€</td></tr>
+              <tr><td>AC3</td><td>Versandkosten aktualisieren sich bei Warenkorbänderungen</td></tr>
+              <tr><td>AC4</td><td>Checkout ohne Login → Weiterleitung zu /auth</td></tr>
+              <tr><td>AC5</td><td>Versandkosten werden angezeigt und zur Gesamtsumme addiert.</td></tr>
             </table>
           </div>
           <div class="analysis-field">
             <div class="analysis-field__label">Grenzfälle</div>
             <div class="tag-row">
-              <span class="tag tag--note">Wert = 20,00€</span>
-              <span class="tag tag--note">Wert = 19,99€</span>
-              <span class="tag tag--note">Wert = 20,01€</span>
-              <span class="tag tag--note">Leerer Warenkorb</span>
+              <span class="tag tag--note">19,99€, =20€, 20,01€</span>
+              <span class="tag tag--note">Hinzufügen → ≥20€</span>
+              <span class="tag tag--note">Entfernen → &lt;20€</span>
               <span class="tag tag--note">Gast ohne Login</span>
             </div>
             <div class="analysis-field__label" style="margin-top:.7rem">Offene Punkte</div>
             <ul class="open-list">
-              <li>Versandkosten-Update nur unidirektional (Hinzufügen → 0€ funktioniert, Entfernen → 5€ funktioniert NICHT) — Bug oder Absicht? Mit PO klären.</li>
+              <li>Update nur unidirektional</li>
             </ul>
           </div>
         </div>
