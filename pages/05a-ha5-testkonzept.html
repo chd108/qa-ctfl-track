@@ -110,7 +110,8 @@
 <main id="main">
   <div class="meta-bar" aria-label="Seitenkontext">
     <span><strong>Projekt:</strong> GroceryMate</span>
-    <span><strong>Testfälle:</strong> 18 TC (9 detailliert)</span>
+    <span><strong>Testfälle:</strong> 9 TC (3 je Feature) · 100&nbsp;% automatisierbar</span>
+    <span><strong>Testkonzept A4:</strong> 5 Seiten (<a href="05b-ha5-testkonzept-a4.html">05b</a>)</span>
     <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829</span>
     <span><strong>Status:</strong> <span class="tag tag--warn">In Bearbeitung</span></span>
   </div>
@@ -181,7 +182,7 @@
         <div class="plan-item"><div class="plan-item__id">GM-F03</div><div class="plan-item__title">Versandkosten &amp; Freigrenze</div><div class="plan-item__desc">Versandkosten entfallen ab einem Bestellwert ≥20€ (Freigrenze). Darunter fallen Versandkosten von 5€ an. Live-Update bei Warenkorbänderungen (⚠️ Bug: nur unidirektional ↑). Nur für eingeloggte Nutzer im Checkout sichtbar.</div></div>
       </div>
       <h3 class="section__subhead">Testfälle gesamt</h3>
-      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1rem;">18 TC gesamt (6 pro Feature) · 15 TC Priorität Hoch · 3 TC Priorität Mittel · 9 TC vollständig spezifiziert (3 pro Feature) · 9 TC als Summary. Spezifikationstiefe nach Priorität — gängige Praxis gemäß ISO/IEC/IEEE 29119-3 (Testdokumentation). Nicht alle Testfälle müssen gleich detailliert ausgearbeitet werden: hochpriore Testfälle werden vollständig spezifiziert, mittlere Priorität als kompakte Zusammenfassung.</p>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1rem;"><strong>9 ausgearbeitete Testfälle</strong> für GM-F01, GM-F02, GM-F03 (je 3) — vollständig spezifiziert, <strong>priorisierte Teilmenge</strong> aus der HA4-Testbasis (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>, inhaltlich zur <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a>). Techniken: EP, BVA, UC (CTFL Kap.&nbsp;4.2). <strong>Referenz:</strong> Web <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> · A4 <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (10&nbsp;Seiten: 1&nbsp;Übersicht + 9&nbsp;TC). Weitere Testfragen aus HA4 bleiben für eine Erweiterung des Testsets verfügbar.<br><span style="font-size:12px;color:var(--soft)">Abgleich mit ISO/IEC/IEEE 29119-3 / IEEE&nbsp;829: dokumentierter Umfang entspricht dem aktuellen HA5-Testfallentwurf (04c/04d).</span></p>
     </div>
   </section>
 
@@ -207,7 +208,7 @@
           <thead><tr><th scope="col">Testart</th><th scope="col">Beschreibung</th><th scope="col">Anwendung</th></tr></thead>
           <tbody>
             <tr><td>Funktionaler Test</td><td>Prüfung, ob Features gemäß Spezifikation funktionieren</td><td>Alle 3 Features (GM-F01, F02, F03)</td></tr>
-            <tr><td>Nicht-funktionaler Test</td><td>Performance, Usability, Kompatibilität (z.B. Live-Update &lt;1 s)</td><td>GM-F03 (Versandkosten-Update), GM-F02 (Modal)</td></tr>
+            <tr><td>Nicht-funktionaler Test</td><td>Performance, Usability, Kompatibilität</td><td>GM-F03 (Versandkosten-Update), GM-F02 (Modal)</td></tr>
             <tr><td>Black-Box-Test</td><td>Test auf Basis von Spezifikation ohne Codekenntnis</td><td>Alle Features</td></tr>
             <tr><td>White-Box-Test</td><td>Nicht angewendet (kein Code-Zugriff im Scope)</td><td>—</td></tr>
           </tbody>
@@ -215,11 +216,16 @@
       </div>
       <h3 class="section__subhead">Testentwurfs-Techniken (CTFL 4.2)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;">Äquivalenzklassenbildung (EP) · Grenzwertanalyse (BVA) · Anwendungsfalltest (UC).</p>
-      <h3 class="section__subhead">Risiken und Maßnahmen</h3>
+      <h3 class="section__subhead">Hauptrisiken und Maßnahmen</h3>
       <div class="risk-list">
-        <div class="risk-item"><div class="risk-item__label">Risiko: Versandkosten Live-Update Bug</div><div class="risk-item__content"><strong>Details:</strong> Bekannter Bug aus HA4 (GM-F03): Live-Update funktioniert nur unidirektional (↑ funktioniert, ↓ nicht) · Versandkosten bleiben bei 0€ nach Produktentfernung.<br><strong>Maßnahme:</strong> Testfall TC-F03-006 prüft Bug · Workaround: Seite neu laden.</div></div>
-        <div class="risk-item"><div class="risk-item__label">Risiko: Zeichenlimit Bewertungs-Textfeld</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt aus HA4 (GM-F01): Maximale Zeichenanzahl des Feedback-Feldes nicht spezifiziert.<br><strong>Maßnahme:</strong> TC-F01-004 testet Grenzwert · Mit Product Owner klären.</div></div>
-        <div class="risk-item"><div class="risk-item__label">Risiko: 2. Bewertung — Block oder Update?</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt aus HA4 (GM-F01): Verhalten bei 2. Bewertung desselben Produkts unklar.<br><strong>Maßnahme:</strong> TC-F01-005 testet beide Szenarien.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Versandkosten Live-Update (unidirektional)</div><div class="risk-item__content"><strong>Details:</strong> Bekannter Bug aus HA4/04b: Update nur bei Erhöhung, nicht bei Reduktion.<br><strong>Maßnahme:</strong> Abgedeckt durch <strong>TC-F03.F3.2</strong> (04c/04d). Workaround: Seite neu laden.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Zeichenlimit Bewertungs-Textfeld unklar</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt in HA4 (F6/AC6, 04a/04b).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Offene Punkte &amp; Abstimmung (HA4 / PO)“.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: 2. Bewertung — Block oder Update?</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt in HA4 (04a/04b Grenzfälle).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Offene Punkte &amp; Abstimmung (HA4 / PO)“.</div></div>
+      </div>
+      <h3 class="section__subhead">Offene Punkte &amp; Abstimmung (HA4 / PO)</h3>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Restrisiken &amp; Vorgehen</div>
+        <div class="info-box__content">Offene Punkte aus der Testbasis-Analyse (HA4) sind derzeit nicht vollständig spezifiziert. Risikobewertung und Priorisierung erfolgen in Abstimmung mit dem Product Owner.</div>
       </div>
     </div>
   </section>
@@ -233,25 +239,21 @@
       <p class="section__intro">Messbare Ziele, die durch die Tests erreicht werden sollen.</p>
       <div class="info-box" role="note">
         <div class="info-box__title">Was sind Testziele?</div>
-        <div class="info-box__content">Testziele beschreiben <strong>was erreicht werden soll</strong>. Sie sind messbar (z.B. "95% der Testfälle bestanden") und dienen als Erfolgskriterium für den Testprozess. Referenz: CTFL Kap. 5.1 (Testplanung).</div>
+        <div class="info-box__content">Testziele beschreiben <strong>was erreicht werden soll</strong>. Sie sind messbar (z.&nbsp;B. „100&nbsp;% der geplanten Testfälle ausgeführt“, „≥89&nbsp;% bestanden“) und dienen als Erfolgskriterium für den Testprozess. Referenz: CTFL Kap. 5.1 (Testplanung).</div>
       </div>
       <h3 class="section__subhead">Primäre Ziele</h3>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1rem;">
         <li>Alle 3 Features funktionieren gemäß Spezifikation</li>
         <li>Akzeptanzkriterien aus Testbasis-Analyse erfüllt</li>
-        <li>Live-Update Versandkosten bidirektional korrekt (inkl. bekannter Bug TC-F03-006)</li>
-      </ul>
-      <h3 class="section__subhead">Sekundäre Ziele</h3>
-      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1rem;">
-        <li>Live-Update &lt;1 Sekunde (Performance-Ziel)</li>
+        <li>Versandkosten Live-Update: bekannter Bug (nur ↑, nicht ↓) wird durch <strong>TC-F03.F3.2</strong> abgedeckt (04c/04d); vollständig bidirektionales Verhalten als Soll langfristig</li>
       </ul>
       <h3 class="section__subhead">Erwartete Ergebnisse (messbar)</h3>
       <div class="ref-table">
         <table>
           <thead><tr><th scope="col" style="width:60%">Metrik</th><th scope="col">Ziel</th></tr></thead>
           <tbody>
-            <tr><td>Testfall-Ausführungsquote</td><td>≥ 95%</td></tr>
-            <tr><td>Testfall-Erfolgsquote</td><td>≥ 90%</td></tr>
+            <tr><td>Testfall-Ausführungsquote</td><td>100&nbsp;%</td></tr>
+            <tr><td>Testfall-Erfolgsquote</td><td>≥ 89&nbsp;%</td></tr>
             <tr><td>Kritische Fehler (Severity 1)</td><td>0</td></tr>
             <tr><td>Hochprioritäre Fehler (Severity 2)</td><td>Alle behoben</td></tr>
           </tbody>
@@ -274,17 +276,17 @@
       <h3 class="section__subhead">Entry Criteria (Startkriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, die erfüllt sein müssen, bevor Tests beginnen können:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li>grocerymate.com erreichbar</li>
-        <li>Testbasis-Analyse (HA4) vorhanden</li>
-        <li>Testfallentwurf (HA5) vorhanden</li>
+        <li>grocerymate.masterschool.com erreichbar</li>
+        <li>Testbasis-Analyse (HA4, 04b/04a) vorhanden</li>
+        <li>Testfallentwurf (HA5, 04c/04d) vorhanden</li>
         <li>Test-Account funktioniert</li>
         <li>Browser (Chrome) installiert</li>
       </ul>
       <h3 class="section__subhead">Exit Criteria (Abnahmekriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, die erfüllt sein müssen, um Tests abzuschließen:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li>≥17/18 TCs ausgeführt (≥95%)</li>
-        <li>≥16/18 TCs bestanden (≥90%)</li>
+        <li>Alle 9 TCs aus 04c/04d ausgeführt (100&nbsp;%)</li>
+        <li>Mindestens 8/9 TCs bestanden (≥89&nbsp;%)</li>
         <li>Alle Fehler dokumentiert</li>
         <li>Testprotokoll vollständig</li>
         <li>Abschlussbericht erstellt</li>
@@ -292,7 +294,7 @@
       <h3 class="section__subhead">Suspension Criteria (Aussetzungskriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Gründe, um Tests zu pausieren:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem;">
-        <li>grocerymate.com nicht erreichbar</li>
+        <li>grocerymate.masterschool.com nicht erreichbar</li>
         <li>Login funktioniert nicht</li>
         <li>Kritischer Blocker (z.B. /store nicht zugänglich)</li>
         <li>Gesundheitliche Gründe</li>
@@ -316,7 +318,7 @@
         <table>
           <thead><tr><th scope="col">Rolle</th><th scope="col">Verantwortung</th><th scope="col">Personen</th></tr></thead>
           <tbody>
-            <tr><td>QA Tester (Student)</td><td>Testdurchführung (18 TCs), Bug-Dokumentation, Abschlussbericht</td><td>1</td></tr>
+            <tr><td>QA Tester (Student)</td><td>Testdurchführung (9 TCs laut 04c/04d), Bug-Dokumentation, Abschlussbericht</td><td>1</td></tr>
             <tr><td>Reviewer (Mentor)</td><td>Review Testprotokoll, Feedback (optional, minimal)</td><td>0–1</td></tr>
           </tbody>
         </table>
@@ -358,7 +360,7 @@
       </div>
       <h3 class="section__subhead">Testdaten</h3>
       <div class="card-grid">
-        <div class="card"><div class="card__title">Konten &amp; Produkte</div><div class="card__body"><ul><li>1 Test-Account (eingeloggt)</li><li>Gast-Modus (nicht eingeloggt)</li><li>Produkte auf grocerymate.com (bereits vorhanden)</li></ul></div></div>
+        <div class="card"><div class="card__title">Konten &amp; Produkte</div><div class="card__body"><ul><li>1 Test-Account (eingeloggt)</li><li>Gast-Modus (nicht eingeloggt)</li><li>Produkte auf grocerymate.masterschool.com (bereits vorhanden)</li></ul></div></div>
         <div class="card"><div class="card__title">Szenarien</div><div class="card__body"><ul><li>Warenkorb: &lt;20€, =20€, &gt;20€</li><li>Geburtsdaten: 17 J. 364 T., =18 J., &gt;18 J.</li><li>Browser: Chrome (primär), optional Firefox/Safari</li></ul></div></div>
       </div>
     </div>
@@ -382,14 +384,14 @@
             <tr><th scope="col">Aktivität</th><th scope="col">Datum</th><th scope="col">Umgebung</th><th scope="col">Verantwortlich</th><th scope="col">Aufwand (h)</th></tr>
           </thead>
           <tbody>
-            <tr><td>Testvorbereitung + Testdurchführung TC 1–6 (GM-F01)</td><td>Fr 20.03.26</td><td>LIVE</td><td>QA Tester</td><td>6</td></tr>
-            <tr><td>Testdurchführung TC 7–18 (GM-F02 + GM-F03)</td><td>Sa 21.03.26</td><td>LIVE</td><td>QA Tester</td><td>6</td></tr>
-            <tr><td>Bug-Dokumentation + Testabschlussbericht</td><td>Mo 23.03.26</td><td>—</td><td>QA Tester</td><td>6</td></tr>
-            <tr><td colspan="4" style="text-align: right; font-weight: 700;">GESAMT:</td><td style="font-weight: 700;">18 h</td></tr>
+            <tr><td>Testvorbereitung + Testdurchführung GM-F01 (3 TC)</td><td>Fr 20.03.26</td><td>LIVE</td><td>QA Tester</td><td>4</td></tr>
+            <tr><td>Testdurchführung GM-F02 + GM-F03 (6 TC)</td><td>Sa 21.03.26</td><td>LIVE</td><td>QA Tester</td><td>5</td></tr>
+            <tr><td>Bug-Dokumentation + Testabschlussbericht</td><td>Mo 23.03.26</td><td>—</td><td>QA Tester</td><td>3</td></tr>
+            <tr><td colspan="4" style="text-align: right; font-weight: 700;">GESAMT:</td><td style="font-weight: 700;">12 h</td></tr>
           </tbody>
         </table>
       </div>
-      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-top: 1rem;">Testzeitraum: 20.–23.03.2026 · 18 Stunden · 3 Tage à 6 h · Solo-Projekt</p>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-top: 1rem;">Testzeitraum: 20.–23.03.2026 · 12 Stunden · 3 Tage · Solo-Projekt</p>
     </div>
   </section>
 
@@ -409,17 +411,24 @@
         <table>
           <thead><tr><th scope="col">Deliverable</th><th scope="col">Beschreibung</th><th scope="col">Verantwortlich</th></tr></thead>
           <tbody>
-            <tr><td>Testkonzept (HA5)</td><td>Vollständiger Testplan mit 8 Abschnitten (IEEE 829 / CTFL 4.0.2)</td><td>QA Tester</td></tr>
-            <tr><td>Testbasis-Analyse (HA4)</td><td>Anforderungsanalyse der 3 Features nach IEEE 29119-3 (bereits vorhanden)</td><td>QA Tester</td></tr>
-            <tr><td>Testfallentwurf (HA5)</td><td>18 detaillierte Testfälle (6 pro Feature), vollständig automatisierbar, Traceability zu HA4 (bereits vorhanden)</td><td>QA Tester</td></tr>
-            <tr><td>Testprotokoll</td><td>Durchführungs-Log der 18 TCs mit Status (Pass/Fail), Screenshots bei Fehlern</td><td>QA Tester</td></tr>
+            <tr><td>Testkonzept (HA5)</td><td>Vollständiger Testplan mit 8 Abschnitten (IEEE 829 / CTFL 4.0.2); A4-Dokument <strong>5&nbsp;Seiten</strong> (<a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a>)</td><td>QA Tester</td></tr>
+            <tr><td>Testbasis-Analyse (HA4)</td><td>3 Features (GM-F01–F03) nach ISO/IEC/IEEE 29119-3 — A4 <a href="04b-ha4-testbasisanalyse-a4.html">04b</a>, Web <a href="04a-ha4-anforderungsanalyse.html">04a</a> (bereits vorhanden)</td><td>QA Tester</td></tr>
+            <tr><td>Testfallentwurf (HA5)</td><td>9 vollständig spezifizierte TCs (3 je Feature), 100&nbsp;% automatisierbar, Traceability zu HA4 — Web <a href="04c-ha5-testfallentwurf.html">04c</a>, A4 <a href="04d-ha5-testfallentwurf-a4.html">04d</a> (10&nbsp;Seiten) (bereits vorhanden)</td><td>QA Tester</td></tr>
+            <tr><td>Testprotokoll</td><td>Durchführungs-Log der 9 TCs mit Status (Pass/Fail), Screenshots bei Fehlern</td><td>QA Tester</td></tr>
             <tr><td>Bug-Reports</td><td>Fehlerberichte mit Screenshots, Steps to Reproduce, Severity (falls Fehler gefunden)</td><td>QA Tester</td></tr>
             <tr><td>Testabschlussbericht</td><td>Zusammenfassung: Ausführungsrate, Pass-Rate, gefundene Fehler, Empfehlungen</td><td>QA Tester</td></tr>
           </tbody>
         </table>
       </div>
       <h3 class="section__subhead">Metriken (im Abschlussbericht)</h3>
-      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;">Test Execution Rate (%) — Ziel: ≥ 95% · Pass Rate (%) — Ziel: ≥ 90% · Defect Density (Fehler/Feature) · Defect Distribution (Severity 1–4) · Retest Success Rate (%) · Coverage (Akzeptanzkriterien %) — Ziel: 100%</p>
+      <div class="card-grid" style="margin-top: .75rem;">
+        <div class="card"><div class="card__title">Test Execution Rate (%)</div><div class="card__body">Anteil ausgeführter Testfälle — <strong>Ziel: 100&nbsp;%</strong></div></div>
+        <div class="card"><div class="card__title">Pass Rate (%)</div><div class="card__body">Anteil bestandener Testfälle — <strong>Ziel: ≥ 89&nbsp;%</strong></div></div>
+        <div class="card"><div class="card__title">Defect Density</div><div class="card__body">Anzahl gefundener Fehler je Feature</div></div>
+        <div class="card"><div class="card__title">Defect Distribution</div><div class="card__body">Verteilung der Fehler nach Schweregrad (Severity 1–4)</div></div>
+        <div class="card"><div class="card__title">Retest Success Rate (%)</div><div class="card__body">Anteil erfolgreich nachgetesteter Fehler</div></div>
+        <div class="card"><div class="card__title">Coverage (Akzeptanzkriterien %)</div><div class="card__body">Abgedeckte AC — <strong>Ziel: 100&nbsp;%</strong></div></div>
+      </div>
     </div>
   </section>
 </main>
