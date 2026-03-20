@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HA4 Testbasis-Analyse GroceryMate: Bewertung, Altersverifikation, Versandkosten.">
+  <meta name="description" content="HA4 Anforderungsanalyse aus Tester-Sicht (inhaltlich: Testbasis-Analyse) — GroceryMate: Bewertung, Altersverifikation, Versandkosten.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/subpage.css">
   <title>HA4 Anforderungsanalyse — QA Lernwebseite</title>
@@ -129,7 +129,7 @@
 <div class="page-chrome">
   <header>
     <h1>Anforderungsanalyse</h1>
-    <p>HA4 · Testbasis-Analyse dreier neuer Features im Kontext von CTFL Kapitel 4.1</p>
+    <p>HA4 · Anforderungsanalyse aus Tester-Sicht — dieselbe inhaltliche Grundlage wie die <strong>Testbasis-Analyse</strong> (CTFL Kap. 4.1), hier für drei neue Features ausgearbeitet</p>
   </header>
 </div>
 
@@ -137,12 +137,12 @@
   <div class="meta-bar" aria-label="Seitenkontext">
     <span><strong>Projekt:</strong> GroceryMate (grocerymate.masterschool.com)</span>
     <span><strong>Features:</strong> Bewertungssystem · Altersverifikation · Versandkosten</span>
-    <span><strong>Standard:</strong> CTFL Kap. 4.1 · IEEE 29119-3 (Testbasis-Analyse)</span>
+    <span><strong>Standard:</strong> CTFL 4.0.2 · Kap. 4.1 · ISO/IEC/IEEE 29119-3</span>
     <span><strong>Status:</strong> <span class="tag tag--warn">Teilweise offen — manuelle Prüfung ausstehend</span></span>
   </div>
 
   <div class="info-box" role="note">
-    <strong>Was ist HA4?</strong> Die Aufgabenstellung verwendet „Anforderungsanalyse" aus Tester-Sicht — es ist eine <strong>Testbasis-Analyse</strong>. Du bekommst vage formulierte Anforderungen, analysierst das reale Verhalten der Anwendung, leitest Testbedingungen ab und dokumentierst offene Punkte. Das entspricht dem Standard <strong>IEEE 29119-3</strong> und ist im CTFL die Aktivität <strong>Testanalyse (Kap. 4.1)</strong>. Beide Begriffe werden in der Praxis oft synonym verwendet — der Unterschied liegt in der Rolle, nicht im Werkzeug.
+    <strong>Was ist HA4?</strong> In der Aufgabenstellung heißt die Tätigkeit oft „Anforderungsanalyse“ — fachlich (CTFL/ISO) ist das eine <strong>Testbasis-Analyse</strong>: vage Anforderungen aufnehmen, reales Verhalten prüfen, Testbedingungen und Akzeptanzkriterien ableiten, offene Punkte dokumentieren. Das entspricht <strong>ISO/IEC/IEEE 29119-3</strong> und CTFL <strong>Testanalyse (Kap. 4.1)</strong>. <strong>Kurz:</strong> Aufgabenbegriff „Anforderungsanalyse“ · Standardbegriff „Testbasis-Analyse“ — hier meinen beide dieselbe Arbeit aus Tester-Sicht (nicht IREB-Requirements-Engineering).
   </div>
 
   <section class="section" aria-labelledby="concept-heading">
@@ -161,7 +161,7 @@
           </div>
         </div>
         <div class="card card--ctfl">
-          <div class="card__title">Testbasis-Analyse (CTFL Kap. 4.1 / IEEE 29119-3)</div>
+          <div class="card__title">Testbasis-Analyse (CTFL Kap. 4.1 · ISO/IEC/IEEE 29119-3)</div>
           <div class="card__body">
             Perspektive des <strong>Testers</strong>: Vorhandene Anforderungen (die Testbasis) werden ausgewertet, um daraus Testbedingungen, Akzeptanzkriterien und Grenzfälle abzuleiten.
             <ul>
@@ -208,7 +208,7 @@
   </section>
 
   <section class="section" aria-labelledby="features-heading">
-    <div class="section__header" id="features-heading">Testbasis-Analyse — GroceryMate · Drei neue Features</div>
+    <div class="section__header" id="features-heading">Ausarbeitung — GroceryMate · Drei neue Features (Testbasis-Analyse / Anforderungsanalyse aus Tester-Sicht)</div>
     <div class="section__body">
       <div class="analysis-card analysis-card--1">
         <div class="analysis-card__header">
@@ -319,9 +319,13 @@
           <div class="analysis-field">
             <div class="analysis-field__label">Testfragen &amp; Antworten</div>
             <ul class="q-list">
-              <li><span class="q-num">F1</span><span class="q-text">Wo werden Versandkosten und Freigrenze angezeigt? <span class="q-answer">Im Checkout-Bereich (/checkout) — sichtbar für eingeloggte Nutzer mit befülltem Warenkorb.</span></span></li>
-              <li><span class="q-num">F2</span><span class="q-text">Werden Versandkosten live aktualisiert bei Warenkorbänderungen? <span class="q-answer">Teilweise — beim Erreichen der Freigrenze (≥20€) verschwinden Versandkosten automatisch. Beim Unterschreiten (&lt;20€) erscheinen sie NICHT wieder, Seite muss neu geladen werden.</span></span></li>
-              <li><span class="q-num">F3</span><span class="q-text">Ist der Checkout ohne Login zugänglich? <span class="q-answer">Nein — /checkout leitet ohne Login zu /auth um.</span></span></li>
+              <li><span class="q-num">F1</span><span class="q-text">Wird bei 19,99€ korrekt 5€ Versandkosten berechnet? <span class="q-answer">Ja - 5€ Versandkosten</span></span></li>
+              <li><span class="q-num">F1</span><span class="q-text">Wird bei exakt 20€ korrekt 0€ Versandkosten berechnet? <span class="q-answer">Ja - 0€ Versandkosten</span></span></li>
+              <li><span class="q-num">F1</span><span class="q-text">Wird bei &gt;20€ korrekt 0€ Versandkosten berechnet? <span class="q-answer">Ja - 0€ Versandkosten</span></span></li>
+              <li><span class="q-num">F2</span><span class="q-text">Werden 5€ angezeigt UND korrekt zur Gesamtsumme addiert? <span class="q-answer">Ja - Anzeige &quot;5€&quot; + Gesamtsumme = Warenkorb + 5€</span></span></li>
+              <li><span class="q-num">F3</span><span class="q-text">Aktualisieren sich Versandkosten beim Hinzufügen (≥20€)? <span class="q-answer">Ja - automatisch 0€</span></span></li>
+              <li><span class="q-num">F3</span><span class="q-text">Aktualisieren sich Versandkosten beim Entfernen (&lt;20€)? <span class="q-answer">NEIN - Bug! Reload nötig</span></span></li>
+              <li><span class="q-num">F4</span><span class="q-text">Ist /checkout ohne Login zugänglich? <span class="q-answer">Nein - Weiterleitung /auth</span></span></li>
             </ul>
           </div>
           <div class="analysis-field">
@@ -377,7 +381,7 @@
             <tr>
               <td>Altersverifikation</td>
               <td>Geburtsdatum-Modal auf /store, 18+-Grenze, session-basiert</td>
-              <td>17 / 18 / 19 Jahre, Refresh, Tab-Wechsel</td>
+              <td>17J 364T, exakt 18J (BVA), Session/Refresh, Tab-Wechsel</td>
               <td>Session-Dauer, Gerätewechsel, ungültiges Datum</td>
               <td><span class="tag tag--warn">Teilweise offen</span></td>
             </tr>
@@ -399,7 +403,7 @@
     <div class="read-guide-grid">
       <div class="read-guide__cell">
         <div class="read-guide__label">① Oben — Theorie</div>
-        <div class="read-guide__text">Erklärt den Unterschied zwischen <strong>Anforderungsanalyse (IREB)</strong> und <strong>Testbasis-Analyse (CTFL)</strong> — und warum HA4 korrekt dem IEEE 29119-3 Standard entspricht.</div>
+        <div class="read-guide__text">Erklärt den Unterschied zwischen <strong>Anforderungsanalyse (IREB / RE)</strong> und <strong>Testbasis-Analyse (CTFL / ISO)</strong> — und warum die HA4-Aufgabe aus Tester-Sicht dem Standard ISO/IEC/IEEE 29119-3 entspricht, auch wenn die Aufgabenstellung „Anforderungsanalyse“ sagt.</div>
       </div>
       <div class="read-guide__cell">
         <div class="read-guide__label">② Mitte — Schema</div>
@@ -407,7 +411,7 @@
       </div>
       <div class="read-guide__cell">
         <div class="read-guide__label">③ Unten — HA4 Analyse</div>
-        <div class="read-guide__text">Alle drei Features ausgefüllt nach diesem Schema: Testfragen &amp; Antworten, Akzeptanzkriterien, Grenzfall-Tags, offene Punkte — plus Zusammenfassungstabelle.</div>
+        <div class="read-guide__text">Alle drei Features ausgefüllt nach diesem Schema: Testfragen &amp; Antworten, Akzeptanzkriterien, Grenzfall-Tags, offene Punkte — plus Zusammenfassungstabelle. Dasselbe inhaltliche Muster liegt dem A4-Formular <strong>HA4 Testbasis-Analyse</strong> zugrunde.</div>
       </div>
     </div>
     <div class="read-guide__note" role="note">
@@ -417,7 +421,7 @@
 </main>
 
 <footer>
-  <p class="source-note">HA4 · Masterschool QA-Track · Testbasis-Analyse nach CTFL Kap. 4.1 / IEEE 29119-3 · grocerymate.masterschool.com</p>
+  <p class="source-note">HA4 · Masterschool QA-Track · Anforderungsanalyse aus Tester-Sicht (= Testbasis-Analyse) nach CTFL 4.0.2 · Kap. 4.1 · ISO/IEC/IEEE 29119-3 · grocerymate.masterschool.com</p>
 </footer>
 
 </body>
