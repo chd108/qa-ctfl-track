@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HA5 Testfallentwurf GroceryMate: Testfälle, Techniken, Automatisierung nach CTFL 4.0.2.">
+  <meta name="description" content="HA5 Testfallentwurf GroceryMate: 9 priorisierte Testfälle, Requirements Traceability, ISO/IEC/IEEE 29119-3 / CTFL 4.2.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/subpage.css">
   <title>HA5 Testfallentwurf — QA Lernwebseite</title>
@@ -99,16 +99,17 @@
 <div class="page-chrome">
   <header>
     <h1>Testfallentwurf</h1>
-    <p>HA5 · Testfallentwurf für drei neue Features im Kontext von CTFL Kapitel 4</p>
+    <p>HA5 · Ausgearbeitete Testfälle für GroceryMate im Kontext von CTFL Kapitel 4.2</p>
   </header>
 </div>
 
 <main id="main">
   <div class="meta-bar" aria-label="Seitenkontext">
-    <span><strong>Projekt:</strong> GroceryMate</span>
-    <span><strong>Features:</strong> 3 neue Funktionen</span>
-    <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829</span>
-    <span><strong>Testfälle:</strong> 18 (GM-F01: 6, GM-F02: 6, GM-F03: 6) — abgestimmt auf <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></span>
+    <span><strong>Projekt:</strong> GroceryMate (HA5)</span>
+    <span><strong>Testobjekt:</strong> grocerymate.masterschool.com</span>
+    <span><strong>Testfälle:</strong> 9 (3 pro Feature) — inhaltlich identisch mit <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (10 Seiten)</span>
+    <span><strong>Automatisierung:</strong> 9 (100%)</span>
+    <span><strong>Standard:</strong> ISO/IEC/IEEE 29119-3 · CTFL 4.0.2</span>
   </div>
 
   <div class="info-box info-box--note" role="note">
@@ -135,14 +136,53 @@
       <h2 class="section__title" id="sec-intro-heading">Über dieses Dokument</h2>
     </div>
     <div class="section__body">
-      <p class="section__intro">Dieses Dokument enthält die 18 Testfälle für die drei neuen Features von GroceryMate: Bewertungssystem (GM-F01), Altersverifikation (GM-F02) und Versandkosten (GM-F03). Inhalt und Traceability entsprechen dem <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (11-Seiten-Dokument). Jeder Testfall ist mit Testentwurfs-Technik gekennzeichnet und referenziert Akzeptanzkriterien aus der HA4 Testbasis-Analyse.</p>
+      <p class="section__intro">Dieses Dokument enthält <strong>9 ausgearbeitete Testfälle</strong> für die drei neuen Features von GroceryMate: Bewertungssystem (GM-F01), Altersverifikation (GM-F02) und Versandkosten (GM-F03). Inhalt, IDs, Schritte und Traceability sind <strong>inhaltlich identisch</strong> mit dem <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (Übersicht + je ein Testfall pro Seite, <strong>10 Seiten</strong>). In HA4 wurden pro Feature typischerweise 6–7 Testfragen identifiziert; hier dokumentieren wir die <strong>3 kritischsten Testfälle pro Feature</strong> nach Priorisierung (in Anforderung &gt; kritisch &gt; Business-Regel &gt; Edge Case).</p>
+      <div class="info-box info-box--ok" role="note">
+        <div class="info-box__title">Auswahl &amp; Dokumentstruktur (A4)</div>
+        <div class="info-box__content"><strong>Seite 1</strong> des A4-Dokuments = Übersicht aller 9 Testfälle · <strong>Seiten 2–10</strong> = je ein vollständiger Testfall. Diese Webseite bündelt dieselben Inhalte im Hauptsystem-Layout (Sections, Karten, Tabellen).</div>
+      </div>
       <div class="info-box" role="note">
         <div class="info-box__title">Was sind Testfälle?</div>
         <div class="info-box__content">Testfälle sind <strong>konkrete Testanweisungen</strong>, die beschreiben, wie ein Feature getestet werden soll. Sie basieren auf der Testbasis-Analyse (HA4) und dem Testkonzept (HA5). Jeder Testfall hat: <ul><li><strong>Testentwurfs-Technik:</strong> Wie wurde der Test abgeleitet? (EP, BVA, etc.)</li><li><strong>Eingabe:</strong> Welche Daten werden verwendet?</li><li><strong>Schritte:</strong> Was wird getestet?</li><li><strong>Erwartetes Ergebnis:</strong> Was sollte passieren?</li></ul>Referenz: CTFL Kap. 4 (Testanalyse und -entwurf)</div>
       </div>
       <div class="info-box info-box--ok" role="note">
-        <div class="info-box__title">Warum diese Reihenfolge? EP → BVA → Use Case → Error Guessing</div>
-        <div class="info-box__content">Die Testfälle sind nach <strong>CTFL 4.0.2-konformer Reihenfolge</strong> sortiert (Kap. 4.2): <strong>1. Äquivalenzklassenbildung (EP) zuerst</strong> — EP definiert die Klassen (gültig/ungültig, eingeloggt/Gast). <strong>2. Grenzwertanalyse (BVA) danach</strong> — BVA testet die Grenzen der Klassen. <strong>3. Anwendungsfalltest (Use Case)</strong> — realistische Nutzerszenarien. <strong>4. Fehlerermessen (Error Guessing) zuletzt</strong> — häufige Fehlerquellen. Für Lernzwecke und ISTQB-Prüfungen ist diese Reihenfolge didaktisch korrekt (Klassen → Grenzen → Szenarien → Fehler).</div>
+        <div class="info-box__title">Testentwurfs-Techniken (CTFL Kap. 4.2) &amp; diese 9 Fälle</div>
+        <div class="info-box__content">Im Lehrplan werden Techniken oft als <strong>EP → BVA → Use Case → Error Guessing</strong> eingeführt (Klassen definieren, Grenzen testen, Szenarien, Fehlerquellen). Die <strong>9 dokumentierten Testfälle</strong> sind keine vollständige EP/BVA-Matrix, sondern eine <strong>priorisierte Teilmenge</strong> aus der HA4-Analyse: pro Feature dominieren je nach Risiko <strong>BVA</strong> (Grenzwerte), <strong>EP</strong> (repräsentative Klasse) oder <strong>Use Case</strong> (End-to-End / Zugriffskontrolle). Weitere Testfragen aus HA4 bleiben für Erweiterung des Testsets verfügbar.</div>
+      </div>
+      <h3 class="section__subhead">Übersicht aller Testfälle (wie A4, Seite 1)</h3>
+      <p class="section__intro" style="margin-top:-0.5rem;">Kurzreferenz mit Technik, Priorität, Automatisierung und AC — identisch zur Übersicht im <a href="04d-ha5-testfallentwurf-a4.html">A4-Dokument</a>.</p>
+      <h4 class="section__subhead" style="font-size:1rem;">GM-F01: Bewertungssystem</h4>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col">ID</th><th scope="col">Testfall</th><th scope="col">Technik</th><th scope="col">Prio</th><th scope="col">Auto</th><th scope="col">AC</th><th scope="col">Begründung (kurz)</th></tr></thead>
+          <tbody>
+            <tr><td>TC-F01.F1.1</td><td>1 Stern bewerten (Minimum-Grenzwert)</td><td>BVA</td><td>Hoch</td><td>Ja</td><td>AC1</td><td>Grenzwert Minimum · Kernfunktion · IN ANFORDERUNG</td></tr>
+            <tr><td>TC-F01.F1.2</td><td>5 Sterne bewerten (Maximum-Grenzwert)</td><td>EP</td><td>Hoch</td><td>Ja</td><td>AC1</td><td>Grenzwert Maximum · Happy Path</td></tr>
+            <tr><td>TC-F01.F2.1</td><td>Gast versucht zu bewerten (Zugriffskontrolle)</td><td>UC</td><td>Hoch</td><td>Ja</td><td>AC2</td><td>Zugriffskontrolle · Security</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 class="section__subhead" style="font-size:1rem;">GM-F02: Altersverifikation</h4>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col">ID</th><th scope="col">Testfall</th><th scope="col">Technik</th><th scope="col">Prio</th><th scope="col">Auto</th><th scope="col">AC</th><th scope="col">Begründung (kurz)</th></tr></thead>
+          <tbody>
+            <tr><td>TC-F02.F1.1</td><td>17 Jahre 364 Tage alt (Zugriff verweigert)</td><td>BVA</td><td>Hoch</td><td>Ja</td><td>AC1</td><td>Legal · knapp unter 18</td></tr>
+            <tr><td>TC-F02.F1.2</td><td>Exakt 18 Jahre alt (Zugriff gewährt)</td><td>BVA</td><td>Hoch</td><td>Ja</td><td>AC2</td><td>Legal · exakt 18</td></tr>
+            <tr><td>TC-F02.F2.1</td><td>Modal erscheint beim ersten Store-Aufruf</td><td>UC</td><td>Hoch</td><td>Ja</td><td>AC3</td><td>IN ANFORDERUNG · vor Produkten</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4 class="section__subhead" style="font-size:1rem;">GM-F03: Versandkosten</h4>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col">ID</th><th scope="col">Testfall</th><th scope="col">Technik</th><th scope="col">Prio</th><th scope="col">Auto</th><th scope="col">AC</th><th scope="col">Begründung (kurz)</th></tr></thead>
+          <tbody>
+            <tr><td>TC-F03.F1.2</td><td>Exakt 20€ Bestellwert (Versandkosten = 0€)</td><td>BVA</td><td>Hoch</td><td>Ja</td><td>AC1</td><td>Freigrenze · IN ANFORDERUNG</td></tr>
+            <tr><td>TC-F03.F3.2</td><td>Artikel entfernen unter 20€ (BUG: Update fehlt)</td><td>UC</td><td>Hoch</td><td>Ja</td><td>AC3</td><td>Kritischer Bug · unidirektional</td></tr>
+            <tr><td>TC-F03.F4.1</td><td>Gast versucht Checkout (Login-Pflicht)</td><td>UC</td><td>Hoch</td><td>Ja</td><td>AC4</td><td>Auth · keine ungültigen Bestellungen</td></tr>
+          </tbody>
+        </table>
       </div>
       <h3 class="section__subhead">Verwendete Testentwurfs-Techniken</h3>
       <div class="ref-table">
@@ -171,51 +211,45 @@
       </div>
       <div class="tc-list">
         <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F01-001</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
-          <div class="tc__title">Eingeloggt, 3 Sterne, OHNE Text (Textfeld optional)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: 3, Textfeld: LEER, Nutzer: eingeloggt. Traceability: AC2, F2 (HA4).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktdetailseite navigieren</li><li>Bewertungs-Widget lokalisieren</li><li>3 Sterne auswählen</li><li>Textfeld LEER lassen</li><li>„Bewertung absenden" klicken</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bewertung wird OHNE Text akzeptiert und gespeichert · Erfolgsmeldung · 3-Sterne-Bewertung sichtbar (ohne Text) · Nach Reload erhalten.</div></div>
+          <div class="tc__header"><span class="tc__id">TC-F01.F1.1</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">1 Stern bewerten (Minimum-Grenzwert)</div>
+          <div class="tc__row"><span class="tc__label">Priorität / Automatisierbar</span><div class="tc__content">Hoch · Ja</div></div>
+          <div class="tc__row"><span class="tc__label">Testfrage (aus HA4)</span><div class="tc__content">Funktioniert das 5-Sterne-System (1 Stern Minimum)?</div></div>
+          <div class="tc__row"><span class="tc__label">Requirements Traceability</span><div class="tc__content">AC1 (siehe HA4 Testbasis-Analyse)</div></div>
+          <div class="tc__row"><span class="tc__label">Vorbedingung (Precondition)</span><div class="tc__content">Nutzer ist eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktseite navigieren</li><li>Bewertungs-Widget lokalisieren (5-Sterne-Anzeige)</li><li>Genau 1 Stern anklicken</li><li>Textfeld leer lassen</li><li>Bewertung absenden</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bewertung wird akzeptiert · 1 Stern wird gespeichert und angezeigt · Kein Fehler bei leerem Textfeld</div></div>
+          <div class="tc__row"><span class="tc__label">Nachbedingung (Postcondition)</span><div class="tc__content">Produktseite zeigt die neue Bewertung mit 1 Stern</div></div>
+          <div class="tc__row"><span class="tc__label">Testdaten</span><div class="tc__content">Testprodukt: beliebig · Login: Gültiger User</div></div>
         </div>
         <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F01-002</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
-          <div class="tc__title">Eingeloggt, 5 Sterne (Max), mit Text</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: 5, Textfeld: z. B. „Excellent product!", Nutzer: eingeloggt. Traceability: AC1, F1 (HA4).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktdetailseite navigieren</li><li>5 Sterne auswählen</li><li>Optional Bewertungstext eingeben</li><li>„Bewertung absenden" klicken</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bewertung gespeichert · Erfolgsmeldung · 5-Sterne-Bewertung auf Produktseite sichtbar · Nach Reload bleibt Bewertung erhalten.</div></div>
+          <div class="tc__header"><span class="tc__id">TC-F01.F1.2</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
+          <div class="tc__title">5 Sterne bewerten (Maximum-Grenzwert)</div>
+          <div class="tc__row"><span class="tc__label">Priorität / Automatisierbar</span><div class="tc__content">Hoch · Ja</div></div>
+          <div class="tc__row"><span class="tc__label">Testfrage (aus HA4)</span><div class="tc__content">Funktioniert das 5-Sterne-System (5 Sterne Maximum)?</div></div>
+          <div class="tc__row"><span class="tc__label">Requirements Traceability</span><div class="tc__content">AC1 (siehe HA4 Testbasis-Analyse)</div></div>
+          <div class="tc__row"><span class="tc__label">Vorbedingung (Precondition)</span><div class="tc__content">Nutzer ist eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktseite navigieren</li><li>Bewertungs-Widget lokalisieren (5-Sterne-Anzeige)</li><li>Alle 5 Sterne anklicken (Maximum)</li><li>Optionales Textfeld ausfüllen (z.&nbsp;B. „Ausgezeichnet!“)</li><li>Bewertung absenden</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bewertung wird akzeptiert · 5 Sterne werden gespeichert und angezeigt · Text wird optional gespeichert</div></div>
+          <div class="tc__row"><span class="tc__label">Nachbedingung (Postcondition)</span><div class="tc__content">Produktseite zeigt die neue Bewertung mit 5 Sternen</div></div>
+          <div class="tc__row"><span class="tc__label">Testdaten</span><div class="tc__content">Testprodukt: beliebig · Login: Gültiger User · Text: beliebig</div></div>
         </div>
         <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F01-003</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
-          <div class="tc__title">Gast versucht zu bewerten (ungültig, Auth-Check)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Nutzer: NICHT eingeloggt (Gast). Traceability: AC3, F1 (HA4).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als Gast (Inkognito/ausgeloggt) auf Produktdetailseite navigieren</li><li>Bewertungs-Bereich suchen</li><li>Versuch, Sterne auszuwählen oder Bewertung abzugeben</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Gast erhält KEINEN Zugang zur Bewertungsfunktion · Widget nicht sichtbar oder deaktiviert · ggf. Hinweis „Bitte einloggen, um zu bewerten".</div></div>
-        </div>
-        <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F01-004</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
-          <div class="tc__title">Eingeloggt, sehr langer Text (Zeichenlimit)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: z. B. 3, Textfeld: Text bis zur max. Zeichenlänge (offener Punkt HA4). Traceability: AC2.</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktdetailseite navigieren</li><li>Sterne auswählen</li><li>Sehr langen Text eingeben (Grenzwert Zeichenlimit)</li><li>„Bewertung absenden" klicken</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bei Limit eingehalten: Bewertung akzeptiert. Bei Überschreitung: Fehlermeldung oder Kürzung. Zeichenlimit in HA4 noch nicht spezifiziert.</div></div>
-        </div>
-        <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F01-005</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
-          <div class="tc__title">2. Bewertung desselben Produkts (Block oder Update?)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Nutzer bereits bewertet (z. B. 3 Sterne). Versuch: erneut 5 Sterne. Traceability: AC4, F3 (HA4).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktdetailseite mit bestehender Bewertung navigieren</li><li>Versuch, erneut zu bewerten (z. B. 5 Sterne)</li><li>„Bewertung absenden" klicken (falls möglich)</li><li>Verhalten beobachten</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">ENTWEDER: Zweite Bewertung blockiert (Fehlermeldung) ODER: Erste Bewertung wird aktualisiert. NICHT: zwei Bewertungen gespeichert. Offener Punkt HA4 (Block vs. Update) mit PO klären.</div></div>
-        </div>
-        <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F01-006</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
-          <div class="tc__title">Eingeloggt, 1 Stern (Min)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Sterne: 1 (minimaler Grenzwert), Textfeld: optional, Nutzer: eingeloggt. Traceability: AC1.</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer auf Produktdetailseite navigieren</li><li>1 Stern auswählen</li><li>Optional Text eingeben</li><li>„Bewertung absenden" klicken</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bewertung gespeichert · 1-Sterne-Bewertung sichtbar · Durchschnittsbewertung aktualisiert.</div></div>
+          <div class="tc__header"><span class="tc__id">TC-F01.F2.1</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Gast versucht zu bewerten (Zugriffskontrolle)</div>
+          <div class="tc__row"><span class="tc__label">Priorität / Automatisierbar</span><div class="tc__content">Hoch · Ja</div></div>
+          <div class="tc__row"><span class="tc__label">Testfrage (aus HA4)</span><div class="tc__content">Wer darf bewerten — alle Nutzer oder nur eingeloggte?</div></div>
+          <div class="tc__row"><span class="tc__label">Requirements Traceability</span><div class="tc__content">AC2 (siehe HA4 Testbasis-Analyse)</div></div>
+          <div class="tc__row"><span class="tc__label">Vorbedingung (Precondition)</span><div class="tc__content">Nutzer ist NICHT eingeloggt (Gast)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als Gast (ohne Login) auf Produktseite navigieren</li><li>Bewertungs-Widget prüfen</li><li>Versuch, Bewertung abzugeben</li><li>Systemverhalten beobachten</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Gast erhält KEINEN Zugang zur Bewertungsfunktion · Bewertungs-Widget ist deaktiviert oder nicht sichtbar · Keine Bewertung möglich</div></div>
+          <div class="tc__row"><span class="tc__label">Nachbedingung (Postcondition)</span><div class="tc__content">Keine Änderung an Produktdaten</div></div>
+          <div class="tc__row"><span class="tc__label">Testdaten</span><div class="tc__content">Testprodukt: beliebig · Kein Login</div></div>
         </div>
       </div>
       <div class="info-box info-box--auto" role="note">
-        <div class="info-box__title">Automatisierungempfehlung: GM-F01</div>
-        <div class="info-box__content">Alle 6 TCs für Regression geeignet. Priorität: TC-F01-002, 003, 005 (Hauptfunktion, Auth, Datenintegrität), TC-F01-001, 004, 006 (Textfeld optional, Zeichenlimit, Grenzwert Min). Details siehe <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>.</div>
+        <div class="info-box__title">Automatisierung: GM-F01</div>
+        <div class="info-box__content">Alle <strong>3</strong> dokumentierten Testfälle sind automatisierbar (100%). Schwerpunkt: Grenzwerte 1/5 Sterne (BVA/EP), Zugriffskontrolle Gast (UC, Security Regression). Vollständige Begründungen: <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>.</div>
       </div>
     </div>
   </section>
@@ -232,51 +266,45 @@
       </div>
       <div class="tc-list">
         <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F02-001</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
-          <div class="tc__title">Geburtsdatum &lt;18 Jahre (17 J.)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: z. B. 17 Jahre alt. Traceability: AC2, F3 (HA4).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren</li><li>Modal erscheint</li><li>Geburtsdatum &lt;18 eingeben</li><li>„Bestätigen" klicken</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Zugriff verweigert · Hinweis „mindestens 18 Jahre" · Store-Produkte nicht angezeigt.</div></div>
+          <div class="tc__header"><span class="tc__id">TC-F02.F1.1</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">17 Jahre 364 Tage alt (Zugriff verweigert)</div>
+          <div class="tc__row"><span class="tc__label">Priorität / Automatisierbar</span><div class="tc__content">Hoch · Ja</div></div>
+          <div class="tc__row"><span class="tc__label">Testfrage (aus HA4)</span><div class="tc__content">Wird jemand mit 17J 364T korrekt abgelehnt (1 Tag vor 18)?</div></div>
+          <div class="tc__row"><span class="tc__label">Requirements Traceability</span><div class="tc__content">AC1 (siehe HA4 Testbasis-Analyse)</div></div>
+          <div class="tc__row"><span class="tc__label">Vorbedingung (Precondition)</span><div class="tc__content">Modal ist noch nicht angezeigt worden (erste /store Aufruf)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>URL /store aufrufen</li><li>Modal-Formular erscheint (Altersverifikation)</li><li>Geburtsdatum eingeben: Heute minus 17 Jahre minus 364 Tage (1 Tag vor 18. Geburtstag)</li><li>Formular absenden</li><li>Systemverhalten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Zugriff wird verweigert (&lt; 18 Jahre) · Hinweistext statt Produktliste · Bereich bleibt gesperrt</div></div>
+          <div class="tc__row"><span class="tc__label">Nachbedingung (Postcondition)</span><div class="tc__content">Kein Zugang zu /store Produkten</div></div>
+          <div class="tc__row"><span class="tc__label">Testdaten</span><div class="tc__content">Geburtsdatum: Heute minus 17J 364T</div></div>
         </div>
         <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F02-002</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
-          <div class="tc__title">Geburtsdatum 17 J., 364 Tage (1 Tag vor 18.)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: Heute minus 17 Jahre, 364 Tage. Traceability: AC2.</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren</li><li>Modal erscheint</li><li>Geburtsdatum eingeben: 17 J., 364 Tage</li><li>„Bestätigen" klicken</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Fehlermeldung · Zugriff verweigert · Keine alkoholischen Produkte sichtbar.</div></div>
+          <div class="tc__header"><span class="tc__id">TC-F02.F1.2</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">Exakt 18 Jahre alt (Zugriff gewährt)</div>
+          <div class="tc__row"><span class="tc__label">Priorität / Automatisierbar</span><div class="tc__content">Hoch · Ja</div></div>
+          <div class="tc__row"><span class="tc__label">Testfrage (aus HA4)</span><div class="tc__content">Wird jemand mit exakt 18 Jahren korrekt zugelassen?</div></div>
+          <div class="tc__row"><span class="tc__label">Requirements Traceability</span><div class="tc__content">AC2 (siehe HA4 Testbasis-Analyse)</div></div>
+          <div class="tc__row"><span class="tc__label">Vorbedingung (Precondition)</span><div class="tc__content">Modal ist noch nicht angezeigt worden (erste /store Aufruf)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>URL /store aufrufen</li><li>Modal-Formular erscheint (Altersverifikation)</li><li>Geburtsdatum eingeben: Heute minus exakt 18 Jahre (18. Geburtstag)</li><li>Formular absenden</li><li>Systemverhalten prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Store wird freigegeben (≥ 18 Jahre) · Produktliste wird angezeigt · Zugriff gewährt</div></div>
+          <div class="tc__row"><span class="tc__label">Nachbedingung (Postcondition)</span><div class="tc__content">Voller Zugang zu /store Produkten</div></div>
+          <div class="tc__row"><span class="tc__label">Testdaten</span><div class="tc__content">Geburtsdatum: Heute minus exakt 18J</div></div>
         </div>
         <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F02-003</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
-          <div class="tc__title">Geburtsdatum genau 18 Jahre (Grenzwert)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: Heute minus genau 18 Jahre. Traceability: AC3 (≥18 muss gültig sein).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren</li><li>Modal erscheint</li><li>Geburtsdatum: genau 18 Jahre alt eingeben</li><li>„Bestätigen" klicken</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Modal schließt sich · Store-Seite angezeigt · Zugriff gewährt. Grenzwert „genau 18" MUSS gültig sein (≥18).</div></div>
-        </div>
-        <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F02-004</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
-          <div class="tc__title">Geburtsdatum &gt;18 Jahre (25 J., gültig)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum: z. B. 01.01.2000 (deutlich über 18). Traceability: AC3.</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren</li><li>Modal erscheint</li><li>Geburtsdatum &gt;18 eingeben</li><li>„Bestätigen" klicken</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Modal schließt sich · Store-Seite vollständig angezeigt · Zugriff gewährt.</div></div>
-        </div>
-        <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F02-005</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
-          <div class="tc__title">Session-Persistenz — kein erneutes Modal</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Geburtsdatum über 18, gleiche Session. Traceability: AC4, F4 (HA4).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren (erstmals in Session), Modal ausfüllen (über 18)</li><li>Store-Seite wird angezeigt</li><li>Auf andere Seite (z. B. Home), dann zurück zu /store</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Modal erscheint beim zweiten Aufruf NICHT erneut · Store direkt angezeigt.</div></div>
-        </div>
-        <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F02-006</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
-          <div class="tc__title">Modal erscheint beim ersten Aufruf /store</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Neue Session. Traceability: AC1, F2 (HA4).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Auf /store navigieren (erstes Mal in Session)</li><li>Prüfen: Modal erscheint vor Anzeige der Produkte</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Modal erscheint beim ersten Aufruf von /store vor Produkten.</div></div>
+          <div class="tc__header"><span class="tc__id">TC-F02.F2.1</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Modal erscheint beim ersten Store-Aufruf</div>
+          <div class="tc__row"><span class="tc__label">Priorität / Automatisierbar</span><div class="tc__content">Hoch · Ja</div></div>
+          <div class="tc__row"><span class="tc__label">Testfrage (aus HA4)</span><div class="tc__content">Erscheint das Modal beim ersten /store Aufruf?</div></div>
+          <div class="tc__row"><span class="tc__label">Requirements Traceability</span><div class="tc__content">AC3 (siehe HA4 Testbasis-Analyse)</div></div>
+          <div class="tc__row"><span class="tc__label">Vorbedingung (Precondition)</span><div class="tc__content">Nutzer hat /store noch nie aufgerufen (erste Session)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>URL /store aufrufen (erster Aufruf in dieser Session)</li><li>Prüfen, ob Modal erscheint</li><li>Prüfen, ob Modal VOR Produktanzeige erscheint</li><li>Modal-Inhalt prüfen (Geburtsdatum-Felder)</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Modal erscheint beim ersten /store Aufruf · Modal wird VOR Produkten angezeigt · Geburtsdatum-Eingabe verfügbar</div></div>
+          <div class="tc__row"><span class="tc__label">Nachbedingung (Postcondition)</span><div class="tc__content">Modal wartet auf Eingabe</div></div>
+          <div class="tc__row"><span class="tc__label">Testdaten</span><div class="tc__content">Keine spezifischen Testdaten</div></div>
         </div>
       </div>
       <div class="info-box info-box--auto" role="note">
-        <div class="info-box__title">Automatisierungempfehlung: GM-F02</div>
-        <div class="info-box__content">Alle 6 TCs automatisierbar (Compliance, Grenzwerte, Session). Priorität: TC-F02-002, 003 (Grenzwert &lt;18 / =18), TC-F02-001, 004 (EP), TC-F02-005, 006 (Session, Modal). Details siehe <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>.</div>
+        <div class="info-box__title">Automatisierung: GM-F02</div>
+        <div class="info-box__content">Alle <strong>3</strong> dokumentierten Testfälle sind automatisierbar (Compliance, tagesgenaue Grenzwerte, E2E Modal). Vollständige Begründungen: <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>.</div>
       </div>
     </div>
   </section>
@@ -293,51 +321,45 @@
       </div>
       <div class="tc-list">
         <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F03-001</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
-          <div class="tc__title">Checkout als Gast (ohne Login)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: Produkte &gt; 20€, Nutzer: nicht eingeloggt (Gast). Traceability: AC4, F1+F3 (HA4).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als Gast Produkte in Warenkorb legen</li><li>Zu /checkout navigieren versuchen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Weiterleitung zu /auth · Checkout ohne Login nicht möglich · Versandkosten nicht angezeigt · Hinweis „Bitte einloggen".</div></div>
+          <div class="tc__header"><span class="tc__id">TC-F03.F1.2</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
+          <div class="tc__title">Exakt 20€ Bestellwert (Versandkosten = 0€)</div>
+          <div class="tc__row"><span class="tc__label">Priorität / Automatisierbar</span><div class="tc__content">Hoch · Ja</div></div>
+          <div class="tc__row"><span class="tc__label">Testfrage (aus HA4)</span><div class="tc__content">Wird bei exakt 20€ korrekt 0€ Versandkosten berechnet?</div></div>
+          <div class="tc__row"><span class="tc__label">Requirements Traceability</span><div class="tc__content">AC1 (siehe HA4 Testbasis-Analyse)</div></div>
+          <div class="tc__row"><span class="tc__label">Vorbedingung (Precondition)</span><div class="tc__content">Warenkorb ist leer · Nutzer ist eingeloggt</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Produkt(e) in Warenkorb legen bis Gesamtsumme exakt 20,00€ beträgt</li><li>/checkout Seite aufrufen</li><li>Versandkosten-Anzeige prüfen</li><li>Gesamtsumme prüfen (Warenkorb + Versand)</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 0€ (Freigrenze erreicht) · Anzeige zeigt ‚0€‘ oder ‚Versandkostenfrei‘ · Gesamtsumme = 20,00€</div></div>
+          <div class="tc__row"><span class="tc__label">Nachbedingung (Postcondition)</span><div class="tc__content">Warenkorb bereit für Checkout mit 0€ Versand</div></div>
+          <div class="tc__row"><span class="tc__label">Testdaten</span><div class="tc__content">Warenkorb-Summe: exakt 20,00€</div></div>
         </div>
         <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F03-002</span><span class="tc__technique">Äquivalenzklassenbildung (EP)</span></div>
-          <div class="tc__title">Bestellwert &gt;20€ (z. B. 25€)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: z. B. 25€, Nutzer: eingeloggt. Traceability: AC1.</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte (&gt;20€) in Warenkorb</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 0€ · Freigrenze überschritten.</div></div>
+          <div class="tc__header"><span class="tc__id">TC-F03.F3.2</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Artikel entfernen unter 20€ (BUG: Update fehlt)</div>
+          <div class="tc__row"><span class="tc__label">Priorität / Automatisierbar</span><div class="tc__content">Hoch · Ja</div></div>
+          <div class="tc__row"><span class="tc__label">Testfrage (aus HA4)</span><div class="tc__content">Aktualisieren sich Versandkosten beim Entfernen (&lt;20€)?</div></div>
+          <div class="tc__row"><span class="tc__label">Requirements Traceability</span><div class="tc__content">AC3 (siehe HA4 Testbasis-Analyse)</div></div>
+          <div class="tc__row"><span class="tc__label">Vorbedingung (Precondition)</span><div class="tc__content">Warenkorb mit Produkten &gt; 20€ (Versand aktuell 0€)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Warenkorb-Summe &gt; 20€ (Versandkosten = 0€ angezeigt)</li><li>Produkt entfernen, sodass Summe &lt; 20€</li><li>Versandkosten-Anzeige beobachten (ohne Page Reload)</li><li>BUG: Versandkosten bleiben bei 0€ statt 5€</li><li>Seite neu laden (F5) und erneut prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">ERWARTETES Verhalten: Versandkosten sollten auf 5€ aktualisieren · AKTUELLES Verhalten (BUG): Versandkosten bleiben 0€ bis Reload · Nach Reload: Korrekt 5€</div></div>
+          <div class="tc__row"><span class="tc__label">Nachbedingung (Postcondition)</span><div class="tc__content">BUG dokumentiert: Update nur unidirektional</div></div>
+          <div class="tc__row"><span class="tc__label">Testdaten</span><div class="tc__content">Start-Summe: &gt; 20€ · Nach Entfernen: &lt; 20€</div></div>
         </div>
         <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F03-003</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
-          <div class="tc__title">Bestellwert =20€ (Freigrenze)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: genau 20€, Nutzer: eingeloggt. Traceability: AC1.</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von genau 20€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 0€ · Kritischer Grenzwert (≥20€).</div></div>
-        </div>
-        <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F03-004</span><span class="tc__technique">Grenzwertanalyse (BVA)</span></div>
-          <div class="tc__title">Bestellwert 19,99€ (unter Grenze)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb: 19,99€, Nutzer: eingeloggt. Traceability: AC2.</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte im Wert von 19,99€ in Warenkorb legen</li><li>Zu /checkout navigieren</li><li>Versandkosten prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten = 5€ · Grenzwert &lt;20€.</div></div>
-        </div>
-        <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F03-005</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
-          <div class="tc__title">Produkt hinzufügen (Live-Update ↑)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb unter 20€, dann hinzufügen bis ≥20€. Traceability: AC3, F2 (HA4).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte (&lt;20€) in Warenkorb, zu /checkout</li><li>Weiteres Produkt hinzufügen (Gesamtwert ≥20€)</li><li>Versandkosten ohne Reload prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Versandkosten aktualisieren sich auf 0€ (Live-Update beim Erreichen der Freigrenze).</div></div>
-        </div>
-        <div class="tc">
-          <div class="tc__header"><span class="tc__id">TC-F03-006</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
-          <div class="tc__title">Produkt entfernen (BUG! Live-Update ↓)</div>
-          <div class="tc__row"><span class="tc__label">Eingabe</span><div class="tc__content">Warenkorb &gt;20€, dann Produkt entfernen (&lt;20€). Traceability: AC3, F2 (HA4).</div></div>
-          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als eingeloggter Nutzer Produkte (&gt;20€) in Warenkorb, zu /checkout (Versand 0€)</li><li>Produkt entfernen, sodass &lt;20€</li><li>Versandkosten ohne Reload prüfen</li><li>Seite neu laden, Versandkosten erneut prüfen</li></ol></div>
-          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Bekannter Bug aus HA4: Ohne Reload erscheinen 5€ oft NICHT wieder. Nach Reload: Versandkosten = 5€. Bug muss gefixed werden.</div></div>
+          <div class="tc__header"><span class="tc__id">TC-F03.F4.1</span><span class="tc__technique">Anwendungsfalltest (Use Case)</span></div>
+          <div class="tc__title">Gast versucht Checkout (Login-Pflicht)</div>
+          <div class="tc__row"><span class="tc__label">Priorität / Automatisierbar</span><div class="tc__content">Hoch · Ja</div></div>
+          <div class="tc__row"><span class="tc__label">Testfrage (aus HA4)</span><div class="tc__content">Ist /checkout ohne Login zugänglich?</div></div>
+          <div class="tc__row"><span class="tc__label">Requirements Traceability</span><div class="tc__content">AC4 (siehe HA4 Testbasis-Analyse)</div></div>
+          <div class="tc__row"><span class="tc__label">Vorbedingung (Precondition)</span><div class="tc__content">Nutzer ist NICHT eingeloggt (Gast)</div></div>
+          <div class="tc__row"><span class="tc__label">Schritte</span><ol class="tc__steps"><li>Als Gast (ohne Login) URL /checkout direkt aufrufen</li><li>Systemverhalten beobachten</li><li>Prüfen, ob Weiterleitung erfolgt</li><li>Ziel-URL prüfen</li></ol></div>
+          <div class="tc__row"><span class="tc__label">Erwartetes Ergebnis</span><div class="tc__content">Gast wird zu /auth weitergeleitet · Kein Zugriff auf Checkout ohne Login · Login-Aufforderung erscheint</div></div>
+          <div class="tc__row"><span class="tc__label">Nachbedingung (Postcondition)</span><div class="tc__content">Gast auf /auth Seite, nicht auf /checkout</div></div>
+          <div class="tc__row"><span class="tc__label">Testdaten</span><div class="tc__content">Kein Login · Direktaufruf /checkout</div></div>
         </div>
       </div>
       <div class="info-box info-box--auto" role="note">
-        <div class="info-box__title">Automatisierungempfehlung: GM-F03</div>
-        <div class="info-box__content">Alle 6 TCs automatisierbar. Priorität: TC-F03-001 (Auth), TC-F03-003, 004 (Grenzwerte 20€), TC-F03-005, 006 (Live-Update, inkl. Bug-Regression). Details siehe <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>.</div>
+        <div class="info-box__title">Automatisierung: GM-F03</div>
+        <div class="info-box__content">Alle <strong>3</strong> dokumentierten Testfälle sind automatisierbar (Freigrenze BVA, Bug-Regression Live-Update ↓, Auth /checkout). Vollständige Begründungen: <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>.</div>
       </div>
     </div>
   </section>
@@ -353,10 +375,10 @@
         <table>
           <thead><tr><th scope="col">Feature</th><th scope="col">Testfälle gesamt</th><th scope="col">Automatisierung empfohlen</th><th scope="col">Manuell</th></tr></thead>
           <tbody>
-            <tr><td>GM-F01 (Bewertungssystem)</td><td>6</td><td>6 (alle)</td><td>—</td></tr>
-            <tr><td>GM-F02 (Altersverifikation)</td><td>6</td><td>6 (alle)</td><td>—</td></tr>
-            <tr><td>GM-F03 (Versandkosten)</td><td>6</td><td>6 (alle)</td><td>—</td></tr>
-            <tr><td><strong>Gesamt</strong></td><td><strong>18</strong></td><td><strong>18 (100%)</strong></td><td>—</td></tr>
+            <tr><td>GM-F01 (Bewertungssystem)</td><td>3</td><td>3 (alle)</td><td>—</td></tr>
+            <tr><td>GM-F02 (Altersverifikation)</td><td>3</td><td>3 (alle)</td><td>—</td></tr>
+            <tr><td>GM-F03 (Versandkosten)</td><td>3</td><td>3 (alle)</td><td>—</td></tr>
+            <tr><td><strong>Gesamt</strong></td><td><strong>9</strong></td><td><strong>9 (100%)</strong></td><td>—</td></tr>
           </tbody>
         </table>
       </div>
@@ -365,22 +387,22 @@
         <table>
           <thead><tr><th scope="col">Technik</th><th scope="col">Anzahl Testfälle</th><th scope="col">Prozent</th></tr></thead>
           <tbody>
-            <tr><td>Äquivalenzklassenbildung (EP)</td><td>6</td><td>33%</td></tr>
-            <tr><td>Grenzwertanalyse (BVA)</td><td>6</td><td>33%</td></tr>
-            <tr><td>Anwendungsfalltest (Use Case)</td><td>6</td><td>33%</td></tr>
+            <tr><td>Grenzwertanalyse (BVA)</td><td>4</td><td>44&nbsp;% (4/9)</td></tr>
+            <tr><td>Äquivalenzklassenbildung (EP)</td><td>1</td><td>11&nbsp;% (1/9)</td></tr>
+            <tr><td>Anwendungsfalltest (Use Case)</td><td>4</td><td>44&nbsp;% (4/9)</td></tr>
           </tbody>
         </table>
       </div>
       <div class="info-box info-box--auto" role="note">
         <div class="info-box__title">Abstimmung mit HA5 Testfallentwurf A4</div>
-        <div class="info-box__content">Die 18 Testfälle entsprechen dem <a href="04d-ha5-testfallentwurf-a4.html">A4-Dokument (11 Seiten)</a> mit vollständiger Traceability zu HA4. Alle TCs sind für Automatisierung geeignet (Grenzwerte, Auth, Compliance, Live-Update). Prioritäten und Begründungen siehe A4.</div>
+        <div class="info-box__content">Die <strong>9</strong> Testfälle entsprechen inhaltlich dem <a href="04d-ha5-testfallentwurf-a4.html">A4-Dokument (10 Seiten: Übersicht + 9 ausgearbeitete TCs)</a> mit Traceability zu HA4 (AC1 …). Alle TCs sind für Automatisierung vorgesehen. Ausführliche Begründungen und Drucklayout: A4-Seite.</div>
       </div>
     </div>
   </section>
 </main>
 
 <footer>
-  <p class="source-note">HA5 · Masterschool QA-Track · Testfallentwurf nach CTFL 4.0.2 · grocerymate.masterschool.com</p>
+  <p class="source-note">HA5 · Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 / CTFL 4.0.2 · grocerymate.masterschool.com</p>
 </footer>
 
 </body>
