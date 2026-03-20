@@ -328,7 +328,7 @@
 <main id="main">
   <div class="meta-bar" aria-label="Modushinweis">
     <span><strong>Modus:</strong> A4-/Dokumentansicht</span>
-    <span><strong>Seiten:</strong> 3</span>
+    <span><strong>Seiten:</strong> 5</span>
     <span><strong>Projekt:</strong> GroceryMate (HA5)</span>
     <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829</span>
   </div>
@@ -344,9 +344,9 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 17.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 19.03.2026<br>
           <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
-          <strong>Seite:</strong> 1 von 3
+          <strong>Seite:</strong> 1 von 5
         </div>
       </div>
 
@@ -355,7 +355,7 @@
           <div class="form-meta__cell"><div class="form-meta__label">Projekt</div><div class="form-meta__value">GroceryMate</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Version</div><div class="form-meta__value">1.0</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Verantwortlich</div><div class="form-meta__value">QA-Team</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Testf&auml;lle gesamt</div><div class="form-meta__value">18 TC (9 detailliert)</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Testf&auml;lle gesamt</div><div class="form-meta__value">9 TC (3 je Feature) · 100&nbsp;% automatisierbar</div></div>
           <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Teststufe</div><div class="form-meta__value">Systemtest</div></div>
           <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Scope</div><div class="form-meta__value">GM-F01 &middot; F02 &middot; F03</div></div>
           <div class="form-meta__cell form-meta__cell--border-top" style="grid-column: span 2"><div class="form-meta__label">Status</div><div class="status-options"><span class="status-option status-option--active">&#10003; In Bearbeitung</span><span class="status-option">Abgeschlossen</span><span class="status-option">Review ausstehend</span></div></div>
@@ -379,7 +379,7 @@
         </div>
         <div class="form-field">
           <div class="form-field__label">Testf&auml;lle gesamt</div>
-          <div class="form-field__value">18 TC gesamt (6 pro Feature) &middot; 15 TC Priorit&auml;t Hoch &middot; 3 TC Priorit&auml;t Mittel &middot; 9 TC vollst&auml;ndig spezifiziert (3 pro Feature) &middot; 9 TC als Summary &middot; Spezifikationstiefe nach Priorit&auml;t &mdash; g&auml;ngige Praxis gem&auml;&szlig; ISO/IEC/IEEE 29119-3 (Testdokumentation)<br><span style="font-size:8pt;color:var(--doc-soft)">Nicht alle Testf&auml;lle m&uuml;ssen gleich detailliert ausgearbeitet werden &mdash; hochpriore Testf&auml;lle werden vollst&auml;ndig spezifiziert, mittlere Priorit&auml;t als kompakte Zusammenfassung.</span></div>
+          <div class="form-field__value"><strong>9 ausgearbeitete Testf&auml;lle</strong> f&uuml;r GM-F01, GM-F02, GM-F03 (je 3) &mdash; vollst&auml;ndig spezifiziert, <strong>priorisierte Teilmenge</strong> aus der HA4-Testbasis (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>, inhaltlich zur <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a>). Techniken: EP, BVA, UC (CTFL Kap.&nbsp;4.2). <strong>Referenz:</strong> Web <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> &middot; A4 <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (10&nbsp;Seiten: 1&nbsp;&Uuml;bersicht + 9&nbsp;TC). Weitere Testfragen aus HA4 bleiben f&uuml;r eine Erweiterung des Testsets verf&uuml;gbar.<br><span style="font-size:8pt;color:var(--doc-soft)">Abgleich mit ISO/IEC/IEEE 29119-3 / IEEE&nbsp;829: dokumentierter Umfang entspricht dem aktuellen HA5-Testfallentwurf (04c/04d).</span></div>
         </div>
         <div class="form-field">
           <div class="form-field__label">Hardware/Software-Anforderungen</div>
@@ -424,27 +424,14 @@
             </div>
           </div>
         </div>
-        <div class="form-field">
-          <div class="form-field__label">Hauptrisiken &amp; Maßnahmen</div>
-          <div class="ref-table">
-            <table>
-              <thead><tr><th scope="col" style="width:40%">Risiko</th><th scope="col">Maßnahme</th></tr></thead>
-              <tbody>
-                <tr><td>Versandkosten Live-Update Bug (unidirektional)</td><td>Bekannter Bug aus HA4: Update funktioniert nur ↑, nicht ↓ · TC-F03-006 prüft Bug</td></tr>
-                <tr><td>Zeichenlimit Bewertungs-Textfeld unklar</td><td>Offener Punkt aus HA4 · TC-F01-004 testet Grenzwert · Mit Product Owner klären</td></tr>
-                <tr><td>2. Bewertung: Block oder Update?</td><td>Offener Punkt aus HA4 · TC-F01-005 testet beide Szenarien</td></tr>
-              </tbody>
-            </table>
-          </div>
-        </div>
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
-        <span>Seite 1 von 3</span>
+        <span>Seite 1 von 5</span>
       </div>
     </article>
 
-    <!-- ═══ Blatt 2: Testziele, Testkriterien ═══ -->
+    <!-- ═══ Blatt 2: Hauptrisiken, offene Punkte (Abschnitt 2 Fortsetzung) ═══ -->
     <article class="doc-a4" id="sheet-2" aria-labelledby="sheet2-heading">
       <div class="doc-header">
         <div class="doc-header__left">
@@ -454,9 +441,59 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 17.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 19.03.2026<br>
           <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
-          <strong>Seite:</strong> 2 von 3
+          <strong>Seite:</strong> 2 von 5
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-section-strip">
+          <span class="doc-section-strip__num">Abschnitt 2 / 8 (Forts.)</span>
+          Teststrategie &mdash; Risiken &amp; Abstimmung
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Hauptrisiken &amp; Maßnahmen</div>
+          <div class="ref-table">
+            <table>
+              <thead><tr><th scope="col" style="width:40%">Risiko</th><th scope="col">Maßnahme</th></tr></thead>
+              <tbody>
+                <tr><td>Versandkosten Live-Update Bug (unidirektional)</td><td>Bekannter Bug aus HA4/04b: Update nur bei Erh&ouml;hung, nicht bei Reduktion &mdash; abgedeckt durch <strong>TC-F03.F3.2</strong> (04c/04d)</td></tr>
+                <tr><td>Zeichenlimit Bewertungs-Textfeld unklar</td><td>Offener Punkt in HA4 (F6/AC6, 04a/04b) &mdash; <strong>kein</strong> eigener TC in den 9 spezifizierten HA5-F&auml;llen; Kl&auml;rung / Risiko siehe Abschnitt &bdquo;Offene Punkte &amp; Abstimmung&ldquo;</td></tr>
+                <tr><td>2. Bewertung: Block oder Update?</td><td>Offener Punkt in HA4 (04a/04b Grenzf&auml;lle) &mdash; <strong>kein</strong> eigener TC in den 9 spezifizierten HA5-F&auml;llen; Kl&auml;rung / Risiko siehe Abschnitt &bdquo;Offene Punkte &amp; Abstimmung&ldquo;</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <div class="doc-section-strip">
+          <span class="doc-section-strip__num">Hinweis</span>
+          Offene Punkte &amp; Abstimmung (HA4 / PO)
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Restrisiken &amp; Vorgehen</div>
+          <div class="form-field__value">Offene Punkte aus der Testbasis-Analyse (HA4) sind derzeit nicht vollst&auml;ndig spezifiziert. Risikobewertung und Priorisierung erfolgen in Abstimmung mit dem Product Owner.</div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
+        <span>Seite 2 von 5</span>
+      </div>
+    </article>
+
+    <!-- ═══ Blatt 3: Testziele, Testkriterien ═══ -->
+    <article class="doc-a4" id="sheet-3" aria-labelledby="sheet3-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet3-heading">Testkonzept</h1>
+          <p>Test Plan nach IEEE 829 / CTFL 4.0.2</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 19.03.2026<br>
+          <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
+          <strong>Seite:</strong> 3 von 5
         </div>
       </div>
 
@@ -471,7 +508,7 @@
             <ul class="compact-list">
               <li>Alle 3 Features funktionieren gemäß Spezifikation</li>
               <li>Akzeptanzkriterien aus Testbasis-Analyse erfüllt</li>
-              <li>Live-Update Versandkosten bidirektional korrekt (inkl. bekannter Bug TC-F03-006)</li>
+              <li>Versandkosten Live-Update: bekannter Bug (nur &uarr;, nicht &darr;) wird durch <strong>TC-F03.F3.2</strong> abgedeckt (04c/04d); vollst&auml;ndig bidirektionales Verhalten als Soll langfristig</li>
             </ul>
           </div>
           <div class="form-field">
@@ -505,9 +542,9 @@
             <div class="form-field__label">Entry Criteria</div>
             <div class="form-field__value">
               <ul class="compact-list">
-                <li>grocerymate.com erreichbar</li>
-                <li>Testbasis-Analyse (HA4) vorhanden</li>
-                <li>Testfallentwurf (HA5) vorhanden</li>
+                <li>grocerymate.masterschool.com erreichbar</li>
+                <li>Testbasis-Analyse (HA4, 04b/04a) vorhanden</li>
+                <li>Testfallentwurf (HA5, 04c/04d) vorhanden</li>
                 <li>Test-Account funktioniert</li>
                 <li>Browser (Chrome) installiert</li>
               </ul>
@@ -517,8 +554,8 @@
             <div class="form-field__label">Exit Criteria</div>
             <div class="form-field__value">
               <ul class="compact-list">
-                <li>≥17/18 TCs ausgeführt (≥95%)</li>
-                <li>≥16/18 TCs bestanden (≥90%)</li>
+                <li>Alle 9 spezifizierten TCs aus 04c/04d ausf&uuml;hren (100&nbsp;% des dokumentierten HA5-Umfangs; Ziel Ausf&uuml;hrungsquote &ge;&nbsp;95&nbsp;% als Prozessgr&ouml;&szlig;e)</li>
+                <li>&ge;8/9 TCs bestanden (&ge;88,9&nbsp;% &mdash; bei kleinem n Zielkorridor zur Metrik Pass-Rate &ge;&nbsp;90&nbsp;%)</li>
                 <li>Alle Fehler dokumentiert</li>
                 <li>Testprotokoll vollständig</li>
                 <li>Abschlussbericht erstellt</li>
@@ -529,7 +566,7 @@
             <div class="form-field__label">Suspension Criteria</div>
             <div class="form-field__value">
               <ul class="compact-list">
-                <li>grocerymate.com nicht erreichbar</li>
+                <li>grocerymate.masterschool.com nicht erreichbar</li>
                 <li>Login funktioniert nicht</li>
                 <li>Kritischer Blocker (z.B. /store nicht zugänglich)</li>
                 <li>Gesundheitliche Gründe</li>
@@ -540,23 +577,23 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
-        <span>Seite 2 von 3</span>
+        <span>Seite 3 von 5</span>
       </div>
     </article>
 
-    <!-- ═══ Blatt 3: Ressourcen, Testumgebung, Zeitplan, Deliverables ═══ -->
-    <article class="doc-a4" id="sheet-3" aria-labelledby="sheet3-heading">
+    <!-- ═══ Blatt 4: Ressourcen, Testumgebung, Zeitplan ═══ -->
+    <article class="doc-a4" id="sheet-4" aria-labelledby="sheet4-heading">
       <div class="doc-header">
         <div class="doc-header__left">
-          <h1 id="sheet3-heading">Testkonzept</h1>
+          <h1 id="sheet4-heading">Testkonzept</h1>
           <p>Test Plan nach IEEE 829 / CTFL 4.0.2</p>
         </div>
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 17.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 19.03.2026<br>
           <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
-          <strong>Seite:</strong> 3 von 3
+          <strong>Seite:</strong> 4 von 5
         </div>
       </div>
 
@@ -571,7 +608,7 @@
             <table>
               <thead><tr><th scope="col" style="width:28%">Rolle</th><th scope="col">Verantwortung</th><th scope="col" style="width:12%">Personen</th></tr></thead>
               <tbody>
-                <tr><td>QA Tester (Student)</td><td>Testdurchführung (18 TCs), Bug-Dokumentation, Abschlussbericht</td><td>1</td></tr>
+                <tr><td>QA Tester (Student)</td><td>Testdurchf&uuml;hrung (9 TCs laut 04c/04d), Bug-Dokumentation, Abschlussbericht</td><td>1</td></tr>
                 <tr><td>Reviewer (Mentor)</td><td>Review Testprotokoll, Feedback (optional, minimal)</td><td>0–1</td></tr>
               </tbody>
             </table>
@@ -617,7 +654,7 @@
             <ul class="compact-list">
               <li>1 Test-Account (eingeloggt)</li>
               <li>Gast-Modus (nicht eingeloggt)</li>
-              <li>Produkte auf grocerymate.com (bereits vorhanden)</li>
+              <li>Produkte auf grocerymate.masterschool.com (bereits vorhanden)</li>
             </ul>
             <ul class="compact-list">
               <li>Warenkorb-Szenarien: &lt;20€, =20€, &gt;20€</li>
@@ -643,15 +680,38 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>Testvorbereitung + Testdurchführung TC 1–6 (GM-F01)</td><td>Fr 20.03.26</td><td>LIVE</td><td>QA Tester</td><td>6</td></tr>
-              <tr><td>Testdurchführung TC 7–18 (GM-F02 + GM-F03)</td><td>Sa 21.03.26</td><td>LIVE</td><td>QA Tester</td><td>6</td></tr>
+              <tr><td>Testvorbereitung + Testdurchf&uuml;hrung GM-F01 (3 TC)</td><td>Fr 20.03.26</td><td>LIVE</td><td>QA Tester</td><td>6</td></tr>
+              <tr><td>Testdurchf&uuml;hrung GM-F02 + GM-F03 (6 TC)</td><td>Sa 21.03.26</td><td>LIVE</td><td>QA Tester</td><td>6</td></tr>
               <tr><td>Bug-Dokumentation + Testabschlussbericht</td><td>Mo 23.03.26</td><td>—</td><td>QA Tester</td><td>6</td></tr>
               <tr><td colspan="4" style="text-align: right; font-weight: 700;">GESAMT:</td><td style="font-weight: 700;">18 h</td></tr>
             </tbody>
           </table>
         </div>
         <p style="font-size: 8pt; color: var(--doc-soft); margin-top: 2pt;">Testzeitraum: 20.–23.03.2026 &middot; 18 Stunden &middot; 3 Tage &agrave; 6 h &middot; Solo-Projekt</p>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
+        <span>Seite 4 von 5</span>
+      </div>
+    </article>
 
+    <!-- ═══ Blatt 5: Test-Deliverables & Metriken ═══ -->
+    <article class="doc-a4" id="sheet-5" aria-labelledby="sheet5-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet5-heading">Testkonzept</h1>
+          <p>Test Plan nach IEEE 829 / CTFL 4.0.2</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 19.03.2026<br>
+          <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
+          <strong>Seite:</strong> 5 von 5
+        </div>
+      </div>
+
+      <div class="doc-body">
         <div class="doc-section-strip">
           <span class="doc-section-strip__num">Abschnitt 8 / 8</span>
           Test-Deliverables
@@ -660,10 +720,10 @@
           <table>
             <thead><tr><th scope="col" style="width:28%">Deliverable</th><th scope="col">Beschreibung</th><th scope="col" style="width:18%">Verantwortlich</th></tr></thead>
             <tbody>
-              <tr><td>Testkonzept (HA5)</td><td>Vollständiger Testplan mit 8 Abschnitten (IEEE 829 / CTFL 4.0.2)</td><td>QA Tester</td></tr>
-              <tr><td>Testbasis-Analyse (HA4)</td><td>Anforderungsanalyse der 3 Features nach IEEE 29119-3 (bereits vorhanden)</td><td>QA Tester</td></tr>
-              <tr><td>Testfallentwurf (HA5)</td><td>18 detaillierte Testfälle (6 pro Feature), vollständig automatisierbar, Traceability zu HA4 (bereits vorhanden)</td><td>QA Tester</td></tr>
-              <tr><td>Testprotokoll</td><td>Durchführungs-Log der 18 TCs mit Status (Pass/Fail), Screenshots bei Fehlern</td><td>QA Tester</td></tr>
+              <tr><td>Testkonzept (HA5)</td><td>Vollst&auml;ndiger Testplan mit 8 Abschnitten (IEEE 829 / CTFL 4.0.2), A4-Dokument <strong>5&nbsp;Seiten</strong></td><td>QA Tester</td></tr>
+              <tr><td>Testbasis-Analyse (HA4)</td><td>3 Features (GM-F01&ndash;F03) nach ISO/IEC/IEEE 29119-3 &mdash; A4 <a href="04b-ha4-testbasisanalyse-a4.html">04b</a>, Web <a href="04a-ha4-anforderungsanalyse.html">04a</a> (bereits vorhanden)</td><td>QA Tester</td></tr>
+              <tr><td>Testfallentwurf (HA5)</td><td>9 vollst&auml;ndig spezifizierte TCs (3 je Feature), 100&nbsp;% automatisierbar, Traceability zu HA4 &mdash; Web <a href="04c-ha5-testfallentwurf.html">04c</a>, A4 <a href="04d-ha5-testfallentwurf-a4.html">04d</a> (10&nbsp;Seiten) (bereits vorhanden)</td><td>QA Tester</td></tr>
+              <tr><td>Testprotokoll</td><td>Durchf&uuml;hrungs-Log der 9 TCs mit Status (Pass/Fail), Screenshots bei Fehlern</td><td>QA Tester</td></tr>
               <tr><td>Bug-Reports</td><td>Fehlerberichte mit Screenshots, Steps to Reproduce, Severity (falls Fehler gefunden)</td><td>QA Tester</td></tr>
               <tr><td>Testabschlussbericht</td><td>Zusammenfassung: Ausführungsrate, Pass-Rate, gefundene Fehler, Empfehlungen</td><td>QA Tester</td></tr>
             </tbody>
@@ -687,7 +747,7 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
-        <span>Seite 3 von 3</span>
+        <span>Seite 5 von 5</span>
       </div>
     </article>
   </div>

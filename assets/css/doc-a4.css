@@ -267,6 +267,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   align-items: center;
   border-top: 1px solid var(--doc-bdr);
   margin-top: 10pt;
+  margin-bottom: 12pt; /* Abstand zur absolut positionierten .doc-footer (HA4 A4 Blatt 1–2) */
   padding-top: 6pt;
   font-size: 8.5pt;
   color: var(--doc-soft);
