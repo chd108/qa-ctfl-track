@@ -324,6 +324,13 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 }
 .doc-body .read-guide__note strong { color: var(--doc-open); }
 
+/* Zusammenfassungsseite: zweite Hinweiszeile (HA5-Anschluss) — gleiche Maße wie .read-guide__note, Akzentfarbe wie Tabellen-Antworten */
+.doc-body .read-guide__note.read-guide__note--follow {
+  color: var(--doc-acc);
+  background: rgba(74, 124, 89, 0.1);
+}
+.doc-body .read-guide__note.read-guide__note--follow strong { color: var(--doc-acc); }
+
 /* ─── Seitenfuß pro A4-Blatt ─── */
 .doc-footer {
   position: absolute;

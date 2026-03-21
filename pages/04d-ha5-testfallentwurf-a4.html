@@ -27,6 +27,16 @@
       color: var(--doc-mid);
     }
     .doc-body .doc-info-box strong { color: var(--doc-text); }
+    .doc-body .doc-info-box p {
+      margin: 0 0 4pt 0;
+    }
+    .doc-body .doc-info-box p:last-child { margin-bottom: 0; }
+    .doc-body .doc-info-box .doc-info-box__title {
+      display: block;
+      margin-bottom: 4pt;
+      font-size: 8.25pt;
+      color: var(--doc-text);
+    }
 
     /* ─── Summary-/Referenz-Tabelle ─── */
     .doc-body .ref-table table {
@@ -427,6 +437,13 @@
               </tr>
             </tbody>
           </table>
+        </div>
+
+        <div class="doc-info-box" role="note" aria-labelledby="gmf03-selection-heading">
+          <p><strong id="gmf03-selection-heading" class="doc-info-box__title">Besonderheit bei GM-F03 — Auswahl-Begründung</strong></p>
+          <p><strong>Warum diese Begründung nötig ist:</strong> In der Testbasis zu GM-F03 sind mehrere Testfragen mit derselben Prioritätskategorie „In Anforderung“ notiert — sie sind damit in der Vorauswahl zunächst gleichrangig. Aus der Übersicht allein ist nicht offensichtlich, warum <strong>TC-F03.F1.2</strong> (Bestellwert exakt 20&nbsp;€) ausgearbeitet wurde, <strong>TC-F03.F1.1</strong> (Bestellwert unter 20&nbsp;€) hingegen nicht.</p>
+          <p><strong>Was gewählt wurde und warum:</strong> <strong>TC-F03.F1.2</strong> wird als Grenzwertfall nach Boundary-Value-Analyse (BVA) priorisiert: exakt 20&nbsp;€ ist die Schwelle für kostenlosen Versand — der risikoreichste Punkt der Regel.</p>
+          <p><strong>Was weggelassen wurde und warum:</strong> <strong>TC-F03.F1.1</strong> erscheint nicht als eigener ausgearbeiteter Testfall, weil der Bereich unter 20&nbsp;€ gegenüber dem Grenzwert bei 20&nbsp;€ inhaltlich redundant ist: Ist das Verhalten an der Schwelle und der zugehörigen Logik verifiziert, ist der typische Fall knapp unter der Grenze aus Sicht der Versandkostenregel äquivalent abgedeckt — der aufwendigere, aussagekräftigere Test liegt auf dem Grenzwert selbst.</p>
         </div>
       </div>
       <div class="doc-footer">

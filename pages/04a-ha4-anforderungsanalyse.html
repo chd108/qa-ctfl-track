@@ -19,6 +19,13 @@
     .meta-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; padding: .6rem 1rem; margin-bottom: 1.25rem; background: rgba(255,255,255,0.55); border: 1px solid var(--bdr); border-radius: 8px; font-size: 0.9rem; color: var(--mid); }
     .meta-bar strong { color: var(--text); }
     .info-box { padding: .9rem 1.1rem; margin-bottom: 1.5rem; background: var(--note-bg); border-left: 4px solid var(--note); border-radius: 4px; font-size: 0.9rem; line-height: 1.55; }
+    /* Explizit wie 04c/05a: blaue Story-/Dokumentenkette-Boxen (info-box--note) */
+    .info-box--note { background: var(--note-bg); border-left-color: var(--note); }
+    .info-box__title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--note); margin-bottom: .5rem; }
+    .info-box__content { font-size: 13px; line-height: 1.6; }
+    .info-box .info-box__content p { margin: .5rem 0; }
+    .info-box .info-box__content p:first-child { margin-top: 0; }
+    .info-box .info-box__content p:last-child { margin-bottom: 0; }
     .section { margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .section__header { padding: .7rem 1.2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .04em; background: rgba(0,0,0,0.04); border-bottom: 1px solid var(--bdr); }
     .section__body { padding: 1rem 1.2rem; background: rgba(255,255,255,0.35); }
@@ -418,6 +425,15 @@
       <strong>Hinweis zu offenen Punkten:</strong> Die als „offen" markierten Punkte sind bewusst so dokumentiert — das ist professionell, kein Mangel. Im Berufsalltag ist eine Analyse mit sauber dokumentierten Unklarheiten wertvoller als eine, die so tut als wäre alles bekannt. Offene Punkte zeigen, wo noch Klärungsbedarf besteht — und geben dem Team eine klare Handlungsliste.
     </div>
   </section>
+
+  <div class="info-box info-box--note" role="note" aria-labelledby="ha4-a4-handin-heading">
+    <div class="info-box__title" id="ha4-a4-handin-heading">Dokumentenkette — HA4 Anforderungsanalyse → HA4 Testbasisanalyse</div>
+    <div class="info-box__content">
+      <p>Die GroceryMate-Lernstrecke besteht aus aufeinander aufbauenden Dokumenten. Die Box ordnet die aktuelle Position in der Kette ein und beschreibt den Zusammenhang der Dokumente.</p>
+      <p>Diese Seite enthält die <strong>Anforderungsanalyse</strong> (Testbasis aus Tester-Sicht) im Web-Format. Derselbe Inhalt liegt zusätzlich als formales <strong>A4-Dokument</strong> zur <strong>Abgabe als Hausaufgabe</strong> vor:
+      <a href="04b-ha4-testbasisanalyse-a4.html"><strong>HA4 Testbasis-Analyse A4</strong></a>.</p>
+    </div>
+  </div>
 </main>
 
 <footer>

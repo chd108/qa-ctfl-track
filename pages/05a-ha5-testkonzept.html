@@ -117,31 +117,17 @@
   </div>
 
   <div class="info-box info-box--note" role="note">
-    <p><strong>Testkonzept oder Testfallentwurf — was kommt zuerst?</strong></p>
-    <p><strong>Die Frage</strong><br>Bei der Arbeit mit CTFL 4.0.2 entsteht Verwirrung: Kapitel 4 behandelt Testentwurf (inkl. Testfallentwurf), Kapitel 5 behandelt Testplanung (inkl. Testkonzept). Widerspricht die Kapitelreihenfolge der praktischen Arbeitsreihenfolge?</p>
-    <p><strong>Die offiziellen Standards</strong><br>IEEE 829-2008 und ISO/IEC/IEEE 29119-3:2013 definieren die Prozessreihenfolge eindeutig:</p>
-    <ul>
-      <li><strong>Test Plan (Testkonzept)</strong> — strategische Planung</li>
-      <li><strong>Test Design Specification (Testfallentwurf)</strong> — operativer Entwurf</li>
-      <li><strong>Test Case Specification (Testfälle)</strong> — konkrete Ausführung</li>
-    </ul>
-    <p><strong>Die Auflösung</strong><br>CTFL ist ein Lehrplan, kein Prozessstandard:</p>
-    <ul>
-      <li>Kapitelreihenfolge = didaktisch: Erst Techniken lernen (Kap. 4), dann Management lernen (Kap. 5)</li>
-      <li>Prozessreihenfolge = praktisch: Erst planen (Testkonzept), dann entwerfen (Testfälle)</li>
-    </ul>
-    <p>In der Praxis: Testkonzept → Testfallentwurf (oft iterativ)<br>Im Lehrplan: Entwurf vor Konzept (didaktische Reihenfolge)</p>
-    <p><strong>Fazit</strong><br>Beide Reihenfolgen sind korrekt — mit unterschiedlichem Zweck. Die Kapitelstruktur im CTFL optimiert das Lernen, während IEEE/ISO die reale Arbeitsreihenfolge beschreiben.</p>
+    <div class="info-box__title">Reihenfolge und Begrifflichkeit — CTFL vs. IEEE/ISO</div>
+    <div class="info-box__content">
+      <p><strong>Reihenfolge.</strong> Im <strong>CTFL 4.0.2</strong> kommt Kapitel 4 (Testentwurf inkl. Testfälle) vor Kapitel 5 (Testplanung inkl. <strong>Testkonzept</strong>) — das ist <strong>didaktisch</strong> gedacht (zuerst Techniken, dann Management), nicht die Prozessvorgabe eines Normenwerks. <strong>IEEE 829</strong> und <strong>ISO/IEC/IEEE 29119-3</strong> beschreiben die <strong>praktische Reihenfolge</strong>: <strong>Test Plan</strong> (strategische Planung, inhaltlich dem Testkonzept vergleichbar) → <strong>Test Design Specification</strong> (Testfallentwurf) → <strong>Test Case Specification</strong> (konkrete Testfälle). In Projekten gilt typisch <strong>Testkonzept → Testfallentwurf</strong>, oft iterativ. <strong>Fazit:</strong> Beide Reihenfolgen sind korrekt — mit unterschiedlichem Zweck (Lernpfad vs. Norm/Praxis).</p>
+      <p><strong>Begrifflichkeit.</strong> <strong>Testkonzept</strong> ist die offizielle deutsche Bezeichnung im <strong>CTFL</strong> (Kap. 5.1.1, ISTQB); <strong>Test Plan</strong> ist der übliche <strong>IEEE</strong>-Begriff im Englischen. Die D.A.CH-Lokalisierung trennt so das <strong>Dokument</strong> (Testkonzept) von der <strong>Aktivität</strong> Testplanung (Kap. 5.1). Bis CTFL 3.0 wurde teils „Testplan“ für das Dokument genutzt; ab CTFL 3.1 ist <strong>Testkonzept</strong> geführt. In der Praxis sind beide Formulierungen verständlich; für ISTQB-Prüfungen ist <strong>Testkonzept</strong> die maßgebliche deutsche Form.</p>
+    </div>
   </div>
 
-  <div class="info-box info-box--note" role="note">
-    <div class="info-box__title">Testkonzept vs. Testplan — Historische Entwicklung</div>
+  <div class="info-box info-box--note" role="note" aria-labelledby="ha5-bridge-heading">
+    <div class="info-box__title" id="ha5-bridge-heading">Dokumentenkette — HA5 Testfallentwurf → HA5 Testkonzept</div>
     <div class="info-box__content">
-      <strong>Warum "Testkonzept" und nicht "Testplan"?</strong><br>
-      Im <strong>CTFL 4.0.2 (deutsch)</strong> heißt das Dokument offiziell <strong>"Testkonzept"</strong> (Kap. 5.1.1). Die D.A.CH-Lokalisierungsgruppe hat diese Bezeichnung gewählt, um klarer zwischen dem <strong>Dokument</strong> (Testkonzept) und der <strong>Aktivität</strong> (Testplanung, Kap. 5.1) zu unterscheiden.<br><br>
-      <strong>Historisch:</strong> Bis CTFL 3.0 (2018) wurde teilweise "Testplan" verwendet. Ab CTFL 3.1 ist "Testkonzept" die offizielle deutsche Bezeichnung.<br>
-      <strong>Englisch:</strong> "Test Plan" (IEEE 829) bleibt international gebräuchlich.<br>
-      <strong>In der Praxis:</strong> Beide Begriffe sind verständlich, aber für ISTQB-Prüfungen und Zertifizierungen ist "Testkonzept" die korrekte deutsche Bezeichnung.
+      <p>Dieses Testkonzept plant die <strong>Ausführung</strong> der <strong>9 Testfälle</strong> aus dem <a href="04c-ha5-testfallentwurf.html"><strong>HA5 Testfallentwurf</strong></a> — inhaltlich identisch mit <a href="04d-ha5-testfallentwurf-a4.html"><strong>HA5 Testfallentwurf A4</strong></a>. <strong>3&nbsp;Testfälle pro Feature</strong>, <strong>100&nbsp;% automatisierbar</strong>. Sie bauen auf der <strong>HA4-Testbasis</strong> auf; hier geht es um die Planung nach CTFL Kap.&nbsp;5.</p>
     </div>
   </div>
 
