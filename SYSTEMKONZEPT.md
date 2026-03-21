@@ -1,34 +1,39 @@
 Erstellt am: 2026-03-14
-Zuletzt aktualisiert am: 2026-03-21 (Stand nach Phase 1–2 inhaltliche HA4/HA5-Strecke, Story-Kette; zuvor Migration 02c, Benennungsmatrix umgesetzt)
+Zuletzt aktualisiert am: 2026-03-21 (Stand nach Phase 4 Standards-Konformität; Phasen 1–3 inhaltlich/formal HA4/HA5; zuvor Migration 02c, Benennungsmatrix umgesetzt)
 Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage für Greenfield-Denkphase, Re-Architecture und Template-Strategie. Enthält verbindlichen Stand (Abschn. 1–3) und geklärte bzw. offene Arbeitsbereiche (ab Abschn. 4).
 
 ---
 
-## Aktueller Stand (März 2026)
+## Aktueller Stand (21.03.2026)
 
 **Wo wir stehen:** Die **praktische V2-Migration** und **Punkt 7 – Benennungslogik** sind **abgeschlossen** — alle aktiven Seiten in `pages/` folgen der Benennungsmatrix (Dateinamen, Nav, `<title>`, `<h1>`, Untertitel); **index.html** ist der Einstieg (Root-Sonderregel); **13 Einstiegskarten** und Integration **02c Teststufen & Testarten** sind umgesetzt.
 
-**Neu abgeschlossen (21.03.2026) – inhaltliche Phasen auf der HA4/HA5-Lernstrecke:**
+**Abgeschlossen auf der HA4/HA5-Lernstrecke (Phasen 1–4, Stand 21.03.2026):**
 - **Phase 1:** Konsistenzprüfung (u. a. GM-F02, GM-F03, Sterne, Kategorie-Umbruch).
 - **Phase 2:** Story-Kette und Hinweise — u. a. 04b Vorschau 9 TCs (grüne Box Blatt 4), 04d GM-F03-Auswahlbegründung, 04a Verweis A4-Abgabe, Infoboxen auf 05a/04c gestrafft, **einheitliche blaue Dokumentenkette-Boxen** (`info-box info-box--note`), **Farbregel** blau = Story/Navigation in der Dokumentenkette · gelb/warn = didaktische „Was ist …?“-Boxen; Linktexte in diesen Boxen ohne sichtbare Dateikürzel `04a`/`04b`/… in Klammern.
+- **Phase 3:** Formale Einheitlichkeit — u. a. Terminologie **Testbasis-Analyse**, Meta/Querverweise, Web/A4-Parität im Kern (04a–05b), Ergänzungen **`doc-a4.css`**; siehe Commit-Historie **QA_Lernwebseite** (z. B. `1eb5b8f` u. a.).
+- **Phase 4 – Standards-Konformität (21.03.2026):** Zitierweise und Normenbezug geprüft und angeglichen:
+  - **CTFL:** Irreführende Kurzform „CTFL 4.2“ → **„CTFL 4.0.2, Kap. 4.2“** (05a Überschrift, 05b Formularlabel).
+  - **IEEE 829:** durchgängig **IEEE 829-2008** (HA5-Web/A4, 04d-Fußzeilen, **index.html**, Landkarte, README, dieses Dokument), konsistent zu ISO/IEC/IEEE 29119-3.
+  - **index.html:** Absatz im Willkommensbereich — Orientierung an CTFL 4.0.2, IEEE 829-2008, ISO/IEC/IEEE 29119-3 ohne 1:1-Normumsetzung (Lernzwecke, Prüfungsanpassung).
+  - **Bewertung:** Für ein **Lern-Portfolio** fachlich und formal **professionell genug**; keine Anspruch auf vollständige Normabdeckung.
 
-**Git (Repo QA_Lernwebseite):** Commit **`9b4349e`** auf `main` dokumentiert die Phase-2-Umsetzung (u. a. `doc-a4.css`, 04a/04b/04c/04d/05a).
+**Git (Repo QA_Lernwebseite):** Commit **`9b4349e`** dokumentiert u. a. Phase 2; spätere Commits Phase 3/4 (siehe Historie).
 
 **Lessons learned:** Ein Teil der später in **Abschn. 6 und 9** zu formalisierenden **Komponentenstil-Logik** (Story-Box vs. didaktische Box) wurde **praktisch vorweggenommen** — die verbindliche Ausformulierung im Designsystem light bleibt der nächste Architekturschritt.
 
 **Konkrete Arbeitslogik (aktuell):**
 - **Benennungslogik (Abschn. 7):** Umgesetzt; optionaler semantischer Feinschliff später möglich.
-- **Nächster inhaltlicher Schritt (Projektsteuerung):** **Phase 3 – Formale Einheitlichkeit** — Terminologie, Metadaten, Querverweise und ggf. weitere Web/A4-Parität über den bereits bearbeiteten Kern hinaus.
+- **Inhaltliche Phasen 1–4 (HA4/HA5):** Abgeschlossen.
 - **Nächster Architektur-Schritt:** **Komponentenstil / V2-Designsystem light** (Abschn. 6 und 9) — u. a. Story-Box-Muster und Info-Box-Varianten aus Phase 2 schriftlich verankern und ausweiten.
 
 **Reihenfolge der nächsten Schritte:**
-1. **Phase 3 – Formale Einheitlichkeit** (fachlich/inhaltlich, messbar).
-2. **Komponentenstil / V2-Designsystem light** (Abschn. 6 und 9).
-3. Rückkehr zur **Konsistenz- und Darstellungsregel-Ebene** auf höherem Niveau.
+1. **Komponentenstil / V2-Designsystem light** (Abschn. 6 und 9).
+2. Rückkehr zur **Konsistenz- und Darstellungsregel-Ebene** auf höherem Niveau.
 
-*(Erledigt: V2-Migration; Root-Index final; Benennungsmatrix dokumentiert und technisch umgesetzt; 02c Migration; **Phase 1 + Phase 2** HA4/HA5 Story-Kette, Commit 9b4349e.)*
+*(Erledigt: V2-Migration; Root-Index final; Benennungsmatrix dokumentiert und technisch umgesetzt; 02c Migration; **Phasen 1–4** HA4/HA5 inhaltlich, formal und Standards-Review.)*
 
-**Meta-Einordnung:** Technik und Benennung stehen; inhaltliche Strecke HA4/HA5 ist in Phase 1–2 gehärtet. Sichtbarer nächster Meilenstein: **Phase 3**, parallel vorbereitet **Komponentenstil / Designsystem light**.
+**Meta-Einordnung:** Technik und Benennung stehen; inhaltliche Strecke HA4/HA5 ist durch **Phasen 1–4** abgeschlossen. Sichtbarer nächster Meilenstein: **Komponentenstil / Designsystem light**.
 
 **Dokument-/A4-Modus (Kurzfassung):** Kein eigener Wissens- oder Inhalts-Seitentyp, sondern ein **eigener Präsentations-/Layoutmodus** innerhalb desselben Systems. Für normale Webnutzung bleibt das Hauptsystem; für A4-/Druckdarstellung gilt der bewusste Dokument-/A4-Modus mit eigenen Layout- und Darstellungsregeln.
 
@@ -267,7 +272,7 @@ Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft
 - **HA-Einordnung:** 00a-ha-einordnung.html · Nav: HA-Einordnung · `<title>`: HA-Einordnung — QA Lernwebseite · `<h1>`: HA-Einordnung · Untertitel: Zuordnung der Hausaufgaben im Kontext von CTFL  
 - **Landkarte:** 01-landkarte.html · Nav: Landkarte · `<title>`: Landkarte — QA Lernwebseite · `<h1>`: Landkarte · Untertitel: Inhaltsverzeichnis des ISTQB CTFL Lehrplans v4.0.2  
 - **Glossar:** 01a-glossar.html · Nav: Glossar · `<title>`: Glossar — QA Lernwebseite · `<h1>`: Glossar · Untertitel: Alle offiziellen Schlüsselbegriffe des ISTQB CTFL v4.0.2  
-- **Standards:** 00b-standards.html · Nav: Standards · `<title>`: Standards — QA Lernwebseite · `<h1>`: Standards · Untertitel: Anerkannte Standards · Projektstatus · Potenzial — Stand 17.03.2026  
+- **Standards:** 00b-standards.html · Nav: Standards · `<title>`: Standards — QA Lernwebseite · `<h1>`: Standards · Untertitel: Anerkannte Standards · Projektstatus · Potenzial — Stand 21.03.2026  
 
 *Gruppe 2:*  
 - **SDLC statisch:** 02a-sdlc-statisch.html · Nav: SDLC & Testprozess (statisch) · `<title>`: SDLC statisch — QA Lernwebseite · `<h1>`: Software-Entwicklungslebenszyklus & ISTQB-Testprozess — Statische Übersicht · Untertitel: Statische Visualisierung des Software Development Life Cycle im Kontext von CTFL Kapitel 2  
@@ -284,7 +289,7 @@ Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft
 
 *Gruppe 4:*  
 - **HA5 Erklärseite:** 05a-ha5-testkonzept.html · Nav: HA5 Testkonzept · `<title>`: HA5 Testkonzept — QA Lernwebseite · `<h1>`: Testkonzept · Untertitel: HA5 · Testkonzept für GroceryMate im Kontext von CTFL Kapitel 5  
-- **HA5 A4-Dokument:** 05b-ha5-testkonzept-a4.html · Nav: HA5 Testkonzept A4 · `<title>`: HA5 Testkonzept A4 — QA Lernwebseite · `<h1>`: Testkonzept A4 · Untertitel: HA5 · Testkonzept für GroceryMate im Kontext von CTFL Kapitel 5 · IEEE 829  
+- **HA5 A4-Dokument:** 05b-ha5-testkonzept-a4.html · Nav: HA5 Testkonzept A4 · `<title>`: HA5 Testkonzept A4 — QA Lernwebseite · `<h1>`: Testkonzept A4 · Untertitel: HA5 · Testkonzept für GroceryMate im Kontext von CTFL Kapitel 5 · IEEE 829-2008  
 
 ---
 
