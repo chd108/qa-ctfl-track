@@ -76,6 +76,25 @@
     .block-explanation__row .block-explanation__text { flex:1 1 0; min-width:0; }
     @media (max-width:880px) { .block-explanation__row { flex-direction:column; } .block-explanation__row .block-explanation__table { max-width:100%; } }
     .row-group-header { background:rgba(255,255,255,0.65); padding:.4rem .8rem; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); border-bottom:1px solid var(--bdr); }
+    h2 .h2-repo-link {
+      text-transform: none;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: var(--mid);
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 12px;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    h2 .h2-repo-link:hover { color: var(--text); }
+    h2 .h2-external-hint {
+      text-transform: none;
+      letter-spacing: normal;
+      font-weight: 600;
+      font-size: 11px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: var(--soft);
+    }
   </style>
 </head>
 <body>
@@ -127,7 +146,7 @@
   </nav>
 
   <section class="standards-block" id="block-a" aria-labelledby="block-a-heading">
-    <h2 id="block-a-heading">Block A &mdash; QA_Lernwebseite (Git-Repo &middot; Statisches Web-Projekt)</h2>
+    <h2 id="block-a-heading">Block A &mdash; QA_Lernwebseite (Git-Repo &middot; Statisches Web-Projekt) &middot; <a class="h2-repo-link" href="https://github.com/chd108/QA_Lernwebseite" rel="noopener noreferrer" target="_blank" aria-label="GitHub-Repository: github.com/chd108/QA_Lernwebseite">github-repo</a><span class="h2-external-hint"> (GitHub in neuem Tab &mdash; Standards-Seite bleibt ge&ouml;ffnet)</span></h2>
     <div class="block-explanation" aria-label="Sortierlogik Block A">
       <p><strong>Sortierlogik:</strong> Die Gruppen in Block A sind nach historischer Entstehungsreihenfolge sortiert. Diese Reihenfolge entspricht gleichzeitig der didaktischen und architektonischen Schichtung &mdash; jede Gruppe baut konzeptuell auf der vorherigen auf:</p>
       <div class="block-explanation__row">
