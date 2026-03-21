@@ -1,25 +1,34 @@
 Erstellt am: 2026-03-14
-Zuletzt aktualisiert am: 2026-03-21 (Stand nach Migration 02c Teststufen & Testarten, Systemanpassung, Index-Integration)
+Zuletzt aktualisiert am: 2026-03-21 (Stand nach Phase 1–2 inhaltliche HA4/HA5-Strecke, Story-Kette; zuvor Migration 02c, Benennungsmatrix umgesetzt)
 Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage für Greenfield-Denkphase, Re-Architecture und Template-Strategie. Enthält verbindlichen Stand (Abschn. 1–3) und geklärte bzw. offene Arbeitsbereiche (ab Abschn. 4).
 
 ---
 
 ## Aktueller Stand (März 2026)
 
-**Wo wir stehen:** Die **praktische V2-Migration ist abgeschlossen**. Das aktive System basiert vollständig auf V2. **Punkt 7 – Benennungslogik** wurde in der Arbeitsreihenfolge vorgezogen und ist **weitgehend abgeschlossen**: Die strukturelle Logik ist festgezurrt, die Benennungsmatrix (Gruppen 1–4) ist dokumentiert, und die **technische Umsetzung** wurde durchgeführt – alle aktiven Seiten in pages/ tragen die festgezurrten Dateinamen (00a-ha-einordnung.html, 01-landkarte.html, 01a-glossar.html, 02a/02b/02c, 04, 04a–04d, 05a/05b), Titel/Navigation/Untertitel entsprechen der Matrix, Root-index.html bleibt als Einstieg (Root-Sonderregel), alle Verlinkungen sind angepasst. Der **Einstieg** ist final: index.html im Root mit vereinbarten Feldern; die **13 Einstiegskarten** stehen in der fachlich/logischen Reihenfolge der Benennungslogik, und die **Kartentitel** orientieren sich an den Navigationstiteln der Zielseiten. **Nächster großer Arbeitsblock:** **Punkt 6 – Komponenten / Komponentenstil / V2-Designsystem light** (Abschn. 6 und 9). Die Reihenfolge im Dokument (zuerst Abschn. 6, dann Abschn. 7) bleibt unverändert; in der Umsetzung wurde Abschn. 7 vorgezogen und abgeschlossen.
+**Wo wir stehen:** Die **praktische V2-Migration** und **Punkt 7 – Benennungslogik** sind **abgeschlossen** — alle aktiven Seiten in `pages/` folgen der Benennungsmatrix (Dateinamen, Nav, `<title>`, `<h1>`, Untertitel); **index.html** ist der Einstieg (Root-Sonderregel); **13 Einstiegskarten** und Integration **02c Teststufen & Testarten** sind umgesetzt.
+
+**Neu abgeschlossen (21.03.2026) – inhaltliche Phasen auf der HA4/HA5-Lernstrecke:**
+- **Phase 1:** Konsistenzprüfung (u. a. GM-F02, GM-F03, Sterne, Kategorie-Umbruch).
+- **Phase 2:** Story-Kette und Hinweise — u. a. 04b Vorschau 9 TCs (grüne Box Blatt 4), 04d GM-F03-Auswahlbegründung, 04a Verweis A4-Abgabe, Infoboxen auf 05a/04c gestrafft, **einheitliche blaue Dokumentenkette-Boxen** (`info-box info-box--note`), **Farbregel** blau = Story/Navigation in der Dokumentenkette · gelb/warn = didaktische „Was ist …?“-Boxen; Linktexte in diesen Boxen ohne sichtbare Dateikürzel `04a`/`04b`/… in Klammern.
+
+**Git (Repo QA_Lernwebseite):** Commit **`9b4349e`** auf `main` dokumentiert die Phase-2-Umsetzung (u. a. `doc-a4.css`, 04a/04b/04c/04d/05a).
+
+**Lessons learned:** Ein Teil der später in **Abschn. 6 und 9** zu formalisierenden **Komponentenstil-Logik** (Story-Box vs. didaktische Box) wurde **praktisch vorweggenommen** — die verbindliche Ausformulierung im Designsystem light bleibt der nächste Architekturschritt.
 
 **Konkrete Arbeitslogik (aktuell):**
-- **Benennungslogik (Abschn. 7):** Strukturell festgezurrt und technisch umgesetzt. Semantischer Feinschliff einzelner Wortstämme kann bei Bedarf später erfolgen; keine offenen Umsetzungsschritte.
-- **Nächster konkreter Schritt:** **Komponentenstil / V2-Designsystem light** ausarbeiten – Darstellungsregeln der kanonischen Komponenten festhalten, Stilabweichungen in den bestehenden Seiten auswerten, kompakter Stilstandard ableiten (Abschn. 6 und 9).
-- **Danach:** Rückkehr zur Konsistenz- und Darstellungsregel-Ebene auf höherem Niveau.
+- **Benennungslogik (Abschn. 7):** Umgesetzt; optionaler semantischer Feinschliff später möglich.
+- **Nächster inhaltlicher Schritt (Projektsteuerung):** **Phase 3 – Formale Einheitlichkeit** — Terminologie, Metadaten, Querverweise und ggf. weitere Web/A4-Parität über den bereits bearbeiteten Kern hinaus.
+- **Nächster Architektur-Schritt:** **Komponentenstil / V2-Designsystem light** (Abschn. 6 und 9) — u. a. Story-Box-Muster und Info-Box-Varianten aus Phase 2 schriftlich verankern und ausweiten.
 
 **Reihenfolge der nächsten Schritte:**
-1. **Komponentenstil / V2-Designsystem light** – nächster großer Block (Abschn. 6 und 9).
-2. Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene.
+1. **Phase 3 – Formale Einheitlichkeit** (fachlich/inhaltlich, messbar).
+2. **Komponentenstil / V2-Designsystem light** (Abschn. 6 und 9).
+3. Rückkehr zur **Konsistenz- und Darstellungsregel-Ebene** auf höherem Niveau.
 
-*(Erledigt: V2-Migration; V2-Aktivierung; Root-Index bereinigt – index.html einzige Einstiegsseite, index-v2.html entfernt; Benennungslogik Runde 1 festgezurrt; Benennungsmatrix Gruppen 1–4 dokumentiert; technische Umsetzung der Matrix – Umbenennung aller aktiven Seiten, Anpassung Titel/Nav/Untertitel/Links; Root-Index final – Kartenreihenfolge und Kartentitel an Benennungslogik angepasst; Migration 02c Teststufen & Testarten – neue Seite 02c-teststufen.html, Systemanpassung, Nav und Index um 02c ergänzt, 13 Einstiegskarten.)*
+*(Erledigt: V2-Migration; Root-Index final; Benennungsmatrix dokumentiert und technisch umgesetzt; 02c Migration; **Phase 1 + Phase 2** HA4/HA5 Story-Kette, Commit 9b4349e.)*
 
-**Meta-Einordnung:** Migrationsphase und Benennungsumstellung abgeschlossen. Der nächste sichtbare Meilenstein ist das V2-Designsystem light / Komponentenstil.
+**Meta-Einordnung:** Technik und Benennung stehen; inhaltliche Strecke HA4/HA5 ist in Phase 1–2 gehärtet. Sichtbarer nächster Meilenstein: **Phase 3**, parallel vorbereitet **Komponentenstil / Designsystem light**.
 
 **Dokument-/A4-Modus (Kurzfassung):** Kein eigener Wissens- oder Inhalts-Seitentyp, sondern ein **eigener Präsentations-/Layoutmodus** innerhalb desselben Systems. Für normale Webnutzung bleibt das Hauptsystem; für A4-/Druckdarstellung gilt der bewusste Dokument-/A4-Modus mit eigenen Layout- und Darstellungsregeln.
 
@@ -146,6 +155,8 @@ Kurz: Kein eigener Wissens- oder Inhalts-Seitentyp, aber ein eigener Präsentati
 - Nicht alle wiederkehrenden Bausteine sind bereits als technisch einheitliche Komponente ausformuliert.
 - Mehrere Elemente sind aktuell eher als konzeptionell wiederkehrende Muster zu verstehen.
 - Der Zweck dieses Abschnitts ist noch nicht die endgültige Komponentenbibliothek, sondern eine saubere Unterscheidung zwischen kanonisch, in Vereinheitlichung und lokal.
+
+**Ergänzung 2026-03-21 (Phase 2 – praktische Vorwegnahme):** Auf den Seiten **04a, 04c, 05a** wurde ein wiederkehrendes Muster für **Dokumentenkette / Story-Verbindung** umgesetzt: Container **`info-box info-box--note`** (blaue „Note“-Optik), Titelzeile im Schema *Dokumentenkette — aktuelles Dokument → nächstes Dokument*, Inhalt mit Querverweisen. Didaktische Erklärboxen („Was ist …?“) bleiben bei **`info-box`** ohne `--note` (warn/gelb). Das ist **noch keine** vollständige Komponentenbibliothek, sondern eine **empirisch etablierte Unterscheidung**, die in **Abschn. 9** formal zu übernehmen ist.
 
 ---
 
@@ -301,16 +312,17 @@ Das System ist konsistent, fachlich begründet und für dieses Projekt dauerhaft
 - Formale Schreibweisen können bei Bedarf in einem späteren Schritt präzisiert werden.
 
 **5. Logische nächste Schritte (aktuell)**
-1. **Komponentenstil / V2-Designsystem light** ausarbeiten (Abschn. 6 und 9) – Darstellungsregeln der kanonischen Komponenten festhalten, Stilstandard ableiten.
-2. Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene auf höherem Niveau.
+1. **Phase 3 – Formale Einheitlichkeit** — Terminologie, Metadaten, Querverweise; Web- und A4-Seiten über die bereits optimierte HA4/HA5-Kernstrecke hinaus angleichen (messbar).
+2. **Komponentenstil / V2-Designsystem light** ausarbeiten (Abschn. 6 und 9) — Darstellungsregeln der kanonischen Komponenten festhalten; **Story-/Dokumentenkette-Box** und **didaktische Info-Box** aus Phase 2 explizit benennen und verallgemeinern.
+3. Anschließend Rückkehr zur Konsistenz- und Darstellungsregel-Ebene auf höherem Niveau.
 
-*(Erledigt: V2-Migration; V2-Aktivierung; Root-Index bereinigt; Benennungslogik Runde 1 festgezurrt; Benennungsmatrix Gruppen 1–4 dokumentiert; technische Umsetzung der Matrix – alle aktiven Seiten umbenannt, Links/Titel/Nav/Untertitel angepasst; Root-Index final – Kartenreihenfolge und Kartentitel an Benennungslogik angepasst.)*
+*(Erledigt: V2-Migration; V2-Aktivierung; Root-Index bereinigt; Benennungslogik Runde 1 festgezurrt; Benennungsmatrix Gruppen 1–4 dokumentiert; technische Umsetzung der Matrix; Root-Index final; **Phase 1 + Phase 2** inhaltliche Optimierung HA4/HA5, Git `9b4349e`.)*
 
 ---
 
 ## 9. Komponentenstil / V2-Designsystem light *(Darstellungsregeln der kanonischen Komponenten – nächster Arbeitsblock)*
 
-Dieser Abschnitt dokumentiert eine Erkenntnis, die beim praktischen Neubau der ersten V2-Seiten (heute z. B. Landkarte, Glossar) sichtbar wurde. Er gehört zum konzeptionellen Arbeitsbereich und beschreibt den **nächsten Architekturpunkt**: die explizite Festlegung eines Komponentenstils. **Aktueller Stand:** Die Benennungslogik (Abschn. 7) ist umgesetzt; der Komponentenstil / V2-Designsystem light ist damit der **nächste große Arbeitsblock**.
+Dieser Abschnitt dokumentiert eine Erkenntnis, die beim praktischen Neubau der ersten V2-Seiten (heute z. B. Landkarte, Glossar) sichtbar wurde. Er gehört zum konzeptionellen Arbeitsbereich und beschreibt den **nächsten Architekturpunkt**: die explizite Festlegung eines Komponentenstils. **Aktueller Stand:** Die Benennungslogik (Abschn. 7) ist umgesetzt. **Zusätzlich (21.03.2026):** In **Phase 2** wurden auf 04a/04c/05a **konkrete Darstellungsentscheidungen** für Story- vs. didaktische Boxen getroffen (siehe Ergänzung in Abschn. 6) — sie sind **noch nicht** das vollständige Designsystem light, sondern **Input** für die hier folgende Ausarbeitung. **Nächster großer Architektur-Arbeitsblock:** Komponentenstil / V2-Designsystem light formal schließen; **vorangehend oder parallel** aus Projektsteuerung: **Phase 3 Formale Einheitlichkeit**.
 
 **1. Entstehung der Erkenntnis**
 - Beim praktischen Neubau der V2-Seiten zeigte sich: Das System funktioniert strukturell – gemeinsame Grundform, klare Komponenten, sinnvolle Überführung der Inhalte.
