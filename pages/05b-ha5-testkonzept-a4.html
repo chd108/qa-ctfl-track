@@ -6,100 +6,12 @@
   <meta name="description" content="HA5 Testkonzept Formular GroceryMate — A4-/Dokumentmodus.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/subpage.css">
+  <link rel="stylesheet" href="../assets/css/doc-a4.css">
   <title>HA5 Testkonzept A4 — QA Lernwebseite</title>
   <style>
-    /* ─── A4-Rahmen: Seitenlayout; A4-Modus nur im Hauptinhalt ─── */
-    body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
-
-    /* ─── Dokumentmodus: Farben und Maßsystem (wie HA4 A4) ─── */
-    .doc-mode {
-      --doc-text:  #1a1a1a;
-      --doc-mid:   #444;
-      --doc-soft:  #777;
-      --doc-bdr:   #c8c8c8;
-      --doc-light: #f2f2f2;
-      --doc-head:  #2a3a3a;
-      --doc-acc:   #4a7c59;
-      --doc-open:  #8a5a6a;
-    }
-
-    /* ─── A4-Dokumentblock ─── */
-    .doc-a4 {
-      width: 210mm;
-      min-height: 297mm;
-      margin-left: auto;
-      margin-right: auto;
-      background: #fff;
-      box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-      padding: 16mm 18mm;
-      position: relative;
-      page-break-after: always;
-      margin-bottom: 2rem;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 11pt;
-      color: var(--doc-text);
-    }
-    .doc-a4:last-of-type { margin-bottom: 0; }
-
-    /* ─── Dokumentkopf (pro Blatt) ─── */
-    .doc-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      border-bottom: 2.5px solid var(--doc-head);
-      padding-bottom: 6pt;
-      margin-bottom: 10pt;
-    }
-    .doc-header__left h1 {
-      font-size: 14pt;
-      font-weight: 700;
-      color: var(--doc-head);
-      letter-spacing: .02em;
-      margin: 0;
-    }
-    .doc-header__left p {
-      font-size: 8.5pt;
-      color: var(--doc-soft);
-      margin-top: 2pt;
-    }
-    .doc-header__right {
-      text-align: right;
-      font-size: 8pt;
-      color: var(--doc-soft);
-      line-height: 1.6;
-    }
-    .doc-header__right strong { color: var(--doc-text); }
-
-    /* ─── Abschnitts-Streifen (wie Feature-Strip bei HA4) ─── */
-    .doc-section-strip {
-      background: var(--doc-head);
-      color: #fff;
-      padding: 5pt 0 5pt 10pt;
-      font-size: 11pt;
-      font-weight: 700;
-      letter-spacing: .04em;
-      margin-bottom: 8pt;
-      display: flex;
-      align-items: center;
-      gap: 12pt;
-    }
-    .doc-section-strip__num {
-      font-size: 8pt;
-      font-weight: 700;
-      letter-spacing: .14em;
-      text-transform: uppercase;
-      opacity: .8;
-    }
-
-    /* ─── Dokumentinhalt (Dokumentstruktur, Dokumentoptik) ─── */
-    .doc-body { padding: 0; }
-
+    /* HA5 Testkonzept A4 — Ergänzungen zu doc-a4.css */
     .doc-body .form-meta {
-      display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border: 1px solid var(--doc-bdr);
-      margin-bottom: 8pt;
     }
     .doc-body .form-meta__row {
       display: contents;
@@ -125,24 +37,6 @@
       color: var(--doc-acc);
       background: #eaf4ee;
       font-weight: 700;
-    }
-    .doc-body .form-meta__cell {
-      padding: 4pt 7pt;
-      border-right: 1px solid var(--doc-bdr);
-    }
-    .doc-body .form-meta__cell:last-child { border-right: none; }
-    .doc-body .form-meta__label {
-      font-size: 7pt;
-      font-weight: 700;
-      letter-spacing: .1em;
-      text-transform: uppercase;
-      color: var(--doc-soft);
-      margin-bottom: 2pt;
-    }
-    .doc-body .form-meta__value {
-      font-size: 9.5pt;
-      color: var(--doc-text);
-      font-weight: 600;
     }
 
     .doc-body .form-field { margin-bottom: 8pt; }
@@ -174,31 +68,6 @@
       grid-template-columns: repeat(3, 1fr);
       gap: 8pt;
       margin-bottom: 8pt;
-    }
-
-    .doc-body .ref-table table {
-      width: 100%;
-      border-collapse: collapse;
-      border: 1px solid var(--doc-bdr);
-      margin-bottom: 8pt;
-      font-size: 9pt;
-    }
-    .doc-body .ref-table thead tr { background: var(--doc-head); color: #fff; }
-    .doc-body .ref-table thead th {
-      padding: 4pt 7pt;
-      text-align: left;
-      font-size: 7.5pt;
-      font-weight: 700;
-      letter-spacing: .08em;
-      text-transform: uppercase;
-    }
-    .doc-body .ref-table tbody tr { border-bottom: 1px solid var(--doc-bdr); }
-    .doc-body .ref-table tbody tr:last-child { border-bottom: none; }
-    .doc-body .ref-table tbody tr:nth-child(even) { background: var(--doc-light); }
-    .doc-body .ref-table tbody td {
-      padding: 4.5pt 7pt;
-      vertical-align: top;
-      line-height: 1.45;
     }
 
     .doc-body .checkbox-row {
@@ -239,54 +108,6 @@
       color: var(--doc-text);
     }
     .doc-body .compact-list li { margin: 1.5pt 0; }
-
-    /* ─── Seitenfuß pro A4-Blatt ─── */
-    .doc-footer {
-      position: absolute;
-      bottom: 12mm;
-      left: 18mm;
-      right: 18mm;
-      padding-top: 2mm;
-      border-top: 1px solid var(--doc-bdr);
-      font-size: 7.5pt;
-      color: var(--doc-soft);
-      display: flex;
-      justify-content: space-between;
-      text-align: left;
-    }
-
-    /* ─── Meta-Bar (nur Bildschirm) ─── */
-    .meta-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem;
-      padding: .6rem 1rem;
-      margin-bottom: 1rem;
-      background: rgba(255,255,255,0.55);
-      border: 1px solid var(--bdr);
-      border-radius: 8px;
-      font-size: 0.9rem;
-      color: var(--mid);
-    }
-    .meta-bar strong { color: var(--text); }
-
-    /* ─── Druck: Rahmen ausblenden, A4-Blöcke als Seiten ─── */
-    @media print {
-      .top-nav-zone,
-      .page-chrome,
-      .meta-bar,
-      main > footer { display: none !important; }
-      body { padding: 0; margin: 0; background: #fff; }
-      main { max-width: none; }
-      .doc-a4 {
-        box-shadow: none;
-        margin: 0;
-        page-break-after: always;
-        min-height: 0;
-      }
-      .doc-a4:last-of-type { page-break-after: auto; }
-    }
   </style>
 </head>
 <body>
@@ -344,8 +165,7 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 20.03.2026<br>
-          <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
           <strong>Seite:</strong> 1 von 5
         </div>
       </div>
@@ -361,8 +181,8 @@
           <div class="form-meta__cell form-meta__cell--border-top" style="grid-column: span 2"><div class="form-meta__label">Status</div><div class="status-options"><span class="status-option status-option--active">&#10003; In Bearbeitung</span><span class="status-option">Abgeschlossen</span><span class="status-option">Review ausstehend</span></div></div>
         </div>
 
-        <div class="doc-section-strip">
-          <span class="doc-section-strip__num">Abschnitt 1 / 8</span>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 1 / 8</span>
           Produktanalyse &amp; Testumfang
         </div>
         <div class="form-field">
@@ -379,7 +199,7 @@
         </div>
         <div class="form-field">
           <div class="form-field__label">Testf&auml;lle gesamt</div>
-          <div class="form-field__value"><strong>9 ausgearbeitete Testf&auml;lle</strong> f&uuml;r GM-F01, GM-F02, GM-F03 (je 3) &mdash; vollst&auml;ndig spezifiziert, <strong>priorisierte Teilmenge</strong> aus der HA4-Testbasis (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>, inhaltlich zur <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a>). Techniken: EP, BVA, UC (CTFL Kap.&nbsp;4.2). <strong>Referenz:</strong> Web <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> &middot; A4 <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (10&nbsp;Seiten: 1&nbsp;&Uuml;bersicht + 9&nbsp;TC). Weitere Testfragen aus HA4 bleiben f&uuml;r eine Erweiterung des Testsets verf&uuml;gbar.<br><span style="font-size:8pt;color:var(--doc-soft)">Abgleich mit ISO/IEC/IEEE 29119-3 / IEEE&nbsp;829: dokumentierter Umfang entspricht dem aktuellen HA5-Testfallentwurf (04c/04d).</span></div>
+          <div class="form-field__value"><strong>9 ausgearbeitete Testf&auml;lle</strong> f&uuml;r GM-F01, GM-F02, GM-F03 (je 3) &mdash; vollst&auml;ndig spezifiziert, <strong>priorisierte Teilmenge</strong> aus der HA4-Testbasis (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>, inhaltlich zur <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a>). Techniken: EP, BVA, UC (CTFL Kap.&nbsp;4.2). <strong>Referenz:</strong> Web <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> &middot; A4 <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (11&nbsp;Seiten: 2&nbsp;&Uuml;bersichtsseiten + 9&nbsp;TC). Weitere Testfragen aus HA4 bleiben f&uuml;r eine Erweiterung des Testsets verf&uuml;gbar.<br><span style="font-size:8pt;color:var(--doc-soft)">Abgleich mit ISO/IEC/IEEE 29119-3 / IEEE&nbsp;829: dokumentierter Umfang entspricht dem aktuellen HA5-Testfallentwurf (04c/04d).</span></div>
         </div>
         <div class="form-field">
           <div class="form-field__label">Hardware/Software-Anforderungen</div>
@@ -395,8 +215,8 @@
           </div>
         </div>
 
-        <div class="doc-section-strip">
-          <span class="doc-section-strip__num">Abschnitt 2 / 8</span>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 2 / 8</span>
           Teststrategie
         </div>
         <div class="form-field">
@@ -427,7 +247,6 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
-        <span>Seite 1 von 5</span>
       </div>
     </article>
 
@@ -441,15 +260,14 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 20.03.2026<br>
-          <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
           <strong>Seite:</strong> 2 von 5
         </div>
       </div>
 
       <div class="doc-body">
-        <div class="doc-section-strip">
-          <span class="doc-section-strip__num">Abschnitt 2 / 8 (Forts.)</span>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 2 / 8 (Forts.)</span>
           Teststrategie &mdash; Risiken &amp; Abstimmung
         </div>
         <div class="form-field">
@@ -466,8 +284,8 @@
           </div>
         </div>
 
-        <div class="doc-section-strip">
-          <span class="doc-section-strip__num">Hinweis</span>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Hinweis</span>
           Offene Punkte &amp; Abstimmung (HA4 / PO)
         </div>
         <div class="form-field">
@@ -477,7 +295,6 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
-        <span>Seite 2 von 5</span>
       </div>
     </article>
 
@@ -491,15 +308,14 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 20.03.2026<br>
-          <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
           <strong>Seite:</strong> 3 von 5
         </div>
       </div>
 
       <div class="doc-body">
-        <div class="doc-section-strip">
-          <span class="doc-section-strip__num">Abschnitt 3 / 8</span>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 3 / 8</span>
           Testziele
         </div>
         <div class="form-field">
@@ -525,8 +341,8 @@
           </div>
         </div>
 
-        <div class="doc-section-strip">
-          <span class="doc-section-strip__num">Abschnitt 4 / 8</span>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 4 / 8</span>
           Testkriterien
         </div>
         <div class="doc-grid-3">
@@ -569,7 +385,6 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
-        <span>Seite 3 von 5</span>
       </div>
     </article>
 
@@ -583,15 +398,14 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 20.03.2026<br>
-          <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
           <strong>Seite:</strong> 4 von 5
         </div>
       </div>
 
       <div class="doc-body">
-        <div class="doc-section-strip">
-          <span class="doc-section-strip__num">Abschnitt 5 / 8</span>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 5 / 8</span>
           Ressourcen
         </div>
         <div class="form-field">
@@ -625,8 +439,8 @@
           </div>
         </div>
 
-        <div class="doc-section-strip">
-          <span class="doc-section-strip__num">Abschnitt 6 / 8</span>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 6 / 8</span>
           Testumgebung
         </div>
         <div class="form-field">
@@ -656,8 +470,8 @@
           </div>
         </div>
 
-        <div class="doc-section-strip">
-          <span class="doc-section-strip__num">Abschnitt 7 / 8</span>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 7 / 8</span>
           Zeitplan &amp; Aufwandsschätzung
         </div>
         <div class="ref-table">
@@ -683,7 +497,6 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
-        <span>Seite 4 von 5</span>
       </div>
     </article>
 
@@ -697,15 +510,14 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 20.03.2026<br>
-          <strong>Standard:</strong> CTFL 4.0.2 / IEEE 829<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
           <strong>Seite:</strong> 5 von 5
         </div>
       </div>
 
       <div class="doc-body">
-        <div class="doc-section-strip">
-          <span class="doc-section-strip__num">Abschnitt 8 / 8</span>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 8 / 8</span>
           Test-Deliverables
         </div>
         <div class="ref-table">
@@ -714,7 +526,7 @@
             <tbody>
               <tr><td>Testkonzept (HA5)</td><td>Vollst&auml;ndiger Testplan mit 8 Abschnitten (IEEE 829 / CTFL 4.0.2), A4-Dokument <strong>5&nbsp;Seiten</strong></td><td>QA Tester</td></tr>
               <tr><td>Testbasis-Analyse (HA4)</td><td>3 Features (GM-F01&ndash;F03) nach ISO/IEC/IEEE 29119-3 &mdash; A4 <a href="04b-ha4-testbasisanalyse-a4.html">04b</a>, Web <a href="04a-ha4-anforderungsanalyse.html">04a</a> (bereits vorhanden)</td><td>QA Tester</td></tr>
-              <tr><td>Testfallentwurf (HA5)</td><td>9 vollst&auml;ndig spezifizierte TCs (3 je Feature), 100&nbsp;% automatisierbar, Traceability zu HA4 &mdash; Web <a href="04c-ha5-testfallentwurf.html">04c</a>, A4 <a href="04d-ha5-testfallentwurf-a4.html">04d</a> (10&nbsp;Seiten) (bereits vorhanden)</td><td>QA Tester</td></tr>
+              <tr><td>Testfallentwurf (HA5)</td><td>9 vollst&auml;ndig spezifizierte TCs (3 je Feature), 100&nbsp;% automatisierbar, Traceability zu HA4 &mdash; Web <a href="04c-ha5-testfallentwurf.html">04c</a>, A4 <a href="04d-ha5-testfallentwurf-a4.html">04d</a> (11&nbsp;Seiten) (bereits vorhanden)</td><td>QA Tester</td></tr>
               <tr><td>Testprotokoll</td><td>Durchf&uuml;hrungs-Log der 9 TCs mit Status (Pass/Fail), Screenshots bei Fehlern</td><td>QA Tester</td></tr>
               <tr><td>Bug-Reports</td><td>Fehlerberichte mit Screenshots, Steps to Reproduce, Severity (falls Fehler gefunden)</td><td>QA Tester</td></tr>
               <tr><td>Testabschlussbericht</td><td>Zusammenfassung: Ausführungsrate, Pass-Rate, gefundene Fehler, Empfehlungen</td><td>QA Tester</td></tr>
@@ -739,7 +551,6 @@
       </div>
       <div class="doc-footer">
         <span>Masterschool QA-Track · Testkonzept nach IEEE 829 / CTFL 4.0.2</span>
-        <span>Seite 5 von 5</span>
       </div>
     </article>
   </div>

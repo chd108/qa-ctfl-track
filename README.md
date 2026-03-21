@@ -71,6 +71,6 @@ Die Tabelle bildet den Zielstand der Lernmodule ab. **Aktuell im Repo:** Einstie
 ## Stand
 
 Erstellt: 2026-03-12  
-Zuletzt aktualisiert: 2026-03-17  
+Zuletzt aktualisiert: 2026-03-21  
 
 **Aktuell (17.03.2026):** Die Seite **02c-teststufen.html** (Teststufen & Testarten, Kap. 2.2–2.3) ist migriert, an das gemeinsame System (base.css/subpage.css, Sections, Meta-Bar, Footer) angepasst und in die Hauptnavigation sowie die Einstiegsseite (13 Karten) integriert. Die Tabelle „Lernmodule“ unten enthält alle derzeit aktiven sowie geplanten Seiten; 02c ist im Repo vorhanden.

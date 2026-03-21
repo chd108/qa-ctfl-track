@@ -1,5 +1,5 @@
 Erstellt am: 2026-03-14
-Zuletzt aktualisiert am: 2026-03-17 (Stand nach Migration 02c Teststufen & Testarten, Systemanpassung, Index-Integration)
+Zuletzt aktualisiert am: 2026-03-21 (Stand nach Migration 02c Teststufen & Testarten, Systemanpassung, Index-Integration)
 Zweck: Systemkonzept-Gerüst / Arbeitsdokument der QA_Lernwebseite; Grundlage für Greenfield-Denkphase, Re-Architecture und Template-Strategie. Enthält verbindlichen Stand (Abschn. 1–3) und geklärte bzw. offene Arbeitsbereiche (ab Abschn. 4).
 
 ---

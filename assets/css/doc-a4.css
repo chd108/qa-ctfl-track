@@ -1,7 +1,8 @@
 /**
  * doc-a4.css — A4-Dokumentmodus für kanonische HA4/HA5-A4-Seiten.
  * Primär: 04b-ha4-testbasisanalyse-a4.html · mit ergänzendem Inline-<style>: 04d-ha5-testfallentwurf-a4.html
- * Ausgelagert aus Inline-<style>, keine Architekturänderung.
+ * Zwei-Stufen-System: 11pt (GROSS) / 8.25pt (KLEIN)
+ * Bildschirm: .meta-bar weiter 0.9rem (nicht gedruckt).
  */
 
 /* ─── A4-Rahmen: Seitenlayout; A4-Modus nur im Hauptinhalt ─── */
@@ -49,20 +50,20 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   margin-bottom: 10pt;
 }
 .doc-header__left h1 {
-  font-size: 14pt;
+  font-size: 11pt;
   font-weight: 700;
   color: var(--doc-head);
   letter-spacing: .02em;
   margin: 0;
 }
 .doc-header__left p {
-  font-size: 8.5pt;
+  font-size: 8.25pt;
   color: var(--doc-soft);
   margin-top: 2pt;
 }
 .doc-header__right {
   text-align: right;
-  font-size: 8pt;
+  font-size: 8.25pt;
   color: var(--doc-soft);
   line-height: 1.6;
 }
@@ -82,7 +83,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   gap: 12pt;
 }
 .doc-feature-strip__num {
-  font-size: 8pt;
+  font-size: 8.25pt;
   font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -94,7 +95,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 
 .doc-body .form-meta {
   display: grid;
-  grid-template-columns: 2fr 1fr 1fr;
+  grid-template-columns: 2fr 1.1fr 1fr 1.1fr;
   gap: 0;
   border: 1px solid var(--doc-bdr);
   margin-bottom: 8pt;
@@ -105,7 +106,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 }
 .doc-body .form-meta__cell:last-child { border-right: none; }
 .doc-body .form-meta__label {
-  font-size: 7pt;
+  font-size: 8.25pt;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -113,7 +114,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   margin-bottom: 2pt;
 }
 .doc-body .form-meta__value {
-  font-size: 9.5pt;
+  font-size: 8.25pt;
   color: var(--doc-text);
   font-weight: 600;
 }
@@ -127,7 +128,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   background: var(--doc-light);
 }
 .doc-body .vague-block__label {
-  font-size: 7pt;
+  font-size: 8.25pt;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -135,14 +136,14 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   margin-bottom: 2pt;
 }
 .doc-body .vague-block__text {
-  font-size: 9.5pt;
+  font-size: 8.25pt;
   color: var(--doc-mid);
   font-style: italic;
   margin: 0;
 }
 
 .doc-body .section__subhead {
-  font-size: 7.5pt;
+  font-size: 8.25pt;
   font-weight: 700;
   letter-spacing: .14em;
   text-transform: uppercase;
@@ -156,13 +157,13 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   border-collapse: collapse;
   border: 1px solid var(--doc-bdr);
   margin-bottom: 8pt;
-  font-size: 9pt;
+  font-size: 8.25pt;
 }
 .doc-body .ref-table thead tr { background: var(--doc-head); color: #fff; }
 .doc-body .ref-table thead th {
   padding: 4pt 7pt;
   text-align: left;
-  font-size: 7.5pt;
+  font-size: 8.25pt;
   font-weight: 700;
   letter-spacing: .08em;
   text-transform: uppercase;
@@ -181,7 +182,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   color: var(--doc-soft);
   width: 1.5rem;
   text-align: center;
-  font-size: 8pt;
+  font-size: 8.25pt;
 }
 .doc-body .ref-table .cell-q { color: var(--doc-text); }
 .doc-body .ref-table .cell-a { color: var(--doc-acc); }
@@ -190,7 +191,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 /* ─── GM-F01 / GM-F02 / GM-F03: 5-Spalten-Tabelle (Kategorie | # | Kurztitel | Testfrage | Antwort) für A4 ─── */
 .doc-mode .doc-a4 .ref-table table.questions-5col {
   table-layout: fixed;
-  font-size: 8.5pt;
+  font-size: 8.25pt;
 }
 .doc-mode .doc-a4 .ref-table table.questions-5col th,
 .doc-mode .doc-a4 .ref-table table.questions-5col td {
@@ -208,6 +209,11 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 .doc-mode .doc-a4 .ref-table table.questions-5col th:nth-child(5),
 .doc-mode .doc-a4 .ref-table table.questions-5col td:nth-child(5) { width: 30%; } /* Antwort */
 
+/* Akzeptanzkriterien (HA4 A4, .form-two-col): gleiche Körperschrift wie übrige Tabellen */
+.doc-mode .doc-a4 .form-two-col .ref-table table:not(.questions-5col) {
+  font-size: 8.25pt;
+}
+
 .doc-body .form-two-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -220,7 +226,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   margin-bottom: 8pt;
 }
 .doc-body .boundary-box__label {
-  font-size: 7pt;
+  font-size: 8.25pt;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -229,7 +235,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 }
 .doc-body .chip-row { display: flex; flex-wrap: wrap; gap: 3pt; }
 .doc-body .chip {
-  font-size: 8pt;
+  font-size: 8.25pt;
   padding: 1.5pt 6pt;
   border: 1px solid var(--doc-bdr);
   background: var(--doc-light);
@@ -241,7 +247,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   padding: 5pt 8pt;
 }
 .doc-body .open-box__label {
-  font-size: 7pt;
+  font-size: 8.25pt;
   font-weight: 700;
   letter-spacing: .1em;
   text-transform: uppercase;
@@ -250,7 +256,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 }
 .doc-body .open-list { list-style: none; margin: 0; padding: 0; }
 .doc-body .open-list li {
-  font-size: 9pt;
+  font-size: 8.25pt;
   color: var(--doc-open);
   padding: 1.5pt 0;
   display: flex;
@@ -259,21 +265,10 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   line-height: 1.4;
 }
 .doc-body .open-list li:last-child { border-bottom: none; }
-.doc-body .open-list li::before { content: "?"; font-weight: 800; font-size: 8pt; }
+.doc-body .open-list li::before { content: "?"; font-weight: 800; font-size: 8.25pt; }
 
-.doc-body .status-bar {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-top: 1px solid var(--doc-bdr);
-  margin-top: 10pt;
-  margin-bottom: 12pt; /* Abstand zur absolut positionierten .doc-footer (HA4 A4 Blatt 1–2) */
-  padding-top: 6pt;
-  font-size: 8.5pt;
-  color: var(--doc-soft);
-}
 .doc-body .status-badge {
-  font-size: 8pt;
+  font-size: 8.25pt;
   font-weight: 700;
   padding: 2pt 8pt;
   border: 1px solid;
@@ -290,7 +285,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 .doc-body .ref-table table.sum-table thead tr { background: var(--doc-head); color: #fff; }
 .doc-body .ref-table table.sum-table thead th {
   padding: 5pt 8pt;
-  font-size: 7.5pt;
+  font-size: 8.25pt;
   letter-spacing: .08em;
   text-transform: uppercase;
 }
@@ -302,7 +297,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   grid-template-columns: repeat(3, 1fr);
   border: 1px solid var(--doc-bdr);
   margin-top: 14pt;
-  font-size: 8.5pt;
+  font-size: 8.25pt;
 }
 .doc-body .read-guide__cell {
   padding: 6pt 8pt;
@@ -316,7 +311,7 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   padding: 5pt 8pt;
   border-top: 1px solid var(--doc-bdr);
   color: var(--doc-open);
-  font-size: 8pt;
+  font-size: 8.25pt;
   line-height: 1.5;
   background: var(--doc-open-bg-soft);
 }
@@ -330,10 +325,9 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   right: 18mm;
   padding-top: 2mm;
   border-top: 1px solid var(--doc-bdr);
-  font-size: 7.5pt;
+  font-size: 8.25pt;
   color: var(--doc-soft);
-  display: flex;
-  justify-content: space-between;
+  display: block;
   text-align: left;
 }
 
@@ -355,17 +349,69 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 
 /* ─── Druck: Rahmen ausblenden, A4-Blöcke als Seiten ─── */
 @media print {
+  /*
+   * Papierformat & Mindestrand zum nicht druckbaren Bereich des Browsers.
+   * Innenpadding von .doc-a4 (Print) ergibt sich daraus: ca. 12mm @page + 14–16mm Padding
+   * ≈ optisch vergleichbar mit Screen (16mm/18mm) ohne 210mm-Breite aus dem bedruckbaren Bereich zu schieben.
+   */
+  @page {
+    size: A4;
+    margin: 12mm;
+  }
+
   .top-nav-zone,
   .page-chrome,
   .meta-bar,
   main > footer { display: none !important; }
+
   body { padding: 0; margin: 0; background: #fff; }
   main { max-width: none; }
+
   .doc-a4 {
     box-shadow: none;
     margin: 0;
     page-break-after: always;
     min-height: 0;
+    /* Volle Breite des durch @page freigegebenen Bereichs (nicht fix 210mm → kein seitlicher Überlauf) */
+    width: 100%;
+    max-width: none;
+    box-sizing: border-box;
+    padding: 14mm 16mm;
   }
   .doc-a4:last-of-type { page-break-after: auto; }
+
+  /* Reserviert Platz unter dem Fließtext für die absolut positionierte Fußzeile */
+  .doc-body {
+    padding-bottom: 18mm;
+  }
+
+  /* Horizontale Ausrichtung Fußzeile an Print-Padding von .doc-a4 */
+  .doc-footer {
+    left: 16mm;
+    right: 16mm;
+    bottom: 10mm;
+  }
+
+  /*
+   * Hintergrundfarben beibehalten (Chrome: „Hintergrundgrafiken“, Firefox: „Hintergrund drucken“).
+   * WebKit-Präfix + Standard für breite Unterstützung.
+   */
+  .doc-body .ref-table thead tr,
+  .doc-body .ref-table thead th,
+  .doc-feature-strip {
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  /*
+   * Tabellen: Kopfzeile auf Folgeseiten wiederholen; Zeile möglichst nicht zerreißen.
+   * Trade-off: sehr hohe/mehrzeilige Zeilen können größere Lücken vor einem Umbruch erzeugen.
+   */
+  .doc-body .ref-table thead {
+    display: table-header-group;
+  }
+  .doc-body .ref-table tbody tr {
+    break-inside: avoid;
+    page-break-inside: avoid;
+  }
 }
