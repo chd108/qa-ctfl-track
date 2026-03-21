@@ -110,10 +110,13 @@
 <main id="main">
   <div class="meta-bar" aria-label="Seitenkontext">
     <span><strong>Projekt:</strong> GroceryMate</span>
+    <span><strong>Features:</strong> GM-F01 · GM-F02 · GM-F03</span>
     <span><strong>Testfälle:</strong> 9 TC (3 je Feature) · 100&nbsp;% automatisierbar</span>
-    <span><strong>Testkonzept A4:</strong> 5 Seiten (<a href="05b-ha5-testkonzept-a4.html">05b</a>)</span>
+    <span><strong>Testkonzept A4:</strong> 5 Seiten (<a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a>)</span>
     <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829</span>
-    <span><strong>Status:</strong> <span class="tag tag--warn">In Bearbeitung</span></span>
+    <span><strong>Status:</strong> <span class="tag tag--ok">Bereit für Review</span></span>
+    <span><strong>Erstellt:</strong> 16.03.2026</span>
+    <span><strong>Letzte Aktualisierung:</strong> 21.03.2026</span>
   </div>
 
   <div class="info-box info-box--note" role="note">
@@ -168,7 +171,7 @@
         <div class="plan-item"><div class="plan-item__id">GM-F03</div><div class="plan-item__title">Versandkosten</div><div class="plan-item__desc">Versandkosten entfallen ab einem Bestellwert ≥20€ (Freigrenze). Darunter fallen Versandkosten von 5€ an. Live-Update bei Warenkorbänderungen (⚠️ Bug: nur unidirektional ↑). Nur für eingeloggte Nutzer im Checkout sichtbar.</div></div>
       </div>
       <h3 class="section__subhead">Testfälle gesamt</h3>
-      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1rem;"><strong>9 ausgearbeitete Testfälle</strong> für GM-F01, GM-F02, GM-F03 (je 3) — vollständig spezifiziert, <strong>priorisierte Teilmenge</strong> aus der HA4-Testbasis (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>, inhaltlich zur <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a>). Techniken: EP, BVA, UC (CTFL Kap.&nbsp;4.2). <strong>Referenz:</strong> Web <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> · A4 <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (11&nbsp;Seiten: 2&nbsp;Übersichtsseiten + 9&nbsp;TC). Weitere Testfragen aus HA4 bleiben für eine Erweiterung des Testsets verfügbar.<br><span style="font-size:12px;color:var(--soft)">Abgleich mit ISO/IEC/IEEE 29119-3 / IEEE&nbsp;829: dokumentierter Umfang entspricht dem aktuellen HA5-Testfallentwurf (04c/04d).</span></p>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1rem;"><strong>9 ausgearbeitete Testfälle</strong> für GM-F01 · GM-F02 · GM-F03 (je 3) — vollständig spezifiziert, <strong>priorisierte Teilmenge</strong> aus der HA4-Testbasis (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>, inhaltlich zur <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a>). Techniken: EP, BVA, UC (CTFL Kap.&nbsp;4.2). <strong>Referenz:</strong> Web <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> · A4 <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (11&nbsp;Seiten: 2&nbsp;Übersichtsseiten + 9&nbsp;TC). Weitere Testfragen aus HA4 bleiben für eine Erweiterung des Testsets verfügbar.<br><span style="font-size:12px;color:var(--soft)">Abgleich mit ISO/IEC/IEEE 29119-3 / IEEE&nbsp;829: dokumentierter Umfang entspricht dem aktuellen <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> (Web) und <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>.</span></p>
     </div>
   </section>
 
@@ -193,8 +196,8 @@
         <table>
           <thead><tr><th scope="col">Testart</th><th scope="col">Beschreibung</th><th scope="col">Anwendung</th></tr></thead>
           <tbody>
-            <tr><td>Funktionaler Test</td><td>Prüfung, ob Features gemäß Spezifikation funktionieren</td><td>Alle 3 Features (GM-F01, F02, F03)</td></tr>
-            <tr><td>Nicht-funktionaler Test</td><td>Performance, Usability, Kompatibilität</td><td>GM-F03 (Versandkosten-Update), GM-F02 (Modal)</td></tr>
+            <tr><td>Funktionaler Test</td><td>Prüfung, ob Features gemäß Spezifikation funktionieren</td><td>Alle 3 Features (GM-F01 · GM-F02 · GM-F03)</td></tr>
+            <tr><td>Nicht-funktionaler Test</td><td>Performance, Usability, Kompatibilität</td><td>GM-F03 (Versandkosten-Update) · GM-F02 (Modal)</td></tr>
             <tr><td>Black-Box-Test</td><td>Test auf Basis von Spezifikation ohne Codekenntnis</td><td>Alle Features</td></tr>
             <tr><td>White-Box-Test</td><td>Nicht angewendet (kein Code-Zugriff im Scope)</td><td>—</td></tr>
           </tbody>
@@ -204,9 +207,9 @@
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;">Äquivalenzklassenbildung (EP) · Grenzwertanalyse (BVA) · Anwendungsfalltest (UC).</p>
       <h3 class="section__subhead">Hauptrisiken und Maßnahmen</h3>
       <div class="risk-list">
-        <div class="risk-item"><div class="risk-item__label">Risiko: Versandkosten Live-Update (unidirektional)</div><div class="risk-item__content"><strong>Details:</strong> Bekannter Bug aus HA4/04b: Update nur bei Erhöhung, nicht bei Reduktion.<br><strong>Maßnahme:</strong> Abgedeckt durch <strong>TC-F03.F3.2</strong> (04c/04d). Workaround: Seite neu laden.</div></div>
-        <div class="risk-item"><div class="risk-item__label">Risiko: Zeichenlimit Bewertungs-Textfeld unklar</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt in HA4 (F6/AC6, 04a/04b).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Offene Punkte &amp; Abstimmung (HA4 / PO)“.</div></div>
-        <div class="risk-item"><div class="risk-item__label">Risiko: 2. Bewertung — Block oder Update?</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt in HA4 (04a/04b Grenzfälle).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Offene Punkte &amp; Abstimmung (HA4 / PO)“.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Versandkosten Live-Update (unidirektional)</div><div class="risk-item__content"><strong>Details:</strong> Bekannter Bug aus HA4 (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>): Update nur bei Erhöhung, nicht bei Reduktion.<br><strong>Maßnahme:</strong> Abgedeckt durch <strong>TC-F03.F3.2</strong> (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>). Workaround: Seite neu laden.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Zeichenlimit Bewertungs-Textfeld unklar</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt in HA4 (F6/AC6; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Offene Punkte &amp; Abstimmung (HA4 / PO)“.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: 2. Bewertung — Block oder Update?</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt in HA4 (Grenzfälle; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Offene Punkte &amp; Abstimmung (HA4 / PO)“.</div></div>
       </div>
       <h3 class="section__subhead">Offene Punkte &amp; Abstimmung (HA4 / PO)</h3>
       <div class="info-box" role="note">
@@ -231,7 +234,7 @@
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1rem;">
         <li>Alle 3 Features funktionieren gemäß Spezifikation</li>
         <li>Akzeptanzkriterien aus Testbasis-Analyse erfüllt</li>
-        <li>Versandkosten Live-Update: bekannter Bug (nur ↑, nicht ↓) wird durch <strong>TC-F03.F3.2</strong> abgedeckt (04c/04d); vollständig bidirektionales Verhalten als Soll langfristig</li>
+        <li>Versandkosten Live-Update: bekannter Bug (nur ↑, nicht ↓) wird durch <strong>TC-F03.F3.2</strong> abgedeckt (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>); vollständig bidirektionales Verhalten als Soll langfristig</li>
       </ul>
       <h3 class="section__subhead">Erwartete Ergebnisse (messbar)</h3>
       <div class="ref-table">
@@ -263,15 +266,15 @@
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, die erfüllt sein müssen, bevor Tests beginnen können:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
         <li>grocerymate.masterschool.com erreichbar</li>
-        <li>Testbasis-Analyse (HA4, 04b/04a) vorhanden</li>
-        <li>Testfallentwurf (HA5, 04c/04d) vorhanden</li>
+        <li><a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a> und <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> (HA4) vorhanden</li>
+        <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> und <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> vorhanden</li>
         <li>Test-Account funktioniert</li>
         <li>Browser (Chrome) installiert</li>
       </ul>
       <h3 class="section__subhead">Exit Criteria (Abnahmekriterien)</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, die erfüllt sein müssen, um Tests abzuschließen:</strong></p>
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
-        <li>Alle 9 TCs aus 04c/04d ausgeführt (100&nbsp;%)</li>
+        <li>Alle 9 TCs gemäß <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> und <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> ausgeführt (100&nbsp;%)</li>
         <li>Mindestens 8/9 TCs bestanden (≥89&nbsp;%)</li>
         <li>Alle Fehler dokumentiert</li>
         <li>Testprotokoll vollständig</li>
@@ -304,7 +307,7 @@
         <table>
           <thead><tr><th scope="col">Rolle</th><th scope="col">Verantwortung</th><th scope="col">Personen</th></tr></thead>
           <tbody>
-            <tr><td>QA Tester (Student)</td><td>Testdurchführung (9 TCs laut 04c/04d), Bug-Dokumentation, Abschlussbericht</td><td>1</td></tr>
+            <tr><td>QA Tester (Student)</td><td>Testdurchführung (9 TCs laut <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>), Bug-Dokumentation, Abschlussbericht</td><td>1</td></tr>
             <tr><td>Reviewer (Mentor)</td><td>Review Testprotokoll, Feedback (optional, minimal)</td><td>0–1</td></tr>
           </tbody>
         </table>
@@ -398,8 +401,8 @@
           <thead><tr><th scope="col">Deliverable</th><th scope="col">Beschreibung</th><th scope="col">Verantwortlich</th></tr></thead>
           <tbody>
             <tr><td>Testkonzept (HA5)</td><td>Vollständiger Testplan mit 8 Abschnitten (IEEE 829 / CTFL 4.0.2); A4-Dokument <strong>5&nbsp;Seiten</strong> (<a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a>)</td><td>QA Tester</td></tr>
-            <tr><td>Testbasis-Analyse (HA4)</td><td>3 Features (GM-F01–F03) nach ISO/IEC/IEEE 29119-3 — A4 <a href="04b-ha4-testbasisanalyse-a4.html">04b</a>, Web <a href="04a-ha4-anforderungsanalyse.html">04a</a> (bereits vorhanden)</td><td>QA Tester</td></tr>
-            <tr><td>Testfallentwurf (HA5)</td><td>9 vollständig spezifizierte TCs (3 je Feature), 100&nbsp;% automatisierbar, Traceability zu HA4 — Web <a href="04c-ha5-testfallentwurf.html">04c</a>, A4 <a href="04d-ha5-testfallentwurf-a4.html">04d</a> (11&nbsp;Seiten) (bereits vorhanden)</td><td>QA Tester</td></tr>
+            <tr><td>Testbasis-Analyse (HA4)</td><td>3 Features (GM-F01 · GM-F02 · GM-F03) nach ISO/IEC/IEEE 29119-3 — <a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a>, Web <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> (bereits vorhanden)</td><td>QA Tester</td></tr>
+            <tr><td>Testfallentwurf (HA5)</td><td>9 vollständig spezifizierte TCs (3 je Feature), 100&nbsp;% automatisierbar, Traceability zu HA4 — <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a>, <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (11&nbsp;Seiten) (bereits vorhanden)</td><td>QA Tester</td></tr>
             <tr><td>Testprotokoll</td><td>Durchführungs-Log der 9 TCs mit Status (Pass/Fail), Screenshots bei Fehlern</td><td>QA Tester</td></tr>
             <tr><td>Bug-Reports</td><td>Fehlerberichte mit Screenshots, Steps to Reproduce, Severity (falls Fehler gefunden)</td><td>QA Tester</td></tr>
             <tr><td>Testabschlussbericht</td><td>Zusammenfassung: Ausführungsrate, Pass-Rate, gefundene Fehler, Empfehlungen</td><td>QA Tester</td></tr>

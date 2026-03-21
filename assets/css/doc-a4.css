@@ -20,6 +20,8 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   --doc-open:  #8a5a6a;
   --doc-open-bg:      #f9f0f3;
   --doc-open-bg-soft: rgba(249,240,243,0.5);
+  --doc-review:       #2d5a3d;
+  --doc-review-bg:    #e8f2eb;
 }
 
 /* ─── A4-Dokumentblock ─── */
@@ -285,6 +287,11 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   color: var(--doc-open);
   border-color: var(--doc-open);
   background: var(--doc-open-bg);
+}
+.doc-body .status-badge--review {
+  color: var(--doc-review);
+  border-color: var(--doc-review);
+  background: var(--doc-review-bg);
 }
 
 /* ─── Zusammenfassungsseite: Summentabelle + Leseanleitung ─── */

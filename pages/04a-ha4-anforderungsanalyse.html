@@ -27,7 +27,8 @@
     .info-box .info-box__content p:first-child { margin-top: 0; }
     .info-box .info-box__content p:last-child { margin-bottom: 0; }
     .section { margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-    .section__header { padding: .7rem 1.2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .04em; background: rgba(0,0,0,0.04); border-bottom: 1px solid var(--bdr); }
+    .section__header { padding: .7rem 1.2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: rgba(0,0,0,0.04); border-bottom: 1px solid var(--bdr); }
+    .section__header .section__title { margin: 0; font-size: 14px; font-weight: 700; letter-spacing: .04em; line-height: 1.35; }
     .section__body { padding: 1rem 1.2rem; background: rgba(255,255,255,0.35); }
     .card-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
     @media (max-width: 700px) { .card-grid { grid-template-columns: 1fr; } }
@@ -81,6 +82,7 @@
     .tag { display: inline-flex; align-items: center; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; padding: .18rem .5rem; border-radius: 4px; border: 1px solid rgba(0,0,0,0.08); }
     .tag--note { background: var(--note-bg); color: #0e1e30; }
     .tag--warn { background: var(--warn-bg); color: #2e1a0a; }
+    .tag--ok { background: var(--ok-bg); color: var(--ok); }
     .tag--open { background: var(--open-bg); color: #3a1a22; }
     .open-list { list-style: none; }
     .open-list li { display: flex; gap: .4rem; align-items: flex-start; font-size: 12.5px; color: var(--open); line-height: 1.45; margin-bottom: .4rem; }
@@ -143,9 +145,11 @@
 <main id="main">
   <div class="meta-bar" aria-label="Seitenkontext">
     <span><strong>Projekt:</strong> GroceryMate (grocerymate.masterschool.com)</span>
-    <span><strong>Features:</strong> Bewertungssystem · Altersverifikation · Versandkosten</span>
+    <span><strong>Features:</strong> GM-F01 · GM-F02 · GM-F03</span>
     <span><strong>Standard:</strong> CTFL 4.0.2 · Kap. 4.1 · ISO/IEC/IEEE 29119-3</span>
-    <span><strong>Status:</strong> <span class="tag tag--warn">Teilweise offen — manuelle Prüfung ausstehend</span></span>
+    <span><strong>Status:</strong> <span class="tag tag--ok">Bereit für Review</span></span>
+    <span><strong>Erstellt:</strong> 16.03.2026</span>
+    <span><strong>Letzte Aktualisierung:</strong> 21.03.2026</span>
   </div>
 
   <div class="info-box" role="note">
@@ -153,7 +157,9 @@
   </div>
 
   <section class="section" aria-labelledby="concept-heading">
-    <div class="section__header" id="concept-heading">Begriffserklärung — Anforderungsanalyse vs. Testbasis-Analyse</div>
+    <div class="section__header">
+      <h2 class="section__title" id="concept-heading">Begriffserklärung — Anforderungsanalyse vs. Testbasis-Analyse</h2>
+    </div>
     <div class="section__body">
       <div class="card-grid">
         <div class="card card--ireb">
@@ -183,7 +189,9 @@
   </section>
 
   <section class="section" aria-labelledby="schema-heading">
-    <div class="section__header" id="schema-heading">Schema — Aufbau einer Testbasis-Analyse pro Feature (Vorlage)</div>
+    <div class="section__header">
+      <h2 class="section__title" id="schema-heading">Schema — Aufbau einer Testbasis-Analyse pro Feature (Vorlage)</h2>
+    </div>
     <div class="section__body">
       <div class="schema-grid">
         <div class="schema-item schema-item--1">
@@ -215,7 +223,9 @@
   </section>
 
   <section class="section" aria-labelledby="features-heading">
-    <div class="section__header" id="features-heading">Ausarbeitung — GroceryMate · Drei neue Features (Testbasis-Analyse / Anforderungsanalyse aus Tester-Sicht)</div>
+    <div class="section__header">
+      <h2 class="section__title" id="features-heading">Ausarbeitung — GroceryMate · Drei neue Features (Testbasis-Analyse / Anforderungsanalyse aus Tester-Sicht)</h2>
+    </div>
     <div class="section__body">
       <div class="analysis-card analysis-card--1">
         <div class="analysis-card__header">
@@ -364,7 +374,9 @@
   </section>
 
   <section class="section section--summary" aria-labelledby="summary-heading">
-    <div class="section__header" id="summary-heading">Zusammenfassung — Analysestatus aller Features</div>
+    <div class="section__header">
+      <h2 class="section__title" id="summary-heading">Zusammenfassung — Analysestatus aller Features</h2>
+    </div>
     <div class="section__body">
       <div class="ref-table">
         <table>
@@ -383,21 +395,21 @@
               <td>1–5 Sterne, optionales Textfeld, nur eingeloggte Nutzer, 1 Bewertung/Produkt</td>
               <td>Gast, Mehrfachbewertung, Textlänge</td>
               <td>Zeichenlimit, Rundungsregel, Block vs. Update</td>
-              <td><span class="tag tag--warn">Teilweise offen</span></td>
+              <td><span class="tag tag--ok">Bereit für Review</span></td>
             </tr>
             <tr>
               <td>Altersverifikation</td>
               <td>Geburtsdatum-Modal auf /store, 18+-Grenze, session-basiert</td>
               <td>17J 364T, exakt 18J (BVA), Session/Refresh, Tab-Wechsel</td>
               <td>Session-Dauer, Cookie-Dauer, ungültiges Datum</td>
-              <td><span class="tag tag--warn">Teilweise offen</span></td>
+              <td><span class="tag tag--ok">Bereit für Review</span></td>
             </tr>
             <tr>
               <td>Versandkosten</td>
               <td>Freigrenze 20€, Versand 5€, Update nur unidirektional, Login erforderlich</td>
               <td>Wert 20€, 19,99€, 20,01€, leerer Warenkorb, Gast</td>
               <td>Versandkosten-Update nur unidirektional (Bug? Mit PO klären)</td>
-              <td><span class="tag tag--warn">Teilweise offen</span></td>
+              <td><span class="tag tag--ok">Bereit für Review</span></td>
             </tr>
           </tbody>
         </table>
@@ -406,7 +418,9 @@
   </section>
 
   <section class="section section--read-guide" aria-labelledby="read-guide-heading">
-    <div class="section__header" id="read-guide-heading">Aufbau dieser Seite — Leseanleitung</div>
+    <div class="section__header">
+      <h2 class="section__title" id="read-guide-heading">Aufbau dieser Seite — Leseanleitung</h2>
+    </div>
     <div class="read-guide-grid">
       <div class="read-guide__cell">
         <div class="read-guide__label">① Oben — Theorie</div>
@@ -427,7 +441,7 @@
   </section>
 
   <div class="info-box info-box--note" role="note" aria-labelledby="ha4-a4-handin-heading">
-    <div class="info-box__title" id="ha4-a4-handin-heading">Dokumentenkette — HA4 Anforderungsanalyse → HA4 Testbasisanalyse</div>
+    <div class="info-box__title" id="ha4-a4-handin-heading">Dokumentenkette — HA4 Anforderungsanalyse → HA4 Testbasis-Analyse</div>
     <div class="info-box__content">
       <p>Die GroceryMate-Lernstrecke besteht aus aufeinander aufbauenden Dokumenten. Die Box ordnet die aktuelle Position in der Kette ein und beschreibt den Zusammenhang der Dokumente.</p>
       <p>Diese Seite enthält die <strong>Anforderungsanalyse</strong> (Testbasis aus Tester-Sicht) im Web-Format. Derselbe Inhalt liegt zusätzlich als formales <strong>A4-Dokument</strong> zur <strong>Abgabe als Hausaufgabe</strong> vor:

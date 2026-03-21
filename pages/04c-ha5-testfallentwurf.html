@@ -18,6 +18,8 @@
     body { font-size: var(--fs); padding: 2.5rem 3rem 4rem; max-width: 1400px; margin: 0 auto; }
     .meta-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; padding: .6rem 1rem; margin-bottom: 1.25rem; background: rgba(255,255,255,0.5); border: 1px solid var(--bdr); border-radius: 8px; font-size: 0.9rem; color: var(--mid); }
     .meta-bar strong { color: var(--text); }
+    .tag { display: inline-block; padding: .18rem .6rem; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .tag--ok { background: var(--ok-bg); color: var(--ok); }
     .info-box { padding: .9rem 1.1rem; margin: 1rem 0; background: var(--warn-bg); border-left: 4px solid var(--warn); border-radius: 4px; font-size: 0.9rem; line-height: 1.55; }
     .info-box--note { background: var(--note-bg); border-left-color: var(--note); }
     .info-box--ok { background: var(--ok-bg); border-left-color: var(--ok); }
@@ -107,9 +109,13 @@
   <div class="meta-bar" aria-label="Seitenkontext">
     <span><strong>Projekt:</strong> GroceryMate (HA5)</span>
     <span><strong>Testobjekt:</strong> grocerymate.masterschool.com</span>
+    <span><strong>Features:</strong> GM-F01 · GM-F02 · GM-F03</span>
     <span><strong>Testfälle:</strong> 9 (3 pro Feature) — inhaltlich identisch mit <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (11 Seiten)</span>
     <span><strong>Automatisierung:</strong> 9 (100%)</span>
     <span><strong>Standard:</strong> CTFL 4.0.2 · Kap. 4.2 · ISO/IEC/IEEE 29119-3</span>
+    <span><strong>Status:</strong> <span class="tag tag--ok">Bereit für Review</span></span>
+    <span><strong>Erstellt:</strong> 16.03.2026</span>
+    <span><strong>Letzte Aktualisierung:</strong> 21.03.2026</span>
   </div>
 
   <div class="info-box info-box--note" role="note">
@@ -126,7 +132,7 @@
     </div>
     <div class="section__body">
       <div class="info-box info-box--note" role="note" aria-labelledby="doc-chain-ha5-heading">
-        <div class="info-box__title" id="doc-chain-ha5-heading">Dokumentenkette — HA4 Testbasisanalyse → HA5 Testfallentwurf</div>
+        <div class="info-box__title" id="doc-chain-ha5-heading">Dokumentenkette — HA4 Testbasis-Analyse → HA5 Testfallentwurf</div>
         <div class="info-box__content">
           <p><strong>Vorher (HA4 Testbasis):</strong> <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> · <a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a>.
           <strong>Hier (HA5 Testfallentwurf):</strong> <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> — dieselbe Strecke wie <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> mit den <strong>9 Testfällen</strong> (2 Übersichtsseiten + je ein TC, <strong>11 Seiten</strong> im A4-Format).
@@ -146,7 +152,7 @@
         <div class="info-box__title">Testentwurfs-Techniken (CTFL Kap. 4.2) &amp; diese 9 Fälle</div>
         <div class="info-box__content">Im Lehrplan werden Techniken oft als <strong>EP → BVA → Use Case → Error Guessing</strong> eingeführt (Klassen definieren, Grenzen testen, Szenarien, Fehlerquellen). Die <strong>9 dokumentierten Testfälle</strong> sind keine vollständige EP/BVA-Matrix, sondern eine <strong>priorisierte Teilmenge</strong> aus der HA4-Analyse: pro Feature dominieren je nach Risiko <strong>BVA</strong> (Grenzwerte), <strong>EP</strong> (repräsentative Klasse) oder <strong>Use Case</strong> (End-to-End / Zugriffskontrolle). Weitere Testfragen aus HA4 bleiben für Erweiterung des Testsets verfügbar.</div>
       </div>
-      <h3 class="section__subhead">Übersicht aller Testfälle (inhaltlich identisch mit A4-Dokument 04d, Seiten 1–2)</h3>
+      <h3 class="section__subhead">Übersicht aller Testfälle (inhaltlich identisch mit A4-Dokument, Seiten 1–2)</h3>
       <p class="section__intro" style="margin-top:-0.5rem;">Kurzreferenz mit Technik, Priorität, Automatisierung und AC — identisch zur Übersicht im <a href="04d-ha5-testfallentwurf-a4.html">A4-Dokument</a> (Blätter 1–2).</p>
       <h4 class="section__subhead" style="font-size:1rem;">GM-F01: Bewertungssystem</h4>
       <div class="ref-table">
