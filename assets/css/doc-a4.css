@@ -209,6 +209,13 @@ body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 .doc-mode .doc-a4 .ref-table table.questions-5col th:nth-child(5),
 .doc-mode .doc-a4 .ref-table table.questions-5col td:nth-child(5) { width: 30%; } /* Antwort */
 
+/* Kopf „Kategorie“: nicht umbrechen (break-word + schmale 13%-Spalte + letter-spacing → „Kategori/e“) */
+.doc-mode .doc-a4 .ref-table table.questions-5col thead th:nth-child(1) {
+  white-space: nowrap;
+  overflow-wrap: normal;
+  word-wrap: normal;
+}
+
 /* Akzeptanzkriterien (HA4 A4, .form-two-col): gleiche Körperschrift wie übrige Tabellen */
 .doc-mode .doc-a4 .form-two-col .ref-table table:not(.questions-5col) {
   font-size: 8.25pt;
