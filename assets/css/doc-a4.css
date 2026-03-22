@@ -8,7 +8,7 @@
  */
 
 /* ─── A4-Rahmen: Seitenlayout; A4-Modus nur im Hauptinhalt ─── */
-body { padding: 2.5rem 3rem 4rem; max-width: 1200px; margin: 0 auto; }
+body { padding: 0 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 
 /* ─── Dokumentmodus: Farben und Maßsystem (am Altformular orientiert) ─── */
 .doc-mode {

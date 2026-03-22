@@ -22,6 +22,8 @@
   --e6: #c8d4cc;
   /* Formularseiten (Hausaufgaben-Druckversionen): leicht dunklere Nuance von --e3 */
   --e3form: #cfbdb6;
+  /* Vertikaler Rhythmus: oben in Nav-Zone, zwischen Nav 1/2, unter Nav bis page-chrome */
+  --nav-vertical-rhythm: 1.75rem;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -45,6 +47,11 @@ header p { font-style: italic; color: var(--soft); }
   margin-left: calc(-50vw + 50%);
   background: var(--bg);
   border-bottom: 1px solid var(--bdr);
+  display: flex;
+  flex-direction: column;
+  gap: var(--nav-vertical-rhythm);
+  padding-top: var(--nav-vertical-rhythm);
+  padding-bottom: var(--nav-vertical-rhythm);
 }
 .top-nav-zone .main-nav { margin-bottom: 0; border-bottom: none; }
 
@@ -83,6 +90,15 @@ main { width: 100%; }
 }
 .main-nav a:hover { text-decoration: underline; }
 .main-nav a.current { color: var(--text); font-weight: normal; border-bottom-color: var(--text); }
+
+.main-nav--assignments a {
+  font-size: 0.875rem;
+  color: var(--mid);
+}
+.main-nav--assignments a:hover,
+.main-nav--assignments a.current {
+  color: var(--text);
+}
 
 /* Skip-Link: für Tastatur/Screenreader zum Hauptinhalt springen */
 .skip-link {
