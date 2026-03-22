@@ -114,7 +114,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 
 **Kurzüberblick (Stand 22.03.2026)**
 
-- **Hauptsystem (V2):** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **02c** im gemeinsamen Section-Muster.  
+- **Hauptsystem:** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **02c** im gemeinsamen Section-Muster.  
 - **HA4/HA5/HA6:** inhaltlich und formal gehärtet — Meta-Informationen, Kette Web ↔ A4, Terminologie **Testbasis-Analyse**; HA6 mit **Testprotokoll A4**, **Fehlerbericht A4**, **Testabschlussbericht A4** (ISO/IEC/IEEE 29119-3); Ergänzungen in **`doc-a4.css`** (u. a. Status-Badge für Review).  
 - **Einstieg (`index.html`):** breites Layout (`max-width` 1800px), **zwei sichtbare Bereichsüberschriften** (Lernmaterial / Hausaufgaben), responsives Kartenraster (Breakpoints 900px / 640px), CSS mit gemeinsamen Variablen; HA-Karten-Metas mit **Kap.-Hinweisen**; A4-HA-Karten mit hervorgehobenem **Formular**-Hinweis.  
 - **Kopfnavigation:** **Zwei Leisten** in `.top-nav-zone` — **Lernmaterial** vs. **Hausaufgaben**, semantisch getrennt, `aria-label`s; vertikaler Rhythmus **`--nav-vertical-rhythm` (1,75rem)**; HA-Leiste über **`.main-nav--assignments`** visuell abgesetzt.  
