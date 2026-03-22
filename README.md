@@ -26,7 +26,8 @@ Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz — inkl
 | `assets/js/` | Skripte u. a. für SDLC-Visualisierungen (`sdlc-hypocycle-animiert.js`) |
 | `templates/` | Referenzvorlage für neue Hauptsystem-Seiten (`referenzvorlage-hauptsystem.html`) |
 | `archive/` | Ältere Versionen — nicht aktiv, nur zur Dokumentation |
-| `SYSTEMKONZEPT.md` | Arbeits- und Architekturdokument (Benennung, Seitentypen, Dokument-/A4-Modus, Projektstand) |
+
+**Systemkonzept (nicht in diesem Repo):** Das Architektur- und Arbeitsdokument liegt im übergeordneten **QA-Track** unter **`00_PROJEKTSTEUERUNG/12_SYSTEMKONZEPT.md`** (lokaler Gesamtworkspace). Beim **alleinigen** Klon von **QA_Lernwebseite** auf GitHub ist diese Datei nicht enthalten.
 
 ---
 
@@ -67,9 +68,9 @@ Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz — inkl
 
 ---
 
-## Dokumentation im Repo
+## Dokumentation
 
-- **`SYSTEMKONZEPT.md`** — verbindlicher Stand zu Informationsarchitektur, Seitentypen, Benennungslogik, Dokument-/A4-Modus und Arbeitsstand (wird bei größeren Architekturänderungen mitgeführt).
+- **Systemkonzept:** **`12_SYSTEMKONZEPT.md`** im QA-Track, Ordner **`00_PROJEKTSTEUERUNG/`** — verbindlicher Stand zu Informationsarchitektur, Seitentypen, Benennungslogik, Dokument-/A4-Modus und Arbeitsstand der Website (siehe Hinweis unter „Projektstruktur“; nicht Bestandteil des Website-Repos allein).
 
 ---
 
