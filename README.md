@@ -1,18 +1,40 @@
 # QA Lernwebseite
 
-Lernmaterialien zu Software Testing, QA und **ISTQB CTFL v4.0.2**.  
-Jede HTML-Seite in `pages/` ist ein eigenständiges Lernmodul — strukturiert entlang des CTFL-Lehrplans. Die **HA4/HA5/HA6-Strecke** (GroceryMate) verknüpft **Testbasis-Analyse**, **Testfallentwurf**, **Testkonzept** sowie **Testprotokoll** und **Fehlerbericht (Incident)** und bezieht sich ergänzend auf **ISO/IEC/IEEE 29119-3** und **IEEE 829-2008**, wo es in den Inhalten ausgewiesen ist.
+Öffentliches **Lern- und Referenzprojekt** zu Software Testing, QA und **ISTQB Certified Tester Foundation Level (CTFL) v4.0.2**.  
+Inhaltlich als **statische Website** umgesetzt: jedes Modul unter `pages/` ist eine eigenständige HTML-Seite entlang des CTFL-Lehrplans.
 
-Das Projekt ist öffentlich nutzbar und kann z. B. über **GitHub Pages** bereitgestellt werden.
+Die **HA4/HA5/HA6-Strecke** (Fallstudie **GroceryMate**) verbindet **Testbasis-Analyse**, **Testfallentwurf**, **Testkonzept**, **Testprotokoll** (Test Execution Log), **Fehlerbericht** (Incident Report) und **Testabschlussbericht** (Test Completion Report) und verweist dort, wo ausgewiesen, auf **ISO/IEC/IEEE 29119-3** und **IEEE 829-2008**.
 
-**Lizenz:** CC BY-NC-SA 4.0 — Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen. Siehe `LICENSE`.
+**Bereitstellung:** z. B. **GitHub Pages** oder beliebiger statischer Host — kein Build-Schritt nötig.
+
+**Lizenz:** **CC BY-NC-SA 4.0** — Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen. Details in `LICENSE`.
 
 ---
 
 ## Ziel
 
-Verständliche, lehrplankonforme Aufbereitung der ISTQB-CTFL-Inhalte als **statische** Lernwebseite.  
-Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz — inklusive **Web- und A4-/Dokumentansicht** für ausgewählte Hausaufgaben-Abgaben.
+- **Didaktik:** klare Struktur, Prüfungsnähe, nachvollziehbare Begriffe (u. a. **Testbasis-Analyse**).  
+- **Formate:** **Web-Ansicht** für Lesen und Üben; **A4-/Dokumentmodus** (`doc-a4.css`) für ausgewählte HA-Abgaben und Druck.  
+- **Wartbarkeit:** ein gemeinsames **Hauptsystem** (Navigation, Typo, Farbvariablen), konsistente Datei- und Seitennamen.
+
+---
+
+## Navigation und Seitenaufbau
+
+Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenzvorlage-hauptsystem.html`** gilt dieselbe Kopfstruktur:
+
+| Bereich | Inhalt |
+|--------|--------|
+| **Skip-Link** | Sprung zu `#main` (Tastatur/Screenreader). |
+| **`.top-nav-zone`** | Volle Viewport-Breite; **zwei** `<nav>`-Elemente untereinander. |
+| **Nav 1 — Lernmaterial** | `class="main-nav main-nav--learn"`, `aria-label="Lernmaterial"`: Einstieg, Landkarte, Glossar, Testmittel, SDLC statisch/animiert, Teststufen, Statisches Testen, Testverfahren, Testmanagement, Standards. |
+| **Nav 2 — Hausaufgaben** | `class="main-nav main-nav--assignments"`, `aria-label="Hausaufgaben"`: HA-Einordnung, HA4–HA6 (Web- und A4-Seiten). Optisch: etwas **kleinere Schrift**, Linkfarbe **`var(--mid)`**; Hover und aktuelle Seite **`var(--text)`**. |
+| **`.page-chrome`** | Kopf mit Seitentitel und Untertitel (`subpage.css`). |
+| **`main#main`** | Seiteninhalt. |
+
+**Vertikaler Rhythmus** in der Kopfzone: CSS-Variable **`--nav-vertical-rhythm: 1.75rem`** in `base.css` — Abstand oben in der Zone, **zwischen** den beiden Nav-Leisten und **unter** der zweiten Leiste vor dem Seitentitel. Der **obere** Außenabstand der Seite kommt aus der Zone; **`body`** hat auf den betroffenen Seiten **`padding-top: 0`** (seitlich und unten bleiben die jeweiligen Seitenwerte).
+
+**Pfade:** von `pages/` aus zeigt **Einstieg** auf `../index.html`; die Vorlage unter `templates/` nutzt `../index.html` und `../pages/…`.
 
 ---
 
@@ -20,14 +42,17 @@ Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz — inkl
 
 | Pfad | Beschreibung |
 |------|----------------|
-| `index.html` | Einstiegsseite — **20 Karten** zu allen aktiven Lernmodulen |
-| `pages/` | Einzelne Lernmodule (siehe Tabelle unten) |
-| `assets/css/` | `base.css`, `subpage.css` — Hauptsystem; `doc-a4.css` — **A4-/Dokumentmodus** (HA-A4-Seiten, u. a. 04b, 04d, 05b, 06a–06c); `index.css` — Einstieg |
-| `assets/js/` | Skripte u. a. für SDLC-Visualisierungen (`sdlc-hypocycle-animiert.js`) |
-| `templates/` | Referenzvorlage für neue Hauptsystem-Seiten (`referenzvorlage-hauptsystem.html`) |
-| `archive/` | Ältere Versionen — nicht aktiv, nur zur Dokumentation |
+| `index.html` | **Einstieg** — zwei Kartenbereiche (**Lernmaterial** / **Hausaufgaben**), je **10** Verweiskarten auf die aktiven Module; layoutspezifisches CSS inline, sonst wie Hauptsystem. |
+| `pages/` | **20** aktive Lern- bzw. HA-Seiten (siehe Tabelle unten). |
+| `assets/css/base.css` | Globale Variablen (`:root`), Body-Hintergrund, **`.top-nav-zone`**, **`.main-nav`** / **`.main-nav--assignments`**, Skip-Link. |
+| `assets/css/subpage.css` | Gemeinsame **`header`**-/`footer`-Typo für Unterseiten. |
+| `assets/css/doc-a4.css` | **A4-/Dokumentmodus** inkl. Screen-`body`-Ränder; wird von HA-A4-Seiten zusätzlich eingebunden. |
+| `assets/css/index.css` | Ältere/alternative Einstiegs-Styles — **`index.html` lädt derzeit `base.css` + `subpage.css` und lokales `<style>`**; Datei bleibt im Repo zur Referenz und Standards-Doku. |
+| `assets/js/` | u. a. **`sdlc-hypocycle-animiert.js`** für die animierte SDLC-Seite. |
+| `templates/referenzvorlage-hauptsystem.html` | Referenz für neue **Hauptsystem**-Seiten (Nav, `page-chrome`, `main`). |
+| `archive/` | Nicht aktive ältere Versionen — nur Dokumentation. |
 
-**Systemkonzept (nicht in diesem Repo):** Das Architektur- und Arbeitsdokument liegt im übergeordneten **QA-Track** unter **`00_PROJEKTSTEUERUNG/12_SYSTEMKONZEPT.md`** (lokaler Gesamtworkspace). Beim **alleinigen** Klon von **QA_Lernwebseite** auf GitHub ist diese Datei nicht enthalten.
+**Systemkonzept (nicht in diesem Repo):** Architektur und Arbeitsregeln im übergeordneten **QA-Track**: **`00_PROJEKTSTEUERUNG/12_SYSTEMKONZEPT.md`**. Beim **alleinigen** Klon von **QA_Lernwebseite** auf GitHub ist diese Datei nicht enthalten.
 
 ---
 
@@ -58,22 +83,25 @@ Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz — inkl
 | `00a-ha-einordnung.html` | Einordnung der Hausaufgaben im CTFL-Kontext | — |
 | `00b-standards.html` | Standards, Projektstatus, Referenzen | — |
 
-**Ist-Stand Repo:** Alle in der Tabelle genannten Dateien **außer** `01b-grundlagen.html` und `06-testwerkzeuge.html` sind vorhanden und in **Navigation** sowie **Einstiegskarten** eingebunden.
+**Ist-Stand:** Alle genannten Dateien **außer** `01b-grundlagen.html` und `06-testwerkzeuge.html` sind vorhanden und in **beiden Nav-Leisten** sowie auf der **Einstiegsseite** verlinkt.
 
 ---
 
 ## Technik
 
-- Statisches **HTML/CSS** — kein Framework, keine Build-Pipeline.
-- **Hauptsystem:** gemeinsame Kopf-/Nav-Struktur, Skip-Link, Meta-Descriptions, Druckstyles (Nav ausblenden).
-- **Dokument-/A4-Modus:** dieselben Rahmen-Styles wie das Hauptsystem (`base.css` / `subpage.css`) plus **`doc-a4.css`** für Drucklayout und Formular-/Blatt-Optik.
-- Keine Laufzeit-Abhängigkeiten von CDN für Kernseiten — die Seite ist als **eigenständiges** Webprojekt nutzbar.
+- **Stack:** statisches **HTML/CSS**, optional **JavaScript** nur wo nötig (z. B. SDLC-Animation).  
+- **Kein** Framework, **keine** Build-Pipeline, **keine** CDN-Pflicht für Kernseiten.  
+- **Design tokens:** Farben und Abstände über **`:root`** in `base.css` (`--bg`, `--text`, `--e1`–`--e6`, `--nav-vertical-rhythm`, …).  
+- **Druck:** Navigationsbereich ausblendbar wo vorgesehen; A4-Seiten nutzen zusätzlich Druckregeln in `doc-a4.css`.
 
 ---
 
-## Dokumentation
+## Dokumentation und Steuerung
 
-- **Systemkonzept:** **`12_SYSTEMKONZEPT.md`** im QA-Track, Ordner **`00_PROJEKTSTEUERUNG/`** — verbindlicher Stand zu Informationsarchitektur, Seitentypen, Benennungslogik, Dokument-/A4-Modus und Arbeitsstand der Website (siehe Hinweis unter „Projektstruktur“; nicht Bestandteil des Website-Repos allein).
+| Dokument | Ort | Hinweis |
+|----------|-----|---------|
+| **Systemkonzept** (IA, Seitentypen, Benennung) | QA-Track: `00_PROJEKTSTEUERUNG/12_SYSTEMKONZEPT.md` | Nicht Teil des reinen Website-Klons. |
+| **Commit-/Push-Regeln** (falls im Track gepflegt) | z. B. `08_Commit_Richtlinie.md` | Gilt für das **Website-Repo** `QA_Lernwebseite`. |
 
 ---
 
@@ -82,6 +110,13 @@ Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz — inkl
 | | |
 |--|--|
 | **README erstellt** | 2026-03-12 |
-| **README zuletzt aktualisiert** | 2026-03-21 |
+| **README zuletzt aktualisiert** | **2026-03-22** |
 
-**Kurzüberblick (Stand 21.03.2026):** V2-Hauptsystem und Benennungsmatrix sind umgesetzt; **02c** ist migriert; die **HA4/HA5/HA6-Lernstrecke** (04a–06c) ist inhaltlich und formal gehärtet — u. a. einheitliche **Meta-Informationen** (Status, Daten, Features), **Dokumentenkette** zwischen Web- und A4-Fassungen, konsistente Terminologie **Testbasis-Analyse**, **HA6 Testprotokoll A4** (Test Execution Log), **HA6 Fehlerbericht A4** (Incident Report), **HA6 Testabschlussbericht A4** (Test Completion Report nach ISO/IEC/IEEE 29119-3), sowie A4-Ergänzungen in **`doc-a4.css`** (z. B. Status-Badge für Review). **Einstiegsseite (`index.html`):** breiteres Inhaltslayout, sichtbare Bereichsüberschriften Lernmaterial/Hausaufgaben, responsive Kartenraster, CSS-Bereinigung (Variablen, zusammengeführte Modifikatoren), thematische Kap.-Hinweise in den HA-Karten-Metas und hervorgehobene **Formular**-Kennzeichnung bei A4-HA-Karten. **Kopfnavigation:** zwei `<nav>`-Leisten (**Lernmaterial** / **Hausaufgaben**) in `.top-nav-zone`, vertikaler Rhythmus `--nav-vertical-rhythm` (1,75rem), HA-Leiste optisch differenziert (`.main-nav--assignments`); oberer Seitenabstand über die Zone statt `body`-`padding-top`. Details und Commit-Historie: **Git-Repository `QA_Lernwebseite`**.
+**Kurzüberblick (Stand 22.03.2026)**
+
+- **Hauptsystem (V2):** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **02c** im gemeinsamen Section-Muster.  
+- **HA4/HA5/HA6:** inhaltlich und formal gehärtet — Meta-Informationen, Kette Web ↔ A4, Terminologie **Testbasis-Analyse**; HA6 mit **Testprotokoll A4**, **Fehlerbericht A4**, **Testabschlussbericht A4** (ISO/IEC/IEEE 29119-3); Ergänzungen in **`doc-a4.css`** (u. a. Status-Badge für Review).  
+- **Einstieg (`index.html`):** breites Layout (`max-width` 1800px), **zwei sichtbare Bereichsüberschriften** (Lernmaterial / Hausaufgaben), responsives Kartenraster (Breakpoints 900px / 640px), CSS mit gemeinsamen Variablen; HA-Karten-Metas mit **Kap.-Hinweisen**; A4-HA-Karten mit hervorgehobenem **Formular**-Hinweis.  
+- **Kopfnavigation:** **Zwei Leisten** in `.top-nav-zone` — **Lernmaterial** vs. **Hausaufgaben**, semantisch getrennt, `aria-label`s; vertikaler Rhythmus **`--nav-vertical-rhythm` (1,75rem)**; HA-Leiste über **`.main-nav--assignments`** visuell abgesetzt.  
+
+Details und Historie: **Git-Repository [QA_Lernwebseite](https://github.com/chd108/QA_Lernwebseite)** (Branch `main`).
