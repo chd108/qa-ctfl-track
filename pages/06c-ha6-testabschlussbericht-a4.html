@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HA6 Testabschlussbericht (Test Completion Report) GroceryMate — A4-/Dokumentmodus, Blankovorlage, ISO/IEC/IEEE 29119-3.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <link rel="stylesheet" href="../assets/css/doc-a4.css">
+  <title>HA6 Testabschlussbericht A4 — QA Lernwebseite</title>
+  <style>
+    /* HA6 Testabschlussbericht A4 — Ergänzungen zu doc-a4.css (nur 8.25pt / 11pt) */
+    .doc-body .doc-info-box {
+      border: 1px solid var(--doc-bdr);
+      border-left: 3px solid var(--doc-mid);
+      padding: 5pt 8pt;
+      margin-bottom: 8pt;
+      background: var(--doc-light);
+      font-size: 8.25pt;
+      line-height: 1.45;
+      color: var(--doc-mid);
+    }
+    .doc-body .doc-info-box strong { color: var(--doc-text); }
+
+    .doc-mode .doc-body .form-meta {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .doc-body .form-meta__cell--border-top {
+      border-top: 1px solid var(--doc-bdr);
+    }
+    .status-options {
+      display: flex;
+      gap: 6pt;
+      flex-wrap: wrap;
+      margin-top: 2pt;
+    }
+    .status-option {
+      font-size: 8.25pt;
+      padding: 1pt 5pt;
+      border: 1px solid var(--doc-bdr);
+      color: var(--doc-soft);
+      background: var(--doc-light);
+    }
+    .status-option--active {
+      border-color: var(--doc-acc);
+      color: var(--doc-acc);
+      background: #eaf4ee;
+      font-weight: 700;
+    }
+
+    .doc-body .form-field { margin-bottom: 8pt; }
+    .doc-body .form-field__label {
+      font-size: 8.25pt;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--doc-soft);
+      margin-bottom: 2pt;
+    }
+    .doc-body .form-field__value {
+      font-size: 8.25pt;
+      color: var(--doc-text);
+      line-height: 1.45;
+      border: 1px solid var(--doc-bdr);
+      padding: 5pt 7pt;
+      background: var(--doc-light);
+    }
+    .doc-body .form-field__value--tall {
+      min-height: 36pt;
+    }
+
+    .doc-body .ref-table thead th {
+      text-align: center;
+    }
+
+    .doc-body .ref-table table.completion-summary-table {
+      table-layout: fixed;
+      width: 100%;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.completion-summary-table th,
+    .doc-body .ref-table table.completion-summary-table td {
+      border: 1px solid var(--doc-bdr);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.completion-summary-table th:nth-child(1),
+    .doc-body .ref-table table.completion-summary-table td:nth-child(1) { width: 11%; }
+    .doc-body .ref-table table.completion-summary-table th:nth-child(2),
+    .doc-body .ref-table table.completion-summary-table td:nth-child(2) { width: 12%; }
+    .doc-body .ref-table table.completion-summary-table th:nth-child(3),
+    .doc-body .ref-table table.completion-summary-table td:nth-child(3) { width: 12%; }
+    .doc-body .ref-table table.completion-summary-table th:nth-child(4),
+    .doc-body .ref-table table.completion-summary-table td:nth-child(4) { width: 12%; }
+    .doc-body .ref-table table.completion-summary-table th:nth-child(5),
+    .doc-body .ref-table table.completion-summary-table td:nth-child(5) { width: 12%; }
+    .doc-body .ref-table table.completion-summary-table th:nth-child(6),
+    .doc-body .ref-table table.completion-summary-table td:nth-child(6) { width: 12%; }
+    .doc-body .ref-table table.completion-summary-table th:nth-child(7),
+    .doc-body .ref-table table.completion-summary-table td:nth-child(7) { width: 8%; }
+    .doc-body .ref-table table.completion-summary-table .cell-empty {
+      background: #fff;
+    }
+
+    .doc-body .ref-table table.metrics-report-table {
+      table-layout: fixed;
+      width: 100%;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.metrics-report-table th,
+    .doc-body .ref-table table.metrics-report-table td {
+      border: 1px solid var(--doc-bdr);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      font-size: 8.25pt;
+      vertical-align: top;
+    }
+    .doc-body .ref-table table.metrics-report-table th:nth-child(1),
+    .doc-body .ref-table table.metrics-report-table td:nth-child(1) { width: 20%; }
+    .doc-body .ref-table table.metrics-report-table th:nth-child(2),
+    .doc-body .ref-table table.metrics-report-table td:nth-child(2) { width: 32%; }
+    .doc-body .ref-table table.metrics-report-table th:nth-child(3),
+    .doc-body .ref-table table.metrics-report-table td:nth-child(3) { width: 18%; }
+    .doc-body .ref-table table.metrics-report-table th:nth-child(4),
+    .doc-body .ref-table table.metrics-report-table td:nth-child(4) { width: 30%; }
+    .doc-body .ref-table table.metrics-report-table .cell-empty {
+      background: #fff;
+    }
+
+    .doc-body .ref-table table.defect-summary-table {
+      table-layout: fixed;
+      width: 100%;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.defect-summary-table th,
+    .doc-body .ref-table table.defect-summary-table td {
+      border: 1px solid var(--doc-bdr);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.defect-summary-table th:nth-child(1),
+    .doc-body .ref-table table.defect-summary-table td:nth-child(1) { width: 12%; }
+    .doc-body .ref-table table.defect-summary-table th:nth-child(2),
+    .doc-body .ref-table table.defect-summary-table td:nth-child(2) { width: 32%; }
+    .doc-body .ref-table table.defect-summary-table th:nth-child(3),
+    .doc-body .ref-table table.defect-summary-table td:nth-child(3) { width: 14%; }
+    .doc-body .ref-table table.defect-summary-table th:nth-child(4),
+    .doc-body .ref-table table.defect-summary-table td:nth-child(4) { width: 18%; }
+    .doc-body .ref-table table.defect-summary-table th:nth-child(5),
+    .doc-body .ref-table table.defect-summary-table td:nth-child(5) { width: 24%; }
+    .doc-body .ref-table table.defect-summary-table .cell-empty {
+      background: #fff;
+    }
+    .doc-body .ref-table table.defect-summary-table .cell-id {
+      font-weight: 700;
+      font-family: 'Courier New', Consolas, monospace;
+      font-size: 8.25pt;
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC &amp; Testprozess (statisch)</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC &amp; Testprozess (animiert)</a></li>
+      <li><a href="02c-teststufen.html">Teststufen &amp; Testarten</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html" class="current">HA6 Testabschlussbericht A4</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Testabschlussbericht A4</h1>
+    <p>HA6 · Test Completion Report · GroceryMate · CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3 (Test Completion Report)</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Modushinweis">
+    <span><strong>Modus:</strong> A4-/Dokumentansicht</span>
+    <span><strong>Seiten:</strong> 2</span>
+    <span><strong>Projekt:</strong> GroceryMate (HA6)</span>
+    <span><strong>Standard:</strong> CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3 (Test Completion Report)</span>
+  </div>
+
+  <div class="doc-mode">
+    <!-- ═══ Blatt 1: Ergebnisse, Metriken, Fehlerzusammenfassung ═══ -->
+    <article class="doc-a4" id="sheet-1" aria-labelledby="sheet1-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet1-heading">Testabschlussbericht</h1>
+          <p>Test Completion Report · GroceryMate · HA6</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA6)<br>
+          <strong>Erstellt:</strong> &nbsp;<br>
+          <strong>Letzte Aktualisierung:</strong> &nbsp;<br>
+          <strong>Seite:</strong> 1 von 2
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="form-meta">
+          <div class="form-meta__cell"><div class="form-meta__label">Projekt</div><div class="form-meta__value">GroceryMate (HA6)</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Version</div><div class="form-meta__value light">&nbsp;</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Tester</div><div class="form-meta__value light">&nbsp;</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Datum</div><div class="form-meta__value light">&nbsp;</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Teststufe</div><div class="form-meta__value light">&nbsp;</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">TCs gesamt</div><div class="form-meta__value light">&nbsp;</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top" style="grid-column: span 2">
+            <div class="form-meta__label">Status</div>
+            <div class="status-options">
+              <span class="status-option">In Bearbeitung</span>
+              <span class="status-option status-option--active">Abgeschlossen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-info-box">
+          <strong>Hinweis:</strong> Blankovorlage nach Testdurchführung. Datenquellen: <a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a>, <a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a>. Metrik-Ziele wie im <a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a> (Abschnitt&nbsp;8).
+        </div>
+
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 1 / 5</span>
+          Testergebnisse (Test Results Summary)
+        </div>
+        <div class="ref-table">
+          <table class="completion-summary-table">
+            <thead>
+              <tr>
+                <th scope="col">Geplante TCs</th>
+                <th scope="col">Ausge&shy;führte TCs</th>
+                <th scope="col">Bestanden</th>
+                <th scope="col">Fehlge&shy;schlagen</th>
+                <th scope="col">Blockiert</th>
+                <th scope="col">Ausführ&shy;ungs&shy;rate (%)</th>
+                <th scope="col">Pass-Rate (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 2 / 5</span>
+          Metriken (Metrics)
+        </div>
+        <div class="ref-table">
+          <table class="metrics-report-table">
+            <thead>
+              <tr>
+                <th scope="col">Metrik</th>
+                <th scope="col">Ziel</th>
+                <th scope="col">Ist-Wert</th>
+                <th scope="col">Anmerkung</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Test Execution Rate (%)</td>
+                <td>Anteil ausgeführter Testfälle &mdash; Ziel: 100&nbsp;%</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Pass Rate (%)</td>
+                <td>Anteil bestandener Testfälle &mdash; Ziel: &ge; 89&nbsp;%</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Defect Density (Fehler/Feature)</td>
+                <td>Anzahl gefundener Fehler je Feature</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Defect Distribution (Severity 1&ndash;4)</td>
+                <td>Verteilung der Fehler nach Schweregrad</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Retest Success Rate (%)</td>
+                <td>Anteil erfolgreich nachgetesteter Fehler</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Coverage (Akzeptanzkriterien %)</td>
+                <td>Abgedeckte AC &mdash; Ziel: 100&nbsp;%</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 3 / 5</span>
+          Fehlerzusammenfassung (Defect Summary)
+        </div>
+        <div class="ref-table">
+          <table class="defect-summary-table">
+            <thead>
+              <tr>
+                <th scope="col">Bug-ID</th>
+                <th scope="col">Titel</th>
+                <th scope="col">Schweregrad</th>
+                <th scope="col">Status</th>
+                <th scope="col">TC-Referenz</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-id cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testabschlussbericht / Test Completion Report · CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3 (Test Completion Report)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Blatt 2: Bewertung, Lessons Learned ═══ -->
+    <article class="doc-a4" id="sheet-2" aria-labelledby="sheet2-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet2-heading">Testabschlussbericht</h1>
+          <p>Test Completion Report · GroceryMate · HA6</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA6)<br>
+          <strong>Erstellt:</strong> &nbsp;<br>
+          <strong>Letzte Aktualisierung:</strong> &nbsp;<br>
+          <strong>Seite:</strong> 2 von 2
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 4 / 5</span>
+          Bewertung &amp; Empfehlung (Assessment)
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Gesamtbewertung</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Gesamtbewertung">&nbsp;</div>
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Empfehlung</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Empfehlung">&nbsp;</div>
+        </div>
+
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 5 / 5</span>
+          Lessons Learned
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Lessons Learned</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Lessons Learned">&nbsp;</div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testabschlussbericht / Test Completion Report · CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3 (Test Completion Report)</span>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <p class="source-note">HA6 · Masterschool QA-Track · Testabschlussbericht (Test Completion Report) · CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3 (Test Completion Report) · grocerymate.masterschool.com · A4-Dokumentmodus</p>
+</footer>
+
+</body>
+</html>

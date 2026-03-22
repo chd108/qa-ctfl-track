@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HA6 Fehlerbericht (Incident Report) GroceryMate — A4-/Dokumentmodus, Blankovorlage pro Fehler, ISO/IEC/IEEE 29119-3.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <link rel="stylesheet" href="../assets/css/doc-a4.css">
+  <title>HA6 Fehlerbericht A4 — QA Lernwebseite</title>
+  <style>
+    /* HA6 Fehlerbericht A4 — Ergänzungen zu doc-a4.css (nur 8.25pt / 11pt) */
+    .doc-body .doc-info-box {
+      border: 1px solid var(--doc-bdr);
+      border-left: 3px solid var(--doc-mid);
+      padding: 5pt 8pt;
+      margin-bottom: 8pt;
+      background: var(--doc-light);
+      font-size: 8.25pt;
+      line-height: 1.45;
+      color: var(--doc-mid);
+    }
+    .doc-body .doc-info-box strong { color: var(--doc-text); }
+
+    .doc-mode .doc-body .form-meta {
+      grid-template-columns: repeat(4, 1fr);
+    }
+    .doc-body .form-meta__cell--border-top {
+      border-top: 1px solid var(--doc-bdr);
+    }
+    .status-options {
+      display: flex;
+      gap: 6pt;
+      flex-wrap: wrap;
+      margin-top: 2pt;
+    }
+    .status-option {
+      font-size: 8.25pt;
+      padding: 1pt 5pt;
+      border: 1px solid var(--doc-bdr);
+      color: var(--doc-soft);
+      background: var(--doc-light);
+    }
+    .status-option--active {
+      border-color: var(--doc-acc);
+      color: var(--doc-acc);
+      background: #eaf4ee;
+      font-weight: 700;
+    }
+
+    .doc-body .form-field { margin-bottom: 8pt; }
+    .doc-body .form-field__label {
+      font-size: 8.25pt;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--doc-soft);
+      margin-bottom: 2pt;
+    }
+    .doc-body .form-field__label .form-field__hint {
+      display: block;
+      margin-top: 2pt;
+      font-size: 8.25pt;
+      font-weight: 400;
+      letter-spacing: normal;
+      text-transform: none;
+      color: var(--doc-mid);
+      line-height: 1.45;
+    }
+    .doc-body .form-field__value {
+      font-size: 8.25pt;
+      color: var(--doc-text);
+      line-height: 1.45;
+      border: 1px solid var(--doc-bdr);
+      padding: 5pt 7pt;
+      background: var(--doc-light);
+    }
+    .doc-body .form-field__value--tall {
+      min-height: 36pt;
+    }
+    .doc-body .form-field__value--repro {
+      min-height: 72pt;
+    }
+    .doc-body .form-field__value.field-tc-id {
+      font-weight: 700;
+      font-family: 'Courier New', Consolas, monospace;
+      font-size: 8.25pt;
+    }
+
+    .doc-body .compact-list {
+      margin: 0;
+      padding-left: 1.2em;
+      font-size: 8.25pt;
+      line-height: 1.5;
+      color: var(--doc-text);
+    }
+    .doc-body .compact-list li { margin: 1.5pt 0; }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC &amp; Testprozess (statisch)</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC &amp; Testprozess (animiert)</a></li>
+      <li><a href="02c-teststufen.html">Teststufen &amp; Testarten</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html" class="current">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Fehlerbericht A4</h1>
+    <p>HA6 · Incident Report · GroceryMate · CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Modushinweis">
+    <span><strong>Modus:</strong> A4-/Dokumentansicht</span>
+    <span><strong>Seiten:</strong> 1</span>
+    <span><strong>Projekt:</strong> GroceryMate (HA6)</span>
+    <span><strong>Standard:</strong> CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3 (Incident Report)</span>
+  </div>
+
+  <div class="doc-mode">
+    <article class="doc-a4" id="sheet-1" aria-labelledby="sheet-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet-heading">Fehlerbericht</h1>
+          <p>Incident Report · GroceryMate · HA6</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA6)<br>
+          <strong>Erstellt:</strong> &nbsp;<br>
+          <strong>Letzte Aktualisierung:</strong> &nbsp;<br>
+          <strong>Seite:</strong> 1 von 1
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="form-meta">
+          <div class="form-meta__cell"><div class="form-meta__label">Projekt</div><div class="form-meta__value">GroceryMate (HA6)</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Fehlernummer (Bug-ID)</div><div class="form-meta__value light">&nbsp;</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Datum</div><div class="form-meta__value light">&nbsp;</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Tester</div><div class="form-meta__value light">&nbsp;</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top" style="grid-column: 1 / -1">
+            <div class="form-meta__label">Schweregrad</div>
+            <div class="status-options">
+              <span class="status-option">Critical</span>
+              <span class="status-option">High</span>
+              <span class="status-option">Medium</span>
+              <span class="status-option">Low</span>
+            </div>
+          </div>
+          <div class="form-meta__cell form-meta__cell--border-top" style="grid-column: 1 / -1">
+            <div class="form-meta__label">Status</div>
+            <div class="status-options">
+              <span class="status-option status-option--active">Offen</span>
+              <span class="status-option">In Bearbeitung</span>
+              <span class="status-option">Behoben</span>
+              <span class="status-option">Geschlossen</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="doc-info-box">
+          <strong>Hinweis:</strong> Blankovorlage — einen Bericht <strong>pro Fehler</strong> ausfüllen. Verknüpfung mit dem Testprotokoll: <a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a> (TC-ID, Bug-ID). Orientierung: ISO/IEC/IEEE 29119-3 (Incident Report), CTFL Kap. 5.
+        </div>
+
+        <div class="doc-feature-strip">
+          Fehlerbericht / Incident Report
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">Titel / Kurzbeschreibung</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Titel oder Kurzbeschreibung des Fehlers">&nbsp;</div>
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">Testobjekt</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Feature und Seite oder URL">&nbsp;</div>
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">Testumgebung</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Browser und Betriebssystem">&nbsp;</div>
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">
+            Referenz-Testfall (TC-ID)
+            <span class="form-field__hint">z.&nbsp;B. TC-F01.F1.1 (aus HA6 Testprotokoll)</span>
+          </div>
+          <div class="form-field__value field-tc-id" aria-label="TC-ID aus Testprotokoll">&nbsp;</div>
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">Reproduktionsschritte</div>
+          <div class="form-field__value form-field__value--repro" aria-label="Nummerierte Reproduktionsschritte">
+            <ol class="compact-list">
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+              <li>&nbsp;</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">Erwartetes Ergebnis</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Erwartetes Ergebnis">&nbsp;</div>
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">Tatsächliches Ergebnis</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Tatsächliches Ergebnis">&nbsp;</div>
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">
+            Screenshot / Anhang
+            <span class="form-field__hint">Screenshots oder Dateien separat beifügen; hier Platz für Verweise oder Dateinamen.</span>
+          </div>
+          <div class="form-field__value form-field__value--tall" aria-label="Hinweise zu Screenshot oder Anhang">&nbsp;</div>
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">
+            Zusätzliche Informationen
+            <span class="form-field__hint">Optional.</span>
+          </div>
+          <div class="form-field__value form-field__value--tall" aria-label="Optionale Zusatzinformationen">&nbsp;</div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Fehlerbericht / Incident Report · CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3 (Incident Report)</span>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <p class="source-note">HA6 · Masterschool QA-Track · Fehlerbericht (Incident Report) · CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3 · grocerymate.masterschool.com · A4-Dokumentmodus</p>
+</footer>
+
+</body>
+</html>

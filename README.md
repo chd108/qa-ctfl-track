@@ -1,7 +1,7 @@
 # QA Lernwebseite
 
 Lernmaterialien zu Software Testing, QA und **ISTQB CTFL v4.0.2**.  
-Jede HTML-Seite in `pages/` ist ein eigenständiges Lernmodul — strukturiert entlang des CTFL-Lehrplans. Die **HA4/HA5-Strecke** (GroceryMate) verknüpft **Testbasis-Analyse**, **Testfallentwurf** und **Testkonzept** und bezieht sich ergänzend auf **ISO/IEC/IEEE 29119-3** und **IEEE 829-2008**, wo es in den Inhalten ausgewiesen ist.
+Jede HTML-Seite in `pages/` ist ein eigenständiges Lernmodul — strukturiert entlang des CTFL-Lehrplans. Die **HA4/HA5/HA6-Strecke** (GroceryMate) verknüpft **Testbasis-Analyse**, **Testfallentwurf**, **Testkonzept** sowie **Testprotokoll** und **Fehlerbericht (Incident)** und bezieht sich ergänzend auf **ISO/IEC/IEEE 29119-3** und **IEEE 829-2008**, wo es in den Inhalten ausgewiesen ist.
 
 Das Projekt ist öffentlich nutzbar und kann z. B. über **GitHub Pages** bereitgestellt werden.
 
@@ -20,9 +20,9 @@ Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz — inkl
 
 | Pfad | Beschreibung |
 |------|----------------|
-| `index.html` | Einstiegsseite — **18 Karten** zu allen aktiven Lernmodulen |
+| `index.html` | Einstiegsseite — **20 Karten** zu allen aktiven Lernmodulen |
 | `pages/` | Einzelne Lernmodule (siehe Tabelle unten) |
-| `assets/css/` | `base.css`, `subpage.css` — Hauptsystem; `doc-a4.css` — **A4-/Dokumentmodus** (HA-A4-Seiten, u. a. 04b, 04d, 05b, 06a); `index.css` — Einstieg |
+| `assets/css/` | `base.css`, `subpage.css` — Hauptsystem; `doc-a4.css` — **A4-/Dokumentmodus** (HA-A4-Seiten, u. a. 04b, 04d, 05b, 06a–06c); `index.css` — Einstieg |
 | `assets/js/` | Skripte u. a. für SDLC-Visualisierungen (`sdlc-hypocycle-animiert.js`) |
 | `templates/` | Referenzvorlage für neue Hauptsystem-Seiten (`referenzvorlage-hauptsystem.html`) |
 | `archive/` | Ältere Versionen — nicht aktiv, nur zur Dokumentation |
@@ -52,6 +52,8 @@ Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz — inkl
 | `05a-ha5-testkonzept.html` | HA5 — Testkonzept (Web), GroceryMate | Kap. 5 |
 | `05b-ha5-testkonzept-a4.html` | HA5 — Testkonzept **A4** (u. a. IEEE-829-orientiert) | Kap. 5 |
 | `06a-ha6-testprotokoll-a4.html` | HA6 — Testprotokoll **A4** (Test Execution Log, 9 TC) | Kap. 5 |
+| `06b-ha6-fehlerbericht-a4.html` | HA6 — Fehlerbericht **A4** (Incident Report, Blankovorlage) | Kap. 5 |
+| `06c-ha6-testabschlussbericht-a4.html` | HA6 — Testabschlussbericht **A4** (Test Completion Report, Blankovorlage) | Kap. 5 |
 | `06-testwerkzeuge.html` | *Geplant — noch nicht im Repo* | Kap. 6 |
 | `00a-ha-einordnung.html` | Einordnung der Hausaufgaben im CTFL-Kontext | — |
 | `00b-standards.html` | Standards, Projektstatus, Referenzen | — |
@@ -80,6 +82,6 @@ Schwerpunkt: didaktische Klarheit, visuelle Struktur, Prüfungsrelevanz — inkl
 | | |
 |--|--|
 | **README erstellt** | 2026-03-12 |
-| **README zuletzt aktualisiert** | 2026-03-22 |
+| **README zuletzt aktualisiert** | 2026-03-23 |
 
-**Kurzüberblick (Stand 22.03.2026):** V2-Hauptsystem und Benennungsmatrix sind umgesetzt; **02c** ist migriert; die **HA4/HA5/HA6-Lernstrecke** (04a–06a) ist inhaltlich und formal gehärtet — u. a. einheitliche **Meta-Informationen** (Status, Daten, Features), **Dokumentenkette** zwischen Web- und A4-Fassungen, konsistente Terminologie **Testbasis-Analyse**, **HA6 Testprotokoll A4** (Test Execution Log), sowie A4-Ergänzungen in **`doc-a4.css`** (z. B. Status-Badge für Review). Details und Commit-Historie: **Git-Repository `QA_Lernwebseite`**.
+**Kurzüberblick (Stand 23.03.2026):** V2-Hauptsystem und Benennungsmatrix sind umgesetzt; **02c** ist migriert; die **HA4/HA5/HA6-Lernstrecke** (04a–06c) ist inhaltlich und formal gehärtet — u. a. einheitliche **Meta-Informationen** (Status, Daten, Features), **Dokumentenkette** zwischen Web- und A4-Fassungen, konsistente Terminologie **Testbasis-Analyse**, **HA6 Testprotokoll A4** (Test Execution Log), **HA6 Fehlerbericht A4** (Incident Report), **HA6 Testabschlussbericht A4** (Test Completion Report nach ISO/IEC/IEEE 29119-3), sowie A4-Ergänzungen in **`doc-a4.css`** (z. B. Status-Badge für Review). Details und Commit-Historie: **Git-Repository `QA_Lernwebseite`**.
