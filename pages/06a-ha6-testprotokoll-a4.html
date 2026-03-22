@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HA6 Testprotokoll (Test Execution Log) GroceryMate — A4-/Dokumentmodus, 9 TC aus HA5 Testfallentwurf.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <link rel="stylesheet" href="../assets/css/doc-a4.css">
+  <title>HA6 Testprotokoll A4 — QA Lernwebseite</title>
+  <style>
+    /* HA6 — Schrift nur 8.25pt / 11pt (11pt via doc-a4 für Blattüberschriften) */
+    .doc-body .doc-info-box {
+      border: 1px solid var(--doc-bdr);
+      border-left: 3px solid var(--doc-mid);
+      padding: 5pt 8pt;
+      margin-bottom: 8pt;
+      background: var(--doc-light);
+      font-size: 8.25pt;
+      line-height: 1.45;
+      color: var(--doc-mid);
+    }
+    .doc-body .doc-info-box strong { color: var(--doc-text); }
+
+    .doc-mode .doc-body .form-meta {
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .doc-body .form-field { margin-bottom: 8pt; }
+    .doc-body .form-field__label {
+      font-size: 8.25pt;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--doc-soft);
+      margin-bottom: 2pt;
+    }
+    .doc-body .form-field__label .form-field__hint {
+      display: block;
+      margin-top: 2pt;
+      font-size: 8.25pt;
+      font-weight: 400;
+      letter-spacing: normal;
+      text-transform: none;
+      color: var(--doc-mid);
+      line-height: 1.45;
+    }
+    .doc-body .form-field__value {
+      font-size: 8.25pt;
+      color: var(--doc-text);
+      line-height: 1.45;
+      border: 1px solid var(--doc-bdr);
+      padding: 5pt 7pt;
+      background: var(--doc-light);
+    }
+    .doc-body .form-field__value--tall {
+      min-height: 36pt;
+    }
+
+    /* Abschnitt 1: festes Layout + Zellgitter (nur diese Tabelle; übrige ref-tables = doc-a4-Standard) */
+    .doc-body .ref-table table.flow-summary-table {
+      table-layout: fixed;
+      width: 100%;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.flow-summary-table th,
+    .doc-body .ref-table table.flow-summary-table td {
+      border: 1px solid var(--doc-bdr);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.flow-summary-table th:nth-child(1),
+    .doc-body .ref-table table.flow-summary-table td:nth-child(1) { width: 16%; }
+    .doc-body .ref-table table.flow-summary-table th:nth-child(2),
+    .doc-body .ref-table table.flow-summary-table td:nth-child(2) { width: 16%; }
+    .doc-body .ref-table table.flow-summary-table th:nth-child(3),
+    .doc-body .ref-table table.flow-summary-table td:nth-child(3) { width: 16%; }
+    .doc-body .ref-table table.flow-summary-table th:nth-child(4),
+    .doc-body .ref-table table.flow-summary-table td:nth-child(4) { width: 16%; }
+    .doc-body .ref-table table.flow-summary-table th:nth-child(5),
+    .doc-body .ref-table table.flow-summary-table td:nth-child(5) { width: 16%; }
+    .doc-body .ref-table table.flow-summary-table th:nth-child(6),
+    .doc-body .ref-table table.flow-summary-table td:nth-child(6) { width: 20%; }
+
+    /* Spaltentitel: zentriert (doc-a4: ref-table thead th = left) */
+    .doc-body .ref-table thead th {
+      text-align: center;
+    }
+
+    .doc-body .ref-table table.exec-log-table {
+      width: 100%;
+      table-layout: fixed;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.exec-log-table tbody td {
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.exec-log-table th,
+    .doc-body .ref-table table.exec-log-table td {
+      border: 1px solid var(--doc-bdr);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+    }
+    .doc-body .ref-table table.exec-log-table .cell-id {
+      font-weight: 700;
+      font-family: 'Courier New', Consolas, monospace;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.exec-log-table .cell-empty {
+      background: #fff;
+    }
+    .doc-body .ref-table table.exec-log-table thead th {
+      font-size: 8.25pt;
+      white-space: nowrap;
+    }
+
+    /* Abschnitt 3 Testumgebung: Zellgitter wie Abschnitt 1/2 */
+    .doc-body .ref-table table.test-env-table {
+      width: 100%;
+      table-layout: fixed;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.test-env-table th,
+    .doc-body .ref-table table.test-env-table td {
+      border: 1px solid var(--doc-bdr);
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table table.test-env-table th:nth-child(1),
+    .doc-body .ref-table table.test-env-table td:nth-child(1) { width: 28%; }
+    .doc-body .ref-table table.test-env-table .cell-empty {
+      background: #fff;
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav" aria-label="Hauptnavigation">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC &amp; Testprozess (statisch)</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC &amp; Testprozess (animiert)</a></li>
+      <li><a href="02c-teststufen.html">Teststufen &amp; Testarten</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html" class="current">HA6 Testprotokoll A4</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Testprotokoll A4</h1>
+    <p>HA6 · Test Execution Log · GroceryMate · CTFL 4.0.2 / IEEE 829-2008</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Modushinweis">
+    <span><strong>Modus:</strong> A4-/Dokumentansicht</span>
+    <span><strong>Seiten:</strong> 2</span>
+    <span><strong>Projekt:</strong> GroceryMate (HA6)</span>
+    <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829-2008</span>
+  </div>
+
+  <div class="doc-mode">
+    <!-- ═══ Blatt 1: Übersicht + Testprotokoll ═══ -->
+    <article class="doc-a4" id="sheet-1" aria-labelledby="sheet1-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet1-heading">Testprotokoll</h1>
+          <p>Test Execution Log · GroceryMate · HA6</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA6)<br>
+          <strong>Erstellt:</strong> 22.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 22.03.2026<br>
+          <strong>Seite:</strong> 1 von 2
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="form-meta">
+          <div class="form-meta__cell"><div class="form-meta__label">Testobjekt</div><div class="form-meta__value">grocerymate.masterschool.com</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Features</div><div class="form-meta__value">GM-F01 · GM-F02 · GM-F03</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Testfälle (Plan)</div><div class="form-meta__value">9 (gemäß <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> / <a href="04c-ha5-testfallentwurf.html">Web</a>)</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Dokumentstatus</div><div class="form-meta__value">Vorlage — vor Testausführung</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Teststufe</div><div class="form-meta__value">Systemtest</div></div>
+        </div>
+
+        <div class="doc-info-box">
+          <strong>Hinweis:</strong> TC-IDs und Kurzbeschreibungen entsprechen dem aktuellen Testfallentwurf (<a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>). Ergebnis- und Umgebungsfelder nach Durchführung ausfüllen.
+        </div>
+
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 1 / 4</span>
+          Testablauf-Übersicht
+        </div>
+        <div class="ref-table">
+          <table class="flow-summary-table">
+            <thead>
+              <tr>
+                <th scope="col">Geplante TCs</th>
+                <th scope="col">Ausge&shy;führte TCs</th>
+                <th scope="col">Bestanden</th>
+                <th scope="col">Fehlge&shy;schlagen</th>
+                <th scope="col">Blockiert</th>
+                <th scope="col">Ausführungs&shy;rate (%)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 2 / 4</span>
+          Testprotokoll (Test Execution Log)
+        </div>
+        <div class="ref-table">
+          <table class="exec-log-table">
+            <thead>
+              <tr>
+                <th scope="col" style="width:12%">TC-ID</th>
+                <th scope="col" style="width:17%">Testfall</th>
+                <th scope="col" style="width:9%">Datum</th>
+                <th scope="col" style="width:9%">Tester</th>
+                <th scope="col" style="width:11%">Ergebnis</th>
+                <th scope="col" style="width:21%">Befund / Bemerkung</th>
+                <th scope="col" style="width:8%">Bug-ID</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-id">TC-F01.F1.1</td>
+                <td>1 Stern bewerten (Minimum-Grenzwert)</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F01.F1.2</td>
+                <td>5 Sterne bewerten (Maximum-Grenzwert)</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F01.F2.1</td>
+                <td>Gast versucht zu bewerten (Zugriffskontrolle)</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F02.F1.1</td>
+                <td>17 Jahre 364 Tage alt (Zugriff verweigert)</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F02.F1.2</td>
+                <td>Exakt 18 Jahre alt (Zugriff gewährt)</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F02.F2.1</td>
+                <td>Modal erscheint beim ersten Store-Aufruf</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F03.F1.2</td>
+                <td>Exakt 20€ Bestellwert (Versandkosten = 0€)</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F03.F3.2</td>
+                <td>Artikel entfernen unter 20€ (BUG: Update fehlt)</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F03.F4.1</td>
+                <td>Gast versucht Checkout (Login-Pflicht)</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Blatt 2: Testumgebung + Beobachtungen ═══ -->
+    <article class="doc-a4" id="sheet-2" aria-labelledby="sheet2-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet2-heading">Testprotokoll</h1>
+          <p>Test Execution Log · GroceryMate · HA6</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA6)<br>
+          <strong>Erstellt:</strong> 22.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 22.03.2026<br>
+          <strong>Seite:</strong> 2 von 2
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 3 / 4</span>
+          Testumgebung
+        </div>
+        <div class="ref-table">
+          <table class="test-env-table">
+            <thead>
+              <tr>
+                <th scope="col">Feld</th>
+                <th scope="col">Wert</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Browser</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td>Betriebssystem</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+              <tr>
+                <td>URL</td>
+                <td>grocerymate.masterschool.com</td>
+              </tr>
+              <tr>
+                <td>Testkonto</td>
+                <td class="cell-empty">&nbsp;</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Abschnitt 4 / 4</span>
+          Beobachtungen &amp; Abweichungen
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">
+            Freitext
+            <span class="form-field__hint">Für Beobachtungen die kein eigenständiger Fehlerbericht sind.</span>
+          </div>
+          <div class="form-field__value form-field__value--tall" aria-label="Freitextfeld für Beobachtungen">&nbsp;</div>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+  </div>
+</main>
+
+<footer>
+  <p class="source-note">HA6 · Masterschool QA-Track · Testprotokoll (Test Execution Log) · CTFL 4.0.2 / IEEE 829-2008 · grocerymate.masterschool.com · A4-Dokumentmodus</p>
+</footer>
+
+</body>
+</html>

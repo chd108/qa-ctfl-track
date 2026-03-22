@@ -2,6 +2,8 @@
  * doc-a4.css — A4-Dokumentmodus für kanonische HA4/HA5-A4-Seiten.
  * Primär: 04b-ha4-testbasisanalyse-a4.html · mit ergänzendem Inline-<style>: 04d-ha5-testfallentwurf-a4.html
  * Zwei-Stufen-System: 11pt (GROSS) / 8.25pt (KLEIN)
+ * Regel: Keine anderen Schriftgrößen in lokalen <style>-Blöcken oder inline —
+ *   weder in bestehenden noch in neuen A4-Dokumenten.
  * Bildschirm: .meta-bar weiter 0.9rem (nicht gedruckt).
  */
 
