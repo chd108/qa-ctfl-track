@@ -46,8 +46,25 @@
     .doc-body .doc-info-box.doc-info-box--ok .doc-info-box__title {
       color: var(--doc-review);
     }
+    /* Gelber Hinweis (Korrektur / Hinweis nachträglich, außerhalb TC-Karte) */
+    .doc-body .doc-info-box.doc-info-box--warn {
+      background: #fff8e6;
+      border-color: #e6d4a8;
+      border-left-color: #c9a51a;
+      color: var(--doc-mid);
+      margin-top: 12pt;
+      padding-top: 6pt;
+      border-top: 1px dashed var(--doc-bdr);
+    }
+    .doc-body .doc-info-box.doc-info-box--warn .doc-info-box__title {
+      color: #8a6d1a;
+    }
     @media print {
       .doc-body .doc-info-box.doc-info-box--ok {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .doc-body .doc-info-box.doc-info-box--warn {
         -webkit-print-color-adjust: exact;
         print-color-adjust: exact;
       }
@@ -1066,7 +1083,7 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 22.03.2026<br>
           <strong>Seite:</strong> 10 von 11
         </div>
       </div>
@@ -1135,6 +1152,19 @@
             <div class="form-field__label">Testdaten</div>
             <div class="form-field__value">Start-Summe: > 20€ · Nach Entfernen: < 20€</div>
           </div>
+        </div>
+
+        <div class="doc-info-box doc-info-box--warn" role="note" aria-labelledby="korrektur-tc-f03-f32-heading">
+          <p><strong id="korrektur-tc-f03-f32-heading" class="doc-info-box__title">Korrekturhinweis zur Testfall-Formulierung (22.03.2026)</strong></p>
+          <p><strong>Testtypen im Überblick:</strong></p>
+          <ul class="doc-steps">
+            <li>Funktionaler Test: Prüft ob Feature anforderungsgemäß funktioniert (Expected = SOLL, Actual = wird beim Testen ermittelt)</li>
+            <li>Regressionstest: Prüft ob ein behobener Bug wirklich gefixt ist (nach dem Fix)</li>
+            <li>Bug-Reproduktionstest: Stellt einen bekannten Bug systematisch nach (vor dem Fix)</li>
+          </ul>
+          <p>Problem bei diesem TC: Die Formulierung des &quot;Expected Result&quot; vermischt SOLL-Verhalten und IST-Verhalten (Bug). Das ist ungewöhnlich und entstand, weil der Bug bereits in HA4 entdeckt wurde. Professionell korrekt: Expected Result enthält nur die Anforderung, unabhängig von bekannten Bugs.</p>
+          <p>Die ursprüngliche Formulierung bleibt aus Transparenzgründen erhalten und dokumentiert den Lernprozess.</p>
+          <p>Testergebnis (HA6): Trotz der verwirrenden Formulierung ist das Ergebnis eindeutig ❌ FAIL - das System verhält sich nicht anforderungsgemäß. Bug-Dokumentation erfolgt im Testprotokoll und Fehlerbericht (HA6).</p>
         </div>
       </div>
 
