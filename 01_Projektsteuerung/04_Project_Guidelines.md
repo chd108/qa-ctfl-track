@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23 (Versionskontrolle: gesamtes Repo qa-ctfl-track / Monorepo)  
+Letzte Aktualisierung: 2026-03-23 (Versionskontrolle: gesamtes Repo qa-ctfl-track / Monorepo; Regel Aktuelles Datum; Commit-Nacharbeit: Git-Text + Prosa)  
 Zweck: Definiert Arbeitsweisen für KI-gestützte Arbeit, ein verbindliches fachliches Rollenmodell (Autor / KI-Werkzeuge) und Versionskontrolle  
 Klassifizierung: Projektsteuerung / Guidelines  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an KI-gestützte Ein-Personen-Arbeit.
@@ -15,6 +15,12 @@ Dieses Dokument regelt **Zusammenarbeit mit KI-gestützten Werkzeugen** (ChatGPT
 **Geltung:** Verbindlich für alle Arbeiten, bei denen KI den **QA-Track** (`qa-ctfl-track`) oder die **Lernwebsite** unterstützt oder verändert, und für alle **Git-Commits und Pushes** auf **`origin`** (siehe Abschnitt 5). Ordner **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`**, **`06_Archiv/`** sind per **`.gitignore`** derzeit **nicht** Teil des Standard-Commit-Umfangs.
 
 **Lesereihenfolge mit anderen Steuerungsdokumenten:** Zuerst [01_Project_Charter.md](01_Project_Charter.md) und [03_Project_Standards.md](03_Project_Standards.md) für Kontext und Ablage; dieses Dokument für **Kommunikation, Prompting und Git** (Monorepo).
+
+### Aktuelles Datum (für KI und Autor)
+
+- **Tagesdaten** in Metadaten und Texten („Letzte Aktualisierung“, „Zuletzt aktualisiert“, Changelogs, formale Datumsangaben in Artefakten) **nicht schätzen, nicht aus dem Training ableiten und nicht „einfach den nächsten Tag“ setzen**.
+- **Maßgeblich** ist das **vom System bzw. der Sitzung mitgeteilte aktuelle Datum** (z. B. Nutzer-/Umgebungskontext „Today’s date: …“) **oder** ein **explizit vom Autor genanntes Datum**. Fehlt beides → **nachfragen** statt ein Datum zu erfinden.
+- **Konsequenz:** Wenn der Autor korrigiert („heute ist der 23., nicht der 24.“), ist das **verbindlich**; KI passt alle betroffenen Datumsfelder an.
 
 ---
 
@@ -131,6 +137,8 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 
 **Praktisch:** Längere Messages mit `git commit -F nachricht.txt` (oder Editor) setzen.
 
+**Abgrenzung zur Chat-Dokumentation:** Was nach dem Push **zusätzlich** im Arbeitskanal stehen soll (neben der reinen Git-Message), ist in **Abschnitt 6** festgelegt — dort ist verbindlich **zwei** getrennte Teile vorgesehen.
+
 ### Push
 
 - Standard: Branch **`main`** → Remote **`origin`** (`git push origin main`).  
@@ -140,8 +148,13 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 
 ## 6. Nacharbeit nach Commit
 
-- **Nach jedem abgeschlossenen Commit** bzw. **Push** (insb. mit **Website-Anteil**): die **vollständige** Commit-Nachricht (Betreff + Body) **im Chat** (bzw. KI-/Arbeitskanal) **mitteilen** — für **Nachvollziehbarkeit**, Lernen und **Folgeaufgaben**.  
-- **Steuerung:** Wenn der Commit **Website** oder **Struktur** betrifft, **bei Bedarf** prüfen, ob **Status** oder **Standards** ein kurzes Update brauchen.
+**Verbindlich nach jedem abgeschlossenen Commit** bzw. **Push** (insb. mit **Website-Anteil**): Im **Chat** (bzw. KI-/Arbeitskanal) **zwei getrennte Teile** mitteilen — nicht nur eines von beidem:
+
+1. **Vollständige Commit-Nachricht (wortgleich mit Git):** Betreff und **gesamter** Body, so wie sie in `git log` / `git show` stehen. Dient **Nachvollziehbarkeit**, Copy-Paste, exakter Bezug zur Historie und **Folgeaufgaben** ohne Raten.
+2. **Kurze Prosa-Zusammenfassung:** Ein **Absatz oder wenige Sätze** in **verständlicher Einordnung** — was sich **inhaltlich** ändert (z. B. für Leser der Website, für das Repo), **warum** es gemacht wurde, und **falls relevant** Einschränkungen (z. B. ausgelassene Ordner wegen `.gitignore`, bewusst nicht mitcommittete Pfade).  
+   - Die Prosa **ersetzt** die Git-Message **nicht** und **dupliziert** sie nicht zeilenweise; sie **ergänzt** sie, damit der Autor nicht nur Roh-Bulletpoints interpretieren muss.
+
+**Steuerung:** Wenn der Commit **Website** oder **Struktur** betrifft, **bei Bedarf** prüfen, ob **Status** oder **Standards** ein kurzes Update brauchen.
 
 ---
 
@@ -169,10 +182,11 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 - [ ] **Kontext** und **Grenze** im Prompt genannt  
 - [ ] **Aufgabe** und **gewünschte Ausgabeform** klar  
 - [ ] Unklarheiten **offen** benannt oder **Rückversicherung** eingeholt  
+- [ ] **Datum:** bei Änderungen an „Letzte Aktualisierung“ / README-Datum / vergleichbaren Feldern nur das **aktuelle Sitzungsdatum** oder **vom Autor genanntes Datum** verwenden — **nicht** raten (siehe **Abschnitt 1, Aktuelles Datum**)  
 
 ### Nach Commit / Push
 
-- [ ] Vollständige Commit-Nachricht im **Chat** dokumentiert (üblich bei Website-Commits)  
+- [ ] Im **Chat:** **vollständige** Commit-Nachricht (Betreff + Body, wortgleich mit Git) **und** **kurze Prosa-Zusammenfassung** (siehe **Abschnitt 6**)  
 - [ ] Bei Bedarf **Status** / **Standards** geprüft  
 
 ---
