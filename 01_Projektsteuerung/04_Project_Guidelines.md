@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23 (Versionskontrolle: gesamtes Repo qa-ctfl-track / Monorepo; Regel Aktuelles Datum; Commit-Nacharbeit: Git-Text + Prosa)  
+Letzte Aktualisierung: 2026-03-23 (Versionskontrolle: gesamtes Repo qa-ctfl-track / Monorepo; Regel Aktuelles Datum; Commit: ausführliche Message mit Meta; nach Push: Erfolgsmeldung + Message wortgleich im Chat)  
 Zweck: Definiert Arbeitsweisen für KI-gestützte Arbeit, ein verbindliches fachliches Rollenmodell (Autor / KI-Werkzeuge) und Versionskontrolle  
 Klassifizierung: Projektsteuerung / Guidelines  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an KI-gestützte Ein-Personen-Arbeit.
@@ -90,7 +90,7 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 | **Aufgabe** | Konkrete Anweisung („Erstelle …“, „Ändere …“, „Prüfe …“). |
 | **Rückgabeform** | Format (Markdown, Tabelle, Diff), Dateinamen, Struktur der Antwort. |
 | **Unsicherheit** | Offen benennen („Unklar, ob …“ / „Bitte nachfragen, wenn …“), damit die KI **nachfragt** statt **rät**. |
-| **Git (falls relevant)** | Wenn Commits gewünscht: **Monorepo** **qa-ctfl-track** (Abschnitt 5); bei reinen Website-Änderungen Präfix/Bezug zu **`02_Portfolio/QA_Lernwebseite/`**; Commit-Stil und **keine** Tool-Kennzeichen in Messages (Abschnitt 5–6). |
+| **Git (falls relevant)** | Wenn Commits gewünscht: **Monorepo** **qa-ctfl-track** (Abschnitt 5); bei reinen Website-Änderungen Präfix/Bezug zu **`02_Portfolio/QA_Lernwebseite/`**; ausführliche Messages mit Meta-Perspektive; **keine** Tool-Kennzeichen in Messages (Abschnitt 5–6). |
 
 ### Kurzformel
 
@@ -119,7 +119,7 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 | Prüfpunkt | Frage |
 |-----------|--------|
 | **Staging** | Sind nur die **gewollten** Pfade vorgemerkt (Website, Steuerung, `.github`, Root-README, …)? |
-| **Inhalt** | Sind die Änderungen **aktuell**, **vollständig** und in **einem Satz** erklärbar? |
+| **Inhalt** | Sind die Änderungen **aktuell** und **vollständig**? Deckt die geplante Message **Abschnitt 5** ab (**WARUM** / **WAS** / **KONTEXT**)? |
 | **Begleit-Doku** | Bei sichtbaren Website-Änderungen: **`02_Portfolio/QA_Lernwebseite/README.md`** ggf. mitgezogen; bei Steuerungsrelevanz **Status** / **Standards** prüfen. |
 | **Risiko** | Keine **Secrets**, keine **lokalen Nur-mir-Pfade**; **öffentliches** Repo beachten. |
 
@@ -127,17 +127,23 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 
 ### Commit-Nachrichten
 
-**Ziel:** Historie wie ein **Projekttagebuch** — **warum**, **Kontext** und **was sich wo** ändert. Bei **Website-lastigen** Commits an die bestehende, ausführliche Stilpraxis der **Lernwebsite-Historie** anknüpfen; bei **Steuerungs-** oder **Repo-Commits** (z. B. `chore:`, `docs:`) kurz und klar.
+**Verbindlich:** **professionell und ausführlich.** Jede Message ist ein **nachvollziehbares Protokoll** — nicht nur eine technische Diff-Beschreibung („changed X in Y“).
 
-**Erste Zeile (Betreff):** kurz, suchbar; Präfixe wie `docs:`, `fix:`, `feat:`, `chore:` möglich. **Keine** internen Layout-Labels „V2“/„V3“. **Website:** sachlich Hauptsystem, Navigation, Seiten/Dateien nennen.
+**Meta-Perspektive (muss in der Message stehen):**
 
-**Body (bei größeren Commits):** Hintergrund, Detailänderungen, ggf. **Liste geänderter Dateien**; bei Website-Commits ggf. **Stand-Datum** wie bisher. **Nicht** in Commit-Texten: **Tool-/KI-Herkunftszeilen** (`Made-with: …`).
+| Teil | Inhalt |
+|------|--------|
+| **WARUM** | Hintergrund, Anlass, Vorgeschichte — was hat zu dieser Änderung geführt? |
+| **WAS** | Konkrete Änderungen: betroffene Bereiche, Dateien oder Features; fachliche/inhaltliche Punkte. |
+| **KONTEXT / NACHWIRKUNG** | Bedeutung für Repo, Website oder Steuerung; mögliche Folgen; bewusst **Ausgelassenes** (z. B. `.gitignore`); Risiken oder offene Punkte, falls relevant. |
 
-**Kurze Messages** bei trivialen Änderungen.
+**Erste Zeile (Betreff):** kurz, suchbar; Präfixe wie `feat:`, `fix:`, `docs:`, `chore:` möglich. **Keine** internen Layout-Labels „V2“/„V3“. Bei Website-Änderungen: Modul/Seiten sachlich nennen.
 
-**Praktisch:** Längere Messages mit `git commit -F nachricht.txt` (oder Editor) setzen.
+**Body:** mindestens ein **ausführlicher** zusammenhängender Teil mit **WARUM**, **WAS** und **KONTEXT/NACHWIRKUNG** — nicht nur Stichpunkte ohne Einordnung. Geänderte Pfade oder Dateien **nennen**, wo es hilft. **Nicht** in Commit-Texten: **Tool-/KI-Herkunftszeilen** (`Made-with: …`).
 
-**Abgrenzung zur Chat-Dokumentation:** Was nach dem Push **zusätzlich** im Arbeitskanal stehen soll (neben der reinen Git-Message), ist in **Abschnitt 6** festgelegt — dort ist verbindlich **zwei** getrennte Teile vorgesehen.
+**Praktisch:** `git commit -F nachricht.txt` (oder Editor) nutzen; Absätze und Zeilenumbrüche sind erwünscht.
+
+**Nach dem Push** im Chat: siehe **Abschnitt 6** — nur **Erfolgsmeldung** und die Message **wortgleich**; **keine** zweite, separate Prosa.
 
 ### Push
 
@@ -146,13 +152,12 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 
 ---
 
-## 6. Nacharbeit nach Commit
+## 6. Nacharbeit nach Commit / Push
 
-**Verbindlich nach jedem abgeschlossenen Commit** bzw. **Push** (insb. mit **Website-Anteil**): Im **Chat** (bzw. KI-/Arbeitskanal) **zwei getrennte Teile** mitteilen — nicht nur eines von beidem:
+**Verbindlich** nach jedem abgeschlossenen **Push** (bzw. wenn der Autor die Rückmeldung im Chat erwartet):
 
-1. **Vollständige Commit-Nachricht (wortgleich mit Git):** Betreff und **gesamter** Body, so wie sie in `git log` / `git show` stehen. Dient **Nachvollziehbarkeit**, Copy-Paste, exakter Bezug zur Historie und **Folgeaufgaben** ohne Raten.
-2. **Kurze Prosa-Zusammenfassung:** Ein **Absatz oder wenige Sätze** in **verständlicher Einordnung** — was sich **inhaltlich** ändert (z. B. für Leser der Website, für das Repo), **warum** es gemacht wurde, und **falls relevant** Einschränkungen (z. B. ausgelassene Ordner wegen `.gitignore`, bewusst nicht mitcommittete Pfade).  
-   - Die Prosa **ersetzt** die Git-Message **nicht** und **dupliziert** sie nicht zeilenweise; sie **ergänzt** sie, damit der Autor nicht nur Roh-Bulletpoints interpretieren muss.
+1. **Erfolgsmeldung** — kurz bestätigen, dass Commit und Push **fertig** sind (z. B. Branch **`main`**, Remote **`origin`**), soweit erkennbar.
+2. **Commit-Nachricht wortwörtlich** — **Betreff** und **gesamter Body** **exakt** so wiedergeben, wie sie in `git log` / `git show` stehen (für Nachvollziehbarkeit und Copy-Paste). **Keine** zusätzliche Einordnung oder Zusammenfassung **zum Inhalt dieses Commits** im Chat (Paraphrase, „Meta nur hier“); Meta und Ausführlichkeit stehen in der Message (**Abschnitt 5**).
 
 **Steuerung:** Wenn der Commit **Website** oder **Struktur** betrifft, **bei Bedarf** prüfen, ob **Status** oder **Standards** ein kurzes Update brauchen.
 
@@ -171,10 +176,10 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 ### Kurz vor einem Commit (Monorepo)
 
 - [ ] Nur beabsichtigte Pfade im **Staging** (Website, Steuerung, CI, …)  
-- [ ] Änderung **in einem Satz** beschreibbar  
+- [ ] Geplante Message erfüllt **Abschnitt 5** (Betreff + ausführlicher Body mit **WARUM** / **WAS** / **KONTEXT**)  
 - [ ] Bei Website-Änderungen: **`02_Portfolio/QA_Lernwebseite/README.md`** ggf. mitaktualisiert  
 - [ ] Keine **Secrets**, keine irrelevanten **lokalen** Pfade  
-- [ ] Commit-Message: **sachlicher** Betreff, bei Bedarf **Body**, **keine** V2/V3-Labels, **keine** Tool-Zeile  
+- [ ] **Keine** V2/V3-Labels, **keine** Tool-Zeile in der Message  
 
 ### Kurz vor einem KI-gestützten Eingriff
 
@@ -186,7 +191,7 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 
 ### Nach Commit / Push
 
-- [ ] Im **Chat:** **vollständige** Commit-Nachricht (Betreff + Body, wortgleich mit Git) **und** **kurze Prosa-Zusammenfassung** (siehe **Abschnitt 6**)  
+- [ ] Im **Chat:** **Erfolgsmeldung** und **Commit-Nachricht wortgleich** (Betreff + Body, siehe **Abschnitt 6**) — **keine** separate Prosa-Zusammenfassung  
 - [ ] Bei Bedarf **Status** / **Standards** geprüft  
 
 ---
