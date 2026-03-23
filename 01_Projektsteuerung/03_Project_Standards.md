@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23 (Monorepo-Git, .gitignore 03–06, kein Website-.git)  
+Letzte Aktualisierung: 2026-03-23 — Health-Check-Befunde nur Chat; Abschnitt 8 = Referenz-Snapshot  
 Zweck: Definiert Regeln und Standards für Repo-Struktur, Dokumentation und Qualität  
 Klassifizierung: Projektsteuerung / Standards  
 Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE 829-2008**, **ISO/IEC/IEEE 29119-3** (jeweils im **Lern- und Portfolio-Kontext**, ohne Anspruch auf vollständige Normenzertifizierung).
@@ -14,7 +14,7 @@ Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE
 
 Dieses Dokument ist die **kanonische Regel- und Standardreferenz** für das Arbeitsverzeichnis **`qa-ctfl-track/`** (QA-Track, **Monorepo**): **Ordnerlogik**, **Benennung**, **Ablage**, **Markdown- und Metadaten-Konventionen**, **Qualitäts- und Konsistenzregeln**, den **Integrations-Workflow** der **Lernwebsite** unter **`02_Portfolio/QA_Lernwebseite/`** sowie **Repository Health & Review**.
 
-Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte Themen (Repo-Struktur, Benennung, Workflow der Lernwebsite, formale Dokumentationsregeln, Health Check). **Maßgeblich** für die aktive Arbeit am QA-Track ist ausschließlich die **Project_*-Serie** im Ordner `01_Projektsteuerung/` — **ohne** Verweis auf abzulegende nummerierte Altdateien in diesem Text.
+Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte Themen (Repo-Struktur, Benennung, Workflow der Lernwebsite, formale Dokumentationsregeln, Referenz **Repository Health & Review** in Abschnitt 8). **Maßgeblich** für die aktive Arbeit am QA-Track ist ausschließlich die **Project_*-Serie** im Ordner `01_Projektsteuerung/` — **ohne** Verweis auf abzulegende nummerierte Altdateien in diesem Text.
 
 ### Geltungsbereich
 
@@ -117,7 +117,7 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 | **`05_Notizen/`** | Unterrichtsnotizen, Übungen, temporäre Texte (`ddmm.txt` o. Ä. kann historisch existieren). |
 | **`06_Archiv/`** | Abgeschlossene oder ersetzte Themen; Unterordner nach Thema möglich (z. B. `alt-claude-PW/`, `Projektsteuerung_alt/`); jeweils kurz per **README** erklären. |
 
-**Root:** Keine losen Arbeitsdateien; ausnahmslos **`README.md`** als Einstieg (siehe Health Check).
+**Root:** Keine losen Arbeitsdateien; ausnahmslos **`README.md`** als Einstieg (siehe Abschnitt 8 — Referenz-Snapshot).
 
 *Historisch:* Vor Umbenennung der Top-Level-Ordner existierten andere Verzeichnisnamen und eine andere Steuerungsdatei-Struktur. **Nach Archivierung des Altbestands** sind diese Namen **nur noch im Archiv** nachvollziehbar — in aktiven **Project_*-Dokumenten** wird **nicht** auf einzelne Legacy-Dateien verwiesen.
 
@@ -235,7 +235,7 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 
 ### Berichte und Prüfzusammenfassungen
 
-- **Standard:** Ergebnisse in **Chat** oder in **bestehende** Steuerungsdokumente (z. B. Status, Health Check in Abschnitt 8 dieses Dokuments) **einarbeiten**.  
+- **Standard:** Ergebnisse in **Chat** oder in **bestehende** Steuerungsdokumente (z. B. Status) **einarbeiten** — **ausgenommen** der **Repository Health Check** (Prompt in **05_Reference_Quick.md**): dort **nur Chat**, **keine** Ablage des Befunds in Projektdateien.  
 - **Keine** spontanen neuen Berichtdateien im **Root** oder in **Teilprojekt-Roots** — **außer** ausdrücklich gewünscht (z. B. datierter Analyse-Snapshot im Steuerungsordner nach festgelegtem Namensschema).  
 - **Reports** nicht als „Ballast“ in `02_Portfolio/QA_Lernwebseite/` ablegen, wenn sie nicht zur öffentlichen Website gehören.
 
@@ -287,7 +287,9 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 
 ## 8. Repository Health & Review
 
-**Stand der Bewertung (Übernahme aus früherem Health Check, Pfade und Ordnernamen angepasst):** 2026-03-23
+*Hinweis:* Wiederkehrende **Repository Health Checks** (Prompt **Repo_Health_Check_Prompt** in **05_Reference_Quick.md**) liefern ihr Ergebnis **ausschließlich im Chat**; dieser Abschnitt ist **kein** Ablageort für neue Läufe, sondern ein **statischer Referenz-Snapshot** zur Orientierung.
+
+**Stand des Snapshots (einmalig dokumentiert, Pfade/Ordner Monorepo):** 2026-03-23
 
 ### Gesamtbewertung
 
@@ -326,7 +328,7 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 | **Sofort sinnvoll** | HA4: Entscheidung **.txt/.md** treffen und dokumentieren. |
 | **Später sinnvoll** | `05_Notizen/`: Benennungsschema für neue Dateien; Altbestand bereinigen oder Ausnahmen README. |
 | **Optional** | `06_Archiv/README.md`: Regel zu Unterordnern und Benennung ergänzen. |
-| **Fortlaufend** | Health-Abschnitt in diesem Dokument bei **Repo-Reviews** aktualisieren (Datum, neue Befunde). |
+| **Fortlaufend** | Struktur- und Qualitätsregeln (Abschnitte 3 ff.) bei echten **Änderungen am Repo** pflegen; **Health-Check-Befunde** nicht hier festhalten (nur Chat). |
 
 ### Kurzfassung
 
@@ -334,4 +336,4 @@ Das Repository ist **strukturiert**, **verständlich** und an die **Project_*-St
 
 ---
 
-*Hinweis:* Ergebnisse eines **Repository Health Checks** (z. B. per KI-Prompt) können in **Abschnitt 8** dokumentiert werden; Textbausteine dafür: **05_Reference_Quick.md** (Prompt-Bibliothek).
+*Hinweis:* **Repository Health Checks** (Prompt-Bibliothek **05_Reference_Quick.md**) werden **nicht** in diesem Abschnitt abgelegt — **nur Chat-Ausgabe**. Abschnitt 8 bleibt Referenz-Snapshot.

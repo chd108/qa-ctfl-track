@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23  
+Letzte Aktualisierung: 2026-03-23 — Repo_Health_Check: nur Chat, kein Datei-Befund  
 Zweck: Schnellzugriff auf Pfade, Prompts und externe Ressourcen  
 Klassifizierung: Projektsteuerung / Referenz  
 Normative Orientierung: ISO 21502 — Zugänglichkeit von Projektinformationen.
@@ -121,59 +121,61 @@ Das Ergebnis soll als Markdown-Datei unter 01_Projektsteuerung/ abgelegt werden:
 ### Repo_Health_Check_Prompt
 
 ```
-Bitte führe einen Repository Health Check für dieses gesamte QA-Track-Projekt durch.
+Kontext — aktuelles System (Ist-Architektur)
+
+- Arbeitsverzeichnis: **qa-ctfl-track/** (QA-Track).
+- **Ein** Git-Repository (**Monorepo**): Remote in der Regel **origin** → `github.com/chd108/qa-ctfl-track`, Branch **main**.
+- **Lernwebsite** liegt im **selben** Repo unter **02_Portfolio/QA_Lernwebseite/** (keine eigene `.git` dort).
+- **GitHub Pages:** Deployment per **GitHub Actions** — Workflow **.github/workflows/deploy-pages.yml**; Artifact-Pfad **`02_Portfolio/QA_Lernwebseite`** (Root der Site = u. a. **index.html**).
+- Optional kann ein zweites Remote (**website** → älteres Repo **QA_Lernwebseite**) existieren; **kanonisch** für öffentliche Site und Historie ist das **Monorepo**. Hinweis bei Abweichungen erwähnen.
+- **.gitignore:** u. a. **03_Hausaufgaben/**, **04_Referenzen/**, **05_Notizen/**, **06_Archiv/** — diese Bereiche sind oft **nur lokal**; im Check klar von **getracktem** Remote-Umfang trennen.
+- Verbindliche Git-/Commit-Regeln und verbotene Trailer (z. B. Tool-Zeilen in Messages): **01_Projektsteuerung/04_Project_Guidelines.md**.
+- Kanonische Repo-Struktur und Website-Workflow: **01_Projektsteuerung/03_Project_Standards.md** (u. a. Abschnitt 3 und Website-Integrationsworkflow).
+
+---
+
+Aufgabe
+
+Bitte führe einen **Repository Health Check** für **dieses lokale** qa-ctfl-track-Projekt durch.
 
 Wichtig:
-Dieser Check soll NICHT die inhaltliche Qualität einzelner Hausaufgaben prüfen und auch NICHT den Notion-Abgleich übernehmen. Dafür gibt es einen separaten Homework-Audit. Hier geht es nur um die Qualität, Ordnung und Wartbarkeit des Repositories selbst.
+- **Nicht** die inhaltliche Qualität einzelner Hausaufgaben prüfen und **nicht** den Notion-Abgleich — dafür gibt es den **Homework_Audit_Prompt**.
+- **Nicht** die fachliche Richtigkeit der Lernwebsite-Inhalte (CTFL) tieftauchen — nur **technische** und **repo-strukturelle** Tauglichkeit der Website **als Artefakt** (Pfade, Einstieg, Konsistenz mit Monorepo).
 
-Prüfe bitte diese Punkte:
+---
 
-1. Repository-Struktur
-- Ist die Ordnerstruktur logisch, klar und langfristig nutzbar?
-- Sind die Hauptbereiche sauber getrennt?
-- Gibt es unnötige Verschachtelungen oder unklare Ablagen?
+A) Lokale technische Basis (befehlsnah; Shell beachten)
 
-2. Root-Dokumentation
-- Ist die README im Root klar, aktuell und als Einstieg geeignet?
-- Funktionieren interne Verweise und Einstiege sinnvoll?
-- Führt die Dokumentation klar zur Project_*-Steuerung in 01_Projektsteuerung/?
+Führe nach Möglichkeit aus (bei **Windows PowerShell** Befehle mit **Semikolon** trennen, nicht `&&`, falls die Shell-Version das nicht unterstützt):
 
-3. Konsistenz
-- Sind Dateinamen und Ordnernamen einheitlich?
-- Wird die definierte Benennungslogik konsequent eingehalten?
-- Gibt es widersprüchliche, unklare oder chaotische Benennungen?
+- `git status` — sauberer Arbeitsbaum?
+- `git branch -vv` / Abgleich **HEAD** mit **origin/main** (oder dem genutzten Upstream).
+- `git remote -v` — **origin** korrekt? Zweites Remote **website** nur einordnen, nicht doppelt führen ohne Grund.
+- `git fsck --no-dangling` (oder `git fsck`) — offensichtliche Objektprobleme?
+- Stichprobe: letzte Commits — **keine** verbotenen Tool-/Herkunftszeilen in Commit-Bodies (siehe **04_Project_Guidelines.md**).
+- Existenz prüfen: **LICENSE** (Root), **README.md** (Root), **02_Portfolio/QA_Lernwebseite/index.html**, **.github/workflows/deploy-pages.yml**.
+- Optional: letzte **GitHub Actions**-Runs nur erwähnen, wenn du Zugriff hast (z. B. `gh` oder Web); sonst „nicht verifiziert“.
 
-4. Dokumentationsqualität
-- Haben wichtige Ordner oder Bereiche genug Kontext, damit die Struktur auch später noch verständlich bleibt?
-- Fehlen an zentralen Stellen kurze erklärende Hinweise?
+---
 
-5. Git- und Projektlogik
-- Ist die Git-Struktur für dieses Lernprojekt sinnvoll aufgebaut?
-- Ist erkennbar, dass **qa-ctfl-track** ein **Monorepo** ist (eine Historie; Lernwebsite als Unterordner `02_Portfolio/QA_Lernwebseite/`)?
-- Sind per `.gitignore` ausgeschlossene Bereiche (z. B. `03_Hausaufgaben/`, `04_Referenzen/`, `05_Notizen/`, `06_Archiv/`) dokumentiert und bewusst gewählt?
+B) Struktur und Dokumentation (wie bisher, aber Monorepo-bewusst)
 
-6. Wartbarkeit und Skalierbarkeit
-- Kann das Repository in den nächsten Wochen und Monaten sauber weiterwachsen?
-- Lassen sich neue Hausaufgaben, Notizen, Materialien und Projektdateien leicht ergänzen, ohne Unordnung zu erzeugen?
+1. **Repository-Struktur** — logisch, klar, langfristig nutzbar? Hauptbereiche getrennt? unnötige Verschachtelung?
+2. **Root-Dokumentation** — README Root: Einstieg, Links, Verweis auf **01_Projektsteuerung/** und Monorepo/Pages?
+3. **Konsistenz** — Benennung gemäß **03_Project_Standards.md**? auffällige Ausnahmen?
+4. **Dokumentationsqualität** — READMEs in Hauptordnern, fehlende Kurz-Kontexte?
+5. **Git- und Projektlogik** — Monorepo erkennbar; **.gitignore**-Bereiche bewusst und in Doku erklärt?
+6. **Wartbarkeit / Skalierbarkeit** — Wachstum ohne Unordnung möglich?
+7. **Sauberkeit** — leere/halbfertige/duplizierte Artefakte, strukturelle Altlasten im **getrackten** Umfang?
 
-7. Sauberkeit
-- Gibt es leere, halbfertige, doppelte oder veraltete Dateien?
-- Gibt es strukturelle Ungereimtheiten oder Bereiche, die aufgeräumt werden sollten?
+---
 
-Erwartete Ausgabe:
-- Kurze Gesamtbewertung des Repositories
-- Konkrete Stärken der aktuellen Struktur
-- Konkrete Schwachstellen oder Risiken
-- Klare Liste mit Verbesserungsvorschlägen
-- Wenn möglich: Priorisierung in
-  - sofort sinnvoll
-  - später sinnvoll
-  - optional
+Erwartete Ausgabe
 
-Bitte sei präzise, kritisch und konkret.
-Kein allgemeines Lob, sondern eine echte Strukturprüfung.
+- **Ausschließlich im Chat** — vollständiger Befund (Gesamtbewertung, Stärken, Schwachstellen, priorisierte Verbesserungen). **Keine** neue Datei anlegen und **keine** bestehende Projektdatei (inkl. **03_Project_Standards.md**) zum Speichern des Health-Check-Ergebnisses bearbeiten.
+- Struktur der Ausgabe wie üblich: Kurz-Urteil oben, dann Details; Priorisierung **sofort / später / optional**.
 
-Das Ergebnis soll in 03_Project_Standards.md im Abschnitt „Repository Health & Review“ (Abschnitt 8) dokumentiert werden — bestehende Tabelle/Absätze ersetzen oder ergänzen; Datum im Dokument anpassen.
+Stil: präzise, kritisch, konkret — kein generisches Lob.
 ```
 
 ### Überblicks_Prompt_Statusbericht
@@ -379,7 +381,7 @@ Nur prüfen und professionell einschätzen.
 | Prompt (Abschnitt 4) | Empfohlene Ablage / Nutzung |
 |----------------------|-----------------------------|
 | **Homework_Audit_Prompt** | Neue Datei `01_Projektsteuerung/YYYY-MM-DD_Hausaufgabenanalyse.md` (Schema siehe [03_Project_Standards.md](03_Project_Standards.md) Abschnitt 4). Optional ältere Analysen nach `06_Archiv/` verschieben. |
-| **Repo_Health_Check_Prompt** | Befund in [03_Project_Standards.md](03_Project_Standards.md) **Abschnitt 8** (Repository Health & Review) einarbeiten; **Letzte Aktualisierung** im Metablock von Standards setzen. |
+| **Repo_Health_Check_Prompt** | **Nur Chat-Ausgabe** — kein Schreiben in Steuerungsdateien oder andere Repo-Dateien für den Befund. |
 | **Überblicks_Prompt_Statusbericht** | In der Regel **nur Chat-Ausgabe**; bei Bedarf Kernaussagen in [02_Project_Status.md](02_Project_Status.md) übernehmen. |
 | **Public_Release_Check_QA_Lernwebseite** | **Empfehlungen im Chat**; umgesetzte Änderungen unter **`02_Portfolio/QA_Lernwebseite/`** im Monorepo **qa-ctfl-track** und nach [04_Project_Guidelines.md](04_Project_Guidelines.md) committen. |
 
@@ -393,7 +395,7 @@ Kanalische **Project\_*-Serie** im Ordner `01_Projektsteuerung/`:
 |-------|----------------|
 | [01_Project_Charter.md](01_Project_Charter.md) | Zweck, Vision, Scope, Stakeholder, Rollenmodell (fachlich), Genehmigung |
 | [02_Project_Status.md](02_Project_Status.md) | Ist-Stand, Meilensteine, Risiken, nächste Schritte |
-| [03_Project_Standards.md](03_Project_Standards.md) | Repo-Struktur, Benennung, CTFL/Lernplan, Website-Workflow, Health Check |
+| [03_Project_Standards.md](03_Project_Standards.md) | Repo-Struktur, Benennung, CTFL/Lernplan, Website-Workflow; **Abschnitt 8** = Referenz-Snapshot (kein Ablageort für Health-Check-Läufe) |
 | [04_Project_Guidelines.md](04_Project_Guidelines.md) | Fachliche Rollen ↔ KI-Werkzeuge, Kommunikation, Prompting, Git Monorepo **qa-ctfl-track** |
 | [05_Reference_Quick.md](05_Reference_Quick.md) | Schnellnavigation, externe Links, Prompt-Bibliothek (dieses Dokument) |
 
