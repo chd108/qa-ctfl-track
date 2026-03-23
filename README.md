@@ -1,5 +1,7 @@
 # QA Lernwebseite
 
+> Zuletzt aktualisiert: 2026-03-23
+
 Öffentliches **Lern- und Referenzprojekt** zu Software Testing, QA und **ISTQB Certified Tester Foundation Level (CTFL) v4.0.2**.  
 Inhaltlich als **statische Website** umgesetzt: jedes Modul unter `pages/` ist eine eigenständige HTML-Seite entlang des CTFL-Lehrplans.
 
