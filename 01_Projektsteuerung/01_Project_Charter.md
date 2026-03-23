@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23  
+Letzte Aktualisierung: 2026-03-23 (Monorepo qa-ctfl-track: GitHub / Pages)  
 Zweck: Definiert Vision, Ziele und Umfang des QA-Track Lernprojekts  
 Klassifizierung: Projektsteuerung / Charter  
 Normative Orientierung: ISO 21502 (Projektmanagement), PMI PMBOK (Integrationsmanagement) — angepasst an Lern- und Ein-Personen-Projekt.
@@ -10,9 +10,9 @@ Normative Orientierung: ISO 21502 (Projektmanagement), PMI PMBOK (Integrationsma
 
 ## 1. Executive Summary
 
-**QA-Track** ist ein **ganzheitliches Lern- und Referenzprogramm** für Software-Testing und Qualitätssicherung, ausgerichtet am **ISTQB Certified Tester Foundation Level (CTFL) Syllabus v4.0.2**. Es umfasst **strukturierte Lernmaterialien, Hausaufgaben, Projekt- und Portfolioarbeit, persönliche Notizen, Referenzdokumente sowie die öffentlich nutzbare Lernwebsite *QA_Lernwebseite*** als zentrales digitales Hauptprodukt — eingebettet in ein versioniertes Arbeitsverzeichnis (Repository-Gesamtkontext).
+**QA-Track** ist ein **ganzheitliches Lern- und Referenzprogramm** für Software-Testing und Qualitätssicherung, ausgerichtet am **ISTQB Certified Tester Foundation Level (CTFL) Syllabus v4.0.2**. Es umfasst **strukturierte Lernmaterialien, Hausaufgaben, Projekt- und Portfolioarbeit, persönliche Notizen, Referenzdokumente sowie die öffentlich nutzbare Lernwebsite *QA_Lernwebseite*** als zentrales digitales Hauptprodukt — eingebettet in das versionierte **Monorepo *[qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)*** (Steuerung und Website unter **`02_Portfolio/QA_Lernwebseite/`** in **einem** Git-Repository).
 
-**Aktueller Stand (Stand Steuerungsdokumentation, März 2026):** Die technische Basis der *QA_Lernwebseite* ist **vereinheitlicht**: ein **Hauptsystem** für reguläre Seiten, ein definierter **Dokument-/A4-Präsentationsmodus** für formale Abgaben/Druck, **einstiegszentrierte Navigation** (`index.html` als alleiniger Einstieg im Website-Repo) und eine **strukturell umgesetzte Benennungslogik** entlang der CTFL-Primärachse. Die **inhaltliche Lernstrecke HA4/HA5** auf der Website wurde in **vier Phasen** (Konsistenz, Story-/UX, formale Einheitlichkeit, Standards-Review) **abgeschlossen**; Referenzdokumentation und Qualitätsmaßstab sind im **Systemkonzept** der Website festgehalten.
+**Aktueller Stand (Stand Steuerungsdokumentation, März 2026):** Die technische Basis der *QA_Lernwebseite* ist **vereinheitlicht**: ein **Hauptsystem** für reguläre Seiten, ein definierter **Dokument-/A4-Präsentationsmodus** für formale Abgaben/Druck, **einstiegszentrierte Navigation** (`index.html` als alleiniger Einstieg unter **`02_Portfolio/QA_Lernwebseite/`** im Monorepo) und eine **strukturell umgesetzte Benennungslogik** entlang der CTFL-Primärachse. Die **inhaltliche Lernstrecke HA4/HA5** auf der Website wurde in **vier Phasen** (Konsistenz, Story-/UX, formale Einheitlichkeit, Standards-Review) **abgeschlossen**; Referenzdokumentation und Qualitätsmaßstab sind im **Systemkonzept** der Website festgehalten.
 
 **Nächste priorisierte Ausrichtung** auf Programmebene (Website): **Komponentenstil / Designsystem light** — Darstellungsregeln wiederkehrender Bausteine verbindlich schließen — gefolgt von einer **höheren Konsistenz- und Darstellungsregel-Ebene** über die HA4/HA5-Kernstrecke hinaus. Parallel bleiben **Studium, Hausaufgaben, Portfolio und Projektsteuerung** die tragenden Säulen des Gesamtprogramms.
 
@@ -80,7 +80,7 @@ Die *QA_Lernwebseite* ist ein **integrierter Bestandteil** des QA-Track-Programm
 
 ## 5. Haupt-Ergebnisse (Deliverables)
 
-Das Programm liefert **fünf Ergebnislinien** (nebeneinander, teils in unterschiedlichen Repositories oder Ordnern):
+Das Programm liefert **fünf Ergebnislinien** (nebeneinander; **Steuerung** und **Lernwebsite** im **Monorepo** **[qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — öffentlich u. a. **[GitHub Pages](https://chd108.github.io/qa-ctfl-track/)**; weitere Arbeitsordner lokal bzw. nach `.gitignore`-Regel; **Kurs-Portfolio** ggf. separat):
 
 1. **Lernwebsite (*QA_Lernwebseite*)** — statische, öffentlich einsetzbare Lern- und Referenzwebsite mit einheitlichem Hauptsystem, Einstiegslogik und Dokument-/A4-Modus; Inhalte entlang der CTFL-Primärachse inkl. Hausaufgaben-Einordnung und Standards-Orientierung.  
 2. **Hausaufgaben und Studienartefakte** — strukturierte Bearbeitung der Kurs-HAs (u. a. Testdesign, Entscheidungstabellen, Zustandsübergänge, Anforderungsanalyse, Testkonzept/Testfallentwurf) inkl. Lösungs- und Belegdateien im QA-Track-Arbeitsverzeichnis.  
@@ -96,7 +96,7 @@ Das Programm liefert **fünf Ergebnislinien** (nebeneinander, teils in unterschi
 
 - Der **ISTQB CTFL Syllabus v4.0.2** (Stand Lehrplan-Dokument) bleibt die **maßgebliche inhaltliche Referenz** für Prüfungs- und Lernausrichtung.  
 - **Kursplan und Aufgabenstellungen** (Notion, MasterSchool) definieren **Reihenfolge, Abgabemodalitäten und Bewertungskontext**; das QA-Track-Repository **dokumentiert und unterstützt** die Umsetzung, ersetzt aber keine Kursinstitution.  
-- Die *QA_Lernwebseite* wird **öffentlich** bereitgestellt (z. B. über Git-Hosting mit Pages); es werden **keine** sicherheitskritischen oder datenschutzrelevanten Live-Systeme angebunden.  
+- Die *QA_Lernwebseite* wird **öffentlich** über **GitHub Pages** bereitgestellt (**[chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/)**); Quellcode und Steuerung liegen im Repository **[github.com/chd108/qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)**. Es werden **keine** sicherheitskritischen oder datenschutzrelevanten Live-Systeme angebunden.  
 - **Normen** (CTFL-Bezug, IEEE 829-2008, ISO/IEC/IEEE 29119-3) werden **didaktisch genutzt** und **konsistent referenziert**, ohne Vollständigkeit oder Zertifizierungsanspruch der Organisation „QA-Track“.
 
 ### Einschränkungen
@@ -117,7 +117,7 @@ Im Sinne eines professionellen Arbeitsmodells werden **Zuständigkeiten getrennt
 | Rolle | Verantwortung |
 |--------|----------------|
 | **Product Owner / Domain Lead** | Ziele, Prioritäten, fachlicher Qualitätsmaßstab, inhaltliche Finalentscheidungen. |
-| **Architecture & Coordination** | Systemlogik, Informationsarchitektur, Konsistenz, Entscheidungsrahmen, Schnittstellen zwischen Website, Repo und Portfolio. |
+| **Architecture & Coordination** | Systemlogik, Informationsarchitektur, Konsistenz, Entscheidungsrahmen, Schnittstellen zwischen **Lernwebsite** (`02_Portfolio/QA_Lernwebseite/`), **Monorepo-Root** (Steuerung, CI) und **Kurs-Portfolio**. |
 | **Subject-Matter Review & Content Design** | fachliche Prüfung QA/ISTQB, inhaltliche Struktur, didaktische Aufbereitung (Web und Dokumente). |
 | **Implementation & Delivery** | technische Umsetzung (HTML/CSS/JS, Repository-Struktur, Pflege von Build-/Veröffentlichungsprozessen der Website). |
 

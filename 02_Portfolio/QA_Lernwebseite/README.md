@@ -12,7 +12,7 @@ Die **HA4/HA5/HA6-Strecke** (Fallstudie **GroceryMate**) verbindet **Testbasis-A
 
 **Bereitstellung:** z. B. **GitHub Pages** oder beliebiger statischer Host — kein Build-Schritt nötig.
 
-**Lizenz:** **CC BY-NC-SA 4.0** — Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen. Details in `LICENSE`.
+**Lizenz:** **CC BY-NC-SA 4.0** — Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen. Textdatei: [`LICENSE`](../../LICENSE) im **Repository-Root** (Monorepo).
 
 ---
 
