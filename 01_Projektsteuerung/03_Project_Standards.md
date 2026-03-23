@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23 (Abschn. 5: README Mini-Metablock)  
+Letzte Aktualisierung: 2026-03-23 (Monorepo-Git, .gitignore 03–06, kein Website-.git)  
 Zweck: Definiert Regeln und Standards für Repo-Struktur, Dokumentation und Qualität  
 Klassifizierung: Projektsteuerung / Standards  
 Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE 829-2008**, **ISO/IEC/IEEE 29119-3** (jeweils im **Lern- und Portfolio-Kontext**, ohne Anspruch auf vollständige Normenzertifizierung).
@@ -12,7 +12,7 @@ Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE
 
 ### Zweck
 
-Dieses Dokument ist die **kanonische Regel- und Standardreferenz** für das Arbeitsverzeichnis **`000_QA_Track/`** (QA-Track): **Ordnerlogik**, **Benennung**, **Ablage**, **Markdown- und Metadaten-Konventionen**, **Qualitäts- und Konsistenzregeln**, den **Integrations-Workflow** der **QA_Lernwebseite** sowie **Repository Health & Review**.
+Dieses Dokument ist die **kanonische Regel- und Standardreferenz** für das Arbeitsverzeichnis **`qa-ctfl-track/`** (QA-Track, **Monorepo**): **Ordnerlogik**, **Benennung**, **Ablage**, **Markdown- und Metadaten-Konventionen**, **Qualitäts- und Konsistenzregeln**, den **Integrations-Workflow** der **Lernwebsite** unter **`02_Portfolio/QA_Lernwebseite/`** sowie **Repository Health & Review**.
 
 Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte Themen (Repo-Struktur, Benennung, Workflow der Lernwebsite, formale Dokumentationsregeln, Health Check). **Maßgeblich** für die aktive Arbeit am QA-Track ist ausschließlich die **Project_*-Serie** im Ordner `01_Projektsteuerung/` — **ohne** Verweis auf abzulegende nummerierte Altdateien in diesem Text.
 
@@ -20,9 +20,9 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 
 | Bereich | Einbezogen |
 |---------|------------|
-| **Gesamt-Repo** | Alle Top-Level-Ordner unter `000_QA_Track/` (siehe Abschnitt 3). |
+| **Gesamt-Repo** | Alle Top-Level-Ordner unter `qa-ctfl-track/` (siehe Abschnitt 3). |
 | **Projektsteuerung** | `01_Projektsteuerung/` — **Project_*-Serie:** Charter, Status, diese Standards, Guidelines, Reference Quick. **Website-Architektur und Benennung** sind in **[01_Project_Charter.md](01_Project_Charter.md)** und **diesem Dokument** (u. a. Abschnitt 3, 6, 7) geführt — **ohne** separate Konzeptdatei. |
-| **Website** | `02_Portfolio/QA_Lernwebseite/` — eigenes Git-Repository; öffentliche Lernwebsite. |
+| **Website** | `02_Portfolio/QA_Lernwebseite/` — öffentliche Lernwebsite als **Unterordner** im **einen** Git-Repository **qa-ctfl-track** (kein separates Website-`.git` mehr). |
 | **Hausaufgaben & Kursartefakte** | `03_Hausaufgaben/`. |
 | **Referenzen** | `04_Referenzen/` (u. a. ISTQB-PDFs). |
 | **Notizen** | `05_Notizen/`. |
@@ -35,7 +35,7 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 - **Rollenmodell (fachliche Rollen ↔ Akteure), KI, Kommunikation, Git/Commit:** [04_Project_Guidelines.md](04_Project_Guidelines.md)  
 - **Schnellnavigation, Prompt-Bausteine:** [05_Reference_Quick.md](05_Reference_Quick.md)  
 
-*Inhaltlicher Lernplan, Kurslinks und CTFL-Abgleich:* in diesem Dokument **Abschnitt 2**; bei Pfadfragen gilt **Abschnitt 3**. *Architektur, IA und Benennungslogik der QA_Lernwebseite:* Rahmen und Qualitätsziele in **[01_Project_Charter.md](01_Project_Charter.md)**; operative Regeln, Ordnerlogik und Integrations-Workflow in **diesem Dokument** (Abschnitt 3, 6 und 7).
+*Inhaltlicher Lernplan, Kurslinks und CTFL-Abgleich:* in diesem Dokument **Abschnitt 2**; bei Pfadfragen gilt **Abschnitt 3**. *Architektur, IA und Benennungslogik der Lernwebsite (`QA_Lernwebseite/`):* Rahmen und Qualitätsziele in **[01_Project_Charter.md](01_Project_Charter.md)**; operative Regeln, Ordnerlogik und Integrations-Workflow in **diesem Dokument** (Abschnitt 3, 6 und 7).
 
 ---
 
@@ -60,7 +60,7 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 
 ### Lernplan — inhaltlicher Roter Faden (mit **aktuellen Projektordnern**)
 
-| Kapitel | Thema | Zeit (ca.) | Zuordnung im Repo `000_QA_Track/` |
+| Kapitel | Thema | Zeit (ca.) | Zuordnung im Repo `qa-ctfl-track/` |
 |---------|-------|------------|-------------------------------------|
 | **1** | Grundlagen des Testens | 180 min | Primär **Lernwebsite:** `02_Portfolio/QA_Lernwebseite/` · Referenz: `04_Referenzen/` |
 | **2** | Testen im SDLC | 130 min | Wie oben (u. a. SDLC-Seiten, Teststufen) |
@@ -82,7 +82,7 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 | **HA5** | Testkonzept & Testfallentwurf | `HA5_Testkonzept_Testfallentwurf/` (inkl. `arbeitsmaterialien/` für **Portfolio-Einrichtung** im Kurs-Sinne, Aufgaben 00–03) |
 | **HA6** | Testdurchführung | `HA6_Testdurchfuehrung/` |
 
-**Hinweis „Portfolio“:** Das **Arbeits- und Nachweis-Repository** für dieses Programm ist **`000_QA_Track`** mit der eingebetteten Lernwebsite **`02_Portfolio/QA_Lernwebseite/`** (eigenes Git). Das **einzige** für dieses Programm maßgebliche Arbeits- und Nachweis-Repository ist **`000_QA_Track`** inkl. **`02_Portfolio/QA_Lernwebseite/`**. Eine **zusätzliche**, separat zu pflegende Bewerbungs-Portfolio-Repository ist **kein** Bestandteil der hier beschriebenen Struktur.
+**Hinweis „Portfolio“:** Das **Arbeits- und Nachweis-Repository** für dieses Programm ist **`qa-ctfl-track`** (**ein** Git-Monorepo) mit der Lernwebsite unter **`02_Portfolio/QA_Lernwebseite/`**. **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`** und **`06_Archiv/`** sind per **`.gitignore`** derzeit **nicht versioniert** (lokal vorhanden; spätere Aufnahme möglich). Eine **zusätzliche**, separat zu pflegende Bewerbungs-Portfolio-Repository ist **kein** Bestandteil der hier beschriebenen Struktur.
 
 ### Scope (Ablage — für Qualitätssicherung)
 
@@ -106,12 +106,12 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 
 ## 3. Informations- & Ordnerarchitektur
 
-### Top-Level-Struktur `000_QA_Track/` (kanonisch)
+### Top-Level-Struktur `qa-ctfl-track/` (kanonisch)
 
 | Ordner | Zweck |
 |--------|--------|
 | **`01_Projektsteuerung/`** | **Project_*-Serie** (Charter, Status, diese Standards, Guidelines, Reference Quick). Website-Architektur/Benennung: **[01_Project_Charter.md](01_Project_Charter.md)** + **dieses Dokument** — keine zusätzliche Konzeptdatei. |
-| **`02_Portfolio/`** | Enthält ausschließlich **`QA_Lernwebseite/`** als **eigenes Git-Repository** (öffentliche Lernwebsite, z. B. GitHub Pages). **Kein** separates zweites Produkt-Repo im Sinne eines zusätzlichen Bewerbungsordners — das Gesamtprogramm liegt unter **`000_QA_Track`**. Website-Commits **nicht** mit dem übergeordneten Track-Repo vermischen (siehe **04_Project_Guidelines.md**, Versionskontrolle). |
+| **`02_Portfolio/`** | Enthält **`QA_Lernwebseite/`** — öffentliche Lernwebsite (z. B. GitHub Pages) als **Unterordner** im **Monorepo** **qa-ctfl-track**. **Kein** eingebettetes **`.git`** mehr unter der Website; Commits und Push betreffen **das gesamte** Repo (Website-Änderungen mit Präfix `02_Portfolio/QA_Lernwebseite/`). Siehe **04_Project_Guidelines.md** (Versionskontrolle). |
 | **`03_Hausaufgaben/`** | Hausaufgaben HA1–HA6; pro HA typischerweise `00_Loesung*`, `01_Original_Aufgabe*`, `02_Aufgabe_umformuliert*`, `03_Beispiel*` (Abweichungen nur bewusst, z. B. HA5 mit geteilten Beispieldateien). |
 | **`04_Referenzen/`** | ISTQB-Lehrplan, Sample Exams, Normen-PDFs, externe Links — README pflegen. |
 | **`05_Notizen/`** | Unterrichtsnotizen, Übungen, temporäre Texte (`ddmm.txt` o. Ä. kann historisch existieren). |
@@ -161,14 +161,14 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 ### Ablage- und Archivregeln
 
 1. Jede Hausaufgabe erhält **eigene** Dateien im **zugehörigen** Unterordner von `03_Hausaufgaben/`.  
-2. **Keine** losen Dateien im **Root** von `000_QA_Track/`.  
+2. **Keine** losen Dateien im **Root** von `qa-ctfl-track/`.  
 3. Neue dateibasierte Artefakte: **Datum** `YYYY-MM-DD` im Namen, sofern nicht ausnahmsweise sinnlos (z. B. feste Kursvorlagen).  
 4. Abgeschlossene oder ersetzte Themen: nach **`06_Archiv/`** verschieben; **ursprünglichen Dateinamen** bevorzugt **beibehalten**.  
 5. **HA-Navigation in Verweiszeilen:** Reihenfolge **Original** vor **umformulierte Aufgabe**: `01_Original_*` → `02_Aufgabe_umformuliert_*`.
 
 ### Ausnahmen und technische Sonderfälle
 
-- **`.git/`** innerhalb von `02_Portfolio/QA_Lernwebseite/`:** eigenständiges Git-Repository der Lernwebsite — **Commit/Push** nur dort; Regeln in **04_Project_Guidelines.md** (Abschnitt Versionskontrolle & Git).  
+- **Git-Root** ist **`qa-ctfl-track/`** (ein Repository). **`02_Portfolio/QA_Lernwebseite/`** hat **kein** eigenes **`.git`**; Website-Änderungen werden **im Monorepo** committet. Regeln in **04_Project_Guidelines.md** (Abschnitt Versionskontrolle & Git). **Upstream-Updates** der früheren Website-Historie ggf. per **`git subtree pull`** (Remote z. B. `website`).  
 - **Kursaufgabe Portfolio-Einrichtung:** liegt unter **`03_Hausaufgaben/HA5_Testkonzept_Testfallentwurf/arbeitsmaterialien/`** (Dateien `*_Portfolio_Einrichtung.md`), nicht als eigener Top-Level-Ordner.
 
 ---
@@ -268,7 +268,7 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 ### Pfad und Git
 
 - **Workspace-Pfad:** `02_Portfolio/QA_Lernwebseite/`  
-- **Versionierung:** **nur** dieses Verzeichnis als **Website-Repository** committen und pushen — Details und Commit-Stil in **04_Project_Guidelines.md** (Versionskontrolle & Git): u. a. **keine** veralteten internen Layout-Versions-Labels in Nachrichten; sachlich **Hauptsystem**, **Module**, **Dateien** benennen.
+- **Versionierung:** **Gesamt-Repo** **qa-ctfl-track** — Commits können Steuerung, Workflow und Website **gemeinsam** betreffen; für **reine** Website-Änderungen sinnvolle Commit-Nachrichten mit klarem Bezug zu **`02_Portfolio/QA_Lernwebseite/`**. Details und Commit-Stil in **04_Project_Guidelines.md** (Versionskontrolle & Git): u. a. **keine** veralteten internen Layout-Versions-Labels in Nachrichten; sachlich **Hauptsystem**, **Module**, **Dateien** benennen.
 
 ### Checkliste: neue oder geänderte Seite
 
@@ -297,7 +297,7 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 | **Root-Dokumentation** | Klar; Verweis auf Projektsteuerung soll auf **Charter / Status / Standards** zeigen |
 | **Dokumentationsqualität** | Gut — READMEs in Hauptordnern; Steuerung wird konsolidiert |
 | **Konsistenz** | Ordner- und HA-Schema überwiegend konsequent; vereinzelte Ausnahmen (siehe unten) |
-| **Git-Struktur** | **QA_Lernwebseite** unter **`02_Portfolio/QA_Lernwebseite/`** als **eingebettetes** Git-Repo; Gesamtprojekt **`000_QA_Track`** ohne zweites Pflicht-Portfolio-Repo |
+| **Git-Struktur** | **Ein** Repository **qa-ctfl-track**; Lernwebsite unter **`02_Portfolio/QA_Lernwebseite/`**; **`03_`–`06_`** per **`.gitignore`** optional lokal, nicht im Remote-Pflichtumfang |
 | **Sauberkeit** | Root ohne lose Dateien; punktuelle Redundanzen |
 
 **Gesamt: Gut.** Die genannten Schwachstellen sind **klein** und **priorisierbar**.
@@ -307,7 +307,7 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 - **Klare Top-Level-Ordner** (`01_`–`06_`) mit erkennbarem Zweck.  
 - **Root-README** als Einstieg; **QA_Lernwebseite** mit eigenem README und klarer Rolle.  
 - **HA-Ordner** mit wiederkehrendem Schema (`00_Loesung`, `01_Original`, …).  
-- **Trennung** öffentliche Website vs. persönliches Lernrepo.  
+- **Arbeitsbaum:** öffentliche Website unter **`02_Portfolio/`**; HA/Referenzen/Notizen/Archiv können **lokal** genutzt werden, sind per **`.gitignore`** im Remote **optional**.  
 - **Archiv** mit README und Themen-Unterordnern.
 
 ### Schwachstellen und Risiken

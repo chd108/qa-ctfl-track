@@ -14,7 +14,7 @@ Dieses Dokument bündelt **Schnellnavigation** („Aktion → Ort“), **externe
 
 **Nutzen:** Schnelles Auffinden von Ordnern, kanonischen Markdown-Dateien und kopierfertigen Prompts. **Verbindliche Regeln** zu Prompting, Rollen und Git: [04_Project_Guidelines.md](04_Project_Guidelines.md). **Repo- und Website-Workflow:** [03_Project_Standards.md](03_Project_Standards.md).
 
-**Pfadkonvention in diesem Dokument:** Alle relativen Pfade beziehen sich auf das Arbeitsverzeichnis **`000_QA_Track/`**, sofern nicht anders gekennzeichnet.
+**Pfadkonvention in diesem Dokument:** Alle relativen Pfade beziehen sich auf das Arbeitsverzeichnis **`qa-ctfl-track/`**, sofern nicht anders gekennzeichnet.
 
 ---
 
@@ -25,7 +25,7 @@ Dieses Dokument bündelt **Schnellnavigation** („Aktion → Ort“), **externe
 | **Einstieg Programm & Vision** | [01_Project_Charter.md](01_Project_Charter.md) |
 | **Aktueller Stand, Meilensteine** | [02_Project_Status.md](02_Project_Status.md) |
 | **Repo-Struktur, Ordner, Benennung, Lernplan-Zuordnung** | [03_Project_Standards.md](03_Project_Standards.md) (insb. Abschnitt 2–4, 7–8) |
-| **KI, Rollenmodell, Git/Commit (Website)** | [04_Project_Guidelines.md](04_Project_Guidelines.md) |
+| **KI, Rollenmodell, Git/Commit (Monorepo)** | [04_Project_Guidelines.md](04_Project_Guidelines.md) |
 | **Dieses Dokument — Pfade & Prompts** | [05_Reference_Quick.md](05_Reference_Quick.md) |
 | **Hausaufgaben-Analyse (Beispiel-Snapshot, archiviert)** | `06_Archiv/Projektsteuerung_alt/11_Hausaufgabenanalyse_2026-03-09.md` (neue Analysen: siehe Abschnitt 5) |
 | **SDLC (ISTQB) — animiert / statisch** | `02_Portfolio/QA_Lernwebseite/pages/02b-sdlc-animiert.html` · `02_Portfolio/QA_Lernwebseite/pages/02a-sdlc-statisch.html` |
@@ -52,7 +52,7 @@ Dieses Dokument bündelt **Schnellnavigation** („Aktion → Ort“), **externe
 |-----------|------|-----------|
 | **Lernplan (Notion)** | [Notion – Lernplan](https://www.notion.so/3029418319f381f19aa6c492dfdbcee2?pvs=21) | Kurssteuerung MasterSchool |
 | **Übersicht / Assessment (Notion)** | [MasterSchool Notion – chd108](https://www.notion.so/3029418319f38063bbc2c201c57b7ef4) | Externe Kurs-Übersicht |
-| **Öffentliche Lernwebsite (Git)** | [QA_Lernwebseite auf GitHub](https://github.com/chd108/QA_Lernwebseite) | Branch `main`; GitHub Pages o. ä. |
+| **Öffentliches Repo (Monorepo)** | [qa-ctfl-track auf GitHub](https://github.com/chd108/qa-ctfl-track) | Branch `main`; Website unter `02_Portfolio/QA_Lernwebseite/`; **GitHub Pages:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) |
 | **ISTQB CTFL** | [ISTQB.org — CTFL v4.0](https://www.istqb.org/certifications/certified-tester-foundation-level-ctfl-v4-0) | Offizielle Zertifizierungsseite |
 | **Probeprüfungen (DE)** | [GTB Probeprüfungen](https://www.gtb.de/der-certified-tester/probepruefungen/) | Übungsexamen |
 
@@ -111,7 +111,7 @@ Liste konkreter Verbesserungspunkte
 
 Liste offener Aufgaben (falls vorhanden)
 
-Einschätzung zur Tauglichkeit für öffentliches Portfolio (Website-Repo und Repo-Gesamtbild)
+Einschätzung zur Tauglichkeit für öffentliches Portfolio (öffentlicher Teil des Monorepos vs. lokale/.gitignore-Bereiche)
 
 Bitte sei kritisch, konkret und technisch präzise. Kein allgemeines Lob, sondern echte Analyse.
 
@@ -149,8 +149,8 @@ Prüfe bitte diese Punkte:
 
 5. Git- und Projektlogik
 - Ist die Git-Struktur für dieses Lernprojekt sinnvoll aufgebaut?
-- Ist erkennbar, dass die öffentliche Lernwebsite QA_Lernwebseite unter 02_Portfolio/QA_Lernwebseite/ ein eingebettetes eigenes Git-Repository ist?
-- Ist diese Trennung strukturell sauber und nachvollziehbar?
+- Ist erkennbar, dass **qa-ctfl-track** ein **Monorepo** ist (eine Historie; Lernwebsite als Unterordner `02_Portfolio/QA_Lernwebseite/`)?
+- Sind per `.gitignore` ausgeschlossene Bereiche (z. B. `03_Hausaufgaben/`, `04_Referenzen/`, `05_Notizen/`, `06_Archiv/`) dokumentiert und bewusst gewählt?
 
 6. Wartbarkeit und Skalierbarkeit
 - Kann das Repository in den nächsten Wochen und Monaten sauber weiterwachsen?
@@ -181,13 +181,13 @@ Das Ergebnis soll in 03_Project_Standards.md im Abschnitt „Repository Health &
 ```
 Kontext
 
-Wir arbeiten im Repository QA-Track (Arbeitsverzeichnis 000_QA_Track).
+Wir arbeiten im Repository QA-Track (Arbeitsverzeichnis qa-ctfl-track, Monorepo auf GitHub: chd108/qa-ctfl-track).
 
 Das Projekt enthält:
 - eine Projektsteuerung unter 01_Projektsteuerung/ (Project_*-Serie)
 - Hausaufgaben unter 03_Hausaufgaben/
 - Referenzen, Notizen, Archiv
-- die eingebettete Lernwebsite QA_Lernwebseite unter 02_Portfolio/QA_Lernwebseite/ (eigenes Git-Repository)
+- die Lernwebsite unter 02_Portfolio/QA_Lernwebseite/ (Teil desselben Git-Repositories; keine separate Website-.git)
 
 Ziel dieser Anfrage
 
@@ -302,7 +302,7 @@ Nur Analyse und Einschätzung.
 ```
 Kontext
 
-Das Projekt QA_Lernwebseite soll öffentlich auf GitHub liegen
+Der öffentliche Website-Teil (Ordner 02_Portfolio/QA_Lernwebseite/ im Repo qa-ctfl-track) soll auf GitHub liegen
 und kostenlos für alle als Lernwebsite nutzbar sein.
 
 Wichtig:
@@ -381,7 +381,7 @@ Nur prüfen und professionell einschätzen.
 | **Homework_Audit_Prompt** | Neue Datei `01_Projektsteuerung/YYYY-MM-DD_Hausaufgabenanalyse.md` (Schema siehe [03_Project_Standards.md](03_Project_Standards.md) Abschnitt 4). Optional ältere Analysen nach `06_Archiv/` verschieben. |
 | **Repo_Health_Check_Prompt** | Befund in [03_Project_Standards.md](03_Project_Standards.md) **Abschnitt 8** (Repository Health & Review) einarbeiten; **Letzte Aktualisierung** im Metablock von Standards setzen. |
 | **Überblicks_Prompt_Statusbericht** | In der Regel **nur Chat-Ausgabe**; bei Bedarf Kernaussagen in [02_Project_Status.md](02_Project_Status.md) übernehmen. |
-| **Public_Release_Check_QA_Lernwebseite** | **Empfehlungen im Chat**; umgesetzte Änderungen nur im **Website-Repo** `02_Portfolio/QA_Lernwebseite/` und nach [04_Project_Guidelines.md](04_Project_Guidelines.md) committen. |
+| **Public_Release_Check_QA_Lernwebseite** | **Empfehlungen im Chat**; umgesetzte Änderungen unter **`02_Portfolio/QA_Lernwebseite/`** im Monorepo **qa-ctfl-track** und nach [04_Project_Guidelines.md](04_Project_Guidelines.md) committen. |
 
 ---
 
@@ -394,11 +394,11 @@ Kanalische **Project\_*-Serie** im Ordner `01_Projektsteuerung/`:
 | [01_Project_Charter.md](01_Project_Charter.md) | Zweck, Vision, Scope, Stakeholder, Rollenmodell (fachlich), Genehmigung |
 | [02_Project_Status.md](02_Project_Status.md) | Ist-Stand, Meilensteine, Risiken, nächste Schritte |
 | [03_Project_Standards.md](03_Project_Standards.md) | Repo-Struktur, Benennung, CTFL/Lernplan, Website-Workflow, Health Check |
-| [04_Project_Guidelines.md](04_Project_Guidelines.md) | Fachliche Rollen ↔ KI-Werkzeuge, Kommunikation, Prompting, Git nur QA_Lernwebseite |
+| [04_Project_Guidelines.md](04_Project_Guidelines.md) | Fachliche Rollen ↔ KI-Werkzeuge, Kommunikation, Prompting, Git Monorepo **qa-ctfl-track** |
 | [05_Reference_Quick.md](05_Reference_Quick.md) | Schnellnavigation, externe Links, Prompt-Bibliothek (dieses Dokument) |
 
 *Hinweis:* Ältere nummerierte Steuerdateien und Kopien liegen bei Bedarf unter **`06_Archiv/`** — für die aktive Arbeit gelten ausschließlich die **Project\_*-Dateien** und dieses Referenzdokument.
 
 ---
 
-*Inhaltlich übernommen aus früheren Dateien zur Prompt-Sammlung und Schnellnavigation; Pfade und Steuerungsbezüge auf den Stand **000_QA_Track** / **Project\_*-Serie** aktualisiert.*
+*Inhaltlich übernommen aus früheren Dateien zur Prompt-Sammlung und Schnellnavigation; Pfade und Steuerungsbezüge auf den Stand **qa-ctfl-track** (Monorepo) / **Project\_*-Serie** aktualisiert.*

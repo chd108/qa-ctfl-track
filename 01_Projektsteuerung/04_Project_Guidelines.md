@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23 (Klärung: kein „Konzeptdokument“ mehr; Verweise auf Charter/Standards präzisiert)  
+Letzte Aktualisierung: 2026-03-23 (Versionskontrolle: gesamtes Repo qa-ctfl-track / Monorepo)  
 Zweck: Definiert Arbeitsweisen für KI-gestützte Arbeit, ein verbindliches fachliches Rollenmodell (Autor / KI-Werkzeuge) und Versionskontrolle  
 Klassifizierung: Projektsteuerung / Guidelines  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an KI-gestützte Ein-Personen-Arbeit.
@@ -10,11 +10,11 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an KI-gestützte Ein-Pers
 
 ## 1. Zweck & Anwendung
 
-Dieses Dokument regelt **Zusammenarbeit mit KI-gestützten Werkzeugen** (ChatGPT, Cursor, Claude), das **verbindliche fachliche Rollenmodell** (Abschnitt 2) sowie **Versionskontrolle und Commit-Praxis** für die **öffentliche Lernwebsite *QA_Lernwebseite*** — im Einklang mit [03_Project_Standards.md](03_Project_Standards.md) (Geltungsbereich, Steuerungslogik).
+Dieses Dokument regelt **Zusammenarbeit mit KI-gestützten Werkzeugen** (ChatGPT, Cursor, Claude), das **verbindliche fachliche Rollenmodell** (Abschnitt 2) sowie **Versionskontrolle und Commit-Praxis** für das **gesamte Git-Repository *qa-ctfl-track*** (Monorepo: Steuerung, Workflow, Website unter **`02_Portfolio/QA_Lernwebseite/`**) — im Einklang mit [03_Project_Standards.md](03_Project_Standards.md) (Geltungsbereich, Steuerungslogik).
 
-**Geltung:** Verbindlich für alle Arbeiten, bei denen KI den **QA-Track** (`000_QA_Track`) oder die **Lernwebsite** unterstützt oder verändert, und für alle **Git-Commits und Pushes**, die **ausschließlich** das **Website-Repository** betreffen (siehe Abschnitt 5).
+**Geltung:** Verbindlich für alle Arbeiten, bei denen KI den **QA-Track** (`qa-ctfl-track`) oder die **Lernwebsite** unterstützt oder verändert, und für alle **Git-Commits und Pushes** auf **`origin`** (siehe Abschnitt 5). Ordner **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`**, **`06_Archiv/`** sind per **`.gitignore`** derzeit **nicht** Teil des Standard-Commit-Umfangs.
 
-**Lesereihenfolge mit anderen Steuerungsdokumenten:** Zuerst [01_Project_Charter.md](01_Project_Charter.md) und [03_Project_Standards.md](03_Project_Standards.md) für Kontext und Ablage; dieses Dokument für **Kommunikation, Prompting und Git der Website**.
+**Lesereihenfolge mit anderen Steuerungsdokumenten:** Zuerst [01_Project_Charter.md](01_Project_Charter.md) und [03_Project_Standards.md](03_Project_Standards.md) für Kontext und Ablage; dieses Dokument für **Kommunikation, Prompting und Git** (Monorepo).
 
 ---
 
@@ -22,7 +22,7 @@ Dieses Dokument regelt **Zusammenarbeit mit KI-gestützten Werkzeugen** (ChatGPT
 
 ### Fachliche Rollen und Akteure
 
-**Einordnung:** Entspricht der **Steuerungslogik** in [03_Project_Standards.md](03_Project_Standards.md) (QA-Track `000_QA_Track/`, eingebettete **QA_Lernwebseite**). Die folgenden **fachlichen Rollen** sind **kein** externes RACI-Modell für Teams, sondern ein **Arbeitsmodell für Ein-Personen-Projekt + KI**: Sie klären, **welches Werkzeug** für welche **Denk- und Arbeitslage** zuständig ist. **Maßgeblich** für **KI-Arbeit, Kommunikation und Git** ist **dieses Dokument**. **Architektur- und Qualitätsrahmen der Lernwebsite** (Ziele, Scope, Benennung, Ordnerlogik, A4-/Dokumentmodus, Workflow) stehen in **[01_Project_Charter.md](01_Project_Charter.md)** und **[03_Project_Standards.md](03_Project_Standards.md)** — **ohne** separate Konzeptdatei neben der **Project\_*-Serie**.
+**Einordnung:** Entspricht der **Steuerungslogik** in [03_Project_Standards.md](03_Project_Standards.md) (QA-Track **`qa-ctfl-track/`**, Monorepo mit Lernwebsite **`02_Portfolio/QA_Lernwebseite/`**). Die folgenden **fachlichen Rollen** sind **kein** externes RACI-Modell für Teams, sondern ein **Arbeitsmodell für Ein-Personen-Projekt + KI**: Sie klären, **welches Werkzeug** für welche **Denk- und Arbeitslage** zuständig ist. **Maßgeblich** für **KI-Arbeit, Kommunikation und Git** ist **dieses Dokument**. **Architektur- und Qualitätsrahmen der Lernwebsite** (Ziele, Scope, Benennung, Ordnerlogik, A4-/Dokumentmodus, Workflow) stehen in **[01_Project_Charter.md](01_Project_Charter.md)** und **[03_Project_Standards.md](03_Project_Standards.md)** — **ohne** separate Konzeptdatei neben der **Project\_*-Serie**.
 
 **Zuordnung fachliche Rolle → Akteur (verbindlich):**
 
@@ -40,7 +40,7 @@ Dieses Dokument regelt **Zusammenarbeit mit KI-gestützten Werkzeugen** (ChatGPT
 - **Subject-Matter Review & Content Design:** Unterstützt bei fachlicher Prüfung und inhaltlicher Struktur; besonders für QA-/ISTQB-/Testing-Inhalte und HTML-/Inhaltsentwürfe.
 - **Implementation & Delivery:** Setzt technisch um; arbeitet an Dateien, Code, Refactoring und Struktur.
 
-**Technischer Zugriff:** **Cursor** hat **Lese- und Schreibzugriff** auf die im Workspace geöffneten Projektdateien und trägt damit **Implementation & Delivery** im Repo. **ChatGPT** und **Claude** haben **keinen** automatischen Dateizugriff; ihre Ausgaben (u. a. **Architecture & Coordination**, **Subject-Matter Review**) sind vom Autor zu **prüfen** und ggf. **manuell** oder **über Cursor** ins Artefakt zu übernehmen. **Git-Commits** der Website folgen unverändert **Abschnitt 5**.
+**Technischer Zugriff:** **Cursor** hat **Lese- und Schreibzugriff** auf die im Workspace geöffneten Projektdateien und trägt damit **Implementation & Delivery** im Repo. **ChatGPT** und **Claude** haben **keinen** automatischen Dateizugriff; ihre Ausgaben (u. a. **Architecture & Coordination**, **Subject-Matter Review**) sind vom Autor zu **prüfen** und ggf. **manuell** oder **über Cursor** ins Artefakt zu übernehmen. **Git-Commits** folgen **Abschnitt 5** (Monorepo **qa-ctfl-track**).
 
 ### Arbeitsprinzipien
 
@@ -84,7 +84,7 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 | **Aufgabe** | Konkrete Anweisung („Erstelle …“, „Ändere …“, „Prüfe …“). |
 | **Rückgabeform** | Format (Markdown, Tabelle, Diff), Dateinamen, Struktur der Antwort. |
 | **Unsicherheit** | Offen benennen („Unklar, ob …“ / „Bitte nachfragen, wenn …“), damit die KI **nachfragt** statt **rät**. |
-| **Git (falls relevant)** | Wenn Commits gewünscht: **Geltungsbereich nur Website-Repo** (Abschnitt 5); Commit-Stil und **keine** Tool-Kennzeichen in Messages (Abschnitt 5–6). |
+| **Git (falls relevant)** | Wenn Commits gewünscht: **Monorepo** **qa-ctfl-track** (Abschnitt 5); bei reinen Website-Änderungen Präfix/Bezug zu **`02_Portfolio/QA_Lernwebseite/`**; Commit-Stil und **keine** Tool-Kennzeichen in Messages (Abschnitt 5–6). |
 
 ### Kurzformel
 
@@ -96,38 +96,38 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 
 ### Aktueller Geltungsbereich (**Stand dieser Richtlinie**)
 
-**Versioniert, committet und gepusht wird ausschließlich** das **Git-Repository der Lernwebsite *QA_Lernwebseite***.
+**Versioniert, committet und gepusht wird** das **gesamte** Repository **qa-ctfl-track** (Remote **`origin`** auf GitHub).
 
-- **Pfad im Workspace:** `02_Portfolio/QA_Lernwebseite/` (Root des Website-Repos, inkl. `.git/`).  
-- **Nicht** Gegenstand dieses Git-Prozesses: der **gesamte** Ordner `000_QA_Track` **oberhalb** der Website — dort wird **aus dieser Richtlinie heraus** **kein** `git commit` / **kein** Push für das Gesamtprojekt erwartet.
+- **Git-Root:** Arbeitsverzeichnis **`qa-ctfl-track/`** (ein **`.git`**).  
+- **Lernwebsite:** Pfad **`02_Portfolio/QA_Lernwebseite/`** — **kein** eigenes Unter-Repository; Änderungen gehen in **dieselbe** Historie wie Steuerung und Workflow-Dateien.  
+- **`.gitignore`:** **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`**, **`06_Archiv/`** sind standardmäßig **ausgeschlossen** — dortige Dateien **erscheinen nicht** in `git status`, bis die Regeln bewusst geändert werden.
 
-**Ausblick:** Geplant ist, **später** das **gesamte** Arbeitsverzeichnis **`000_QA_Track`** unter **einem** Git-Repository zu führen. **Bis zur Einführung** dieser Erweiterung bleibt die **Trennung**: **nur** die **QA_Lernwebseite** ist das öffentlich versionierte Produkt; Steuerungsdateien und Hausaufgaben liegen **lokal** bzw. außerhalb dieses Website-Git-Prozesses.
+**Subtree (optional):** Für **Synchronisation** mit dem früheren separaten Website-Repo kann ein Remote z. B. **`website`** existieren; Updates dann z. B. per **`git subtree pull`** — siehe [03_Project_Standards.md](03_Project_Standards.md) (Integrations-Workflow).
 
-### Abgleich mit dem QA-Track (manuell)
+### Abgleich Steuerung ↔ Umsetzung (manuell)
 
-Änderungen an **Architektur, Inhalten oder Benennung** der Website können **Auswirkungen** auf die **Steuerungsdokumentation** im Ordner `01_Projektsteuerung/` haben — namentlich **Charter** (Programmrahmen, Website-Rolle), **Status** (Ist, Meilensteine) und **Standards** (Repo, Benennung, Website-Integration, A4-/Dokumentmodus). Das gehört **nicht** automatisch in jeden Website-Commit. **Wer** die Website anpasst, **prüft bei Bedarf**, ob diese **Project\_*-Dateien** noch mit dem Ist-Stand übereinstimmen.
+Änderungen an **Architektur, Inhalten oder Benennung** der Website können **Auswirkungen** auf **`01_Projektsteuerung/`** haben — **Charter**, **Status**, **Standards**. Das gehört **nicht** automatisch in jeden Commit. **Wer** die Website oder die Struktur anpasst, **prüft bei Bedarf**, ob **Project\_*-Dateien** und **README** noch passen.
 
-### Vor dem Commit (Website-Repo)
+### Vor dem Commit (Monorepo)
 
 | Prüfpunkt | Frage |
 |-----------|--------|
-| **Staging** | Sind nur die **gewollten** Dateien vorgemerkt? |
+| **Staging** | Sind nur die **gewollten** Pfade vorgemerkt (Website, Steuerung, `.github`, Root-README, …)? |
 | **Inhalt** | Sind die Änderungen **aktuell**, **vollständig** und in **einem Satz** erklärbar? |
-| **Begleit-Doku** | Bei sichtbaren oder strukturellen Änderungen: **`README.md`** der Website mitgezogen? |
+| **Begleit-Doku** | Bei sichtbaren Website-Änderungen: **`02_Portfolio/QA_Lernwebseite/README.md`** ggf. mitgezogen; bei Steuerungsrelevanz **Status** / **Standards** prüfen. |
 | **Risiko** | Keine **Secrets**, keine **lokalen Nur-mir-Pfade**; **öffentliches** Repo beachten. |
 
-**Nicht** committen: temporäre Dateien, Backups, Cache, persönliche Notizen, Dateien **ohne** klaren Bezug zur Website.
+**Nicht** committen: Inhalte unter den per **`.gitignore`** ausgeschlossenen Ordnern (solange die Regel gilt), temporäre Dateien, Backups, Cache.
 
 ### Commit-Nachrichten
 
-**Ziel:** Historie wie ein **Projekttagebuch** — **warum**, **in welchem Kontext** (Phase, Meilenstein, Standards, didaktische Linie) und **was sich wo** ändert. Bei inhaltlich oder strukturell relevanten Änderungen ist ein **ausführlicher Body** der **Normalfall** (orientiert an der bestehenden `main`-Historie der Website).
+**Ziel:** Historie wie ein **Projekttagebuch** — **warum**, **Kontext** und **was sich wo** ändert. Bei **Website-lastigen** Commits an die bestehende, ausführliche Stilpraxis der **Lernwebsite-Historie** anknüpfen; bei **Steuerungs-** oder **Repo-Commits** (z. B. `chore:`, `docs:`) kurz und klar.
 
-**Erste Zeile (Betreff):** kurz, suchbar; Präfixe wie `docs:`, `fix:`, `feat:` möglich. **Keine** internen Arbeits- oder Layout-Labels wie „V2“, „V3“ in Betreff oder Body. Stattdessen **sachlich**: Hauptsystem, Navigation, Einstieg, A4-/Dokumentmodus, konkrete Seiten/Dateien.
+**Erste Zeile (Betreff):** kurz, suchbar; Präfixe wie `docs:`, `fix:`, `feat:`, `chore:` möglich. **Keine** internen Layout-Labels „V2“/„V3“. **Website:** sachlich Hauptsystem, Navigation, Seiten/Dateien nennen.
 
-**Body (bei relevanten Commits):** u. a. Hintergrund, Änderungen im Detail (gern nach Datei/Seite), bewusste Nicht-Entscheidungen, **Liste geänderter Dateien**, ggf. Hinweis für Review/Drucktest, **Stand-Datum** (`TT.MM.JJJJ`) abgestimmt mit README/Standards-Seite der Website. Unterüberschriften im Body mit **Unterstreichung** (`-------`) sind **erwünscht**.  
-**Nicht** in Commit-Texten: Zeilen wie `Made-with: Cursor` oder andere **Tool-/KI-Herkunfts-Kennzeichnungen** im öffentlichen Log.
+**Body (bei größeren Commits):** Hintergrund, Detailänderungen, ggf. **Liste geänderter Dateien**; bei Website-Commits ggf. **Stand-Datum** wie bisher. **Nicht** in Commit-Texten: **Tool-/KI-Herkunftszeilen** (`Made-with: …`).
 
-**Kurze Messages** nur bei **trivialen** Änderungen (Tippfehler, minimale Korrekturen).
+**Kurze Messages** bei trivialen Änderungen.
 
 **Praktisch:** Längere Messages mit `git commit -F nachricht.txt` (oder Editor) setzen.
 
@@ -140,8 +140,8 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 
 ## 6. Nacharbeit nach Commit
 
-- **Nach jedem abgeschlossenen Commit** bzw. **Push** der Website: die **vollständige** Commit-Nachricht (Betreff + Body) **im Chat** (bzw. dem genutzten KI-/Arbeitskanal) **mitteilen** — für **Nachvollziehbarkeit**, Lernen und **Folgeaufgaben**.  
-- **Steuerung im QA-Track:** Wenn der Commit fachlich **Steuerungsdokumente** betrifft, **parallel** prüfen, ob **Status** oder **Standards** ein kurzes Update brauchen (ohne Pflicht zu jedem Website-Commit).
+- **Nach jedem abgeschlossenen Commit** bzw. **Push** (insb. mit **Website-Anteil**): die **vollständige** Commit-Nachricht (Betreff + Body) **im Chat** (bzw. KI-/Arbeitskanal) **mitteilen** — für **Nachvollziehbarkeit**, Lernen und **Folgeaufgaben**.  
+- **Steuerung:** Wenn der Commit **Website** oder **Struktur** betrifft, **bei Bedarf** prüfen, ob **Status** oder **Standards** ein kurzes Update brauchen.
 
 ---
 
@@ -149,20 +149,19 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 
 - **Priorität:** Autor entscheidet bei Widersprüchen zwischen KI-Vorschlag und Projektzielen.  
 - **Eskalation im Ein-Personen-Setup:** **Stopp**, Problem **schriftlich** klären (Ziel, Scope, Akzeptanzkriterien), dann erst weiterarbeiten.  
-- **Zwischen Website und Track:** Wenn Git **nur** die Website betrifft, aber Inhalte **Steuerung** widersprechen könnten → **zuerst** Standards/Charter lesen, dann ggf. **Steuerung** anpassen oder Website-Inhalt korrigieren — **keine** stillschweigende Divergenz.  
-- **Geplantes Gesamt-Git:** Wenn `000_QA_Track` später versioniert wird, **Commit-Regeln** und **Branch-Strategie** in **diesem Dokument** und in **Project Standards** zu ergänzen — bis dahin nur Website-Repo.
+- **Zwischen Website und Steuerung:** Wenn Commits **nur** `02_Portfolio/QA_Lernwebseite/` betreffen, aber Inhalte der **Steuerung** widersprechen könnten → **zuerst** Standards/Charter lesen, dann ggf. **Steuerung** anpassen oder Website-Inhalt korrigieren — **keine** stillschweigende Divergenz.
 
 ---
 
 ## 8. Checklisten
 
-### Kurz vor einem Website-Commit
+### Kurz vor einem Commit (Monorepo)
 
-- [ ] Nur beabsichtigte Dateien im **Staging**  
+- [ ] Nur beabsichtigte Pfade im **Staging** (Website, Steuerung, CI, …)  
 - [ ] Änderung **in einem Satz** beschreibbar  
-- [ ] **`README.md`** der Website bei Bedarf mitaktualisiert  
+- [ ] Bei Website-Änderungen: **`02_Portfolio/QA_Lernwebseite/README.md`** ggf. mitaktualisiert  
 - [ ] Keine **Secrets**, keine irrelevanten **lokalen** Pfade  
-- [ ] Commit-Message: **sachlicher** Betreff, bei Bedarf **ausführlicher** Body, **keine** V2/V3-Labels, **keine** Tool-Zeile  
+- [ ] Commit-Message: **sachlicher** Betreff, bei Bedarf **Body**, **keine** V2/V3-Labels, **keine** Tool-Zeile  
 
 ### Kurz vor einem KI-gestützten Eingriff
 
@@ -171,10 +170,10 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 - [ ] **Aufgabe** und **gewünschte Ausgabeform** klar  
 - [ ] Unklarheiten **offen** benannt oder **Rückversicherung** eingeholt  
 
-### Nach Commit / Push (Website)
+### Nach Commit / Push
 
-- [ ] Vollständige Commit-Nachricht im **Chat** dokumentiert  
-- [ ] Bei Bedarf **Status** / **Standards** im QA-Track geprüft  
+- [ ] Vollständige Commit-Nachricht im **Chat** dokumentiert (üblich bei Website-Commits)  
+- [ ] Bei Bedarf **Status** / **Standards** geprüft  
 
 ---
 

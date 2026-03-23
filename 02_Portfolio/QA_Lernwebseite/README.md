@@ -2,6 +2,9 @@
 
 > Zuletzt aktualisiert: 2026-03-23
 
+**Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
+**Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
+
 Öffentliches **Lern- und Referenzprojekt** zu Software Testing, QA und **ISTQB Certified Tester Foundation Level (CTFL) v4.0.2**.  
 Inhaltlich als **statische Website** umgesetzt: jedes Modul unter `pages/` ist eine eigenständige HTML-Seite entlang des CTFL-Lehrplans.
 
@@ -54,7 +57,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `templates/referenzvorlage-hauptsystem.html` | Referenz für neue **Hauptsystem**-Seiten (Nav, `page-chrome`, `main`). |
 | `archive/` | Nicht aktive ältere Versionen — nur Dokumentation. |
 
-**Systemkonzept (nicht in diesem Repo):** Architektur und Arbeitsregeln im übergeordneten **QA-Track**: **`00_PROJEKTSTEUERUNG/12_SYSTEMKONZEPT.md`**. Beim **alleinigen** Klon von **QA_Lernwebseite** auf GitHub ist diese Datei nicht enthalten.
+**Systemkonzept (Programm):** Architektur und Steuerung im übergeordneten **QA-Track** unter **`01_Projektsteuerung/`** (Project\_*-Serie) und ggf. **`06_Archiv/`** (z. B. ältere Konzept-Snapshots). Historie der Website-Dateien ist per **`git subtree`** in **qa-ctfl-track** eingebunden.
 
 ---
 
@@ -102,8 +105,8 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 
 | Dokument | Ort | Hinweis |
 |----------|-----|---------|
-| **Systemkonzept** (IA, Seitentypen, Benennung) | QA-Track: `00_PROJEKTSTEUERUNG/12_SYSTEMKONZEPT.md` | Nicht Teil des reinen Website-Klons. |
-| **Commit-/Push-Regeln** (falls im Track gepflegt) | z. B. `08_Commit_Richtlinie.md` | Gilt für das **Website-Repo** `QA_Lernwebseite`. |
+| **Systemkonzept / Steuerung** (IA, Seitentypen, Benennung) | QA-Track: `01_Projektsteuerung/` (Charter, Standards, …); Archiv: `06_Archiv/` | Ein **Git-Repository** (`qa-ctfl-track`) für Programm und Website. |
+| **Commit-/Push-Regeln** | [04_Project_Guidelines.md](../../01_Projektsteuerung/04_Project_Guidelines.md) | Gilt für das **gesamte** Repo; Website-Änderungen unter `02_Portfolio/QA_Lernwebseite/`. |
 
 ---
 
@@ -121,4 +124,4 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 - **Einstieg (`index.html`):** breites Layout (`max-width` 1800px), **zwei sichtbare Bereichsüberschriften** (Lernmaterial / Hausaufgaben), responsives Kartenraster (Breakpoints 900px / 640px), CSS mit gemeinsamen Variablen; HA-Karten-Metas mit **Kap.-Hinweisen**; A4-HA-Karten mit hervorgehobenem **Formular**-Hinweis.  
 - **Kopfnavigation:** **Zwei Leisten** in `.top-nav-zone` — **Lernmaterial** vs. **Hausaufgaben**, semantisch getrennt, `aria-label`s; vertikaler Rhythmus **`--nav-vertical-rhythm` (1,75rem)**; HA-Leiste über **`.main-nav--assignments`** visuell abgesetzt.  
 
-Details und Historie: **Git-Repository [QA_Lernwebseite](https://github.com/chd108/QA_Lernwebseite)** (Branch `main`).
+Details und Historie: **Monorepo [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** (Branch `main`; Website-Pfad `02_Portfolio/QA_Lernwebseite/`).

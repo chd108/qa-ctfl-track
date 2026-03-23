@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23 (Legacy-Verweise → Project_*-Serie)  
+Letzte Aktualisierung: 2026-03-23 (Git: Monorepo qa-ctfl-track, .gitignore HA/Ref/Notizen/Archiv)  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -40,7 +40,7 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 
 - **CTFL-Zitierung** bereinigt: präzise Formulierung **„CTFL 4.0.2, Kap. 4.2“** statt missverständlich „CTFL 4.2“ (u. a. 05a/05b).  
 - **IEEE 829-2008** projektweit **einheitlich**; Kohärenz mit **ISO/IEC/IEEE 29119-3** im **Lernkontext** (ohne Vollnorm-Anspruch).  
-- **index.html:** Willkommensbereich mit **Standards-Hinweis** (CTFL 4.0.2, IEEE 829-2008, ISO/IEC/IEEE 29119-3, Lernkontext); Verweis auf **GitHub-Repository** der Website (`target="_blank"`, Leserhinweis).  
+- **index.html:** Willkommensbereich mit **Standards-Hinweis** (CTFL 4.0.2, IEEE 829-2008, ISO/IEC/IEEE 29119-3, Lernkontext); Verweis auf das **GitHub-Monorepo** **qa-ctfl-track** (`target="_blank"`, Leserhinweis).  
 - **00b-standards.html:** Tab-/Link-Logik für Repo-Verweis analog zur Einstiegsseite.  
 - **04d-ha5-testfallentwurf-a4.html:** GM-F03-**Auswahlbegründung** als grüne **`doc-info-box--ok`** (Druck: `print-color-adjust`).  
 - **Bewertung:** für ein **Lern-Portfolio** fachlich und formal **professionell genug** (explizit **kein** Anspruch auf vollständige Normabdeckung).  
@@ -50,7 +50,7 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 
 - **Abschlussdatum:** **21.03.2026**, **09:19:30 (UTC+1)** — Commit **`1eb5b8f`** (*„QA-Lernwebseite: Phase-3-Konsistenz (HA4/HA5), Meta-Leiste, A4-Status, Terminologie“*).  
 - **Schwerpunkt:** **Terminologie-Harmonisierung** und formale Konsistenz (u. a. **Testbasis-Analyse**); **Meta-Leiste**, **A4-Status**; **Querverweise**; **Web/A4-Parität** im Kern (04a–05b).  
-- Ergänzungen **`doc-a4.css`**; Umsetzung im **Website-Repo** *QA_Lernwebseite* (siehe Abschnitt 7).  
+- Ergänzungen **`doc-a4.css`**; Umsetzung im Monorepo **qa-ctfl-track** unter **`02_Portfolio/QA_Lernwebseite/`** (siehe Abschnitt 7).  
 - *Hinweis zur Reihenfolge am 21.03.2026:* Phase 2 (`9b4349e`, morgens) → Phase 3 (`1eb5b8f`, ca. 09:19) → Phase 4 (`0c43f00`, ca. 09:44) am selben Kalendertag.
 
 ### Phase 2 (Website, HA4/HA5): Story-Kette und UX — **Detailleistungen vollständig**
@@ -61,7 +61,7 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 4. **05a / 04c:** Infos gestrafft — eine kompakte **CTFL/IEEE-Box** auf 05a; auf 04c kurzer Verweis auf 05a statt langer Duplikation; Klarstellung **„Testkonzept folgt später“**.  
 5. **Story-Boxen:** Einheitlich **`info-box--note` (blau)** für Dokumentenkette; **gelb/warn** für didaktische „Was ist …?“-Boxen; Titelschema **„Dokumentenkette — … → …“**; sichtbare Linktexte **ohne** Dateikürzel `04a`/`04b`/… in Klammern.  
 
-**Git (Website-Repo):** Meilenstein-Commit u. a. **`9b4349e`** (Phase 2).
+**Git (Monorepo, Website-Pfad):** Meilenstein-Commit u. a. **`9b4349e`** (Phase 2; Historie der Lernwebsite in **qa-ctfl-track**).
 
 ### Phase 1 (Website, HA4/HA5): Konsistenzprüfung
 
@@ -83,16 +83,18 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 
 ### Repository-Gesamtstruktur (Migration Top-Level, **aktuelle Pfade**)
 
-Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`000_QA_Track/`** ersetzt **veraltete** Top-Level-Ordnernamen aus früheren Repo-Versionen (u. a. `00_PROJEKTSTEUERUNG`, `01_Grundlagen …`, `02_Hausaufgaben_und_Testentwurf`, `03_Projekt`, `04_Notizen`, `05_Referenzen`, `99_Archiv`):
+Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt **veraltete** Top-Level-Ordnernamen aus früheren Repo-Versionen (u. a. `00_PROJEKTSTEUERUNG`, `01_Grundlagen …`, `02_Hausaufgaben_und_Testentwurf`, `03_Projekt`, `04_Notizen`, `05_Referenzen`, `99_Archiv`):
 
 | Ordner (aktuell) | Zweck |
 |------------------|--------|
 | **`01_Projektsteuerung/`** | **Project\_*-Serie:** Charter, Status, Standards, Guidelines, Reference Quick; ältere Steuerkopien können unter **`06_Archiv/`** liegen. |
-| **`02_Portfolio/`** | Portfolio-Artefakte; enthält **`QA_Lernwebseite/`** (eigenes Git-Repository) als digitales Hauptprodukt. |
+| **`02_Portfolio/`** | Portfolio-Artefakte; **`QA_Lernwebseite/`** = öffentliche Lernwebsite als **Unterordner** im **Monorepo** **qa-ctfl-track** (ein Git für Steuerung + Website; Website-Historie u. a. per **`git subtree`** eingebunden). |
 | **`03_Hausaufgaben/`** | Hausaufgaben HA1–HA6 (Testdesign bis Testdurchführung) und zugehörige Abgaben. |
 | **`04_Referenzen/`** | ISTQB-Lehrplan, Normen, externe Referenzmaterialien. |
 | **`05_Notizen/`** | Unterrichtsnotizen, temporäre Arbeitstexte. |
 | **`06_Archiv/`** | Archivierte Themen inkl. ggf. älterer Steuerungskopien (`Projektsteuerung_alt` o. Ä.). |
+
+*Git / Monorepo:* **`qa-ctfl-track`** ist **ein** Repository (**Remote:** `origin` auf GitHub). **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`** und **`06_Archiv/`** sind per **`.gitignore`** derzeit **ausgeschlossen** (lokal nutzbar; spätere Versionierung möglich).
 
 *Hinweis:* Ältere Detailstände zur **Design-Harmonisierung** (frühere Phasen 1–5, Formular-Basis-Migration) sind bei Bedarf in **Git-Historie**, **Archiv** oder älteren Statuspassagen nachvollziehbar.
 
@@ -118,7 +120,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`000_QA_Track/`** ersetzt 
 | **Fehlerbericht (06b-ha6-fehlerbericht-a4)** | **Ausstehend** |
 | **Testabschlussbericht (06c-ha6-testabschlussbericht-a4)** | **Ausstehend** |
 
-*Hinweis:* Im Website-Repo können zu **Entwicklungs-/Layoutzwecken** bereits Commits zu HA6-Seiten existieren; der **fachliche Abschluss** der HA6-Lieferobjekte **06b/06c** ist hier weiterhin als **offen** geführt, bis die Bearbeitung und ggf. Kursabgabe abgeschlossen sind.
+*Hinweis:* Im Repo können zu **Entwicklungs-/Layoutzwecken** bereits Commits zu HA6-Seiten unter **`02_Portfolio/QA_Lernwebseite/`** existieren; der **fachliche Abschluss** der HA6-Lieferobjekte **06b/06c** ist hier weiterhin als **offen** geführt, bis die Bearbeitung und ggf. Kursabgabe abgeschlossen sind.
 
 ---
 
@@ -129,7 +131,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`000_QA_Track/`** ersetzt 
 | ID | Risiko / Problem | Auswirkung | Gegensteuerung (geplant / aktiv) |
 |----|-------------------|------------|-----------------------------------|
 | **R1** | **Designsystem light** verzögert sich | Visuelle und strukturelle **Inkonsistenzen** bleiben länger **implizit** | Priorisierung **P1**; Muster aus Phase 2 in **[03_Project_Standards.md](03_Project_Standards.md)** / **[01_Project_Charter.md](01_Project_Charter.md)** **explizit** nachziehen |
-| **R2** | **Zwei Git-Kontexte** (Gesamt-Workspace vs. `QA_Lernwebseite`) | **Dokumentations-Drift** zwischen Website-Commits und Track-Steuerung | Manuelle **Querprüfung** bei Architektur-Änderungen; **[04_Project_Guidelines.md](04_Project_Guidelines.md)** (Versionskontrolle & Git) für das Website-Repo |
+| **R2** | **Drift Steuerung ↔ Umsetzung** nach größeren Website- oder Strukturänderungen | **Project\_*-Dokumente** oder **README** veralten gegenüber **main** | Manuelle **Querprüfung** bei Architektur-Änderungen; **[04_Project_Guidelines.md](04_Project_Guidelines.md)** (Versionskontrolle & Git) für **qa-ctfl-track**; bei Bedarf **Status** / **Standards** nachziehen |
 | **R3** | **Veraltete Steuerkopien** im Ordner | **Fehlnavigation** für Leser | **Einstieg nur** über **Project\_***; Altdateien archivieren; **dieses Dokument** und **[03_Project_Standards.md](03_Project_Standards.md)** als maßgebliche Orientierung |
 | **R4** | **Ein-Personen-Engpass** | Verzögerung bei parallelen Kurs- und Website-Meilensteinen | Strikte **Priorisierung**; Fokus **Kursfristen** vor „Nice-to-have“-Website-Themen |
 
@@ -163,11 +165,11 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`000_QA_Track/`** ersetzt 
 
 ## 7. Metriken / Evidenz
 
-### Website-Repository (*QA_Lernwebseite*)
+### Versionierung & Lernwebsite (*QA_Lernwebseite* im Monorepo)
 
 | Evidenz | Hinweis |
 |---------|---------|
-| **Commits (Auszug)** | Phase 2: **`9b4349e`** (2026-03-21 08:43 UTC+1); Phase 3 (Terminologie/Formal): **`1eb5b8f`** (2026-03-21 **09:19** UTC+1); Phase 4 (Standards): **`0c43f00`** (2026-03-21 09:44 UTC+1); Repo-Links Einstieg/Standards: **`78ee176`** — vollständige Historie: Branch **`main`**, Remote **`origin`**. |
+| **Commits (Auszug)** | Website-Meilensteine u. a.: Phase 2 **`9b4349e`** (2026-03-21 08:43 UTC+1); Phase 3 **`1eb5b8f`** (2026-03-21 **09:19** UTC+1); Phase 4 **`0c43f00`** (2026-03-21 09:44 UTC+1); Repo-Links Einstieg/Standards: **`78ee176`** — Historie der Seiten liegt in **einem** Repo (**qa-ctfl-track**), Pfad **`02_Portfolio/QA_Lernwebseite/`**; Branch **`main`**, Remote **`origin`**. |
 | **Architektur-Website (Rahmen & Regeln)** | [01_Project_Charter.md](01_Project_Charter.md) — Programmrahmen, Website-Rolle, Qualitätsmaßstab; [03_Project_Standards.md](03_Project_Standards.md) — Ordnerlogik, IA/Benennung im Workflow, A4-/Dokumentmodus (Abschn. 3, 6, 7). |
 | **Charter (Programm)** | [01_Project_Charter.md](01_Project_Charter.md) — Vision, Scope, Grenzen. |
 | **Status (Ist)** | **Dieses Dokument** — Meilensteine, Arbeitspakete, Risiken. |
@@ -185,7 +187,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`000_QA_Track/`** ersetzt 
 |---------|-------------|
 | **Projekt (Vision, Scope)** | [01_Project_Charter.md](01_Project_Charter.md) · **dieses Dokument** · Lernplan-Zuordnung und CTFL-Bezug: [03_Project_Standards.md](03_Project_Standards.md) **Abschnitt 2** |
 | **Repo / Struktur / Health** | [03_Project_Standards.md](03_Project_Standards.md) **Abschnitt 3** (Ordnerarchitektur) und **Abschnitt 8** (Repository Health & Review) |
-| **KI, Rollen, Kommunikation, Git (Website)** | [04_Project_Guidelines.md](04_Project_Guidelines.md) *(Inhalt früher u. a. in Arbeitsvereinbarung, Prompt- und Commit-Richtlinien; maßgeblich ist dieses eine Dokument.)* |
+| **KI, Rollen, Kommunikation, Git (Monorepo)** | [04_Project_Guidelines.md](04_Project_Guidelines.md) *(Inhalt früher u. a. in Arbeitsvereinbarung, Prompt- und Commit-Richtlinien; maßgeblich ist dieses eine Dokument.)* |
 | **Prompts / Schnellnavigation / externe Links** | [05_Reference_Quick.md](05_Reference_Quick.md) *(Inhalt früher u. a. in separaten Prompt- und Schnellreferenz-Dateien.)* |
 | **Architektur Website (fachlich)** | [01_Project_Charter.md](01_Project_Charter.md) + [03_Project_Standards.md](03_Project_Standards.md) — **ohne** separates Konzeptdatei neben der Project\_*-Serie |
 | **Reports (Hausaufgaben-Analyse)** | Neu: `01_Projektsteuerung/YYYY-MM-DD_Hausaufgabenanalyse.md` gemäß [03_Project_Standards.md](03_Project_Standards.md) Abschnitt 4; **Beispiel** (archiviert): `06_Archiv/Projektsteuerung_alt/11_Hausaufgabenanalyse_2026-03-09.md` |
