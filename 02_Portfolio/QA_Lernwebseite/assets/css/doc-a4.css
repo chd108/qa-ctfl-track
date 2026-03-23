@@ -385,7 +385,9 @@ body { padding: 0 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   .top-nav-zone,
   .page-chrome,
   .meta-bar,
-  main > footer { display: none !important; }
+  main > footer,
+  /* Site-Fuß unterhalb von <main> (nicht main > footer) — sonst zweite Druckseite nur mit Quellenzeile */
+  body > footer { display: none !important; }
 
   body { padding: 0; margin: 0; background: #fff; }
   main { max-width: none; }
