@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="HA6 Testabschlussbericht (Test Completion Report) GroceryMate — A4-/Dokumentmodus, Blankovorlage, ISO/IEC/IEEE 29119-3.">
+  <meta name="description" content="HA6 Testabschlussbericht (Test Completion Report) GroceryMate — A4-/Dokumentmodus, befülltes Beispiel (Stand 2026-03-23), ISO/IEC/IEEE 29119-3.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/subpage.css">
   <link rel="stylesheet" href="../assets/css/doc-a4.css">
@@ -212,7 +212,7 @@
   </div>
 
   <div class="doc-mode">
-    <!-- ═══ Blatt 1: Ergebnisse, Metriken, Fehlerzusammenfassung ═══ -->
+    <!-- ═══ Blatt 1: Meta, Testergebnisse, Metriken (Druck: eine A4-Seite) ═══ -->
     <article class="doc-a4" id="sheet-1" aria-labelledby="sheet1-heading">
       <div class="doc-header">
         <div class="doc-header__left">
@@ -221,8 +221,8 @@
         </div>
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA6)<br>
-          <strong>Erstellt:</strong> &nbsp;<br>
-          <strong>Letzte Aktualisierung:</strong> &nbsp;<br>
+          <strong>Erstellt:</strong> 23.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 23.03.2026<br>
           <strong>Seite:</strong> 1 von 2
         </div>
       </div>
@@ -230,12 +230,12 @@
       <div class="doc-body">
         <div class="form-meta">
           <div class="form-meta__cell"><div class="form-meta__label">Projekt</div><div class="form-meta__value">GroceryMate (HA6)</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Version</div><div class="form-meta__value light">&nbsp;</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Tester</div><div class="form-meta__value light">&nbsp;</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Datum</div><div class="form-meta__value light">&nbsp;</div></div>
-          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Teststufe</div><div class="form-meta__value light">&nbsp;</div></div>
-          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">TCs gesamt</div><div class="form-meta__value light">&nbsp;</div></div>
-          <div class="form-meta__cell form-meta__cell--border-top" style="grid-column: span 2">
+          <div class="form-meta__cell"><div class="form-meta__label">Version</div><div class="form-meta__value light">SUT grocerymate.masterschool.com (keine Prod.-V.-Nr.)</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Tester</div><div class="form-meta__value light">chd108</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Datum</div><div class="form-meta__value light">23.03.2026</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Teststufe</div><div class="form-meta__value light">Systemtest, manuell</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">TCs gesamt</div><div class="form-meta__value light">9</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-2">
             <div class="form-meta__label">Status</div>
             <div class="status-options">
               <span class="status-option">In Bearbeitung</span>
@@ -245,7 +245,7 @@
         </div>
 
         <div class="doc-info-box">
-          <strong>Hinweis:</strong> Blankovorlage nach Testdurchführung. Datenquellen: <a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a>, <a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a> (Musterdokument mit BUG-001 / BUG-002). Metrik-Ziele wie im <a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a> (Abschnitt&nbsp;8).
+          <strong>Hinweis:</strong> <a href="06a-ha6-testprotokoll-a4.html">Testprotokoll A4</a> · <a href="06b-ha6-fehlerbericht-a4.html">Fehlerbericht A4</a> · Metriken: <a href="05b-ha5-testkonzept-a4.html">Testkonzept A4</a>, Abschn.&nbsp;8.
         </div>
 
         <div class="doc-feature-strip">
@@ -267,13 +267,13 @@
             </thead>
             <tbody>
               <tr>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
+                <td>9</td>
+                <td>9</td>
+                <td>7</td>
+                <td>2</td>
+                <td>0</td>
+                <td>100</td>
+                <td>77,8</td>
               </tr>
             </tbody>
           </table>
@@ -297,43 +297,64 @@
               <tr>
                 <td>Test Execution Rate (%)</td>
                 <td>Anteil ausgeführter Testfälle &mdash; Ziel: 100&nbsp;%</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
+                <td>100&nbsp;%</td>
+                <td>Alle 9 TC ausgeführt, nicht blockiert.</td>
               </tr>
               <tr>
                 <td>Pass Rate (%)</td>
                 <td>Anteil bestandener Testfälle &mdash; Ziel: &ge; 89&nbsp;%</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
+                <td>77,8&nbsp;%</td>
+                <td>Unter Ziel &ge; 89&nbsp;%; zwei Defects (Abschnitt&nbsp;3).</td>
               </tr>
               <tr>
                 <td>Defect Density (Fehler/Feature)</td>
                 <td>Anzahl gefundener Fehler je Feature</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
+                <td>2 / 2 Features</td>
+                <td>BUG-001 F01; BUG-002 F03.</td>
               </tr>
               <tr>
                 <td>Defect Distribution (Severity 1&ndash;4)</td>
                 <td>Verteilung der Fehler nach Schweregrad</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
+                <td>Critical: 1, High: 1</td>
+                <td>BUG-002 Critical, BUG-001 High.</td>
               </tr>
               <tr>
                 <td>Retest Success Rate (%)</td>
                 <td>Anteil erfolgreich nachgetesteter Fehler</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
+                <td>n.&nbsp;v.</td>
+                <td>Kein Retest in diesem Bericht.</td>
               </tr>
               <tr>
                 <td>Coverage (Akzeptanzkriterien %)</td>
                 <td>Abgedeckte AC &mdash; Ziel: 100&nbsp;%</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
+                <td>100&nbsp;%</td>
+                <td>9 TC des Laufs; AC je TC: <a href="06a-ha6-testprotokoll-a4.html">Testprotokoll A4</a>.</td>
               </tr>
             </tbody>
           </table>
         </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testabschlussbericht / Test Completion Report · CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3 (Test Completion Report)</span>
+      </div>
+    </article>
 
+    <!-- ═══ Blatt 2: Fehlerzusammenfassung, Bewertung, Lessons Learned ═══ -->
+    <article class="doc-a4" id="sheet-2" aria-labelledby="sheet2-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="sheet2-heading">Testabschlussbericht</h1>
+          <p>Test Completion Report · GroceryMate · HA6</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA6)<br>
+          <strong>Erstellt:</strong> 23.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 23.03.2026<br>
+          <strong>Seite:</strong> 2 von 2
+        </div>
+      </div>
+
+      <div class="doc-body">
         <div class="doc-feature-strip">
           <span class="doc-feature-strip__num">Abschnitt 3 / 5</span>
           Fehlerzusammenfassung (Defect Summary)
@@ -351,83 +372,34 @@
             </thead>
             <tbody>
               <tr>
-                <td class="cell-id cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-id">BUG-001</td>
+                <td>Bewertungstext wird nicht angezeigt, obwohl eingegeben</td>
+                <td>High</td>
+                <td>Offen</td>
+                <td>TC-F01.F1.2</td>
               </tr>
               <tr>
-                <td class="cell-id cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="cell-id cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="cell-id cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="cell-id cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-              </tr>
-              <tr>
-                <td class="cell-id cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
-                <td class="cell-empty">&nbsp;</td>
+                <td class="cell-id">BUG-002</td>
+                <td>Versandkosten werden nicht aktualisiert nach Artikelentfernung</td>
+                <td>Critical</td>
+                <td>Offen</td>
+                <td>TC-F03.F3.2</td>
               </tr>
             </tbody>
           </table>
         </div>
-      </div>
-      <div class="doc-footer">
-        <span>Masterschool QA-Track · Testabschlussbericht / Test Completion Report · CTFL 4.0.2 / Kap. 5 · ISO/IEC/IEEE 29119-3 (Test Completion Report)</span>
-      </div>
-    </article>
 
-    <!-- ═══ Blatt 2: Bewertung, Lessons Learned ═══ -->
-    <article class="doc-a4" id="sheet-2" aria-labelledby="sheet2-heading">
-      <div class="doc-header">
-        <div class="doc-header__left">
-          <h1 id="sheet2-heading">Testabschlussbericht</h1>
-          <p>Test Completion Report · GroceryMate · HA6</p>
-        </div>
-        <div class="doc-header__right">
-          <strong>Projekt:</strong> GroceryMate (HA6)<br>
-          <strong>Erstellt:</strong> &nbsp;<br>
-          <strong>Letzte Aktualisierung:</strong> &nbsp;<br>
-          <strong>Seite:</strong> 2 von 2
-        </div>
-      </div>
-
-      <div class="doc-body">
         <div class="doc-feature-strip">
           <span class="doc-feature-strip__num">Abschnitt 4 / 5</span>
           Bewertung &amp; Empfehlung (Assessment)
         </div>
         <div class="form-field">
           <div class="form-field__label">Gesamtbewertung</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Gesamtbewertung">&nbsp;</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Gesamtbewertung">9 TC ausgeführt, Ausführungsrate 100&nbsp;%, 7 Pass / 2 Fail, Pass-Rate 77,8&nbsp;%. Zwei Defects: BUG-002 Critical (Versandkosten-Anzeige bis Reload), BUG-001 High (Bewertungstext). Pass-Rate unter Konzeptziel &ge; 89&nbsp;% (HA5 Testkonzept A4). Umgebung: Chrome 146.0.7680.153, Windows 11 25H2, grocerymate.masterschool.com; andere Browser siehe Fehlerberichte.</div>
         </div>
         <div class="form-field">
           <div class="form-field__label">Empfehlung</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Empfehlung">&nbsp;</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Empfehlung">Keine produktive Freigabe ohne Behebung oder Risikoakzeptanz für BUG-002 und BUG-001. BUG-002: falsche Versandkosten möglich (Reload-Workaround). BUG-001: Kernfunktion Bewertungstext. Nach Fix: Retest TC-F01.F1.2, TC-F03.F3.2; Testprotokoll/Fehlerbericht anpassen; Metriken im Folgebericht.</div>
         </div>
 
         <div class="doc-feature-strip">
@@ -436,7 +408,7 @@
         </div>
         <div class="form-field">
           <div class="form-field__label">Lessons Learned</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Lessons Learned">&nbsp;</div>
+          <div class="form-field__value form-field__value--tall" aria-label="Lessons Learned">Warenkorb und abhängige Anzeigen ohne Reload prüfen · Sichtbare Ergebnisse für denselben Nutzer (z.&nbsp;B. Bewertungstext) verifizieren · Evidenz an TC-ID/Bug-ID koppeln · Pass-Rate vs. Konzeptziel (&ge; 89&nbsp;%) ausdrücklich benennen</div>
         </div>
       </div>
       <div class="doc-footer">

@@ -1,6 +1,7 @@
 /**
  * doc-a4.css — A4-Dokumentmodus für kanonische HA4/HA5/HA6-A4-Seiten.
- * Primär: 04b-ha4-testbasisanalyse-a4.html · mit ergänzendem Inline-<style>: 04d-ha5-testfallentwurf-a4.html · HA6: 06a, 06b, 06c
+ * Dateien: 04b (nur diese CSS-Kette), 04d, 05b, 06a, 06b, 06c — jeweils base + subpage + doc-a4; Formular-/Tabellen-Seiten mit ergänzendem Seiten-<style> (nur 8.25pt / 11pt).
+ * Gerüst je A4-HTML: Skip-Link, .top-nav-zone, .page-chrome, <main id="main">, .meta-bar, .doc-mode, pro Blatt <article class="doc-a4"> mit .doc-header / .doc-body / .doc-footer, Seiten-footer .source-note.
  * Zwei-Stufen-System: 11pt (GROSS) / 8.25pt (KLEIN)
  * Regel: Keine anderen Schriftgrößen in lokalen <style>-Blöcken oder inline —
  *   weder in bestehenden noch in neuen A4-Dokumenten.
@@ -123,6 +124,25 @@ body { padding: 0 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   font-weight: 600;
 }
 .doc-body .form-meta__value.light { font-weight: 400; color: var(--doc-mid); font-style: italic; }
+
+/* Formular-Meta: Zelle über mehrere Spalten (ersetzt wiederkehrendes inline grid-column) */
+.doc-body .form-meta__cell--span-2 { grid-column: span 2; }
+.doc-body .form-meta__cell--span-full { grid-column: 1 / -1; }
+
+/* Erklärtext in Formularfeldern (ersetzt inline font-size/color für 8.25pt-Zweitfarbe) */
+.doc-body .doc-soft-note {
+  font-size: 8.25pt;
+  color: var(--doc-soft);
+  margin-top: 2pt;
+}
+.doc-body .doc-soft-note--inline {
+  font-size: 8.25pt;
+  color: var(--doc-soft);
+  font-weight: 400;
+}
+
+/* Abstand vor Formularblock (wo kein eigener Seiten-<style> nötig sein soll) */
+.doc-body .form-field--spacing-top { margin-top: 6pt; }
 
 .doc-body .vague-block {
   border: 1px solid var(--doc-bdr);
