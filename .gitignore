@@ -1,0 +1,36 @@
+# System
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# IDE
+.vscode/
+.idea/
+.vs/
+.cursor/
+
+# Temporär / Editor
+*.tmp
+*.bak
+*.log
+*.swp
+*~
+
+# Node (z. B. lokale Tooling-Versuche unter der Website)
+node_modules/
+
+# Secrets / lokale Umgebung
+.env
+*.pem
+
+# Hausaufgaben (später versionieren)
+03_Hausaufgaben/
+
+# Referenzen (später versionieren)
+04_Referenzen/
+
+# Notizen (privat)
+05_Notizen/
+
+# Archiv (später versionieren)
+06_Archiv/
