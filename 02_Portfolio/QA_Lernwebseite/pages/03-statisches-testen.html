@@ -1,0 +1,516 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Statisches Testen nach ISTQB CTFL Kap. 3 — Grundlagen, Reviewprozess, Reviewarten, Rollen, Erfolgsfaktoren.">
+<title>Statisches Testen — QA Lernwebseite</title>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/subpage.css">
+<style>
+:root {
+  --ok:#4a7c59; --ok-bg:#cde8d2; --warn:#9c6a2a; --warn-bg:#f0dfc0;
+  --note:#2a547c; --note-bg:#c4d8ee; --extra:#8a5a6a; --extra-bg:#ead8de;
+  --stat:#4a6e8a; --stat-bg:#c8dce8; --dyn:#6a4e2a; --dyn-bg:#e8d8c0;
+  --rev:#4a6a3a; --rev-bg:#ccdcc4; --role:#5a3a6a; --role-bg:#dcd0e8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{padding:0 3rem 5rem;max-width:1400px;margin:0 auto;font-size:14px}
+.section-label{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:.8rem;margin-top:2.2rem;padding-bottom:.4rem;border-bottom:1px solid var(--bdr)}
+.meta-bar{display:flex;align-items:center;gap:1rem;flex-wrap:wrap;background:rgba(255,255,255,0.55);border:1px solid var(--bdr);border-radius:8px;padding:.6rem 1rem;margin-bottom:1.5rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:0.9rem;color:var(--mid)}
+.meta-bar strong{color:var(--text)}
+.aha-box{background:var(--note-bg);border-left:3px solid var(--note);border-radius:0 8px 8px 0;padding:.75rem 1.1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12.5px;color:var(--note);line-height:1.6;margin-top:.8rem}
+.aha-box strong{font-weight:700}
+.warn-box{background:var(--warn-bg);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:.75rem 1.1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12.5px;color:var(--warn);line-height:1.6;margin-top:.8rem}
+.warn-box strong{font-weight:700}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+@media(max-width:900px){.two-col,.three-col{grid-template-columns:1fr}}
+.card{border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.card-head{padding:.65rem 1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.card-head .num{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;opacity:.6}
+.card-head .name{font-size:14px;font-weight:700;margin-top:.15rem;line-height:1.2}
+.card-head .en{font-size:11px;font-style:italic;opacity:.65;font-family:Georgia,serif;margin-top:.1rem}
+.card-body{background:rgba(255,255,255,0.38);border-top:1px solid rgba(0,0,0,0.06);padding:.8rem .95rem;font-size:12.5px;color:var(--mid);line-height:1.55}
+.card-body strong{color:var(--text)}
+.tag-row{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
+.stag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11.5px;padding:.15rem .5rem;border-radius:4px;border:1px solid rgba(0,0,0,0.08);line-height:1.35}
+.t-stat{background:var(--stat-bg);color:var(--stat)} .t-dyn{background:var(--dyn-bg);color:var(--dyn)}
+.t-ok{background:var(--ok-bg);color:var(--ok)} .t-warn{background:var(--warn-bg);color:var(--warn)}
+.t-def{background:#fde8e8;color:#5a1a1a} .t-role{background:var(--role-bg);color:var(--role)}
+.t-rev{background:var(--rev-bg);color:var(--rev)} .t-note{background:var(--note-bg);color:var(--note)}
+.t-base{background:rgba(255,255,255,0.7);color:var(--text)}
+.vtable-wrap{border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.vtable-head{background:var(--text);color:#f0ece6;padding:.6rem 1.1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:700}
+table.vtable{width:100%;border-collapse:collapse;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;background:rgba(255,255,255,0.38)}
+table.vtable thead th{padding:.45rem 1rem;border-bottom:2px solid var(--bdr);border-right:1px solid var(--bdr);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:left}
+table.vtable thead .h-stat{background:var(--stat-bg);color:var(--stat)}
+table.vtable thead .h-dyn{background:var(--dyn-bg);color:var(--dyn)}
+table.vtable thead th:last-child{border-right:none}
+table.vtable tbody tr{border-bottom:1px solid var(--bdr)}
+table.vtable tbody tr:last-child{border-bottom:none}
+table.vtable tbody tr:hover{background:rgba(255,255,255,0.3)}
+table.vtable tbody td{padding:.45rem 1rem;vertical-align:top;line-height:1.5;border-right:1px solid var(--bdr);color:var(--mid);font-size:12px}
+table.vtable tbody td:last-child{border-right:none}
+table.vtable tbody td:first-child{font-weight:700;color:var(--text);white-space:nowrap;width:18%}
+.c-stat{color:var(--stat)!important} .c-dyn{color:var(--dyn)!important}
+.flow-wrap{background:rgba(255,255,255,0.45);border:1px solid var(--bdr);border-radius:10px;padding:1.2rem 1rem;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+.flow{display:flex;align-items:stretch;gap:0;flex-wrap:wrap}
+.flow-step{flex:1;min-width:130px}
+.flow-inner{background:var(--rev-bg);border:1px solid rgba(74,106,58,0.2);border-radius:8px;padding:.65rem .75rem;margin:0 .3rem;height:100%;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.fs-num{font-size:9px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--soft);margin-bottom:.2rem}
+.fs-name{font-size:12px;font-weight:700;color:var(--rev);line-height:1.2;margin-bottom:.3rem}
+.fs-desc{font-size:10.5px;color:var(--mid);line-height:1.4}
+.flow-arrow{display:flex;align-items:center;color:var(--soft);font-size:14px;flex-shrink:0;padding:0 .1rem}
+.review-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media(max-width:1100px){.review-grid{grid-template-columns:repeat(2,1fr)}}
+.review-card{border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.review-head{padding:.7rem 1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.r-name{font-size:14px;font-weight:700;line-height:1.2}
+.r-en{font-size:11px;font-style:italic;opacity:.65;font-family:Georgia,serif;margin-top:.1rem}
+.review-body{background:rgba(255,255,255,0.38);border-top:1px solid rgba(0,0,0,0.06);padding:.8rem .95rem;font-size:12px;color:var(--mid);line-height:1.55}
+.review-body strong{color:var(--text)}
+.r-attr{display:flex;gap:.4rem;margin-top:.35rem;align-items:baseline;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11.5px}
+.r-k{font-weight:700;color:var(--text);min-width:80px;flex-shrink:0}
+.rollen-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.8rem}
+@media(max-width:900px){.rollen-grid{grid-template-columns:1fr 1fr}}
+.rollen-card{border-radius:8px;overflow:hidden;box-shadow:0 1px 8px rgba(0,0,0,0.05)}
+.rollen-head{background:var(--role-bg);padding:.55rem .9rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:700;color:var(--role)}
+.rollen-body{background:rgba(255,255,255,0.4);padding:.6rem .9rem;font-size:12px;color:var(--mid);line-height:1.5}
+.rollen-body strong{color:var(--text)}
+.ef-grid{display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+@media(max-width:800px){.ef-grid{grid-template-columns:1fr}}
+.ef-item{background:rgba(255,255,255,0.4);border:1px solid var(--bdr);border-radius:7px;padding:.55rem .85rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;color:var(--mid);line-height:1.5;display:flex;gap:.6rem;align-items:baseline}
+.ef-item .ef-icon{font-size:14px;flex-shrink:0}
+.ef-item strong{color:var(--text)}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="02c-teststufen.html">Teststufen</a></li>
+      <li><a href="03-statisches-testen.html" class="current">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Statisches Testen</h1>
+    <p>ISTQB CTFL Lehrplan v4.0.2 · Kapitel 3 · Kap. 3.1 Grundlagen · Kap. 3.2 Reviewprozess &amp; Reviewarten</p>
+  </header>
+</div>
+
+<main id="main">
+<div class="meta-bar" aria-label="Seitenkontext">
+  <span><strong>Lernziele:</strong> FL-3.1.1 (K1) &middot; FL-3.1.2 (K2) &middot; FL-3.1.3 (K2) &middot; FL-3.2.1 (K1) &middot; FL-3.2.2 (K2) &middot; FL-3.2.3 (K1) &middot; FL-3.2.4 (K2) &middot; FL-3.2.5 (K1)</span>
+  <span><strong>Norm:</strong> ISO/IEC 20246</span>
+  <span><strong>Schlüsselbegriffe:</strong> Anomalie &middot; Formales Review &middot; Inspektion &middot; Statische Analyse &middot; Walkthrough &middot; Technisches Review</span>
+</div>
+
+<!-- 1 -->
+<div class="section-label">&#9312; Was ist statisches Testen? &mdash; CTFL Kap. 3.1 &middot; FL-3.1.1 (K1)</div>
+
+<div class="two-col" style="margin-bottom:1rem">
+  <div class="card">
+    <div class="card-head" style="background:var(--stat-bg)">
+      <div class="num">Statischer Test</div>
+      <div class="name">Kein Ausf&#252;hren des Codes</div>
+      <div class="en">Static Testing</div>
+    </div>
+    <div class="card-body">
+      Beim statischen Test wird das Arbeitsergebnis <strong>ohne Ausf&#252;hrung</strong> gepr&#252;ft &mdash; durch manuelle Durchsicht (Review) oder automatisierte Werkzeuge (statische Analyse).<br><br>
+      <strong>Anwendbar auf:</strong> Anforderungen &middot; Quellcode &middot; Testkonzepte &middot; Testf&#228;lle &middot; Backlog-Eintr&#228;ge &middot; Test-Chartas &middot; Projektdokumentation &middot; Vertr&#228;ge &middot; Architekturbeschreibungen.<br><br>
+      <strong>Nicht geeignet</strong> f&#252;r: ausf&#252;hrbare Bin&#228;rdateien, Arbeitsergebnisse die ein Werkzeug nicht lesen kann, oder schwer menschlich interpretierbar sind.
+      <div class="tag-row">
+        <span class="stag t-stat">Review</span>
+        <span class="stag t-stat">Statische Analyse</span>
+        <span class="stag t-ok">Fr&#252;he Fehlerfindung</span>
+        <span class="stag t-ok">Kein Testfall n&#246;tig</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head" style="background:var(--dyn-bg)">
+      <div class="num">Dynamischer Test</div>
+      <div class="name">Software wird ausgef&#252;hrt</div>
+      <div class="en">Dynamic Testing</div>
+    </div>
+    <div class="card-body">
+      Beim dynamischen Test wird die Software <strong>tats&#228;chlich ausgef&#252;hrt</strong> &mdash; Eingaben werden geliefert, Ausgaben mit Erwartungen verglichen.<br><br>
+      Liefert: Fehlerwirkungen (Failures) &rarr; aus diesen werden durch Analyse die zugrundeliegenden Fehlerzust&#228;nde (Defects) ermittelt.<br><br>
+      <strong>Erg&#228;nzt</strong> den statischen Test &mdash; beide Methoden decken zusammen die meisten Fehlerzust&#228;nde ab. Kein Ersatz f&#252;reinander.
+      <div class="tag-row">
+        <span class="stag t-dyn">Testf&#228;lle erforderlich</span>
+        <span class="stag t-dyn">Fehlerwirkung sichtbar</span>
+        <span class="stag t-dyn">Laufzeitumgebung n&#246;tig</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="aha-box">
+  <strong>Zusammenhang &mdash; Fehlerzustand vs. Fehlerwirkung:</strong> Statischer Test findet Fehlerzust&#228;nde <em>direkt</em> (z.B. falscher Algorithmus im Code sichtbar). Dynamischer Test produziert eine Fehlerwirkung (z.B. falsches Ergebnis) &mdash; der Fehlerzustand muss dann erst durch Debugging gefunden werden. Statisch = direkt; dynamisch = indirekt &mdash; und statischer Test kann die Fehlerkette <em>unterbrechen</em>, bevor eine Fehlerwirkung &#252;berhaupt entstehen kann.
+</div>
+
+<!-- 2 -->
+<div class="section-label">&#9313; Statisch vs. Dynamisch &mdash; CTFL Kap. 3.1 &middot; FL-3.1.2 / FL-3.1.3 (K2)</div>
+
+<div class="vtable-wrap">
+  <div class="vtable-head">Statischer Test &#8596; Dynamischer Test &mdash; Vergleich der wesentlichen Merkmale</div>
+  <table class="vtable">
+    <thead>
+      <tr>
+        <th>Merkmal</th>
+        <th class="h-stat">Statischer Test</th>
+        <th class="h-dyn">Dynamischer Test</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Ausf&#252;hrung</td><td class="c-stat">Software wird <strong>nicht</strong> ausgef&#252;hrt</td><td class="c-dyn">Software wird <strong>ausgef&#252;hrt</strong></td></tr>
+      <tr><td>Fehlerfindung</td><td class="c-stat">Fehlerzust&#228;nde werden <strong>direkt</strong> identifiziert</td><td class="c-dyn">Fehlerwirkungen treten auf &rarr; Fehlerzust&#228;nde durch Analyse ermitteln</td></tr>
+      <tr><td>Testobjekte</td><td class="c-stat">Alle lesbaren Arbeitsergebnisse: Code, Anforderungen, Testf&#228;lle, Dokumente&hellip;</td><td class="c-dyn">Nur <strong>ausf&#252;hrbare</strong> Arbeitsergebnisse</td></tr>
+      <tr><td>Zeitpunkt</td><td class="c-stat">Sehr fr&#252;h m&#246;glich &mdash; noch vor erster Codezeile (Anforderungsreviews)</td><td class="c-dyn">Erst wenn lauff&#228;hige Software vorhanden ist</td></tr>
+      <tr><td>Werkzeuge</td><td class="c-stat">Statische Analyse-Werkzeuge (Linter, SAST), Checklisten</td><td class="c-dyn">Testausf&#252;hrungswerkzeuge, Testrahmen, Emulatoren</td></tr>
+      <tr><td>Kosten</td><td class="c-stat">Kein Testfall n&#246;tig &rarr; oft kosteng&#252;nstiger pro gefundenem Fehlerzustand</td><td class="c-dyn">Testfalldesign, -ausf&#252;hrung und -umgebung verursachen Aufwand</td></tr>
+      <tr><td>St&#228;rken</td><td class="c-stat">Inkonsistente Anforderungen &middot; Toter Code &middot; Sicherheitsl&#252;cken &middot; Schnittstellenfehler &middot; Standardabweichungen</td><td class="c-dyn">Laufzeitfehler &middot; Performance &middot; Integrationsfehler &middot; Benutzerinteraktion</td></tr>
+      <tr><td>Qualit&#228;tsmerkmale</td><td class="c-stat">Misst laufzeitunabh&#228;ngige Merkmale: z.B. <strong>Wartbarkeit</strong></td><td class="c-dyn">Misst laufzeitabh&#228;ngige Merkmale: z.B. <strong>Performanz</strong>, <strong>Zuverl&#228;ssigkeit</strong></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- 3 -->
+<div class="section-label">&#9314; Typische Fehlerzust&#228;nde &mdash; durch statischen Test effizient aufdeckbar &middot; FL-3.1.2 (K2)</div>
+
+<div class="three-col" style="margin-bottom:.5rem">
+  <div class="card">
+    <div class="card-head" style="background:var(--extra-bg)">
+      <div class="num">In Anforderungen</div>
+      <div class="name">Qualit&#228;tsprobleme der Spezifikation</div>
+    </div>
+    <div class="card-body">
+      <div class="tag-row">
+        <span class="stag t-def">Inkonsistenzen</span>
+        <span class="stag t-def">Mehrdeutigkeiten</span>
+        <span class="stag t-def">Widerspr&#252;che</span>
+        <span class="stag t-def">Auslassungen</span>
+        <span class="stag t-def">Ungenauigkeiten</span>
+        <span class="stag t-def">Duplikationen</span>
+      </div><br>
+      Dynamisch kaum findbar &mdash; inkonsistente Anforderungen f&#252;hren zu inkonsistenten Testf&#228;llen die den Fehler nicht aufdecken.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head" style="background:var(--stat-bg)">
+      <div class="num">Im Code</div>
+      <div class="name">Strukturelle Code-Probleme</div>
+    </div>
+    <div class="card-body">
+      <div class="tag-row">
+        <span class="stag t-def">Unerreichbarer Code</span>
+        <span class="stag t-def">Undefinierte Variablen</span>
+        <span class="stag t-def">Nicht deklarierte Variablen</span>
+        <span class="stag t-def">Duplizierter Code</span>
+        <span class="stag t-def">&#220;berm&#228;&#223;ige Komplexit&#228;t</span>
+        <span class="stag t-def">Sicherheitsl&#252;cken (Puffer&#252;berl&#228;ufe)</span>
+      </div><br>
+      SAST-Werkzeuge erkennen diese automatisch &mdash; Verbindung zu Kap. 6 Testwerkzeuge.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head" style="background:var(--rev-bg)">
+      <div class="num">Entwurf &amp; Schnittstellen</div>
+      <div class="name">Architektur- und Schnittstellenprobleme</div>
+    </div>
+    <div class="card-body">
+      <div class="tag-row">
+        <span class="stag t-def">Ineffiziente Datenbankstrukturen</span>
+        <span class="stag t-def">Schlechte Modularit&#228;t</span>
+        <span class="stag t-def">Falsche Parameteranzahl/-typ/-reihenfolge</span>
+        <span class="stag t-def">Standardabweichungen</span>
+        <span class="stag t-def">L&#252;cken in Testdeckung</span>
+      </div><br>
+      Auch: nicht wie gew&#252;nscht implementierte Entwurfsmuster.
+    </div>
+  </div>
+</div>
+
+<!-- 4 -->
+<div class="section-label">&#9315; Fr&#252;hzeitiges Stakeholder-Feedback &mdash; CTFL Kap. 3.2 &middot; FL-3.2.1 (K1)</div>
+
+<div class="two-col" style="margin-bottom:.5rem">
+  <div class="card">
+    <div class="card-head" style="background:var(--ok-bg)">
+      <div class="num">Warum fr&#252;h?</div>
+      <div class="name">Vorteile fr&#252;hzeitigen Feedbacks</div>
+    </div>
+    <div class="card-body">
+      Wenn Stakeholder w&#228;hrend des SDLC nur wenig einbezogen werden, entspricht das entwickelte Produkt oft nicht den tats&#228;chlichen Anforderungen &mdash; ein <strong>teures Late-Stage-Problem</strong>.<br><br>
+      H&#228;ufiges Feedback: beugt Missverst&#228;ndnissen vor &middot; Anforderungs&#228;nderungen werden fr&#252;her erkannt &middot; Entwickler verstehen Erwartungen besser.
+      <div class="tag-row">
+        <span class="stag t-ok">Shift-Left</span>
+        <span class="stag t-ok">Missverst&#228;ndnisse vermeiden</span>
+        <span class="stag t-ok">&#196;nderungskosten senken</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head" style="background:var(--note-bg)">
+      <div class="num">Agile Praxis</div>
+      <div class="name">Kollaborative Reviewformate</div>
+    </div>
+    <div class="card-body">
+      In agilen Projekten arbeiten Tester, Fachbereichsvertreter (Product Owner, Businessanalysten) und Entwickler gemeinsam &mdash; z.B. beim <strong>Example Mapping</strong>, beim Schreiben von User Stories und beim Backlog Refinement.<br><br>
+      Statisches Testen ist kein reines Wasserfall-Konzept &mdash; es ist in Agile integriert, oft als kontinuierliche Peer Reviews und als Teil der Definition of Ready/Done.
+      <div class="tag-row">
+        <span class="stag t-note">Example Mapping</span>
+        <span class="stag t-note">User Story Review</span>
+        <span class="stag t-note">Backlog Refinement</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 -->
+<div class="section-label">&#9316; Aktivit&#228;ten des Reviewprozesses &mdash; ISO/IEC 20246 &middot; FL-3.2.2 (K2)</div>
+
+<div class="flow-wrap">
+  <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:.8rem">Generischer Reviewprozess (ISO/IEC 20246) &mdash; sequenziell, aber iterierbar f&#252;r gro&#223;e Arbeitsergebnisse</div>
+  <div class="flow">
+    <div class="flow-step">
+      <div class="flow-inner">
+        <div class="fs-num">Schritt 1</div>
+        <div class="fs-name">Planung</div>
+        <div class="fs-desc">Umfang &amp; Zweck festlegen &middot; Arbeitsergebnis w&#228;hlen &middot; Qualit&#228;tsmerkmale bestimmen &middot; Endekriterien formulieren &middot; Reviewart &amp; Checklisten w&#228;hlen &middot; Teilnehmer &amp; Zeitplan</div>
+      </div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+      <div class="flow-inner">
+        <div class="fs-num">Schritt 2</div>
+        <div class="fs-name">Reviewbeginn</div>
+        <div class="fs-desc">Alle Beteiligten vorbereiten &middot; Zug&#228;nge sicherstellen &middot; Einf&#252;hrungssitzung &middot; Fragen kl&#228;ren &middot; Commitment einholen</div>
+      </div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+      <div class="flow-inner">
+        <div class="fs-num">Schritt 3</div>
+        <div class="fs-name">Individuelles Review</div>
+        <div class="fs-desc">Jeder Gutachter pr&#252;ft selbstst&#228;ndig &middot; Anomalien, Empfehlungen &amp; Fragen notieren &middot; Reviewtechniken anwenden (Checkliste, szenariobasiert&hellip;)</div>
+      </div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+      <div class="flow-inner">
+        <div class="fs-num">Schritt 4</div>
+        <div class="fs-name">Kommunikation &amp; Analyse</div>
+        <div class="fs-desc">Anomalien diskutieren &middot; Nicht jede Anomalie = Fehlerzustand &middot; Status entscheiden: akzeptieren / ablehnen / zur&#252;ckstellen &middot; Verantwortlichkeiten festlegen</div>
+      </div>
+    </div>
+    <div class="flow-arrow">&rarr;</div>
+    <div class="flow-step">
+      <div class="flow-inner">
+        <div class="fs-num">Schritt 5</div>
+        <div class="fs-name">Behebung &amp; Berichterstattung</div>
+        <div class="fs-desc">Fehlerbericht je Fehlerzustand &middot; Korrekturen durchf&#252;hren &middot; Endekriterien pr&#252;fen &middot; Reviewbericht erstellen &middot; Abnahme des Arbeitsergebnisses</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="aha-box" style="margin-top:.8rem">
+  <strong>Wichtig &mdash; Anomalie &#8800; Fehlerzustand:</strong> Im Reviewprozess werden zun&#228;chst <em>Anomalien</em> erfasst (alles was vom Erwarteten abweicht). Erst in Schritt 4 wird durch Diskussion entschieden ob eine Anomalie tats&#228;chlich ein Fehlerzustand ist. Manche Anomalien sind begr&#252;ndete Designentscheidungen, keine Fehler.
+</div>
+
+<!-- 6 -->
+<div class="section-label">&#9317; Rollen und Verantwortlichkeiten &mdash; CTFL Kap. 3.2 &middot; FL-3.2.3 (K1)</div>
+
+<div class="rollen-grid">
+  <div class="rollen-card">
+    <div class="rollen-head">Manager</div>
+    <div class="rollen-body">Entscheidet <strong>was</strong> gepr&#252;ft wird &middot; Stellt Ressourcen bereit (Personal, Zeit) &middot; Tr&#228;gt organisatorische Gesamtverantwortung</div>
+  </div>
+  <div class="rollen-card">
+    <div class="rollen-head">Reviewleiter</div>
+    <div class="rollen-body">&#220;bernimmt <strong>Gesamtverantwortung</strong> f&#252;r das Review &middot; Entscheidet &#252;ber Teilnehmer &middot; Organisiert Wann und Wo</div>
+  </div>
+  <div class="rollen-card">
+    <div class="rollen-head">Autor</div>
+    <div class="rollen-body">Erstellt das zu pr&#252;fende Arbeitsergebnis &middot; Korrigiert nach dem Review gefundene Fehlerzust&#228;nde &middot; Hat keine Moderationsrolle</div>
+  </div>
+  <div class="rollen-card">
+    <div class="rollen-head">Moderator <em style="font-weight:400;font-size:11px">(Facilitator)</em></div>
+    <div class="rollen-body">Sorgt f&#252;r <strong>effektiven Ablauf</strong> der Reviewsitzung &middot; Mediation &middot; Zeitmanagement &middot; Schafft gesch&#252;tzte Umgebung in der jeder frei sprechen kann</div>
+  </div>
+  <div class="rollen-card">
+    <div class="rollen-head">Gutachter <em style="font-weight:400;font-size:11px">(Reviewer)</em></div>
+    <div class="rollen-body">F&#252;hrt das eigentliche Review durch &middot; Kann Projektmitarbeiter, Fachexperte oder anderer Stakeholder sein &middot; Identifiziert Anomalien</div>
+  </div>
+  <div class="rollen-card">
+    <div class="rollen-head">Protokollant</div>
+    <div class="rollen-body">Sammelt Anomalien von Gutachtern &middot; Zeichnet Reviewinformationen auf &middot; Dokumentiert Entscheidungen und neue Anomalien aus der Sitzung</div>
+  </div>
+</div>
+
+<div class="warn-box" style="margin-top:.8rem">
+  <strong>&#9888; Pr&#252;fungshinweis:</strong> Eine Person kann mehrere Rollen gleichzeitig einnehmen. Außer: Der <strong>Autor moderiert nicht</strong> (zu befangen). ISO/IEC 20246 beschreibt weitere Detailrollen.
+</div>
+
+<!-- 7 -->
+<div class="section-label">&#9318; Vier Reviewarten im Vergleich &mdash; CTFL Kap. 3.2 &middot; FL-3.2.4 (K2)</div>
+
+<div class="review-grid">
+  <div class="review-card">
+    <div class="review-head" style="background:#e8e8d8">
+      <div class="r-name">Informelles Review</div>
+      <div class="r-en">Informal Review</div>
+    </div>
+    <div class="review-body">
+      <div class="r-attr"><span class="r-k">Formalit&#228;t</span><span>Keine &mdash; kein definierter Prozess</span></div>
+      <div class="r-attr"><span class="r-k">Dokumentation</span><span>Keine formalen Ergebnisse erforderlich</span></div>
+      <div class="r-attr"><span class="r-k">Leitung</span><span>Kein Moderator n&#246;tig</span></div>
+      <div class="r-attr"><span class="r-k">Ziel</span><span>Anomalien schnell aufdecken</span></div>
+      <div class="r-attr"><span class="r-k">Typisch</span><span>Pair Programming, kurze Kollegenrunde, &bdquo;Schau mal dr&#252;ber&ldquo;</span></div>
+      <div class="tag-row" style="margin-top:.6rem">
+        <span class="stag t-base">Formalit&#228;t: &#9679;&#9675;&#9675;&#9675;</span>
+        <span class="stag t-ok">Niedrigschwellig</span>
+      </div>
+    </div>
+  </div>
+  <div class="review-card">
+    <div class="review-head" style="background:var(--note-bg)">
+      <div class="r-name">Walkthrough</div>
+      <div class="r-en">Walkthrough</div>
+    </div>
+    <div class="review-body">
+      <div class="r-attr"><span class="r-k">Formalit&#228;t</span><span>Gering bis mittel</span></div>
+      <div class="r-attr"><span class="r-k">Leitung</span><span><strong>Vom Autor geleitet</strong> &mdash; erkl&#228;rt Schritt f&#252;r Schritt</span></div>
+      <div class="r-attr"><span class="r-k">Dokumentation</span><span>Protokoll optional, empfohlen</span></div>
+      <div class="r-attr"><span class="r-k">Ziele</span><span>Qualit&#228;tsbewertung &middot; Schulung &middot; Konsens &middot; Neue Ideen &middot; Autoren motivieren</span></div>
+      <div class="r-attr"><span class="r-k">Typisch</span><span>Pr&#228;sentation Architekturkonzept, User-Story-Walkthrough</span></div>
+      <div class="tag-row" style="margin-top:.6rem">
+        <span class="stag t-note">Formalit&#228;t: &#9679;&#9679;&#9675;&#9675;</span>
+        <span class="stag t-note">Autor f&#252;hrt</span>
+      </div>
+    </div>
+  </div>
+  <div class="review-card">
+    <div class="review-head" style="background:var(--stat-bg)">
+      <div class="r-name">Technisches Review</div>
+      <div class="r-en">Technical Review</div>
+    </div>
+    <div class="review-body">
+      <div class="r-attr"><span class="r-k">Formalit&#228;t</span><span>Mittel bis hoch</span></div>
+      <div class="r-attr"><span class="r-k">Leitung</span><span>Von einem <strong>Moderator</strong> geleitet (nicht Autor)</span></div>
+      <div class="r-attr"><span class="r-k">Gutachter</span><span>Technisch qualifiziert &mdash; Fachexperten</span></div>
+      <div class="r-attr"><span class="r-k">Ziele</span><span>Konsens erzielen &middot; Technische Entscheidungen treffen &middot; Alternativen bewerten</span></div>
+      <div class="r-attr"><span class="r-k">Dokumentation</span><span>Reviewbericht erforderlich</span></div>
+      <div class="tag-row" style="margin-top:.6rem">
+        <span class="stag t-stat">Formalit&#228;t: &#9679;&#9679;&#9679;&#9675;</span>
+        <span class="stag t-stat">Moderator f&#252;hrt</span>
+      </div>
+    </div>
+  </div>
+  <div class="review-card">
+    <div class="review-head" style="background:#e8d0c8">
+      <div class="r-name">Inspektion</div>
+      <div class="r-en">Inspection</div>
+    </div>
+    <div class="review-body">
+      <div class="r-attr"><span class="r-k">Formalit&#228;t</span><span><strong>Maximal</strong> &mdash; formalste Reviewart</span></div>
+      <div class="r-attr"><span class="r-k">Leitung</span><span>Moderator (geschulter Inspektionsleiter)</span></div>
+      <div class="r-attr"><span class="r-k">Prozess</span><span>Folgt dem <strong>vollst&#228;ndigen</strong> generischen Reviewprozess</span></div>
+      <div class="r-attr"><span class="r-k">Ziel</span><span>Maximum an Anomalien finden &middot; Prozessverbesserung durch Metriken</span></div>
+      <div class="r-attr"><span class="r-k">Dokumentation</span><span>Vollst&#228;ndiger Reviewbericht + Metriken verpflichtend</span></div>
+      <div class="tag-row" style="margin-top:.6rem">
+        <span class="stag t-def">Formalit&#228;t: &#9679;&#9679;&#9679;&#9679;</span>
+        <span class="stag t-def">Vollst&#228;ndiger Prozess</span>
+        <span class="stag t-def">Metriken</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="aha-box" style="margin-top:.8rem">
+  <strong>Pr&#252;fungsfalle FL-3.2.4 (K2):</strong> Die vier Reviewarten unterscheiden sich prim&#228;r nach <strong>Formalit&#228;t</strong> und <strong>wer leitet</strong>: Informell (kein Prozess) &rarr; Walkthrough (Autor leitet) &rarr; Technisches Review (Moderator, Fachexperten) &rarr; Inspektion (vollst&#228;ndiger Prozess + Metriken). Merkhilfe: Je mehr Struktur, desto formaler &mdash; und nur beim Walkthrough leitet der Autor selbst.
+</div>
+
+<!-- 8 -->
+<div class="section-label">&#9319; Erfolgsfaktoren f&#252;r Reviews &mdash; CTFL Kap. 3.2 &middot; FL-3.2.5 (K1)</div>
+
+<div class="ef-grid">
+  <div class="ef-item"><span class="ef-icon">&#127919;</span><span><strong>Klare Ziele &amp; messbare Endekriterien</strong> &mdash; Bewertung der Teilnehmer darf kein Ziel sein</span></div>
+  <div class="ef-item"><span class="ef-icon">&#128269;</span><span><strong>Geeignete Reviewart</strong> w&#228;hlen &mdash; passend zu Arbeitsergebnis, Kontext, Risiko, Teilnehmern</span></div>
+  <div class="ef-item"><span class="ef-icon">&#128230;</span><span><strong>Kleine Einheiten</strong> reviewen &mdash; verhindert Konzentrationsverlust bei Gutachtern</span></div>
+  <div class="ef-item"><span class="ef-icon">&#128260;</span><span><strong>Feedback</strong> an Stakeholder und Autoren liefern &mdash; f&#246;rdert Lernen und Verbesserung</span></div>
+  <div class="ef-item"><span class="ef-icon">&#9203;</span><span><strong>Ausreichend Vorbereitungszeit</strong> f&#252;r alle Teilnehmer einplanen</span></div>
+  <div class="ef-item"><span class="ef-icon">&#127970;</span><span><strong>Management-Unterst&#252;tzung</strong> sicherstellen &mdash; ohne sie scheitern formale Reviews</span></div>
+  <div class="ef-item"><span class="ef-icon">&#127963;</span><span><strong>Reviews in Unternehmenskultur</strong> integrieren &mdash; Lernen als Normalzustand, nicht Ausnahme</span></div>
+  <div class="ef-item"><span class="ef-icon">&#127891;</span><span><strong>Schulungen</strong> f&#252;r alle Teilnehmer &mdash; jeder muss seine Rolle kennen und ausf&#252;llen k&#246;nnen</span></div>
+  <div class="ef-item"><span class="ef-icon">&#127897;</span><span><strong>Sitzungen moderieren</strong> &mdash; Moderation sichert Struktur, Zeitrahmen und offenes Klima</span></div>
+</div>
+
+<div class="warn-box" style="margin-top:.8rem">
+  <strong>&#9888; H&#228;ufige Pr&#252;fungsfalle:</strong> Die Bewertung der Teilnehmer (Performance Review von Personen) darf <em>niemals</em> ein Reviewziel sein. Reviews bewerten Arbeitsergebnisse, nicht Personen. Explizit im Lehrplan genannt.
+</div>
+
+<!-- 9 -->
+<div class="section-label">&#9320; Querverbindungen zu anderen Kapiteln</div>
+
+<div class="two-col">
+  <div class="card">
+    <div class="card-head" style="background:var(--ok-bg)">
+      <div class="name" style="font-size:13px">Verbindung zu Kap. 1 &mdash; Testgrundlagen</div>
+    </div>
+    <div class="card-body">
+      <strong>Grundsatz des fr&#252;hen Testens (Kap. 1.3):</strong> Statischer Test ist der direkteste Ausdruck dieses Grundsatzes &mdash; Fehlerzust&#228;nde werden aufgedeckt bevor lauff&#228;hige Software existiert.<br><br>
+      <strong>Fehlhandlung &rarr; Fehlerzustand &rarr; Fehlerwirkung (Kap. 1.2):</strong> Statischer Test unterbricht diese Kette beim Fehlerzustand &mdash; er verhindert dass aus einem Fehlerzustand &#252;berhaupt eine Fehlerwirkung entstehen kann.
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head" style="background:var(--stat-bg)">
+      <div class="name" style="font-size:13px">Verbindung zu Kap. 1.4.3 &middot; Kap. 6</div>
+    </div>
+    <div class="card-body">
+      <strong>Testmittel (Kap. 1.4.3):</strong> Reviewprotokolle, Anomalienlisten und Reviewberichte sind selbst Testmittel &mdash; sie werden konfigurationsverwaltet und sind Teil der Testdokumentation.<br><br>
+      <strong>Testwerkzeuge (Kap. 6):</strong> Statische Analyse-Werkzeuge (Linter, SAST-Tools) sind Testwerkzeuge &mdash; die automatisierte Form des statischen Tests ohne menschliche Durchsicht. Verbindung wird auf der Kap.-6-Seite vertieft.
+    </div>
+  </div>
+</div>
+
+</main>
+
+<footer>
+  <p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025) · Kap. 3.1–3.2 · FL-3.1.1 / FL-3.1.2 / FL-3.1.3 / FL-3.2.1 / FL-3.2.2 / FL-3.2.3 / FL-3.2.4 / FL-3.2.5 · ISO/IEC 20246</p>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,120 @@
+/* Gemeinsames Basis-CSS für die QA-Lernwebseite */
+
+:root {
+  --bg:    #f0ece6;
+  --text:  #283535;
+  --mid:   #4e6060;
+  --soft:  #7a9090;
+  --border: rgba(0,0,0,0.07);
+  --bdr:   var(--border);
+  /* Typografie & Abstände (Index + Unterseiten) */
+  --title-size:    1.6rem;
+  --subtitle-size: 1.05rem;
+  --subtitle-margin-top: 0.4rem;
+  --header-margin-bottom: 2rem;
+  --footer-note-margin-top: 1.5rem;
+  /* Gemeinsame Karten-/Ebenen-Palette (Index, Glossar, Testuniversum, HA4-Anforderungsanalyse) */
+  --e1: #d8e4d0;
+  --e2: #bad1dc;
+  --e3: #e0cec8;
+  --e4: #ddc48a;
+  --e5: #d4c4e0;
+  --e6: #c8d4cc;
+  /* Formularseiten (Hausaufgaben-Druckversionen): leicht dunklere Nuance von --e3 */
+  --e3form: #cfbdb6;
+  /* Vertikaler Rhythmus: oben in Nav-Zone, zwischen Nav 1/2, unter Nav bis page-chrome */
+  --nav-vertical-rhythm: 1.75rem;
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background: var(--bg);
+  background-image: radial-gradient(circle, rgba(0,0,0,0.028) 1px, transparent 1px);
+  background-size: 22px 22px;
+  color: var(--text);
+  font-family: Georgia, 'Palatino Linotype', serif;
+  min-height: 100vh;
+}
+
+header { text-align: center; }
+header h1 { font-weight: normal; letter-spacing: .05em; }
+header p { font-style: italic; color: var(--soft); }
+
+/* Globale obere Navigationszone: volle Viewport-Breite, feste Optik (kein Variablen-Erbe) */
+.top-nav-zone {
+  width: 100vw;
+  margin-left: calc(-50vw + 50%);
+  background: var(--bg);
+  border-bottom: 1px solid var(--bdr);
+  display: flex;
+  flex-direction: column;
+  gap: var(--nav-vertical-rhythm);
+  padding-top: var(--nav-vertical-rhythm);
+  padding-bottom: var(--nav-vertical-rhythm);
+}
+.top-nav-zone .main-nav { margin-bottom: 0; border-bottom: none; }
+
+/* Oberer Rahmen unter der Nav: einheitlich auf allen Unterseiten (normal, Formular, Visualisierung) */
+.page-chrome {
+  width: 100%;
+  align-self: stretch;
+  background: var(--bg);
+  border-bottom: 1px solid var(--bdr);
+}
+
+main { width: 100%; }
+
+/* Hauptnavigation: einheitlich auf allen Seiten, unabhängig von body (Höhe, Schrift) */
+.main-nav {
+  margin-bottom: 1rem;
+  padding: 0.5rem 0;
+  border-bottom: 1px solid var(--bdr);
+  font-family: Georgia, 'Palatino Linotype', serif;
+}
+.main-nav ul {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1rem;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+}
+.main-nav a {
+  font-size: 0.95rem;
+  line-height: 1.35;
+  color: var(--soft);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+.main-nav a:hover { text-decoration: underline; }
+.main-nav a.current { color: var(--text); font-weight: normal; border-bottom-color: var(--text); }
+
+.main-nav--assignments a {
+  font-size: 0.875rem;
+  color: var(--mid);
+}
+.main-nav--assignments a:hover,
+.main-nav--assignments a.current {
+  color: var(--text);
+}
+
+/* Skip-Link: für Tastatur/Screenreader zum Hauptinhalt springen */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 9999;
+  padding: 0.5rem 1rem;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 0.875rem;
+  text-decoration: none;
+  border: 1px solid var(--bdr);
+  border-radius: 4px;
+}
+.skip-link:focus {
+  left: 1rem;
+  top: 1rem;
+}

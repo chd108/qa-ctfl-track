@@ -1,0 +1,321 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Standards: anerkannte Web- und Projektstandards, Projektstatus und Potenzial der QA Lernwebseite und des QA-Track-Repos.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>Standards — QA Lernwebseite</title>
+  <style>
+    /* --- Variablen (Status-Farben; Rahmen aus base/subpage) --- */
+    :root {
+      --ok:#4a7c59; --ok-bg:#cde8d2; --warn:#9c6a2a; --warn-bg:#f0dfc0;
+      --no:#7a3a3a; --no-bg:#e8cccc; --na:#5a5a5a; --na-bg:#e8e8e4;
+    }
+    body { padding: 0 3rem 4rem; }
+    h2 { font-size:14px; font-weight:700; letter-spacing:.15em; text-transform:uppercase; color:var(--soft); margin:2.5rem 0 .8rem; padding-bottom:.4rem; border-bottom:2px solid var(--bdr); }
+
+    /* --- Legende --- */
+    .legend { display:flex; gap:1rem; flex-wrap:wrap; margin-bottom:1.5rem; font-size:14px; }
+    .leg { display:flex; align-items:center; gap:.4rem; }
+    .leg-dot { width:14px; height:14px; border-radius:3px; flex-shrink:0; }
+    .leg-dot--ok { background:var(--ok-bg); border:1px solid var(--ok); }
+    .leg-dot--warn { background:var(--warn-bg); border:1px solid var(--warn); }
+    .leg-dot--no { background:var(--no-bg); border:1px solid var(--no); }
+    .leg-dot--na { background:var(--na-bg); border:1px solid var(--na); }
+
+    /* --- Haupttabellen --- */
+    .table-wrap { overflow-x:auto; margin-bottom:2rem; }
+    table { width:100%; min-width:960px; border-collapse:collapse; background:rgba(255,255,255,0.45); border-radius:10px; overflow:hidden; box-shadow:0 2px 16px rgba(0,0,0,0.06); }
+    thead th { padding:.55rem .8rem; font-size:13px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; text-align:left; border-bottom:2px solid var(--bdr); color:var(--soft); background:rgba(255,255,255,0.6); }
+    thead th:first-child { text-align:center; width:3%; }
+    tbody tr { border-bottom:1px solid var(--bdr); }
+    tbody tr:last-child { border-bottom:none; }
+    tbody tr:hover { background:rgba(255,255,255,0.4); }
+    td { padding:.5rem .8rem; vertical-align:top; line-height:1.45; font-size:15px; color:var(--mid); }
+    .cell-num { width:3%; text-align:center; font-size:13px; color:var(--soft); }
+    td:nth-child(2) { font-weight:600; color:var(--text); width:14%; }
+    .cell-zweck { width:28%; font-size:14px; line-height:1.55; color:var(--mid); }
+    td:nth-child(4) { width:10%; font-size:14px; color:var(--soft); }
+    td:nth-child(5) { width:10%; }
+    td:nth-child(6) { width:6%; text-align:center; }
+    td:nth-child(7) { width:29%; }
+    .cat { display:inline-block; padding:.1rem .45rem; border-radius:4px; font-size:13px; font-weight:700; letter-spacing:.08em; text-transform:uppercase; }
+    .cat-web { background:#c8dce8; color:#2a4a6a; }
+    .cat-css { background:#d8e0c0; color:#3a4a1a; }
+    .cat-js { background:#e0d8c0; color:#4a3a1a; }
+    .cat-acc { background:#dcd0e8; color:#3a1a5a; }
+    .cat-doc { background:#cde8d2; color:#1a4a2a; }
+    .cat-git { background:#e8d8c0; color:#5a3a1a; }
+    .cat-info { background:#c4d8ee; color:#1a3a5a; }
+    .cat-pkm { background:#ead8de; color:#5a1a3a; }
+    .cat-str { background:#e8e0c8; color:#4a3a0a; }
+    .s-yes { background:var(--ok-bg); color:var(--ok); font-weight:700; border-radius:4px; padding:.15rem .4rem; font-size:14px; }
+    .s-part { background:var(--warn-bg); color:var(--warn); font-weight:700; border-radius:4px; padding:.15rem .4rem; font-size:14px; }
+    .s-no { background:var(--no-bg); color:var(--no); font-weight:700; border-radius:4px; padding:.15rem .4rem; font-size:14px; }
+    .s-na { background:var(--na-bg); color:var(--na); font-weight:700; border-radius:4px; padding:.15rem .4rem; font-size:14px; }
+
+    /* --- Block-Label & Erklärungstabellen --- */
+    .block-label { font-size:15px; color:var(--mid); margin-bottom:.5rem; font-style:italic; }
+    .block-explanation { font-size:14px; color:var(--mid); line-height:1.55; margin-bottom:1.25rem; }
+    .block-explanation p { margin:.6rem 0; }
+    .block-explanation p:first-child { margin-top:0; }
+    .block-explanation__table { width:100%; max-width:42em; margin:.75rem 0; border-collapse:collapse; font-size:13px; table-layout:fixed; }
+    .block-explanation__table th, .block-explanation__table td { padding:.35rem .5rem; text-align:left; border-bottom:1px solid var(--bdr); vertical-align:top; }
+    .block-explanation__table th:nth-child(1), .block-explanation__table td:nth-child(1) { width:22%; }
+    .block-explanation__table th:nth-child(2), .block-explanation__table td:nth-child(2) { width:10%; }
+    .block-explanation__table th:nth-child(3), .block-explanation__table td:nth-child(3) { width:68%; }
+    .block-explanation__table--block-b th:nth-child(1), .block-explanation__table--block-b td:nth-child(1) { width:32%; }
+    .block-explanation__table--block-b th:nth-child(2), .block-explanation__table--block-b td:nth-child(2) { width:18%; }
+    .block-explanation__table--block-b th:nth-child(3), .block-explanation__table--block-b td:nth-child(3) { width:50%; }
+    .block-explanation__table th { font-weight:700; color:var(--soft); font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+    .block-explanation__row { display:flex; gap:1.5rem; align-items:flex-start; margin:.75rem 0; }
+    .block-explanation__row .block-explanation__table-wrap { flex:1 1 0; min-width:0; display:flex; }
+    .block-explanation__row .block-explanation__table { margin:0; width:100%; max-width:none; box-sizing:border-box; }
+    .block-explanation__row .block-explanation__text { flex:1 1 0; min-width:0; }
+    @media (max-width:880px) { .block-explanation__row { flex-direction:column; } .block-explanation__row .block-explanation__table { max-width:100%; } }
+    .row-group-header { background:rgba(255,255,255,0.65); padding:.4rem .8rem; font-size:11px; font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--soft); border-bottom:1px solid var(--bdr); }
+    h2 .h2-repo-link {
+      text-transform: none;
+      letter-spacing: 0.05em;
+      font-weight: 700;
+      color: var(--mid);
+      font-family: Consolas, 'Courier New', monospace;
+      font-size: 12px;
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+    h2 .h2-repo-link:hover { color: var(--text); }
+    h2 .h2-external-hint {
+      text-transform: none;
+      letter-spacing: normal;
+      font-weight: 600;
+      font-size: 11px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      color: var(--soft);
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="02c-teststufen.html">Teststufen</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="00b-standards.html" class="current">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Standards</h1>
+    <p>Anerkannte Standards &middot; Projektstatus &middot; Potenzial &mdash; Stand 21.03.2026</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Seitenkontext">
+    <span><strong>Seite:</strong> Standards — Überblick</span>
+  </div>
+
+  <nav class="legend" aria-label="Legende">
+    <div class="leg"><div class="leg-dot leg-dot--ok" aria-hidden="true"></div><span>&#10003; Umgesetzt</span></div>
+    <div class="leg"><div class="leg-dot leg-dot--warn" aria-hidden="true"></div><span>&#9651; Teilweise</span></div>
+    <div class="leg"><div class="leg-dot leg-dot--no" aria-hidden="true"></div><span>&#10007; Noch nicht</span></div>
+    <div class="leg"><div class="leg-dot leg-dot--na" aria-hidden="true"></div><span>&mdash; Nicht anwendbar / au&szlig;erhalb Scope</span></div>
+  </nav>
+
+  <section class="standards-block" id="block-a" aria-labelledby="block-a-heading">
+    <h2 id="block-a-heading">Block A &mdash; QA_Lernwebseite (Git-Repo &middot; Statisches Web-Projekt) &middot; <a class="h2-repo-link" href="https://github.com/chd108/QA_Lernwebseite" rel="noopener noreferrer" target="_blank" aria-label="GitHub-Repository: github.com/chd108/QA_Lernwebseite">github-repo</a><span class="h2-external-hint"> (GitHub in neuem Tab &mdash; Standards-Seite bleibt ge&ouml;ffnet)</span></h2>
+    <div class="block-explanation" aria-label="Sortierlogik Block A">
+      <p><strong>Sortierlogik:</strong> Die Gruppen in Block A sind nach historischer Entstehungsreihenfolge sortiert. Diese Reihenfolge entspricht gleichzeitig der didaktischen und architektonischen Schichtung &mdash; jede Gruppe baut konzeptuell auf der vorherigen auf:</p>
+      <div class="block-explanation__row">
+        <div class="block-explanation__table-wrap">
+        <table class="block-explanation__table" aria-label="Gruppen und Entstehung">
+          <thead>
+            <tr><th scope="col">Gruppe</th><th scope="col">Entstehung</th><th scope="col">Begr&uuml;ndung</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>HTML</td><td>1991</td><td>Tim Berners-Lee &mdash; Grundlage jedes Webdokuments</td></tr>
+            <tr><td>Accessibility</td><td>1999</td><td>WCAG 1.0 &mdash; aufbauend auf HTML-Semantik</td></tr>
+            <tr><td>CSS</td><td>1996</td><td>Erst Struktur, dann visuelle Gestaltung</td></tr>
+            <tr><td>JavaScript</td><td>1995</td><td>Verhalten kommt konzeptuell nach Struktur und Darstellung</td></tr>
+            <tr><td>Git</td><td>2005</td><td>Linus Torvalds &mdash; Versionskontrolle als eigene Schicht</td></tr>
+            <tr><td>IA / Design System</td><td>2000er</td><td>Erst als das Web architektonisch reifte</td></tr>
+            <tr><td>Dokumentation</td><td>&mdash;</td><td>Projektbegleitend, kein eigenes Entstehungsdatum</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="block-explanation__text">
+          <p><strong>Reihenfolge innerhalb der Gruppen &mdash; Verbreitung und Grundlegendheit</strong><br>Innerhalb jeder Gruppe steht der fundamentalste und am weitesten verbreitete Standard zuerst. Speziellere oder seltenere Standards folgen danach. Beispiel HTML: Living Standard &rarr; Semantic Elements &rarr; Viewport &rarr; Meta Description &rarr; HTML Validation.</p>
+          <p><strong>Alternative Betrachtung &mdash; Schichtenmodell</strong><br>Die Gruppen lassen sich auch nach einem formalen Schichtenmodell begr&uuml;nden: Struktur &rarr; Darstellung &rarr; Verhalten &rarr; Versionierung &rarr; Architektur &rarr; Dokumentation. Dieses Prinzip entspricht dem ISO/OSI-Gedanken, angewandt auf Webentwicklung. Beide Betrachtungsweisen &mdash; historisch und schichtbasiert &mdash; f&uuml;hren zur identischen Reihenfolge. Die historische Begr&uuml;ndung wurde gew&auml;hlt, da sie intuitiver nachvollziehbar ist.</p>
+          <p><strong>Anmerkung CSS / JavaScript</strong><br>CSS (1996) steht vor JavaScript (1995), obwohl JavaScript ein Jahr fr&uuml;her erschien. Begr&uuml;ndung: CSS baut konzeptuell direkt auf HTML-Struktur auf &mdash; Darstellung folgt Struktur. JavaScript als Verhaltensschicht kommt architektonisch danach. Die didaktisch und architektonisch saubere Sequenz hat hier Vorrang vor der chronologischen Jahreszahl.</p>
+        </div>
+      </div>
+    </div>
+    <p class="block-label">Gruppen historisch sortiert: HTML (1991) &rarr; Accessibility (1999) &rarr; CSS (1996) &rarr; JavaScript (1995) &rarr; Git (2005) &rarr; IA/Design (2000er) &rarr; Dokumentation &middot; Innerhalb der Gruppen: nach Verbreitung und Grundlegendheit</p>
+    <div class="table-wrap">
+    <table>
+<thead>
+<tr>
+  <th scope="col">#</th>
+  <th scope="col">Standard / Standardfamilie</th>
+  <th scope="col">Zweck &amp; Definition</th>
+  <th scope="col">Autorit&auml;t / Quelle</th>
+  <th scope="col">Kategorie</th>
+  <th scope="col">Status</th>
+  <th scope="col">Einordnung / Potenzial im Projekt</th>
+</tr>
+</thead>
+<tbody>
+<tr><td colspan="7" class="row-group-header">HTML / Web — WHATWG · W3C · 1991</td></tr>
+<tr><td class="cell-num">1</td><td>HTML Living Standard</td><td class="cell-zweck">Definiert die Sprache HTML vollst&auml;ndig: Elemente, Attribute, DOM und Parsing-Regeln. Ist die technische Grundlage jeder Webseite. Ohne diesen Standard w&auml;ren Browser nicht interoperabel &mdash; eine Seite w&uuml;rde in Chrome anders aussehen als in Firefox.</td><td>WHATWG</td><td><span class="cat cat-web">HTML</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Vollst&auml;ndig umgesetzt: DOCTYPE, lang-Attribut, semantische Elemente (main, header, footer, nav, section). Basis aller Seiten.</td></tr>
+<tr><td class="cell-num">2</td><td>HTML5 Semantic Elements</td><td class="cell-zweck">Regelt bedeutungstragende HTML-Elemente wie main, nav, header, footer, article, section. Zweck: Struktur und Bedeutung eines Dokuments maschinenlesbar machen &mdash; f&uuml;r Browser, Screenreader und Suchmaschinen. Erm&ouml;glicht Orientierung ohne visuelle Darstellung.</td><td>W3C / WHATWG</td><td><span class="cat cat-web">HTML</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>main, header, footer, nav, section konsistent verwendet. id="main" als Sprungziel umgesetzt.</td></tr>
+<tr><td class="cell-num">3</td><td>Character Encoding (UTF-8)</td><td class="cell-zweck">Legt fest wie Zeichen als Bytes gespeichert und &uuml;bertragen werden. UTF-8 kann alle Sprachen, Sonderzeichen und Symbole korrekt darstellen. Ohne korrekte Zeichenkodierung entstehen Darstellungsfehler &mdash; z.B. erscheinen Umlaute als Fragezeichen oder K&auml;stchen.</td><td>IETF RFC 3629 / W3C</td><td><span class="cat cat-web">HTML</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>meta charset="UTF-8" auf allen aktiven Seiten.</td></tr>
+<tr><td class="cell-num">4</td><td>Viewport Meta Tag</td><td class="cell-zweck">Steuert wie eine Seite auf mobilen Ger&auml;ten skaliert und dargestellt wird. Ohne dieses Tag zeigen Smartphones die Desktop-Version verkleinert an statt sie responsiv anzupassen. Grundvoraussetzung f&uuml;r jede mobilf&auml;hige Website.</td><td>W3C / WHATWG</td><td><span class="cat cat-web">HTML</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>meta name="viewport" content="width=device-width, initial-scale=1.0" auf allen Seiten.</td></tr>
+<tr><td class="cell-num">5</td><td>Meta Description</td><td class="cell-zweck">Kurzbeschreibung des Seiteninhalts im HTML-Head. Wird von Suchmaschinen als Vorschautext in den Suchergebnissen angezeigt. Verbessert Auffindbarkeit und Klickrate. Hat keinen direkten Einfluss auf das Ranking, aber auf die Nutzererfahrung in der Suche.</td><td>W3C / SEO Best Practice</td><td><span class="cat cat-web">HTML</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Eigene Meta-Description pro Seite umgesetzt.</td></tr>
+<tr><td class="cell-num">6</td><td>HTML Validation</td><td class="cell-zweck">Pr&uuml;ft ob HTML-Dokumente der Spezifikation entsprechen: korrekte Verschachtelung, g&uuml;ltige Attribute, keine veralteten Elemente. Der W3C Markup Validator ist das offizielle Werkzeug. Validation findet Fehler die Browser still korrigieren aber Screenreader nicht.</td><td>W3C Markup Validator</td><td><span class="cat cat-web">HTML</span></td><td><span class="s-no" aria-label="Noch nicht">&#10007;</span></td><td>Noch kein systematischer Validierungslauf. Empfehlenswert als einmaliger Qualit&auml;tscheck.</td></tr>
+<tr><td colspan="7" class="row-group-header">Accessibility — W3C WAI · WCAG · 1999</td></tr>
+<tr><td class="cell-num">7</td><td>Document Language Declaration</td><td class="cell-zweck">Das lang-Attribut gibt die Sprache des Dokuments an. Screenreader nutzen es f&uuml;r korrekte Aussprache, Browser f&uuml;r automatische Silbentrennung, &Uuml;bersetzungsdienste f&uuml;r die Sprachzuordnung. WCAG 3.1.1 verlangt es als Pflichtanforderung.</td><td>W3C / WCAG 3.1.1</td><td><span class="cat cat-acc">Accessibility</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>lang="de" auf allen Seiten. WCAG-Konformit&auml;tsanforderung erf&uuml;llt.</td></tr>
+<tr><td class="cell-num">8</td><td>Page Title (title-Element)</td><td class="cell-zweck">Das title-Element benennt die Seite eindeutig und beschreibend. Erscheint im Browser-Tab, in Lesezeichen und Suchergebnissen. WCAG 2.4.2 verlangt einen beschreibenden Titel als Minimalanforderung &mdash; ohne ihn k&ouml;nnen Nutzer mit Screenreader nicht erkennen, auf welcher Seite sie sich befinden.</td><td>W3C / WCAG 2.4.2</td><td><span class="cat cat-acc">Accessibility</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Eindeutige, beschreibende Titel pro Seite. Benennungsmatrix abgeschlossen.</td></tr>
+<tr><td class="cell-num">9</td><td>Skip Navigation Link</td><td class="cell-zweck">Ein meist visuell versteckter Link, der Tastaturnutzern erlaubt, die Navigation zu &uuml;berspringen und direkt zum Hauptinhalt zu springen. Ohne ihn muss jeder Nutzer ohne Maus bei jedem Seitenaufruf die gesamte Navigation durchtaben. WCAG-Pflichtanforderung Level A.</td><td>WCAG 2.4.1 (A)</td><td><span class="cat cat-acc">Accessibility</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Skip-Link auf Index und Unterseiten implementiert. Beim Druck ausgeblendet.</td></tr>
+<tr><td class="cell-num">10</td><td>Heading Hierarchy</td><td class="cell-zweck">Regelt die logische &Uuml;berschriftenstruktur H1 &rarr; H2 &rarr; H3. Screenreader nutzen sie zur Seitennavigation, Suchmaschinen zur Inhaltsgewichtung. Eine gest&ouml;rte oder fehlende Hierarchie bricht die Zug&auml;nglichkeit &mdash; Nutzer mit Screenreader k&ouml;nnen den Inhalt nicht strukturiert erfassen.</td><td>W3C / WCAG 1.3.1 (A)</td><td><span class="cat cat-acc">Accessibility</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>H1/H2-Struktur vorhanden, aber noch nicht auf allen Seiten systematisch gepr&uuml;ft.</td></tr>
+<tr><td class="cell-num">11</td><td>ARIA Landmark Roles</td><td class="cell-zweck">WAI-ARIA definiert semantische Rollen und Labels f&uuml;r Seitenbereiche (role="navigation", aria-label usw.). Erm&ouml;glicht assistiven Technologien die schnelle Orientierung auf der Seite &mdash; besonders f&uuml;r blinde Nutzer, die per Screenreader navigieren und direkt zu Regionen springen k&ouml;nnen.</td><td>W3C WAI-ARIA 1.2</td><td><span class="cat cat-acc">Accessibility</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>aria-label auf Nav und Diagrammen. Nicht systematisch auf alle Landmarks angewendet. Ausbaubar.</td></tr>
+<tr><td class="cell-num">12</td><td>Colour Contrast</td><td class="cell-zweck">Legt Mindestkontrastverh&auml;ltnisse zwischen Text und Hintergrund fest. WCAG AA verlangt 4.5:1 f&uuml;r normalen Text. Zu geringer Kontrast macht Inhalte f&uuml;r Nutzer mit Sehschw&auml;che, unter Sonnenlicht oder auf schlechten Bildschirmen unleserlich.</td><td>WCAG 1.4.3 (AA)</td><td><span class="cat cat-acc">Accessibility</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Designfarben gew&auml;hlt, aber kein systematischer Kontrast-Check durchgef&uuml;hrt.</td></tr>
+<tr><td class="cell-num">13</td><td>Keyboard Navigation</td><td class="cell-zweck">Alle interaktiven Elemente m&uuml;ssen per Tastatur erreichbar und bedienbar sein &mdash; ohne Maus oder Touch. Grundlage f&uuml;r Barrierefreiheit bei motorischen Einschr&auml;nkungen und Pflichtanforderung nach WCAG. Betrifft Links, Buttons und Formularelemente.</td><td>WCAG 2.1.1 (A)</td><td><span class="cat cat-acc">Accessibility</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Grundlegende Navigation per Tab m&ouml;glich. Kein systematischer Test.</td></tr>
+<tr><td class="cell-num">14</td><td>Focus Visible</td><td class="cell-zweck">Sichtbarer Fokusindikator f&uuml;r alle per Tastatur fokussierbaren Elemente. Nutzer die ohne Maus navigieren m&uuml;ssen jederzeit sehen wo sich der Fokus befindet. Ohne sichtbaren Fokus ist Tastaturnavigation blind &mdash; de facto unbrauchbar.</td><td>WCAG 2.4.7 (AA)</td><td><span class="cat cat-acc">Accessibility</span></td><td><span class="s-no" aria-label="Noch nicht">&#10007;</span></td><td>Fokus-Stile nicht explizit definiert. Sinnvoll nachzur&uuml;sten, besonders f&uuml;r Nav-Elemente.</td></tr>
+<tr><td colspan="7" class="row-group-header">CSS — W3C · 1996</td></tr>
+<tr><td class="cell-num">15</td><td>CSS2.1 / CSS3 Spezifikation</td><td class="cell-zweck">Definiert die Syntax, Eigenschaften und das Kaskadenmodell von CSS. Regelt wie Stile berechnet, vererbt und angewendet werden. Basis f&uuml;r alle visuellen Gestaltungsentscheidungen &mdash; ohne diese Spezifikation w&auml;re CSS-Verhalten zwischen Browsern nicht vorhersagbar.</td><td>W3C</td><td><span class="cat cat-css">CSS</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Valides CSS, keine veralteten Eigenschaften. base.css, subpage.css, doc-a4.css, index.css.</td></tr>
+<tr><td class="cell-num">16</td><td>CSS Custom Properties (Variables)</td><td class="cell-zweck">Erm&ouml;glicht die Definition wiederverwendbarer Werte (Farben, Abst&auml;nde, Schriftgr&ouml;&szlig;en) als CSS-Variablen im :root-Block. &Auml;nderungen an einem zentralen Wert wirken sich systemweit aus &mdash; ohne Suchen-und-Ersetzen. Grundlage f&uuml;r wartbare und konsistente Designsysteme.</td><td>W3C CSS Variables L1</td><td><span class="cat cat-css">CSS</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>:root-Variablen f&uuml;r Farben und Abst&auml;nde konsistent verwendet.</td></tr>
+<tr><td class="cell-num">17</td><td>Print Stylesheet / @media print</td><td class="cell-zweck">Definiert CSS-Regeln die nur beim Drucken gelten. Erm&ouml;glicht druckoptimierte Darstellung: Navigation ausblenden, Farben anpassen, Seitenumbr&uuml;che steuern, A4-Proportionen einhalten. Besonders relevant f&uuml;r Dokument- und Formularseiten.</td><td>W3C CSS Media Queries</td><td><span class="cat cat-css">CSS</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>@media print f&uuml;r A4-Seiten umgesetzt. Nav und Chrome ausgeblendet. page-break-after implementiert.</td></tr>
+<tr><td class="cell-num">18</td><td>Responsive Web Design</td><td class="cell-zweck">Beschreibt den Ansatz, Layouts &uuml;ber flexible Grids, flexible Bilder und CSS Media Queries so zu gestalten, dass sie sich an verschiedene Bildschirmgr&ouml;&szlig;en anpassen. Gepr&auml;gt von Ethan Marcotte 2010. Heute Standarderwartung an jede Website.</td><td>W3C / Ethan Marcotte 2010</td><td><span class="cat cat-css">CSS</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Viewport-Meta umgesetzt. Media Queries punktuell vorhanden. Kein systematischer Responsive-Standard.</td></tr>
+<tr><td class="cell-num">19</td><td>CSS Architecture (Separation of Concerns)</td><td class="cell-zweck">Beschreibt Prinzipien zur Strukturierung von CSS-Dateien: Trennung von Layout, Typografie, Komponenten und Utilities. Bekannte Methoden: SMACSS, ITCSS, OOCSS. Ziel: Wartbarkeit und Skalierbarkeit bei wachsenden Projekten.</td><td>Praxis / SMACSS / ITCSS</td><td><span class="cat cat-css">CSS</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Basis-/Unterseiten-/Formular-CSS getrennt. Komponentenstil noch nicht vollst&auml;ndig systematisiert.</td></tr>
+<tr><td class="cell-num">20</td><td>CSS Naming Convention (BEM o. &auml;.)</td><td class="cell-zweck">Regelt wie CSS-Klassen benannt werden, z.B. nach dem BEM-Prinzip (Block__Element--Modifier). Ziel: Klassenname erkl&auml;rt Funktion und Kontext, verhindert Namenskollisionen, macht Code lesbar ohne HTML sehen zu m&uuml;ssen.</td><td>BEM / OOCSS / Praxis</td><td><span class="cat cat-css">CSS</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Funktionsbezogene Klassennamen vorhanden. Kein formales BEM. Konsistenz ausbaubar.</td></tr>
+<tr><td class="cell-num">21</td><td>CSS Comments &amp; Documentation</td><td class="cell-zweck">Beschreibt die Praxis, CSS-Dateien mit erkl&auml;renden Kommentaren zu versehen: Abschnittstrennungen, Begr&uuml;ndungen f&uuml;r nicht-offensichtliche Entscheidungen, Hinweise auf Abh&auml;ngigkeiten. Sichert Wartbarkeit, besonders wenn andere Personen oder KI-Tools mit dem Code arbeiten.</td><td>Praxis / Maintainability</td><td><span class="cat cat-css">CSS</span></td><td><span class="s-no" aria-label="Noch nicht">&#10007;</span></td><td>CSS-Dateien noch nicht systematisch kommentiert. Sinnvoll f&uuml;r Wartbarkeit bei wachsendem Projekt.</td></tr>
+<tr><td class="cell-num">22</td><td>CSS Validation</td><td class="cell-zweck">Pr&uuml;ft ob CSS-Dateien der W3C-Spezifikation entsprechen: g&uuml;ltige Eigenschaften, korrekte Werte, keine Tippfehler. Der W3C CSS Validator ist das offizielle Werkzeug. Findet stille Fehler die zu inkonsistenter Darstellung in verschiedenen Browsern f&uuml;hren.</td><td>W3C CSS Validator</td><td><span class="cat cat-css">CSS</span></td><td><span class="s-no" aria-label="Noch nicht">&#10007;</span></td><td>Noch kein systematischer CSS-Validierungslauf. Empfehlenswert.</td></tr>
+<tr><td colspan="7" class="row-group-header">JavaScript — ECMA International · 1995</td></tr>
+<tr><td class="cell-num">23</td><td>JavaScript ES6+ Syntax</td><td class="cell-zweck">ECMAScript 2015 und folgende Versionen definierten moderne JavaScript-Syntax: let/const, Arrow Functions, Template Literals, Modules, Promises. Aktueller Industriestandard. Code der &auml;lteren Syntax folgt gilt als veraltet und schwerer wartbar.</td><td>ECMA International / ECMAScript</td><td><span class="cat cat-js">JavaScript</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>JS nur f&uuml;r SDLC-Visualisierungen. Moderner Syntax genutzt, kein formaler Style Guide.</td></tr>
+<tr><td class="cell-num">24</td><td>JavaScript Separation (externe Dateien)</td><td class="cell-zweck">Best Practice: JavaScript-Code geh&ouml;rt in externe .js-Dateien, nicht als Inline-Script in HTML. Trennt Verhalten von Struktur, verbessert Caching, Lesbarkeit und Wartbarkeit. Grundprinzip der Separation of Concerns f&uuml;r Web-Technologien.</td><td>W3C / Praxis</td><td><span class="cat cat-js">JavaScript</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>JS ausgelagert in assets/js/ &mdash; sauber von HTML getrennt.</td></tr>
+<tr><td class="cell-num">25</td><td>JavaScript Documentation (JSDoc)</td><td class="cell-zweck">Standardformat zur Dokumentation von JavaScript-Funktionen, Parametern und R&uuml;ckgabewerten direkt im Code als strukturierte Kommentare. Erm&ouml;glicht automatische Dokumentationsgenerierung und verbessert Verst&auml;ndlichkeit f&uuml;r andere Entwickler oder KI-Tools.</td><td>JSDoc / Praxis</td><td><span class="cat cat-js">JavaScript</span></td><td><span class="s-no" aria-label="Noch nicht">&#10007;</span></td><td>Noch nicht umgesetzt. Bei geringem JS-Umfang vertretbar. Sinnvoll wenn JS w&auml;chst.</td></tr>
+<tr><td class="cell-num">26</td><td>Automated Testing (Unit/E2E)</td><td class="cell-zweck">Automatisierte Tests pr&uuml;fen Code-Logik (Unit Tests) oder Nutzerfl&uuml;sse (End-to-End Tests) auf Korrektheit. Werkzeuge: Jest, Cypress. F&uuml;r statische Informationsseiten ohne Anwendungslogik kein sinnvoller Einsatzbereich.</td><td>Jest / Cypress / Praxis</td><td><span class="cat cat-js">JavaScript</span></td><td><span class="s-na" aria-label="Nicht anwendbar">&mdash;</span></td><td>Statisches Informationsprojekt. Kein Mehrwert f&uuml;r diesen Scope.</td></tr>
+<tr><td colspan="7" class="row-group-header">Git &amp; Repository — Linus Torvalds · 2005</td></tr>
+<tr><td class="cell-num">27</td><td>Git Version Control</td><td class="cell-zweck">Git ist ein verteiltes Versionskontrollsystem. Es speichert die vollst&auml;ndige &Auml;nderungshistorie, erm&ouml;glicht Branching und erm&ouml;glicht die Wiederherstellung jedes fr&uuml;heren Zustands. Industriestandard f&uuml;r jede Art von Softwareprojekt.</td><td>Git / Linus Torvalds</td><td><span class="cat cat-git">Git</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Git-Repo vorhanden, .gitignore und .gitattributes konfiguriert.</td></tr>
+<tr><td class="cell-num">28</td><td>Git .gitignore Standard</td><td class="cell-zweck">Eine .gitignore-Datei definiert welche Dateien und Ordner nicht ins Repository eingecheckt werden sollen: tempor&auml;re Dateien, Systemdateien, lokale Konfigurationen. Verhindert versehentliches Committen von sensiblen oder irrelevanten Daten.</td><td>GitHub / Praxis</td><td><span class="cat cat-git">Git</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Vorhanden und konfiguriert.</td></tr>
+<tr><td class="cell-num">29</td><td>Repository Structure Conventions</td><td class="cell-zweck">Regelt die Ordnerstruktur und Dateiorganisation innerhalb eines Git-Repositories: Trennung von Quellcode, Assets, Tests, Dokumentation und Archiv. Macht das Projekt f&uuml;r andere (und f&uuml;r KI-Tools) sofort navigierbar.</td><td>GitHub / Praxis</td><td><span class="cat cat-git">Git</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>pages/, assets/, archive/, templates/ sauber getrennt. README.md und LICENSE im Root.</td></tr>
+<tr><td class="cell-num">30</td><td>Git Commit Conventions</td><td class="cell-zweck">Regeln f&uuml;r Inhalt, Format und Granularit&auml;t von Commit-Nachrichten. Bekannter Standard: Conventional Commits (feat:, fix:, docs:, refactor: usw.). Saubere Commits machen die Projekthistorie lesbar und erm&ouml;glichen automatische Changelogs.</td><td>Conventional Commits / Praxis</td><td><span class="cat cat-git">Git</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Commit-Richtlinie in 08_Commit_Richtlinie.md dokumentiert. Konsistenz der tats&auml;chlichen Commits nicht gepr&uuml;ft.</td></tr>
+<tr><td class="cell-num">31</td><td>Open Source License (CC BY-NC-SA 4.0)</td><td class="cell-zweck">Creative Commons BY-NC-SA 4.0 erlaubt die Nutzung und Weitergabe unter Namensnennung, nicht-kommerziell und unter gleichen Bedingungen. Regelt rechtlich was andere mit dem Projekt tun d&uuml;rfen. Ohne Lizenz gilt urheberrechtlich: alle Rechte vorbehalten.</td><td>Creative Commons</td><td><span class="cat cat-git">Git</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>LICENSE-Datei vorhanden. Lizenz in README und Index-Seite ausgewiesen.</td></tr>
+<tr><td class="cell-num">32</td><td>Branching Strategy (z.B. GitFlow)</td><td class="cell-zweck">Definiert wie Branches in einem Team-Repository organisiert werden: Feature-Branches, Release-Branches, Hotfixes. Relevant ab zwei oder mehr Personen die parallel arbeiten. F&uuml;r Einzelperson-Projekte kein Mehrwert.</td><td>Atlassian / Praxis</td><td><span class="cat cat-git">Git</span></td><td><span class="s-na" aria-label="Nicht anwendbar">&mdash;</span></td><td>Einzelperson-Projekt. Kein Team, keine parallelen Branches notwendig. Nicht anwendbar.</td></tr>
+<tr><td colspan="7" class="row-group-header">Information Architecture &amp; Design System — 2000er</td></tr>
+<tr><td class="cell-num">33</td><td>Information Architecture</td><td class="cell-zweck">Beschreibt die strukturelle Planung von Inhalten, Seitentypen und Navigationsbeziehungen in einem Informationssystem. Gepr&auml;gt von Rosenfeld &amp; Morville. Ziel: Nutzer finden was sie suchen &mdash; intuitiv, ohne Erkl&auml;rung.</td><td>Rosenfeld / Morville / Praxis</td><td><span class="cat cat-info">IA</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td><code>12_SYSTEMKONZEPT.md</code> (QA-Track <code>00_PROJEKTSTEUERUNG/</code>) mit IA, Seitentypen, Benennungslogik dokumentiert und umgesetzt.</td></tr>
+<tr><td class="cell-num">34</td><td>Naming Conventions (Datei- und Seitenebene)</td><td class="cell-zweck">Einheitliche Regeln f&uuml;r Benennung von Dateien, Seiten, Titeln und Navigationseintr&auml;gen. Verhindert Inkonsistenzen, macht Inhalte auffindbar und kommuniziert Struktur ohne Dokumentation. Grundlage f&uuml;r skalierbare Informationsarchitektur.</td><td>Praxis / W3C URL-Spezifikation</td><td><span class="cat cat-info">IA</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Vollst&auml;ndige Benennungsmatrix (Dateiname, Nav, Title, H1, Untertitel) definiert und umgesetzt.</td></tr>
+<tr><td class="cell-num">35</td><td>URL / Filename Conventions (kebab-case)</td><td class="cell-zweck">Kebab-case (w&ouml;rter-mit-bindestrich) ist der Web-Standard f&uuml;r Dateinamen und URLs. Suchmaschinen interpretieren Bindestriche als Worttrennzeichen, Leerzeichen und Unterstriche nicht. Kleinschreibung verhindert Betriebssystem-Inkompatibilit&auml;ten.</td><td>W3C / Google / Praxis</td><td><span class="cat cat-info">IA</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Durchg&auml;ngig kebab-case, keine Leerzeichen, keine Versionsnummern in aktiven Dateien.</td></tr>
+<tr><td class="cell-num">36</td><td>Traceability (Inhalt &rarr; Lehrplan)</td><td class="cell-zweck">R&uuml;ckverfolgbarkeit stellt sicher dass jeder Inhalt einer definierten Anforderung oder Quelle zugeordnet werden kann. In diesem Projekt: jede Seite ist einem CTFL-Kapitel zugeordnet. Verhindert inhaltliche L&uuml;cken und Redundanzen.</td><td>ISTQB / IEEE 29119</td><td><span class="cat cat-info">IA</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Alle Seiten mit CTFL-Kapiteln referenziert. Kernlogik des Projekts.</td></tr>
+<tr><td class="cell-num">37</td><td>Design System (visuelles Regelsystem)</td><td class="cell-zweck">Ein Design System ist ein vollst&auml;ndiges Set von Regeln, Tokens und Komponenten f&uuml;r die visuelle und strukturelle Gestaltung. Umfasst Farben, Typografie, Abst&auml;nde, Ikonografie und Komponentenstile. Unterschied zur Component Library: das Design System definiert das Warum, die Library das Was.</td><td>Praxis / Google Material / Nielsen</td><td><span class="cat cat-info">IA</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Farben, Typografie, Abst&auml;nde konsistent in CSS-Variablen. Komponentenstil noch nicht vollst&auml;ndig.</td></tr>
+<tr><td class="cell-num">38</td><td>Component / UI Pattern Library</td><td class="cell-zweck">Eine Sammlung definierter, wiederverwendbarer UI-Bausteine mit festgelegtem Verhalten und Aussehen. Verhindert dass dieselbe Komponente (z.B. eine Infobox) auf jeder Seite anders implementiert wird. Grundlage f&uuml;r Konsistenz und Wartbarkeit.</td><td>Praxis / Brad Frost Atomic Design</td><td><span class="cat cat-info">IA</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Komponenten (Card, InfoBox, MetaBar, Tag) vorhanden. Kein formales Komponentenregelwerk. N&auml;chster Schritt.</td></tr>
+<tr><td colspan="7" class="row-group-header">Dokumentation — projektbegleitend</td></tr>
+<tr><td class="cell-num">39</td><td>README Standard (Repository Documentation)</td><td class="cell-zweck">Eine README.md im Repository-Root ist der erste Anlaufpunkt f&uuml;r jeden der das Projekt entdeckt. Sie beschreibt Zweck, Struktur, Technologie, Lizenz und Stand. De-facto-Standard auf GitHub und allen anderen Code-Hosting-Plattformen.</td><td>GitHub / Open Source Praxis</td><td><span class="cat cat-doc">Dokumentation</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>README aktuell und strukturiert. Projektbeschreibung, Struktur, Lizenz, Stand dokumentiert.</td></tr>
+<tr><td class="cell-num">40</td><td>Microcopy / Editorial Consistency</td><td class="cell-zweck">Regelt einheitliche Sprache in der Benutzeroberfl&auml;che: Labels, Navigationstexte, Untertitel, Fehlermeldungen, Quellenangaben. Inkonsistente Microcopy (mal 'Kapitel', mal 'Kap.', mal 'Chapter') verwirrt Nutzer und wirkt unprofessionell.</td><td>Content Strategy / Praxis</td><td><span class="cat cat-doc">Dokumentation</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Benennungsmatrix abgeschlossen. Quellenangaben und Normverweise noch nicht vollst&auml;ndig vereinheitlicht.</td></tr>
+<tr><td colspan="7" class="row-group-header">HTML / Web — WHATWG · W3C · 1991</td></tr>
+<tr><td class="cell-num">41</td><td>Performance (Ladezeit / Ressourcen)</td><td class="cell-zweck">Definiert Zielwerte f&uuml;r Ladezeit, Ressourcengr&ouml;&szlig;e und Rendering-Performance. Google Lighthouse und Web Vitals sind Standardwerkzeuge. F&uuml;r statische Projekte ohne externe Abh&auml;ngigkeiten kein aktives Problem.</td><td>W3C / Google Lighthouse</td><td><span class="cat cat-web">HTML</span></td><td><span class="s-na" aria-label="Nicht anwendbar">&mdash;</span></td><td>Statisches Projekt ohne externe Abh&auml;ngigkeiten. Performance kein aktives Problem. Kein Handlungsbedarf.</td></tr>
+<tr><td class="cell-num">42</td><td>Security (CSP, HTTPS)</td><td class="cell-zweck">Content Security Policy und HTTPS sch&uuml;tzen Webanwendungen vor Injection-Angriffen und Man-in-the-Middle-Angriffen. F&uuml;r statische HTML-Seiten ohne Nutzereingaben, Login oder Backend kein relevantes Thema.</td><td>W3C / OWASP</td><td><span class="cat cat-web">HTML</span></td><td><span class="s-na" aria-label="Nicht anwendbar">&mdash;</span></td><td>Statisches HTML, kein Backend, keine Formulareingaben. Security nicht relevant f&uuml;r diesen Scope.</td></tr>
+</tbody>
+</table>
+    </div>
+  </section>
+
+  <section class="standards-block" id="block-b" aria-labelledby="block-b-heading">
+    <h2 id="block-b-heading">Block B &mdash; 000_QA_Track (Hauptrepo &middot; Nicht versioniert &middot; Pers&ouml;nliches Lern- und Studienrepo)</h2>
+    <div class="block-explanation" aria-label="Sortierlogik Block B">
+      <p><strong>Sortierlogik:</strong> Die Gruppen in Block B folgen keiner historischen Entstehungsreihenfolge im technischen Sinne, da es sich um Informationsmanagement und nicht um Softwarestandards handelt. Stattdessen gilt eine logische Aufbaureihenfolge: erst die physische Struktur, dann die Dokumentation der Inhalte, dann die Methodik der Wissensorganisation.</p>
+      <div class="block-explanation__row">
+        <div class="block-explanation__table-wrap">
+        <table class="block-explanation__table block-explanation__table--block-b" aria-label="Gruppen und Prinzip">
+          <thead>
+            <tr><th scope="col">Gruppe</th><th scope="col">Prinzip</th><th scope="col">Begr&uuml;ndung</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Dateistruktur &amp; Organisation</td><td>Physische Basis</td><td>ISO 15489, ISO 8601 &mdash; bevor Inhalte dokumentiert werden, muss die Ablagestruktur stehen</td></tr>
+            <tr><td>Dokumentationsstandards</td><td>Inhaltsebene</td><td>Regeln f&uuml;r das Was und Wie der Dokumentation &mdash; aufbauend auf der Struktur</td></tr>
+            <tr><td>PKM &mdash; Personal Knowledge Management</td><td>Methodenebene</td><td>PARA, Separation of Concerns &mdash; &uuml;bergeordnete Methodik, die beide vorigen Ebenen nutzt</td></tr>
+          </tbody>
+        </table>
+        </div>
+        <div class="block-explanation__text">
+          <p><strong>Reihenfolge innerhalb der Gruppen &mdash; Verbreitung und Grundlegendheit</strong><br>Dieselbe Regel wie in Block A: der fundamentalste und am weitesten verbreitete Standard steht zuerst. Beispiel Dateistruktur: Folder Structure Conventions &rarr; File Naming &rarr; Archive Separation &rarr; Keine losen Dateien im Root &rarr; Konsistente Dateierweiterungen.</p>
+          <p><strong>Unterschied zu Block A</strong><br>In Block A ist die historische Entstehungsreihenfolge gleichzeitig die didaktische und architektonische. In Block B gibt es kein vergleichbares technisches Entstehungsdatum &mdash; ISO 15489 wurde zwar 2001 formalisiert, aber Ordnerstrukturen existierten vor jeder Norm. Die gew&auml;hlte Reihenfolge Struktur &rarr; Dokumentation &rarr; Methodik ist deshalb rein logisch-hierarchisch begr&uuml;ndet: jede Ebene setzt die vorherige voraus.</p>
+        </div>
+      </div>
+    </div>
+    <p class="block-label">Gruppen: Dateistruktur &rarr; Dokumentationsstandards &rarr; PKM &middot; Autorit&auml;ten: ISO 8601, ISO 15489, ISO 690, PARA-Methode, DRY-Prinzip</p>
+    <div class="table-wrap">
+    <table>
+<thead>
+<tr>
+  <th scope="col">#</th>
+  <th scope="col">Standard / Standardfamilie</th>
+  <th scope="col">Zweck &amp; Definition</th>
+  <th scope="col">Autorit&auml;t / Quelle</th>
+  <th scope="col">Kategorie</th>
+  <th scope="col">Status</th>
+  <th scope="col">Einordnung / Potenzial im Projekt</th>
+</tr>
+</thead>
+<tbody>
+<tr><td colspan="7" class="row-group-header">Dateistruktur &amp; Organisation — ISO 15489 · 8601</td></tr>
+<tr><td class="cell-num">1</td><td>Folder Structure Conventions</td><td class="cell-zweck">Regelt die Ordnerorganisation eines Dateisystems nach logischen Kategorien. ISO 15489 (Records Management) beschreibt Prinzipien f&uuml;r die strukturierte Ablage von Dokumenten. Ziel: jede Datei hat genau einen logischen Ablageort, der f&uuml;r alle Beteiligten vorhersagbar ist.</td><td>Praxis / ISO 15489</td><td><span class="cat cat-str">Struktur</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Klare Ordnerlogik: 00_PROJEKTSTEUERUNG bis 99_Archiv. Thematische Trennung konsequent umgesetzt.</td></tr>
+<tr><td class="cell-num">2</td><td>File Naming Conventions (YYYY-MM-DD)</td><td class="cell-zweck">ISO 8601 definiert das internationale Datumsformat YYYY-MM-DD. Als Dateinamen-Pr&auml;fix stellt es chronologische Sortierung sicher &mdash; Betriebssysteme sortieren Dateien alphabetisch, und ISO-Datum beginnt mit dem Jahr. Standard in professionellen Dokumentenmanagementsystemen.</td><td>ISO 8601 / Praxis</td><td><span class="cat cat-str">Struktur</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>In 05_Projektstandards.md definiert. In HA-Ordnern gut umgesetzt. In 04_Notizen noch uneinheitlich.</td></tr>
+<tr><td class="cell-num">3</td><td>Archive Separation</td><td class="cell-zweck">Veraltete, ersetzte oder inaktive Dateien werden in einen dedizierten Archivordner verschoben statt gel&ouml;scht. Erh&auml;lt die Nachvollziehbarkeit ohne den aktiven Arbeitsbereich zu belasten. ISO 15489 beschreibt dies als Records-Management-Prinzip.</td><td>Records Management / ISO 15489</td><td><span class="cat cat-str">Struktur</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>99_Archiv sauber getrennt. alt-claude-PW als Unterordner nachvollziehbar.</td></tr>
+<tr><td class="cell-num">4</td><td>Keine losen Dateien im Root</td><td class="cell-zweck">Der Root-Ordner eines Projekts sollte nur Orientierungsdateien enthalten (README, LICENSE, Konfiguration). Alle inhaltlichen Dateien geh&ouml;ren in thematische Unterordner. Verhindert Un&uuml;bersichtlichkeit bei wachsendem Projekt.</td><td>05_Projektstandards / intern</td><td><span class="cat cat-str">Struktur</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Nur README.md im Root. Alles andere in definierten Ordnern. Eingehalten.</td></tr>
+<tr><td class="cell-num">5</td><td>Konsistente Dateierweiterungen</td><td class="cell-zweck">Jeder Dateityp hat eine definierte, einheitliche Erweiterung. Doppelablage derselben Datei in zwei Formaten (.md und .txt) verletzt das DRY-Prinzip und erzeugt Unklarheit dar&uuml;ber welche Version aktuell ist.</td><td>Praxis</td><td><span class="cat cat-str">Struktur</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Meistens korrekt. 00_Loesung_HA4.md + .txt-Duplikat f&auml;llt auf. Bereinigbar.</td></tr>
+<tr><td colspan="7" class="row-group-header">Dokumentationsstandards — Praxis</td></tr>
+<tr><td class="cell-num">6</td><td>Metablock / Frontmatter Standard</td><td class="cell-zweck">Ein standardisierter Metadatenblock am Anfang jeder Markdown-Datei (Erstellt, Aktualisiert, Zweck, Status). Erm&ouml;glicht maschinelle Auswertung, einheitliche Dokumentenstruktur und schnelle Orientierung. In modernen Static-Site-Generatoren als YAML Frontmatter etabliert.</td><td>YAML Frontmatter / Praxis</td><td><span class="cat cat-doc">Dokumentation</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Metablock-Prinzip in 00_PROJEKTSTEUERUNG definiert und praktisch verwendet.</td></tr>
+<tr><td class="cell-num">7</td><td>Chronological Ordering (neueste oben)</td><td class="cell-zweck">Konvention f&uuml;r fortlaufende Dokumente: neueste Eintr&auml;ge stehen oben, &auml;ltere unten. Entspricht der Erwartungshaltung bei Logs, Changelogs und Statusdokumenten. Verhindert Scrollen zum Ende bei jedem Update.</td><td>Praxis / Documentation Gov.</td><td><span class="cat cat-doc">Dokumentation</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>In Projektsteuerungsdokumenten konsequent eingehalten.</td></tr>
+<tr><td class="cell-num">8</td><td>README per Ordner</td><td class="cell-zweck">Eine README.md in jedem thematischen Ordner erkl&auml;rt Zweck, Inhalt und Kontext dieses Ordners. Verhindert dass Inhalte ohne Erkl&auml;rung stehen. Besonders wichtig bei mehreren Monaten Abstand oder wenn andere Personen oder KI mit dem Repo arbeiten.</td><td>GitHub / Praxis</td><td><span class="cat cat-doc">Dokumentation</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Vorhanden in 01, 02, 03, 05, 99. Fehlend in 04_Notizen. Sinnvoll erg&auml;nzen.</td></tr>
+<tr><td class="cell-num">9</td><td>Single Source of Truth</td><td class="cell-zweck">DRY-Prinzip (Don't Repeat Yourself) angewandt auf Dokumentation: jede Information existiert genau einmal, an einem definierten Ort. Duplikate f&uuml;hren zwangsl&auml;ufig zu Inkonsistenzen wenn eine Version aktualisiert wird, die andere nicht.</td><td>Praxis / DRY-Prinzip</td><td><span class="cat cat-doc">Dokumentation</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Steuerungsdokumente zentralisiert. Doppelungen noch sichtbar: z.B. 00_Loesung_HA4.md und .txt parallel vorhanden. Bereinigbar.</td></tr>
+<tr><td class="cell-num">10</td><td>Reference Management</td><td class="cell-zweck">Regelt die strukturierte Ablage und Zitierung von Quellen und Referenzdokumenten. ISO 690 definiert Bibliografiestandards. In der Praxis: dedizierter Referenzordner, konsistente Benennung, nachvollziehbare Herkunft.</td><td>ISO 690 / Praxis</td><td><span class="cat cat-doc">Dokumentation</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>05_Referenzen als dedizierter Ordner vorhanden. ISTQB-Quelldokumente sauber abgelegt. Keine formale Zitierstrategie.</td></tr>
+<tr><td class="cell-num">11</td><td>Changelog / Historienf&uuml;hrung</td><td class="cell-zweck">Keep a Changelog ist ein etabliertes Format f&uuml;r &Auml;nderungshistorien: geordnet nach Version oder Datum, kategorisiert nach Added/Changed/Fixed/Removed. Macht Projektverlauf nachvollziehbar ohne die Git-Historie lesen zu m&uuml;ssen.</td><td>Keep a Changelog / Praxis</td><td><span class="cat cat-doc">Dokumentation</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>01_Projektsteuerung.md f&uuml;hrt chronologisch Status. Kein formaler Changelog. F&uuml;r diesen Scope ausreichend.</td></tr>
+<tr><td class="cell-num">12</td><td>Prompt Documentation Standard</td><td class="cell-zweck">Aufkommende Praxis in KI-gest&uuml;tzter Arbeit: Prompts, Prompt-Richtlinien und KI-Vereinbarungen werden wie Code oder Dokumentation versioniert und strukturiert abgelegt. Sichert Reproduzierbarkeit und erm&ouml;glicht Qualit&auml;tsverbesserung &uuml;ber Zeit.</td><td>Emerging AI Practice / intern</td><td><span class="cat cat-doc">Dokumentation</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>07_Prompt_Richtlinie.md und 09_Prompts.md vorhanden. Guter Ansatz f&uuml;r reproduzierbare KI-Arbeit.</td></tr>
+<tr><td colspan="7" class="row-group-header">Personal Knowledge Management — PARA · SE-Prinzipien</td></tr>
+<tr><td class="cell-num">13</td><td>PKM &mdash; Personal Knowledge Management</td><td class="cell-zweck">PARA (Projects, Areas, Resources, Archives) ist ein von Tiago Forte entwickeltes System zur pers&ouml;nlichen Wissensorganisation. Strukturiert Inhalte nach Handlungsrelevanz statt nach Thema. Ziel: die richtige Information zur richtigen Zeit auffindbar machen.</td><td>Tiago Forte (PARA)</td><td><span class="cat cat-pkm">PKM</span></td><td><span class="s-part" aria-label="Teilweise">&#9651;</span></td><td>Struktur entspricht grob dem PARA-Modell. Nicht explizit angewendet. 04_Notizen noch heterogen.</td></tr>
+<tr><td class="cell-num">14</td><td>Separation of Concerns (Inhalt vs. L&ouml;sung)</td><td class="cell-zweck">Ingenieurprinzip: verschiedene Aspekte eines Problems werden sauber getrennt behandelt. Hier angewandt auf Lernmaterial: Original-Aufgabe, eigene Formulierung, L&ouml;sung, Beispiel und Lernnotizen sind separate Dateien. Verhindert Vermischung von Fremdinhalten und eigener Arbeit.</td><td>SE-Prinzip / Praxis</td><td><span class="cat cat-pkm">PKM</span></td><td><span class="s-yes" aria-label="Umgesetzt">&#10003;</span></td><td>Pro HA: Original-Aufgabe, umformulierte Aufgabe, L&ouml;sung, Beispiel, Lerndatei sauber getrennt. Klares Muster.</td></tr>
+<tr><td class="cell-num">15</td><td>04_Notizen &mdash; Strukturbereinigung</td><td class="cell-zweck">Loseblatt-Notizen ohne Datum, Kategorie oder Kontext sind mittelfristig nicht auffindbar. Best Practice: Notizen werden entweder thematisch zugeordnet (&rarr; Unterordner), datiert (ISO 8601 Pr&auml;fix) oder in das &uuml;bergeordnete System integriert (&rarr; 01_Grundlagen).</td><td>Praxis / PKM</td><td><span class="cat cat-pkm">PKM</span></td><td><span class="s-no" aria-label="Noch nicht">&#10007;</span></td><td>Aktuell heterogen: HTML-Dateien, .txt ohne Datum, thematisch gemischt. Bereinigung und Umzug sinnvoll.</td></tr>
+</tbody>
+</table>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p class="source-note">Standards · QA Lernwebseite · Anerkannte Standards &amp; Projektstatus · Stand 21.03.2026</p>
+</footer>
+
+</body>
+</html>

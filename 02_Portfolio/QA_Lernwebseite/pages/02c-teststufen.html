@@ -1,0 +1,1121 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Teststufen und Testarten nach ISTQB CTFL Kap. 2.2 — fünf Teststufen, Integrationsstrategien, Abnahmetest-Arten, Fehlernachtest vs. Regressionstest.">
+  <title>Teststufen &amp; Testarten — QA Lernwebseite</title>
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <style>
+    :root {
+      /* Teststufen-Farben (globale --bg, --text, --mid, --soft, --bdr aus base.css) */
+      --ts1:  #c8d8b8;  /* Komponententest       — helles Grün  */
+      --ts2:  #b8ccd8;  /* Komp.Integrationstest — helles Blau  */
+      --ts3:  #d8c8a8;  /* Systemtest            — helles Amber */
+      --ts4:  #c8b8d8;  /* Syst.Integrationstest — helles Lila  */
+      --ts5:  #d8b8b8;  /* Abnahmetest           — helles Rot   */
+
+      --ts1d: #4a6e3a;
+      --ts2d: #2a4e6a;
+      --ts3d: #6a4e1a;
+      --ts4d: #4a2a6a;
+      --ts5d: #6a2a2a;
+
+      --ctfl:     #4a7c59;  --ctfl-bg:    #cde8d2;
+      --praxis:   #9c6a2a;  --praxis-bg:  #f0dfc0;
+      --advanced: #2a547c;  --advanced-bg:#c4d8ee;
+      --extra:    #8a5a6a;  --extra-bg:   #ead8de;
+      --warn:     #9c6a2a;  --warn-bg:    #f0dfc0;
+      --note:     #2a547c;  --note-bg:    #c4d8ee;
+      --ok:       #4a7c59;  --ok-bg:      #cde8d2;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      padding: 0 3rem 5rem;
+      max-width: 1400px;
+      margin: 0 auto;
+      font-size: 14px;
+    }
+
+    /* ── Sections (System: section + section__header + section__title) ── */
+    .section { margin-bottom: 1.5rem; margin-top: 2.2rem; }
+    .section:first-of-type { margin-top: 0; }
+    .section__header { margin-bottom: .8rem; }
+    .section__title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; color: var(--soft);
+      margin: 0; padding-bottom: .4rem; border-bottom: 1px solid var(--bdr);
+    }
+
+    /* ── Meta-Bar ── */
+    .meta-bar {
+      display: flex; align-items: center; gap: 1rem; flex-wrap: wrap;
+      background: rgba(255,255,255,0.55); border: 1px solid var(--bdr);
+      border-radius: 8px; padding: .6rem 1rem; margin-bottom: 1.5rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.9rem; color: var(--mid);
+    }
+    .meta-bar strong { color: var(--text); }
+
+    /* ── Legende ── */
+    .legend {
+      display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+      margin-bottom: 1.8rem; padding: .7rem 1.2rem;
+      background: rgba(255,255,255,0.45); border: 1px solid var(--bdr); border-radius: 8px;
+    }
+    .legend-item {
+      display: flex; align-items: center; gap: .45rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; color: var(--mid);
+    }
+    .ldot { width: 11px; height: 11px; border-radius: 50%; flex-shrink: 0; }
+
+    /* ── Tags (inline) ── */
+    .tag {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; padding: .18rem .55rem;
+      border-radius: 4px; border: 1px solid rgba(0,0,0,0.08); line-height: 1.3;
+    }
+    .tdot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
+    .tag-ctfl     { background: var(--ctfl-bg);    color: #1a2e1a; }
+    .tag-praxis   { background: var(--praxis-bg);  color: #1e2210; }
+    .tag-advanced { background: var(--advanced-bg);color: #0e1e30; }
+    .tag-extra    { background: var(--extra-bg);   color: #2a2820; }
+    .ref { font-size: 10px; opacity: .55; font-weight: 600; letter-spacing: .04em; }
+
+    /* ── Hinweis-Boxen (optisch an .info-box angeglichen) ── */
+    .aha-box {
+      background: var(--note-bg); border-left: 4px solid var(--note);
+      border-radius: 4px; padding: .9rem 1.1rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.9rem; color: var(--note); line-height: 1.5;
+      margin-top: .8rem; margin-bottom: 1rem;
+    }
+    .aha-box strong { font-weight: 700; }
+    .warn-box {
+      background: var(--warn-bg); border-left: 4px solid var(--warn);
+      border-radius: 4px; padding: .9rem 1.1rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.9rem; color: var(--warn); line-height: 1.5;
+      margin-top: .8rem; margin-bottom: 1rem;
+    }
+    .warn-box strong { font-weight: 700; }
+
+    /* ══════════════════════════════════════════
+       TESTSTUFEN — Hauptkarten
+       ══════════════════════════════════════════ */
+    .stufen-grid {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 1rem;
+      align-items: start;
+    }
+    @media(max-width:1200px) { .stufen-grid { grid-template-columns: repeat(3,1fr); } }
+    @media(max-width:800px)  { .stufen-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:500px)  { .stufen-grid { grid-template-columns: 1fr; } }
+
+    .stufe-card {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+    }
+    .stufe-header {
+      padding: .75rem 1rem;
+      display: flex; flex-direction: column; gap: .25rem;
+    }
+    .stufe-num {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px; font-weight: 700; letter-spacing: .14em;
+      text-transform: uppercase; opacity: .6;
+    }
+    .stufe-name {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 14px; font-weight: 700; line-height: 1.25;
+    }
+    .stufe-en {
+      font-size: 11px; font-style: italic; opacity: .6;
+      font-family: Georgia, serif;
+    }
+
+    .s1 .stufe-header { background: var(--ts1); color: var(--ts1d); }
+    .s2 .stufe-header { background: var(--ts2); color: var(--ts2d); }
+    .s3 .stufe-header { background: var(--ts3); color: var(--ts3d); }
+    .s4 .stufe-header { background: var(--ts4); color: var(--ts4d); }
+    .s5 .stufe-header { background: var(--ts5); color: var(--ts5d); }
+
+    .stufe-body {
+      background: rgba(255,255,255,0.38);
+      border-top: 1px solid rgba(0,0,0,0.06);
+      padding: .8rem .9rem 1rem;
+    }
+
+    .stufe-section { margin-bottom: .75rem; }
+    .stufe-section:last-child { margin-bottom: 0; }
+
+    .stufe-sec-label {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 9.5px; font-weight: 700; letter-spacing: .12em;
+      text-transform: uppercase; color: var(--soft);
+      margin-bottom: .35rem;
+    }
+
+    .stufe-tags { display: flex; flex-wrap: wrap; gap: .3rem; }
+    .stag {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11.5px; padding: .15rem .5rem;
+      border-radius: 4px; border: 1px solid rgba(0,0,0,0.08);
+      line-height: 1.35;
+    }
+
+    .stag-obj   { background: rgba(255,255,255,0.7); color: var(--text); }
+    .stag-basis { background: var(--ctfl-bg); color: #1a2e1a; }
+    .stag-def   { background: #fde8e8; color: #5a1a1a; border-color: rgba(180,60,60,0.15); }
+    .stag-resp  { background: var(--praxis-bg); color: #2e1a0a; }
+    .stag-strat { background: var(--advanced-bg); color: #0e1e30; }
+
+    .defect-pill {
+      display: inline-flex; align-items: center; gap: .3rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px; padding: .12rem .45rem;
+      background: #fde8e8; color: #5a1a1a;
+      border: 1px solid rgba(180,60,60,0.18); border-radius: 10px;
+    }
+    .defect-pill::before { content: "⚡"; font-size: 9px; }
+
+    /* ══════════════════════════════════════════
+       ORTHOGONALE MATRIX: Stufen × Arten
+       ══════════════════════════════════════════ */
+    .matrix-wrap {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 14px rgba(0,0,0,0.07);
+    }
+    .matrix-head {
+      background: var(--text); color: #f0ece6;
+      padding: .6rem 1.1rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 13px; font-weight: 700;
+    }
+    table.matrix {
+      width: 100%; border-collapse: collapse;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; background: rgba(255,255,255,0.38);
+    }
+    table.matrix thead th {
+      padding: .45rem .7rem; text-align: center;
+      border-bottom: 2px solid var(--bdr);
+      border-right: 1px solid var(--bdr);
+      font-size: 10px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--soft);
+    }
+    table.matrix thead th:first-child { text-align: left; width: 20%; }
+    table.matrix tbody tr { border-bottom: 1px solid var(--bdr); }
+    table.matrix tbody tr:last-child { border-bottom: none; }
+    table.matrix tbody td {
+      padding: .4rem .7rem;
+      border-right: 1px solid var(--bdr);
+      text-align: center; vertical-align: middle;
+      line-height: 1.3;
+    }
+    table.matrix tbody td:first-child { text-align: left; font-weight: 700; color: var(--text); }
+    table.matrix tbody td:last-child { border-right: none; }
+    .check { font-size: 13px; }
+    .c-full { color: var(--ok); }
+    .c-part { color: var(--warn); }
+    .cell-note { font-size: 10px; color: var(--soft); display: block; }
+
+    /* ══════════════════════════════════════════
+       TESTARTEN — Karten
+       ══════════════════════════════════════════ */
+    .arten-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 1rem;
+    }
+    @media(max-width:1000px) { .arten-grid { grid-template-columns: repeat(2,1fr); } }
+    @media(max-width:600px)  { .arten-grid { grid-template-columns: 1fr; } }
+
+    .art-card {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .art-header {
+      padding: .65rem 1rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      display: flex; flex-direction: column; gap: .2rem;
+    }
+    .art-label {
+      font-size: 10px; font-weight: 700; letter-spacing: .13em;
+      text-transform: uppercase; opacity: .6;
+    }
+    .art-name { font-size: 14px; font-weight: 700; }
+    .art-en   { font-size: 11px; font-style: italic; opacity: .65; font-family: Georgia, serif; }
+
+    .art-body {
+      background: rgba(255,255,255,0.38); border-top: 1px solid rgba(0,0,0,0.06);
+      padding: .75rem .9rem;
+      font-size: 12.5px; color: var(--mid); line-height: 1.55;
+    }
+    .art-body strong { color: var(--text); }
+
+    .a1h { background: var(--ctfl-bg); color: var(--ts1d); }
+    .a2h { background: var(--extra-bg); color: var(--ts4d); }
+    .a3h { background: #d8e0f0; color: #1a2050; }
+    .a4h { background: #e8f0d8; color: #1a3010; }
+
+    /* ══════════════════════════════════════════
+       ABNAHMETEST-ARTEN
+       ══════════════════════════════════════════ */
+    .abnahme-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .8rem;
+    }
+    @media(max-width:900px) { .abnahme-grid { grid-template-columns: repeat(2,1fr); } }
+
+    .abnahme-card {
+      background: rgba(255,255,255,0.45); border: 1px solid var(--bdr);
+      border-radius: 8px; padding: .75rem .95rem;
+      border-top: 3px solid var(--ts5d);
+    }
+    .abnahme-name {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12.5px; font-weight: 700; color: var(--ts5d);
+      margin-bottom: .3rem;
+    }
+    .abnahme-desc { font-size: 12px; color: var(--mid); line-height: 1.5; }
+
+    /* ══════════════════════════════════════════
+       FEHLERNACHTEST vs REGRESSIONSTEST
+       ══════════════════════════════════════════ */
+    .vs-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media(max-width:700px) { .vs-grid { grid-template-columns: 1fr; } }
+
+    .vs-card {
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .vs-head {
+      padding: .65rem 1rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    }
+    .vs-head .num { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; opacity: .6; }
+    .vs-head .name { font-size: 14px; font-weight: 700; margin-top: .15rem; }
+    .vs-head .en   { font-size: 11px; font-style: italic; opacity: .65; font-family: Georgia, serif; }
+    .vs1 .vs-head  { background: var(--ok-bg); color: var(--ts1d); }
+    .vs2 .vs-head  { background: var(--warn-bg); color: var(--ts3d); }
+    .vs-body {
+      background: rgba(255,255,255,0.38); border-top: 1px solid rgba(0,0,0,0.06);
+      padding: .8rem .95rem;
+    }
+    .vs-row {
+      display: flex; gap: .5rem; margin-bottom: .45rem;
+      font-size: 12.5px; color: var(--mid); line-height: 1.45;
+    }
+    .vs-row:last-child { margin-bottom: 0; }
+    .vs-key {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 9.5px; font-weight: 700; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--soft);
+      white-space: nowrap; margin-top: .15rem; min-width: 5rem;
+    }
+
+    /* ══════════════════════════════════════════
+       V-MODELL & TESTPYRAMIDE (SVG inline)
+       ══════════════════════════════════════════ */
+    .visual-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+    @media(max-width:800px) { .visual-grid { grid-template-columns: 1fr; } }
+
+    .visual-card {
+      background: rgba(255,255,255,0.45); border: 1px solid var(--bdr);
+      border-radius: 10px; overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.05);
+    }
+    .visual-head {
+      background: rgba(0,0,0,0.04); padding: .55rem 1rem;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12px; font-weight: 700; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--soft);
+      border-bottom: 1px solid var(--bdr);
+    }
+    .visual-body { padding: 1rem; }
+
+    /* ══════════════════════════════════════════
+       INTEGRATIONSSTRATEGIEN
+       ══════════════════════════════════════════ */
+    .strat-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      gap: .8rem;
+    }
+    @media(max-width:800px) { .strat-grid { grid-template-columns: 1fr; } }
+
+    .strat-card {
+      background: rgba(255,255,255,0.45); border: 1px solid var(--bdr);
+      border-radius: 8px; padding: .75rem .95rem;
+      border-top: 3px solid var(--ts2d);
+    }
+    .strat-name {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 12.5px; font-weight: 700; color: var(--ts2d); margin-bottom: .3rem;
+    }
+    .strat-desc { font-size: 12px; color: var(--mid); line-height: 1.5; }
+    .strat-pro  { font-size: 11.5px; color: var(--ok);   margin-top: .3rem; }
+    .strat-con  { font-size: 11.5px; color: #8a3030; margin-top: .1rem; }
+    .strat-pro::before { content: "✓ "; font-weight: 700; }
+    .strat-con::before { content: "✗ "; font-weight: 700; }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="02c-teststufen.html" class="current">Teststufen</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Teststufen &amp; Testarten</h1>
+    <p>Kap. 2.2 · Struktur, Zusammenhänge und typische Fehlerzustände</p>
+  </header>
+</div>
+
+<main id="main">
+<div class="meta-bar" aria-label="Seitenkontext">
+  <div><strong>CTFL-Referenz:</strong> Kap. 2.2 (FL-2.2.1 · FL-2.2.2 · FL-2.2.3)</div>
+  <div><strong>Lernziele:</strong> Teststufen unterscheiden · Testarten unterscheiden · Fehlernachtest vs. Regressionstest</div>
+  <div><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</div>
+</div>
+
+<div class="legend" aria-label="Legende">
+  <div class="legend-item"><span class="ldot" style="background:var(--ts1)"></span>Komponententest</div>
+  <div class="legend-item"><span class="ldot" style="background:var(--ts2)"></span>Komp.-Integrationstest</div>
+  <div class="legend-item"><span class="ldot" style="background:var(--ts3)"></span>Systemtest</div>
+  <div class="legend-item"><span class="ldot" style="background:var(--ts4)"></span>Syst.-Integrationstest</div>
+  <div class="legend-item"><span class="ldot" style="background:var(--ts5)"></span>Abnahmetest</div>
+  <span style="width:1px;background:var(--bdr);margin:0 .5rem"></span>
+  <div class="legend-item"><span class="ldot" style="background:#fde8e8;border:1px solid rgba(180,60,60,0.3)"></span>Typische Fehlerzustände</div>
+  <div class="legend-item"><span class="ldot" style="background:var(--ctfl-bg);border:1px solid rgba(74,124,89,0.2)"></span>Testbasis</div>
+  <div class="legend-item"><span class="ldot" style="background:var(--praxis-bg);border:1px solid rgba(156,106,42,0.2)"></span>Verantwortlich</div>
+</div>
+
+<section class="section" aria-labelledby="sec-1-heading">
+  <div class="section__header">
+    <h2 class="section__title" id="sec-1-heading">① Fünf Teststufen — CTFL Kap. 2.2.1</h2>
+  </div>
+  <div class="aha-box" style="margin-bottom:1rem">
+  <strong>Framework: 5 Attribute je Teststufe (CTFL Kap. 2.2.1)</strong> — Der Lehrplan unterscheidet Teststufen anhand von genau fünf Attributen, um Überschneidungen zu vermeiden: <strong>① Testobjekt</strong> · <strong>② Testziele</strong> · <strong>③ Testbasis</strong> · <strong>④ Fehlerzustände &amp; Fehlerwirkungen</strong> · <strong>⑤ Vorgehensweise &amp; Verantwortlichkeiten</strong>. Diese fünf Attribute strukturieren auch die Karten unten — und sind prüfungsrelevant.<br><br>
+  <strong>Stufenübergang:</strong> In sequenziellen SDLC-Modellen (z.B. V-Modell) sind die <em>Endekriterien</em> einer Teststufe typischerweise Teil der <em>Eingangskriterien</em> der nächsten Stufe — Teststufen sind also nicht unabhängig, sondern verkettet.
+</div>
+
+<div class="stufen-grid">
+
+  <!-- Komponententest -->
+  <div class="stufe-card s1">
+    <div class="stufe-header">
+      <span class="stufe-num">Stufe 1 · CT</span>
+      <span class="stufe-name">Komponenten&shy;test</span>
+      <span class="stufe-en">Component / Unit Testing</span>
+    </div>
+    <div class="stufe-body">
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Testobjekte</div>
+        <div class="stufe-tags">
+          <span class="stag stag-obj">Komponenten</span>
+          <span class="stag stag-obj">Module</span>
+          <span class="stag stag-obj">Klassen</span>
+          <span class="stag stag-obj">DB-Module</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Testbasis</div>
+        <div class="stufe-tags">
+          <span class="stag stag-basis">Detaildesign</span>
+          <span class="stag stag-basis">Code</span>
+          <span class="stag stag-basis">Datenmodell</span>
+          <span class="stag stag-basis">Komponentenspez.</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Typische Fehlerzustände</div>
+        <div class="stufe-tags">
+          <span class="stag stag-def">Falsche Logik</span>
+          <span class="stag stag-def">Datenflussfehler</span>
+          <span class="stag stag-def">Falsche Berechnung</span>
+          <span class="stag stag-def">Fehlende Abzweigung</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Verantwortlich</div>
+        <div class="stufe-tags">
+          <span class="stag stag-resp">Entwickler</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Besonderheiten</div>
+        <div class="stufe-tags">
+          <span class="stag stag-strat">Isolation (Stubs/Treiber)</span>
+          <span class="stag stag-strat">TDD möglich</span>
+          <span class="stag stag-strat">Hohe Automatisierung</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Komponentenintegrationstest -->
+  <div class="stufe-card s2">
+    <div class="stufe-header">
+      <span class="stufe-num">Stufe 2 · CIT</span>
+      <span class="stufe-name">Komponenten&shy;integrations&shy;test</span>
+      <span class="stufe-en">Component Integration Testing</span>
+    </div>
+    <div class="stufe-body">
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Testobjekte</div>
+        <div class="stufe-tags">
+          <span class="stag stag-obj">Schnittstellen</span>
+          <span class="stag stag-obj">APIs</span>
+          <span class="stag stag-obj">Datenbank-APIs</span>
+          <span class="stag stag-obj">Subsysteme</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Testbasis</div>
+        <div class="stufe-tags">
+          <span class="stag stag-basis">Use Cases</span>
+          <span class="stag stag-basis">Softwaredesign</span>
+          <span class="stag stag-basis">Schnittstellenspez.</span>
+          <span class="stag stag-basis">Workflows</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Typische Fehlerzustände</div>
+        <div class="stufe-tags">
+          <span class="stag stag-def">Schnittstellenfehler</span>
+          <span class="stag stag-def">Falsche Datenübergabe</span>
+          <span class="stag stag-def">Falsche Sequenz</span>
+          <span class="stag stag-def">Unbehandelte Fehler</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Verantwortlich</div>
+        <div class="stufe-tags">
+          <span class="stag stag-resp">Entwickler</span>
+          <span class="stag stag-resp">Tester</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Integrationsstrategien</div>
+        <div class="stufe-tags">
+          <span class="stag stag-strat">Bottom-up</span>
+          <span class="stag stag-strat">Top-down</span>
+          <span class="stag stag-strat">Big Bang</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Systemtest -->
+  <div class="stufe-card s3">
+    <div class="stufe-header">
+      <span class="stufe-num">Stufe 3 · ST</span>
+      <span class="stufe-name">System&shy;test</span>
+      <span class="stufe-en">System Testing</span>
+    </div>
+    <div class="stufe-body">
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Testobjekte</div>
+        <div class="stufe-tags">
+          <span class="stag stag-obj">Gesamtsystem</span>
+          <span class="stag stag-obj">End-to-End-Aufgaben</span>
+          <span class="stag stag-obj">System-Konfiguration</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Testbasis</div>
+        <div class="stufe-tags">
+          <span class="stag stag-basis">Systemanforderungen</span>
+          <span class="stag stag-basis">Use Cases</span>
+          <span class="stag stag-basis">Sequenzdiagramme</span>
+          <span class="stag stag-basis">Risikoanalyse</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Typische Fehlerzustände</div>
+        <div class="stufe-tags">
+          <span class="stag stag-def">Falsche End-to-End-Abläufe</span>
+          <span class="stag stag-def">Performanzprobleme</span>
+          <span class="stag stag-def">Sicherheitslücken</span>
+          <span class="stag stag-def">Falsche Systemkonfig.</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Verantwortlich</div>
+        <div class="stufe-tags">
+          <span class="stag stag-resp">Unabh. Tester</span>
+          <span class="stag stag-resp">Testteam</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Besonderheiten</div>
+        <div class="stufe-tags">
+          <span class="stag stag-strat">Produktionsähnl. Umgebung</span>
+          <span class="stag stag-strat">Funktional + nicht-funk.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Systemintegrationstest -->
+  <div class="stufe-card s4">
+    <div class="stufe-header">
+      <span class="stufe-num">Stufe 4 · SIT</span>
+      <span class="stufe-name">System&shy;integrations&shy;test</span>
+      <span class="stufe-en">System Integration Testing</span>
+    </div>
+    <div class="stufe-body">
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Testobjekte</div>
+        <div class="stufe-tags">
+          <span class="stag stag-obj">Externe Systeme</span>
+          <span class="stag stag-obj">Microservices</span>
+          <span class="stag stag-obj">APIs (extern)</span>
+          <span class="stag stag-obj">Drittanbieter</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Testbasis</div>
+        <div class="stufe-tags">
+          <span class="stag stag-basis">Systemdesign</span>
+          <span class="stag stag-basis">Systemarchitektur</span>
+          <span class="stag stag-basis">Kommunikationsprotokolle</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Typische Fehlerzustände</div>
+        <div class="stufe-tags">
+          <span class="stag stag-def">Inkonsistente Nachrichten</span>
+          <span class="stag stag-def">Kommunikationsfehler</span>
+          <span class="stag stag-def">Falsche Datenannahmen</span>
+          <span class="stag stag-def">Sicherheitsprobleme</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Verantwortlich</div>
+        <div class="stufe-tags">
+          <span class="stag stag-resp">Tester</span>
+          <span class="stag stag-resp">Systemarchitekten</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Besonderheiten</div>
+        <div class="stufe-tags">
+          <span class="stag stag-strat">Nach Systemtest</span>
+          <span class="stag stag-strat">Vor Abnahmetest</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Abnahmetest -->
+  <div class="stufe-card s5">
+    <div class="stufe-header">
+      <span class="stufe-num">Stufe 5 · UAT</span>
+      <span class="stufe-name">Abnahme&shy;test</span>
+      <span class="stufe-en">Acceptance Testing</span>
+    </div>
+    <div class="stufe-body">
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Testobjekte</div>
+        <div class="stufe-tags">
+          <span class="stag stag-obj">Gesamtsystem</span>
+          <span class="stag stag-obj">Geschäftsprozesse</span>
+          <span class="stag stag-obj">Betriebsbereitschaft</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Testbasis</div>
+        <div class="stufe-tags">
+          <span class="stag stag-basis">Geschäftsanforderungen</span>
+          <span class="stag stag-basis">Akzeptanzkriterien</span>
+          <span class="stag stag-basis">Regulatorische Anforderungen</span>
+          <span class="stag stag-basis">Verträge / SLAs</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Typische Fehlerzustände</div>
+        <div class="stufe-tags">
+          <span class="stag stag-def">Anforderungen nicht erfüllt</span>
+          <span class="stag stag-def">Geschäftsprozess fehlerhaft</span>
+          <span class="stag stag-def">Usability-Probleme</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Verantwortlich</div>
+        <div class="stufe-tags">
+          <span class="stag stag-resp">Auftraggeber</span>
+          <span class="stag stag-resp">Endnutzer</span>
+          <span class="stag stag-resp">Product Owner</span>
+        </div>
+      </div>
+      <div class="stufe-section">
+        <div class="stufe-sec-label">Entscheidung</div>
+        <div class="stufe-tags">
+          <span class="stag stag-strat">Go / No-Go</span>
+          <span class="stag stag-strat">Deployment-Freigabe</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="aha-box">
+  <strong>⚡ Zusammenhang: Reihenfolge CIT ↔ SIT</strong> — Der Systemintegrationstest (Stufe 4) findet <em>nach</em> dem Systemtest (Stufe 3) statt, nicht davor. Die logische Reihenfolge ist: CT → CIT → ST → SIT → Abnahmetest. Viele verwechseln das, weil beide „Integrationstests" heißen — aber CIT testet Schnittstellen zwischen Komponenten, SIT testet Schnittstellen zwischen <em>Systemen</em>.
+</div>
+</section>
+
+<section class="section" aria-labelledby="sec-2-heading">
+  <div class="section__header">
+    <h2 class="section__title" id="sec-2-heading">② Integrationsstrategien · CTFL Kap. 2.2.1 (Komponentenintegrationstest)</h2>
+  </div>
+  <div class="strat-grid">
+  <div class="strat-card">
+    <div class="strat-name">Bottom-up</div>
+    <div class="strat-desc">Integration beginnt bei den untersten Komponenten (Blätter im Baum) und arbeitet sich nach oben. Treiber simulieren übergeordnete Komponenten.</div>
+    <div class="strat-pro">Echte Komponenten werden früh getestet</div>
+    <div class="strat-pro">Kein Stubs für untergeordnete Komponenten</div>
+    <div class="strat-con">Gesamtsystem erst spät sichtbar</div>
+  </div>
+  <div class="strat-card">
+    <div class="strat-name">Top-down</div>
+    <div class="strat-desc">Integration beginnt bei der obersten Komponente und arbeitet sich nach unten. Stubs ersetzen noch nicht verfügbare untergeordnete Komponenten.</div>
+    <div class="strat-pro">Gesamtarchitektur früh validierbar</div>
+    <div class="strat-pro">Frühe Demo möglich</div>
+    <div class="strat-con">Viele Stubs nötig — Aufwand</div>
+  </div>
+  <div class="strat-card">
+    <div class="strat-name">Big Bang</div>
+    <div class="strat-desc">Alle Komponenten werden gleichzeitig integriert und das Gesamtsystem auf einmal getestet. Kein schrittweises Vorgehen.</div>
+    <div class="strat-pro">Einfach zu planen</div>
+    <div class="strat-con">Fehlerlokalisierung sehr schwierig</div>
+    <div class="strat-con">Risiko: Viele Fehler auf einmal</div>
+  </div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="sec-3-heading">
+  <div class="section__header">
+    <h2 class="section__title" id="sec-3-heading">③ Abnahmetest — Unterarten · CTFL Kap. 2.2.1</h2>
+  </div>
+  <div class="abnahme-grid">
+  <div class="abnahme-card">
+    <div class="abnahme-name">UAT — User Acceptance Testing</div>
+    <div class="abnahme-desc">Endnutzer prüfen ob das System ihre tägliche Arbeit unterstützt. Fokus: Geschäftsprozesse, Bedienbarkeit.</div>
+  </div>
+  <div class="abnahme-card">
+    <div class="abnahme-name">OAT — Operational Acceptance Testing</div>
+    <div class="abnahme-desc">IT-Betrieb prüft Betriebsbereitschaft: Backup, Recovery, Wartung, Sicherheitspatches, Performanz unter Last.</div>
+  </div>
+  <div class="abnahme-card">
+    <div class="abnahme-name">Vertraglicher Abnahmetest</div>
+    <div class="abnahme-desc">Prüfung gegen vertraglich vereinbarte Akzeptanzkriterien — z.B. Lieferantenvertrag, SLA.</div>
+  </div>
+  <div class="abnahme-card">
+    <div class="abnahme-name">Regulatorischer Abnahmetest</div>
+    <div class="abnahme-desc">Prüfung gegen gesetzliche Anforderungen, Normen, Compliance. Z.B. DSGVO, Medizinprodukte-Richtlinie.</div>
+  </div>
+  <div class="abnahme-card">
+    <div class="abnahme-name">Alpha-Test</div>
+    <div class="abnahme-desc">Im Unternehmen, durch ausgewählte (interne) Nutzer oder Kunden — kontrollierte Umgebung des Herstellers.</div>
+  </div>
+  <div class="abnahme-card">
+    <div class="abnahme-name">Beta-Test</div>
+    <div class="abnahme-desc">Beim Kunden, in seiner eigenen Umgebung — unkontrolliert, echte Nutzungsbedingungen. Folgt typischerweise dem Alpha-Test.</div>
+  </div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="sec-4-heading">
+  <div class="section__header">
+    <h2 class="section__title" id="sec-4-heading">④ Teststufe ≠ Testart — orthogonale Konzepte · CTFL Kap. 2.2.2</h2>
+  </div>
+  <div class="matrix-wrap">
+  <div class="matrix-head">Matrix: Alle Testarten sind auf jeder Teststufe anwendbar</div>
+  <table class="matrix">
+    <thead>
+      <tr>
+        <th>Teststufe ↓ / Testart →</th>
+        <th>Funktionaler Test</th>
+        <th>Nicht-funk. Test</th>
+        <th>Black-Box-Test</th>
+        <th>White-Box-Test</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><span style="color:var(--ts1d)">●</span> Komponententest</td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Logik, Berechnung</span></td>
+        <td><span class="check c-part">◑</span><span class="cell-note">Performance (Shift-Left)</span></td>
+        <td><span class="check c-part">◑</span><span class="cell-note">API-Spezifikation</span></td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Code-Überdeckung</span></td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--ts2d)">●</span> Komp.-Integrationstest</td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Schnittstellenfunktion</span></td>
+        <td><span class="check c-part">◑</span><span class="cell-note">Zuverlässigkeit</span></td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Schnittstellenspez.</span></td>
+        <td><span class="check c-part">◑</span><span class="cell-note">Integrationsstruktur</span></td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--ts3d)">●</span> Systemtest</td>
+        <td><span class="check c-full">✓</span><span class="cell-note">End-to-End-Szenarien</span></td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Last, Sicherheit, Usability</span></td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Anforderungsbasiert</span></td>
+        <td><span class="check c-part">◑</span><span class="cell-note">Selten auf Systemebene</span></td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--ts4d)">●</span> Syst.-Integrationstest</td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Kommunikation, Protokolle</span></td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Sicherheit, Datenschutz</span></td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Schnittstellenverhalten</span></td>
+        <td><span class="check c-part">◑</span><span class="cell-note">Systemarchitektur</span></td>
+      </tr>
+      <tr>
+        <td><span style="color:var(--ts5d)">●</span> Abnahmetest</td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Geschäftsprozesse</span></td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Usability, Compliance</span></td>
+        <td><span class="check c-full">✓</span><span class="cell-note">Nutzeranforderungen</span></td>
+        <td><span class="check c-part">◑</span><span class="cell-note">Sehr selten</span></td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<div class="warn-box">
+  <strong>⚠ Häufige Prüfungsfalle:</strong> Teststufe ≠ Testart — sie sind orthogonale Konzepte. Teststufe = <em>wo</em> im SDLC getestet wird. Testart = <em>was</em> getestet wird. Ein funktionaler Test (Testart) kann auf jeder Teststufe durchgeführt werden. ✓ = Schwerpunkt auf dieser Stufe · ◑ = möglich, aber seltener
+</div>
+</section>
+
+<section class="section" aria-labelledby="sec-5-heading">
+  <div class="section__header">
+    <h2 class="section__title" id="sec-5-heading">⑤ Vier Testarten im Detail · CTFL Kap. 2.2.2</h2>
+  </div>
+  <div class="arten-grid">
+  <div class="art-card">
+    <div class="art-header a1h">
+      <span class="art-label">Testart 1 · Funktional</span>
+      <span class="art-name">Funktionaler Test</span>
+      <span class="art-en">Functional Testing</span>
+    </div>
+    <div class="art-body">
+      Bewertet <strong>Funktionen</strong> — das „Was tut es?". Prüft ob Anforderungen und Use Cases korrekt umgesetzt sind.<br><br>
+      Testbasis: Anforderungen, funktionale Spezifikationen, Use Cases. Kann auf allen Teststufen angewandt werden.
+    </div>
+  </div>
+  <div class="art-card">
+    <div class="art-header a2h">
+      <span class="art-label">Testart 2 · Nicht-funktional</span>
+      <span class="art-name">Nicht-funktionaler Test</span>
+      <span class="art-en">Non-Functional Testing</span>
+    </div>
+    <div class="art-body">
+      Bewertet <strong>Qualitätsmerkmale</strong> — das „Wie gut tut es es?". ISO/IEC 25010 definiert: Performanz · Kompatibilität · Gebrauchstauglichkeit · Zuverlässigkeit · Sicherheit · Wartbarkeit · Übertragbarkeit · Safety.<br><br>
+      <strong>Zusammenhang:</strong> Viele nicht-funktionale Tests <em>leiten sich direkt von funktionalen Tests ab</em> — da für nfunk. Tests dieselben funktionalen Testfälle verwendet werden können, ergänzt um nfunk. Messgrößen (z.B. Antwortzeit, Fehlerrate). Shift-Left: Nicht-funktionale Tests sollten so früh wie möglich beginnen — auch auf Komponentenebene.
+    </div>
+  </div>
+  <div class="art-card">
+    <div class="art-header a3h">
+      <span class="art-label">Testart 3 · Strukturbasiert</span>
+      <span class="art-name">White-Box-Test</span>
+      <span class="art-en">White-Box Testing</span>
+    </div>
+    <div class="art-body">
+      Leitet Tests aus der <strong>internen Struktur</strong> ab — Code, Architektur, Ablaufpläne. Typisch: Anweisungsüberdeckung (SC), Zweigüberdeckung (BC).<br><br>
+      Schwerpunkt: Komponenten- und Integrationsstufe. Nicht zu verwechseln mit: White-Box-Testverfahren (Kap. 4.3).
+    </div>
+  </div>
+  <div class="art-card">
+    <div class="art-header a4h">
+      <span class="art-label">Testart 4 · Spezifikationsbasiert</span>
+      <span class="art-name">Black-Box-Test</span>
+      <span class="art-en">Black-Box Testing</span>
+    </div>
+    <div class="art-body">
+      Leitet Tests aus der <strong>Spezifikation</strong> ab — ohne Kenntnis der internen Struktur. Typisch: EP, BVA, Entscheidungstabellen.<br><br>
+      Schwerpunkt: System- und Abnahmestufe. Gilt für funktionale UND nicht-funktionale Tests.
+    </div>
+  </div>
+</div>
+</section>
+
+<section class="section" aria-labelledby="sec-6-heading">
+  <div class="section__header">
+    <h2 class="section__title" id="sec-6-heading">⑥ Fehlernachtest vs. Regressionstest · CTFL Kap. 2.2.3</h2>
+  </div>
+  <div class="vs-grid">
+  <div class="vs-card vs1">
+    <div class="vs-head">
+      <div class="num">CT · Confirmation Testing</div>
+      <div class="name">Fehlernachtest</div>
+      <div class="en">Confirmation Testing (Re-Test)</div>
+    </div>
+    <div class="vs-body">
+      <div class="vs-row">
+        <span class="vs-key">Frage</span>
+        <span>Ist der behobene Fehlerzustand wirklich weg?</span>
+      </div>
+      <div class="vs-row">
+        <span class="vs-key">Auslöser</span>
+        <span>Ein spezifischer Fehlerzustand wurde gemeldet und behoben.</span>
+      </div>
+      <div class="vs-row">
+        <span class="vs-key">Umfang</span>
+        <span>Gezielt — nur die Testfälle die vorher fehlschlugen, plus ggf. neue Tests für die Änderung.</span>
+      </div>
+      <div class="vs-row">
+        <span class="vs-key">Je nach Risiko</span>
+        <span>Vollständige Wiederholung aller fehlgeschlagenen Tests <em>oder</em> — bei Zeit-/Geldmangel — nur die Testschritte, die die konkrete Fehlerwirkung reproduziert haben.</span>
+      </div>
+      <div class="vs-row">
+        <span class="vs-key">Automatisierung</span>
+        <span>Selektiv — oft manuell oder kleiner automatisierter Subset.</span>
+      </div>
+    </div>
+  </div>
+  <div class="vs-card vs2">
+    <div class="vs-head">
+      <div class="num">RT · Regression Testing</div>
+      <div class="name">Regressionstest</div>
+      <div class="en">Regression Testing</div>
+    </div>
+    <div class="vs-body">
+      <div class="vs-row">
+        <span class="vs-key">Frage</span>
+        <span>Hat die Änderung etwas anderes (vorher Funktionierendes) kaputt gemacht?</span>
+      </div>
+      <div class="vs-row">
+        <span class="vs-key">Auslöser</span>
+        <span>Jede Änderung am System — Fehlerbehebung, neues Feature, Refactoring.</span>
+      </div>
+      <div class="vs-row">
+        <span class="vs-key">Umfang</span>
+        <span>Breit — Regressionstestsuiten wachsen mit jeder Iteration. Entscheidung: vollständig vs. risikobasiert ausgewählt.</span>
+      </div>
+      <div class="vs-row">
+        <span class="vs-key">Automatisierung</span>
+        <span>Sehr gut geeignet — da Suiten viele Male wiederholt werden. Empfehlung: CI/CD-Pipeline.</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="warn-box">
+  <strong>⚠ Häufige Verwechslung:</strong> Fehlernachtest = „Ist der Bug weg?" · Regressionstest = „Hat die Fehlerbehebung einen anderen Bug erzeugt?" — Beide können und sollen auf <em>allen</em> Teststufen angewendet werden, wann immer Fehlerzustände behoben oder Änderungen vorgenommen wurden.
+</div>
+</section>
+
+<section class="section" aria-labelledby="sec-7-heading">
+  <div class="section__header">
+    <h2 class="section__title" id="sec-7-heading">⑦ Wartungstest · CTFL Kap. 2.3 · FL-2.3.1 (K2)</h2>
+  </div>
+  <div class="visual-grid" style="margin-bottom:1rem">
+
+  <div class="visual-card">
+    <div class="visual-head">Was ist Wartungstest?</div>
+    <div class="visual-body" style="font-size:12.5px;color:var(--mid);line-height:1.6">
+      Wartungstest wird durchgeführt, wenn ein <strong style="color:var(--text)">bestehendes System geändert, migriert oder außer Betrieb genommen</strong> wird — also nach der initialen Auslieferung, im laufenden Betrieb.<br><br>
+      Der Umfang hängt ab von:
+      <ul style="margin-top:.5rem;margin-left:1.2rem;line-height:1.7;font-size:12px">
+        <li>Grad des Risikos der Änderung</li>
+        <li>Größe des bestehenden Systems</li>
+        <li>Umfang der Änderung selbst</li>
+      </ul>
+      <div class="aha-box" style="margin-top:.8rem;font-size:12px">
+        <strong>Wichtig:</strong> Wartungstest ≠ eigene Teststufe. Er kann auf jeder Teststufe stattfinden und umfasst typischerweise sowohl Fehlernachtests als auch ausgedehnte <strong>Regressionstests</strong> — da Änderungen am bestehenden System unbeabsichtigte Seiteneffekte auslösen können.
+      </div>
+    </div>
+  </div>
+
+  <div class="visual-card">
+    <div class="visual-head">Auslöser für Wartungstest (CTFL Kap. 2.3)</div>
+    <div class="visual-body">
+      <div class="stufe-section">
+        <div class="stufe-sec-label">① Änderungen</div>
+        <div class="stufe-tags" style="display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.6rem">
+          <span class="stag stag-basis">Geplante Erweiterungen (releasebasiert)</span>
+          <span class="stag stag-basis">Korrigierende Änderungen</span>
+          <span class="stag stag-basis">Hotfixes</span>
+        </div>
+        <div class="stufe-sec-label">② Umgebungsmigration</div>
+        <div class="stufe-tags" style="display:flex;flex-wrap:wrap;gap:.3rem;margin-bottom:.6rem">
+          <span class="stag stag-strat">Plattformwechsel (OS, DB, Infrastruktur)</span>
+          <span class="stag stag-strat">Datenkonvertierung / -migration</span>
+          <span class="stag stag-strat">Tests der neuen Umgebung</span>
+        </div>
+        <div class="stufe-sec-label">③ Außerbetriebnahme</div>
+        <div class="stufe-tags" style="display:flex;flex-wrap:wrap;gap:.3rem">
+          <span class="stag stag-def">End-of-Life einer Anwendung</span>
+          <span class="stag stag-def">Tests der Datenarchivierung</span>
+          <span class="stag stag-def">Langfristige Aufbewahrungspflichten</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<div class="warn-box">
+  <strong>⚠ Prüfungsrelevanz FL-2.3.1 (K2):</strong> Der Lernziel-Level ist K2 (verstehen/erklären) — du sollst Wartungstest und seine Auslöser zusammenfassen können. Die drei Auslöserkategorien (Änderungen · Umgebungsmigration · Außerbetriebnahme) sind prüfungsrelevant. Der Zusammenhang mit Regressionstest ist zentral: jede Wartungsänderung erfordert typischerweise einen Regressionstest des betroffenen Systems.
+</div>
+</section>
+
+<section class="section" aria-labelledby="sec-8-heading">
+  <div class="section__header">
+    <h2 class="section__title" id="sec-8-heading">⑧ Visuelle Zusammenhänge — V-Modell &amp; Testpyramide</h2>
+  </div>
+  <div class="visual-grid">
+
+  <div class="visual-card">
+    <div class="visual-head">V-Modell — Teststufen &amp; Entwicklungsphasen</div>
+    <div class="visual-body">
+      <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+        <!-- Linke Seite: Entwicklung -->
+        <text x="10" y="22" font-family="Helvetica Neue, Arial" font-size="10" fill="#7a9090" font-weight="700" letter-spacing="1">ENTWICKLUNG</text>
+        <text x="430" y="22" font-family="Helvetica Neue, Arial" font-size="10" fill="#7a9090" font-weight="700" letter-spacing="1">TEST</text>
+
+        <!-- V-Linien -->
+        <line x1="30" y1="35" x2="220" y2="270" stroke="#c8c0b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+        <line x1="220" y1="270" x2="450" y2="35" stroke="#c8c0b8" stroke-width="1.5" stroke-dasharray="4,3"/>
+
+        <!-- Horizontale Verbindungslinien -->
+        <line x1="80" y1="60" x2="400" y2="60" stroke="#ddd8d0" stroke-width="1" stroke-dasharray="3,4"/>
+        <line x1="120" y1="110" x2="360" y2="110" stroke="#ddd8d0" stroke-width="1" stroke-dasharray="3,4"/>
+        <line x1="160" y1="165" x2="320" y2="165" stroke="#ddd8d0" stroke-width="1" stroke-dasharray="3,4"/>
+        <line x1="195" y1="215" x2="280" y2="215" stroke="#ddd8d0" stroke-width="1" stroke-dasharray="3,4"/>
+
+        <!-- Linke Boxes -->
+        <rect x="8" y="45" width="135" height="28" rx="4" fill="#d4c4e0" stroke="none"/>
+        <text x="75" y="63" font-family="Helvetica Neue" font-size="11" fill="#4a2a6a" text-anchor="middle" font-weight="700">Anforderungen</text>
+
+        <rect x="42" y="95" width="115" height="28" rx="4" fill="#c8d8b8" stroke="none"/>
+        <text x="100" y="113" font-family="Helvetica Neue" font-size="11" fill="#4a6e3a" text-anchor="middle" font-weight="700">Systemdesign</text>
+
+        <rect x="78" y="150" width="112" height="28" rx="4" fill="#b8ccd8" stroke="none"/>
+        <text x="134" y="168" font-family="Helvetica Neue" font-size="11" fill="#2a4e6a" text-anchor="middle" font-weight="700">Architekturentwurf</text>
+
+        <rect x="110" y="200" width="105" height="28" rx="4" fill="#d8c8a8" stroke="none"/>
+        <text x="163" y="218" font-family="Helvetica Neue" font-size="11" fill="#6a4e1a" text-anchor="middle" font-weight="700">Detaildesign</text>
+
+        <!-- Mitte Kodierung -->
+        <rect x="168" y="252" width="95" height="28" rx="4" fill="#e8e0d8" stroke="none"/>
+        <text x="215" y="270" font-family="Helvetica Neue" font-size="11" fill="#283535" text-anchor="middle" font-weight="700">Kodierung</text>
+
+        <!-- Rechte Boxes -->
+        <rect x="338" y="45" width="135" height="28" rx="4" fill="#d8b8b8" stroke="none"/>
+        <text x="405" y="63" font-family="Helvetica Neue" font-size="11" fill="#6a2a2a" text-anchor="middle" font-weight="700">Abnahmetest</text>
+
+        <rect x="302" y="95" width="118" height="28" rx="4" fill="#c8b8d8" stroke="none"/>
+        <text x="361" y="113" font-family="Helvetica Neue" font-size="11" fill="#4a2a6a" text-anchor="middle" font-weight="700">Syst.-Integr.-Test</text>
+
+        <rect x="268" y="150" width="112" height="28" rx="4" fill="#d8c8a8" stroke="none"/>
+        <text x="324" y="168" font-family="Helvetica Neue" font-size="11" fill="#6a4e1a" text-anchor="middle" font-weight="700">Systemtest</text>
+
+        <rect x="242" y="200" width="118" height="28" rx="4" fill="#b8ccd8" stroke="none"/>
+        <text x="301" y="218" font-family="Helvetica Neue" font-size="11" fill="#2a4e6a" text-anchor="middle" font-weight="700">Komp.-Integr.-Test</text>
+
+        <!-- Pfeil unten rechts -->
+        <text x="215" y="290" font-family="Helvetica Neue" font-size="9" fill="#7a9090" text-anchor="middle">Komponententest (implizit in Kodierung)</text>
+      </svg>
+    </div>
+  </div>
+
+  <div class="visual-card">
+    <div class="visual-head">Testpyramide — Testvolumen &amp; Automatisierungsgrad</div>
+    <div class="visual-body">
+      <svg viewBox="0 0 480 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+        <!-- Pyramide -->
+        <!-- Basis: Komponententest -->
+        <polygon points="50,270 430,270 380,200 100,200" fill="#c8d8b8" stroke="white" stroke-width="2"/>
+        <!-- Mitte: Integrationstest -->
+        <polygon points="100,200 380,200 330,130 150,130" fill="#b8ccd8" stroke="white" stroke-width="2"/>
+        <!-- Obere Mitte: Systemtest -->
+        <polygon points="150,130 330,130 280,65 200,65" fill="#d8c8a8" stroke="white" stroke-width="2"/>
+        <!-- Spitze: Abnahmetest -->
+        <polygon points="200,65 280,65 240,15 240,15" fill="#d8b8b8" stroke="white" stroke-width="2"/>
+
+        <!-- Labels in Pyramide -->
+        <text x="240" y="243" font-family="Helvetica Neue" font-size="13" fill="#4a6e3a" text-anchor="middle" font-weight="700">Komponententest</text>
+        <text x="240" y="258" font-family="Helvetica Neue" font-size="10" fill="#4a6e3a" text-anchor="middle">viele · schnell · günstig · hohe Automatisierung</text>
+
+        <text x="240" y="170" font-family="Helvetica Neue" font-size="12" fill="#2a4e6a" text-anchor="middle" font-weight="700">Integrationstest</text>
+        <text x="240" y="185" font-family="Helvetica Neue" font-size="9" fill="#2a4e6a" text-anchor="middle">CIT + SIT</text>
+
+        <text x="240" y="105" font-family="Helvetica Neue" font-size="11" fill="#6a4e1a" text-anchor="middle" font-weight="700">Systemtest</text>
+        <text x="240" y="119" font-family="Helvetica Neue" font-size="9" fill="#6a4e1a" text-anchor="middle">E2E · funktional + nfunk.</text>
+
+        <text x="240" y="46" font-family="Helvetica Neue" font-size="10" fill="#6a2a2a" text-anchor="middle" font-weight="700">Abnahme</text>
+
+        <!-- Achsenbeschriftung -->
+        <text x="18" y="270" font-family="Helvetica Neue" font-size="9" fill="#7a9090" transform="rotate(-90,18,200)">Anzahl Tests</text>
+        <line x1="25" y1="15" x2="25" y2="270" stroke="#c8c0b8" stroke-width="1"/>
+        <line x1="455" y1="15" x2="455" y2="270" stroke="#c8c0b8" stroke-width="1"/>
+        <text x="455" y="270" font-family="Helvetica Neue" font-size="9" fill="#7a9090" transform="rotate(-90,455,200)" text-anchor="end">Kosten / Dauer</text>
+
+        <!-- Legende -->
+        <text x="55" y="295" font-family="Helvetica Neue" font-size="9" fill="#7a9090">← mehr Tests, günstiger, schneller</text>
+        <text x="290" y="295" font-family="Helvetica Neue" font-size="9" fill="#7a9090">weniger Tests, teurer, langsamer →</text>
+      </svg>
+    </div>
+  </div>
+
+</div>
+
+<div class="aha-box">
+  <strong>⚡ Zusammenhang: Testpyramide &amp; Shift-Left:</strong> Die Pyramide zeigt: Je früher (weiter unten) ein Fehler gefunden wird, desto günstiger ist die Behebung. Shift-Left bedeutet, möglichst viele Tests auf die niedrigste sinnvolle Teststufe zu verschieben. Ein Bug der im Komponententest gefunden wird kostet typischerweise 10–100× weniger als derselbe Bug im Abnahmetest.
+</div>
+</section>
+</main>
+
+<footer>
+  <p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025) · Kap. 2.2–2.3 · FL-2.2.1 / FL-2.2.2 / FL-2.2.3 / FL-2.3.1 · ISO/IEC 25010 · ISO/IEC 14764</p>
+</footer>
+
+</body>
+</html>

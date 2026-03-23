@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HA5 Testfallentwurf A4 — Traceability zu HA4 Testbasis-Analyse A4 (Web: HA4 Anforderungsanalyse); GroceryMate, Dokumentmodus.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <link rel="stylesheet" href="../assets/css/doc-a4.css">
+  <title>HA5 Testfallentwurf A4 (mit Traceability) — QA Lernwebseite</title>
+  <style>
+    /* HA5 A4 — ergänzt doc-a4.css: 5-Spalten-Übersicht, kompakte Tabellen, TC-Karten */
+
+    .doc-mode .doc-body .form-meta {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    /* ─── Info-Box / Legende ─── */
+    .doc-body .doc-info-box {
+      border: 1px solid var(--doc-bdr);
+      border-left: 3px solid var(--doc-mid);
+      padding: 5pt 8pt;
+      margin-bottom: 8pt;
+      background: var(--doc-light);
+      font-size: 8.25pt;
+      line-height: 1.45;
+      color: var(--doc-mid);
+    }
+    .doc-body .doc-info-box strong { color: var(--doc-text); }
+    .doc-body .doc-info-box p {
+      margin: 0 0 4pt 0;
+    }
+    .doc-body .doc-info-box p:last-child { margin-bottom: 0; }
+    .doc-body .doc-info-box .doc-info-box__title {
+      display: block;
+      margin-bottom: 4pt;
+      color: var(--doc-text);
+    }
+    /* Grüner Hinweis (wie Web-„info-box--ok“ / Review-Farben aus doc-a4) */
+    .doc-body .doc-info-box.doc-info-box--ok {
+      background: var(--doc-review-bg);
+      border-color: #c5dcc8;
+      border-left-color: var(--doc-review);
+      color: var(--doc-mid);
+    }
+    .doc-body .doc-info-box.doc-info-box--ok .doc-info-box__title {
+      color: var(--doc-review);
+    }
+    /* Gelber Hinweis (Korrektur / Hinweis nachträglich, außerhalb TC-Karte) */
+    .doc-body .doc-info-box.doc-info-box--warn {
+      background: #fff8e6;
+      border-color: #e6d4a8;
+      border-left-color: #c9a51a;
+      color: var(--doc-mid);
+      margin-top: 12pt;
+      padding-top: 6pt;
+      border-top: 1px dashed var(--doc-bdr);
+    }
+    .doc-body .doc-info-box.doc-info-box--warn .doc-info-box__title {
+      color: #8a6d1a;
+    }
+    @media print {
+      .doc-body .doc-info-box.doc-info-box--ok {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+      .doc-body .doc-info-box.doc-info-box--warn {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+      }
+    }
+
+    /* ─── ref-table Basis: doc-a4.css; nur Ergänzungen unten ─── */
+    .doc-body .ref-table .cell-id {
+      font-weight: 700;
+      font-family: 'Courier New', Consolas, monospace;
+      font-size: 8.25pt;
+    }
+    .doc-body .ref-table .cell-center { text-align: center; }
+    .doc-body .ref-table .cell-auto-yes { color: var(--doc-acc); font-weight: 600; }
+    .doc-body .ref-table .cell-auto-no { color: var(--doc-open); font-weight: 600; }
+    .doc-body .ref-table .cell-req {
+      font-size: 8.25pt;
+      font-family: 'Courier New', Consolas, monospace;
+      color: var(--doc-mid);
+    }
+
+    /* ─── Technik-Badge (dezent, Dokumentoptik) ─── */
+    .doc-body .tech-badge {
+      display: inline-block;
+      padding: 1pt 4pt;
+      font-size: 8.25pt;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      background: var(--doc-light);
+      border: 1px solid var(--doc-bdr);
+      color: var(--doc-text);
+    }
+    /* ─── Prioritäts-Badge (dezent) ─── */
+    .doc-body .prio-badge {
+      display: inline-block;
+      padding: 1pt 4pt;
+      font-size: 8.25pt;
+      font-weight: 700;
+      border: 1px solid;
+    }
+    .doc-body .prio-badge--high { color: var(--doc-open); border-color: var(--doc-open); background: #f9f0f3; }
+    .doc-body .prio-badge--med { color: var(--doc-mid); border-color: var(--doc-bdr); background: var(--doc-light); }
+    .doc-body .prio-badge--low { color: var(--doc-soft); border-color: var(--doc-bdr); background: var(--doc-light); }
+
+    /* ─── Testfall-Karte ─── */
+    .doc-body .doc-tc-card {
+      border: 1px solid var(--doc-bdr);
+      padding: 6pt 8pt;
+      margin-bottom: 8pt;
+      background: #fff;
+    }
+    .doc-body .doc-tc-card__header {
+      display: flex;
+      align-items: center;
+      gap: 8pt;
+      margin-bottom: 6pt;
+      padding-bottom: 4pt;
+      border-bottom: 1px solid var(--doc-bdr);
+    }
+    .doc-body .doc-tc-card__id {
+      font-family: 'Courier New', Consolas, monospace;
+      font-size: 8.25pt;
+      font-weight: 700;
+      padding: 2pt 5pt;
+      background: var(--doc-light);
+      border: 1px solid var(--doc-bdr);
+    }
+    .doc-body .doc-tc-card__title {
+      font-size: 8.25pt;
+      font-weight: 600;
+      color: var(--doc-text);
+      flex: 1;
+    }
+
+    /* ─── Formular-Feld (in Karte) ─── */
+    .doc-body .form-field {
+      margin-bottom: 5pt;
+    }
+    .doc-body .form-field__label {
+      font-size: 8.25pt;
+      font-weight: 700;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--doc-soft);
+      margin-bottom: 2pt;
+    }
+    .doc-body .form-field__value {
+      font-size: 8.25pt;
+      color: var(--doc-text);
+      line-height: 1.4;
+    }
+    .doc-body .form-field__value.auto-yes { color: var(--doc-acc); font-weight: 600; }
+    .doc-body .form-field__value.auto-no { color: var(--doc-open); font-weight: 600; }
+
+    /* ─── Formular-Segmente in TC-Karten (Teil 2): Rahmen + Label-Streifen ─── */
+    .doc-body .doc-tc-card .form-field {
+      border: 1px solid var(--doc-bdr);
+      margin-bottom: 6pt;
+      background: #fff;
+    }
+    .doc-body .doc-tc-card .form-field__label {
+      background: var(--doc-light);
+      padding: 3pt 6pt;
+      margin-bottom: 0;
+      border-bottom: 1px solid var(--doc-bdr);
+    }
+    .doc-body .doc-tc-card .form-field__value {
+      padding: 4pt 6pt;
+      line-height: 1.4;
+    }
+    .doc-body .doc-tc-card .doc-grid-2 .form-field__value,
+    .doc-body .doc-tc-card .doc-grid-3 .form-field__value {
+      padding: 3pt 6pt;
+    }
+
+    /* ─── Grid (für Meta-Zeilen in Karten) ─── */
+    .doc-body .doc-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 8pt;
+    }
+    .doc-body .doc-grid-3 {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 8pt;
+      margin-bottom: 5pt;
+    }
+
+    /* ─── Schritte-Liste ─── */
+    .doc-body .doc-steps {
+      margin: 0;
+      padding-left: 16pt;
+      font-size: 8.25pt;
+      line-height: 1.5;
+    }
+    .doc-body .doc-steps li { margin-bottom: 3pt; }
+
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="02c-teststufen.html">Teststufen</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html" class="current">HA5 Testfallentwurf A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Testfallentwurf A4</h1>
+    <p>HA5 · Ausgearbeitete Testfälle für GroceryMate im Kontext von CTFL Kapitel 4.2</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Modushinweis">
+    <span><strong>Modus:</strong> A4-/Dokumentansicht</span>
+    <span><strong>Seiten:</strong> 11</span>
+    <span><strong>Projekt:</strong> GroceryMate (HA5)</span>
+    <span><strong>Standard:</strong> CTFL 4.0.2 · Kap. 4.2 · ISO/IEC/IEEE 29119-3</span>
+  </div>
+
+  <div class="doc-mode">
+    <!-- ═══ Seite 1: Übersicht aller Testfälle ═══ -->
+    <article class="doc-a4" id="sheet-1" aria-labelledby="overview-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="overview-heading">Testfallentwurf — Übersicht</h1>
+          <p>GroceryMate · HA5 · Alle Testfälle mit Traceability</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Seite:</strong> 1 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="form-meta">
+          <div class="form-meta__cell"><div class="form-meta__label">Testobjekt</div><div class="form-meta__value">grocerymate.masterschool.com</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Features</div><div class="form-meta__value">GM-F01 · GM-F02 · GM-F03</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Testfälle gesamt</div><div class="form-meta__value">9 (3 pro Feature)</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Automatisierung</div><div class="form-meta__value">9 (100%)</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="form-meta__value">Bereit für Review</div></div>
+        </div>
+
+        <div class="doc-info-box">
+          <strong>Dokumentstruktur:</strong> Seiten 1–2 = Übersicht (alle 9 Testfälle) · Seiten 3–11 = Ausgearbeitete Testfälle (je ein Testfall pro Seite) · <strong>Auswahl:</strong> Nur die 3 kritischsten TCs pro Feature (aus 6–7 Testfragen in HA4) nach Priorisierung: In Anforderung &gt; Kritisch &gt; Business-Regel &gt; Edge Case · <strong>HA4-Bezug:</strong> Akzeptanzkriterien siehe <a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a> (inhaltlich zur Seite <a href="04a-ha4-anforderungsanalyse.html">„HA4 Anforderungsanalyse“</a>). Web-Ansicht derselben Testfälle: <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a>.
+        </div>
+
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Feature 01 / 03</span>
+          <span>GM-F01: Bewertungssystem (3 Testfälle)</span>
+        </div>
+
+        <div class="ref-table">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:10%">ID</th>
+                <th style="width:25%">Testfall</th>
+                <th style="width:6%">Technik</th>
+                <th style="width:6%">Prio</th>
+                <th style="width:8%">Auto?</th>
+                <th style="width:8%">Requirements</th>
+                <th style="width:37%">Begründung</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-id">TC-F01.F1.1</td>
+                <td>1 Stern bewerten (Minimum-Grenzwert)</td>
+                <td><span class="tech-badge">BVA</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC1</td>
+                <td><strong>Priorität:</strong> Grenzwert Minimum testen · Kernfunktion validieren · IN ANFORDERUNG<br><strong>Automatisierung:</strong> Grenzwerttest · Regression</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F01.F1.2</td>
+                <td>5 Sterne bewerten (Maximum-Grenzwert)</td>
+                <td><span class="tech-badge">EP</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC1</td>
+                <td><strong>Priorität:</strong> Grenzwert Maximum testen · Kernfunktion validieren · IN ANFORDERUNG<br><strong>Automatisierung:</strong> Grenzwerttest · End-to-End Happy Path</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F01.F2.1</td>
+                <td>Gast versucht zu bewerten (Zugriffskontrolle)</td>
+                <td><span class="tech-badge">UC</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC2</td>
+                <td><strong>Priorität:</strong> Zugriffskontrolle business-kritisch · Ungültige Bewertungen verhindern · Sicherheit<br><strong>Automatisierung:</strong> Auth-Check · Security Regression</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Feature 02 / 03</span>
+          <span>GM-F02: Altersverifikation (3 Testfälle)</span>
+        </div>
+
+        <div class="ref-table">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:10%">ID</th>
+                <th style="width:25%">Testfall</th>
+                <th style="width:6%">Technik</th>
+                <th style="width:6%">Prio</th>
+                <th style="width:8%">Auto?</th>
+                <th style="width:8%">Requirements</th>
+                <th style="width:37%">Begründung</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-id">TC-F02.F1.1</td>
+                <td>17 Jahre 364 Tage alt (Zugriff verweigert)</td>
+                <td><span class="tech-badge">BVA</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC1</td>
+                <td><strong>Priorität:</strong> Jugendschutz/Legal kritisch · Grenzwert knapp unter 18 · Tagesgenau<br><strong>Automatisierung:</strong> Compliance-Test · Regression</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F02.F1.2</td>
+                <td>Exakt 18 Jahre alt (Zugriff gewährt)</td>
+                <td><span class="tech-badge">BVA</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC2</td>
+                <td><strong>Priorität:</strong> Jugendschutz/Legal kritisch · Grenzwert exakt 18 · Tagesgenau<br><strong>Automatisierung:</strong> Compliance-Test · Happy Path</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F02.F2.1</td>
+                <td>Modal erscheint beim ersten Store-Aufruf</td>
+                <td><span class="tech-badge">UC</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC3</td>
+                <td><strong>Priorität:</strong> IN ANFORDERUNG · Kernfunktion · Modal muss vor Produkten erscheinen<br><strong>Automatisierung:</strong> E2E-Test · Regression</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Seite 2: Übersicht — GM-F03 (Fortsetzung) ═══ -->
+    <article class="doc-a4" id="sheet-2" aria-labelledby="overview-heading-p2">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="overview-heading-p2">Testfallentwurf — Übersicht</h1>
+          <p>GroceryMate · HA5 · Alle Testfälle mit Traceability</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Seite:</strong> 2 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Feature 03 / 03</span>
+          <span>GM-F03: Versandkosten (3 Testfälle)</span>
+        </div>
+
+        <div class="ref-table">
+          <table>
+            <thead>
+              <tr>
+                <th style="width:10%">ID</th>
+                <th style="width:25%">Testfall</th>
+                <th style="width:6%">Technik</th>
+                <th style="width:6%">Prio</th>
+                <th style="width:8%">Auto?</th>
+                <th style="width:8%">Requirements</th>
+                <th style="width:37%">Begründung</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="cell-id">TC-F03.F1.2</td>
+                <td>Exakt 20€ Bestellwert (Versandkosten = 0€)</td>
+                <td><span class="tech-badge">BVA</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC1</td>
+                <td><strong>Priorität:</strong> Kernfunktion aus Anforderung · Kritischster Grenzwert · IN ANFORDERUNG<br><strong>Automatisierung:</strong> Grenzwerttest · Business-Logic</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F03.F3.2</td>
+                <td>Artikel entfernen unter 20€ (BUG: Update fehlt)</td>
+                <td><span class="tech-badge">UC</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC3</td>
+                <td><strong>Priorität:</strong> KRITISCHER BUG entdeckt · Versandkosten aktualisieren nur unidirektional · Muss dokumentiert werden<br><strong>Automatisierung:</strong> Bug-Regression · Business-Logic</td>
+              </tr>
+              <tr>
+                <td class="cell-id">TC-F03.F4.1</td>
+                <td>Gast versucht Checkout (Login-Pflicht)</td>
+                <td><span class="tech-badge">UC</span></td>
+                <td class="cell-center"><span class="prio-badge prio-badge--high">Hoch</span></td>
+                <td class="cell-center cell-auto-yes">Ja</td>
+                <td class="cell-req">AC4</td>
+                <td><strong>Priorität:</strong> Zugriffskontrolle/Sicherheit · Verhindert ungültige Bestellungen<br><strong>Automatisierung:</strong> Auth-Check · Security Regression</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="doc-info-box doc-info-box--ok" role="note" aria-labelledby="gmf03-selection-heading">
+          <p><strong id="gmf03-selection-heading" class="doc-info-box__title">Besonderheit bei GM-F03 — Auswahl-Begründung</strong></p>
+          <p><strong>Warum diese Begründung nötig ist:</strong> In der Testbasis zu GM-F03 sind mehrere Testfragen mit derselben Prioritätskategorie „In Anforderung“ notiert — sie sind damit in der Vorauswahl zunächst gleichrangig. Aus der Übersicht allein ist nicht offensichtlich, warum <strong>TC-F03.F1.2</strong> (Bestellwert exakt 20&nbsp;€) ausgearbeitet wurde, <strong>TC-F03.F1.1</strong> (Bestellwert unter 20&nbsp;€) hingegen nicht.</p>
+          <p><strong>Was gewählt wurde und warum:</strong> <strong>TC-F03.F1.2</strong> wird als Grenzwertfall nach Boundary-Value-Analyse (BVA) priorisiert: exakt 20&nbsp;€ ist die Schwelle für kostenlosen Versand — der risikoreichste Punkt der Regel.</p>
+          <p><strong>Was weggelassen wurde und warum:</strong> <strong>TC-F03.F1.1</strong> erscheint nicht als eigener ausgearbeiteter Testfall, weil der Bereich unter 20&nbsp;€ gegenüber dem Grenzwert bei 20&nbsp;€ inhaltlich redundant ist: Ist das Verhalten an der Schwelle und der zugehörigen Logik verifiziert, ist der typische Fall knapp unter der Grenze aus Sicht der Versandkostenregel äquivalent abgedeckt — der aufwendigere, aussagekräftigere Test liegt auf dem Grenzwert selbst.</p>
+        </div>
+      </div>
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Seite 3: TC-F01.F1.1 ═══ -->
+    <article class="doc-a4" id="sheet-3" aria-labelledby="tc-TC-F01-F1-1-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="tc-TC-F01-F1-1-heading">Testfall — TC-F01.F1.1</h1>
+          <p>1 Stern bewerten (Minimum-Grenzwert)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Seite:</strong> 3 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F01.F1.1</span>
+            <span class="doc-tc-card__title">1 Stern bewerten (Minimum-Grenzwert)</span>
+          </div>
+
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Testtechnik</div>
+              <div class="form-field__value"><span class="tech-badge">BVA</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierbar</div>
+              <div class="form-field__value auto-yes">Ja</div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testfrage (aus HA4)</div>
+            <div class="form-field__value">Funktioniert das 5-Sterne-System (1 Stern Minimum)?</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Requirements Traceability</div>
+            <div class="form-field__value"><span class="cell-req">AC1</span> (siehe HA4 Testbasis-Analyse A4)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingung (Precondition)</div>
+            <div class="form-field__value">Nutzer ist eingeloggt</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testschritte (Test Steps)</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+              <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
+              <li>Bewertungs-Widget lokalisieren (5-Sterne-Anzeige)</li>
+              <li>Genau 1 Stern anklicken</li>
+              <li>Textfeld leer lassen</li>
+              <li>Bewertung absenden</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis (Expected Result)</div>
+            <div class="form-field__value">Bewertung wird akzeptiert · 1 Stern wird gespeichert und angezeigt · Kein Fehler bei leerem Textfeld</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Nachbedingung (Postcondition)</div>
+            <div class="form-field__value">Produktseite zeigt die neue Bewertung mit 1 Stern</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Testprodukt: beliebig · Login: Gültiger User</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Seite 4: TC-F01.F1.2 ═══ -->
+    <article class="doc-a4" id="sheet-4" aria-labelledby="tc-TC-F01-F1-2-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="tc-TC-F01-F1-2-heading">Testfall — TC-F01.F1.2</h1>
+          <p>5 Sterne bewerten (Maximum-Grenzwert)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Seite:</strong> 4 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F01.F1.2</span>
+            <span class="doc-tc-card__title">5 Sterne bewerten (Maximum-Grenzwert)</span>
+          </div>
+
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Testtechnik</div>
+              <div class="form-field__value"><span class="tech-badge">EP</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierbar</div>
+              <div class="form-field__value auto-yes">Ja</div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testfrage (aus HA4)</div>
+            <div class="form-field__value">Funktioniert das 5-Sterne-System (5 Sterne Maximum)?</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Requirements Traceability</div>
+            <div class="form-field__value"><span class="cell-req">AC1</span> (siehe HA4 Testbasis-Analyse A4)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingung (Precondition)</div>
+            <div class="form-field__value">Nutzer ist eingeloggt</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testschritte (Test Steps)</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+              <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
+              <li>Bewertungs-Widget lokalisieren (5-Sterne-Anzeige)</li>
+              <li>Alle 5 Sterne anklicken (Maximum)</li>
+              <li>Optionales Textfeld ausfüllen (z.B. "Ausgezeichnet!")</li>
+              <li>Bewertung absenden</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis (Expected Result)</div>
+            <div class="form-field__value">Bewertung wird akzeptiert · 5 Sterne werden gespeichert und angezeigt · Text wird optional gespeichert</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Nachbedingung (Postcondition)</div>
+            <div class="form-field__value">Produktseite zeigt die neue Bewertung mit 5 Sternen</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Testprodukt: beliebig · Login: Gültiger User · Text: beliebig</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Seite 5: TC-F01.F2.1 ═══ -->
+    <article class="doc-a4" id="sheet-5" aria-labelledby="tc-TC-F01-F2-1-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="tc-TC-F01-F2-1-heading">Testfall — TC-F01.F2.1</h1>
+          <p>Gast versucht zu bewerten (Zugriffskontrolle)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Seite:</strong> 5 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F01.F2.1</span>
+            <span class="doc-tc-card__title">Gast versucht zu bewerten (Zugriffskontrolle)</span>
+          </div>
+
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Testtechnik</div>
+              <div class="form-field__value"><span class="tech-badge">UC</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierbar</div>
+              <div class="form-field__value auto-yes">Ja</div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testfrage (aus HA4)</div>
+            <div class="form-field__value">Wer darf bewerten — alle Nutzer oder nur eingeloggte?</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Requirements Traceability</div>
+            <div class="form-field__value"><span class="cell-req">AC2</span> (siehe HA4 Testbasis-Analyse A4)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingung (Precondition)</div>
+            <div class="form-field__value">Nutzer ist NICHT eingeloggt (Gast)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testschritte (Test Steps)</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+              <li>Als Gast (ohne Login) auf Produktseite navigieren</li>
+              <li>Bewertungs-Widget prüfen</li>
+              <li>Versuch, Bewertung abzugeben</li>
+              <li>Systemverhalten beobachten</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis (Expected Result)</div>
+            <div class="form-field__value">Gast erhält KEINEN Zugang zur Bewertungsfunktion · Bewertungs-Widget ist deaktiviert oder nicht sichtbar · Keine Bewertung möglich</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Nachbedingung (Postcondition)</div>
+            <div class="form-field__value">Keine Änderung an Produktdaten</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Testprodukt: beliebig · Kein Login</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Seite 6: TC-F02.F1.1 ═══ -->
+    <article class="doc-a4" id="sheet-6" aria-labelledby="tc-TC-F02-F1-1-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="tc-TC-F02-F1-1-heading">Testfall — TC-F02.F1.1</h1>
+          <p>17 Jahre 364 Tage alt (Zugriff verweigert)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Seite:</strong> 6 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F02.F1.1</span>
+            <span class="doc-tc-card__title">17 Jahre 364 Tage alt (Zugriff verweigert)</span>
+          </div>
+
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Testtechnik</div>
+              <div class="form-field__value"><span class="tech-badge">BVA</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierbar</div>
+              <div class="form-field__value auto-yes">Ja</div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testfrage (aus HA4)</div>
+            <div class="form-field__value">Wird jemand mit 17J 364T korrekt abgelehnt (1 Tag vor 18)?</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Requirements Traceability</div>
+            <div class="form-field__value"><span class="cell-req">AC1</span> (siehe HA4 Testbasis-Analyse A4)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingung (Precondition)</div>
+            <div class="form-field__value">Modal ist noch nicht angezeigt worden (erste /store Aufruf)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testschritte (Test Steps)</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+              <li>URL /store aufrufen</li>
+              <li>Modal-Formular erscheint (Altersverifikation)</li>
+              <li>Geburtsdatum eingeben: Heute minus 17 Jahre minus 364 Tage (1 Tag vor 18. Geburtstag)</li>
+              <li>Formular absenden</li>
+              <li>Systemverhalten prüfen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis (Expected Result)</div>
+            <div class="form-field__value">Zugriff wird verweigert (< 18 Jahre) · Hinweistext statt Produktliste · Bereich bleibt gesperrt</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Nachbedingung (Postcondition)</div>
+            <div class="form-field__value">Kein Zugang zu /store Produkten</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Geburtsdatum: Heute minus 17J 364T</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Seite 7: TC-F02.F1.2 ═══ -->
+    <article class="doc-a4" id="sheet-7" aria-labelledby="tc-TC-F02-F1-2-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="tc-TC-F02-F1-2-heading">Testfall — TC-F02.F1.2</h1>
+          <p>Exakt 18 Jahre alt (Zugriff gewährt)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Seite:</strong> 7 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F02.F1.2</span>
+            <span class="doc-tc-card__title">Exakt 18 Jahre alt (Zugriff gewährt)</span>
+          </div>
+
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Testtechnik</div>
+              <div class="form-field__value"><span class="tech-badge">BVA</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierbar</div>
+              <div class="form-field__value auto-yes">Ja</div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testfrage (aus HA4)</div>
+            <div class="form-field__value">Wird jemand mit exakt 18 Jahren korrekt zugelassen?</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Requirements Traceability</div>
+            <div class="form-field__value"><span class="cell-req">AC2</span> (siehe HA4 Testbasis-Analyse A4)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingung (Precondition)</div>
+            <div class="form-field__value">Modal ist noch nicht angezeigt worden (erste /store Aufruf)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testschritte (Test Steps)</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+              <li>URL /store aufrufen</li>
+              <li>Modal-Formular erscheint (Altersverifikation)</li>
+              <li>Geburtsdatum eingeben: Heute minus exakt 18 Jahre (18. Geburtstag)</li>
+              <li>Formular absenden</li>
+              <li>Systemverhalten prüfen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis (Expected Result)</div>
+            <div class="form-field__value">Store wird freigegeben (≥ 18 Jahre) · Produktliste wird angezeigt · Zugriff gewährt</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Nachbedingung (Postcondition)</div>
+            <div class="form-field__value">Voller Zugang zu /store Produkten</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Geburtsdatum: Heute minus exakt 18J</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Seite 8: TC-F02.F2.1 ═══ -->
+    <article class="doc-a4" id="sheet-8" aria-labelledby="tc-TC-F02-F2-1-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="tc-TC-F02-F2-1-heading">Testfall — TC-F02.F2.1</h1>
+          <p>Modal erscheint beim ersten Store-Aufruf</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Seite:</strong> 8 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F02.F2.1</span>
+            <span class="doc-tc-card__title">Modal erscheint beim ersten Store-Aufruf</span>
+          </div>
+
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Testtechnik</div>
+              <div class="form-field__value"><span class="tech-badge">UC</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierbar</div>
+              <div class="form-field__value auto-yes">Ja</div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testfrage (aus HA4)</div>
+            <div class="form-field__value">Erscheint das Modal beim ersten /store Aufruf?</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Requirements Traceability</div>
+            <div class="form-field__value"><span class="cell-req">AC3</span> (siehe HA4 Testbasis-Analyse A4)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingung (Precondition)</div>
+            <div class="form-field__value">Nutzer hat /store noch nie aufgerufen (erste Session)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testschritte (Test Steps)</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+              <li>URL /store aufrufen (erster Aufruf in dieser Session)</li>
+              <li>Prüfen, ob Modal erscheint</li>
+              <li>Prüfen, ob Modal VOR Produktanzeige erscheint</li>
+              <li>Modal-Inhalt prüfen (Geburtsdatum-Felder)</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis (Expected Result)</div>
+            <div class="form-field__value">Modal erscheint beim ersten /store Aufruf · Modal wird VOR Produkten angezeigt · Geburtsdatum-Eingabe verfügbar</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Nachbedingung (Postcondition)</div>
+            <div class="form-field__value">Modal wartet auf Eingabe</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Keine spezifischen Testdaten</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Seite 9: TC-F03.F1.2 ═══ -->
+    <article class="doc-a4" id="sheet-9" aria-labelledby="tc-TC-F03-F1-2-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="tc-TC-F03-F1-2-heading">Testfall — TC-F03.F1.2</h1>
+          <p>Exakt 20€ Bestellwert (Versandkosten = 0€)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Seite:</strong> 9 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F03.F1.2</span>
+            <span class="doc-tc-card__title">Exakt 20€ Bestellwert (Versandkosten = 0€)</span>
+          </div>
+
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Testtechnik</div>
+              <div class="form-field__value"><span class="tech-badge">BVA</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierbar</div>
+              <div class="form-field__value auto-yes">Ja</div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testfrage (aus HA4)</div>
+            <div class="form-field__value">Wird bei exakt 20€ korrekt 0€ Versandkosten berechnet?</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Requirements Traceability</div>
+            <div class="form-field__value"><span class="cell-req">AC1</span> (siehe HA4 Testbasis-Analyse A4)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingung (Precondition)</div>
+            <div class="form-field__value">Warenkorb ist leer · Nutzer ist eingeloggt</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testschritte (Test Steps)</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+              <li>Produkt(e) in Warenkorb legen bis Gesamtsumme exakt 20,00€ beträgt</li>
+              <li>/checkout Seite aufrufen</li>
+              <li>Versandkosten-Anzeige prüfen</li>
+              <li>Gesamtsumme prüfen (Warenkorb + Versand)</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis (Expected Result)</div>
+            <div class="form-field__value">Versandkosten = 0€ (Freigrenze erreicht) · Anzeige zeigt '0€' oder 'Versandkostenfrei' · Gesamtsumme = 20,00€</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Nachbedingung (Postcondition)</div>
+            <div class="form-field__value">Warenkorb bereit für Checkout mit 0€ Versand</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Warenkorb-Summe: exakt 20,00€</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Seite 10: TC-F03.F3.2 ═══ -->
+    <article class="doc-a4" id="sheet-10" aria-labelledby="tc-TC-F03-F3-2-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="tc-TC-F03-F3-2-heading">Testfall — TC-F03.F3.2</h1>
+          <p>Artikel entfernen unter 20€ (BUG: Update fehlt)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 22.03.2026<br>
+          <strong>Seite:</strong> 10 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F03.F3.2</span>
+            <span class="doc-tc-card__title">Artikel entfernen unter 20€ (BUG: Update fehlt)</span>
+          </div>
+
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Testtechnik</div>
+              <div class="form-field__value"><span class="tech-badge">UC</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierbar</div>
+              <div class="form-field__value auto-yes">Ja</div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testfrage (aus HA4)</div>
+            <div class="form-field__value">Aktualisieren sich Versandkosten beim Entfernen (<20€)?</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Requirements Traceability</div>
+            <div class="form-field__value"><span class="cell-req">AC3</span> (siehe HA4 Testbasis-Analyse A4)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingung (Precondition)</div>
+            <div class="form-field__value">Warenkorb mit Produkten > 20€ (Versand aktuell 0€)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testschritte (Test Steps)</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+              <li>Warenkorb-Summe > 20€ (Versandkosten = 0€ angezeigt)</li>
+              <li>Produkt entfernen, sodass Summe < 20€</li>
+              <li>Versandkosten-Anzeige beobachten (ohne Page Reload)</li>
+              <li>BUG: Versandkosten bleiben bei 0€ statt 5€</li>
+              <li>Seite neu laden (F5) und erneut prüfen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis (Expected Result)</div>
+            <div class="form-field__value">ERWARTETES Verhalten: Versandkosten sollten auf 5€ aktualisieren · AKTUELLES Verhalten (BUG): Versandkosten bleiben 0€ bis Reload · Nach Reload: Korrekt 5€</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Nachbedingung (Postcondition)</div>
+            <div class="form-field__value">BUG dokumentiert: Update nur unidirektional</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Start-Summe: > 20€ · Nach Entfernen: < 20€</div>
+          </div>
+        </div>
+
+        <div class="doc-info-box doc-info-box--warn" role="note" aria-labelledby="korrektur-tc-f03-f32-heading">
+          <p><strong id="korrektur-tc-f03-f32-heading" class="doc-info-box__title">Korrekturhinweis zur Testfall-Formulierung (22.03.2026)</strong></p>
+          <p><strong>Testtypen im Überblick:</strong></p>
+          <ul class="doc-steps">
+            <li>Funktionaler Test: Prüft ob Feature anforderungsgemäß funktioniert (Expected = SOLL, Actual = wird beim Testen ermittelt)</li>
+            <li>Regressionstest: Prüft ob ein behobener Bug wirklich gefixt ist (nach dem Fix)</li>
+            <li>Bug-Reproduktionstest: Stellt einen bekannten Bug systematisch nach (vor dem Fix)</li>
+          </ul>
+          <p>Problem bei diesem TC: Die Formulierung des &quot;Expected Result&quot; vermischt SOLL-Verhalten und IST-Verhalten (Bug). Das ist ungewöhnlich und entstand, weil der Bug bereits in HA4 entdeckt wurde. Professionell korrekt: Expected Result enthält nur die Anforderung, unabhängig von bekannten Bugs.</p>
+          <p>Die ursprüngliche Formulierung bleibt aus Transparenzgründen erhalten und dokumentiert den Lernprozess.</p>
+          <p>Testergebnis (HA6): Trotz der verwirrenden Formulierung ist das Ergebnis eindeutig ❌ FAIL - das System verhält sich nicht anforderungsgemäß. Bug-Dokumentation erfolgt im Testprotokoll und Fehlerbericht (HA6).</p>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+    <!-- ═══ Seite 11: TC-F03.F4.1 ═══ -->
+    <article class="doc-a4" id="sheet-11" aria-labelledby="tc-TC-F03-F4-1-heading">
+      <div class="doc-header">
+        <div class="doc-header__left">
+          <h1 id="tc-TC-F03-F4-1-heading">Testfall — TC-F03.F4.1</h1>
+          <p>Gast versucht Checkout (Login-Pflicht)</p>
+        </div>
+        <div class="doc-header__right">
+          <strong>Projekt:</strong> GroceryMate (HA5)<br>
+          <strong>Erstellt:</strong> 16.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Seite:</strong> 11 von 11
+        </div>
+      </div>
+
+      <div class="doc-body">
+        <div class="doc-tc-card">
+          <div class="doc-tc-card__header">
+            <span class="doc-tc-card__id">TC-F03.F4.1</span>
+            <span class="doc-tc-card__title">Gast versucht Checkout (Login-Pflicht)</span>
+          </div>
+
+          <div class="doc-grid-3">
+            <div class="form-field">
+              <div class="form-field__label">Testtechnik</div>
+              <div class="form-field__value"><span class="tech-badge">UC</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Priorität</div>
+              <div class="form-field__value"><span class="prio-badge prio-badge--high">Hoch</span></div>
+            </div>
+            <div class="form-field">
+              <div class="form-field__label">Automatisierbar</div>
+              <div class="form-field__value auto-yes">Ja</div>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testfrage (aus HA4)</div>
+            <div class="form-field__value">Ist /checkout ohne Login zugänglich?</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Requirements Traceability</div>
+            <div class="form-field__value"><span class="cell-req">AC4</span> (siehe HA4 Testbasis-Analyse A4)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Vorbedingung (Precondition)</div>
+            <div class="form-field__value">Nutzer ist NICHT eingeloggt (Gast)</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testschritte (Test Steps)</div>
+            <div class="form-field__value">
+              <ol class="doc-steps">
+              <li>Als Gast (ohne Login) URL /checkout direkt aufrufen</li>
+              <li>Systemverhalten beobachten</li>
+              <li>Prüfen, ob Weiterleitung erfolgt</li>
+              <li>Ziel-URL prüfen</li>
+              </ol>
+            </div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Erwartetes Ergebnis (Expected Result)</div>
+            <div class="form-field__value">Gast wird zu /auth weitergeleitet · Kein Zugriff auf Checkout ohne Login · Login-Aufforderung erscheint</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Nachbedingung (Postcondition)</div>
+            <div class="form-field__value">Gast auf /auth Seite, nicht auf /checkout</div>
+          </div>
+
+          <div class="form-field">
+            <div class="form-field__label">Testdaten</div>
+            <div class="form-field__value">Kein Login · Direktaufruf /checkout</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="doc-footer">
+        <span>Masterschool QA-Track · Testfallentwurf nach ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+      </div>
+    </article>
+
+  </div>
+</main>
+
+<footer>
+  <p class="source-note">HA5 · Masterschool QA-Track · Testfallentwurf nach CTFL 4.0.2 · Kap. 4.2 · ISO/IEC/IEEE 29119-3 · grocerymate.masterschool.com · A4-Dokumentmodus</p>
+</footer>
+
+</body>
+</html>

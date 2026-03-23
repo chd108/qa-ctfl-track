@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="HA5 Testkonzept GroceryMate: Testplanung, Testfälle, Risiken nach CTFL 4.0.2 / IEEE 829-2008.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>HA5 Testkonzept — QA Lernwebseite</title>
+  <style>
+    :root {
+      --fs: 14px;
+      --ok: #4a7c59; --ok-bg: #cde8d2;
+      --warn: #9c6a2a; --warn-bg: #f0dfc0;
+      --note: #2a547c; --note-bg: #c4d8ee;
+    }
+    body { font-size: var(--fs); padding: 0 3rem 4rem; max-width: 1400px; margin: 0 auto; }
+    .meta-bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 1rem; padding: .6rem 1rem; margin-bottom: 1.25rem; background: rgba(255,255,255,0.5); border: 1px solid var(--bdr); border-radius: 8px; font-size: 0.9rem; color: var(--mid); }
+    .meta-bar strong { color: var(--text); }
+    .info-box { padding: .9rem 1.1rem; margin: 1rem 0; background: var(--warn-bg); border-left: 4px solid var(--warn); border-radius: 4px; font-size: 0.9rem; line-height: 1.55; }
+    .info-box--note { background: var(--note-bg); border-left-color: var(--note); }
+    .info-box__title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--warn); margin-bottom: .5rem; }
+    .info-box--note .info-box__title { color: var(--note); }
+    .info-box__content { font-size: 13px; line-height: 1.6; }
+    .info-box ul { margin: .5rem 0 0 1.2rem; list-style: disc; }
+    .info-box li { margin: .3rem 0; }
+    .info-box p { margin: .5rem 0; }
+    .info-box p:first-child { margin-top: 0; }
+    .info-box p:last-child { margin-bottom: 0; }
+    .section { margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
+    .section__header { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; padding: .7rem 1.2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: rgba(0,0,0,0.04); border-bottom: 1px solid var(--bdr); }
+    .section__num { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); white-space: nowrap; }
+    .section__title { font-size: 15px; font-weight: 700; }
+    .section__body { padding: 1rem 1.2rem; background: rgba(255,255,255,0.35); }
+    .section__intro { font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1.25rem; }
+    .section__subhead { font-size: 1.1rem; margin: 1.5rem 0 .75rem; color: var(--text); }
+    .section__subhead:first-child { margin-top: 0; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem; margin: 1rem 0; }
+    .card { background: rgba(255,255,255,0.6); border-radius: 8px; padding: 1rem 1.2rem; border: 1px solid var(--bdr); }
+    .card__title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
+    .card__body { font-size: 13px; line-height: 1.6; color: var(--mid); }
+    .card__body ul { margin: .5rem 0 0 1.2rem; list-style: disc; }
+    .card__body li { margin: .3rem 0; }
+    .ref-table { overflow-x: auto; margin: 1rem 0; }
+    .ref-table table { width: 100%; border-collapse: collapse; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12.5px; background: rgba(255,255,255,0.5); }
+    .ref-table thead th { font-size: 10px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); padding: .6rem 1rem; border-bottom: 2px solid var(--bdr); text-align: left; background: var(--e6); }
+    .ref-table tbody tr { border-bottom: 1px solid var(--bdr); }
+    .ref-table tbody tr:last-child { border-bottom: none; }
+    .ref-table tbody td { padding: .6rem 1rem; vertical-align: top; line-height: 1.5; color: var(--mid); }
+    .ref-table tbody td:first-child { font-weight: 700; color: var(--text); }
+    .plan-list { margin: 1rem 0; }
+    .plan-item { background: rgba(255,255,255,0.6); border-left: 4px solid var(--e2); padding: 1rem 1.2rem; margin-bottom: .8rem; border-radius: 6px; }
+    .plan-item__id { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--note); margin-bottom: .3rem; }
+    .plan-item__title { font-size: 14px; font-weight: 700; color: var(--text); margin-bottom: .5rem; }
+    .plan-item__desc { font-size: 13px; line-height: 1.6; color: var(--mid); }
+    .risk-list { margin: 1rem 0; }
+    .risk-item { display: grid; grid-template-columns: 200px 1fr; gap: 1rem; padding: 1rem; background: rgba(255,255,255,0.5); border-radius: 6px; margin-bottom: .8rem; border-left: 4px solid var(--warn); }
+    @media (max-width: 600px) { .risk-item { grid-template-columns: 1fr; } }
+    .risk-item__label { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 12px; font-weight: 700; color: var(--text); }
+    .risk-item__content { font-size: 13px; line-height: 1.6; color: var(--mid); }
+    .tag { display: inline-block; padding: .18rem .6rem; border-radius: 4px; font-size: 10px; font-weight: 700; letter-spacing: .05em; text-transform: uppercase; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; }
+    .tag--ok { background: var(--ok-bg); color: var(--ok); }
+    .tag--warn { background: var(--warn-bg); color: var(--warn); }
+    .tag--note { background: var(--note-bg); color: var(--note); }
+    .section--e1 .section__header { background: var(--e1); }
+    .section--e2 .section__header { background: var(--e2); }
+    .section--e3 .section__header { background: var(--e3); }
+    .section--e4 .section__header { background: var(--e4); }
+    .section--e5 .section__header { background: var(--e5); }
+    .section--e6 .section__header { background: var(--e6); }
+    .timeline-table thead th { background: var(--e1); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="02c-teststufen.html">Teststufen</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html" class="current">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Testkonzept</h1>
+    <p>HA5 · Testkonzept für GroceryMate im Kontext von CTFL Kapitel 5</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Seitenkontext">
+    <span><strong>Projekt:</strong> GroceryMate</span>
+    <span><strong>Features:</strong> GM-F01 · GM-F02 · GM-F03</span>
+    <span><strong>Testfälle:</strong> 9 TC (3 je Feature) · 100&nbsp;% automatisierbar</span>
+    <span><strong>Testkonzept A4:</strong> 5 Seiten (<a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a>)</span>
+    <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829-2008</span>
+    <span><strong>Status:</strong> <span class="tag tag--ok">Bereit für Review</span></span>
+    <span><strong>Erstellt:</strong> 16.03.2026</span>
+    <span><strong>Letzte Aktualisierung:</strong> 21.03.2026</span>
+  </div>
+
+  <div class="info-box info-box--note" role="note">
+    <div class="info-box__title">Reihenfolge und Begrifflichkeit — CTFL vs. IEEE/ISO</div>
+    <div class="info-box__content">
+      <p><strong>Reihenfolge.</strong> Im <strong>CTFL 4.0.2</strong> kommt Kapitel 4 (Testentwurf inkl. Testfälle) vor Kapitel 5 (Testplanung inkl. <strong>Testkonzept</strong>) — das ist <strong>didaktisch</strong> gedacht (zuerst Techniken, dann Management), nicht die Prozessvorgabe eines Normenwerks. <strong>IEEE 829-2008</strong> und <strong>ISO/IEC/IEEE 29119-3</strong> beschreiben die <strong>praktische Reihenfolge</strong>: <strong>Test Plan</strong> (strategische Planung, inhaltlich dem Testkonzept vergleichbar) → <strong>Test Design Specification</strong> (Testfallentwurf) → <strong>Test Case Specification</strong> (konkrete Testfälle). In Projekten gilt typisch <strong>Testkonzept → Testfallentwurf</strong>, oft iterativ. <strong>Fazit:</strong> Beide Reihenfolgen sind korrekt — mit unterschiedlichem Zweck (Lernpfad vs. Norm/Praxis).</p>
+      <p><strong>Begrifflichkeit.</strong> <strong>Testkonzept</strong> ist die offizielle deutsche Bezeichnung im <strong>CTFL</strong> (Kap. 5.1.1, ISTQB); <strong>Test Plan</strong> ist der übliche <strong>IEEE</strong>-Begriff im Englischen. Die D.A.CH-Lokalisierung trennt so das <strong>Dokument</strong> (Testkonzept) von der <strong>Aktivität</strong> Testplanung (Kap. 5.1). Bis CTFL 3.0 wurde teils „Testplan“ für das Dokument genutzt; ab CTFL 3.1 ist <strong>Testkonzept</strong> geführt. In der Praxis sind beide Formulierungen verständlich; für ISTQB-Prüfungen ist <strong>Testkonzept</strong> die maßgebliche deutsche Form.</p>
+    </div>
+  </div>
+
+  <div class="info-box info-box--note" role="note" aria-labelledby="ha5-bridge-heading">
+    <div class="info-box__title" id="ha5-bridge-heading">Dokumentenkette — HA5 Testfallentwurf → HA5 Testkonzept</div>
+    <div class="info-box__content">
+      <p>Dieses Testkonzept plant die <strong>Ausführung</strong> der <strong>9 Testfälle</strong> aus dem <a href="04c-ha5-testfallentwurf.html"><strong>HA5 Testfallentwurf</strong></a> — inhaltlich identisch mit <a href="04d-ha5-testfallentwurf-a4.html"><strong>HA5 Testfallentwurf A4</strong></a>. <strong>3&nbsp;Testfälle pro Feature</strong>, <strong>100&nbsp;% automatisierbar</strong>. Sie bauen auf der <strong>HA4-Testbasis</strong> auf; hier geht es um die Planung nach CTFL Kap.&nbsp;5.</p>
+    </div>
+  </div>
+
+  <section class="section section--e1" aria-labelledby="sec1-heading">
+    <div class="section__header">
+      <span class="section__num">Sektion 1</span>
+      <h2 class="section__title" id="sec1-heading">Produktanalyse</h2>
+    </div>
+    <div class="section__body">
+      <p class="section__intro">Analyse des Testobjekts und der neuen Features, die im nächsten Release getestet werden sollen.</p>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Was ist eine Produktanalyse?</div>
+        <div class="info-box__content">Die Produktanalyse beschreibt, <strong>was getestet wird</strong>. Sie umfasst: Zielsetzung des Produkts, Zielgruppe, technische Spezifikationen und die Features, die im Test-Scope liegen. Basis: Testbasis-Analyse aus HA4 (CTFL Kap. 4.1). Die Produktanalyse ist Teil des Testkonzepts (CTFL Kap. 5.1.1).</div>
+      </div>
+      <h3 class="section__subhead">Zielsetzung</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1rem;">GroceryMate ist ein Online-Lebensmittel-Shop, der Nutzern ermöglicht, Produkte zu suchen, zu bewerten, in den Warenkorb zu legen und zu bestellen. Das nächste Release erweitert die Plattform um drei neue Funktionen: ein Bewertungssystem, eine Altersverifikation für alkoholische Produkte und dynamische Versandkosten basierend auf dem Bestellwert.</p>
+      <h3 class="section__subhead">Zielgruppe (Nutzerbasis)</h3>
+      <div class="card-grid">
+        <div class="card"><div class="card__title">Primäre Nutzer</div><div class="card__body">Endkunden ab 18 Jahren (aufgrund Altersverifikation für Alkohol), die online Lebensmittel bestellen möchten.</div></div>
+        <div class="card"><div class="card__title">Registrierte Nutzer</div><div class="card__body">Eingeloggte Nutzer mit erweiterten Funktionen: Bewertungen schreiben, Checkout durchführen, Versandkosten sehen.</div></div>
+        <div class="card"><div class="card__title">Gast-Nutzer</div><div class="card__body">Nicht eingeloggte Besucher mit eingeschränktem Zugriff: Produkte ansehen, aber keine Bewertungen abgeben oder bestellen.</div></div>
+      </div>
+      <h3 class="section__subhead">Hardware- und Software-Spezifikationen</h3>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col">Kategorie</th><th scope="col">Spezifikation</th></tr></thead>
+          <tbody>
+            <tr><td>Browser</td><td>Chrome, Firefox, Safari, Edge (neueste 2 Versionen)</td></tr>
+            <tr><td>Geräte</td><td>Desktop (Windows, macOS), Mobile (iOS, Android), Tablets</td></tr>
+            <tr><td>Backend</td><td>grocerymate.masterschool.com, Session-Management (Cookie)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="section__subhead">Produktfunktionen (Features im Test-Scope)</h3>
+      <div class="plan-list">
+        <div class="plan-item"><div class="plan-item__id">GM-F01</div><div class="plan-item__title">Bewertungssystem für Produkte</div><div class="plan-item__desc">Eingeloggte Nutzer können Produkte mit 1–5 Sternen bewerten und optionales schriftliches Feedback hinterlassen. Max. eine Bewertung pro Nutzer und Produkt. Durchschnittsbewertung wird auf Produktseite angezeigt.</div></div>
+        <div class="plan-item"><div class="plan-item__id">GM-F02</div><div class="plan-item__title">Altersverifikation für alkoholische Produkte</div><div class="plan-item__desc">Beim ersten Aufruf der Kategorie /store erscheint ein Geburtsdatum-Modal. Nutzer unter 18 Jahren erhalten keinen Zugriff. Verifikation ist session-basiert (kein erneutes Modal innerhalb der Session).</div></div>
+        <div class="plan-item"><div class="plan-item__id">GM-F03</div><div class="plan-item__title">Versandkosten</div><div class="plan-item__desc">Versandkosten entfallen ab einem Bestellwert ≥20€ (Freigrenze). Darunter fallen Versandkosten von 5€ an. Live-Update bei Warenkorbänderungen (⚠️ Bug: nur unidirektional ↑). Nur für eingeloggte Nutzer im Checkout sichtbar.</div></div>
+      </div>
+      <h3 class="section__subhead">Testfälle gesamt</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1rem;"><strong>9 ausgearbeitete Testfälle</strong> für GM-F01 · GM-F02 · GM-F03 (je 3) — vollständig spezifiziert, <strong>priorisierte Teilmenge</strong> aus der HA4-Testbasis (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>, inhaltlich zur <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a>). Techniken: EP, BVA, UC (CTFL Kap.&nbsp;4.2). <strong>Referenz:</strong> Web <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> · A4 <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (11&nbsp;Seiten: 2&nbsp;Übersichtsseiten + 9&nbsp;TC). Weitere Testfragen aus HA4 bleiben für eine Erweiterung des Testsets verfügbar.<br><span style="font-size:12px;color:var(--soft)">Abgleich mit ISO/IEC/IEEE 29119-3 / IEEE&nbsp;829: dokumentierter Umfang entspricht dem aktuellen <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> (Web) und <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>.</span></p>
+    </div>
+  </section>
+
+  <section class="section section--e2" aria-labelledby="sec2-heading">
+    <div class="section__header">
+      <span class="section__num">Sektion 2</span>
+      <h2 class="section__title" id="sec2-heading">Teststrategie</h2>
+    </div>
+    <div class="section__body">
+      <p class="section__intro">Festlegung der Testarten, Priorisierung und des Testumfangs (Scope).</p>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Was ist eine Teststrategie?</div>
+        <div class="info-box__content">Die Teststrategie beschreibt <strong>wie getestet wird</strong>. Sie definiert:<ul><li>Welche Testarten kommen zum Einsatz? (Funktional, Regression, Performance, etc.)</li><li>Was liegt im Scope, was außerhalb?</li><li>Welche Features haben Priorität?</li></ul>Referenz: CTFL Kap. 5 (Testmanagement)</div>
+      </div>
+      <h3 class="section__subhead">Testumfang (Scope)</h3>
+      <div class="card-grid">
+        <div class="card"><div class="card__title">Im Umfang enthalten</div><div class="card__body"><ul><li>Bewertungssystem (GM-F01): 1–5 Sterne, Textfeld optional, Login-Pflicht, Duplikatprüfung</li><li>Altersverifikation (GM-F02): Geburtsdatum-Modal, 18+ Prüfung, Session-Persistenz</li><li>Versandkosten (GM-F03): Freigrenze, Live-Update, Login-Pflicht</li><li>Integration mit bestehenden Features: Login/Registrierung, Warenkorb, Checkout</li></ul></div></div>
+        <div class="card"><div class="card__title">Außerhalb des Umfangs</div><div class="card__body"><ul><li>Backend-Datenbankoperationen ohne UI-Einfluss</li><li>Zahlungsabwicklung (separate Schnittstelle)</li><li>E-Mail-Benachrichtigungen</li><li>Performance-Tests unter extremer Last (&gt;10.000 gleichzeitige Nutzer)</li></ul></div></div>
+      </div>
+      <h3 class="section__subhead">Testarten (CTFL 4.0.2 Kap. 2.2.2 — vier kanonische Testarten)</h3>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col">Testart</th><th scope="col">Beschreibung</th><th scope="col">Anwendung</th></tr></thead>
+          <tbody>
+            <tr><td>Funktionaler Test</td><td>Prüfung, ob Features gemäß Spezifikation funktionieren</td><td>Alle 3 Features (GM-F01 · GM-F02 · GM-F03)</td></tr>
+            <tr><td>Nicht-funktionaler Test</td><td>Performance, Usability, Kompatibilität</td><td>GM-F03 (Versandkosten-Update) · GM-F02 (Modal)</td></tr>
+            <tr><td>Black-Box-Test</td><td>Test auf Basis von Spezifikation ohne Codekenntnis</td><td>Alle Features</td></tr>
+            <tr><td>White-Box-Test</td><td>Nicht angewendet (kein Code-Zugriff im Scope)</td><td>—</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="section__subhead">Testentwurfs-Techniken (CTFL 4.0.2, Kap. 4.2)</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;">Äquivalenzklassenbildung (EP) · Grenzwertanalyse (BVA) · Anwendungsfalltest (UC).</p>
+      <h3 class="section__subhead">Hauptrisiken und Maßnahmen</h3>
+      <div class="risk-list">
+        <div class="risk-item"><div class="risk-item__label">Risiko: Versandkosten Live-Update (unidirektional)</div><div class="risk-item__content"><strong>Details:</strong> Bekannter Bug aus HA4 (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>): Update nur bei Erhöhung, nicht bei Reduktion.<br><strong>Maßnahme:</strong> Abgedeckt durch <strong>TC-F03.F3.2</strong> (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>). Workaround: Seite neu laden.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Zeichenlimit Bewertungs-Textfeld unklar</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt in HA4 (F6/AC6; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Offene Punkte &amp; Abstimmung (HA4 / PO)“.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: 2. Bewertung — Block oder Update?</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt in HA4 (Grenzfälle; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Offene Punkte &amp; Abstimmung (HA4 / PO)“.</div></div>
+      </div>
+      <h3 class="section__subhead">Offene Punkte &amp; Abstimmung (HA4 / PO)</h3>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Restrisiken &amp; Vorgehen</div>
+        <div class="info-box__content">Offene Punkte aus der Testbasis-Analyse (HA4) sind derzeit nicht vollständig spezifiziert. Risikobewertung und Priorisierung erfolgen in Abstimmung mit dem Product Owner.</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e3" aria-labelledby="sec3-heading">
+    <div class="section__header">
+      <span class="section__num">Sektion 3</span>
+      <h2 class="section__title" id="sec3-heading">Testziele</h2>
+    </div>
+    <div class="section__body">
+      <p class="section__intro">Messbare Ziele, die durch die Tests erreicht werden sollen.</p>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Was sind Testziele?</div>
+        <div class="info-box__content">Testziele beschreiben <strong>was erreicht werden soll</strong>. Sie sind messbar (z.&nbsp;B. „100&nbsp;% der geplanten Testfälle ausgeführt“, „≥89&nbsp;% bestanden“) und dienen als Erfolgskriterium für den Testprozess. Referenz: CTFL Kap. 5.1 (Testplanung).</div>
+      </div>
+      <h3 class="section__subhead">Primäre Ziele</h3>
+      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Alle 3 Features funktionieren gemäß Spezifikation</li>
+        <li>Akzeptanzkriterien aus Testbasis-Analyse erfüllt</li>
+        <li>Versandkosten Live-Update: bekannter Bug (nur ↑, nicht ↓) wird durch <strong>TC-F03.F3.2</strong> abgedeckt (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>); vollständig bidirektionales Verhalten als Soll langfristig</li>
+      </ul>
+      <h3 class="section__subhead">Erwartete Ergebnisse (messbar)</h3>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col" style="width:60%">Metrik</th><th scope="col">Ziel</th></tr></thead>
+          <tbody>
+            <tr><td>Testfall-Ausführungsquote</td><td>100&nbsp;%</td></tr>
+            <tr><td>Testfall-Erfolgsquote</td><td>≥ 89&nbsp;%</td></tr>
+            <tr><td>Kritische Fehler (Severity 1)</td><td>0</td></tr>
+            <tr><td>Hochprioritäre Fehler (Severity 2)</td><td>Alle behoben</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e4" aria-labelledby="sec4-heading">
+    <div class="section__header">
+      <span class="section__num">Sektion 4</span>
+      <h2 class="section__title" id="sec4-heading">Testkriterien</h2>
+    </div>
+    <div class="section__body">
+      <p class="section__intro">Entry, Exit und Suspension Criteria — wann wird mit Tests begonnen, wann abgeschlossen, wann pausiert?</p>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Was sind Testkriterien?</div>
+        <div class="info-box__content">Testkriterien legen fest, <strong>unter welchen Bedingungen getestet wird</strong>:<ul><li><strong>Entry Criteria:</strong> Voraussetzungen, um mit Tests zu starten</li><li><strong>Exit Criteria:</strong> Bedingungen, um Tests abzuschließen</li><li><strong>Suspension Criteria:</strong> Gründe, um Tests zu pausieren</li></ul>Referenz: CTFL Kap. 5.2 (Testüberwachung und -steuerung)</div>
+      </div>
+      <h3 class="section__subhead">Entry Criteria (Startkriterien)</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, die erfüllt sein müssen, bevor Tests beginnen können:</strong></p>
+      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>grocerymate.masterschool.com erreichbar</li>
+        <li><a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a> und <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> (HA4) vorhanden</li>
+        <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> und <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> vorhanden</li>
+        <li>Test-Account funktioniert</li>
+        <li>Browser (Chrome) installiert</li>
+      </ul>
+      <h3 class="section__subhead">Exit Criteria (Abnahmekriterien)</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Bedingungen, die erfüllt sein müssen, um Tests abzuschließen:</strong></p>
+      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1.5rem;">
+        <li>Alle 9 TCs gemäß <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> und <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> ausgeführt (100&nbsp;%)</li>
+        <li>Mindestens 8/9 TCs bestanden (≥89&nbsp;%)</li>
+        <li>Alle Fehler dokumentiert</li>
+        <li>Testprotokoll vollständig</li>
+        <li>Abschlussbericht erstellt</li>
+      </ul>
+      <h3 class="section__subhead">Suspension Criteria (Aussetzungskriterien)</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;"><strong>Gründe, um Tests zu pausieren:</strong></p>
+      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem;">
+        <li>grocerymate.masterschool.com nicht erreichbar</li>
+        <li>Login funktioniert nicht</li>
+        <li>Kritischer Blocker (z.B. /store nicht zugänglich)</li>
+        <li>Gesundheitliche Gründe</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--e5" aria-labelledby="sec5-heading">
+    <div class="section__header">
+      <span class="section__num">Sektion 5</span>
+      <h2 class="section__title" id="sec5-heading">Ressourcenplanung</h2>
+    </div>
+    <div class="section__body">
+      <p class="section__intro">Personal, Hardware, Software und Tools, die für die Tests benötigt werden.</p>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Warum Ressourcenplanung?</div>
+        <div class="info-box__content">Eine klare Ressourcenplanung stellt sicher, dass alle benötigten Mittel (Personal, Geräte, Tools) verfügbar sind. Ohne ausreichende Ressourcen können Tests nicht erfolgreich durchgeführt werden.</div>
+      </div>
+      <h3 class="section__subhead">Personal &amp; Rollen</h3>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col">Rolle</th><th scope="col">Verantwortung</th><th scope="col">Personen</th></tr></thead>
+          <tbody>
+            <tr><td>QA Tester (Student)</td><td>Testdurchführung (9 TCs laut <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>), Bug-Dokumentation, Abschlussbericht</td><td>1</td></tr>
+            <tr><td>Reviewer (Mentor)</td><td>Review Testprotokoll, Feedback (optional, minimal)</td><td>0–1</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="section__subhead">Hardware</h3>
+      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1rem;">
+        <li>Desktop/Laptop (Windows, macOS oder Linux)</li>
+        <li>Optional: Smartphone für Mobile-Tests</li>
+      </ul>
+      <h3 class="section__subhead">Software &amp; Tools</h3>
+      <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem;">
+        <li>Browser: Chrome (primär)</li>
+        <li>Dokumentation: Excel oder vergleichbare Office-Anwendung</li>
+        <li>Screenshots: Snipping Tool / macOS Screenshots</li>
+        <li>Optional: Browser DevTools (Debugging)</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="section section--e6" aria-labelledby="sec6-heading">
+    <div class="section__header">
+      <span class="section__num">Sektion 6</span>
+      <h2 class="section__title" id="sec6-heading">Testumgebung</h2>
+    </div>
+    <div class="section__body">
+      <p class="section__intro">Beschreibung der technischen Umgebung, in der Tests durchgeführt werden.</p>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Was ist eine Testumgebung?</div>
+        <div class="info-box__content">Die Testumgebung ist die Infrastruktur, auf der getestet wird. Sie sollte möglichst nah an der Produktionsumgebung sein, um realistische Testergebnisse zu erzielen. Referenz: CTFL Kap. 5.3 (Testumgebung).</div>
+      </div>
+      <h3 class="section__subhead">Umgebungen</h3>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col">Umgebung</th><th scope="col">Zweck</th><th scope="col">URL</th></tr></thead>
+          <tbody>
+            <tr><td>LIVE</td><td>Produktiv-System (manuelle Funktionstests)</td><td>grocerymate.masterschool.com</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="section__subhead">Testdaten</h3>
+      <div class="card-grid">
+        <div class="card"><div class="card__title">Konten &amp; Produkte</div><div class="card__body"><ul><li>1 Test-Account (eingeloggt)</li><li>Gast-Modus (nicht eingeloggt)</li><li>Produkte auf grocerymate.masterschool.com (bereits vorhanden)</li></ul></div></div>
+        <div class="card"><div class="card__title">Szenarien</div><div class="card__body"><ul><li>Warenkorb: &lt;20€, =20€, &gt;20€</li><li>Geburtsdaten: 17 J. 364 T., =18 J., &gt;18 J.</li><li>Browser: Chrome (primär), optional Firefox/Safari</li></ul></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section section--e1" aria-labelledby="sec7-heading">
+    <div class="section__header">
+      <span class="section__num">Sektion 7</span>
+      <h2 class="section__title" id="sec7-heading">Zeitplan und Aufwandsschätzung</h2>
+    </div>
+    <div class="section__body">
+      <p class="section__intro">Zeitlicher Ablauf der Testaktivitäten mit Start- und Enddaten sowie geschätztem Aufwand.</p>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Warum ein Zeitplan?</div>
+        <div class="info-box__content">Ein Zeitplan gibt dem Team Struktur und ermöglicht es, Fortschritt zu messen. Aufwandsschätzungen helfen bei der Ressourcenplanung und identifizieren Engpässe frühzeitig.</div>
+      </div>
+      <h3 class="section__subhead">Zeitplan</h3>
+      <div class="ref-table">
+        <table class="timeline-table">
+          <thead>
+            <tr><th scope="col">Aktivität</th><th scope="col">Datum</th><th scope="col">Umgebung</th><th scope="col">Verantwortlich</th><th scope="col">Aufwand (h)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Testvorbereitung + Testdurchführung GM-F01 (3 TC)</td><td>Fr 20.03.26</td><td>LIVE</td><td>QA Tester</td><td>4</td></tr>
+            <tr><td>Testdurchführung GM-F02 + GM-F03 (6 TC)</td><td>Sa 21.03.26</td><td>LIVE</td><td>QA Tester</td><td>5</td></tr>
+            <tr><td>Bug-Dokumentation + Testabschlussbericht</td><td>Mo 23.03.26</td><td>—</td><td>QA Tester</td><td>3</td></tr>
+            <tr><td colspan="4" style="text-align: right; font-weight: 700;">GESAMT:</td><td style="font-weight: 700;">12 h</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-top: 1rem;">Testzeitraum: 20.–23.03.2026 · 12 Stunden · 3 Tage · Solo-Projekt</p>
+    </div>
+  </section>
+
+  <section class="section section--e2" aria-labelledby="sec8-heading">
+    <div class="section__header">
+      <span class="section__num">Sektion 8</span>
+      <h2 class="section__title" id="sec8-heading">Test-Deliverables (Liefergegenstände)</h2>
+    </div>
+    <div class="section__body">
+      <p class="section__intro">Dokumente und Artefakte, die während des Testprozesses erstellt und geliefert werden.</p>
+      <div class="info-box" role="note">
+        <div class="info-box__title">Was sind Deliverables?</div>
+        <div class="info-box__content">Deliverables sind die <strong>messbaren Ergebnisse</strong> des Testprozesses. Sie dokumentieren, was getestet wurde, welche Fehler gefunden wurden und ob die Testziele erreicht wurden. Referenz: CTFL Kap. 5.4 (Test-Deliverables).</div>
+      </div>
+      <h3 class="section__subhead">Dokumente</h3>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col">Deliverable</th><th scope="col">Beschreibung</th><th scope="col">Verantwortlich</th></tr></thead>
+          <tbody>
+            <tr><td>Testkonzept (HA5)</td><td>Vollständiger Testplan mit 8 Abschnitten (IEEE 829-2008 / CTFL 4.0.2); A4-Dokument <strong>5&nbsp;Seiten</strong> (<a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a>)</td><td>QA Tester</td></tr>
+            <tr><td>Testbasis-Analyse (HA4)</td><td>3 Features (GM-F01 · GM-F02 · GM-F03) nach ISO/IEC/IEEE 29119-3 — <a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a>, Web <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> (bereits vorhanden)</td><td>QA Tester</td></tr>
+            <tr><td>Testfallentwurf (HA5)</td><td>9 vollständig spezifizierte TCs (3 je Feature), 100&nbsp;% automatisierbar, Traceability zu HA4 — <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a>, <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (11&nbsp;Seiten) (bereits vorhanden)</td><td>QA Tester</td></tr>
+            <tr><td>Testprotokoll</td><td>Durchführungs-Log der 9 TCs mit Status (Pass/Fail), Screenshots bei Fehlern — <a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></td><td>QA Tester</td></tr>
+            <tr><td>Bug-Reports</td><td>Fehlerberichte mit Screenshots, Steps to Reproduce, Severity (falls Fehler gefunden) — <a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></td><td>QA Tester</td></tr>
+            <tr><td>Testabschlussbericht</td><td>Zusammenfassung: Ausführungsrate, Pass-Rate, gefundene Fehler, Empfehlungen — <a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></td><td>QA Tester</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h3 class="section__subhead">Metriken (im Abschlussbericht)</h3>
+      <div class="card-grid" style="margin-top: .75rem;">
+        <div class="card"><div class="card__title">Test Execution Rate (%)</div><div class="card__body">Anteil ausgeführter Testfälle — <strong>Ziel: 100&nbsp;%</strong></div></div>
+        <div class="card"><div class="card__title">Pass Rate (%)</div><div class="card__body">Anteil bestandener Testfälle — <strong>Ziel: ≥ 89&nbsp;%</strong></div></div>
+        <div class="card"><div class="card__title">Defect Density</div><div class="card__body">Anzahl gefundener Fehler je Feature</div></div>
+        <div class="card"><div class="card__title">Defect Distribution</div><div class="card__body">Verteilung der Fehler nach Schweregrad (Severity 1–4)</div></div>
+        <div class="card"><div class="card__title">Retest Success Rate (%)</div><div class="card__body">Anteil erfolgreich nachgetesteter Fehler</div></div>
+        <div class="card"><div class="card__title">Coverage (Akzeptanzkriterien %)</div><div class="card__body">Abgedeckte AC — <strong>Ziel: 100&nbsp;%</strong></div></div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <p class="source-note">HA5 · Masterschool QA-Track · Testkonzept nach CTFL 4.0.2 / IEEE 829-2008 · grocerymate.masterschool.com</p>
+</footer>
+
+</body>
+</html>

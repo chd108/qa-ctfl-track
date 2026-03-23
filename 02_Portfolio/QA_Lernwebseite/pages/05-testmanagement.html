@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Testmanagement nach ISTQB CTFL Kap. 5 — Testplanung, Risiko, Überwachung, Konfigurations- und Fehlermanagement.">
+<title>Testmanagement — QA Lernwebseite</title>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/subpage.css">
+<style>
+:root {
+  --extra:#8a5a6a;
+  --ok:#4a7c59;   --ok-bg:#cde8d2;
+  --warn:#9c6a2a; --warn-bg:#f0dfc0;
+  --note:#2a547c; --note-bg:#c4d8ee;
+  --exam:#7a5a1a; --exam-bg:#f0e4c0;
+  --s1:#3a5a7a; --s1-bg:#ccd8e8;
+  --s2:#7a3a3a; --s2-bg:#e8cccc;
+  --s3:#4a5a2a; --s3-bg:#d8e0c0;
+  --s4:#5a4a2a; --s4-bg:#e0d8c0;
+  --s5:#5a2a4a; --s5-bg:#e8c8d8;
+  --risk:#7a3a3a; --risk-bg:#e8cccc;
+  --plan:#3a5a7a; --plan-bg:#ccd8e8;
+  --met:#4a5a2a;  --met-bg:#d8e0c0;
+  --cfg:#5a4a2a;  --cfg-bg:#e0d8c0;
+  --bug:#5a2a4a;  --bug-bg:#e8c8d8;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+body{padding:0 3rem 5rem;max-width:1440px;margin:0 auto;font-size:14px}
+.section-label{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--soft);margin-bottom:.8rem;margin-top:2.2rem;padding-bottom:.4rem;border-bottom:1px solid var(--bdr)}
+.meta-bar{display:flex;align-items:center;gap:2rem;flex-wrap:wrap;background:rgba(255,255,255,0.55);border:1px solid var(--bdr);border-radius:8px;padding:.6rem 1.2rem;margin-bottom:1.8rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;color:var(--mid)}
+.meta-bar strong{color:var(--text)}
+.aha-box{background:var(--note-bg);border-left:3px solid var(--note);border-radius:0 8px 8px 0;padding:.75rem 1.1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12.5px;color:var(--note);line-height:1.6;margin-top:.8rem}
+.aha-box strong{font-weight:700}
+.warn-box{background:var(--warn-bg);border-left:3px solid var(--warn);border-radius:0 8px 8px 0;padding:.75rem 1.1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12.5px;color:var(--warn);line-height:1.6;margin-top:.8rem}
+.warn-box strong{font-weight:700}
+.k3-box{background:var(--s5-bg);border-left:3px solid var(--s5);border-radius:0 8px 8px 0;padding:.75rem 1.1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12.5px;color:var(--s5);line-height:1.6;margin-top:.8rem}
+.k3-box strong{font-weight:700}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.three-col{display:grid;grid-template-columns:1fr 1fr 1fr;gap:1rem}
+.four-col{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+@media(max-width:1200px){.four-col{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:900px){.two-col,.three-col{grid-template-columns:1fr}}
+.card{border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.card-head{padding:.65rem 1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif}
+.card-head .num{font-size:10px;font-weight:700;letter-spacing:.13em;text-transform:uppercase;opacity:.6}
+.card-head .name{font-size:14px;font-weight:700;margin-top:.15rem;line-height:1.2}
+.card-head .en{font-size:11px;font-style:italic;opacity:.65;font-family:Georgia,serif;margin-top:.1rem}
+.s1{background:var(--s1-bg);color:var(--s1)}
+.s2{background:var(--s2-bg);color:var(--s2)}
+.s3{background:var(--s3-bg);color:var(--s3)}
+.s4{background:var(--s4-bg);color:var(--s4)}
+.s5{background:var(--s5-bg);color:var(--s5)}
+.s1 .num,.s1 .en,.s2 .num,.s2 .en,.s3 .num,.s3 .en,.s4 .num,.s4 .en,.s5 .num,.s5 .en{opacity:.7}
+.sl-s1{border-left:3px solid var(--s1);padding-left:.6rem;color:var(--s1)}
+.sl-s2{border-left:3px solid var(--s2);padding-left:.6rem;color:var(--s2)}
+.sl-s3{border-left:3px solid var(--s3);padding-left:.6rem;color:var(--s3)}
+.sl-s4{border-left:3px solid var(--s4);padding-left:.6rem;color:var(--s4)}
+.sl-s5{border-left:3px solid var(--s5);padding-left:.6rem;color:var(--s5)}
+.card-body{background:rgba(255,255,255,0.38);border-top:1px solid rgba(0,0,0,0.06);padding:.8rem .95rem;font-size:12.5px;color:var(--mid);line-height:1.55}
+.card-body strong{color:var(--text)}
+.tag-row{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.5rem}
+.stag{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11.5px;padding:.15rem .5rem;border-radius:4px;border:1px solid rgba(0,0,0,0.08);line-height:1.35}
+.t-exam{background:var(--exam-bg);color:var(--exam);font-weight:700}
+.h-proj{background:var(--s1-bg);color:var(--s1)} .h-prod{background:var(--s2-bg);color:var(--s2)}
+.vtable-wrap{border-radius:10px;overflow:hidden;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.vtable-head{background:var(--text);color:#f0ece6;padding:.6rem 1.1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:700}
+table.vtable{width:100%;border-collapse:collapse;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;background:rgba(255,255,255,0.38)}
+table.vtable thead th{padding:.45rem 1rem;border-bottom:2px solid var(--bdr);border-right:1px solid var(--bdr);font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;text-align:left}
+table.vtable thead .h-proj{background:var(--plan-bg);color:var(--plan)}
+table.vtable thead .h-prod{background:var(--risk-bg);color:var(--risk)}
+table.vtable thead th:last-child{border-right:none}
+table.vtable tbody tr{border-bottom:1px solid var(--bdr)}
+table.vtable tbody tr:last-child{border-bottom:none}
+table.vtable tbody tr:hover{background:rgba(255,255,255,0.3)}
+table.vtable tbody td{padding:.45rem 1rem;vertical-align:top;line-height:1.5;border-right:1px solid var(--bdr);color:var(--mid);font-size:12px}
+table.vtable tbody td:last-child{border-right:none}
+table.vtable tbody td:first-child{font-weight:700;color:var(--text);white-space:nowrap;width:16%}
+.risk-matrix-wrap{background:rgba(255,255,255,0.45);border:1px solid var(--bdr);border-radius:10px;padding:1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+.risk-matrix{display:grid;grid-template-columns:40px repeat(3,1fr);grid-template-rows:auto repeat(3,1fr);gap:4px;max-width:480px;margin:.8rem auto 0}
+.rm-label{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--soft);display:flex;align-items:center;justify-content:center;text-align:center}
+.rm-cell{border-radius:6px;padding:.5rem .4rem;text-align:center;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:10.5px;font-weight:700;min-height:52px;display:flex;align-items:center;justify-content:center}
+.rm-low{background:#d0e8d0;color:#2a5a2a}
+.rm-med{background:#f0e0b0;color:#6a4a10}
+.rm-high{background:#f0c0b0;color:#6a1a1a}
+.quad-grid{display:grid;grid-template-columns:auto 1fr 1fr;grid-template-rows:auto 1fr 1fr;gap:4px;max-width:580px;margin:.6rem auto 0}
+.quad-axis{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--soft);display:flex;align-items:center;justify-content:center;padding:.3rem}
+.quad-cell{border-radius:8px;padding:.7rem .8rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;line-height:1.45}
+.quad-cell .qnum{font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;margin-bottom:.2rem;opacity:.7}
+.quad-cell .qname{font-size:12px;font-weight:700;margin-bottom:.3rem;line-height:1.2}
+.q1{background:var(--s1-bg);color:var(--s1)}
+.q2{background:var(--s1-bg);color:var(--s1);opacity:.85}
+.q3{background:var(--s1-bg);color:var(--s1);opacity:.7}
+.q4{background:var(--s1-bg);color:var(--s1);opacity:.55}
+.pyramid-wrap{background:rgba(255,255,255,0.45);border:1px solid var(--bdr);border-radius:10px;padding:1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.05)}
+.schaetz-grid{display:grid;grid-template-columns:1fr 1fr;gap:.8rem}
+@media(max-width:800px){.schaetz-grid{grid-template-columns:1fr}}
+.bug-form{background:rgba(255,255,255,0.5);border:1.5px solid rgba(90,42,74,0.2);border-radius:10px;padding:1.2rem;box-shadow:0 2px 12px rgba(0,0,0,0.06)}
+.bug-form-title{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--s5);margin-bottom:1rem;padding-bottom:.5rem;border-bottom:1px solid rgba(106,42,74,0.15)}
+.bug-row{display:grid;grid-template-columns:160px 1fr;gap:.4rem 1rem;align-items:start;padding:.35rem 0;border-bottom:1px solid rgba(0,0,0,0.04)}
+.bug-row:last-child{border-bottom:none}
+.bug-key{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;color:var(--text);padding-top:.1rem}
+.bug-val{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;color:var(--mid);line-height:1.5}
+.bug-val em{color:var(--s5);font-style:normal;font-weight:600}
+.metric-group{background:rgba(255,255,255,0.4);border:1px solid var(--bdr);border-radius:8px;padding:.7rem .9rem}
+.metric-group-head{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--s3);margin-bottom:.5rem}
+.metric-item{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--mid);padding:.2rem 0;border-bottom:1px solid rgba(0,0,0,0.04);line-height:1.4}
+.metric-item:last-child{border-bottom:none}
+.metric-item strong{color:var(--text)}
+.kriterien-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+@media(max-width:800px){.kriterien-grid{grid-template-columns:1fr}}
+.praxis-box{background:rgba(255,255,255,0.55);border:1px solid rgba(0,0,0,0.09);border-left:3px solid var(--ok);border-radius:0 8px 8px 0;padding:.65rem 1rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;color:var(--mid);line-height:1.6;margin-top:.7rem}
+.praxis-box .pb-label{font-size:9.5px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--ok);margin-bottom:.3rem}
+.praxis-box em{color:var(--text);font-style:normal}
+</style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="02c-teststufen.html">Teststufen</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html" class="current">Testmanagement</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Testmanagement</h1>
+    <p>ISTQB CTFL Lehrplan v4.0.2 &middot; Kapitel 5 &middot; Testplanung &middot; Risikomanagement &middot; Testüberwachung &middot; Konfigurationsmanagement &middot; Fehlermanagement</p>
+  </header>
+</div>
+
+<main id="main">
+<div class="meta-bar" aria-label="Seitenkontext">
+  <span><strong>5.1 Testplanung:</strong> FL-5.1.1 (K2) &middot; FL-5.1.2 (K1) &middot; FL-5.1.3 (K2) &middot; FL-5.1.4 (K3) &middot; FL-5.1.5 (K3) &middot; FL-5.1.6 (K1) &middot; FL-5.1.7 (K2)</span>
+  <span><strong>5.2 Risiko:</strong> FL-5.2.1–5.2.4 (K1/K2)</span>
+  <span><strong>5.3 Überwachung:</strong> FL-5.3.1–5.3.3 (K1/K2)</span>
+  <span><strong>5.4 KM:</strong> FL-5.4.1 (K2)</span>
+  <span><strong>5.5 Fehlermanagement:</strong> FL-5.5.1 <em style="color:var(--extra)">(K3 &mdash; anwenden!)</em></span>
+</div>
+
+<div class="section-label sl-s1">&#9312; Testkonzept &mdash; CTFL Kap. 5.1 &middot; FL-5.1.1 (K2)</div>
+
+<div class="two-col" style="margin-bottom:1rem">
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Was ist ein Testkonzept?</div>
+      <div class="name">Das zentrale Planungsdokument</div>
+      <div class="en">Test Plan &mdash; ISO/IEC/IEEE 29119-3</div>
+    </div>
+    <div class="card-body">
+      Ein Testkonzept <strong>beschreibt Testziele, Ressourcen und Prozesse</strong> f&uuml;r ein Testprojekt. Es erf&uuml;llt vier Kernfunktionen:<br><br>
+      <strong>1.</strong> Dokumentiert Mittel und Zeitplan zur Erreichung der Testziele<br>
+      <strong>2.</strong> Hilft sicherzustellen, dass Testaktivit&auml;ten festgelegte Kriterien erf&uuml;llen<br>
+      <strong>3.</strong> Dient als Kommunikationsmittel mit Teammitgliedern &amp; Stakeholdern<br>
+      <strong>4.</strong> Zeigt dass das Testen sich an Testrichtlinie und Teststrategie h&auml;lt &mdash; oder erkl&auml;rt warum es davon abweicht
+      <div class="tag-row">
+        <span class="stag">ISO/IEC/IEEE 29119-3</span>
+        <span class="stag">Kommunikationsmittel</span>
+        <span class="stag">Planungsgrundlage</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Typische Inhalte</div>
+      <div class="name">Was steht im Testkonzept?</div>
+    </div>
+    <div class="card-body" style="font-size:12px">
+      <div class="tag-row" style="margin-top:0">
+        <span class="stag">Kontext des Testens (Umfang, Ziele, Testbasis)</span>
+        <span class="stag">Annahmen &amp; Einschr&auml;nkungen</span>
+        <span class="stag">Stakeholder (Rollen, Verantwortlichkeiten, Schulungsbedarf)</span>
+        <span class="stag">Kommunikation (Formen &amp; H&auml;ufigkeit)</span>
+        <span class="stag">Risikoverzeichnis (Produkt- &amp; Projektrisiken)</span>
+        <span class="stag">Testansatz (Stufen, Arten, Verfahren, Liefergegenst&auml;nde)</span>
+        <span class="stag">Eingangskriterien &amp; Endekriterien</span>
+        <span class="stag">Unabh&auml;ngigkeit des Testens</span>
+        <span class="stag">Zu erhebende Metriken</span>
+        <span class="stag">Anforderungen an Testdaten &amp; Testumgebung</span>
+        <span class="stag">Budget &amp; Zeitplan</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="praxis-box"><div class="pb-label">In der Praxis</div>Dein Team soll ein neues Online-Banking-Portal testen. Bevor du anfängst, schreibst du ein Testkonzept: <em>Welche Module testest du? (Umfang)</em> — <em>Wer ist für Systemtests zuständig?</em> — <em>Welche Testumgebung braucht ihr?</em> — <em>Bis wann müssen alle kritischen Bugs geschlossen sein?</em> Das Testkonzept ist dein Vertrag mit dem Projektmanager: beide wissen danach was getestet wird, wann, mit welchen Ressourcen und was „fertig" bedeutet.</div>
+
+<div class="section-label sl-s1">&#9313; Eingangskriterien &amp; Endekriterien &mdash; CTFL Kap. 5.1 &middot; FL-5.1.3 (K2)</div>
+
+<div class="kriterien-grid" style="margin-bottom:.8rem">
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Eingangskriterien (Entry Criteria)</div>
+      <div class="name">Vorbedingungen f&uuml;r den Teststart</div>
+    </div>
+    <div class="card-body">
+      Definieren die Vorbedingungen f&uuml;r die Durchf&uuml;hrung einer bestimmten Aktivit&auml;t. Wenn nicht erf&uuml;llt: Aktivit&auml;t schwierig, aufwendiger als n&ouml;tig und risikobehafteter.<br><br>
+      <strong>Typische Beispiele:</strong>
+      <div class="tag-row">
+        <span class="stag">Verf&uuml;gbarkeit von Ressourcen (Personal, Werkzeuge, Umgebungen, Testdaten, Budget)</span>
+        <span class="stag">Verf&uuml;gbarkeit von Testmitteln (Testbasis, testbare Anforderungen, Testf&auml;lle)</span>
+        <span class="stag">Anf&auml;ngliche Qualit&auml;t des Testobjekts (Smoke-Test bestanden)</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Endekriterien (Exit Criteria)</div>
+      <div class="name">Abschlussbedingungen f&uuml;r den Teststop</div>
+    </div>
+    <div class="card-body">
+      Definieren was erreicht sein muss, bevor eine Testaktivit&auml;t als abgeschlossen gilt. Bildet die Basis f&uuml;r Go/No-Go-Entscheidungen.<br><br>
+      <strong>Typische Beispiele:</strong>
+      <div class="tag-row">
+        <span class="stag t-exam">Erreichter &Uuml;berdeckungsgrad</span>
+        <span class="stag t-exam">Anzahl ungel&ouml;ster Fehlerzust&auml;nde</span>
+        <span class="stag t-exam">Fehlerdichte unter Schwellwert</span>
+        <span class="stag t-exam">Anzahl fehlgeschlagener Testf&auml;lle</span>
+        <span class="stag t-exam">Zeit/Budget aufgebraucht (g&uuml;ltiges Endekriterium!)</span>
+        <span class="stag t-exam">In Agile: Definition of Done</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="aha-box">
+  <strong>Zusammenhang &mdash; Stufenverkettung:</strong> Die Endekriterien einer Teststufe sind typischerweise Teil der Eingangskriterien der n&auml;chsten Teststufe (Verbindung zu Kap. 2.2). Endekriterien bilden also die Brücke zwischen den Stufen &mdash; und müssen im Testkonzept definiert sein, bevor getestet wird, nicht danach.
+</div>
+<div class="praxis-box"><div class="pb-label">In der Praxis</div><em>Eingangskriterium Systemtest:</em> „Das Login-Modul hat den Komponententest bestanden und ist in der Staging-Umgebung deployed." — Wenn die Entwickler das Modul noch gar nicht geliefert haben, fängst du nicht an. Du würdest sonst auf einem halbfertigen System testen und deine Zeit verschwenden.<br><br><em>Endekriterium Systemtest:</em> „Alle Testfälle ausgeführt, 0 kritische Bugs offen, Anweisungsüberdeckung ≥ 80 %." — Erst wenn das erreicht ist, gibst du das System für den Abnahmetest frei. Das schützt dich davor, unter Druck zu früh freizugeben.</div>
+
+<div class="section-label sl-s1">&#9314; Iterations- &amp; Releaseplanung &mdash; CTFL Kap. 5.1 &middot; FL-5.1.2 (K1)</div>
+
+<div class="two-col" style="margin-bottom:.5rem">
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Releaseplanung</div>
+      <div class="name">Mehrere Iterationen &mdash; Produktperspektive</div>
+    </div>
+    <div class="card-body">
+      Sieht die Bereitstellung eines Produkts vor &middot; Definiert das Produkt-Backlog bzw. passt es an &middot; Kann die Verfeinerung gr&ouml;&szlig;erer User Stories in kleinere beinhalten.<br><br>
+      <strong>Beitrag des Testers:</strong> Risikobasierte Analyse des Releases &middot; Priorisierung von User Stories &middot; Einsch&auml;tzung der Testbarkeit &middot; Aufwandssch&auml;tzung f&uuml;r das Release.
+      <div class="tag-row"><span class="stag">Produkt-Backlog</span><span class="stag">User Story Verfeinerung</span><span class="stag">Testbarkeitseinsch&auml;tzung</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Iterationsplanung</div>
+      <div class="name">Eine Iteration &mdash; Sprintperspektive</div>
+    </div>
+    <div class="card-body">
+      Sieht das Ende einer einzelnen Iteration voraus &middot; Bef&auml;sst sich mit dem Iterations-Backlog &middot; Tester nehmen an der detaillierten Risikoanalyse teil.<br><br>
+      <strong>Beitrag des Testers:</strong> Detaillierte Risikoanalyse von User Stories &middot; Bestimmung der Testbarkeit &middot; Aufschluß&uuml;ber User Stories, Tasks und Features &middot; Testaufwandssch&auml;tzung je Story.
+      <div class="tag-row"><span class="stag">Iterations-Backlog</span><span class="stag">Story-Risikoanalyse</span><span class="stag">Sprint-Testplanung</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="section-label sl-s1">&#9315; Sch&auml;tzverfahren &mdash; CTFL Kap. 5.1 &middot; FL-5.1.4 (K3 &mdash; anwenden)</div>
+
+<div class="schaetz-grid">
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Metrikbasiert 1</div>
+      <div class="name">Sch&auml;tzung per Verh&auml;ltniszahlen</div>
+    </div>
+    <div class="card-body">
+      Zahlen aus fr&uuml;heren Projekten werden gesammelt &rarr; <strong>&bdquo;Standard&rdquo;-Verh&auml;ltniszahlen</strong> werden abgeleitet &rarr; diese Verh&auml;ltniszahlen werden auf das neue Projekt angewendet.<br><br>
+      <em>Beispiel:</em> Historisch: 40 Teststunden je 100 Funktionspunkte &rarr; Neues Projekt hat 250 FP &rarr; Sch&auml;tzung: 100 Teststunden.
+      <div class="tag-row"><span class="stag">Metrikbasiert</span><span class="stag">Historische Daten</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Metrikbasiert 2</div>
+      <div class="name">Extrapolation</div>
+    </div>
+    <div class="card-body">
+      Messungen werden <strong>so fr&uuml;h wie m&ouml;glich</strong> im laufenden Projekt durchgef&uuml;hrt. Wenn gen&uuml;gend Beobachtungen vorliegen, wird der Aufwand durch Extrapolation der Daten vorhergesagt.<br><br>
+      <em>Beispiel:</em> Nach 2 Sprints: Velocity = 30 Story Points/Sprint mit 15 Teststunden &rarr; 5 weitere Sprints &rarr; Sch&auml;tzung: 75 weitere Teststunden.
+      <div class="tag-row"><span class="stag">Metrikbasiert</span><span class="stag">Laufende Messung</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Expertenbasiert 1</div>
+      <div class="name">Breitband-Delphi</div>
+    </div>
+    <div class="card-body">
+      Iteratives Verfahren: Jeder Experte sch&auml;tzt <strong>allein</strong> den Aufwand &rarr; Ergebnisse werden geteilt &rarr; Diskussion &rarr; neue Einzelsch&auml;tzung &rarr; Wiederholung bis Konsens.<br><br>
+      Verhindert Group Thinking &middot; Alle Perspektiven flie&szlig;en ein &middot; Erfordert mehrere Runden.
+      <div class="tag-row"><span class="stag">Expertenbasiert</span><span class="stag">Iterativ</span><span class="stag">Kein Group Thinking</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Expertenbasiert 2</div>
+      <div class="name">Drei-Punkt-Sch&auml;tzung (PERT)</div>
+    </div>
+    <div class="card-body">
+      Drei Sch&auml;tzungen: <strong>a</strong> (optimistisch) &middot; <strong>m</strong> (wahrscheinlichste) &middot; <strong>b</strong> (pessimistisch)<br><br>
+      Formel: <strong>E = (a + 4m + b) / 6</strong><br>
+      Standardabweichung: <strong>SD = (b &minus; a) / 6</strong><br><br>
+      <em>Beispiel:</em> a=6, m=9, b=18 &rarr; E = (6 + 36 + 18) / 6 = <strong>10 h</strong> &middot; SD = 12/6 = 2 &rarr; Bereich: 8&ndash;12 h
+      <div class="tag-row"><span class="stag">Expertenbasiert</span><span class="stag">PERT-Formel</span><span class="stag t-exam">Pr&uuml;fungsrelevant K3</span></div>
+    </div>
+  </div>
+</div>
+
+<div id="risiko-planung"></div>
+
+<div class="praxis-box" style="margin-top:.8rem"><div class="pb-label">In der Praxis — Wann welches Verfahren?</div><em>Verhältniszahlen:</em> Dein Unternehmen macht seit Jahren E-Commerce-Projekte — ihr wisst aus Erfahrung: „Wir brauchen immer ca. 3 Teststunden pro Story Point." Neues Projekt hat 80 Story Points geplant → Schätzung: 240 Teststunden.<br><em>Extrapolation:</em> Ihr steckt mitten im Projekt, habt 3 Sprints gemessen — im Schnitt 12 Bugs pro Sprint. Noch 4 Sprints geplant → Prognose: ~48 weitere Bugs, entsprechend Testaufwand einplanen.<br><em>PERT:</em> Niemand weiß wie lang der Migrationstest dauert. Senior Tester sagen: Bestfall 3 Tage, realistisch 6, Worst Case 15. → E = (3 + 4×6 + 15) / 6 = <em>42/6 = 7 Tage</em>.</div>
+<div class="section-label sl-s1">&#9316; Priorisierung von Testf&auml;llen &mdash; CTFL Kap. 5.1 &middot; FL-5.1.5 (K3 &mdash; anwenden)</div>
+
+<div class="three-col" style="margin-bottom:.5rem">
+  <div class="card">
+    <div class="card-head s2">
+      <div class="num">Strategie 1</div>
+      <div class="name">Risikobasierte Priorisierung</div>
+    </div>
+    <div class="card-body">
+      Reihenfolge richtet sich nach den Ergebnissen der Risikoanalyse. Testf&auml;lle die die <strong>wichtigsten Risiken</strong> &uuml;berdecken werden zuerst ausgef&uuml;hrt.<br><br>
+      Vorteil: Kritischste Fehlerzust&auml;nde werden fr&uuml;h gefunden &middot; h&ouml;chste Risikoreduzierung bei fr&uuml;hem Abbruch.
+      <div class="tag-row"><span class="stag">Risikostufe bestimmt Reihenfolge</span><span class="stag">Shift-Left f&uuml;r kritische Tests</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Strategie 2</div>
+      <div class="name">&Uuml;berdeckungsbasierte Priorisierung</div>
+    </div>
+    <div class="card-body">
+      Reihenfolge richtet sich nach der <strong>&Uuml;berdeckung</strong> (z.B. Anweisungs&uuml;berdeckung). Testf&auml;lle die die h&ouml;chste &Uuml;berdeckung erreichen werden zuerst ausgef&uuml;hrt.<br><br>
+      Vorteil: Maximale Codeabdeckung bei minimalem Aufwand &middot; Sinnvoll wenn &Uuml;berdeckungsziele definiert sind.
+      <div class="tag-row"><span class="stag">&Uuml;berdeckungsgrad bestimmt Reihenfolge</span><span class="stag">Code Coverage zuerst</span></div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Strategie 3</div>
+      <div class="name">Anforderungsbasierte Priorisierung</div>
+    </div>
+    <div class="card-body">
+      Priorit&auml;t der Anforderungen wird auf die Testf&auml;lle &uuml;bertragen. Tests f&uuml;r die <strong>wichtigsten Anforderungen</strong> werden zuerst ausgef&uuml;hrt.<br><br>
+      Vorteil: Direkte Traceability Anforderung &harr; Test &middot; Sinnvoll wenn Stakeholder Anforderungspriori&shy;t&auml;ten gesetzt haben.
+      <div class="tag-row"><span class="stag">Anforderungspriori&shy;t&auml;t bestimmt Reihenfolge</span></div>
+    </div>
+  </div>
+</div>
+
+<div class="warn-box">
+  <strong>&#9888; Pr&uuml;fungshinweis K3:</strong> Ressourcenverf&uuml;gbarkeit kann die ideale Ausf&uuml;hrungsreihenfolge durchbrechen &mdash; z.B. wenn eine Testumgebung erst sp&auml;ter verf&uuml;gbar ist. Priorisierung ist also immer ein Kompromiss zwischen strategischer Reihenfolge und operativer Verf&uuml;gbarkeit.
+</div>
+<div class="praxis-box"><div class="pb-label">In der Praxis</div><em>Risikobasiert:</em> Beim Online-Banking ist der Zahlungsverkehr das höchste Risiko — also testest du Überweisungen zuerst, auch wenn die Kontoverwaltung technisch einfacher zu testen wäre.<br><em>Überdeckungsbasiert:</em> Euer Ziel ist 80 % Codepfade abgedeckt — du startest mit den Testfällen, die die meisten neuen Pfade aufmachen, statt mit denen, die sich überlappen.<br><em>Anforderungsbasiert:</em> Der Product Owner hat Anforderung R-001 „Login" als Priorität 1 markiert — also testest du Login-Szenarien als erstes, egal wie simpel sie technisch sind.</div>
+
+<div class="section-label sl-s1">&#9317; Testpyramide &amp; Testquadranten &mdash; CTFL Kap. 5.1 &middot; FL-5.1.6 (K1) / FL-5.1.7 (K2)</div>
+
+<div class="two-col">
+  <div class="pyramid-wrap">
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:.8rem">Testpyramide &mdash; Granularit&auml;t &amp; Automatisierungsgrad</div>
+    <svg viewBox="0 0 400 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto">
+      <polygon points="200,20 310,100 90,100" fill="#ddd0cc" stroke="#bbb0ac" stroke-width="1"/>
+      <text x="200" y="65" text-anchor="middle" font-family="Helvetica Neue,Arial" font-size="10" font-weight="700" fill="#6a2a2a">System- / E2E-Tests</text>
+      <text x="200" y="78" text-anchor="middle" font-family="Helvetica Neue,Arial" font-size="9" fill="#6a2a2a">Wenige, langsam, teuer</text>
+      <polygon points="90,104 310,104 340,168 60,168" fill="#f0e0b0" stroke="#c0a060" stroke-width="1"/>
+      <text x="200" y="134" text-anchor="middle" font-family="Helvetica Neue,Arial" font-size="12" font-weight="700" fill="#6a4a10">Integrationstests</text>
+      <text x="200" y="148" text-anchor="middle" font-family="Helvetica Neue,Arial" font-size="10" fill="#6a4a10">Mittel, mix manuell/auto</text>
+      <polygon points="60,172 340,172 370,240 30,240" fill="#cde8d2" stroke="#7ab090" stroke-width="1"/>
+      <text x="200" y="204" text-anchor="middle" font-family="Helvetica Neue,Arial" font-size="12" font-weight="700" fill="#2a5a3a">Komponenten- / Unit-Tests</text>
+      <text x="200" y="219" text-anchor="middle" font-family="Helvetica Neue,Arial" font-size="10" fill="#2a5a3a">Viele, schnell, g&uuml;nstig, automatisiert</text>
+      <text x="12" y="140" font-family="Helvetica Neue,Arial" font-size="9" fill="#7a9090" text-anchor="middle">&#8593;</text>
+      <text x="12" y="152" font-family="Helvetica Neue,Arial" font-size="8" fill="#7a9090" text-anchor="middle">langsam</text>
+      <text x="12" y="162" font-family="Helvetica Neue,Arial" font-size="8" fill="#7a9090" text-anchor="middle">teuer</text>
+      <text x="388" y="135" font-family="Helvetica Neue,Arial" font-size="9" fill="#7a9090" text-anchor="middle">&#8595;</text>
+      <text x="388" y="147" font-family="Helvetica Neue,Arial" font-size="8" fill="#7a9090" text-anchor="middle">schnell</text>
+      <text x="388" y="157" font-family="Helvetica Neue,Arial" font-size="8" fill="#7a9090" text-anchor="middle">g&uuml;nstig</text>
+    </svg>
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11.5px;color:var(--mid);margin-top:.6rem;line-height:1.5">Je h&ouml;her die Ebene, desto <strong style="color:var(--text)">geringer die Granularit&auml;t</strong>, geringer die Isolation und gr&ouml;&szlig;er die Ausf&uuml;hrungszeit. Shift-Left: m&ouml;glichst viele Tests in die untere Ebene verlagern &mdash; dort ist das Verh&auml;ltnis Testaufwand&thinsp;:&thinsp;Fehlerfindung am besten.</div>
+    <div class="praxis-box" style="margin-top:.7rem"><div class="pb-label">In der Praxis</div><em>Unten (Unit):</em> 300 JUnit-Tests für die Zinsenberechnungslogik — laufen in 8 Sekunden, finden sofort ob eine Formel falsch ist.<br><em>Mitte (Integration):</em> 40 API-Tests die prüfen ob Konto + Zahlung + Benachrichtigung korrekt zusammenspielen — laufen in 2 Minuten.<br><em>Oben (E2E):</em> 5 Selenium-Tests die einen kompletten Überweisungsflow im Browser durchklicken — laufen 20 Minuten, sind fragil, brechen bei jedem UI-Änderung. → Deshalb: so wenige wie möglich oben, so viele wie möglich unten.</div>
+  </div>
+
+  <div>
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:.8rem">Testquadranten (Brian Marick) &mdash; Agile Testklassifikation</div>
+    <div class="quad-grid">
+      <div></div>
+      <div class="quad-axis" style="background:var(--plan-bg);color:var(--plan);border-radius:6px">Team unterst&uuml;tzen</div>
+      <div class="quad-axis" style="background:var(--risk-bg);color:var(--risk);border-radius:6px">Produkt kritisch betrachten</div>
+      <div class="quad-axis" style="writing-mode:vertical-rl;transform:rotate(180deg);background:var(--met-bg);color:var(--met);border-radius:6px;font-size:9px;padding:.4rem .2rem">Gesch&auml;ftlich orientiert</div>
+      <div class="quad-cell q2">
+        <div class="qnum">Q2</div>
+        <div class="qname">Funktionale Tests</div>
+        Beispiele &middot; User-Story-Tests &middot; Prototypen &middot; API-Tests &middot; Simulationen. Manuell &amp; automatisiert.
+      </div>
+      <div class="quad-cell q3">
+        <div class="qnum">Q3</div>
+        <div class="qname">Explorative Tests</div>
+        Gebrauchstauglichkeit &middot; UAT. Benutzerorientiert, manuell, nicht automatisierbar.
+      </div>
+      <div class="quad-axis" style="writing-mode:vertical-rl;transform:rotate(180deg);background:var(--plan-bg);color:var(--plan);border-radius:6px;font-size:9px;padding:.4rem .2rem">Technologieorientiert</div>
+      <div class="quad-cell q1">
+        <div class="qnum">Q1</div>
+        <div class="qname">Komponenten- &amp; CIT-Tests</div>
+        Automatisiert, in CI integriert. Technische Qualit&auml;t.
+      </div>
+      <div class="quad-cell q4">
+        <div class="qnum">Q4</div>
+        <div class="qname">Nicht-funktionale Tests</div>
+        Smoke-Tests &middot; Performance &middot; Sicherheit. H&auml;ufig automatisiert.
+      </div>
+    </div>
+    <div class="aha-box" style="margin-top:.8rem">
+      <strong>Zusammenhang:</strong> Testquadranten zeigen dass Teststufen und Testarten orthogonal sind &mdash; dieselbe Idee wie in Kap. 2.2.2. Q1 und Q4 sind technologieorientiert (mehr automatisierbar), Q2 und Q3 sind gesch&auml;ftlich orientiert (mehr manuell). Kein Quadrant ist besser als die anderen &mdash; alle sind n&ouml;tig.
+    </div>
+    <div class="praxis-box" style="margin-top:.7rem"><div class="pb-label">In der Praxis</div><em>Q1 (technisch, Team unterstützen):</em> Entwickler schreibt JUnit-Test für jede neue Methode — läuft bei jedem Commit automatisch in Jenkins.<br><em>Q2 (geschäftlich, Team unterstützen):</em> Tester und PO schreiben gemeinsam Akzeptanztests in Gherkin: „Given ein eingeloggter Nutzer, When er auf Überweisung klickt, Then…"<br><em>Q3 (geschäftlich, Produkt kritisch betrachten):</em> Usability-Tester lässt echte Nutzer das neue Banking-Dashboard ausprobieren — nicht automatisierbar, sehr wertvoll.<br><em>Q4 (technisch, Produkt kritisch betrachten):</em> Lasttest mit JMeter: 10.000 parallele Logins — hält das System stand?</div>
+  </div>
+</div>
+
+<div id="risiko"></div>
+<div class="section-label sl-s2">&#9318; Risikomanagement &mdash; CTFL Kap. 5.2 &middot; FL-5.2.1&ndash;5.2.4 (K1/K2)</div>
+
+<div class="two-col" style="margin-bottom:1rem">
+  <div>
+    <div class="card" style="margin-bottom:.8rem">
+      <div class="card-head s2">
+        <div class="num">Risikodefinition</div>
+        <div class="name">Risikostufe = Wahrscheinlichkeit &times; Schadensausma&szlig;</div>
+      </div>
+      <div class="card-body">
+        Ein Risiko ist ein <strong>potenzielles Ereignis / Gefahr / Bedrohung</strong>, dessen Eintreten eine nachteilige Auswirkung verursacht.<br><br>
+        Zwei Attribute: <strong>Eintrittswahrscheinlichkeit</strong> (Wert zwischen 0&ndash;1) &middot; <strong>Schadensausma&szlig;</strong> (Folgen des Eintretens)<br><br>
+        Risikostufe = Eintrittswahrscheinlichkeit &times; Schadensausma&szlig; &mdash; je h&ouml;her, desto wichtiger die Behandlung.
+        <div class="tag-row">
+          <span class="stag">ISO 31000</span>
+          <span class="stag">Quantitativ oder qualitativ bewertbar</span>
+        </div>
+        <div class="praxis-box" style="margin-top:.7rem"><div class="pb-label">In der Praxis</div><em>Hohes Risiko:</em> Zahlungsmodul — Wahrscheinlichkeit eines Fehlers: mittel, Schadensausmaß: kritisch (Kundengeld verloren, Reputationsschaden, Bußgelder) → hohe Risikostufe, intensiv testen.<br><em>Niedriges Risiko:</em> Fußzeile mit Firmenadresse — Wahrscheinlichkeit falsch: gering, Schadensausmaß: minimal → niedrige Risikostufe, minimaler Testaufwand.</div>
+      </div>
+    </div>
+    <div class="risk-matrix-wrap">
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:.4rem">Risikomatrix &mdash; Eintrittswahrscheinlichkeit &times; Schadensausma&szlig;</div>
+      <div class="risk-matrix">
+        <div class="rm-label"></div>
+        <div class="rm-label">Gering</div>
+        <div class="rm-label">Mittel</div>
+        <div class="rm-label">Hoch</div>
+        <div class="rm-label" style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:8px">Hoch</div>
+        <div class="rm-cell rm-med">Mittel</div>
+        <div class="rm-cell rm-high">Hoch</div>
+        <div class="rm-cell rm-high" style="background:#c04040;color:#fff">Kritisch</div>
+        <div class="rm-label" style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:8px">Mittel</div>
+        <div class="rm-cell rm-low">Niedrig</div>
+        <div class="rm-cell rm-med">Mittel</div>
+        <div class="rm-cell rm-high">Hoch</div>
+        <div class="rm-label" style="writing-mode:vertical-rl;transform:rotate(180deg);font-size:8px">Gering</div>
+        <div class="rm-cell rm-low">Minimal</div>
+        <div class="rm-cell rm-low">Niedrig</div>
+        <div class="rm-cell rm-med">Mittel</div>
+      </div>
+      <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:10px;color:var(--soft);text-align:center;margin-top:.4rem">Zeilen = Eintrittswahrscheinlichkeit &middot; Spalten = Schadensausma&szlig;</div>
+    </div>
+  </div>
+  <div>
+    <div class="vtable-wrap">
+      <div class="vtable-head">Projektrisiken vs. Produktrisiken &mdash; FL-5.2.2 (K2)</div>
+      <table class="vtable">
+        <thead>
+          <tr>
+            <th>Aspekt</th>
+            <th class="h-proj">Projektrisiken</th>
+            <th class="h-prod">Produktrisiken</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Bezug</td><td style="color:var(--plan)">Management &amp; Steuerung des Projekts</td><td style="color:var(--risk)">Qualit&auml;tsmerkmale des Produkts (ISO 25010)</td></tr>
+          <tr><td>Organisatorisch</td><td style="color:var(--plan)">Verz&ouml;gerungen &middot; ungenaue Sch&auml;tzungen &middot; Kostenk&uuml;rzungen</td><td style="color:var(--risk)">&mdash;</td></tr>
+          <tr><td>Personell</td><td style="color:var(--plan)">Unzureichende F&auml;higkeiten &middot; Konflikte &middot; Personalmangel</td><td style="color:var(--risk)">&mdash;</td></tr>
+          <tr><td>Technisch</td><td style="color:var(--plan)">Scope Creep &middot; unzureichende Werkzeuge</td><td style="color:var(--risk)">Fehlende Funktionalit&auml;t &middot; falsche Berechnungen &middot; Sicherheitsl&uuml;cken</td></tr>
+          <tr><td>Lieferant</td><td style="color:var(--plan)">Lieferausfall &middot; Konkurs des Unterst&uuml;tzers</td><td style="color:var(--risk)">&mdash;</td></tr>
+          <tr><td>Auswirkung</td><td style="color:var(--plan)">Zeitplan &middot; Budget &middot; Projektumfang</td><td style="color:var(--risk)">Unzufriedenheit &middot; Einnahmenverlust &middot; Schaden f&uuml;r Dritte &middot; K&ouml;rperliche Sch&auml;den</td></tr>
+        </tbody>
+      </table>
+      <div class="praxis-box" style="margin-top:.7rem"><div class="pb-label">In der Praxis</div><em>Projektrisiko:</em> Euer Datenbankexperte fällt zwei Wochen vor dem Go-Live aus — das ist ein personelles Projektrisiko. Auswirkung: Testzeitplan verschiebt sich, Budget steigt. Das hat nichts mit der Qualität des Produkts zu tun.<br><em>Produktrisiko:</em> Das Passwort-Reset-Formular sendet E-Mails auch an falsche Adressen — das ist ein Produktrisiko. Auswirkung: Datenschutzverstoß, Nutzerfrust, mögliche Bußgelder.</div>
+    </div>
+    <div class="card" style="margin-top:.8rem">
+      <div class="card-head s2">
+        <div class="num">Produktrisikosteuerung &mdash; FL-5.2.4 (K2)</div>
+        <div class="name">Reaktionsm&ouml;glichkeiten nach der Analyse</div>
+      </div>
+      <div class="card-body" style="font-size:12px">
+        <div class="tag-row" style="margin-top:0">
+          <span class="stag">Risikominderung durch Testen</span>
+          <span class="stag">Risikoakzeptanz</span>
+          <span class="stag">Risiko&uuml;bertragung (Versicherung)</span>
+          <span class="stag">Notfallplan</span>
+          <span class="stag">Geeignete Tester &amp; Unabh&auml;ngigkeit</span>
+          <span class="stag">Reviews &amp; statische Analysen</span>
+          <span class="stag">Geeignete Testverfahren &amp; &Uuml;berdeckungsgrade</span>
+          <span class="stag">Dynamische Tests inkl. Regressionstests</span>
+        </div>
+        <div class="praxis-box" style="margin-top:.7rem"><div class="pb-label">In der Praxis</div><em>Risikominderung durch Testen:</em> Zahlungsmodul bekommt extra Testfälle, Penetrationstest und Code-Review — weil das Risiko zu hoch ist um es zu akzeptieren.<br><em>Risikoakzeptanz:</em> Die Dark-Mode-Darstellung in einem alten Browser hat einen leichten Farbfehler — Wahrscheinlichkeit niedrig, Schaden minimal → bewusste Entscheidung: nicht fixen, kein Test.<br><em>Risikoübertragung:</em> Gegen Datenverlust durch externe Angriffe wird eine Cyberversicherung abgeschlossen.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="ueberwachung"></div>
+<div class="section-label sl-s3">&#9319; Test&uuml;berwachung, Teststeuerung &amp; Metriken &mdash; CTFL Kap. 5.3 &middot; FL-5.3.1&ndash;5.3.3 (K1/K2)</div>
+
+<div class="two-col" style="margin-bottom:.8rem">
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Test&uuml;berwachung &amp; Teststeuerung</div>
+      <div class="name">&Uuml;berwachen &rarr; Informationen &rarr; Steuern</div>
+    </div>
+    <div class="card-body">
+      <strong>Test&uuml;berwachung:</strong> Sammeln von Informationen &uuml;ber das Testen &rarr; Testfortschritt bewerten &rarr; pr&uuml;fen ob Endekriterien erf&uuml;llt sind.<br><br>
+      <strong>Teststeuerung:</strong> Nutzt &Uuml;berwachungsinformationen &rarr; gibt Steuerungsma&szlig;nahmen vor:<br>
+      Neupriorisierung von Tests &middot; Neubewertung von Eingangskriterien &middot; Anpassung des Testzeitplans &middot; Hinzuf&uuml;gen neuer Ressourcen.<br><br>
+      <strong>Testabschluss:</strong> Konsolidierung von Erfahrungen &amp; Testmitteln an Projektmeilensteinen.
+      <div class="tag-row"><span class="stag">Kontinuierlicher Kreislauf</span><span class="stag">Basis: Testmetriken</span></div>
+      <div class="praxis-box" style="margin-top:.7rem"><div class="pb-label">In der Praxis</div>Es ist Woche 3 des Systemtests. Du überwachst: Von 200 Testfällen sind 140 ausgeführt (70 %), 12 kritische Bugs offen. Der Plan sagt: bis Ende Woche 3 sollten 90 % ausgeführt sein und max. 5 kritische Bugs offen. → Du steuerst: Du priorisierst die verbliebenen 60 Testfälle neu, eskalierst die 12 kritischen Bugs an den Entwickler und passt den Testzeitplan an.</div>
+    </div>
+  </div>
+  <div>
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:.5rem">Testmetriken &mdash; FL-5.3.1 (K1)</div>
+    <div style="display:grid;grid-template-columns:1fr 1fr;gap:.5rem">
+      <div class="metric-group">
+        <div class="metric-group-head">Projektfortschritt</div>
+        <div class="metric-item"><strong>Abgeschlossene Aufgaben</strong></div>
+        <div class="metric-item"><strong>Ressourcenverbrauch</strong></div>
+        <div class="metric-item"><strong>Testaufwand</strong></div>
+      </div>
+      <div class="metric-group">
+        <div class="metric-group-head">Testfortschritt</div>
+        <div class="metric-item"><strong>Testfallrealisierung</strong> (% fertig)</div>
+        <div class="metric-item"><strong>Ausgef&uuml;hrte / nicht ausgef&uuml;hrte</strong> Testf&auml;lle</div>
+        <div class="metric-item"><strong>Bestandene / fehlgeschlagene</strong> Testf&auml;lle</div>
+      </div>
+      <div class="metric-group">
+        <div class="metric-group-head">Produktqualit&auml;t</div>
+        <div class="metric-item"><strong>Verf&uuml;gbarkeit</strong></div>
+        <div class="metric-item"><strong>Reaktionszeit</strong></div>
+        <div class="metric-item"><strong>MTTF</strong> (Mean Time to Failure)</div>
+      </div>
+      <div class="metric-group">
+        <div class="metric-group-head">Fehlerzust&auml;nde</div>
+        <div class="metric-item"><strong>Anzahl / Priorit&auml;ten</strong> gefunden/behoben</div>
+        <div class="metric-item"><strong>Fehlerdichte</strong></div>
+        <div class="metric-item"><strong>DDP</strong> (Defect Detection Percentage)</div>
+      </div>
+      <div class="metric-group">
+        <div class="metric-group-head">Risiken &amp; &Uuml;berdeckung</div>
+        <div class="metric-item"><strong>Verbleibende Risikostufe</strong></div>
+        <div class="metric-item"><strong>Anforderungs&uuml;berdeckung</strong></div>
+        <div class="metric-item"><strong>Code&uuml;berdeckung</strong></div>
+      </div>
+      <div class="metric-group">
+        <div class="metric-group-head">Kosten</div>
+        <div class="metric-item"><strong>Kosten f&uuml;r das Testen</strong></div>
+        <div class="metric-item"><strong>Org. Kosten f&uuml;r Qualit&auml;t</strong></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="two-col" style="margin-bottom:.5rem">
+  <div class="card">
+    <div class="card-head s1">
+      <div class="num">Testfortschrittsbericht &mdash; w&auml;hrend Testen</div>
+      <div class="name">Test Progress Report</div>
+      <div class="en">ISO/IEC/IEEE 29119-3 &mdash; auch: Teststatusbericht</div>
+    </div>
+    <div class="card-body" style="font-size:12px">
+      Unterst&uuml;tzt laufende Steuerung &middot; Liefert gen&uuml;gend Informationen f&uuml;r &Auml;nderungen am Zeitplan, Ressourcen oder Testkonzept.<br><br>
+      <strong>Typische Inhalte:</strong>
+      <div class="tag-row" style="margin-top:.4rem">
+        <span class="stag">Testzeitraum</span>
+        <span class="stag">Testfortschritt (vor/hinter Zeitplan)</span>
+        <span class="stag">Hindernisse &amp; Umgehungsm&ouml;glichkeiten</span>
+        <span class="stag">Testmetriken</span>
+        <span class="stag">Neue/ver&auml;nderte Risiken</span>
+        <span class="stag">Geplante Tests f&uuml;r n&auml;chsten Zeitraum</span>
+      </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-head s4">
+      <div class="num">Testabschlussbericht &mdash; nach Teststufe/Projekt</div>
+      <div class="name">Test Completion Report</div>
+      <div class="en">ISO/IEC/IEEE 29119-3</div>
+    </div>
+    <div class="card-body" style="font-size:12px">
+      Wird erstellt wenn Projekt, Teststufe oder Testart abgeschlossen ist (idealerweise nach Erf&uuml;llung der Endekriterien).<br><br>
+      <strong>Typische Inhalte:</strong>
+      <div class="tag-row" style="margin-top:.4rem">
+        <span class="stag">Zusammenfassung durchgef&uuml;hrter Tests</span>
+        <span class="stag">Bewertung gegen Testkonzept (Ziele &amp; Endekriterien)</span>
+        <span class="stag t-exam">Abweichungen vom Testkonzept</span>
+        <span class="stag t-exam">Restrisiken &amp; unbehobene Fehlerzust&auml;nde</span>
+        <span class="stag">Metriken auf Basis Fortschrittsberichte</span>
+        <span class="stag">Lessons Learned</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="km"></div>
+<div class="section-label sl-s4">&#9320; Konfigurationsmanagement &mdash; CTFL Kap. 5.4 &middot; FL-5.4.1 (K2)</div>
+
+<div class="card" style="margin-bottom:.8rem">
+  <div class="card-head s4">
+    <div class="num">Was leistet KM f&uuml;r das Testen?</div>
+    <div class="name">Konfigurationsmanagement als Testdisziplin</div>
+  </div>
+  <div class="card-body">
+    KM identifiziert, steuert und verfolgt Arbeitsergebnisse: Testkonzepte &middot; Teststrategien &middot; Testbedingungen &middot; Testf&auml;lle &middot; Testskripte &middot; Testergebnisse &middot; Testprotokolle &middot; Testberichte.<br><br>
+    <strong>KM stellt sicher:</strong><br>
+    &bull; Alle Konfigurationselemente einschl. Testelemente werden eindeutig identifiziert, versionskontrolliert, auf &Auml;nderungen verfolgt und mit anderen Konfigurationselementen verkn&uuml;pft.<br>
+    &bull; Alle identifizierten Elemente der Dokumentation und Software werden als Testmittel eindeutig referenziert.<br>
+    &bull; Bei Freigabe: alle relevanten Konfigurationselemente des Testobjekts sind bekannt &rarr; Reproduzierbarkeit von Testergebnissen.<br>
+    &bull; R&uuml;ckkehr zu fr&uuml;heren Baselines m&ouml;glich (fr&uuml;here Testergebnisse reproduzieren).<br><br>
+    In CI/CD: KM ist Teil der automatisierten DevOps-Auslieferungskette.
+    <div class="tag-row">
+      <span class="stag">Versionskontrolle</span><span class="stag">Baseline</span><span class="stag">Reproduzierbarkeit</span><span class="stag">CI/CD Integration</span>
+    </div>
+    <div class="praxis-box" style="margin-top:.7rem"><div class="pb-label">In der Praxis</div>Stell dir vor, ein Bug taucht in der Produktion auf. Dein Chef fragt: „Welchen Testfall hast du dafür gehabt, und welche Version der Anwendung war das?" — Ohne KM kannst du das nicht beantworten. Mit KM kannst du sagen: <em>„Testfall TC-PAYMENT-012, Version 2.3.1, Testergebnis vom 10.11. — und hier ist der Log."</em><br><br>Oder in CI/CD: Jeder Merge in den Hauptbranch triggert automatisch die Testsuiten — das geht nur weil KM sicherstellt dass immer klar ist welcher Code zu welchen Tests gehört.</div>
+  </div>
+</div>
+
+<div id="fehler"></div>
+<div class="section-label sl-s5">&#9321; Fehlermanagement &amp; Fehlerbericht &mdash; CTFL Kap. 5.5 &middot; FL-5.5.1 (K3 &mdash; anwenden!)</div>
+
+<div class="k3-box" style="margin-bottom:1rem">
+  <strong>K3 &mdash; Anwenden:</strong> Du musst einen Fehlerbericht erstellen k&ouml;nnen &mdash; nicht nur beschreiben was drin steht, sondern ihn f&uuml;r eine gegebene Situation tats&auml;chlich ausf&uuml;llen. Alle Pflichtfelder m&uuml;ssen bekannt sein.
+</div>
+
+<div class="two-col">
+  <div>
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:.5rem">Ziele des Fehlermanagements</div>
+    <div class="card" style="margin-bottom:.8rem">
+      <div class="card-body">
+        <div class="tag-row" style="margin-top:0">
+          <span class="stag">Ausreichend Informationen f&uuml;r die Behebung liefern</span>
+          <span class="stag">Qualit&auml;t des Arbeitsergebnisses verfolgen</span>
+          <span class="stag">Ideen zur Prozessverbesserung liefern</span>
+        </div>
+        <br>
+        <strong>Fehlerbericht</strong> = auch bei Anomalien aus Reviews, statischen Analysen oder anderen Quellen &mdash; nicht nur dynamisches Testen. <em>Term: Fehlerbericht = Defect Report = Bug Report</em>
+      </div>
+    </div>
+  </div>
+  <div>
+    <div style="font-family:'Helvetica Neue',Helvetica,Arial,sans-serif;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--soft);margin-bottom:.5rem">Fehlerbericht &mdash; Musterbeispiel (K3)</div>
+    <div class="bug-form">
+      <div class="bug-form-title">Fehlerbericht / Defect Report</div>
+      <div class="bug-row"><span class="bug-key">Eindeutige Kennung</span><span class="bug-val"><em>BUG-2025-1042</em></span></div>
+      <div class="bug-row"><span class="bug-key">Titel</span><span class="bug-val"><em>Login schl&auml;gt fehl bei G&uuml;ltigen Sonderzeichen im Passwort</em></span></div>
+      <div class="bug-row"><span class="bug-key">Datum / Autor</span><span class="bug-val"><em>2025-11-14 &middot; Maria M. (Tester, QA-Team)</em></span></div>
+      <div class="bug-row"><span class="bug-key">Testobjekt / Umgebung</span><span class="bug-val"><em>Login-Service v2.3.1 &middot; Chrome 130 / Windows 11</em></span></div>
+      <div class="bug-row"><span class="bug-key">Kontext</span><span class="bug-val"><em>Testfall TC-LOGIN-007 &middot; Systemtest &middot; Sprint 8 &middot; &Auml;quivalenzklassentest</em></span></div>
+      <div class="bug-row"><span class="bug-key">Reproduktionsschritte</span><span class="bug-val"><em>1. Login-Seite aufrufen 2. Nutzer: test@beispiel.de 3. Passwort: P@ss#2024! eingeben 4. &bdquo;Anmelden&ldquo; klicken</em></span></div>
+      <div class="bug-row"><span class="bug-key">Erwartetes Ergebnis</span><span class="bug-val"><em>Erfolgreicher Login, Weiterleitung zur Startseite</em></span></div>
+      <div class="bug-row"><span class="bug-key">Tats&auml;chliches Ergebnis</span><span class="bug-val"><em>Fehlermeldung: &bdquo;Ung&uuml;ltiger Nutzername oder Passwort&ldquo; &mdash; Login verweigert</em></span></div>
+      <div class="bug-row"><span class="bug-key">Schweregrad / Priorit&auml;t</span><span class="bug-val"><em>Kritisch (Severity: Critical) &middot; Priorit&auml;t: Hoch</em></span></div>
+      <div class="bug-row"><span class="bug-key">Status</span><span class="bug-val"><em>Offen (Open)</em></span></div>
+      <div class="bug-row"><span class="bug-key">Logs / Anhang</span><span class="bug-val"><em>Screenshot_login_error.png &middot; browser_console.log</em></span></div>
+    </div>
+  </div>
+</div>
+
+<div class="warn-box" style="margin-top:.8rem">
+  <strong>&#9888; Pr&uuml;fungsfalle K3:</strong> Schweregrad (Severity = technische Auswirkung) &#8800; Priorit&auml;t (Priority = Dringlichkeit der Behebung aus Gesch&auml;ftssicht). Ein Bug kann hohen Schweregrad aber niedrige Priorit&auml;t haben (z.B. seltener Spezialfall) &mdash; oder niedrigen Schweregrad aber hohe Priorit&auml;t (z.B. Tippfehler auf Startseite).
+</div>
+<div class="praxis-box"><div class="pb-label">In der Praxis — Severity ≠ Priority</div><em>Hohe Severity, niedrige Priority:</em> Ein Absturz tritt nur auf wenn jemand gleichzeitig zwei Tabs öffnet und binnen 3 Sekunden zweimal auf Speichern klickt. Technisch kritisch — aber so selten, dass der Product Owner entscheidet: „Nicht jetzt, nächstes Release."<br><br><em>Niedrige Severity, hohe Priority:</em> Auf der Startseite steht „Wilkommen" statt „Willkommen". Kein Datenverlust, kein Absturz — aber der CEO sieht das morgen in der Demo. Sofort fixen.<br><br><em>Wer entscheidet was?</em> Severity bewertet der <strong>Tester</strong> (technisch). Priority entscheidet der <strong>Product Owner</strong> oder Projektmanager (geschäftlich).</div>
+
+</main>
+
+<footer>
+  <p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025) &middot; Kap. 5.1&ndash;5.5 &middot; FL-5.1&ndash;5.5</p>
+</footer>
+
+</body>
+</html>

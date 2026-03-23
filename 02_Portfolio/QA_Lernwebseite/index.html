@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Lernmaterialien zum ISTQB CTFL v4.0.2: SDLC, Testverfahren, Glossar, Hausaufgaben und Testuniversum. Einstieg.">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/subpage.css">
+  <title>Einstieg — QA Lernwebseite</title>
+  <style>
+    /* Einstiegsseite: Layout wie Hauptsystem */
+    body { padding: 0 2rem 4rem; max-width: 1800px; margin: 0 auto; }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      white-space: nowrap;
+      border: 0;
+    }
+
+    /* Meta-Bereich */
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      padding: .6rem 1rem;
+      margin-bottom: 1.5rem;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+    .meta-bar strong { color: var(--text); }
+
+    /* Einstiegs-/Orientierungsbereich (Section) */
+    .entry-intro {
+      margin-bottom: 1.5rem;
+      padding: 1rem 1.2rem;
+      background: rgba(255,255,255,0.35);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+    }
+    .entry-intro p {
+      margin: 0 0 0.9rem;
+      font-size: var(--subtitle-size);
+      line-height: 1.55;
+      color: var(--text);
+      font-style: italic;
+    }
+    .entry-intro p:last-child { margin-bottom: 0; }
+
+    /* Orientierungshinweis (Info-Box) */
+    .entry-info-box {
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 1.5rem;
+      background: var(--bg);
+      border-left: 4px solid var(--mid);
+      border-radius: 4px;
+      font-size: 0.9rem;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .entry-info-box strong { color: var(--mid); }
+
+    /* Karten: zwei Blöcke nebeneinander, je 3-Spalten-Grid */
+    .entry-card-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      width: 100%;
+      margin-top: 1rem;
+    }
+    .entry-card-split .entry-card-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(200px, 1fr));
+      gap: 1rem;
+    }
+    @media (max-width: 900px) {
+      .entry-card-split { grid-template-columns: 1fr; }
+    }
+    @media (max-width: 640px) {
+      .entry-card-split .entry-card-grid { grid-template-columns: 1fr; }
+    }
+
+    .entry-block-heading {
+      font-family: Georgia, 'Palatino Linotype', serif;
+      font-size: var(--subtitle-size);
+      font-weight: normal;
+      letter-spacing: 0.05em;
+      color: var(--text);
+      margin: 0 0 0.75rem;
+    }
+
+    .entry-card {
+      display: block;
+      text-decoration: none;
+      color: inherit;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      border: 1px solid var(--bdr);
+      background: #fff;
+    }
+    .entry-card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    .entry-card__header {
+      padding: 0.65rem 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .entry-card__icon {
+      font-size: 1rem;
+      line-height: 1;
+    }
+    .entry-card__meta {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      opacity: .85;
+    }
+    .entry-card__body {
+      padding: 0.75rem 1rem 0.9rem;
+      border-top: 1px solid var(--bdr);
+      background: rgba(255,255,255,0.5);
+    }
+    .entry-card__title {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: var(--text);
+      line-height: 1.3;
+    }
+    .entry-card__desc {
+      margin-top: 0.3rem;
+      font-size: 0.8rem;
+      font-style: italic;
+      color: var(--soft);
+      line-height: 1.45;
+    }
+
+    /* Karten-Kategorien (Palette aus base) */
+    .entry-card--landkarte .entry-card__header,
+    .entry-card--standards .entry-card__header { background: var(--e5); }
+    .entry-card--testverfahren .entry-card__header { background: var(--e4); }
+    .entry-card--terminologie .entry-card__header { background: var(--e6); }
+    .entry-card--ha .entry-card__header { background: var(--e3); }
+    .entry-card--form .entry-card__header { background: var(--e3form); }
+    .entry-card--visual .entry-card__header { background: var(--e1); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="index.html" class="current">Einstieg</a></li>
+      <li><a href="pages/01-landkarte.html">Landkarte</a></li>
+      <li><a href="pages/01a-glossar.html">Glossar</a></li>
+      <li><a href="pages/01c-testmittel.html">Testmittel</a></li>
+      <li><a href="pages/02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="pages/02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="pages/02c-teststufen.html">Teststufen</a></li>
+      <li><a href="pages/03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="pages/04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="pages/05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="pages/00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="pages/00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="pages/04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="pages/04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="pages/04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="pages/04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="pages/05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="pages/05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="pages/06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="pages/06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="pages/06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>QA Lernwebseite</h1>
+    <p>Überblick und Navigation</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" aria-label="Seitenkontext">
+    <span><strong>Seite:</strong> Einstieg</span>
+    <span><strong>Funktion:</strong> Orientierung &amp; Überblick</span>
+  </div>
+
+  <section class="entry-intro" aria-labelledby="intro-heading">
+    <h2 id="intro-heading" class="visually-hidden">Willkommen</h2>
+    <p>Herzlich willkommen auf dieser Lernwebsite zu Software Testing und Quality Assurance. Die Seite entsteht begleitend zu einer Weiterbildung im QA-Bereich bei MasterSchool und wird laufend erweitert.</p>
+    <p>Die Inhalte orientieren sich am ISTQB CTFL-Lehrplan v4.0.2 und sind als eigenständige Lernmodule aufgebaut — mit Schwerpunkt auf didaktischer Klarheit, visueller Struktur und Prüfungsrelevanz. Behandelt werden Themen wie Testgrundlagen, Testverfahren, Testmanagement, statisches Testen sowie ausgewählte praktische Aufgaben.</p>
+    <p>Die Seite erhebt keinen Anspruch auf Vollständigkeit oder Fehlerfreiheit. Sie ist ein persönliches Lern- und Entwicklungsprojekt, kein offizielles Lehrwerk — wer hier etwas Nützliches findet, darf es gern zum Lernen verwenden.</p>
+    <p>Die Lernmaterialien orientieren sich an anerkannten Standards (ISTQB CTFL 4.0.2, IEEE 829-2008, ISO/IEC/IEEE 29119-3), ohne diese 1:1 umzusetzen — sie sind für Lernzwecke vereinfacht und an Prüfungsanforderungen angepasst.</p>
+    <p>Lizenz: CC BY-NC-SA 4.0 — Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen.</p>
+    <p><strong>Repository:</strong> Quelltext und Versionshistorie auf GitHub — <a href="https://github.com/chd108/QA_Lernwebseite" rel="noopener noreferrer" target="_blank">github.com/chd108/QA_Lernwebseite</a> (GitHub in neuem Tab &mdash; diese Seite bleibt ge&ouml;ffnet).</p>
+  </section>
+
+  <div class="entry-info-box" role="note">
+    <strong>Orientierung:</strong> Zwei Kartenbereiche: <strong>Lernmaterial</strong> (links) und <strong>Hausaufgaben</strong> (rechts) — von Landkarte bis Standards bzw. von HA-Einordnung bis zu den HA6-A4-Dokumenten. Auf schmalen Viewports unter 900&nbsp;px stehen die Bereiche untereinander; unter 640&nbsp;px wird pro Bereich einspaltig dargestellt. Alle Seiten nutzen dieselbe Grundform wie diese Einstiegsseite.
+  </div>
+
+  <div class="entry-card-split">
+    <div>
+    <h2 class="entry-block-heading">Lernmaterial</h2>
+    <div class="entry-card-grid" role="group" aria-label="Lernmaterial">
+    <a class="entry-card entry-card--landkarte" href="pages/01-landkarte.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">✦</span>
+        <span class="entry-card__meta">Kap. 1–6 · Landkarte</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">Landkarte</div>
+        <div class="entry-card__desc">Vollständige Landkarte aller CTFL-Inhalte mit MS-Curriculum</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--terminologie" href="pages/01a-glossar.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">§</span>
+        <span class="entry-card__meta">Terminologie</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">Glossar</div>
+        <div class="entry-card__desc">ISTQB CTFL Schlüsselbegriffe · DE / EN · v4.0.2</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--testverfahren" href="pages/01c-testmittel.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">§</span>
+        <span class="entry-card__meta">Kap. 1.4.3</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">Testmittel</div>
+        <div class="entry-card__desc">Arbeitsergebnisse des Testprozesses · Testmittel nach Testaktivität (STLC)</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--visual" href="pages/02a-sdlc-statisch.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">⬡</span>
+        <span class="entry-card__meta">Visualisierung</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">SDLC &amp; Testprozess (statisch)</div>
+        <div class="entry-card__desc">Statische Darstellung — SDLC &amp; Testprozess im Überblick</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--visual" href="pages/02b-sdlc-animiert.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">⬡</span>
+        <span class="entry-card__meta">Visualisierung</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">SDLC &amp; Testprozess (animiert)</div>
+        <div class="entry-card__desc">Animierte Darstellung — Zusammenspiel von SDLC &amp; Testen</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--testverfahren" href="pages/02c-teststufen.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">⬡</span>
+        <span class="entry-card__meta">Kap. 2.2</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">Teststufen &amp; Testarten</div>
+        <div class="entry-card__desc">Fünf Teststufen, Testarten, Fehlernachtest vs. Regressionstest · CTFL Kap. 2.2–2.3</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--testverfahren" href="pages/03-statisches-testen.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">⬡</span>
+        <span class="entry-card__meta">Kap. 3</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">Statisches Testen</div>
+        <div class="entry-card__desc">Reviewprozess, Reviewarten, Rollen · CTFL Kap. 3.1–3.2 · ISO/IEC 20246</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--testverfahren" href="pages/04-testverfahren.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◈</span>
+        <span class="entry-card__meta">Kap. 4 · Testverfahren</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">Testverfahren</div>
+        <div class="entry-card__desc">BB · WB · Erfahrungsbasiert — Übersicht aller Verfahren</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--testverfahren" href="pages/05-testmanagement.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">⬡</span>
+        <span class="entry-card__meta">Kap. 5</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">Testmanagement</div>
+        <div class="entry-card__desc">Testplanung · Risiko · Überwachung · Konfigurations- &amp; Fehlermanagement · CTFL Kap. 5.1–5.5</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--standards" href="pages/00b-standards.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">✦</span>
+        <span class="entry-card__meta">Überblick</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">Standards</div>
+        <div class="entry-card__desc">Anerkannte Web- und Projektstandards · Projektstatus &amp; Potenzial</div>
+      </div>
+    </a>
+    </div>
+    </div>
+
+    <div>
+    <h2 class="entry-block-heading">Hausaufgaben</h2>
+    <div class="entry-card-grid" role="group" aria-label="Hausaufgaben">
+    <a class="entry-card entry-card--ha" href="pages/00a-ha-einordnung.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Hausaufgaben / thematisch · Kap. 4</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA-Einordnung</div>
+        <div class="entry-card__desc">Testverfahren ↔ Hausaufgaben — Zuordnung &amp; Überblick</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--ha" href="pages/04a-ha4-anforderungsanalyse.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Hausaufgaben / thematisch · Kap. 4.1</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA4 Anforderungsanalyse</div>
+        <div class="entry-card__desc">Testbasis-Analyse GroceryMate · Bewertung, Altersverifikation, Versandkosten</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/04b-ha4-testbasisanalyse-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Hausaufgaben / <span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span></span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA4 Testbasis-Analyse A4</div>
+        <div class="entry-card__desc">Druckversion · Testbasis-Analyse pro Feature + Zusammenfassung</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--ha" href="pages/04c-ha5-testfallentwurf.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Hausaufgaben / thematisch · Kap. 4.2</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA5 Testfallentwurf</div>
+        <div class="entry-card__desc">Testfallentwurf GroceryMate · 28 Testfälle, Techniken, Automatisierung nach CTFL 4.0.2</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/04d-ha5-testfallentwurf-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Hausaufgaben / <span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span></span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA5 Testfallentwurf A4</div>
+        <div class="entry-card__desc">Druckversion · Testfallentwurf 28 Testfälle, Summary + exemplarische Detailformulare nach IEEE 829-2008 / CTFL 4.0.2</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--ha" href="pages/05a-ha5-testkonzept.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Hausaufgaben / thematisch · Kap. 5</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA5 Testkonzept</div>
+        <div class="entry-card__desc">Testkonzept GroceryMate · Testplanung, Testfälle, Risiken nach CTFL 4.0.2</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/05b-ha5-testkonzept-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Hausaufgaben / <span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span></span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA5 Testkonzept A4</div>
+        <div class="entry-card__desc">Druckversion · Testkonzept GroceryMate nach IEEE 829-2008 / CTFL 4.0.2</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/06a-ha6-testprotokoll-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Hausaufgaben / <span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span></span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA6 Testprotokoll A4</div>
+        <div class="entry-card__desc">Druckversion · Test Execution Log für 9 TC (GroceryMate), an Testfallentwurf angeglichen</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/06b-ha6-fehlerbericht-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Hausaufgaben / <span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span></span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA6 Fehlerbericht A4</div>
+        <div class="entry-card__desc">Druckversion · Blankovorlage Incident Report (ISO/IEC/IEEE 29119-3), ein Blatt pro Fehler</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/06c-ha6-testabschlussbericht-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Hausaufgaben / <span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span></span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA6 Testabschlussbericht A4</div>
+        <div class="entry-card__desc">Druckversion · Test Completion Report (ISO/IEC/IEEE 29119-3), Zusammenfassung nach Testdurchführung</div>
+      </div>
+    </a>
+    </div>
+    </div>
+  </div>
+</main>
+
+<footer>
+  <p class="source-note">ISTQB® Certified Tester Foundation Level v4.0.2 · QA Lernwebseite · Einstieg</p>
+</footer>
+
+</body>
+</html>
