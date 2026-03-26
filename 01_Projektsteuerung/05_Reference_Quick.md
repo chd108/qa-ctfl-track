@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23 — Repo_Health_Check: nur Chat, kein Datei-Befund  
+Letzte Aktualisierung: 2026-03-25 — Schnellnavigation: Markdown_Form_Refactor_Prompt  
 Zweck: Schnellzugriff auf Pfade, Prompts und externe Ressourcen  
 Klassifizierung: Projektsteuerung / Referenz  
 Normative Orientierung: ISO 21502 — Zugänglichkeit von Projektinformationen.
@@ -27,6 +27,7 @@ Dieses Dokument bündelt **Schnellnavigation** („Aktion → Ort“), **externe
 | **Repo-Struktur, Ordner, Benennung, Lernplan-Zuordnung** | [03_Project_Standards.md](03_Project_Standards.md) (insb. Abschnitt 2–4, 7–8) |
 | **KI, Rollenmodell, Git/Commit (Monorepo)** | [04_Project_Guidelines.md](04_Project_Guidelines.md) |
 | **Dieses Dokument — Pfade & Prompts** | [05_Reference_Quick.md](05_Reference_Quick.md) |
+| **Markdown formal vereinheitlichen (KI, nur Form — Inhalt unverändert)** | [05_Reference_Quick.md — Abschnitt 4, Markdown_Form_Refactor_Prompt](05_Reference_Quick.md#markdown_form_refactor_prompt) |
 | **Hausaufgaben-Analyse (Beispiel-Snapshot, archiviert)** | `06_Archiv/Projektsteuerung_alt/11_Hausaufgabenanalyse_2026-03-09.md` (neue Analysen: siehe Abschnitt 5) |
 | **SDLC (ISTQB) — animiert / statisch** | `02_Portfolio/QA_Lernwebseite/pages/02b-sdlc-animiert.html` · `02_Portfolio/QA_Lernwebseite/pages/02a-sdlc-statisch.html` |
 | **Testverfahren (CTFL Kap. 4)** | `02_Portfolio/QA_Lernwebseite/pages/04-testverfahren.html` |
@@ -374,6 +375,61 @@ Noch nichts kaputt machen und nichts Grundsätzliches umbauen.
 Nur prüfen und professionell einschätzen.
 ```
 
+### Markdown_Form_Refactor_Prompt
+
+**Einsatz:** Eine **Markdown-Datei** (z. B. Steuerungs- oder Hausaufgaben-`.md`) soll **nur formal** vereinheitlicht werden — **ohne** inhaltliche Änderung. Je nach Kontext **eine** der folgenden Varianten kopieren (oder knappe + ausführliche Form kombinieren).
+
+```
+--- Variante A — knappe Formulierung ---
+
+„Bitte refaktoriere diese Markdown-Datei nur formal. Vereinheitliche Struktur, Überschriften, Abstände, Listen, Einrückungen, Hervorhebungen, Codeblöcke, Tabellen und Abschnittslogik so, dass sie einem sauberen Dokumentationsstandard entspricht. Der Inhalt darf auf keinen Fall geändert, ergänzt, gekürzt, umgeschrieben oder inhaltlich neu interpretiert werden. Bestehende Aussagen, Reihenfolgen, Begriffe und Bedeutungen müssen vollständig erhalten bleiben. Ziel ist ausschließlich eine einheitliche, logisch gegliederte, gut lesbare und ansprechend formatierte Markdown-Dokumentation.“
+
+--- Variante B — ausführlicher Arbeits-Prompt ---
+
+Bitte überarbeite diese Markdown-Datei ausschließlich in Bezug auf Formatierung und Dokumentationsstruktur.
+
+Ziel:
+- einheitliche Markdown-Formatierung
+- klare Gliederung
+- saubere Hierarchie der Überschriften
+- konsistente Listen, Abstände und Einrückungen
+- gut lesbare Abschnittsstruktur
+- optisch und logisch kohärente Dokumentation
+
+Wichtige Regeln:
+- Inhalte dürfen nicht verändert werden
+- keine Sätze umschreiben
+- nichts hinzufügen
+- nichts entfernen
+- keine Begriffe ersetzen
+- keine Beispiele ergänzen
+- keine inhaltliche Umordnung, wenn sie die Bedeutung verändert
+- nur formale und strukturelle Vereinheitlichung
+
+Erlaubt ist nur:
+- Überschriftenhierarchie bereinigen
+- Absätze sauber trennen
+- Listen vereinheitlichen
+- Markdown-Syntax standardisieren
+- Codeblöcke, Tabellen, Zitate und Hervorhebungen konsistent formatieren
+- Kapitel und Unterkapitel logisch und lesbar anordnen, sofern der Inhalt dabei exakt gleich bleibt
+
+Bitte orientiere dich an gängigen Dokumentationsstandards für Markdown:
+- klare Heading-Struktur
+- konsistente Abschnittstypen
+- einheitliche Schreibweise für Listen und Codeblöcke
+- gute Scanbarkeit
+- saubere Lesbarkeit im Rohtext und gerendert
+
+Am Ende:
+- gib die überarbeitete Markdown-Version vollständig aus
+- ändere nichts am Inhalt, nur an Form, Struktur und Darstellung
+
+--- Variante C — Einzeiler ---
+
+Bitte refaktoriere diese Markdown-Datei rein formal: vereinheitliche Struktur, Überschriften, Listen, Abstände und Markdown-Syntax nach sauberem Dokumentationsstandard, ohne irgendeine inhaltliche Änderung vorzunehmen.
+```
+
 ---
 
 ## 5. Erwartete Outputs
@@ -384,6 +440,7 @@ Nur prüfen und professionell einschätzen.
 | **Repo_Health_Check_Prompt** | **Nur Chat-Ausgabe** — kein Schreiben in Steuerungsdateien oder andere Repo-Dateien für den Befund. |
 | **Überblicks_Prompt_Statusbericht** | In der Regel **nur Chat-Ausgabe**; bei Bedarf Kernaussagen in [02_Project_Status.md](02_Project_Status.md) übernehmen. |
 | **Public_Release_Check_QA_Lernwebseite** | **Empfehlungen im Chat**; umgesetzte Änderungen unter **`02_Portfolio/QA_Lernwebseite/`** im Monorepo **qa-ctfl-track** und nach [04_Project_Guidelines.md](04_Project_Guidelines.md) committen. |
+| **Markdown_Form_Refactor_Prompt** | Vollständige überarbeitete **Markdown-Ausgabe im Chat**; Zieldatei im Repo **manuell prüfen** und ersetzen (oder im Editor übernehmen). **Kein** stillschweigendes Überschreiben ohne Abgleich — inhaltliche Treue laut Prompt bewusst verifizieren. |
 
 ---
 

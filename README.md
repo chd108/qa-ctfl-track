@@ -34,6 +34,7 @@ Lokales Archiv für **Kursarbeit**, **Referenzen**, **Hausaufgaben** und die ein
 | **`04_Referenzen/`** | ISTQB-Lehrplan, Normen, weiteres Lehr- und Referenzmaterial |
 | **`05_Notizen/`** | Persönliche Lernnotizen |
 | **`06_Archiv/`** | Archivierte oder ersetzte Inhalte (u. a. frühere Steuerdateien) |
+| **`07_Tests/`** | Testautomatisierung (PyTest, Selenium, XPath) |
 
 ---
 

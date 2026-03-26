@@ -1,6 +1,6 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-03-23
+> Zuletzt aktualisiert: 2026-03-26
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
@@ -116,9 +116,9 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | | |
 |--|--|
 | **README erstellt** | 2026-03-12 |
-| **README zuletzt aktualisiert** | **2026-03-22** |
+| **README zuletzt aktualisiert** | **2026-03-26** |
 
-**Kurzüberblick (Stand 22.03.2026)**
+**Kurzüberblick (Stand 26.03.2026)**
 
 - **Hauptsystem:** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **02c** im gemeinsamen Section-Muster.  
 - **HA4/HA5/HA6:** inhaltlich und formal gehärtet — Meta-Informationen, Kette Web ↔ A4, Terminologie **Testbasis-Analyse**; HA6 mit **Testprotokoll A4**, **Fehlerbericht A4** (Musterdokument BUG-001 / BUG-002), **Testabschlussbericht A4** (ISO/IEC/IEEE 29119-3); Ergänzungen in **`doc-a4.css`** (u. a. Status-Badge für Review).  

@@ -93,17 +93,19 @@
       font-size: 8.25pt;
     }
     .doc-body .ref-table table.flow-summary-table th:nth-child(1),
-    .doc-body .ref-table table.flow-summary-table td:nth-child(1) { width: 16%; }
+    .doc-body .ref-table table.flow-summary-table td:nth-child(1) { width: 13%; }
     .doc-body .ref-table table.flow-summary-table th:nth-child(2),
-    .doc-body .ref-table table.flow-summary-table td:nth-child(2) { width: 16%; }
+    .doc-body .ref-table table.flow-summary-table td:nth-child(2) { width: 13%; }
     .doc-body .ref-table table.flow-summary-table th:nth-child(3),
-    .doc-body .ref-table table.flow-summary-table td:nth-child(3) { width: 16%; }
+    .doc-body .ref-table table.flow-summary-table td:nth-child(3) { width: 12%; }
     .doc-body .ref-table table.flow-summary-table th:nth-child(4),
-    .doc-body .ref-table table.flow-summary-table td:nth-child(4) { width: 16%; }
+    .doc-body .ref-table table.flow-summary-table td:nth-child(4) { width: 12%; }
     .doc-body .ref-table table.flow-summary-table th:nth-child(5),
-    .doc-body .ref-table table.flow-summary-table td:nth-child(5) { width: 16%; }
+    .doc-body .ref-table table.flow-summary-table td:nth-child(5) { width: 12%; }
     .doc-body .ref-table table.flow-summary-table th:nth-child(6),
-    .doc-body .ref-table table.flow-summary-table td:nth-child(6) { width: 20%; }
+    .doc-body .ref-table table.flow-summary-table td:nth-child(6) { width: 19%; }
+    .doc-body .ref-table table.flow-summary-table th:nth-child(7),
+    .doc-body .ref-table table.flow-summary-table td:nth-child(7) { width: 19%; }
 
     /* Spaltentitel: zentriert (doc-a4: ref-table thead th = left) */
     .doc-body .ref-table thead th {
@@ -186,10 +188,10 @@
       <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
       <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
       <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
-      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
-      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
       <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
       <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
       <li><a href="06a-ha6-testprotokoll-a4.html" class="current">HA6 Testprotokoll A4</a></li>
       <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
       <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
@@ -200,7 +202,7 @@
 <div class="page-chrome">
   <header>
     <h1>Testprotokoll A4</h1>
-    <p>HA6 · Test Execution Log · GroceryMate · CTFL 4.0.2 / IEEE 829-2008</p>
+    <p>HA6 · Test Execution Log · GroceryMate · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</p>
   </header>
 </div>
 
@@ -209,7 +211,7 @@
     <span><strong>Modus:</strong> A4-/Dokumentansicht</span>
     <span><strong>Seiten:</strong> 5</span>
     <span><strong>Projekt:</strong> GroceryMate (HA6)</span>
-    <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829-2008</span>
+    <span><strong>Standard:</strong> CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</span>
   </div>
 
   <div class="doc-mode">
@@ -218,12 +220,12 @@
       <div class="doc-header">
         <div class="doc-header__left">
           <h1 id="sheet1-heading">Testprotokoll</h1>
-          <p>Test Execution Log · GroceryMate · HA6</p>
+          <p>Test Execution Log · HA6 · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</p>
         </div>
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA6)<br>
           <strong>Erstellt:</strong> 22.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 22.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 26.03.2026<br>
           <strong>Seite:</strong> 1 von 5
         </div>
       </div>
@@ -232,13 +234,13 @@
         <div class="form-meta">
           <div class="form-meta__cell"><div class="form-meta__label">Testobjekt</div><div class="form-meta__value">grocerymate.masterschool.com</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Features</div><div class="form-meta__value">GM-F01 · GM-F02 · GM-F03</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Testfälle (Plan)</div><div class="form-meta__value">9 (gemäß <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> / <a href="04c-ha5-testfallentwurf.html">Web</a>)</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Testfälle (Plan)</div><div class="form-meta__value">9 (gemäß <a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a> · konkrete TC: <a href="04c-ha5-testfallentwurf.html">Web</a> / <a href="04d-ha5-testfallentwurf-a4.html">A4</a>)</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Dokumentstatus</div><div class="form-meta__value">Durchgeführt</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Teststufe</div><div class="form-meta__value">Systemtest</div></div>
         </div>
 
         <div class="doc-info-box">
-          <strong>Hinweis:</strong> TC-IDs und Kurzbeschreibungen entsprechen dem aktuellen Testfallentwurf (<a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>). Testdurchführung und Umgebung sind in diesem Dokument ausgefüllt.
+          <strong>Hinweis:</strong> TC-IDs und Kurzbeschreibungen entsprechen dem aktuellen Testfallentwurf (<a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> (Web) · <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>), geplant im <a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a>. Testdurchführung und Umgebung sind in diesem Dokument ausgefüllt.
         </div>
 
         <div class="doc-feature-strip">
@@ -255,6 +257,7 @@
                 <th scope="col">Fehlge&shy;schlagen</th>
                 <th scope="col">Blockiert</th>
                 <th scope="col">Ausführ&shy;ungs&shy;rate (%)</th>
+                <th scope="col">Pass-Rate (%)</th>
               </tr>
             </thead>
             <tbody>
@@ -264,6 +267,7 @@
                 <td>7</td>
                 <td>2</td>
                 <td>0</td>
+                <td>100</td>
                 <td>77,8</td>
               </tr>
             </tbody>
@@ -272,7 +276,7 @@
 
         <div class="doc-info-box" role="note" aria-label="Erfolgsquote und Übersicht PASS FAIL">
           <p><strong>Erfolgsquote:</strong> 77,8&nbsp;% (7 von 9)</p>
-          <p><em>Hinweis zur Spalte „Ausführungsrate (%)“:</em> Wert <strong>77,8</strong> = Anteil <strong>bestanden</strong> an <strong>ausgeführt</strong> (Erfolgsquote). Ausführungsquote bezogen auf Plan: <strong>100&nbsp;%</strong> (9 von 9).</p>
+          <p><em>Hinweis:</em> <strong>Ausführungsrate</strong> = Anteil der geplanten TCs, die ausgeführt wurden (9/9 = 100&nbsp;%). <strong>Pass-Rate</strong> = Anteil bestandener TCs an den ausgeführten TCs (7/9 = 77,8&nbsp;%).</p>
           <p><strong>PASS (7):</strong></p>
           <ul class="compact-list">
             <li>TC-F01.F1.1 (1 Stern bewerten)</li>
@@ -280,19 +284,19 @@
             <li>TC-F02.F1.1 (17 Jahre 364 Tage alt)</li>
             <li>TC-F02.F1.2 (Exakt 18 Jahre alt)</li>
             <li>TC-F02.F2.1 (Modal erscheint)</li>
-            <li>TC-F03.F1.2 (Versandkosten =20€)</li>
+            <li>TC-F03.F1.2 (Exakt 20€ Bestellwert)</li>
             <li>TC-F03.F4.1 (Gast versucht Checkout)</li>
           </ul>
           <p><strong>FAIL (2):</strong></p>
           <ul class="compact-list">
             <li>TC-F01.F1.2 (5 Sterne bewerten) &mdash; BUG-001: Bewertungstext wird nicht angezeigt</li>
-            <li>TC-F03.F3.2 (Versandkosten Update) &mdash; BUG-002: Versandkosten aktualisieren nicht beim Entfernen</li>
+            <li>TC-F03.F3.2 (Versandkosten bei Reduzierung unter 20 €) &mdash; BUG-002: Versandkosten aktualisieren nicht beim Entfernen</li>
           </ul>
         </div>
 
       </div>
       <div class="doc-footer">
-        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</span>
       </div>
     </article>
 
@@ -301,12 +305,12 @@
       <div class="doc-header">
         <div class="doc-header__left">
           <h1 id="sheet-exec-gmf01-heading">Testprotokoll</h1>
-          <p>Test Execution Log · GroceryMate · HA6</p>
+          <p>Test Execution Log · HA6 · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</p>
         </div>
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA6)<br>
           <strong>Erstellt:</strong> 22.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 22.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 26.03.2026<br>
           <strong>Seite:</strong> 2 von 5
         </div>
       </div>
@@ -361,7 +365,7 @@
         </div>
       </div>
       <div class="doc-footer">
-        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</span>
       </div>
     </article>
 
@@ -370,12 +374,12 @@
       <div class="doc-header">
         <div class="doc-header__left">
           <h1 id="sheet-exec-gmf02-heading">Testprotokoll</h1>
-          <p>Test Execution Log · GroceryMate · HA6</p>
+          <p>Test Execution Log · HA6 · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</p>
         </div>
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA6)<br>
           <strong>Erstellt:</strong> 22.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 22.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 26.03.2026<br>
           <strong>Seite:</strong> 3 von 5
         </div>
       </div>
@@ -430,7 +434,7 @@
         </div>
       </div>
       <div class="doc-footer">
-        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</span>
       </div>
     </article>
 
@@ -439,12 +443,12 @@
       <div class="doc-header">
         <div class="doc-header__left">
           <h1 id="sheet-exec-gmf03-heading">Testprotokoll</h1>
-          <p>Test Execution Log · GroceryMate · HA6</p>
+          <p>Test Execution Log · HA6 · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</p>
         </div>
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA6)<br>
           <strong>Erstellt:</strong> 22.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 22.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 26.03.2026<br>
           <strong>Seite:</strong> 4 von 5
         </div>
       </div>
@@ -478,11 +482,11 @@
               </tr>
               <tr>
                 <td class="cell-id">TC-F03.F3.2</td>
-                <td>Artikel entfernen unter 20€ (BUG: Update fehlt)</td>
+                <td>Versandkosten bei Reduzierung unter 20 €</td>
                 <td>22.03.2026</td>
                 <td>chd108</td>
                 <td>❌ FAIL</td>
-                <td>Bug tritt wie dokumentiert auf. Versandkosten aktualisieren NICHT beim Entfernen von Artikeln (Warenkorbwert fällt unter 20€). Versandkosten bleiben bei 0€ bis zur Seiten-Aktualisierung (F5). Nach Reload werden korrekt 5€ angezeigt. <strong>Bemerkung:</strong> WICHTIGE ERKENNTNIS: Dieser TC ist weder ein klassischer Regressionstest noch ein klassischer funktionaler Test, sondern ein Bug-Reproduktionstest. Die Formulierung des &quot;Expected Result&quot; im Testfallentwurf ist verwirrend, da sie sowohl SOLL-Verhalten als auch IST-Verhalten (Bug) beschreibt. Professioneller wäre gewesen: Expected Result nur mit SOLL-Verhalten formulieren (&quot;Versandkosten sollten auf 5€ aktualisieren&quot;), Actual Result dann beim Testen dokumentieren. Der TC dokumentiert einen bereits in HA4 entdeckten Bug. Trotz verwirrender Formulierung ist das Testergebnis eindeutig: FAIL, da System sich nicht anforderungsgemäß verhält.</td>
+                <td><strong>FAIL (SOLL vs. IST):</strong> Nach Entfernen von Artikeln (Summe &lt; 20 €) aktualisiert die Versandkosten-Anzeige <strong>ohne Reload</strong> nicht auf 5 €; Anzeige bleibt 0 € bis <strong>F5</strong>, danach korrekt 5 €. Abweichung zum <strong>SOLL</strong> laut Testfallentwurf (04d/04c) und zu AC3; Abgleich mit <strong>BUG-002</strong> / Fehlerbericht. <strong>Bemerkung:</strong> Bekanntes Risiko aus HA4 (Live-Update nur bei Erhöhung); funktionaler Nachweis der Abweichung.</td>
                 <td>BUG-002</td>
               </tr>
             </tbody>
@@ -490,7 +494,7 @@
         </div>
       </div>
       <div class="doc-footer">
-        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</span>
       </div>
     </article>
 
@@ -499,12 +503,12 @@
       <div class="doc-header">
         <div class="doc-header__left">
           <h1 id="sheet5-heading">Testprotokoll</h1>
-          <p>Test Execution Log · GroceryMate · HA6</p>
+          <p>Test Execution Log · HA6 · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</p>
         </div>
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA6)<br>
           <strong>Erstellt:</strong> 22.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 22.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 26.03.2026<br>
           <strong>Seite:</strong> 5 von 5
         </div>
       </div>
@@ -594,14 +598,14 @@
         </div>
       </div>
       <div class="doc-footer">
-        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · ISO/IEC/IEEE 29119-3 (IEEE 829-2008 · CTFL 4.0.2)</span>
+        <span>Masterschool QA-Track · Testprotokoll / Test Execution Log · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</span>
       </div>
     </article>
   </div>
 </main>
 
 <footer>
-  <p class="source-note">HA6 · Masterschool QA-Track · Testprotokoll (Test Execution Log) · CTFL 4.0.2 / IEEE 829-2008 · grocerymate.masterschool.com · A4-Dokumentmodus</p>
+  <p class="source-note">HA6 · Masterschool QA-Track · Testprotokoll (Test Execution Log) · CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3 · grocerymate.masterschool.com · A4-Dokumentmodus</p>
 </footer>
 
 </body>

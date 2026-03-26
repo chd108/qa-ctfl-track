@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23 (Git: Monorepo qa-ctfl-track, .gitignore HA/Ref/Notizen/Archiv)  
+Letzte Aktualisierung: 2026-03-26 (HA6-Website-Portfolio 06a–06c; Konsistenz TC/Protokoll)  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -23,7 +23,7 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 | **Programm-Gesamt** | **Stabil / auf Kurs** — Lern- und Arbeitsrepo ist nutzbar; Kursintegration über Notion/MasterSchool maßgeblich. |
 | **Website *QA_Lernwebseite*** | **Technische Basis abgeschlossen** — einheitliches Hauptsystem, `index.html` als alleiniger Einstieg, Benennungslogik inkl. Matrix für aktive Seiten umgesetzt. |
 | **Lernstrecke HA4/HA5 (Website)** | **Phasen 1–4 abgeschlossen** (Stand **21.03.2026**) — Konsistenz, Story-/UX, formale Einheitlichkeit (**Phase 3 Abschluss:** **21.03.2026**, siehe Abschnitt 2), Standards-Review inkl. CTFL-/IEEE-829-Zitierlogik; Details und Evidenz siehe Abschnitt 2 und 7. |
-| **Hausaufgabe HA6 (Testdurchführung)** | **In Bearbeitung** — Testprotokoll (**06a**) erledigt; **Fehlerbericht (06b)** und **Testabschlussbericht (06c)** ausstehend (siehe Abschnitt 3). |
+| **Hausaufgabe HA6 (Testdurchführung)** | **Website-Portfolio:** Testprotokoll, Fehlerbericht und Testabschlussbericht als **A4-Seiten** unter `02_Portfolio/QA_Lernwebseite/pages/` (**06a–06c**) **vorhanden**; **Kursordner** `03_Hausaufgaben/HA6_Testdurchfuehrung/` ggf. separat nach Kursvorgaben (siehe Abschnitt 3). |
 | **Nächster Schwerpunkt** | **Komponentenstil / Designsystem light** — Rahmen in [01_Project_Charter.md](01_Project_Charter.md); Ausarbeitung der Darstellungs- und Konsistenzregeln in [03_Project_Standards.md](03_Project_Standards.md) (insb. Abschn. 6 und 7); danach **Konsistenz- und Darstellungsregel-Ebene** über die HA4/HA5-Kernstrecke hinaus. |
 | **Lessons learned (aktuell)** | Teile der **Komponentenlogik** (Story-/Dokumentenkette-Boxen) wurden **vor** dem formalen Designsystem **praktisch eingeführt** — fachlich sinnvoll für die Lernstrecke; **verbindliche Standardisierung** folgt im Architekturblock. |
 
@@ -108,19 +108,19 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 |---|----------------|---------------------------|
 | **P1** | **Komponentenstil / Designsystem light** (*QA_Lernwebseite*) | Darstellungsregeln **kanonischer** Komponenten **schriftlich schließen**; Muster aus Phase 2 (**Story-Box** vs. didaktische Box, ggf. A4-**doc-info-box**) **verallgemeinern** und in **[03_Project_Standards.md](03_Project_Standards.md)** (Qualitäts- und Konsistenzregeln, Abschn. 6) sowie abgestimmt mit **[01_Project_Charter.md](01_Project_Charter.md)** **verankern**. |
 | **P2** | **Konsistenz- und Darstellungsregel-Ebene** (Website, außerhalb HA4/HA5-Kern) | Einheitliche Regeln auch für Module **außerhalb** der fertiggestellten Kernstrecke; ggf. offene Seiten gemäß **Lernplan** ([03_Project_Standards.md](03_Project_Standards.md) Abschn. 2) und Charta-Zielen nachziehen. |
-| **P3** | **Kurs- und Portfoliopfad** | Fortführung gemäß **Notion-Lernplan** und MasterSchool-Vorgaben; **HA6** aktiv (siehe unten); weitere offene optionale Punkte (z. B. Portfolio-Automation, Issues) siehe ggf. archivierte oder neue **Hausaufgaben-Analysen** (`06_Archiv/Projektsteuerung_alt/` bzw. Schema `YYYY-MM-DD_Hausaufgabenanalyse.md` in `01_Projektsteuerung/`). |
+| **P3** | **Kurs- und Portfoliopfad** | Fortführung gemäß **Notion-Lernplan** und MasterSchool-Vorgaben; **HA6** auf der **Lernwebsite** als Kette **06a–06c** abgebildet (siehe Abschnitt 3); weitere offene optionale Punkte (z. B. Portfolio-Automation, Issues) siehe ggf. archivierte oder neue **Hausaufgaben-Analysen** (`06_Archiv/Projektsteuerung_alt/` bzw. Schema `YYYY-MM-DD_Hausaufgabenanalyse.md` in `01_Projektsteuerung/`). |
 | **P4** | **Steuerungsdokumentation konsolidieren** | **Project\_*-Serie** ist **kanonisch** (`01_Project_Charter.md` … `05_Reference_Quick.md`); verbleibende **alte** Steuerdateien im Ordner `01_Projektsteuerung/` nach **`06_Archiv/Projektsteuerung_alt/`** verschieben, sobald inhaltlich ersetzt. **Repo-Struktur und Health Check** ausschließlich in **[03_Project_Standards.md](03_Project_Standards.md)** Abschnitt **3** und **8** pflegen. |
 
-### HA6 — Testdurchführung (Kurs, Stand laut Steuerung)
+### HA6 — Testdurchführung (Kurs / Website-Portfolio)
 
 | Bereich | Status |
 |---------|--------|
-| **Gesamt** | **In Bearbeitung** |
-| **Testprotokoll (Website: 06a-ha6-testprotokoll-a4)** | **Erledigt** (siehe auch Artefakte unter `03_Hausaufgaben/HA6_Testdurchfuehrung/`). |
-| **Fehlerbericht (06b-ha6-fehlerbericht-a4)** | **Ausstehend** |
-| **Testabschlussbericht (06c-ha6-testabschlussbericht-a4)** | **Ausstehend** |
+| **Gesamt (QA_Lernwebseite)** | **Abgeschlossen** — **06a** Testprotokoll, **06b** Fehlerbericht (BUG-001 / BUG-002), **06c** Testabschlussbericht als **Musterdokumente** im Hauptsystem. |
+| **Testprotokoll (06a-ha6-testprotokoll-a4)** | **Vorhanden** |
+| **Fehlerbericht (06b-ha6-fehlerbericht-a4)** | **Vorhanden** |
+| **Testabschlussbericht (06c-ha6-testabschlussbericht-a4)** | **Vorhanden** |
 
-*Hinweis:* Im Repo können zu **Entwicklungs-/Layoutzwecken** bereits Commits zu HA6-Seiten unter **`02_Portfolio/QA_Lernwebseite/`** existieren; der **fachliche Abschluss** der HA6-Lieferobjekte **06b/06c** ist hier weiterhin als **offen** geführt, bis die Bearbeitung und ggf. Kursabgabe abgeschlossen sind.
+*Hinweis:* **Kursabgabe** oder Artefakte unter **`03_Hausaufgaben/HA6_Testdurchfuehrung/`** sind **nicht** automatisch mit der Website identisch; bei Abweichungen gilt der **Kursordner** bzw. die Dozenten-Vorgabe. Die **Lernwebsite** bildet die **konsistente Dokumentenkette** HA4 → HA5 → HA6 ab.
 
 ---
 
