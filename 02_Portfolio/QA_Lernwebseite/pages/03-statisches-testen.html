@@ -83,6 +83,11 @@ table.vtable tbody td:first-child{font-weight:700;color:var(--text);white-space:
 .ef-item{background:rgba(255,255,255,0.4);border:1px solid var(--bdr);border-radius:7px;padding:.55rem .85rem;font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:12px;color:var(--mid);line-height:1.5;display:flex;gap:.6rem;align-items:baseline}
 .ef-item .ef-icon{font-size:14px;flex-shrink:0}
 .ef-item strong{color:var(--text)}
+.intro-einordnung{margin-bottom:1.5rem}
+.intro-einordnung__h{font-family:"Helvetica Neue",Helvetica,Arial,sans-serif;font-size:13px;font-weight:700;letter-spacing:.04em;color:var(--text);margin-bottom:.5rem}
+.intro-einordnung .aha-box{margin-top:0}
+.intro-einordnung .aha-box p{margin-top:.65rem}
+.intro-einordnung .aha-box p:first-child{margin-top:0}
 </style>
 </head>
 <body>
@@ -95,6 +100,7 @@ table.vtable tbody td:first-child{font-weight:700;color:var(--text);white-space:
       <li><a href="../index.html">Einstieg</a></li>
       <li><a href="01-landkarte.html">Landkarte</a></li>
       <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01b-grundlagen.html">Grundlagen</a></li>
       <li><a href="01c-testmittel.html">Testmittel</a></li>
       <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
       <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
@@ -102,6 +108,7 @@ table.vtable tbody td:first-child{font-weight:700;color:var(--text);white-space:
       <li><a href="03-statisches-testen.html" class="current">Statisches Testen</a></li>
       <li><a href="04-testverfahren.html">Testverfahren</a></li>
       <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="06-testwerkzeuge.html">Testwerkzeuge</a></li>
       <li><a href="00b-standards.html">Standards</a></li>
     </ul>
   </nav>
@@ -134,6 +141,19 @@ table.vtable tbody td:first-child{font-weight:700;color:var(--text);white-space:
   <span><strong>Norm:</strong> ISO/IEC 20246</span>
   <span><strong>Schlüsselbegriffe:</strong> Anomalie &middot; Formales Review &middot; Inspektion &middot; Statische Analyse &middot; Walkthrough &middot; Technisches Review</span>
 </div>
+
+<section class="intro-einordnung" aria-labelledby="intro-ctfl-struktur-h">
+  <h2 id="intro-ctfl-struktur-h" class="intro-einordnung__h">Einordnung im CTFL-Lehrplan</h2>
+  <div class="aha-box">
+    <p>Dass es im ISTQB Foundation Level (CTFL) 4.0.2 (und den Versionen davor) ein spezifisches Kapitel f&#252;r statisches Testen (Kapitel 3) gibt, aber kein dediziertes Kapitel mit dem Namen &#8222;Dynamisches Testen&#8220;, liegt an der strukturellen Einordnung der Themen:</p>
+    <p><strong>Statisches Testen als eigenst&#228;ndige Disziplin:</strong> Statisches Testen (Reviews und statische Analyse) ist eine in sich geschlossene Gruppe von Aktivit&#228;ten, die unabh&#228;ngig von der Testausf&#252;hrung stattfinden. Es l&#228;sst sich daher gut in einem kompakten Kapitel zusammenfassen.</p>
+    <p><strong>Dynamisches Testen ist das &#8222;Hauptthema&#8220;:</strong> Fast der gesamte restliche Lehrplan befasst sich mit Aspekten des dynamischen Testens, auch wenn das Wort nicht im Kapiteltitel steht. Es ist so umfangreich, dass es in mehrere Phasen und Techniken unterteilt wird:</p>
+    <p><strong>Kapitel 2 (Testen im Softwarelebenszyklus):</strong> Behandelt Teststufen (wie Komponenten-, System- oder Abnahmetest), die fast ausschlie&#223;lich dynamisch sind.</p>
+    <p><strong>Kapitel 4 (Testverfahren):</strong> Hier werden die Techniken (Black-Box, White-Box, erfahrungsbasiert) erl&#228;utert, mit denen Testf&#228;lle f&#252;r das dynamische Testen entworfen werden.</p>
+    <p><strong>Kapitel 5 (Testmanagement):</strong> Behandelt die Planung und Steuerung, die prim&#228;r auf die Durchf&#252;hrung dynamischer Tests ausgerichtet sind.</p>
+    <p><strong>Zusammenfassend:</strong> Statisches Testen wird als spezielle Methode separat behandelt, w&#228;hrend das dynamische Testen das &#8222;R&#252;ckgrat&#8220; des gesamten Softwaretestens bildet und daher &#252;ber mehrere Kapitel (Lebenszyklus, Verfahren, Durchf&#252;hrung) verteilt ist, statt in einem einzigen Kapitel isoliert zu werden.</p>
+  </div>
+</section>
 
 <!-- 1 -->
 <div class="section-label">&#9312; Was ist statisches Testen? &mdash; CTFL Kap. 3.1 &middot; FL-3.1.1 (K1)</div>

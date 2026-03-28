@@ -60,6 +60,36 @@
     @media (max-width: 1400px) { .universe-grid { grid-template-columns: repeat(3, 1fr); } }
     @media (max-width: 900px) { .universe-grid { grid-template-columns: repeat(2, 1fr); } }
     @media (max-width: 600px) { .universe-grid { grid-template-columns: 1fr; } }
+    .landkarte-lernmodule {
+      margin: 0 0 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.92rem;
+      line-height: 1.55;
+      color: var(--text);
+    }
+    .landkarte-lernmodule strong {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft);
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+    .landkarte-lernmodule a { font-weight: 600; }
+    .landkarte-lernmodule .lm-sep { color: var(--mid); font-weight: 400; }
+    .landkarte-lernmodule .lm-note { color: var(--mid); font-weight: 400; font-size: 0.9em; }
+    .landkarte-lernmodule--related {
+      margin-top: 0.5rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid rgba(0,0,0,0.08);
+    }
+    .landkarte-lernmodule--related > strong {
+      text-transform: none;
+      letter-spacing: 0.06em;
+    }
   </style>
 </head>
 <body>
@@ -72,6 +102,7 @@
       <li><a href="../index.html">Einstieg</a></li>
       <li><a href="01-landkarte.html" class="current">Landkarte</a></li>
       <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01b-grundlagen.html">Grundlagen</a></li>
       <li><a href="01c-testmittel.html">Testmittel</a></li>
       <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
       <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
@@ -79,6 +110,7 @@
       <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
       <li><a href="04-testverfahren.html">Testverfahren</a></li>
       <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="06-testwerkzeuge.html">Testwerkzeuge</a></li>
       <li><a href="00b-standards.html">Standards</a></li>
     </ul>
   </nav>
@@ -133,6 +165,14 @@
     <span class="section__sub">Was ist Testen, warum und wer?</span>
   </div>
   <div class="section__body">
+    <div class="landkarte-lernmodule" role="navigation" aria-label="Lernmodule Kap. 1">
+      <strong>Lernmodule</strong>
+      <a href="01b-grundlagen.html">Grundlagen</a>
+      <span class="lm-sep">·</span>
+      <a href="01a-glossar.html">Glossar</a>
+      <span class="lm-sep">·</span>
+      <a href="01c-testmittel.html">Testmittel</a>
+    </div>
     <div class="tag-group">
       <div class="tag-group__title">Ziele &amp; Abgrenzung <span class="ref">1.1–1.2</span></div>
       <div class="tags">
@@ -183,6 +223,14 @@
     <span class="section__sub">Wo &amp; wann wird getestet?</span>
   </div>
   <div class="section__body">
+    <div class="landkarte-lernmodule" role="navigation" aria-label="Lernmodule Kap. 2">
+      <strong>Lernmodule</strong>
+      <a href="02a-sdlc-statisch.html">SDLC statisch</a>
+      <span class="lm-sep">·</span>
+      <a href="02b-sdlc-animiert.html">SDLC animiert</a>
+      <span class="lm-sep">·</span>
+      <a href="02c-teststufen.html">Teststufen</a>
+    </div>
     <div class="tag-group">
       <div class="tag-group__title">Entwicklungsmodelle <span class="ref">2.1</span></div>
       <div class="tags">
@@ -254,6 +302,10 @@
     <span class="section__sub">Prüfen ohne Ausführung</span>
   </div>
   <div class="section__body">
+    <div class="landkarte-lernmodule" role="navigation" aria-label="Lernmodule Kap. 3">
+      <strong>Lernmodule</strong>
+      <a href="03-statisches-testen.html">Statisches Testen</a>
+    </div>
     <div class="tag-group">
       <div class="tag-group__title">Grundlagen statischer Test <span class="ref">3.1</span></div>
       <div class="tags">
@@ -287,6 +339,20 @@
     <span class="section__sub">Wie werden Testfälle entworfen?</span>
   </div>
   <div class="section__body">
+    <div class="landkarte-lernmodule" role="navigation" aria-label="Lernmodule Kap. 4">
+      <strong>Lernmodule</strong>
+      <a href="04-testverfahren.html">Testverfahren</a>
+      <span class="lm-sep">·</span>
+      <a href="00a-ha-einordnung.html">HA-Einordnung</a>
+      <span class="lm-sep">·</span>
+      <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a>
+      <span class="lm-sep">·</span>
+      <a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a>
+      <span class="lm-sep">·</span>
+      <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a>
+      <span class="lm-sep">·</span>
+      <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>
+    </div>
     <div class="tag-group">
       <div class="tag-group__title">Black-Box-Testverfahren <span class="ref">4.2</span></div>
       <div class="tags">
@@ -347,6 +413,20 @@
     <span class="section__sub">Wie wird Testen gesteuert?</span>
   </div>
   <div class="section__body">
+    <div class="landkarte-lernmodule" role="navigation" aria-label="Lernmodule Kap. 5">
+      <strong>Lernmodule</strong>
+      <a href="05-testmanagement.html">Testmanagement</a>
+      <span class="lm-sep">·</span>
+      <a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a>
+      <span class="lm-sep">·</span>
+      <a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a>
+      <span class="lm-sep">·</span>
+      <a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a>
+      <span class="lm-sep">·</span>
+      <a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a>
+      <span class="lm-sep">·</span>
+      <a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a>
+    </div>
     <div class="tag-group">
       <div class="tag-group__title">Testplanung <span class="ref">5.1</span></div>
       <div class="tags">
@@ -412,6 +492,16 @@
     <span class="section__sub">Womit wird getestet?</span>
   </div>
   <div class="section__body">
+    <div class="landkarte-lernmodule" role="navigation" aria-label="Lernmodule Kap. 6">
+      <strong>Lernmodule</strong>
+      <a href="06-testwerkzeuge.html">Testwerkzeuge</a>
+    </div>
+    <div class="landkarte-lernmodule landkarte-lernmodule--related" role="navigation" aria-label="Passend zu Kap. 6 (andere Kapitel)">
+      <strong>Passend dazu:</strong>
+      <a href="01c-testmittel.html">Testmittel</a>
+      <span class="lm-sep">·</span>
+      <a href="03-statisches-testen.html">Statisches Testen</a>
+    </div>
     <div class="tag-group">
       <div class="tag-group__title">Werkzeugunterstützung <span class="ref">6.1</span></div>
       <div class="tags">

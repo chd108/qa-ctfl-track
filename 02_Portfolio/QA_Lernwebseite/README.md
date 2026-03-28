@@ -1,6 +1,6 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-03-26
+> Zuletzt aktualisiert: 2026-03-28
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
@@ -32,7 +32,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 |--------|--------|
 | **Skip-Link** | Sprung zu `#main` (Tastatur/Screenreader). |
 | **`.top-nav-zone`** | Volle Viewport-Breite; **zwei** `<nav>`-Elemente untereinander. |
-| **Nav 1 — Lernmaterial** | `class="main-nav main-nav--learn"`, `aria-label="Lernmaterial"`: Einstieg, Landkarte, Glossar, Testmittel, SDLC statisch/animiert, Teststufen, Statisches Testen, Testverfahren, Testmanagement, Standards. |
+| **Nav 1 — Lernmaterial** | `class="main-nav main-nav--learn"`, `aria-label="Lernmaterial"`: Einstieg, Landkarte, Glossar, Grundlagen, Testmittel, SDLC statisch/animiert, Teststufen, Statisches Testen, Testverfahren, Testmanagement, Testwerkzeuge, Standards. |
 | **Nav 2 — Hausaufgaben** | `class="main-nav main-nav--assignments"`, `aria-label="Hausaufgaben"`: HA-Einordnung, HA4–HA6 (Web- und A4-Seiten). Optisch: etwas **kleinere Schrift**, Linkfarbe **`var(--mid)`**; Hover und aktuelle Seite **`var(--text)`**. |
 | **`.page-chrome`** | Kopf mit Seitentitel und Untertitel (`subpage.css`). |
 | **`main#main`** | Seiteninhalt. |
@@ -47,8 +47,8 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 
 | Pfad | Beschreibung |
 |------|----------------|
-| `index.html` | **Einstieg** — zwei Kartenbereiche (**Lernmaterial** / **Hausaufgaben**), je **10** Verweiskarten auf die aktiven Module; layoutspezifisches CSS inline, sonst wie Hauptsystem. |
-| `pages/` | **20** aktive Lern- bzw. HA-Seiten (siehe Tabelle unten). |
+| `index.html` | **Einstieg** — zwei Kartenbereiche (**Lernmaterial** / **Hausaufgaben**), **12** Verweiskarten Lernmaterial und **10** Hausaufgaben; layoutspezifisches CSS inline, sonst wie Hauptsystem. |
+| `pages/` | **22** aktive Lern- bzw. HA-Seiten (siehe Tabelle unten). |
 | `assets/css/base.css` | Globale Variablen (`:root`), Body-Hintergrund, **`.top-nav-zone`**, **`.main-nav`** / **`.main-nav--assignments`**, Skip-Link. |
 | `assets/css/subpage.css` | Gemeinsame **`header`**-/`footer`-Typo für Unterseiten. |
 | `assets/css/doc-a4.css` | **A4-/Dokumentmodus** inkl. Screen-`body`-Ränder; wird von HA-A4-Seiten zusätzlich eingebunden. |
@@ -68,7 +68,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 |-------|--------|----------------------|
 | `01-landkarte.html` | Inhaltsverzeichnis / Landkarte des CTFL-Lehrplans v4.0.2 | Kap. 1–6 |
 | `01a-glossar.html` | Schlüsselbegriffe CTFL v4.0.2 | Kap. 1–6 |
-| `01b-grundlagen.html` | *Geplant — noch nicht im Repo* | Kap. 1 |
+| `01b-grundlagen.html` | Grundlagen des Testens (Was/Warum, QA vs. Testen, Fehlerkette, Grundsätze, Aktivitäten) | Kap. 1 |
 | `01c-testmittel.html` | Testmittel und Testaktivitäten | Kap. 1.4.3 |
 | `02a-sdlc-statisch.html` | SDLC & ISTQB-Testprozess — statisch | Kap. 2 |
 | `02b-sdlc-animiert.html` | SDLC & ISTQB-Testprozess — animiert | Kap. 2 |
@@ -85,11 +85,11 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `06a-ha6-testprotokoll-a4.html` | HA6 — Testprotokoll **A4** (Test Execution Log, 9 TC) | Kap. 5 |
 | `06b-ha6-fehlerbericht-a4.html` | HA6 — Fehlerbericht **A4** (Incident Report, Musterdokument BUG-001 / BUG-002, 4 Blätter) | Kap. 5 |
 | `06c-ha6-testabschlussbericht-a4.html` | HA6 — Testabschlussbericht **A4** (Test Completion Report, Blankovorlage) | Kap. 5 |
-| `06-testwerkzeuge.html` | *Geplant — noch nicht im Repo* | Kap. 6 |
+| `06-testwerkzeuge.html` | Testwerkzeuge: Kategorien, Nutzen &amp; Risiken der Testautomatisierung | Kap. 6 |
 | `00a-ha-einordnung.html` | Einordnung der Hausaufgaben im CTFL-Kontext | — |
 | `00b-standards.html` | Standards, Projektstatus, Referenzen | — |
 
-**Ist-Stand:** Alle genannten Dateien **außer** `01b-grundlagen.html` und `06-testwerkzeuge.html` sind vorhanden und in **beiden Nav-Leisten** sowie auf der **Einstiegsseite** verlinkt.
+**Ist-Stand:** Alle genannten Dateien sind vorhanden und in **beiden Nav-Leisten** sowie auf der **Einstiegsseite** verlinkt.
 
 ---
 
@@ -116,13 +116,13 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | | |
 |--|--|
 | **README erstellt** | 2026-03-12 |
-| **README zuletzt aktualisiert** | **2026-03-26** |
+| **README zuletzt aktualisiert** | **2026-03-28** |
 
-**Kurzüberblick (Stand 26.03.2026)**
+**Kurzüberblick (Stand 28.03.2026)**
 
 - **Hauptsystem:** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **02c** im gemeinsamen Section-Muster.  
 - **HA4/HA5/HA6:** inhaltlich und formal gehärtet — Meta-Informationen, Kette Web ↔ A4, Terminologie **Testbasis-Analyse**; HA6 mit **Testprotokoll A4**, **Fehlerbericht A4** (Musterdokument BUG-001 / BUG-002), **Testabschlussbericht A4** (ISO/IEC/IEEE 29119-3); Ergänzungen in **`doc-a4.css`** (u. a. Status-Badge für Review).  
-- **Einstieg (`index.html`):** breites Layout (`max-width` 1800px), **zwei sichtbare Bereichsüberschriften** (Lernmaterial / Hausaufgaben), responsives Kartenraster (Breakpoints 900px / 640px), CSS mit gemeinsamen Variablen; HA-Karten-Metas mit **Kap.-Hinweisen**; A4-HA-Karten mit hervorgehobenem **Formular**-Hinweis.  
+- **Einstieg (`index.html`):** gleiche maximale Lesespalte wie die übrigen Hauptseiten (`max-width` 1400px), **zwei Bereichsüberschriften** (Lernmaterial / Hausaufgaben), kompaktes Intro und Orientierungshinweis; Kartenbeschreibungen mit **Kap.-Bezug** (Lernmaterial) bzw. **GroceryMate / Druck** (HA); HA-Meta **Thematisch · Kap. …** bzw. **Formular · A4** (Badge); Karten in jeder Rasterzeile **gleich hoch** (Flex-Spalte).  
 - **Kopfnavigation:** **Zwei Leisten** in `.top-nav-zone` — **Lernmaterial** vs. **Hausaufgaben**, semantisch getrennt, `aria-label`s; vertikaler Rhythmus **`--nav-vertical-rhythm` (1,75rem)**; HA-Leiste über **`.main-nav--assignments`** visuell abgesetzt.  
 
 Details und Historie: **Monorepo [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** (Branch `main`; Website-Pfad `02_Portfolio/QA_Lernwebseite/`).

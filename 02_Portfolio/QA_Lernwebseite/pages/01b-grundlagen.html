@@ -1,0 +1,729 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Kapitel 1: Grundlagen des Testens – Was ist Testen, warum ist Testen notwendig, Testgrundsätze, Testaktivitäten und Kompetenzen nach ISTQB CTFL v4.0.2">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>Grundlagen des Testens — QA Lernwebseite</title>
+  <style>
+    body { padding: 0 3rem 5rem; max-width: 1400px; margin: 0 auto; font-size: 14px; }
+    
+    section { 
+      margin-bottom: 2.5rem; 
+      padding: 1.5rem 1.8rem;
+      background: rgba(255,255,255,0.4);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+    }
+    
+    section h2 {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1.35rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 2px solid var(--bdr);
+    }
+    
+    section h3 {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--text);
+      margin-top: 1.5rem;
+      margin-bottom: 0.7rem;
+    }
+    
+    section p {
+      line-height: 1.65;
+      margin-bottom: 0.9rem;
+    }
+    
+    section ul, section ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+      line-height: 1.65;
+    }
+    
+    section li {
+      margin-bottom: 0.5rem;
+    }
+    
+    .info-box {
+      padding: 1rem 1.3rem;
+      margin: 1.5rem 0;
+      background: #f0dfc0;
+      border-left: 4px solid #9c6a2a;
+      border-radius: 4px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    
+    .info-box strong {
+      display: block;
+      margin-bottom: 0.4rem;
+      color: #7a5a1a;
+    }
+    
+    .principle-box {
+      padding: 1rem 1.3rem;
+      margin: 1rem 0;
+      background: rgba(186, 209, 220, 0.3);
+      border-left: 4px solid #5a8a9d;
+      border-radius: 4px;
+      line-height: 1.6;
+    }
+    
+    .principle-box strong {
+      color: #3a5a6d;
+    }
+    
+    .comparison-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.95rem;
+    }
+    
+    .comparison-table th,
+    .comparison-table td {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--bdr);
+      text-align: left;
+      vertical-align: top;
+    }
+    
+    .comparison-table th {
+      background: rgba(0,0,0,0.04);
+      font-weight: 600;
+      color: var(--soft);
+    }
+    
+    .comparison-table td {
+      background: rgba(255,255,255,0.5);
+    }
+    
+    .activity-list {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .activity-card {
+      padding: 1rem 1.3rem;
+      background: var(--e1);
+      border: 1px solid var(--bdr);
+      border-radius: 6px;
+    }
+    
+    .activity-card h4 {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--text);
+    }
+    
+    .activity-card p {
+      margin: 0;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+    
+    .reference-link {
+      display: inline-block;
+      margin-top: 0.5rem;
+      padding: 0.4rem 0.8rem;
+      background: var(--e4);
+      border: 1px solid var(--bdr);
+      border-radius: 4px;
+      color: var(--text);
+      text-decoration: none;
+      font-size: 0.9rem;
+      font-weight: 500;
+    }
+    
+    .reference-link:hover {
+      background: var(--e3);
+      text-decoration: underline;
+    }
+
+    /* Anschluss an andere Lernseiten (Meta-Bar, Intro, Kontext) */
+    .meta-bar {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 1rem;
+      padding: .6rem 1rem;
+      margin-bottom: 1.5rem;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 0.9rem;
+      color: var(--mid);
+    }
+    .meta-bar strong { color: var(--text); }
+
+    .intro-box {
+      padding: 1rem 1.25rem;
+      margin-bottom: 1.5rem;
+      background: rgba(255,255,255,0.5);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+    .intro-box > strong {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--soft);
+      display: block;
+      margin-bottom: 0.5rem;
+    }
+
+    .kontext-beispiel {
+      margin: 1rem 0 1.1rem;
+      padding: 0.75rem 1rem;
+      background: rgba(196, 216, 238, 0.25);
+      border-left: 4px solid #5a7a9a;
+      border-radius: 0 6px 6px 0;
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 1.6;
+    }
+    .kontext-beispiel strong {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #3a5a7a;
+      display: block;
+      margin-bottom: 0.35rem;
+    }
+
+    .chain-wrap {
+      margin: 1rem 0 1.25rem;
+      padding: 1rem 1rem 1.1rem;
+      background: rgba(255,255,255,0.45);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+    }
+    .chain-wrap .chain-caption {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--soft);
+      margin-bottom: 0.65rem;
+    }
+    .chain-flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: center;
+      gap: 0.35rem;
+    }
+    .chain-step {
+      flex: 1;
+      min-width: 130px;
+      max-width: 240px;
+      padding: 0.65rem 0.85rem;
+      background: rgba(186, 209, 220, 0.35);
+      border: 1px solid var(--bdr);
+      border-radius: 6px;
+    }
+    .chain-step .ch-term {
+      font-weight: 700;
+      color: var(--text);
+      font-size: 0.92rem;
+      margin-bottom: 0.2rem;
+    }
+    .chain-step .ch-en {
+      font-size: 0.78rem;
+      color: var(--soft);
+      font-style: italic;
+      font-family: Georgia, 'Palatino Linotype', serif;
+    }
+    .chain-arrow {
+      display: flex;
+      align-items: center;
+      color: var(--soft);
+      font-size: 1.15rem;
+      flex-shrink: 0;
+      padding: 0 0.15rem;
+    }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="../index.html">Einstieg</a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01b-grundlagen.html" class="current">Grundlagen</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="02c-teststufen.html">Teststufen</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="06-testwerkzeuge.html">Testwerkzeuge</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Grundlagen des Testens</h1>
+    <p>Kapitel 1 – ISTQB Certified Tester Foundation Level v4.0.2</p>
+  </header>
+</div>
+
+<main id="main">
+
+  <div class="meta-bar" aria-label="Seitenkontext">
+    <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 · Kapitel 1</span>
+    <span><strong>Aufbau:</strong> 1.1–1.5 · Begriffe · Fehlerterminologie · Grundsätze · Testprozess · Kompetenzen</span>
+    <span><strong>Vertiefung:</strong> <a href="01c-testmittel.html">Testmittel</a> · <a href="05-testmanagement.html">Testmanagement</a></span>
+  </div>
+
+  <div class="intro-box" role="note">
+    <strong>Einordnung</strong>
+    Die Seite bündelt das erste Hauptkapitel des Foundation-Lehrplans: was Testen leistet, wie es sich von Debugging und QS unterscheidet, wie Fehler in der CTFL-Terminologie zusammenhängen, welche Grundsätze gelten und wie der Testprozess grob aufgebaut ist. Detail zu <em>Testmitteln</em> (Arbeitsergebnisse) folgt auf der <a href="01c-testmittel.html">Testmittel</a>-Seite; Steuerung und Planung im Überblick unter <a href="05-testmanagement.html">Testmanagement</a> (Kap. 5).
+  </div>
+
+  <section aria-labelledby="was-ist-testen">
+    <h2 id="was-ist-testen">1.1 Was ist Testen?</h2>
+    
+    <p>Softwaresysteme sind Teil unseres täglichen Lebens. Software, die nicht ordnungsgemäß funktioniert, kann zu vielen Problemen führen – von Geld-, Zeit- oder Ansehensverlust bis hin zu Verletzungen oder Tod in Extremfällen. <strong>Softwaretests bewerten die Qualität der Software und helfen, das Risiko einer Fehlerwirkung im Betrieb zu verringern.</strong></p>
+    
+    <p>Testen besteht aus einer Reihe von Aktivitäten zur Entdeckung von Fehlerzuständen und zur Bewertung der Qualität von Arbeitsergebnissen. Ein weit verbreitetes Missverständnis ist, dass Testen nur aus dem Ausführen von Tests besteht. Tatsächlich umfasst Testen viele weitere Aktivitäten und muss auf den Softwareentwicklungslebenszyklus (SDLC) abgestimmt sein.</p>
+
+    <div class="kontext-beispiel">
+      <strong>Kontext (ohne Anspruch auf Vollständigkeit)</strong>
+      Typische Einsatzgebiete: Webshops (Checkout, Zahlung), klinische Anwendungen, eingebettete Steuerungen. Überall können Defekte zu Ausfällen, Dateninkonsistenzen oder sicherheitsrelevanten Vorfällen führen; Testen adressiert das Risiko systematisch – unabhängig von der Branche.
+    </div>
+    
+    <div class="info-box">
+      <strong>Wichtige Unterscheidung:</strong>
+      Testen beinhaltet sowohl <strong>Verifizierung</strong> (Prüfen, ob das System die spezifizierten Anforderungen erfüllt) als auch <strong>Validierung</strong> (Prüfen, ob das System die Bedürfnisse der Benutzer und Stakeholder erfüllt).
+    </div>
+    
+    <p>Testen kann <strong>dynamisch</strong> (Software wird ausgeführt) oder <strong>statisch</strong> (Software wird nicht ausgeführt, z.B. Reviews) sein. Testen ist nicht nur eine technische Aktivität – es muss auch richtig geplant, verwaltet, geschätzt, überwacht und gesteuert werden.</p>
+
+    <h3>Testziele</h3>
+    
+    <p>Typische Testziele sind:</p>
+    <ul>
+      <li>Evaluieren von Arbeitsergebnissen wie Anforderungen, User-Storys, Entwürfe und Code</li>
+      <li>Auslösen von Fehlerwirkungen und Finden von Fehlerzuständen</li>
+      <li>Sicherstellen der erforderlichen Überdeckung eines Testobjekts</li>
+      <li>Verringern des Risikos einer unzureichenden Softwarequalität</li>
+      <li>Verifizieren, ob spezifizierte Anforderungen erfüllt wurden</li>
+      <li>Verifizieren, ob vertragliche, rechtliche und regulatorische Anforderungen erfüllt sind</li>
+      <li>Bereitstellen von Informationen für Stakeholder zur Entscheidungsfindung</li>
+      <li>Aufbauen von Vertrauen in die Qualität des Testobjekts</li>
+      <li>Validieren, ob das Testobjekt vollständig ist und wie erwartet funktioniert</li>
+    </ul>
+    
+    <p>Die Testziele können je nach Kontext variieren – abhängig vom zu testenden Arbeitsergebnis, der Teststufe, Risiken, dem SDLC und geschäftlichen Faktoren.</p>
+
+    <h3>Testen und Debugging</h3>
+    
+    <p><strong>Testen und Debugging sind getrennte Aktivitäten.</strong> Testen kann Fehlerwirkungen auslösen oder direkt Fehlerzustände finden. Debugging hingegen umfasst:</p>
+    <ul>
+      <li>Reproduzieren einer Fehlerwirkung</li>
+      <li>Diagnose (den Fehlerzustand finden)</li>
+      <li>Behebung des Fehlerzustands</li>
+    </ul>
+    
+    <p>Nach dem Debugging folgen <strong>Fehlernachtests</strong> (prüfen, ob das Problem behoben wurde) und <strong>Regressionstests</strong> (prüfen, ob die Korrekturen andere Teile des Systems beeinträchtigt haben).</p>
+  </section>
+
+  <section aria-labelledby="warum-testen">
+    <h2 id="warum-testen">1.2 Warum ist Testen notwendig?</h2>
+    
+    <h3>Der Beitrag des Testens zum Erfolg</h3>
+    
+    <p>Testen ist ein kosteneffizientes Mittel zur Erkennung von Fehlerzuständen. Diese können dann beseitigt werden (durch Debugging), sodass Testen indirekt zu einer höheren Qualität der Testobjekte beiträgt.</p>
+    
+    <p>Testen bietet:</p>
+    <ul>
+      <li>Ein Mittel zur direkten Bewertung der Qualität in verschiedenen SDLC-Phasen</li>
+      <li>Messgrößen für Projektmanagement-Entscheidungen (z.B. Freigabeentscheidungen)</li>
+      <li>Eine indirekte Darstellung des Entwicklungsprojekts für Benutzer</li>
+      <li>Erfüllung vertraglicher, gesetzlicher oder regulatorischer Anforderungen</li>
+    </ul>
+
+    <h3>Testen und Qualitätssicherung</h3>
+    
+    <p>Obwohl die Begriffe oft synonym verwendet werden, sind <strong>Testen und Qualitätssicherung (QS) nicht dasselbe</strong>:</p>
+    
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Aspekt</th>
+          <th>Testen</th>
+          <th>Qualitätssicherung (QS)</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Ausrichtung</strong></td>
+          <td>Produktorientiert, korrigierend</td>
+          <td>Prozessorientiert, präventiv</td>
+        </tr>
+        <tr>
+          <td><strong>Fokus</strong></td>
+          <td>Aktivitäten zur Erreichung eines angemessenen Qualitätsniveaus</td>
+          <td>Implementierung und Verbesserung von Prozessen</td>
+        </tr>
+        <tr>
+          <td><strong>Rolle</strong></td>
+          <td>Form der Qualitätssteuerung</td>
+          <td>Annahme: guter Prozess → gutes Produkt</td>
+        </tr>
+        <tr>
+          <td><strong>Verantwortung</strong></td>
+          <td>Primär Testteam</td>
+          <td>Alle Projektbeteiligten</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p>Testergebnisse werden in beiden Bereichen verwendet: beim Testen zur Behebung von Fehlerzuständen, in der QS als Rückmeldung über die Qualität der Entwicklungs- und Testprozesse.</p>
+
+    <h3>Fehlhandlungen, Fehlerzustände, Fehlerwirkungen und Grundursachen</h3>
+    
+    <p><strong>Menschen begehen Fehlhandlungen</strong> (Irrtümer), die zu <strong>Fehlerzuständen</strong> (Defekten) führen, was wiederum zu <strong>Fehlerwirkungen</strong> führen kann.</p>
+
+    <div class="chain-wrap" role="group" aria-label="Fehlerkette nach CTFL">
+      <div class="chain-caption">Fehlerkette (schematisch)</div>
+      <div class="chain-flow">
+        <div class="chain-step">
+          <div class="ch-term">Fehlhandlung</div>
+          <div class="ch-en">human error / mistake</div>
+        </div>
+        <span class="chain-arrow" aria-hidden="true">→</span>
+        <div class="chain-step">
+          <div class="ch-term">Fehlerzustand</div>
+          <div class="ch-en">defect / bug</div>
+        </div>
+        <span class="chain-arrow" aria-hidden="true">→</span>
+        <div class="chain-step">
+          <div class="ch-term">Fehlerwirkung</div>
+          <div class="ch-en">failure</div>
+        </div>
+      </div>
+    </div>
+    
+    <p>Gründe für Fehlhandlungen:</p>
+    <ul>
+      <li>Zeitdruck</li>
+      <li>Komplexität von Arbeitsergebnissen, Prozessen oder Interaktionen</li>
+      <li>Erschöpfung oder unzureichende Schulung</li>
+    </ul>
+    
+    <div class="info-box">
+      <strong>Wichtig zu verstehen:</strong>
+      Nicht jeder Fehlerzustand führt zu einer Fehlerwirkung. Manche Fehlerzustände führen immer zu Fehlerwirkungen, andere nur unter bestimmten Umständen, und wieder andere führen nie zu einer Fehlerwirkung. Fehlerwirkungen können auch durch Umweltbedingungen verursacht werden (z.B. Strahlung).
+    </div>
+    
+    <p>Eine <strong>Grundursache</strong> (root cause) ist ein wesentlicher Grund für das Auftreten eines Problems. Durch Grundursachenanalyse können ähnliche Fehlerwirkungen oder Fehlerzustände in Zukunft verhindert oder reduziert werden.</p>
+  </section>
+
+  <section aria-labelledby="grundsaetze">
+    <h2 id="grundsaetze">1.3 Grundsätze des Testens</h2>
+    
+    <p>Im Laufe der Jahre wurden sieben Grundsätze entwickelt, die allgemeine Richtlinien für alle Tests bieten:</p>
+
+    <div class="info-box">
+      <strong>Hinweis zu den Grundsätzen:</strong>
+      Es handelt sich um Leitlinien, nicht um mathematische Gesetze. Sie prägen risikobasiertes Testen, Priorisierung und die Erwartung, dass Testen Qualität sichtbar macht, aber nicht „beweist“, dass Software fehlerfrei ist.
+    </div>
+    
+    <div class="principle-box">
+      <strong>1. Testen zeigt das Vorhandensein, nicht die Abwesenheit von Fehlerzuständen</strong><br>
+      Testen kann zeigen, dass Fehlerzustände vorhanden sind, kann aber nicht beweisen, dass keine existieren. Selbst wenn keine Fehlerzustände gefunden werden, kann Testen nicht die Korrektheit des Testobjekts beweisen.
+    </div>
+    
+    <div class="principle-box">
+      <strong>2. Vollständiges Testen ist unmöglich</strong><br>
+      Es ist nicht möglich, alles zu testen (außer in trivialen Fällen). Stattdessen sollten Testverfahren, Priorisierung und risikobasiertes Testen angewendet werden, um den Testaufwand gezielt einzusetzen.
+    </div>
+    
+    <div class="principle-box">
+      <strong>3. Frühes Testen spart Zeit und Geld</strong><br>
+      Fehlerzustände, die früh im Prozess beseitigt werden, verursachen keine weiteren Fehlerzustände in abgeleiteten Arbeitsergebnissen. Die Qualitätskosten werden gesenkt, da später im SDLC weniger Fehlerwirkungen auftreten. Sowohl statische als auch dynamische Tests sollten so früh wie möglich beginnen.
+    </div>
+    
+    <div class="principle-box">
+      <strong>4. Fehlerzustände treten gehäuft auf</strong><br>
+      Eine kleine Anzahl von Komponenten enthält meist die meisten entdeckten Fehlerzustände oder ist für die meisten Fehlerwirkungen im Betrieb verantwortlich (Pareto-Prinzip). Vorausgesagte und tatsächlich beobachtete Anhäufungen sind ein wichtiger Beitrag für risikobasiertes Testen.
+    </div>
+    
+    <div class="principle-box">
+      <strong>5. Tests nutzen sich ab</strong><br>
+      Wenn dieselben Tests viele Male wiederholt werden, werden sie bei der Erkennung neuer Fehlerzustände zunehmend ineffektiv. Bestehende Tests müssen möglicherweise modifiziert und neue Tests geschrieben werden. In einigen Fällen (z.B. automatisierte Regressionstests) kann die Wiederholung jedoch positiv sein.
+    </div>
+    
+    <div class="principle-box">
+      <strong>6. Testen ist kontextabhängig</strong><br>
+      Es gibt keinen universell anwendbaren Ansatz für das Testen. Testen wird in verschiedenen Kontexten unterschiedlich praktiziert.
+    </div>
+    
+    <div class="principle-box">
+      <strong>7. Trugschluss: „Keine Fehler" bedeutet ein brauchbares System</strong><br>
+      Es ist ein Irrtum zu erwarten, dass das Verifizieren von Software den Erfolg eines Systems sicherstellt. Gründliches Testen aller Anforderungen und Beheben aller Fehlerzustände könnte immer noch ein System hervorbringen, das die Bedürfnisse der Benutzer nicht erfüllt. Neben der Verifizierung sollte auch eine Validierung durchgeführt werden.
+    </div>
+  </section>
+
+  <section aria-labelledby="testaktivitaeten">
+    <h2 id="testaktivitaeten">1.4 Testaktivitäten, Testmittel und Rollen des Testens</h2>
+    
+    <p>Auf einem hohen Abstraktionsniveau gibt es Gruppen von Testaktivitäten, die einen <strong>Testprozess</strong> bilden. Welche Testaktivitäten durchgeführt werden, wie sie durchgeführt werden und wann sie stattfinden, wird normalerweise im Rahmen der Testplanung entschieden.</p>
+
+    <h3>Testaktivitäten und -aufgaben</h3>
+    
+    <p>Ein Testprozess besteht aus folgenden Hauptgruppen von Aktivitäten. Obwohl sie einer logischen Abfolge zu folgen scheinen, werden sie oft iterativ oder parallel durchgeführt:</p>
+    
+    <div class="activity-list">
+      <div class="activity-card">
+        <h4>Testplanung</h4>
+        <p>Testziele definieren und eine Testvorgehensweise auswählen, mit der die Testziele innerhalb der Randbedingungen am besten erreicht werden können.</p>
+      </div>
+      
+      <div class="activity-card">
+        <h4>Testüberwachung und Teststeuerung</h4>
+        <p>Laufende Überprüfung aller Testaktivitäten, Vergleich des Fortschritts mit dem Plan und Ergreifen von Korrekturmaßnahmen zur Erreichung der Testziele.</p>
+      </div>
+      
+      <div class="activity-card">
+        <h4>Testanalyse</h4>
+        <p>Analyse der Testbasis, um testbare Merkmale zu identifizieren. Testbedingungen werden bestimmt und priorisiert. Beantwortet die Frage: <em>„Was soll getestet werden?"</em></p>
+      </div>
+      
+      <div class="activity-card">
+        <h4>Testentwurf</h4>
+        <p>Ausarbeitung der Testbedingungen zu Testfällen und anderen Testmitteln. Definition von Anforderungen an Testdaten, Entwurf der Testumgebung. Beantwortet die Frage: <em>„Wie soll getestet werden?"</em></p>
+      </div>
+      
+      <div class="activity-card">
+        <h4>Testrealisierung</h4>
+        <p>Erstellung oder Beschaffung der für die Testdurchführung erforderlichen Testmittel (z.B. Testdaten). Testfälle werden in Testabläufen organisiert, Testskripte erstellt, Testumgebung aufgebaut.</p>
+      </div>
+      
+      <div class="activity-card">
+        <h4>Testdurchführung</h4>
+        <p>Ausführung der Tests gemäß Testausführungsplan (manuell oder automatisiert). Istergebnisse werden mit erwarteten Ergebnissen verglichen. Abweichungen werden analysiert und berichtet.</p>
+      </div>
+      
+      <div class="activity-card">
+        <h4>Testabschluss</h4>
+        <p>Findet zu Projektmeilensteinen statt. Änderungsanträge für nicht behobene Fehlerzustände erstellen, Testmittel archivieren, Lessons Learned ermitteln, Testabschlussbericht erstellen.</p>
+      </div>
+    </div>
+
+    <h3>Testprozess im Kontext</h3>
+    
+    <p>Testen wird nicht isoliert durchgeführt. Die Art und Weise, wie Testen durchgeführt wird, hängt von zahlreichen Kontextfaktoren ab:</p>
+    <ul>
+      <li><strong>Stakeholder:</strong> Bedürfnisse, Erwartungen, Anforderungen, Bereitschaft zur Zusammenarbeit</li>
+      <li><strong>Teammitglieder:</strong> Kompetenz, Wissen, Erfahrung, Verfügbarkeit, Schulungsbedarf</li>
+      <li><strong>Unternehmensbereich:</strong> Kritikalität des Testobjekts, Risiken, Marktbedürfnisse, gesetzliche Vorschriften</li>
+      <li><strong>Technische Faktoren:</strong> Art der Software, Produktarchitektur, verwendete Technologie</li>
+      <li><strong>Projektbedingte Randbedingungen:</strong> Umfang, Zeit, Budget, Ressourcen</li>
+      <li><strong>Organisatorische Faktoren:</strong> Organisationsstruktur, bestehende Richtlinien, angewandte Praktiken</li>
+      <li><strong>SDLC:</strong> Technologische Praktiken, Entwicklungsmethoden</li>
+      <li><strong>Werkzeuge:</strong> Verfügbarkeit, Gebrauchstauglichkeit, Konformität</li>
+    </ul>
+    
+    <p>Diese Faktoren wirken sich auf Teststrategie, verwendete Testverfahren, Grad der Testautomatisierung, geforderte Überdeckung, Detaillierungsgrad der Testmittel und Testberichterstattung aus.</p>
+
+    <h3>Testmittel</h3>
+    
+    <div class="info-box">
+      <strong>Verweis auf separate Seite:</strong>
+      Das Thema Testmittel wird ausführlich auf einer eigenen Seite behandelt.
+      <a href="01c-testmittel.html" class="reference-link">→ Zur Seite: Testmittel</a>
+    </div>
+
+    <h3>Verfolgbarkeit zwischen der Testbasis und den Testmitteln</h3>
+    
+    <p>Für eine effektive Testüberwachung und Teststeuerung ist es wichtig, eine <strong>Verfolgbarkeit</strong> (Traceability) herzustellen und zu pflegen zwischen:</p>
+    <ul>
+      <li>Bestandteilen der Testbasis</li>
+      <li>Mit diesen Bestandteilen verbundenen Testmitteln (z.B. Testbedingungen, Risiken, Testfälle)</li>
+      <li>Testergebnissen</li>
+      <li>Fehlerzuständen</li>
+    </ul>
+    
+    <p><strong>Vorteile guter Verfolgbarkeit:</strong></p>
+    <ul>
+      <li>Bewertung der Überdeckung (z.B. welche Anforderungen durch Testfälle überdeckt sind)</li>
+      <li>Ermittlung der Auswirkungen von Änderungen</li>
+      <li>Erleichterung von Audits</li>
+      <li>Erfüllung von IT-Governance-Kriterien</li>
+      <li>Verständlichere Testfortschritts- und Testabschlussberichte</li>
+      <li>Vermittlung technischer Aspekte des Testens an Stakeholder</li>
+    </ul>
+
+    <h3>Rollen des Testens</h3>
+    
+    <p>Zwei Hauptrollen werden unterschieden:</p>
+    
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Aspekt</th>
+          <th>Rolle des Testmanagements</th>
+          <th>Rolle des Testens</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Verantwortung</strong></td>
+          <td>Gesamtverantwortung für Testprozess, Testteam und Leitung der Testaktivitäten</td>
+          <td>Gesamtverantwortung für den operativen Aspekt des Testens</td>
+        </tr>
+        <tr>
+          <td><strong>Fokus</strong></td>
+          <td>Testplanung, Testüberwachung, Teststeuerung, Testabschluss</td>
+          <td>Testanalyse, Testentwurf, Testrealisierung, Testdurchführung</td>
+        </tr>
+        <tr>
+          <td><strong>Ausführung</strong></td>
+          <td>Kann von Teamleiter, Testmanager, Entwicklungsleiter ausgeübt werden</td>
+          <td>Tester, die Tests entwerfen und durchführen</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    <p>Diese Rollen können von verschiedenen Personen zu verschiedenen Zeiten übernommen werden. Es ist auch möglich, dass eine Person beide Rollen gleichzeitig übernimmt.</p>
+  </section>
+
+  <section aria-labelledby="kompetenzen">
+    <h2 id="kompetenzen">1.5 Wesentliche Kompetenzen und bewährte Praktiken beim Testen</h2>
+    
+    <p><strong>Kompetenz</strong> ist die Fähigkeit, etwas gut zu machen, die sich aus Wissen, Übung und Eignung ergibt. Gute Tester sollten effektive Teamplayer sein und in der Lage sein, Tests mit verschiedenen Graden an Unabhängigkeit durchzuführen.</p>
+
+    <h3>Allgemeine Kompetenzen, die für das Testen erforderlich sind</h3>
+    
+    <p>Die folgenden Kompetenzen sind zwar allgemeiner Art, aber für Tester besonders wichtig:</p>
+    <ul>
+      <li><strong>Testwissen:</strong> Zur Steigerung der Effektivität (z.B. durch Einsatz von Testverfahren)</li>
+      <li><strong>Gründlichkeit, Sorgfalt, Neugier, Detailgenauigkeit, methodisches Vorgehen:</strong> Um Fehlerzustände zu erkennen, insbesondere schwer zu findende</li>
+      <li><strong>Gute Kommunikationsfähigkeit, aktives Zuhören, Teamfähigkeit:</strong> Um mit Stakeholdern effektiv zu interagieren, Informationen weiterzugeben und Fehlerzustände zu berichten</li>
+      <li><strong>Analytisches Denken, kritisches Denken, Kreativität:</strong> Zur Steigerung der Effektivität des Testens</li>
+      <li><strong>Technische Kenntnisse:</strong> Um die Effizienz zu steigern (z.B. durch Einsatz geeigneter Testwerkzeuge)</li>
+      <li><strong>Wissen in der Anwendungsdomäne:</strong> Um Endanwender zu verstehen und mit ihnen kommunizieren zu können</li>
+    </ul>
+    
+    <div class="info-box">
+      <strong>Kommunikation ist entscheidend:</strong>
+      Tester sind oft die Überbringer schlechter Nachrichten. Kommunikation von Testergebnissen kann als Kritik aufgefasst werden. Bestätigungsfehler (Bias) können dazu führen, dass Informationen schwer zu akzeptieren sind. Informationen über Fehlerzustände sollten daher konstruktiv kommuniziert werden.
+    </div>
+
+    <h3>Whole-Team-Ansatz (Whole Team Approach)</h3>
+    
+    <p>Der <strong>Whole-Team-Ansatz</strong> – eine aus Extreme Programming stammende Praxis – baut auf der Teamfähigkeit auf:</p>
+    
+    <ul>
+      <li>Jedes Teammitglied mit den erforderlichen Kompetenzen kann jede Aufgabe ausführen</li>
+      <li>Jeder ist für die Qualität verantwortlich</li>
+      <li>Teammitglieder teilen sich einen gemeinsamen Arbeitsbereich (physisch oder virtuell)</li>
+      <li>Fördert Kommunikation und Zusammenarbeit innerhalb des Teams</li>
+      <li>Schafft Synergien durch Einsatz verschiedener Kompetenzen</li>
+    </ul>
+    
+    <p>Tester arbeiten eng mit anderen Teammitgliedern zusammen:</p>
+    <ul>
+      <li>Mit Fachbereichsvertretern zur Unterstützung bei der Erstellung geeigneter Abnahmetests</li>
+      <li>Mit Entwicklern zur Abstimmung der Teststrategie und Testautomatisierung</li>
+      <li>Weitergabe von Testwissen an andere Teammitglieder</li>
+    </ul>
+    
+    <div class="info-box">
+      <strong>Nicht immer angemessen:</strong>
+      Je nach Kontext ist der Whole-Team-Ansatz nicht immer geeignet. In sicherheitskritischen Bereichen kann ein hohes Maß an Unabhängigkeit des Testens erforderlich sein.
+    </div>
+
+    <h3>Unabhängigkeit des Testens</h3>
+    
+    <p>Ein gewisser Grad an <strong>Unabhängigkeit</strong> macht den Tester effektiver bei der Fehlerfindung, da sich die Voreingenommenheit zwischen Autor und Tester unterscheidet. Unabhängigkeit ist jedoch kein Ersatz für Nähe zum System – Entwickler können viele Fehlerzustände in ihrem eigenen Code effizient finden.</p>
+    
+    <p><strong>Grade der Unabhängigkeit (aufsteigend):</strong></p>
+    <ol>
+      <li>Autor testet eigenes Arbeitsergebnis (keine Unabhängigkeit)</li>
+      <li>Kollegen aus demselben Team testen (etwas Unabhängigkeit)</li>
+      <li>Tester außerhalb des Teams, aber innerhalb der Organisation (hohe Unabhängigkeit)</li>
+      <li>Tester außerhalb der Organisation (sehr hohe Unabhängigkeit)</li>
+    </ol>
+    
+    <p>Bei den meisten Projekten ist es am besten, das Testen mit mehreren Unabhängigkeitsstufen durchzuführen.</p>
+    
+    <table class="comparison-table">
+      <thead>
+        <tr>
+          <th>Vorteile</th>
+          <th>Nachteile</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>
+            <ul style="margin: 0;">
+              <li>Unabhängige Tester erkennen andere Arten von Fehlerwirkungen aufgrund unterschiedlicher Hintergründe und Perspektiven</li>
+              <li>Können Annahmen der Stakeholder überprüfen, in Frage stellen oder widerlegen</li>
+            </ul>
+          </td>
+          <td>
+            <ul style="margin: 0;">
+              <li>Können vom Entwicklungsteam isoliert sein</li>
+              <li>Mangelnde Zusammenarbeit, Kommunikationsprobleme möglich</li>
+              <li>Entwickler verlieren möglicherweise Verantwortungsgefühl für Qualität</li>
+              <li>Können als Engpass oder für Verzögerungen verantwortlich gemacht werden</li>
+            </ul>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </section>
+
+</main>
+
+<footer>
+  <p class="source-note">Kapitel 1: Grundlagen des Testens · ISTQB CTFL v4.0.2 · QA Lernwebseite</p>
+</footer>
+
+</body>
+</html>
