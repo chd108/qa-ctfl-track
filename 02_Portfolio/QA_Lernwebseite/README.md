@@ -108,6 +108,11 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 |----------|-----|---------|
 | **Systemkonzept / Steuerung** (IA, Seitentypen, Benennung) | QA-Track: `01_Projektsteuerung/` (Charter, Standards, …); Archiv: `06_Archiv/` | Ein **Git-Repository** (`qa-ctfl-track`) für Programm und Website. |
 | **Commit-/Push-Regeln** | [04_Project_Guidelines.md](../../01_Projektsteuerung/04_Project_Guidelines.md) | Gilt für das **gesamte** Repo; Website-Änderungen unter `02_Portfolio/QA_Lernwebseite/`. |
+| **Website-Analyse (IST / Roadmap)** | [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md) (dieser Ordner) | Meta-Analyse (Stichproben, Stärken/Schwächen, priorisierte Verbesserungen, Roadmap). **Ausgangsbasis** für **Komponentenstil / Designsystem light** ([02_Project_Status.md](../../01_Projektsteuerung/02_Project_Status.md), Arbeitspaket **P1**). |
+
+### Analysen & Roadmap
+
+- **`website-analyse-2026-03-28.md`** — umfassende IST-Bewertung der Lernwebsite und Vorschlags-Backlog bis zu Erfolgskriterien; dient der Phase **Komponentenstil** vor schriftlicher Kanonisierung in den Project\_*-Standards. Neuere Reviews können als zusätzliche Datei `website-analyse-YYYY-MM-DD.md` folgen.
 
 ---
 

@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-26 (HA6-Website-Portfolio 06a–06c; Konsistenz TC/Protokoll)  
+Letzte Aktualisierung: 2026-03-28 (Verweis Website-Analyse als Ausgangsbasis Komponentenstil / P1)  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -106,10 +106,17 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 
 | P | Arbeitspaket | Stand / Kurzbeschreibung |
 |---|----------------|---------------------------|
-| **P1** | **Komponentenstil / Designsystem light** (*QA_Lernwebseite*) | Darstellungsregeln **kanonischer** Komponenten **schriftlich schließen**; Muster aus Phase 2 (**Story-Box** vs. didaktische Box, ggf. A4-**doc-info-box**) **verallgemeinern** und in **[03_Project_Standards.md](03_Project_Standards.md)** (Qualitäts- und Konsistenzregeln, Abschn. 6) sowie abgestimmt mit **[01_Project_Charter.md](01_Project_Charter.md)** **verankern**. |
+| **P1** | **Komponentenstil / Designsystem light** (*QA_Lernwebseite*) | Darstellungsregeln **kanonischer** Komponenten **schriftlich schließen**; Muster aus Phase 2 (**Story-Box** vs. didaktische Box, ggf. A4-**doc-info-box**) **verallgemeinern** und in **[03_Project_Standards.md](03_Project_Standards.md)** (Qualitäts- und Konsistenzregeln, Abschn. 6) sowie abgestimmt mit **[01_Project_Charter.md](01_Project_Charter.md)** **verankern**. **Ausgangsbasis:** siehe unten (*Phase 0* / IST-Analyse). |
 | **P2** | **Konsistenz- und Darstellungsregel-Ebene** (Website, außerhalb HA4/HA5-Kern) | Einheitliche Regeln auch für Module **außerhalb** der fertiggestellten Kernstrecke; ggf. offene Seiten gemäß **Lernplan** ([03_Project_Standards.md](03_Project_Standards.md) Abschn. 2) und Charta-Zielen nachziehen. |
 | **P3** | **Kurs- und Portfoliopfad** | Fortführung gemäß **Notion-Lernplan** und MasterSchool-Vorgaben; **HA6** auf der **Lernwebsite** als Kette **06a–06c** abgebildet (siehe Abschnitt 3); weitere offene optionale Punkte (z. B. Portfolio-Automation, Issues) siehe ggf. archivierte oder neue **Hausaufgaben-Analysen** (`06_Archiv/Projektsteuerung_alt/` bzw. Schema `YYYY-MM-DD_Hausaufgabenanalyse.md` in `01_Projektsteuerung/`). |
 | **P4** | **Steuerungsdokumentation konsolidieren** | **Project\_*-Serie** ist **kanonisch** (`01_Project_Charter.md` … `05_Reference_Quick.md`); verbleibende **alte** Steuerdateien im Ordner `01_Projektsteuerung/` nach **`06_Archiv/Projektsteuerung_alt/`** verschieben, sobald inhaltlich ersetzt. **Repo-Struktur und Health Check** ausschließlich in **[03_Project_Standards.md](03_Project_Standards.md)** Abschnitt **3** und **8** pflegen. |
+
+**Ausgangsbasis Komponentenstil / Designsystem light (Phase 0 — IST & Roadmap)**
+
+- **Dokument:** [website-analyse-2026-03-28.md](../02_Portfolio/QA_Lernwebseite/website-analyse-2026-03-28.md) (Ordner **`02_Portfolio/QA_Lernwebseite/`** im Monorepo).  
+- **Inhalt (Kurz):** Meta-Analyse der Lernwebsite (Stichproben, Stärken/Schwächen, priorisierte Verbesserungen, Roadmap bis Erfolgskriterien).  
+- **Rolle:** **Single Source of Truth** für die **IST-Bewertung** und **Prioritäten** vor Kanonisierung der Komponenten; kein vollständiges Duplikat unter `01_Projektsteuerung/` — hier nur **Verweis** und Einordnung zu **P1**.  
+- **Nacharbeit:** Bei größeren Follow-up-Analysen ggf. neue Datei `website-analyse-YYYY-MM-DD.md` ergänzen; dieses Statusdokument und ggf. [README der Lernwebsite](../02_Portfolio/QA_Lernwebseite/README.md) verlinken.
 
 ### HA6 — Testdurchführung (Kurs / Website-Portfolio)
 
@@ -143,6 +150,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 
 | Datum (ca.) | Entscheidung / Änderung |
 |-------------|-------------------------|
+| **2026-03-28** | **Website-Analyse** (`02_Portfolio/QA_Lernwebseite/website-analyse-2026-03-28.md`) als **verbindliche Ausgangsbasis** für **P1 (Komponentenstil / Designsystem light)** in **diesem Statusdokument** und in der **README der Lernwebsite** verankert — **IST/Roadmap** dort, Steuerung per **Verweis** (kein Duplikat im Ordner `01_Projektsteuerung/`). |
 | **2026-03-21** | **Standards-Review Phase 4** abgeschlossen (u. a. Commit **`0c43f00`**, ca. 09:44 UTC+1); **CTFL-/IEEE-829-Formulierungen** und **index-/Standards-Seiten** angeglichen; Bewertung **„professionell genug“** für Lern-Portfolio dokumentiert. |
 | **2026-03-21** | **Phase 3** abgeschlossen (**09:19 UTC+1**, **`1eb5b8f`**): **Terminologie-Harmonisierung**, Meta-Leiste, A4-Status, **Web/A4-Parität** HA4/HA5-Kern. |
 | **2026-03-21** | **Phase 2** abgeschlossen (**08:43 UTC+1**, **`9b4349e`**): **Story-/Dokumentenkette**, **Farblogik** (blau = Kette, gelb = didaktisch), GM-F03/04b-Vorschau u. a. |
@@ -156,7 +164,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 
 *(Priorisierte Reihenfolge — **nicht** Zeitachse der Entstehung.)*
 
-1. **P1 — Designsystem light:** In **[03_Project_Standards.md](03_Project_Standards.md)** (Abschn. 6 ff.) und abgestimmt mit **[01_Project_Charter.md](01_Project_Charter.md)** **kanonische** vs. **Grauzonen-** vs. **lokale** Komponenten **schließen**; bestehende **CSS/HTML-Muster** konsolidieren.  
+1. **P1 — Designsystem light:** **Ausgangsbasis** [website-analyse-2026-03-28.md](../02_Portfolio/QA_Lernwebseite/website-analyse-2026-03-28.md) berücksichtigen. In **[03_Project_Standards.md](03_Project_Standards.md)** (Abschn. 6 ff.) und abgestimmt mit **[01_Project_Charter.md](01_Project_Charter.md)** **kanonische** vs. **Grauzonen-** vs. **lokale** Komponenten **schließen**; bestehende **CSS/HTML-Muster** konsolidieren.  
 2. **P2 — Globale Konsistenz:** Darstellungsregeln **über** HA4/HA5-Kernstrecke **erhöhen**; verbleibende Seiten/Module **einordnen**.  
 3. **P4 — Steuerung:** **Dieses Dokument** ([02_Project_Status.md](02_Project_Status.md)) bei **Meilensteinen** aktualisieren; **Einstieg** für Leser: [01_Project_Charter.md](01_Project_Charter.md) · **dieses Dokument** · [03_Project_Standards.md](03_Project_Standards.md) · [05_Reference_Quick.md](05_Reference_Quick.md).  
 4. **P3 — Kurs:** Notion-Lernplan und anstehende **Hausaufgaben/Abgaben** **fristgerecht** bedienen; Artefakte unter **`03_Hausaufgaben/`** und Portfolio pflegen.
@@ -190,6 +198,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 | **KI, Rollen, Kommunikation, Git (Monorepo)** | [04_Project_Guidelines.md](04_Project_Guidelines.md) *(Inhalt früher u. a. in Arbeitsvereinbarung, Prompt- und Commit-Richtlinien; maßgeblich ist dieses eine Dokument.)* |
 | **Prompts / Schnellnavigation / externe Links** | [05_Reference_Quick.md](05_Reference_Quick.md) *(Inhalt früher u. a. in separaten Prompt- und Schnellreferenz-Dateien.)* |
 | **Architektur Website (fachlich)** | [01_Project_Charter.md](01_Project_Charter.md) + [03_Project_Standards.md](03_Project_Standards.md) — **ohne** separates Konzeptdatei neben der Project\_*-Serie |
+| **Website-Analyse (IST / Roadmap, Komponentenstil)** | [website-analyse-2026-03-28.md](../02_Portfolio/QA_Lernwebseite/website-analyse-2026-03-28.md) — **Ausgangsbasis P1**; Verweis in **diesem Dokument** (Abschn. 3) und [README QA_Lernwebseite](../02_Portfolio/QA_Lernwebseite/README.md) |
 | **Reports (Hausaufgaben-Analyse)** | Neu: `01_Projektsteuerung/YYYY-MM-DD_Hausaufgabenanalyse.md` gemäß [03_Project_Standards.md](03_Project_Standards.md) Abschnitt 4; **Beispiel** (archiviert): `06_Archiv/Projektsteuerung_alt/11_Hausaufgabenanalyse_2026-03-09.md` |
 
 ---
