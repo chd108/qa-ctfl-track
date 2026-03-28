@@ -54,6 +54,40 @@
     .badge--syn { background: var(--note-bg); color: var(--note); }
     .badge--nvw { background: var(--warn-bg); color: var(--warn); }
     .badge--trap { background: #f5d5d5; color: #8a3030; }
+    .ref-table .cell-kap { font-size: 12px; line-height: 1.55; vertical-align: middle; }
+    /* Kap.-Farben wie bei .section--e1 … .section--e6 (Kapitel-Köpfe) */
+    .kap-chip {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      padding: .15rem .42rem;
+      border-radius: 4px;
+      margin: .1rem .28rem .1rem 0;
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      letter-spacing: .04em;
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .kap-chip:last-child { margin-right: 0; }
+    .kap-chip--1 { background: var(--e1); }
+    .kap-chip--2 { background: var(--e2); }
+    .kap-chip--3 { background: var(--e3); }
+    .kap-chip--4 { background: var(--e4); }
+    .kap-chip--5 { background: var(--e5); }
+    .kap-chip--6 { background: var(--e6); }
+
+    /* Fußzeile: kontrollierte Zeilen (langer Meta-Text) */
+    footer .source-note--glossar {
+      max-width: 38rem;
+      margin-left: auto;
+      margin-right: auto;
+      padding: 0 0.75rem;
+      line-height: 1.55;
+      text-wrap: balance;
+    }
+    footer .source-note--glossar .source-note__line {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -104,7 +138,7 @@
 <main id="main">
   <div class="meta-bar" aria-label="Seitenkontext">
     <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</span>
-    <span><strong>Umfang:</strong> Alle K1-Schlüsselbegriffe aus Kap. 1–6</span>
+    <span><strong>Umfang:</strong> <strong>97</strong> eindeutige K1-Lemmata · <strong>102</strong> Tabellenzeilen (fünf Begriffe im Lehrplan kapitelweise doppelt)</span>
     <span><strong>Legende:</strong>
       <span class="badge badge--syn">Syn</span> Synonym ·
       <span class="badge badge--nvw">✗</span> Nicht verwenden ·
@@ -113,7 +147,9 @@
   </div>
 
   <div class="info-box" role="note">
-    <strong>Nachschlagen:</strong> Jedes Kapitel enthält die K1-Pflichtbegriffe des CTFL-Lehrplans. DE/EN und Abkürzungen sind normativ; Hinweise dienen der Einordnung und Abgrenzung.
+    <p><strong>Nachschlagen:</strong> Jedes Kapitel enthält die K1-Pflichtbegriffe des CTFL-Lehrplans. DE/EN und Abkürzungen sind normativ; Hinweise dienen der Einordnung und Abgrenzung.</p>
+    <p style="margin-top:.65rem;"><strong>97 vs. 102:</strong> Zählt man jedes deutsche Lemma nur <strong>einmal</strong>, ergeben sich <strong>97 eindeutige</strong> K1-Schlüsselbegriffe. Der Lehrplan führt dieselbe Bezeichnung in mehreren Kapiteln erneut auf — dann sind es <strong>102 Zeilen</strong> in den Tabellen unten. Betroffen sind genau <strong>fünf</strong> Lemmata (jeweils zweimal): <strong>Testobjekt</strong> (Kap.&nbsp;1, 2), <strong>Überdeckung</strong> (Kap.&nbsp;1, 4), <strong>Testplanung</strong>, <strong>Teststeuerung</strong>, <strong>Testüberwachung</strong> (Kap.&nbsp;1, 5).</p>
+    <p style="margin-top:.5rem;">Die alphabetische Übersicht am Seitenende listet jedes Lemma <strong>einmal</strong> und nennt die betroffenen Kapitel.</p>
   </div>
 
   <section class="section section--e1" aria-labelledby="glossar-section-1">
@@ -319,10 +355,129 @@
       </div>
     </div>
   </section>
+
+  <section class="section section--e1" aria-labelledby="glossar-alpha-heading" id="glossar-register-az">
+    <div class="section__header">
+      <span class="section__num">A–Z</span>
+      <span class="section__title" id="glossar-alpha-heading">Alle K1-Begriffe alphabetisch <span class="ref">97 eindeutige Lemmata</span></span>
+      <span class="section__sub">Sortierung: Deutsch · Kapitelangaben wie im CTFL-Lehrplan v4.0.2</span>
+    </div>
+    <div class="section__body">
+      <p style="padding: .6rem 1.2rem 0; font-size: 0.92rem; color: var(--mid); line-height: 1.5;">Jeder Begriff erscheint hier nur einmal. Steht er in mehreren Kapiteln als K1-Schlüsselbegriff, sind die Kapitel aufgeführt (entspricht den doppelten Zeilen in den Tabellen oben).</p>
+      <div class="ref-table">
+        <table>
+          <thead><tr><th scope="col">Deutsch (Lemma)</th><th scope="col">Kapitel (Lehrplan)</th></tr></thead>
+          <tbody>
+            <tr><td class="cell-de">Abnahmetest</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Abnahmetestgetriebene Entwicklung</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Akzeptanzkriterien</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Anomalie</td><td class="cell-kap"><span class="kap-chip kap-chip--3">Kap. 3</span></td></tr>
+            <tr><td class="cell-de">Anweisungsüberdeckung</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Äquivalenzklassenbildung</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">auf Zusammenarbeit basierender Testansatz</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Black-Box-Test</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Black-Box-Testverfahren</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">checklistenbasierter Test</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Debugging</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">dynamischer Test</td><td class="cell-kap"><span class="kap-chip kap-chip--3">Kap. 3</span></td></tr>
+            <tr><td class="cell-de">Eingangskriterien</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Endekriterien</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Entscheidungstabellentest</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">erfahrungsbasiertes Testverfahren</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">explorativer Test</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Fehlerbericht</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Fehlernachtest</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Fehlermanagement</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Fehlerwirkung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Fehlerzustand</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Fehlhandlung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">formales Review</td><td class="cell-kap"><span class="kap-chip kap-chip--3">Kap. 3</span></td></tr>
+            <tr><td class="cell-de">funktionaler Test</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Grenzwertanalyse</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Grundursache</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">informelles Review</td><td class="cell-kap"><span class="kap-chip kap-chip--3">Kap. 3</span></td></tr>
+            <tr><td class="cell-de">Inspektion</td><td class="cell-kap"><span class="kap-chip kap-chip--3">Kap. 3</span></td></tr>
+            <tr><td class="cell-de">Integrationstest</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">intuitive Testfallermittlung</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Komponentenintegrationstest</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Komponententest</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">nicht-funktionaler Test</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Produktrisiko</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Projektrisiko</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Qualität</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Qualitätssicherung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Regressionstest</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Review</td><td class="cell-kap"><span class="kap-chip kap-chip--3">Kap. 3</span></td></tr>
+            <tr><td class="cell-de">Risiko</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Risikoanalyse</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">risikobasierter Test</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Risikobewertung</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Risikoidentifizierung</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Risikomanagement</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Risikominderung</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Risikosteuerung</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Risikostufe</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Risikoüberwachung</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Shift-Left</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">statische Analyse</td><td class="cell-kap"><span class="kap-chip kap-chip--3">Kap. 3</span></td></tr>
+            <tr><td class="cell-de">statischer Test</td><td class="cell-kap"><span class="kap-chip kap-chip--3">Kap. 3</span></td></tr>
+            <tr><td class="cell-de">Systemintegrationstest</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Systemtest</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Technisches Review</td><td class="cell-kap"><span class="kap-chip kap-chip--3">Kap. 3</span></td></tr>
+            <tr><td class="cell-de">Testablauf</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testabschluss</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testabschlussbericht</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Testanalyse</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testansatz</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Testart</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Testautomatisierung</td><td class="cell-kap"><span class="kap-chip kap-chip--6">Kap. 6</span></td></tr>
+            <tr><td class="cell-de">Testbasis</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testbedingung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testdaten</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testdurchführung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testen</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testentwurf</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testergebnis</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testfall</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testfortschrittsbericht</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Testkonzept</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Testmittel</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testobjekt</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Testplanung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Testprozess</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Testpyramide</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Testquadranten</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Testrealisierung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Teststeuerung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Teststrategie</td><td class="cell-kap"><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Teststufe</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">Testüberwachung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span><span class="kap-chip kap-chip--5">Kap. 5</span></td></tr>
+            <tr><td class="cell-de">Testverfahren</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Testziel</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Überdeckung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Überdeckungselement</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Validierung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Verfolgbarkeit</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Verifizierung</td><td class="cell-kap"><span class="kap-chip kap-chip--1">Kap. 1</span></td></tr>
+            <tr><td class="cell-de">Walkthrough</td><td class="cell-kap"><span class="kap-chip kap-chip--3">Kap. 3</span></td></tr>
+            <tr><td class="cell-de">Wartungstest</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">White-Box-Test</td><td class="cell-kap"><span class="kap-chip kap-chip--2">Kap. 2</span></td></tr>
+            <tr><td class="cell-de">White-Box-Testverfahren</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Zustandsübergangstest</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+            <tr><td class="cell-de">Zweigüberdeckung</td><td class="cell-kap"><span class="kap-chip kap-chip--4">Kap. 4</span></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 </main>
 
 <footer>
-  <p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025) · Alle Schlüsselbegriffe K1-Pflicht · EN-Äquivalente nach ISTQB Glossary v4</p>
+  <p class="source-note source-note--glossar">
+    <span class="source-note__line">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</span>
+    <span class="source-note__line">K1-Schlüsselbegriffe: 97 eindeutige Lemmata / 102 kapitelweise Einträge</span>
+    <span class="source-note__line">EN-Äquivalente nach ISTQB Glossary v4</span>
+  </p>
 </footer>
 
 </body>

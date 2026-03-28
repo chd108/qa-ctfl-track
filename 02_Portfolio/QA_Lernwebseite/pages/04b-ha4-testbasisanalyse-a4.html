@@ -8,6 +8,32 @@
   <link rel="stylesheet" href="../assets/css/subpage.css">
   <link rel="stylesheet" href="../assets/css/doc-a4.css">
   <title>HA4 Testbasis-Analyse A4 — QA Lernwebseite</title>
+  <style>
+    /* Spalten: schmale Feature-ID, breites Testobjekt, breiter Status (2+1 Chips), schmale Offene Punkte */
+    .doc-mode .doc-body .form-meta {
+      grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.4fr) minmax(0, 1.75fr) minmax(0, 0.65fr);
+    }
+    /* Status-Chips (wie 04d / 05b Testkonzept A4) */
+    .status-options {
+      display: flex;
+      gap: 6pt;
+      flex-wrap: wrap;
+      margin-top: 2pt;
+    }
+    .status-option {
+      font-size: 8.25pt;
+      padding: 1pt 5pt;
+      border: 1px solid var(--doc-bdr);
+      color: var(--doc-soft);
+      background: var(--doc-light);
+    }
+    .status-option--active {
+      border-color: var(--doc-acc);
+      color: var(--doc-acc);
+      background: #eaf4ee;
+      font-weight: 700;
+    }
+  </style>
 </head>
 <body>
 
@@ -77,16 +103,16 @@
           <strong>Seite:</strong> 1 von 4
         </div>
       </div>
-      <div class="doc-feature-strip">
-        <span class="doc-feature-strip__num">Feature 01 / 03</span>
-        Bewertungssystem für Produkte
-      </div>
       <div class="doc-body">
         <div class="form-meta">
           <div class="form-meta__cell"><div class="form-meta__label">Feature-ID</div><div class="form-meta__value">GM-F01 · Bewertungssystem</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Testobjekt</div><div class="form-meta__value">grocerymate.masterschool.com</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="form-meta__value">Bereit für Review</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="status-options"><span class="status-option status-option--active">&#10003; Bereit für Review</span><span class="status-option">Abgeschlossen</span><span class="status-option">In Bearbeitung</span></div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Offene Punkte</div><div class="form-meta__value">3 Punkte</div></div>
+        </div>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Feature 01 / 03</span>
+          Bewertungssystem für Produkte
         </div>
         <div class="vague-block">
           <div class="vague-block__label">Ursprüngliche (vage) Anforderung</div>
@@ -170,16 +196,16 @@
           <strong>Seite:</strong> 2 von 4
         </div>
       </div>
-      <div class="doc-feature-strip">
-        <span class="doc-feature-strip__num">Feature 02 / 03</span>
-        Altersverifikation für alkoholische Produkte
-      </div>
       <div class="doc-body">
         <div class="form-meta">
           <div class="form-meta__cell"><div class="form-meta__label">Feature-ID</div><div class="form-meta__value">GM-F02 · Altersverifikation</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Testobjekt</div><div class="form-meta__value">/store (Modal)</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="form-meta__value">Bereit für Review</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="status-options"><span class="status-option status-option--active">&#10003; Bereit für Review</span><span class="status-option">Abgeschlossen</span><span class="status-option">In Bearbeitung</span></div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Offene Punkte</div><div class="form-meta__value">3 Punkte</div></div>
+        </div>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Feature 02 / 03</span>
+          Altersverifikation für alkoholische Produkte
         </div>
         <div class="vague-block">
           <div class="vague-block__label">Ursprüngliche (vage) Anforderung</div>
@@ -264,16 +290,16 @@
           <strong>Seite:</strong> 3 von 4
         </div>
       </div>
-      <div class="doc-feature-strip">
-        <span class="doc-feature-strip__num">Feature 03 / 03</span>
-        Versandkosten
-      </div>
       <div class="doc-body">
         <div class="form-meta">
           <div class="form-meta__cell"><div class="form-meta__label">Feature-ID</div><div class="form-meta__value">GM-F03 · Versandkosten</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Testobjekt</div><div class="form-meta__value">/checkout (eingeloggt)</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="form-meta__value">Bereit für Review</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="status-options"><span class="status-option status-option--active">&#10003; Bereit für Review</span><span class="status-option">Abgeschlossen</span><span class="status-option">In Bearbeitung</span></div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Offene Punkte</div><div class="form-meta__value">1 Punkt</div></div>
+        </div>
+        <div class="doc-feature-strip">
+          <span class="doc-feature-strip__num">Feature 03 / 03</span>
+          Versandkosten
         </div>
         <div class="vague-block">
           <div class="vague-block__label">Ursprüngliche (vage) Anforderung</div>

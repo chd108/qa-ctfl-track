@@ -51,7 +51,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `pages/` | **22** aktive Lern- bzw. HA-Seiten (siehe Tabelle unten). |
 | `assets/css/base.css` | Globale Variablen (`:root`), Body-Hintergrund, **`.top-nav-zone`**, **`.main-nav`** / **`.main-nav--assignments`**, Skip-Link. |
 | `assets/css/subpage.css` | Gemeinsame **`header`**-/`footer`-Typo für Unterseiten. |
-| `assets/css/doc-a4.css` | **A4-/Dokumentmodus** inkl. Screen-`body`-Ränder; wird von HA-A4-Seiten zusätzlich eingebunden. |
+| `assets/css/doc-a4.css` | **A4-/Dokumentmodus** inkl. Screen-`body`-Ränder; **Flex-Spalte** auf `.doc-a4` (`.doc-body` wächst, **`.doc-footer`** mit `margin-top: auto` am unteren Blattrand); Druck: `@page` A4, `min-height`/`width` angepasst; schmale Viewports: seitliches Scrollen statt Quetschen. Wird von HA-A4-Seiten zusätzlich eingebunden. |
 | `assets/css/index.css` | Ältere/alternative Einstiegs-Styles — **`index.html` lädt derzeit `base.css` + `subpage.css` und lokales `<style>`**; Datei bleibt im Repo zur Referenz und Standards-Doku. |
 | `assets/js/` | u. a. **`sdlc-hypocycle-animiert.js`** für die animierte SDLC-Seite. |
 | `assets/ha6-screenshots/` | **HA6** — Beispiel-Screenshots zu **BUG-001 / BUG-002** (`06b-ha6-fehlerbericht-a4.html`); liegt im **Pages-Artifact** und ist öffentlich erreichbar. |
@@ -67,7 +67,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | Datei | Inhalt | CTFL (Orientierung) |
 |-------|--------|----------------------|
 | `01-landkarte.html` | Inhaltsverzeichnis / Landkarte des CTFL-Lehrplans v4.0.2 | Kap. 1–6 |
-| `01a-glossar.html` | Schlüsselbegriffe CTFL v4.0.2 | Kap. 1–6 |
+| `01a-glossar.html` | Schlüsselbegriffe CTFL v4.0.2; Zählung **97** eindeutige K1-Lemmata vs. **102** Tabellenzeilen; alphabetisches **A–Z**-Register | Kap. 1–6 |
 | `01b-grundlagen.html` | Grundlagen des Testens (Was/Warum, QA vs. Testen, Fehlerkette, Grundsätze, Aktivitäten) | Kap. 1 |
 | `01c-testmittel.html` | Testmittel und Testaktivitäten | Kap. 1.4.3 |
 | `02a-sdlc-statisch.html` | SDLC & ISTQB-Testprozess — statisch | Kap. 2 |

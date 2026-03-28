@@ -15,6 +15,27 @@
       grid-template-columns: repeat(5, 1fr);
     }
 
+    /* Status-Chips (wie 05b Testkonzept A4) */
+    .status-options {
+      display: flex;
+      gap: 6pt;
+      flex-wrap: wrap;
+      margin-top: 2pt;
+    }
+    .status-option {
+      font-size: 8.25pt;
+      padding: 1pt 5pt;
+      border: 1px solid var(--doc-bdr);
+      color: var(--doc-soft);
+      background: var(--doc-light);
+    }
+    .status-option--active {
+      border-color: var(--doc-acc);
+      color: var(--doc-acc);
+      background: #eaf4ee;
+      font-weight: 700;
+    }
+
     /* ─── Info-Box / Legende ─── */
     .doc-body .doc-info-box {
       border: 1px solid var(--doc-bdr);
@@ -279,7 +300,7 @@
           <div class="form-meta__cell"><div class="form-meta__label">Features</div><div class="form-meta__value">GM-F01 · GM-F02 · GM-F03</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Testfälle gesamt</div><div class="form-meta__value">9 (3 pro Feature)</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Automatisierung</div><div class="form-meta__value">9 (100%)</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="form-meta__value">Bereit für Review</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Status</div><div class="status-options"><span class="status-option status-option--active">&#10003; Bereit für Review</span><span class="status-option">Abgeschlossen</span><span class="status-option">In Bearbeitung</span></div></div>
         </div>
 
         <div class="doc-info-box">

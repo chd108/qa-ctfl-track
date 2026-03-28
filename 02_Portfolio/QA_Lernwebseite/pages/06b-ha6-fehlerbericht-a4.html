@@ -10,18 +10,6 @@
   <title>HA6 Fehlerbericht A4 — Muster BUG-001 &amp; BUG-002 — QA Lernwebseite</title>
   <style>
     /* HA6 Fehlerbericht A4 — Ergänzungen zu doc-a4.css (nur 8.25pt / 11pt) */
-    .doc-body .doc-info-box {
-      border: 1px solid var(--doc-bdr);
-      border-left: 3px solid var(--doc-mid);
-      padding: 5pt 8pt;
-      margin-bottom: 8pt;
-      background: var(--doc-light);
-      font-size: 8.25pt;
-      line-height: 1.45;
-      color: var(--doc-mid);
-    }
-    .doc-body .doc-info-box strong { color: var(--doc-text); }
-
     .doc-mode .doc-body .form-meta {
       grid-template-columns: repeat(5, 1fr);
     }
@@ -35,6 +23,20 @@
     .form-meta__cell--severity .status-option {
       font-size: 8.25pt;
       padding: 1pt 4pt;
+    }
+    .form-meta__cell--priority .form-meta__hint {
+      display: block;
+      font-size: 8.25pt;
+      font-weight: 400;
+      letter-spacing: normal;
+      text-transform: none;
+      color: var(--doc-mid);
+      margin: 2pt 0 4pt;
+      line-height: 1.45;
+    }
+    .doc-body .form-meta__value--blank {
+      min-height: 16pt;
+      background: #fff;
     }
     .status-options {
       display: flex;
@@ -121,13 +123,49 @@
     }
 
     @media print {
-      .doc-body .doc-info-box {
-        -webkit-print-color-adjust: exact;
-        print-color-adjust: exact;
-      }
       .doc-body .form-field {
         break-inside: avoid;
         page-break-inside: avoid;
+      }
+    }
+
+    /* Lernhinweis nur Bildschirm — nicht Bestandteil des A4-Formulars */
+    .incident-priority-note {
+      padding: 0.85rem 1rem;
+      margin-bottom: 1rem;
+      background: rgba(216, 228, 208, 0.45);
+      border: 1px solid var(--bdr);
+      border-left: 4px solid var(--mid);
+      border-radius: 8px;
+      font-size: 0.88rem;
+      line-height: 1.5;
+      color: var(--text);
+    }
+    .incident-priority-note h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      line-height: 1.25;
+      margin: 0 0 0.55rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--mid);
+    }
+    .incident-priority-note h3:first-of-type {
+      margin-top: 0;
+    }
+    .incident-priority-note h3:not(:first-of-type) {
+      margin-top: 1.35rem;
+    }
+    .incident-priority-note p {
+      margin: 0 0 0.45rem;
+    }
+    .incident-priority-note p:last-child {
+      margin-bottom: 0;
+    }
+    @media print {
+      .incident-priority-note {
+        display: none !important;
       }
     }
   </style>
@@ -185,6 +223,17 @@
     <span><strong>Standard:</strong> CTFL 4.0.2 · Kap. 5.5 · ISO 29119-3</span>
   </div>
 
+  <aside class="incident-priority-note" aria-labelledby="ha6-context-h">
+    <h3 id="ha6-context-h">Schweregrad vs. Priorität</h3>
+    <p><strong>Schweregrad (Severity):</strong> Technische Bewertung der Auswirkung durch Tester (Wie schwer ist der Fehler?)</p>
+    <p><strong>Priorität (Priority):</strong> Geschäftliche Bewertung der Dringlichkeit durch Management (Wie schnell muss er behoben werden?)</p>
+    <p><strong>Standard-Praxis:</strong> Tester setzt Severity bei Fehlermeldung, Priorität wird später in Triage-Meetings durch PM/PO festgelegt</p>
+    <p><strong>Quelle:</strong> ISTQB-Glossar (severity vs. priority) · IEEE 1044 (Incident Classification)</p>
+
+    <h3>Musterdokument</h3>
+    <p>Leere Arbeitsvorlage (Markdown) im Repo: <code>03_Hausaufgaben/HA6_Testdurchfuehrung/fehlerbericht-ha6-template.md</code>. Verknüpfung mit dem Testprotokoll: <a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a> (TC-ID, Bug-ID). Orientierung: ISO 29119-3 (Incident Report), CTFL Kap. 5.5.</p>
+  </aside>
+
   <div class="doc-mode">
     <!-- ═══ Blatt 1 — BUG-001: Stammdaten, Kontext, Repro, Ergebnis ═══ -->
     <article class="doc-a4" id="sheet-1" aria-labelledby="sheet1-heading">
@@ -206,7 +255,7 @@
           <div class="form-meta__cell"><div class="form-meta__label">Projekt</div><div class="form-meta__value">GroceryMate (HA6)</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Fehlernummer (Bug-ID)</div><div class="form-meta__value">BUG-001</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Datum</div><div class="form-meta__value">23.03.2026</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Tester</div><div class="form-meta__value">chd108</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Tester</div><div class="form-meta__value">C. Träger</div></div>
           <div class="form-meta__cell form-meta__cell--severity">
             <div class="form-meta__label">Schweregrad</div>
             <div class="status-options">
@@ -215,6 +264,11 @@
               <span class="status-option">Medium</span>
               <span class="status-option">Low</span>
             </div>
+          </div>
+          <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-full form-meta__cell--priority">
+            <div class="form-meta__label">Priorität</div>
+            <div class="form-meta__value form-meta__value--blank" aria-label="Priorität (leer — wird durch PM/PO festgelegt)">&nbsp;</div>
+            <span class="form-meta__hint">(wird vom Projektmanager/Product Owner festgelegt)</span>
           </div>
           <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-full">
             <div class="form-meta__label">Status</div>
@@ -225,10 +279,6 @@
               <span class="status-option">Geschlossen</span>
             </div>
           </div>
-        </div>
-
-        <div class="doc-info-box">
-          <strong>Musterdokument:</strong> Ausgefüllter Incident Report für <strong>BUG-001</strong> und <strong>BUG-002</strong> (je zwei A4-Blätter). Leere Arbeitsvorlage (Markdown) im Repo: <code>03_Hausaufgaben/HA6_Testdurchfuehrung/fehlerbericht-ha6-template.md</code>. Verknüpfung mit dem Testprotokoll: <a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a> (TC-ID, Bug-ID). Orientierung: ISO 29119-3 (Incident Report), CTFL Kap. 5.5.
         </div>
 
         <div class="doc-feature-strip">
@@ -357,7 +407,7 @@
           <div class="form-meta__cell"><div class="form-meta__label">Projekt</div><div class="form-meta__value">GroceryMate (HA6)</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Fehlernummer (Bug-ID)</div><div class="form-meta__value">BUG-002</div></div>
           <div class="form-meta__cell"><div class="form-meta__label">Datum</div><div class="form-meta__value">23.03.2026</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Tester</div><div class="form-meta__value">chd108</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Tester</div><div class="form-meta__value">C. Träger</div></div>
           <div class="form-meta__cell form-meta__cell--severity">
             <div class="form-meta__label">Schweregrad</div>
             <div class="status-options">
@@ -366,6 +416,11 @@
               <span class="status-option">Medium</span>
               <span class="status-option">Low</span>
             </div>
+          </div>
+          <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-full form-meta__cell--priority">
+            <div class="form-meta__label">Priorität</div>
+            <div class="form-meta__value form-meta__value--blank" aria-label="Priorität (leer — wird durch PM/PO festgelegt)">&nbsp;</div>
+            <span class="form-meta__hint">(wird vom Projektmanager/Product Owner festgelegt)</span>
           </div>
           <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-full">
             <div class="form-meta__label">Status</div>
@@ -376,10 +431,6 @@
               <span class="status-option">Geschlossen</span>
             </div>
           </div>
-        </div>
-
-        <div class="doc-info-box">
-          <strong>Musterdokument (Fortsetzung):</strong> Zweiter erfasster Fehler <strong>BUG-002</strong>. Testprotokoll: <a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a>. Orientierung: ISO 29119-3 (Incident Report), CTFL Kap. 5.5.
         </div>
 
         <div class="doc-feature-strip">

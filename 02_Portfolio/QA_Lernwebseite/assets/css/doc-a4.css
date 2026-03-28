@@ -1,7 +1,8 @@
 /**
  * doc-a4.css — A4-Dokumentmodus für kanonische HA4/HA5/HA6-A4-Seiten.
- * Dateien: 04b (nur diese CSS-Kette), 04d, 05b, 06a, 06b, 06c — jeweils base + subpage + doc-a4; Formular-/Tabellen-Seiten mit ergänzendem Seiten-<style> (nur 8.25pt / 11pt).
+ * Dateien: 04b, 04d, 05b, 06a, 06b, 06c — jeweils base + subpage + doc-a4; Formular-/Tabellen-Seiten mit ergänzendem Seiten-<style> (nur 8.25pt / 11pt).
  * Gerüst je A4-HTML: Skip-Link, .top-nav-zone, .page-chrome, <main id="main">, .meta-bar, .doc-mode, pro Blatt <article class="doc-a4"> mit .doc-header / .doc-body / .doc-footer, Seiten-footer .source-note.
+ * Fußzeile (.doc-footer): für jedes Blatt jeder dieser Seiten gleich — am unteren Blattrand (Flex-Spalte + margin-top: auto), nicht direkt unter dem letzten Inhalt; gilt Bildschirm und Druck (Druck: @media print ergänzt min-height/Breite).
  * Zwei-Stufen-System: 11pt (GROSS) / 8.25pt (KLEIN)
  * Regel: Keine anderen Schriftgrößen in lokalen <style>-Blöcken oder inline —
  *   weder in bestehenden noch in neuen A4-Dokumenten.
@@ -25,28 +26,36 @@ body { padding: 0 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   --doc-open-bg-soft: rgba(249,240,243,0.5);
   --doc-review:       #2d5a3d;
   --doc-review-bg:    #e8f2eb;
+  /* Schmale Viewports: Blätter bleiben 210mm breit, seitlich scrollen statt Breite zu zerquetschen */
+  overflow-x: auto;
 }
 
 /* ─── A4-Dokumentblock ─── */
 .doc-a4 {
   width: 210mm;
-  min-height: 297mm;
+  /* Etwas unter voller A4-Höhe: wirkt im Bildschirm weniger „gestreckt“, Fuß bleibt unten (Flex) */
+  min-height: 288mm;
+  box-sizing: border-box;
   margin-left: auto;
   margin-right: auto;
   background: #fff;
   box-shadow: 0 4px 24px rgba(0,0,0,0.18);
-  padding: 16mm 18mm;
+  padding: 14mm 18mm;
   position: relative;
   page-break-after: always;
   margin-bottom: 2rem;
   font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-size: 11pt;
   color: var(--doc-text);
+  /* Fußzeile immer am unteren Blattrand: Flex-Spalte, .doc-body füllt Zwischenraum */
+  display: flex;
+  flex-direction: column;
 }
 .doc-a4:last-of-type { margin-bottom: 0; }
 
 /* ─── Dokumentkopf (pro Blatt) ─── */
 .doc-header {
+  flex-shrink: 0;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
@@ -76,6 +85,7 @@ body { padding: 0 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 
 /* ─── Feature-Streifen ─── */
 .doc-feature-strip {
+  flex-shrink: 0;
   background: var(--doc-head);
   color: #fff;
   padding: 5pt 0 5pt 10pt;
@@ -96,7 +106,13 @@ body { padding: 0 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 }
 
 /* ─── Dokumentinhalt (Dokumentstruktur, Dokumentoptik) ─── */
-.doc-body { padding: 0; }
+.doc-body {
+  padding: 0;
+  flex: 1 1 auto;
+  /* Flex-Default min-width:auto lässt breite Tabellen (z. B. 04b) die Blattbreite sprengen */
+  min-width: 0;
+  overflow-x: auto;
+}
 
 .doc-body .form-meta {
   display: grid;
@@ -360,18 +376,19 @@ body { padding: 0 3rem 4rem; max-width: 1200px; margin: 0 auto; }
 }
 .doc-body .read-guide__note.read-guide__note--follow strong { color: var(--doc-acc); }
 
-/* ─── Seitenfuß pro A4-Blatt ─── */
+/* ─── Seitenfuß pro A4-Blatt (am unteren Rand des Blatts, nicht am Ende des Inhalts) ─── */
 .doc-footer {
-  position: absolute;
-  bottom: 12mm;
-  left: 18mm;
-  right: 18mm;
-  padding-top: 2mm;
+  flex-shrink: 0;
+  margin-top: auto;
+  width: 100%;
+  padding-top: 1mm;
   border-top: 1px solid var(--doc-bdr);
   font-size: 8.25pt;
   color: var(--doc-soft);
+  line-height: 1.35;
   display: block;
   text-align: left;
+  box-sizing: border-box;
 }
 
 /* ─── Meta-Bar (nur Bildschirm, Hinweis auf Dokumentmodus) ─── */
@@ -416,25 +433,20 @@ body { padding: 0 3rem 4rem; max-width: 1200px; margin: 0 auto; }
     box-shadow: none;
     margin: 0;
     page-break-after: always;
-    min-height: 0;
+    /* Etwas unter druckbarer Vollhöhe (≈273mm bei 12mm @page) — weniger Leerraum, kompakter */
+    min-height: 265mm;
     /* Volle Breite des durch @page freigegebenen Bereichs (nicht fix 210mm → kein seitlicher Überlauf) */
     width: 100%;
     max-width: none;
     box-sizing: border-box;
     padding: 14mm 16mm;
+    display: flex;
+    flex-direction: column;
   }
   .doc-a4:last-of-type { page-break-after: auto; }
 
-  /* Reserviert Platz unter dem Fließtext für die absolut positionierte Fußzeile */
   .doc-body {
-    padding-bottom: 18mm;
-  }
-
-  /* Horizontale Ausrichtung Fußzeile an Print-Padding von .doc-a4 */
-  .doc-footer {
-    left: 16mm;
-    right: 16mm;
-    bottom: 10mm;
+    padding-bottom: 0;
   }
 
   /*

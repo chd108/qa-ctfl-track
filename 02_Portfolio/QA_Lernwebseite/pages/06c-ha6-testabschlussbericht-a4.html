@@ -10,6 +10,41 @@
   <title>HA6 Testabschlussbericht A4 — QA Lernwebseite</title>
   <style>
     /* HA6 Testabschlussbericht A4 — Ergänzungen zu doc-a4.css (nur 8.25pt / 11pt) */
+    /* Lernkontext nur Bildschirm — über doc-mode (wie 06a/06b) */
+    .completion-practice-note {
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 1.25rem;
+      background: rgba(216, 228, 208, 0.55);
+      border: 1px solid var(--bdr);
+      border-left: 4px solid var(--mid);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--text);
+    }
+    /* Wie 06a .term-note: eine h2, zweite Ebene = <strong>…:</strong> in Absätzen */
+    .completion-practice-note h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      line-height: 1.25;
+      margin: 0 0 0.55rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--mid);
+    }
+    .completion-practice-note p {
+      margin: 0 0 0.65rem;
+    }
+    .completion-practice-note p:last-of-type {
+      margin-bottom: 0;
+    }
+    @media print {
+      .completion-practice-note {
+        display: none !important;
+      }
+    }
+
     .doc-body .doc-info-box {
       border: 1px solid var(--doc-bdr);
       border-left: 3px solid var(--doc-mid);
@@ -21,6 +56,48 @@
       color: var(--doc-mid);
     }
     .doc-body .doc-info-box strong { color: var(--doc-text); }
+
+    /* Offene Fehler — Bestandteil des A4 (mitdrucken) */
+    .doc-body .open-defects-alert {
+      border: 1px solid #e57373;
+      border-left: 4px solid #d32f2f;
+      background: #ffe6e6;
+      padding: 6pt 8pt;
+      margin-bottom: 8pt;
+      font-size: 8.25pt;
+      line-height: 1.45;
+      color: var(--doc-text);
+    }
+    .doc-body .open-defects-alert__title {
+      font-size: 9pt;
+      font-weight: 700;
+      color: #d32f2f;
+      margin: 0 0 4pt;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+    .doc-body .open-defects-alert__lead {
+      margin: 0 0 5pt;
+    }
+    .doc-body .open-defects-alert__list {
+      margin: 0 0 6pt;
+      padding-left: 1.2em;
+    }
+    .doc-body .open-defects-alert__list li {
+      margin: 2pt 0;
+    }
+    .doc-body .open-defects-alert__resp {
+      margin: 0;
+      font-size: 8.25pt;
+    }
+    @media print {
+      .doc-body .open-defects-alert {
+        -webkit-print-color-adjust: exact;
+        print-color-adjust: exact;
+        break-inside: avoid;
+        page-break-inside: avoid;
+      }
+    }
 
     .doc-mode .doc-body .form-meta {
       grid-template-columns: repeat(4, 1fr);
@@ -213,6 +290,14 @@
     <span><strong>Standard:</strong> CTFL 4.0.2 · Kap. 5.3 · ISO 29119-3</span>
   </div>
 
+  <aside class="completion-practice-note" aria-labelledby="completion-practice-h">
+    <h2 id="completion-practice-h">Praxis &amp; formale Dokumentation</h2>
+    <p><strong>Realität moderner Projekte:</strong> In agilen Teams (Scrum, Kanban) und DevOps-Umgebungen werden Testabschlussberichte selten als separate A4-Dokumente erstellt.</p>
+    <p><strong>Digitale Alternative:</strong> Stattdessen nutzen Teams Testmanagement-Systeme (Jira + Xray, TestRail, Azure DevOps), die automatisch Reports und Dashboards generieren.</p>
+    <p><strong>Standards vs. Praxis:</strong> Dieses Dokument orientiert sich an IEEE 829-2008 / ISO/IEC/IEEE 29119-3 (formale Testdokumentation) und dient Lernzwecken zur Veranschaulichung der theoretischen Struktur.</p>
+    <p><strong>Wann trotzdem relevant:</strong> In regulierten Branchen (Medizintechnik, Automotive, Luft-/Raumfahrt) oder bei Vertragsabnahmen können formale Testabschlussberichte weiterhin erforderlich sein.</p>
+  </aside>
+
   <div class="doc-mode">
     <!-- ═══ Blatt 1: Meta, Testergebnisse, Metriken (Druck: eine A4-Seite) ═══ -->
     <article class="doc-a4" id="sheet-1" aria-labelledby="sheet1-heading">
@@ -232,18 +317,28 @@
       <div class="doc-body">
         <div class="form-meta">
           <div class="form-meta__cell"><div class="form-meta__label">Projekt</div><div class="form-meta__value">GroceryMate (HA6)</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Version</div><div class="form-meta__value light">SUT grocerymate.masterschool.com (keine Prod.-V.-Nr.)</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Tester</div><div class="form-meta__value light">chd108</div></div>
-          <div class="form-meta__cell"><div class="form-meta__label">Datum</div><div class="form-meta__value light">26.03.2026</div></div>
-          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Teststufe</div><div class="form-meta__value light">Systemtest, manuell</div></div>
-          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">TCs gesamt</div><div class="form-meta__value light">9</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Version</div><div class="form-meta__value">SUT grocerymate.masterschool.com (keine Prod.-V.-Nr.)</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Tester</div><div class="form-meta__value">C. Träger</div></div>
+          <div class="form-meta__cell"><div class="form-meta__label">Datum</div><div class="form-meta__value">26.03.2026</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Teststufe</div><div class="form-meta__value">Systemtest, manuell</div></div>
+          <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">TCs gesamt</div><div class="form-meta__value">9</div></div>
           <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-2">
             <div class="form-meta__label">Status</div>
             <div class="status-options">
-              <span class="status-option">In Bearbeitung</span>
-              <span class="status-option status-option--active">Abgeschlossen</span>
+              <span class="status-option status-option--active">In Bearbeitung</span>
+              <span class="status-option">Abgeschlossen</span>
             </div>
           </div>
+        </div>
+
+        <div class="open-defects-alert" role="alert" aria-labelledby="open-defects-h">
+          <h2 class="open-defects-alert__title" id="open-defects-h"><span aria-hidden="true">⚠️ </span>Offene Fehler</h2>
+          <p class="open-defects-alert__lead">Das Projekt kann noch nicht abgeschlossen werden. Folgende Fehler müssen vor Release behoben werden:</p>
+          <ul class="open-defects-alert__list">
+            <li><strong>BUG-001:</strong> High — Bewertungstext wird nicht angezeigt, obwohl eingegeben</li>
+            <li><strong>BUG-002:</strong> Critical — Versandkosten werden nicht aktualisiert nach Artikelentfernung</li>
+          </ul>
+          <p class="open-defects-alert__resp"><strong>Priorisierung und Freigabe:</strong> Projektmanager</p>
         </div>
 
         <div class="doc-info-box">

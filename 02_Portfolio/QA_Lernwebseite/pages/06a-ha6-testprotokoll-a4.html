@@ -9,6 +9,46 @@
   <link rel="stylesheet" href="../assets/css/doc-a4.css">
   <title>HA6 Testprotokoll A4 — QA Lernwebseite</title>
   <style>
+    /* Hinweis Begrifflichkeit (nur Bildschirm, außerhalb doc-mode; nicht im A4-Druck) */
+    .term-note {
+      padding: 0.9rem 1.1rem;
+      margin-bottom: 1.25rem;
+      background: rgba(216, 228, 208, 0.55);
+      border: 1px solid var(--bdr);
+      border-left: 4px solid var(--mid);
+      border-radius: 8px;
+      font-size: 0.9rem;
+      line-height: 1.55;
+      color: var(--text);
+    }
+    .term-note h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      line-height: 1.25;
+      margin: 0 0 0.55rem;
+      padding-bottom: 0.4rem;
+      border-bottom: 2px solid var(--mid);
+    }
+    .term-note p {
+      margin: 0 0 0.65rem;
+    }
+    .term-note p:last-of-type {
+      margin-bottom: 0;
+    }
+    .term-note__src {
+      font-size: 0.85rem;
+      color: var(--mid);
+      font-style: italic;
+      margin-top: 0.5rem !important;
+    }
+    @media print {
+      .term-note {
+        display: none !important;
+      }
+    }
+
     /* HA6 — Schrift nur 8.25pt / 11pt (11pt via doc-a4 für Blattüberschriften) */
     .doc-body .doc-info-box {
       border: 1px solid var(--doc-bdr);
@@ -216,6 +256,14 @@
     <span><strong>Standard:</strong> CTFL 4.0.2 · Kap. 5.3 · IEEE 829-2008 · ISO 29119-3</span>
   </div>
 
+  <aside class="term-note" aria-labelledby="term-note-heading">
+    <h2 id="term-note-heading">Begrifflichkeit: Testprotokoll und Testbericht</h2>
+    <p><strong>Fachliche Einordnung:</strong> Dieses Dokument ist gemäß ISTQB-Glossar ein Testprotokoll (<span lang="en">test log</span>) – definiert als „chronologische Aufzeichnung von Einzelheiten der Testausführung“.</p>
+    <p><strong>Praxis-Terminologie:</strong> In der Arbeitsrealität wird ein solches Dokument häufig als „Testbericht“ oder „Test Report“ bezeichnet, da die theoretische Unterscheidung zwischen Testprotokoll (Detail-Ebene: einzelne Testfälle mit Ergebnissen) und Testbericht (Management-Ebene: zusammenfassende Dokumentation) in Teams nicht streng getrennt wird.</p>
+    <p><strong>Tatsächlicher Unterschied (ISTQB):</strong> Ein Testbericht fasst <strong>mehrere</strong> Testprotokolle zusammen (z.&nbsp;B. „Von 100 Tests: 80 bestanden, 20 fehlgeschlagen“), während das Testprotokoll die <strong>einzelnen</strong> Ausführungen dokumentiert (z.&nbsp;B. „TC-001: bestanden, TC-002: fehlgeschlagen“).</p>
+    <p class="term-note__src">Quelle: CTFL v4.0.2 Lehrplan, Kap. 5.3 · ISTQB-Glossar</p>
+  </aside>
+
   <div class="doc-mode">
     <!-- ═══ Blatt 1: Abschnitt 1 — Übersicht & Kennzahlen + PASS/FAIL ═══ -->
     <article class="doc-a4" id="sheet-1" aria-labelledby="sheet1-heading">
@@ -339,7 +387,7 @@
                 <td class="cell-id">TC-F01.F1.1</td>
                 <td>1 Stern bewerten (Minimum-Grenzwert)</td>
                 <td>22.03.2026</td>
-                <td>chd108</td>
+                <td>C. Träger</td>
                 <td>✅ PASS</td>
                 <td>Bewertung mit einem Stern wurde gespeichert und angezeigt. Stern ist dunkelblau. Name des Nutzers wird korrekt angezeigt. <strong>Bemerkung:</strong> keine</td>
                 <td>—</td>
@@ -348,7 +396,7 @@
                 <td class="cell-id">TC-F01.F1.2</td>
                 <td>5 Sterne bewerten (Maximum-Grenzwert)</td>
                 <td>22.03.2026</td>
-                <td>chd108</td>
+                <td>C. Träger</td>
                 <td>❌ FAIL</td>
                 <td>Bewertung mit 5 Sternen wurde gespeichert und angezeigt. <strong>JEDOCH:</strong> Der eingegebene Bewertungstext wird nicht angezeigt, obwohl er im Formular eingegeben wurde. Bewertungen anderer Nutzer zeigen korrekt Text an. <strong>Bemerkung:</strong> Problem mit mehreren Produkten reproduziert. Screenshots vorhanden.</td>
                 <td>BUG-001</td>
@@ -357,7 +405,7 @@
                 <td class="cell-id">TC-F01.F2.1</td>
                 <td>Gast versucht zu bewerten (Zugriffskontrolle)</td>
                 <td>22.03.2026</td>
-                <td>chd108</td>
+                <td>C. Träger</td>
                 <td>✅ PASS</td>
                 <td>Zugriffskontrolle funktioniert korrekt. Als Gast wird die Meldung &quot;you need to buy this product to tell us your opinion&quot; angezeigt. Bewertungsfunktion ist nicht zugänglich. <strong>Bemerkung:</strong> Meldungstext könnte klarer sein (suggeriert Kaufpflicht statt Login-Pflicht), aber funktional korrekt.</td>
                 <td>—</td>
@@ -408,7 +456,7 @@
                 <td class="cell-id">TC-F02.F1.1</td>
                 <td>17 Jahre 364 Tage alt (Zugriff verweigert)</td>
                 <td>22.03.2026</td>
-                <td>chd108</td>
+                <td>C. Träger</td>
                 <td>✅ PASS</td>
                 <td>Altersverifikation funktioniert korrekt. Bei Eingabe von 23-03-2008 (17 Jahre 364 Tage) erscheint Pop-up &quot;You are underage...&quot; und anschließend Hinweistext. Alkoholprodukte sind nicht sichtbar. Andere Produktkategorien bleiben zugänglich. <strong>Bemerkung:</strong> Cookies mussten vor Test gelöscht werden. Datumsformat muss exakt DD-MM-YYYY sein.</td>
                 <td>—</td>
@@ -417,7 +465,7 @@
                 <td class="cell-id">TC-F02.F1.2</td>
                 <td>Exakt 18 Jahre alt (Zugriff gewährt)</td>
                 <td>22.03.2026</td>
-                <td>chd108</td>
+                <td>C. Träger</td>
                 <td>✅ PASS</td>
                 <td>Altersverifikation funktioniert korrekt. Bei Eingabe von 22-03-2008 (exakt 18 Jahre) erscheint Pop-up &quot;You are of age. You can now view all products, even alcohol products.&quot; Zugriff auf alle Produkte inklusive Alkohol erfolgreich gewährt. <strong>Bemerkung:</strong> Cookies mussten vor Test gelöscht werden.</td>
                 <td>—</td>
@@ -426,7 +474,7 @@
                 <td class="cell-id">TC-F02.F2.1</td>
                 <td>Modal erscheint beim ersten Store-Aufruf</td>
                 <td>22.03.2026</td>
-                <td>chd108</td>
+                <td>C. Träger</td>
                 <td>✅ PASS</td>
                 <td>Modal erscheint korrekt beim ersten /store Aufruf. Modal blockiert Produktanzeige vollständig (erscheint VOR Produkten). Geburtsdatum-Eingabefelder sind vorhanden und funktional. Kein Abbrechen-Button verfügbar – Nutzer muss Datum eingeben. <strong>Bemerkung:</strong> Cookies mussten gelöscht werden. Modal ist ein Blocker ohne Escape-Möglichkeit.</td>
                 <td>—</td>
@@ -477,7 +525,7 @@
                 <td class="cell-id">TC-F03.F1.2</td>
                 <td>Exakt 20€ Bestellwert (Versandkosten = 0€)</td>
                 <td>22.03.2026</td>
-                <td>chd108</td>
+                <td>C. Träger</td>
                 <td>✅ PASS</td>
                 <td>Versandkostenberechnung funktioniert korrekt. Bei exakt 20,00€ Warenkorbwert werden Versandkosten mit 0€ angezeigt. Gesamtsumme beträgt 20,00€. <strong>Bemerkung:</strong> keine</td>
                 <td>—</td>
@@ -486,7 +534,7 @@
                 <td class="cell-id">TC-F03.F3.2</td>
                 <td>Versandkosten bei Reduzierung unter 20 €</td>
                 <td>22.03.2026</td>
-                <td>chd108</td>
+                <td>C. Träger</td>
                 <td>❌ FAIL</td>
                 <td><strong>FAIL (SOLL vs. IST):</strong> Nach Entfernen von Artikeln (Summe &lt; 20 €) aktualisiert die Versandkosten-Anzeige <strong>ohne Reload</strong> nicht auf 5 €; Anzeige bleibt 0 € bis <strong>F5</strong>, danach korrekt 5 €. Abweichung zum <strong>SOLL</strong> laut Testfallentwurf (04d/04c) und zu AC3; Abgleich mit <strong>BUG-002</strong> / Fehlerbericht. <strong>Bemerkung:</strong> Bekanntes Risiko aus HA4 (Live-Update nur bei Erhöhung); funktionaler Nachweis der Abweichung.</td>
                 <td>BUG-002</td>
@@ -537,7 +585,7 @@
                 <td class="cell-id">TC-F03.F4.1</td>
                 <td>Gast versucht Checkout (Login-Pflicht)</td>
                 <td>22.03.2026</td>
-                <td>chd108</td>
+                <td>C. Träger</td>
                 <td>✅ PASS</td>
                 <td>Zugriffskontrolle funktioniert korrekt. Direktaufruf von /checkout als Gast führt zu automatischer Weiterleitung auf /auth. Kein Zugriff auf Checkout ohne Login möglich. Login-Seite wird angezeigt. <strong>Bemerkung:</strong> Auch über GUI-Navigation (Warenkorb, etc.) erfolgt Weiterleitung auf /auth. Sicherheitsmechanismus funktioniert.</td>
                 <td>—</td>
