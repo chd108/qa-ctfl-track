@@ -142,7 +142,7 @@
       line-height: 1.5;
       color: var(--text);
     }
-    .incident-priority-note h3 {
+    .incident-priority-note h2 {
       font-size: 1.05rem;
       font-weight: 700;
       letter-spacing: 0.04em;
@@ -152,10 +152,10 @@
       padding-bottom: 0.4rem;
       border-bottom: 2px solid var(--mid);
     }
-    .incident-priority-note h3:first-of-type {
+    .incident-priority-note h2:first-of-type {
       margin-top: 0;
     }
-    .incident-priority-note h3:not(:first-of-type) {
+    .incident-priority-note h2:not(:first-of-type) {
       margin-top: 1.35rem;
     }
     .incident-priority-note p {
@@ -220,7 +220,7 @@
 </div>
 
 <main id="main">
-  <div class="meta-bar" aria-label="Modushinweis">
+  <div class="meta-bar" role="region" aria-label="Modushinweis">
     <span><strong>Modus:</strong> A4-/Dokumentansicht</span>
     <span><strong>Seiten:</strong> 4</span>
     <span><strong>Projekt:</strong> GroceryMate (HA6)</span>
@@ -228,13 +228,13 @@
   </div>
 
   <aside class="incident-priority-note" aria-labelledby="ha6-context-h">
-    <h3 id="ha6-context-h">Schweregrad vs. Priorität</h3>
+    <h2 id="ha6-context-h">Schweregrad vs. Priorität</h2>
     <p><strong>Schweregrad (Severity):</strong> Technische Bewertung der Auswirkung durch Tester (Wie schwer ist der Fehler?)</p>
     <p><strong>Priorität (Priority):</strong> Geschäftliche Bewertung der Dringlichkeit durch Management (Wie schnell muss er behoben werden?)</p>
     <p><strong>Standard-Praxis:</strong> Tester setzt Severity bei Fehlermeldung, Priorität wird später in Triage-Meetings durch PM/PO festgelegt</p>
     <p><strong>Quelle:</strong> ISTQB-Glossar (severity vs. priority) · IEEE 1044 (Incident Classification)</p>
 
-    <h3>Musterdokument</h3>
+    <h2>Musterdokument</h2>
     <p>Leere Arbeitsvorlage (Markdown) im Repo: <code>03_Hausaufgaben/HA6_Testdurchfuehrung/fehlerbericht-ha6-template.md</code>. Verknüpfung mit dem Testprotokoll: <a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a> (TC-ID, Bug-ID). Orientierung: ISO 29119-3 (Incident Report), CTFL Kap. 5.5.</p>
   </aside>
 
@@ -271,7 +271,7 @@
           </div>
           <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-full form-meta__cell--priority">
             <div class="form-meta__label">Priorität</div>
-            <div class="form-meta__value form-meta__value--blank" aria-label="Priorität (leer — wird durch PM/PO festgelegt)">&nbsp;</div>
+            <div role="group" class="form-meta__value form-meta__value--blank" aria-label="Priorität (leer — wird durch PM/PO festgelegt)">&nbsp;</div>
             <span class="form-meta__hint">(wird vom Projektmanager/Product Owner festgelegt)</span>
           </div>
           <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-full">
@@ -292,17 +292,17 @@
 
         <div class="form-field">
           <div class="form-field__label">Titel / Kurzbeschreibung</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Titel oder Kurzbeschreibung des Fehlers">Bewertungstext wird nicht angezeigt, obwohl eingegeben</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Titel oder Kurzbeschreibung des Fehlers">Bewertungstext wird nicht angezeigt, obwohl eingegeben</div>
         </div>
 
         <div class="form-field">
           <div class="form-field__label">Testobjekt</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Feature und Seite oder URL">GroceryMate Bewertungsfunktion</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Feature und Seite oder URL">GroceryMate Bewertungsfunktion</div>
         </div>
 
         <div class="form-field">
           <div class="form-field__label">Testumgebung</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Browser und Betriebssystem">Chrome 146.0.7680.153, Windows 11 25H2, grocerymate.masterschool.com</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Browser und Betriebssystem">Chrome 146.0.7680.153, Windows 11 25H2, grocerymate.masterschool.com</div>
         </div>
 
         <div class="form-field">
@@ -310,12 +310,12 @@
             Referenz-Testfall (TC-ID)
             <span class="form-field__hint">5 Sterne bewerten / Maximum-Grenzwert — siehe Testfallentwurf A4</span>
           </div>
-          <div class="form-field__value field-tc-id" aria-label="TC-ID aus Testprotokoll">TC-F01.F1.2</div>
+          <div role="group" class="form-field__value field-tc-id" aria-label="TC-ID aus Testprotokoll">TC-F01.F1.2</div>
         </div>
 
         <div class="form-field">
           <div class="form-field__label">Reproduktionsschritte</div>
-          <div class="form-field__value form-field__value--repro" aria-label="Nummerierte Reproduktionsschritte">
+          <div role="group" class="form-field__value form-field__value--repro" aria-label="Nummerierte Reproduktionsschritte">
             <p class="repro-source-ref">Testschritte gemäß <a href="04d-ha5-testfallentwurf-a4.html#tc-TC-F01-F1-2-heading">TC-F01.F1.2 — HA5 Testfallentwurf A4</a>.</p>
             <ol class="compact-list">
               <li>Als eingeloggter Nutzer auf Produktseite navigieren</li>
@@ -329,12 +329,12 @@
 
         <div class="form-field">
           <div class="form-field__label">Erwartetes Ergebnis</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Erwartetes Ergebnis">Text wird gespeichert und angezeigt</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Erwartetes Ergebnis">Text wird gespeichert und angezeigt</div>
         </div>
 
         <div class="form-field">
           <div class="form-field__label">Tatsächliches Ergebnis</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Tatsächliches Ergebnis">5 Sterne angezeigt, Bewertungstext fehlt</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Tatsächliches Ergebnis">5 Sterne angezeigt, Bewertungstext fehlt</div>
         </div>
       </div>
       <div class="doc-footer">
@@ -368,7 +368,7 @@
             Screenshot / Anhang
             <span class="form-field__hint">Dateien unter <code>../assets/ha6-screenshots/</code> (relativ zu dieser Seite)</span>
           </div>
-          <div class="form-field__value form-field__value--tall" aria-label="Hinweise zu Screenshot oder Anhang">
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Hinweise zu Screenshot oder Anhang">
             <p>Beigefügte Dateien:</p>
             <ul class="annex-links">
               <li><a href="../assets/ha6-screenshots/Screenshot%202026-03-22_TC-F01-F1-2_BewertungstextEingabe.jpg">Screenshot 2026-03-22_TC-F01-F1-2_BewertungstextEingabe.jpg</a></li>
@@ -383,7 +383,7 @@
             Zusätzliche Informationen
             <span class="form-field__hint">Optional.</span>
           </div>
-          <div class="form-field__value form-field__value--tall" aria-label="Optionale Zusatzinformationen">Reproduzierbarkeit: Fehler tritt bei jedem Versuch auf (100% reproduzierbar) · Beobachtung: Bewertungstexte anderer Nutzer werden angezeigt (siehe Screenshot 3), nur eigener Text fehlt · Auswirkung: Nutzer können keine schriftlichen Bewertungen hinterlassen · Workaround: Kein Workaround bekannt · Browser-Test: Nur in Chrome 146.0.7680.153 getestet, andere Browser unbekannt · Prioritätsbegründung: High, da Kernfunktion „Bewertung schreiben“ nicht nutzbar</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Optionale Zusatzinformationen">Reproduzierbarkeit: Fehler tritt bei jedem Versuch auf (100% reproduzierbar) · Beobachtung: Bewertungstexte anderer Nutzer werden angezeigt (siehe Screenshot 3), nur eigener Text fehlt · Auswirkung: Nutzer können keine schriftlichen Bewertungen hinterlassen · Workaround: Kein Workaround bekannt · Browser-Test: Nur in Chrome 146.0.7680.153 getestet, andere Browser unbekannt · Prioritätsbegründung: High, da Kernfunktion „Bewertung schreiben“ nicht nutzbar</div>
         </div>
       </div>
       <div class="doc-footer">
@@ -423,7 +423,7 @@
           </div>
           <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-full form-meta__cell--priority">
             <div class="form-meta__label">Priorität</div>
-            <div class="form-meta__value form-meta__value--blank" aria-label="Priorität (leer — wird durch PM/PO festgelegt)">&nbsp;</div>
+            <div role="group" class="form-meta__value form-meta__value--blank" aria-label="Priorität (leer — wird durch PM/PO festgelegt)">&nbsp;</div>
             <span class="form-meta__hint">(wird vom Projektmanager/Product Owner festgelegt)</span>
           </div>
           <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-full">
@@ -444,17 +444,17 @@
 
         <div class="form-field">
           <div class="form-field__label">Titel / Kurzbeschreibung</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Titel oder Kurzbeschreibung des Fehlers">Versandkosten werden nicht aktualisiert nach Artikelentfernung</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Titel oder Kurzbeschreibung des Fehlers">Versandkosten werden nicht aktualisiert nach Artikelentfernung</div>
         </div>
 
         <div class="form-field">
           <div class="form-field__label">Testobjekt</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Feature und Seite oder URL">GroceryMate Warenkorb-Versandkostenberechnung</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Feature und Seite oder URL">GroceryMate Warenkorb-Versandkostenberechnung</div>
         </div>
 
         <div class="form-field">
           <div class="form-field__label">Testumgebung</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Browser und Betriebssystem">Chrome 146.0.7680.153, Windows 11 25H2, grocerymate.masterschool.com</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Browser und Betriebssystem">Chrome 146.0.7680.153, Windows 11 25H2, grocerymate.masterschool.com</div>
         </div>
 
         <div class="form-field">
@@ -462,12 +462,12 @@
             Referenz-Testfall (TC-ID)
             <span class="form-field__hint">TC-F03.F3.2 — siehe HA5 Testfallentwurf A4</span>
           </div>
-          <div class="form-field__value field-tc-id" aria-label="TC-ID aus Testprotokoll">TC-F03.F3.2</div>
+          <div role="group" class="form-field__value field-tc-id" aria-label="TC-ID aus Testprotokoll">TC-F03.F3.2</div>
         </div>
 
         <div class="form-field">
           <div class="form-field__label">Reproduktionsschritte</div>
-          <div class="form-field__value form-field__value--repro" aria-label="Nummerierte Reproduktionsschritte">
+          <div role="group" class="form-field__value form-field__value--repro" aria-label="Nummerierte Reproduktionsschritte">
             <p class="repro-source-ref">Testschritte gemäß TC-F03.F3.2 — <a href="04d-ha5-testfallentwurf-a4.html#tc-TC-F03-F3-2-heading">HA5 Testfallentwurf A4</a>.</p>
             <ol class="compact-list">
               <li>Warenkorb-Summe &gt; 20€ (Versandkosten = 0€ angezeigt)</li>
@@ -480,12 +480,12 @@
 
         <div class="form-field">
           <div class="form-field__label">Erwartetes Ergebnis</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Erwartetes Ergebnis">Versandkosten werden automatisch auf 5,00€ gesetzt</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Erwartetes Ergebnis">Versandkosten werden automatisch auf 5,00€ gesetzt</div>
         </div>
 
         <div class="form-field">
           <div class="form-field__label">Tatsächliches Ergebnis</div>
-          <div class="form-field__value form-field__value--tall" aria-label="Tatsächliches Ergebnis">Versandkosten bleiben bei 0€, erst nach Seitenaktualisierung (F5) korrekt</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Tatsächliches Ergebnis">Versandkosten bleiben bei 0€, erst nach Seitenaktualisierung (F5) korrekt</div>
         </div>
       </div>
       <div class="doc-footer">
@@ -519,7 +519,7 @@
             Screenshot / Anhang
             <span class="form-field__hint">Dateien unter <code>../assets/ha6-screenshots/</code> (relativ zu dieser Seite)</span>
           </div>
-          <div class="form-field__value form-field__value--tall" aria-label="Hinweise zu Screenshot oder Anhang">
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Hinweise zu Screenshot oder Anhang">
             <p>Beigefügte Dateien:</p>
             <ul class="annex-links">
               <li><a href="../assets/ha6-screenshots/Screenshot%202026-03-22_TC-F03-F3-2_keinVersandkostenUpdate-1.jpg">Screenshot 2026-03-22_TC-F03-F3-2_keinVersandkostenUpdate-1.jpg</a></li>
@@ -533,7 +533,7 @@
             Zusätzliche Informationen
             <span class="form-field__hint">Optional.</span>
           </div>
-          <div class="form-field__value form-field__value--tall" aria-label="Optionale Zusatzinformationen">Reproduzierbarkeit: 100% reproduzierbar · Workaround: Seite neu laden (F5), jedoch für Endnutzer nicht erkennbar · Auswirkung: Falsche Versandkostenanzeige führt zu falscher Kaufentscheidung, potenzielle finanzielle Konsequenzen · Browser-Test: Nur Chrome 146.0.7680.153 getestet · Prioritätsbegründung: Critical, da finanzielle Transaktion betroffen</div>
+          <div role="group" class="form-field__value form-field__value--tall" aria-label="Optionale Zusatzinformationen">Reproduzierbarkeit: 100% reproduzierbar · Workaround: Seite neu laden (F5), jedoch für Endnutzer nicht erkennbar · Auswirkung: Falsche Versandkostenanzeige führt zu falscher Kaufentscheidung, potenzielle finanzielle Konsequenzen · Browser-Test: Nur Chrome 146.0.7680.153 getestet · Prioritätsbegründung: Critical, da finanzielle Transaktion betroffen</div>
         </div>
       </div>
       <div class="doc-footer">
