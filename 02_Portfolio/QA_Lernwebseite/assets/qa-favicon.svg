@@ -1,0 +1,77 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" shape-rendering="geometricPrecision">
+  <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&amp;family=Cinzel:wght@700&amp;display=swap');
+    </style>
+
+    <radialGradient id="velvetBg" cx="42%" cy="30%" r="70%">
+      <stop offset="0%"   stop-color="#1c3d22"/>
+      <stop offset="50%"  stop-color="#0c1f0f"/>
+      <stop offset="100%" stop-color="#040b05"/>
+    </radialGradient>
+
+    <radialGradient id="sheen" cx="38%" cy="25%" r="45%">
+      <stop offset="0%"   stop-color="#ffffff" stop-opacity="0.06"/>
+      <stop offset="100%" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+
+    <linearGradient id="goldText" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"   stop-color="#e8d48b"/>
+      <stop offset="40%"  stop-color="#f5e9a2"/>
+      <stop offset="100%" stop-color="#b8963a"/>
+    </linearGradient>
+
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="2.5" result="blur"/>
+      <feColorMatrix in="blur" type="matrix"
+        values="0.2 0.6 0.2 0 0
+                0.2 0.6 0.2 0 0
+                0   0   0   0 0
+                0   0   0   0.8 0" result="greenGlow"/>
+      <feMerge>
+        <feMergeNode in="greenGlow"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Hintergrund -->
+  <rect width="64" height="64" rx="10" ry="10" fill="url(#velvetBg)"/>
+  <rect width="64" height="64" rx="10" ry="10" fill="url(#sheen)"/>
+  <rect x="3" y="3" width="58" height="58" rx="7.5" ry="7.5"
+    fill="none" stroke="#3a7040" stroke-width="0.5" opacity="0.35"/>
+
+  <!-- Eckornamente -->
+  <path d="M8,5 Q5,5 5,8"    fill="none" stroke="#8fc49a" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <path d="M56,5 Q59,5 59,8" fill="none" stroke="#8fc49a" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <path d="M8,59 Q5,59 5,56" fill="none" stroke="#8fc49a" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+  <path d="M56,59 Q59,59 59,56" fill="none" stroke="#8fc49a" stroke-width="0.8" stroke-linecap="round" opacity="0.6"/>
+
+  <!-- Zierlinien -->
+  <line x1="10" y1="12" x2="54" y2="12" stroke="#3a7040" stroke-width="0.4" opacity="0.4"/>
+  <line x1="10" y1="52" x2="54" y2="52" stroke="#3a7040" stroke-width="0.4" opacity="0.4"/>
+
+  <!-- Aura-Halo -->
+  <ellipse cx="32" cy="36" rx="22" ry="12" fill="#1a4a20" opacity="0.25"/>
+
+  <!-- Q: elegante Schreibschrift (Great Vibes) -->
+  <text x="20" y="42"
+    font-family="'Great Vibes', 'Pinyon Script', 'Allura', cursive"
+    font-size="37" fill="url(#goldText)" text-anchor="middle"
+    filter="url(#softGlow)">Q</text>
+  <text x="20" y="42"
+    font-family="'Great Vibes', 'Pinyon Script', 'Allura', cursive"
+    font-size="37" fill="#fffde8" text-anchor="middle" opacity="0.13">Q</text>
+
+  <!-- A: Cinzel – das klassische Dreieck-A mit Querstrich -->
+  <text x="44" y="42"
+    font-family="'Cinzel', 'Trajan Pro', serif"
+    font-size="35" font-weight="700"
+    fill="url(#goldText)" text-anchor="middle"
+    filter="url(#softGlow)">A</text>
+  <text x="44" y="42"
+    font-family="'Cinzel', 'Trajan Pro', serif"
+    font-size="35" font-weight="700"
+    fill="#fffde8" text-anchor="middle" opacity="0.13">A</text>
+
+</svg>
