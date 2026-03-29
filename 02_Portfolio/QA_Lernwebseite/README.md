@@ -1,6 +1,6 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-03-28
+> Zuletzt aktualisiert: 2026-03-29
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
@@ -59,7 +59,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `templates/referenzvorlage-hauptsystem.html` | Referenz für neue **Hauptsystem**-Seiten (Nav, `page-chrome`, `main`). |
 | `archive/` | Nicht aktive ältere Versionen — nur Dokumentation. |
 
-**Systemkonzept (Programm):** Architektur und Steuerung im übergeordneten **QA-Track** unter **`01_Projektsteuerung/`** (Project\_*-Serie) und ggf. **`06_Archiv/`** (z. B. ältere Konzept-Snapshots). Historie der Website-Dateien ist per **`git subtree`** in **qa-ctfl-track** eingebunden.
+**Systemkonzept (Programm):** Architektur und Steuerung im übergeordneten **QA-Track** unter **`01_Projektsteuerung/`** (Project\_*-Serie) und ggf. **`06_Archiv/`** (z. B. ältere Konzept-Snapshots). Die Lernwebsite wird **nur** im Monorepo **qa-ctfl-track** versioniert (früheres separates Website-Repository ist nicht mehr vorhanden).
 
 ---
 

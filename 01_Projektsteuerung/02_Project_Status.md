@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-28 (Verweis Website-Analyse als Ausgangsbasis Komponentenstil / P1)  
+Letzte Aktualisierung: 2026-03-29 (Ist-Struktur: früheres separates Website-Repository entfällt; nur Monorepo)  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -88,7 +88,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 | Ordner (aktuell) | Zweck |
 |------------------|--------|
 | **`01_Projektsteuerung/`** | **Project\_*-Serie:** Charter, Status, Standards, Guidelines, Reference Quick; ältere Steuerkopien können unter **`06_Archiv/`** liegen. |
-| **`02_Portfolio/`** | Portfolio-Artefakte; **`QA_Lernwebseite/`** = öffentliche Lernwebsite als **Unterordner** im **Monorepo** **qa-ctfl-track** (ein Git für Steuerung + Website; Website-Historie u. a. per **`git subtree`** eingebunden). |
+| **`02_Portfolio/`** | Portfolio-Artefakte; **`QA_Lernwebseite/`** = öffentliche Lernwebsite als **Unterordner** im **Monorepo** **qa-ctfl-track** (ein Git für Steuerung + Website; früheres separates Website-Repository existiert nicht mehr). |
 | **`03_Hausaufgaben/`** | Hausaufgaben HA1–HA6 (Testdesign bis Testdurchführung) und zugehörige Abgaben. |
 | **`04_Referenzen/`** | ISTQB-Lehrplan, Normen, externe Referenzmaterialien. |
 | **`05_Notizen/`** | Unterrichtsnotizen, temporäre Arbeitstexte. |
@@ -150,6 +150,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 
 | Datum (ca.) | Entscheidung / Änderung |
 |-------------|-------------------------|
+| **2026-03-29** | **Dokumentation & Git:** Steuerungsdateien und READMEs an **Entfall** des früheren separaten Website-Repositories und des Git-Remotes **`website`** angepasst; kanonisch bleibt **nur** das Monorepo **qa-ctfl-track** (`origin`). |
 | **2026-03-28** | **Website-Analyse** (`02_Portfolio/QA_Lernwebseite/website-analyse-2026-03-28.md`) als **verbindliche Ausgangsbasis** für **P1 (Komponentenstil / Designsystem light)** in **diesem Statusdokument** und in der **README der Lernwebsite** verankert — **IST/Roadmap** dort, Steuerung per **Verweis** (kein Duplikat im Ordner `01_Projektsteuerung/`). |
 | **2026-03-21** | **Standards-Review Phase 4** abgeschlossen (u. a. Commit **`0c43f00`**, ca. 09:44 UTC+1); **CTFL-/IEEE-829-Formulierungen** und **index-/Standards-Seiten** angeglichen; Bewertung **„professionell genug“** für Lern-Portfolio dokumentiert. |
 | **2026-03-21** | **Phase 3** abgeschlossen (**09:19 UTC+1**, **`1eb5b8f`**): **Terminologie-Harmonisierung**, Meta-Leiste, A4-Status, **Web/A4-Parität** HA4/HA5-Kern. |

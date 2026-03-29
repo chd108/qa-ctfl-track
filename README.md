@@ -1,6 +1,6 @@
 # QA-Track
 
-> Zuletzt aktualisiert: 2026-03-23
+> Zuletzt aktualisiert: 2026-03-29
 
 **Quality Assurance — Software Testing** · ISTQB CTFL-orientiertes Lern- und Arbeitsrepository (MasterSchool).
 
@@ -10,7 +10,7 @@ Lokales Archiv für **Kursarbeit**, **Referenzen**, **Hausaufgaben** und die ein
 
 ## Öffentliche Lernwebsite
 
-**Live:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) · Quellcode: [github.com/chd108/qa-ctfl-track](https://github.com/chd108/qa-ctfl-track) (Monorepo; Lernwebsite unter **`02_Portfolio/`** nach Import aus dem bisherigen Website-Repo).
+**Live:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) · Quellcode: [github.com/chd108/qa-ctfl-track](https://github.com/chd108/qa-ctfl-track) (Monorepo; Lernwebsite unter **`02_Portfolio/QA_Lernwebseite/`** ausschließlich in diesem Repository).
 
 ---
 

@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23 — Health-Check-Befunde nur Chat; Abschnitt 8 = Referenz-Snapshot  
+Letzte Aktualisierung: 2026-03-29 — Git: kein Subtree/Zweit-Remote „website“ mehr; nur Monorepo  
 Zweck: Definiert Regeln und Standards für Repo-Struktur, Dokumentation und Qualität  
 Klassifizierung: Projektsteuerung / Standards  
 Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE 829-2008**, **ISO/IEC/IEEE 29119-3** (jeweils im **Lern- und Portfolio-Kontext**, ohne Anspruch auf vollständige Normenzertifizierung).
@@ -168,7 +168,7 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 
 ### Ausnahmen und technische Sonderfälle
 
-- **Git-Root** ist **`qa-ctfl-track/`** (ein Repository). **`02_Portfolio/QA_Lernwebseite/`** hat **kein** eigenes **`.git`**; Website-Änderungen werden **im Monorepo** committet. Regeln in **04_Project_Guidelines.md** (Abschnitt Versionskontrolle & Git). **Upstream-Updates** der früheren Website-Historie ggf. per **`git subtree pull`** (Remote z. B. `website`).  
+- **Git-Root** ist **`qa-ctfl-track/`** (ein Repository). **`02_Portfolio/QA_Lernwebseite/`** hat **kein** eigenes **`.git`**; Website-Änderungen werden **im Monorepo** committet. Regeln in **04_Project_Guidelines.md** (Abschnitt Versionskontrolle & Git). Ein früheres separates Website-Repository und zugehörige **Subtree-/Zweit-Remote-Workflows** sind **obsolet** (Remote nicht mehr vorhanden).  
 - **Kursaufgabe Portfolio-Einrichtung:** liegt unter **`03_Hausaufgaben/HA5_Testkonzept_Testfallentwurf/arbeitsmaterialien/`** (Dateien `*_Portfolio_Einrichtung.md`), nicht als eigener Top-Level-Ordner.
 
 ---

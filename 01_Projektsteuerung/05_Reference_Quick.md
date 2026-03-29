@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-25 — Schnellnavigation: Markdown_Form_Refactor_Prompt  
+Letzte Aktualisierung: 2026-03-29 — Repo_Health_Check-Prompt: kein Zweit-Remote „website“ mehr  
 Zweck: Schnellzugriff auf Pfade, Prompts und externe Ressourcen  
 Klassifizierung: Projektsteuerung / Referenz  
 Normative Orientierung: ISO 21502 — Zugänglichkeit von Projektinformationen.
@@ -128,7 +128,7 @@ Kontext — aktuelles System (Ist-Architektur)
 - **Ein** Git-Repository (**Monorepo**): Remote in der Regel **origin** → `github.com/chd108/qa-ctfl-track`, Branch **main**.
 - **Lernwebsite** liegt im **selben** Repo unter **02_Portfolio/QA_Lernwebseite/** (keine eigene `.git` dort).
 - **GitHub Pages:** Deployment per **GitHub Actions** — Workflow **.github/workflows/deploy-pages.yml**; Artifact-Pfad **`02_Portfolio/QA_Lernwebseite`** (Root der Site = u. a. **index.html**).
-- Optional kann ein zweites Remote (**website** → älteres Repo **QA_Lernwebseite**) existieren; **kanonisch** für öffentliche Site und Historie ist das **Monorepo**. Hinweis bei Abweichungen erwähnen.
+- **Kanonisch** für öffentliche Site und Historie ist **nur** das Monorepo (**origin** → **qa-ctfl-track**); ein früheres separates Website-Repository existiert nicht mehr.
 - **.gitignore:** u. a. **03_Hausaufgaben/**, **04_Referenzen/**, **05_Notizen/**, **06_Archiv/** — diese Bereiche sind oft **nur lokal**; im Check klar von **getracktem** Remote-Umfang trennen.
 - Verbindliche Git-/Commit-Regeln und verbotene Trailer (z. B. Tool-Zeilen in Messages): **01_Projektsteuerung/04_Project_Guidelines.md**.
 - Kanonische Repo-Struktur und Website-Workflow: **01_Projektsteuerung/03_Project_Standards.md** (u. a. Abschnitt 3 und Website-Integrationsworkflow).
@@ -151,7 +151,7 @@ Führe nach Möglichkeit aus (bei **Windows PowerShell** Befehle mit **Semikolon
 
 - `git status` — sauberer Arbeitsbaum?
 - `git branch -vv` / Abgleich **HEAD** mit **origin/main** (oder dem genutzten Upstream).
-- `git remote -v` — **origin** korrekt? Zweites Remote **website** nur einordnen, nicht doppelt führen ohne Grund.
+- `git remote -v` — **origin** korrekt? (Veraltete Zweit-Remotes auf ein gelöschtes Website-Repo sollten fehlen.)
 - `git fsck --no-dangling` (oder `git fsck`) — offensichtliche Objektprobleme?
 - Stichprobe: letzte Commits — **keine** verbotenen Tool-/Herkunftszeilen in Commit-Bodies (siehe **04_Project_Guidelines.md**).
 - Existenz prüfen: **LICENSE** (Root), **README.md** (Root), **02_Portfolio/QA_Lernwebseite/index.html**, **.github/workflows/deploy-pages.yml**.

@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-23 (Versionskontrolle: gesamtes Repo qa-ctfl-track / Monorepo; Regel Aktuelles Datum; Commit: ausführliche Message mit Meta; nach Push: Erfolgsmeldung + Message wortgleich im Chat)  
+Letzte Aktualisierung: 2026-03-29 (Versionskontrolle: gesamtes Repo qa-ctfl-track / Monorepo; kein Remote „website“; Commit: ausführliche Message mit Meta; nach Push: Erfolgsmeldung + Message wortgleich im Chat)  
 Zweck: Definiert Arbeitsweisen für KI-gestützte Arbeit, ein verbindliches fachliches Rollenmodell (Autor / KI-Werkzeuge) und Versionskontrolle  
 Klassifizierung: Projektsteuerung / Guidelines  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an KI-gestützte Ein-Personen-Arbeit.
@@ -108,7 +108,7 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 - **Lernwebsite:** Pfad **`02_Portfolio/QA_Lernwebseite/`** — **kein** eigenes Unter-Repository; Änderungen gehen in **dieselbe** Historie wie Steuerung und Workflow-Dateien.  
 - **`.gitignore`:** **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`**, **`06_Archiv/`** sind standardmäßig **ausgeschlossen** — dortige Dateien **erscheinen nicht** in `git status`, bis die Regeln bewusst geändert werden.
 
-**Subtree (optional):** Für **Synchronisation** mit dem früheren separaten Website-Repo kann ein Remote z. B. **`website`** existieren; Updates dann z. B. per **`git subtree pull`** — siehe [03_Project_Standards.md](03_Project_Standards.md) (Integrations-Workflow).
+**Hinweis:** Ein früheres **separates** Website-Repository und ein Git-Remote **`website`** sind **nicht** mehr Bestandteil des Workflows; die Lernwebsite wird **ausschließlich** unter **`02_Portfolio/QA_Lernwebseite/`** im Monorepo **qa-ctfl-track** gepflegt.
 
 ### Abgleich Steuerung ↔ Umsetzung (manuell)
 
