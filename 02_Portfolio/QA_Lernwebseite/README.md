@@ -55,7 +55,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `assets/css/doc-a4.css` | **A4-/Dokumentmodus** inkl. Screen-`body`-Ränder; **Flex-Spalte** auf `.doc-a4` (`.doc-body` wächst, **`.doc-footer`** mit `margin-top: auto` am unteren Blattrand); Druck: `@page` A4, `min-height`/`width` angepasst; schmale Viewports: seitliches Scrollen statt Quetschen. Wird von HA-A4-Seiten zusätzlich eingebunden. |
 | `assets/css/index.css` | Ältere/alternative Einstiegs-Styles — **`index.html` lädt derzeit `base.css` + `subpage.css` und lokales `<style>`**; Datei bleibt im Repo zur Referenz und Standards-Doku. |
 | `assets/js/` | u. a. **`sdlc-hypocycle-animiert.js`** für die animierte SDLC-Seite. |
-| `assets/ha6-screenshots/` | **HA6** — Beispiel-Screenshots zu **BUG-001 / BUG-002** (`06b-ha6-fehlerbericht-a4.html`); liegt im **Pages-Artifact** und ist öffentlich erreichbar. |
+| `assets/ha6-screenshots/` | **HA6** — Screenshots zur **Testausführung** im Testprotokoll (`06a-ha6-testprotokoll-a4.html`, PASS) sowie zu **BUG-001 / BUG-002** im Fehlerbericht (`06b-ha6-fehlerbericht-a4.html`); liegt im **Pages-Artifact** und ist öffentlich erreichbar. |
 | `templates/referenzvorlage-hauptsystem.html` | Referenz für neue **Hauptsystem**-Seiten (Nav, `page-chrome`, `main`). |
 | `archive/` | Nicht aktive ältere Versionen — nur Dokumentation. |
 

@@ -76,6 +76,20 @@
       color: var(--doc-text);
     }
     .doc-body .compact-list li { margin: 1.5pt 0; }
+    /* Screenshot-Links: gleiche Liste wie PASS-Zeilen (disc, 8.25pt) */
+    .doc-body .doc-info-box .compact-list > li > ul.compact-list {
+      list-style-type: disc;
+      list-style-position: outside;
+      margin-top: 4pt;
+      margin-bottom: 0;
+    }
+    .doc-body .doc-info-box .compact-list > li > ul.compact-list a {
+      text-decoration: underline;
+    }
+    .doc-body .doc-info-box .compact-list > li > ul.compact-list li {
+      overflow-wrap: anywhere;
+      word-break: break-word;
+    }
     .doc-body .form-field__value .compact-list {
       margin-top: 4pt;
       margin-bottom: 0;
@@ -328,20 +342,51 @@
           </table>
         </div>
 
-        <div class="doc-info-box" role="region" aria-label="Erfolgsquote und Übersicht PASS FAIL">
+        <div class="doc-info-box" role="region" aria-label="Erfolgsquote und Übersicht: Pass-Testfälle mit Screenshot-Links, Fail-Testfälle (Screenshots im Fehlerbericht)">
           <p><strong>Erfolgsquote:</strong> 77,8&nbsp;% (7 von 9)</p>
           <p><em>Hinweis:</em> <strong>Ausführungsrate</strong> = Anteil der geplanten TCs, die ausgeführt wurden (9/9 = 100&nbsp;%). <strong>Pass-Rate</strong> = Anteil bestandener TCs an den ausgeführten TCs (7/9 = 77,8&nbsp;%).</p>
           <p><strong>PASS (7):</strong></p>
           <ul class="compact-list">
-            <li>TC-F01.F1.1 (1 Stern bewerten)</li>
-            <li>TC-F01.F2.1 (Gast versucht zu bewerten)</li>
-            <li>TC-F02.F1.1 (17 Jahre 364 Tage alt)</li>
-            <li>TC-F02.F1.2 (Exakt 18 Jahre alt)</li>
-            <li>TC-F02.F2.1 (Modal erscheint)</li>
-            <li>TC-F03.F1.2 (Exakt 20€ Bestellwert)</li>
-            <li>TC-F03.F4.1 (Gast versucht Checkout)</li>
+            <li>TC-F01.F1.1 (1 Stern bewerten)
+              <ul class="compact-list">
+                <li>Screenshot: <a href="../assets/ha6-screenshots/Screenshot%202026-03-29_TC-F01-F1-1_1-Stern-bewerten.jpg" target="_blank" rel="noopener noreferrer">1-Stern-bewerten</a></li>
+              </ul>
+            </li>
+            <li>TC-F01.F2.1 (Gast versucht zu bewerten)
+              <ul class="compact-list">
+                <li>Screenshot: <a href="../assets/ha6-screenshots/Screenshot%202026-03-29_TC-F01-F2-1_GastVersuchtZuBewerten.jpg" target="_blank" rel="noopener noreferrer">GastVersuchtZuBewerten</a></li>
+              </ul>
+            </li>
+            <li>TC-F02.F1.1 (17 Jahre 364 Tage alt)
+              <ul class="compact-list">
+                <li>Screenshot: <a href="../assets/ha6-screenshots/Screenshot%202026-03-29_TC-F02-F1-1_17-Jahre-364-TageAlt%28Zugriff%20verweigert%29.jpg" target="_blank" rel="noopener noreferrer">17-Jahre-364-TageAlt(Zugriff verweigert)</a></li>
+                <li>Screenshot: <a href="../assets/ha6-screenshots/Screenshot%202026-03-29_TC-F02-F1-1_17-Jahre-364-TageAlt%28Zugriff%20verweigert%29-2.jpg" target="_blank" rel="noopener noreferrer">17-Jahre-364-TageAlt(Zugriff verweigert)-2</a></li>
+              </ul>
+            </li>
+            <li>TC-F02.F1.2 (Exakt 18 Jahre alt)
+              <ul class="compact-list">
+                <li>Screenshot: <a href="../assets/ha6-screenshots/Screenshot%202026-03-29_TC-F02-F1-2_Exakt18JahreAlt%28Zugriff%20gewaehrt%29.jpg" target="_blank" rel="noopener noreferrer">Exakt18JahreAlt(Zugriff gewaehrt)</a></li>
+                <li>Screenshot: <a href="../assets/ha6-screenshots/Screenshot%202026-03-29_TC-F02-F1-2_Exakt18JahreAlt%28Zugriff%20gewaehrt%29-2.jpg" target="_blank" rel="noopener noreferrer">Exakt18JahreAlt(Zugriff gewaehrt)-2</a></li>
+              </ul>
+            </li>
+            <li>TC-F02.F2.1 (Modal erscheint)
+              <ul class="compact-list">
+                <li>Screenshot: <a href="../assets/ha6-screenshots/Screenshot%202026-03-29_TC-F02-F2-1_ModalErscheintBeimErstenStoreAufruf.jpg" target="_blank" rel="noopener noreferrer">ModalErscheintBeimErstenStoreAufruf</a></li>
+              </ul>
+            </li>
+            <li>TC-F03.F1.2 (Exakt 20€ Bestellwert)
+              <ul class="compact-list">
+                <li>Screenshot: <a href="../assets/ha6-screenshots/Screenshot%202026-03-29_TC-F03-F1-2_Exakt20%E2%82%ACBestellwert%28Versandkosten%3D0%E2%82%AC%29.jpg" target="_blank" rel="noopener noreferrer">Exakt20€Bestellwert(Versandkosten=0€)</a></li>
+              </ul>
+            </li>
+            <li>TC-F03.F4.1 (Gast versucht Checkout)
+              <ul class="compact-list">
+                <li>Screenshot: <a href="../assets/ha6-screenshots/Screenshot%202026-03-29_TC-F03-F4-1_GastVersuchtCheckout%28Login-Pflicht%29-1.jpg" target="_blank" rel="noopener noreferrer">GastVersuchtCheckout(Login-Pflicht)-1</a></li>
+                <li>Screenshot: <a href="../assets/ha6-screenshots/Screenshot%202026-03-29_TC-F03-F4-1_GastVersuchtCheckout%28Login-Pflicht%29-2.jpg" target="_blank" rel="noopener noreferrer">GastVersuchtCheckout(Login-Pflicht)-2</a></li>
+              </ul>
+            </li>
           </ul>
-          <p><strong>FAIL (2):</strong></p>
+          <p><strong>FAIL (2) (Screenshots im <a href="06b-ha6-fehlerbericht-a4.html">Fehlerbericht</a>):</strong></p>
           <ul class="compact-list">
             <li>TC-F01.F1.2 (5 Sterne bewerten) &mdash; BUG-001: Bewertungstext wird nicht angezeigt</li>
             <li>TC-F03.F3.2 (Versandkosten bei Reduzierung unter 20 €) &mdash; BUG-002: Versandkosten aktualisieren nicht beim Entfernen</li>
