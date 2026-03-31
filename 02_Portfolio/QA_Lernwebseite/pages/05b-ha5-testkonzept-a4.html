@@ -178,7 +178,7 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 31.03.2026<br>
           <strong>Seite:</strong> 1 von 5
         </div>
       </div>
@@ -191,7 +191,7 @@
           <div class="form-meta__cell"><div class="form-meta__label">Testf&auml;lle gesamt</div><div class="form-meta__value">9 TC (3 je Feature) · 100&nbsp;% automatisierbar <span class="doc-soft-note--inline">(Zielformulierung; praktisch ggf. eingeschr&auml;nkt)</span></div></div>
           <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Teststufe</div><div class="form-meta__value">Systemtest</div></div>
           <div class="form-meta__cell form-meta__cell--border-top"><div class="form-meta__label">Scope</div><div class="form-meta__value">GM-F01 &middot; GM-F02 &middot; GM-F03</div></div>
-          <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-2"><div class="form-meta__label">Status</div><div class="status-options"><span class="status-option status-option--active">&#10003; Bereit für Review</span><span class="status-option">Abgeschlossen</span><span class="status-option">In Bearbeitung</span></div></div>
+          <div class="form-meta__cell form-meta__cell--border-top form-meta__cell--span-2"><div class="form-meta__label">Status</div><div class="status-options"><span class="status-option">Bereit für Review</span><span class="status-option status-option--active">&#10003; Abgeschlossen</span><span class="status-option">In Bearbeitung</span></div></div>
         </div>
 
         <div class="doc-feature-strip">
@@ -207,7 +207,7 @@
           <div class="form-field__value">
             <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F01:</strong> Bewertungssystem (1–5 Sterne, opt. Text, Login-Pflicht)</span></div>
             <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F02:</strong> Altersverifikation (Geburtsdatum-Modal, 18+, session-basiert)</span></div>
-            <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F03:</strong> Versandkosten (Freigrenze 20€, Versandkosten 5€, Live-Update)</span></div>
+            <div class="checkbox-row"><span class="checkbox-row__box checked" aria-hidden="true"></span><span><strong>GM-F03:</strong> Versandkosten (Freigrenze 20€, Versandkosten 5€, Anzeige bei Warenkorbänderungen — Soll/Prüfung siehe Risiken &amp; TC-F03.F3.2)</span></div>
           </div>
         </div>
         <div class="form-field">
@@ -226,6 +226,19 @@
               </tbody>
             </table>
           </div>
+        </div>
+
+        <div class="form-field">
+          <div class="form-field__label">Benutzeranalyse (Kurz)</div>
+          <div class="form-field__value"><strong>Demografie:</strong> Erwachsene Endkundinnen und Endkunden (Schwerpunkt typischerweise 25–45 Jahre), deutschsprachig; keine spezielle IT-Voraussetzung. <strong>Technikaffinität:</strong> niedrig bis mittel — alltägliche Browser-Nutzung. <strong>Nutzungsszenarien:</strong> Wocheneinkauf; spontane Kleinbestellungen; Bewertungen lesen; GM-F02: Zugriff auf Alkohol-Kategorie nur nach Altersprüfung.</div>
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Bestehende Funktionalität (vor GM-F01 · GM-F02 · GM-F03)</div>
+          <div class="form-field__value">Der Shop war bereits nutzbar mit u. a. Produktsuche und -navigation, Login/Registrierung, Warenkorb und Checkout-Grundfluss. Dieses Testkonzept bezieht sich auf die <strong>drei neuen Features</strong> und deren <strong>Integration</strong> — <strong>kein</strong> vollständiger Regressionstest der gesamten Altfunktionalität.</div>
+        </div>
+        <div class="form-field">
+          <div class="form-field__label">Außerhalb des Umfangs (Auszug)</div>
+          <div class="form-field__value"><strong>Technik:</strong> Backend-DB ohne UI; Zahlungsabwicklung; E-Mail; Extrem-Last. <strong>Bestand (kein vollständiger Retest):</strong> Suche/Filter/Sortierung (nur für Erreichbarkeit); Login außerhalb Integrationspfaden; alter Warenkorb ohne Bezug zu Freigrenze/Live-Update. <strong>Testarten (in diesem HA nicht):</strong> gezielte Security-Tests; Last/Stress auf Produktionsniveau; formale Usability-Lab-Studien; vollständiges WCAG-Audit; systematische Multi-Browser-Matrix (hier: Chrome primär).</div>
         </div>
 
         <div class="doc-feature-strip">
@@ -273,7 +286,7 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 31.03.2026<br>
           <strong>Seite:</strong> 2 von 5
         </div>
       </div>
@@ -289,9 +302,9 @@
             <table>
               <thead><tr><th scope="col" style="width:40%">Risiko</th><th scope="col">Maßnahme</th></tr></thead>
               <tbody>
-                <tr><td>Versandkosten Live-Update Bug (unidirektional)</td><td>Bekannter Bug aus HA4 (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>): Update nur bei Erh&ouml;hung, nicht bei Reduktion &mdash; abgedeckt durch <strong>TC-F03.F3.2</strong> (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>)</td></tr>
-                <tr><td>Zeichenlimit Bewertungs-Textfeld unklar</td><td>Offener Punkt in HA4 (F6/AC6; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>) &mdash; <strong>kein</strong> eigener TC in den 9 spezifizierten HA5-F&auml;llen; Kl&auml;rung / Risiko siehe Abschnitt &bdquo;Offene Punkte &amp; Abstimmung&ldquo;</td></tr>
-                <tr><td>2. Bewertung: Block oder Update?</td><td>Offener Punkt in HA4 (Grenzf&auml;lle; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>) &mdash; <strong>kein</strong> eigener TC in den 9 spezifizierten HA5-F&auml;llen; Kl&auml;rung / Risiko siehe Abschnitt &bdquo;Offene Punkte &amp; Abstimmung&ldquo;</td></tr>
+                <tr><td>Versandkosten Live-Update (unidirektional)</td><td>In der Testbasis dokumentiert: Anzeige aktualisiert beim Erh&ouml;hen zuverl&auml;ssig; beim Reduzieren <strong>Abweichung vom erwarteten Soll</strong> beobachtet (u. a. Reload nötig). <strong>Maßnahme:</strong> Prüfung mit <strong>TC-F03.F3.2</strong> (<a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>); ggf. HA6.</td></tr>
+                <tr><td>Zeichenlimit Bewertungs-Textfeld unklar</td><td>Bekannte L&uuml;cke in HA4 (F6/AC6; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>) &mdash; <strong>kein</strong> eigener TC in den 9 HA5-F&auml;llen; Kl&auml;rung siehe &bdquo;Bekannte L&uuml;cken &amp; Abstimmung&ldquo;</td></tr>
+                <tr><td>2. Bewertung: Block oder Update?</td><td>Bekannte L&uuml;cke in HA4 (Grenzf&auml;lle; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>) &mdash; <strong>kein</strong> eigener TC in den 9 HA5-F&auml;llen; Kl&auml;rung siehe &bdquo;Bekannte L&uuml;cken &amp; Abstimmung&ldquo;</td></tr>
               </tbody>
             </table>
           </div>
@@ -299,11 +312,11 @@
 
         <div class="doc-feature-strip">
           <span class="doc-feature-strip__num">Hinweis</span>
-          Offene Punkte &amp; Abstimmung (HA4 / PO)
+          Bekannte L&uuml;cken &amp; Abstimmung (HA4 / PO)
         </div>
         <div class="form-field">
           <div class="form-field__label">Restrisiken &amp; Vorgehen</div>
-          <div class="form-field__value">Offene Punkte aus der Testbasis-Analyse (HA4) sind derzeit nicht vollst&auml;ndig spezifiziert. Risikobewertung und Priorisierung erfolgen in Abstimmung mit dem Product Owner.</div>
+          <div class="form-field__value">Verbleibende Spezifikationsl&uuml;cken aus der Testbasis-Analyse (HA4) sind benannt; Priorisierung und Kl&auml;rung erfolgen mit dem Product Owner. Die geplanten Tests decken die drei neuen Features ab; einzelne L&uuml;cken werden risikobasiert mitgesteuert.</div>
         </div>
       </div>
       <div class="doc-footer">
@@ -321,7 +334,7 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 31.03.2026<br>
           <strong>Seite:</strong> 3 von 5
         </div>
       </div>
@@ -336,7 +349,7 @@
           <ul class="compact-list">
             <li>Alle 3 Features funktionieren gemäß Spezifikation</li>
             <li>Akzeptanzkriterien aus Testbasis-Analyse erfüllt</li>
-            <li>Versandkosten Live-Update: bekannter Bug (nur &uarr;, nicht &darr;) wird durch <strong>TC-F03.F3.2</strong> abgedeckt (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>); vollst&auml;ndig bidirektionales Verhalten als Soll langfristig</li>
+            <li>Versandkosten: Anzeige und Plausibilit&auml;t bei Warenkorb&auml;nderungen (Erh&ouml;hen <strong>und</strong> Reduzieren) entsprechen den Akzeptanzkriterien aus der Testbasis; Pr&uuml;fung u. a. mit <strong>TC-F03.F3.2</strong> (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>). Abweichungen risikobasiert dokumentieren (siehe Risiken).</li>
           </ul>
         </div>
         <div class="form-field">
@@ -411,7 +424,7 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 31.03.2026<br>
           <strong>Seite:</strong> 4 von 5
         </div>
       </div>
@@ -523,7 +536,7 @@
         <div class="doc-header__right">
           <strong>Projekt:</strong> GroceryMate (HA5)<br>
           <strong>Erstellt:</strong> 16.03.2026<br>
-          <strong>Letzte Aktualisierung:</strong> 21.03.2026<br>
+          <strong>Letzte Aktualisierung:</strong> 31.03.2026<br>
           <strong>Seite:</strong> 5 von 5
         </div>
       </div>

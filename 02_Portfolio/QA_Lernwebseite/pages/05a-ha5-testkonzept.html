@@ -127,9 +127,9 @@
     <span><strong>Testfälle:</strong> 9 TC (3 je Feature) · 100&nbsp;% automatisierbar</span>
     <span><strong>Testkonzept A4:</strong> 5 Seiten (<a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a>)</span>
     <span><strong>Standard:</strong> CTFL 4.0.2 / IEEE 829-2008</span>
-    <span><strong>Status:</strong> <span class="tag tag--ok">Bereit für Review</span></span>
+    <span><strong>Status:</strong> <span class="tag tag--ok">Abgeschlossen</span></span>
     <span><strong>Erstellt:</strong> 16.03.2026</span>
-    <span><strong>Letzte Aktualisierung:</strong> 21.03.2026</span>
+    <span><strong>Letzte Aktualisierung:</strong> 31.03.2026</span>
   </div>
 
   <div class="info-box info-box--note" role="note">
@@ -166,6 +166,10 @@
         <div class="card"><div class="card__title">Registrierte Nutzer</div><div class="card__body">Eingeloggte Nutzer mit erweiterten Funktionen: Bewertungen schreiben, Checkout durchführen, Versandkosten sehen.</div></div>
         <div class="card"><div class="card__title">Gast-Nutzer</div><div class="card__body">Nicht eingeloggte Besucher mit eingeschränktem Zugriff: Produkte ansehen, aber keine Bewertungen abgeben oder bestellen.</div></div>
       </div>
+      <h3 class="section__subhead">Benutzeranalyse (Kurz)</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1rem;"><strong>Demografie:</strong> Erwachsene Endkundinnen und Endkunden (Schwerpunkt typischerweise 25–45 Jahre), deutschsprachig; keine spezielle IT-Voraussetzung. <strong>Technikaffinität:</strong> niedrig bis mittel — alltägliche Browser-Nutzung, kein Entwickler-Publikum. <strong>Nutzungsszenarien:</strong> Wocheneinkauf mit größerem Warenkorb; spontane Kleinbestellungen; vor dem Kauf Bewertungen lesen; für GM-F02 Zugriff auf alkoholische Kategorie nur nach erfolgreicher Altersprüfung.</p>
+      <h3 class="section__subhead">Bestehende Funktionalität (vor GM-F01 · GM-F02 · GM-F03)</h3>
+      <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1rem;">Der Shop war bereits nutzbar mit u. a. <strong>Produktsuche und -navigation</strong>, <strong>Login/Registrierung</strong>, <strong>Warenkorb</strong> und <strong>Checkout-Grundfluss</strong>. Dieses Testkonzept bezieht sich auf die <strong>drei neuen Features</strong> und deren <strong>Integration</strong> in diese bestehenden Abläufe — <strong>kein</strong> vollständiger Regressionstest der gesamten Altfunktionalität.</p>
       <h3 class="section__subhead">Hardware- und Software-Spezifikationen</h3>
       <div class="ref-table">
         <table>
@@ -181,7 +185,7 @@
       <div class="plan-list">
         <div class="plan-item"><div class="plan-item__id">GM-F01</div><div class="plan-item__title">Bewertungssystem für Produkte</div><div class="plan-item__desc">Eingeloggte Nutzer können Produkte mit 1–5 Sternen bewerten und optionales schriftliches Feedback hinterlassen. Max. eine Bewertung pro Nutzer und Produkt. Durchschnittsbewertung wird auf Produktseite angezeigt.</div></div>
         <div class="plan-item"><div class="plan-item__id">GM-F02</div><div class="plan-item__title">Altersverifikation für alkoholische Produkte</div><div class="plan-item__desc">Beim ersten Aufruf der Kategorie /store erscheint ein Geburtsdatum-Modal. Nutzer unter 18 Jahren erhalten keinen Zugriff. Verifikation ist session-basiert (kein erneutes Modal innerhalb der Session).</div></div>
-        <div class="plan-item"><div class="plan-item__id">GM-F03</div><div class="plan-item__title">Versandkosten</div><div class="plan-item__desc">Versandkosten entfallen ab einem Bestellwert ≥20€ (Freigrenze). Darunter fallen Versandkosten von 5€ an. Live-Update bei Warenkorbänderungen (⚠️ Bug: nur unidirektional ↑). Nur für eingeloggte Nutzer im Checkout sichtbar.</div></div>
+        <div class="plan-item"><div class="plan-item__id">GM-F03</div><div class="plan-item__title">Versandkosten</div><div class="plan-item__desc">Versandkosten entfallen ab einem Bestellwert ≥20€ (Freigrenze). Darunter fallen Versandkosten von 5€ an. <strong>Soll:</strong> Versandkostenanzeige bei Warenkorbänderungen (Erhöhen und Reduzieren) konsistent mit der Testbasis; Details und beobachtetes Verhalten siehe Risiko „Versandkosten Live-Update“ und HA4. Nur für eingeloggte Nutzer im Checkout sichtbar.</div></div>
       </div>
       <h3 class="section__subhead">Testfälle gesamt</h3>
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: 1rem;"><strong>9 ausgearbeitete Testfälle</strong> für GM-F01 · GM-F02 · GM-F03 (je 3) — vollständig spezifiziert, <strong>priorisierte Teilmenge</strong> aus der HA4-Testbasis (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>, inhaltlich zur <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a>). Techniken: EP, BVA, UC (CTFL Kap.&nbsp;4.2). <strong>Referenz:</strong> Web <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> · A4 <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a> (12&nbsp;Seiten: 3&nbsp;Übersichtsseiten + 9&nbsp;TC). Weitere Testfragen aus HA4 bleiben für eine Erweiterung des Testsets verfügbar.<br><span style="font-size:12px;color:var(--soft)">Abgleich mit ISO/IEC/IEEE 29119-3 / IEEE&nbsp;829: dokumentierter Umfang entspricht dem aktuellen <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> (Web) und <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>.</span></p>
@@ -202,7 +206,7 @@
       <h3 class="section__subhead">Testumfang (Scope)</h3>
       <div class="card-grid">
         <div class="card"><div class="card__title">Im Umfang enthalten</div><div class="card__body"><ul><li>Bewertungssystem (GM-F01): 1–5 Sterne, Textfeld optional, Login-Pflicht, Duplikatprüfung</li><li>Altersverifikation (GM-F02): Geburtsdatum-Modal, 18+ Prüfung, Session-Persistenz</li><li>Versandkosten (GM-F03): Freigrenze, Live-Update, Login-Pflicht</li><li>Integration mit bestehenden Features: Login/Registrierung, Warenkorb, Checkout</li></ul></div></div>
-        <div class="card"><div class="card__title">Außerhalb des Umfangs</div><div class="card__body"><ul><li>Backend-Datenbankoperationen ohne UI-Einfluss</li><li>Zahlungsabwicklung (separate Schnittstelle)</li><li>E-Mail-Benachrichtigungen</li><li>Performance-Tests unter extremer Last (&gt;10.000 gleichzeitige Nutzer)</li></ul></div></div>
+        <div class="card"><div class="card__title">Außerhalb des Umfangs</div><div class="card__body"><p style="margin:0 0 .5rem 0;font-size:12px;font-weight:700;color:var(--text);">Technik / Schnittstellen</p><ul><li>Backend-Datenbankoperationen ohne UI-Einfluss</li><li>Zahlungsabwicklung (separate Schnittstelle)</li><li>E-Mail-Benachrichtigungen</li><li>Performance-Tests unter extremer Last (&gt;10.000 gleichzeitige Nutzer)</li></ul><p style="margin:1rem 0 .5rem 0;font-size:12px;font-weight:700;color:var(--text);">Bestehende Shop-Funktionen (kein vollständiger Retest)</p><ul><li>Produktsuche, Filter und Sortierung (nur soweit für Erreichbarkeit der neuen UI nötig)</li><li>Login/Registrierung außerhalb der Integrationspfade zu GM-F01–F03</li><li>Bestehende Warenkorb-Logik ohne Bezug zu Versandkosten-Freigrenze und Live-Update</li></ul><p style="margin:1rem 0 .5rem 0;font-size:12px;font-weight:700;color:var(--text);">Testarten / Verfahren (in diesem HA nicht durchgeführt)</p><ul><li>Gezielte Security-Tests (z.&nbsp;B. Penetrationstest, XSS/SQLi-Systematik)</li><li>Last-/Stress-Tests unter Produktionsniveau</li><li>Formale Usability-Studien mit Lab-Probanden</li><li>Vollständiges WCAG-Audit</li><li>Systematische Multi-Browser-Matrix (hier: Chrome primär; andere Browser stichprobenartig)</li></ul></div></div>
       </div>
       <h3 class="section__subhead">Testarten (CTFL 4.0.2 Kap. 2.2.2 — vier kanonische Testarten)</h3>
       <div class="ref-table">
@@ -220,14 +224,14 @@
       <p style="font-size: 13px; line-height: 1.7; color: var(--mid); margin-bottom: .5rem;">Äquivalenzklassenbildung (EP) · Grenzwertanalyse (BVA) · Anwendungsfalltest (UC).</p>
       <h3 class="section__subhead">Hauptrisiken und Maßnahmen</h3>
       <div class="risk-list">
-        <div class="risk-item"><div class="risk-item__label">Risiko: Versandkosten Live-Update (unidirektional)</div><div class="risk-item__content"><strong>Details:</strong> Bekannter Bug aus HA4 (<a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>): Update nur bei Erhöhung, nicht bei Reduktion.<br><strong>Maßnahme:</strong> Abgedeckt durch <strong>TC-F03.F3.2</strong> (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>). Workaround: Seite neu laden.</div></div>
-        <div class="risk-item"><div class="risk-item__label">Risiko: Zeichenlimit Bewertungs-Textfeld unklar</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt in HA4 (F6/AC6; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Offene Punkte &amp; Abstimmung (HA4 / PO)“.</div></div>
-        <div class="risk-item"><div class="risk-item__label">Risiko: 2. Bewertung — Block oder Update?</div><div class="risk-item__content"><strong>Details:</strong> Offener Punkt in HA4 (Grenzfälle; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Offene Punkte &amp; Abstimmung (HA4 / PO)“.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Versandkosten Live-Update (unidirektional)</div><div class="risk-item__content"><strong>Details:</strong> In der Testbasis (HA4) dokumentiertes Verhalten: Anzeige der Versandkosten aktualisiert beim Erhöhen des Warenkorbwerts zuverlässig; beim Reduzieren wurde eine <strong>Abweichung vom erwarteten Soll</strong> beobachtet (u. a. Reload nötig).<br><strong>Maßnahme:</strong> Prüfung und Nachweis u. a. mit <strong>TC-F03.F3.2</strong> (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>); ggf. Fehlerdokumentation in HA6.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: Zeichenlimit Bewertungs-Textfeld unklar</div><div class="risk-item__content"><strong>Details:</strong> Bekannte Lücke in HA4 (F6/AC6; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Bekannte Lücken &amp; Abstimmung (HA4 / PO)“.</div></div>
+        <div class="risk-item"><div class="risk-item__label">Risiko: 2. Bewertung — Block oder Update?</div><div class="risk-item__content"><strong>Details:</strong> Bekannte Lücke in HA4 (Grenzfälle; siehe <a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a> und <a href="04b-ha4-testbasisanalyse-a4.html">Testbasis-Analyse A4</a>).<br><strong>Maßnahme:</strong> <strong>Kein</strong> eigener TC in den 9 spezifizierten HA5-Fällen; Klärung / Risiko siehe Abschnitt „Bekannte Lücken &amp; Abstimmung (HA4 / PO)“.</div></div>
       </div>
-      <h3 class="section__subhead">Offene Punkte &amp; Abstimmung (HA4 / PO)</h3>
+      <h3 class="section__subhead">Bekannte Lücken &amp; Abstimmung (HA4 / PO)</h3>
       <div class="info-box" role="note">
         <div class="info-box__title">Restrisiken &amp; Vorgehen</div>
-        <div class="info-box__content">Offene Punkte aus der Testbasis-Analyse (HA4) sind derzeit nicht vollständig spezifiziert. Risikobewertung und Priorisierung erfolgen in Abstimmung mit dem Product Owner.</div>
+        <div class="info-box__content">Verbleibende Spezifikationslücken aus der Testbasis-Analyse (HA4) sind benannt; Priorisierung und Klärung erfolgen mit dem Product Owner. Die geplanten Tests decken die drei neuen Features ab; einzelne Lücken werden risikobasiert mitgesteuert.</div>
       </div>
     </div>
   </section>
@@ -247,7 +251,7 @@
       <ul style="font-size: 13px; line-height: 1.8; color: var(--mid); margin-left: 1.5rem; margin-bottom: 1rem;">
         <li>Alle 3 Features funktionieren gemäß Spezifikation</li>
         <li>Akzeptanzkriterien aus Testbasis-Analyse erfüllt</li>
-        <li>Versandkosten Live-Update: bekannter Bug (nur ↑, nicht ↓) wird durch <strong>TC-F03.F3.2</strong> abgedeckt (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>); vollständig bidirektionales Verhalten als Soll langfristig</li>
+        <li>Versandkosten: Anzeige und Plausibilität bei Warenkorbänderungen (Erhöhen <strong>und</strong> Reduzieren) entsprechen den Akzeptanzkriterien aus der Testbasis; Prüfung u. a. mit <strong>TC-F03.F3.2</strong> (siehe <a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a> / <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>). Abweichungen werden risikobasiert dokumentiert (siehe Risiken).</li>
       </ul>
       <h3 class="section__subhead">Erwartete Ergebnisse (messbar)</h3>
       <div class="ref-table">

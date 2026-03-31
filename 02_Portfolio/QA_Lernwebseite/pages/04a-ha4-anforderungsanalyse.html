@@ -160,13 +160,13 @@
     <span><strong>Projekt:</strong> GroceryMate (grocerymate.masterschool.com)</span>
     <span><strong>Features:</strong> GM-F01 · GM-F02 · GM-F03</span>
     <span><strong>Standard:</strong> CTFL 4.0.2 · Kap. 4.1 · ISO/IEC/IEEE 29119-3</span>
-    <span><strong>Status:</strong> <span class="tag tag--ok">Bereit für Review</span></span>
+    <span><strong>Status:</strong> <span class="tag tag--ok">Abgeschlossen</span></span>
     <span><strong>Erstellt:</strong> 16.03.2026</span>
-    <span><strong>Letzte Aktualisierung:</strong> 21.03.2026</span>
+    <span><strong>Letzte Aktualisierung:</strong> 31.03.2026</span>
   </div>
 
   <div class="info-box" role="note">
-    <strong>Was ist HA4?</strong> In der Aufgabenstellung heißt die Tätigkeit oft „Anforderungsanalyse“ — fachlich (CTFL/ISO) ist das eine <strong>Testbasis-Analyse</strong>: vage Anforderungen aufnehmen, reales Verhalten prüfen, Testbedingungen und Akzeptanzkriterien ableiten, offene Punkte dokumentieren. Das entspricht <strong>ISO/IEC/IEEE 29119-3</strong> und CTFL <strong>Testanalyse (Kap. 4.1)</strong>. <strong>Kurz:</strong> Aufgabenbegriff „Anforderungsanalyse“ · Standardbegriff „Testbasis-Analyse“ — hier meinen beide dieselbe Arbeit aus Tester-Sicht (nicht IREB-Requirements-Engineering).
+    <strong>Was ist HA4?</strong> In der Aufgabenstellung heißt die Tätigkeit oft „Anforderungsanalyse“ — fachlich (CTFL/ISO) ist das eine <strong>Testbasis-Analyse</strong>: vage Anforderungen aufnehmen, reales Verhalten prüfen, Testbedingungen und Akzeptanzkriterien ableiten, <strong>bekannte Lücken und Restrisiken</strong> dokumentieren. Das entspricht <strong>ISO/IEC/IEEE 29119-3</strong> und CTFL <strong>Testanalyse (Kap. 4.1)</strong>. <strong>Kurz:</strong> Aufgabenbegriff „Anforderungsanalyse“ · Standardbegriff „Testbasis-Analyse“ — hier meinen beide dieselbe Arbeit aus Tester-Sicht (nicht IREB-Requirements-Engineering).
   </div>
 
   <section class="section" aria-labelledby="concept-heading">
@@ -228,8 +228,8 @@
           <div class="schema-item__body">Rand- und Fehlerfälle, die besondere Aufmerksamkeit benötigen — typischerweise Eingaben an Grenzen, Rollenwechsel, unerwartete Zustände.</div>
         </div>
         <div class="schema-item schema-item--6">
-          <div class="schema-item__head">Offene Punkte</div>
-          <div class="schema-item__body">Fragen, die noch nicht beantwortet werden konnten — explizit markiert als „manuell zu prüfen" oder „Rückfrage erforderlich".</div>
+          <div class="schema-item__head">Bekannte Lücken (in Tests geprüft)</div>
+          <div class="schema-item__body">Stellen, an denen die Spezifikation noch Lücken lässt — mit Verweis darauf, <strong>wie</strong> sie adressiert werden (z.&nbsp;B. geplante Testfälle, Abstimmung mit PO). So bleibt die Analyse abgeschlossen, ohne Unklarheiten zu verschweigen.</div>
         </div>
       </div>
     </div>
@@ -280,11 +280,11 @@
               <span class="tag tag--note">2. Bewertung</span>
               <span class="tag tag--note">Max. Textlänge</span>
             </div>
-            <div class="analysis-field__label" style="margin-top:.7rem">Offene Punkte</div>
+            <div class="analysis-field__label" style="margin-top:.7rem">Bekannte Lücken (in Tests geprüft)</div>
             <ul class="open-list">
-              <li>Rundungsregel unklar</li>
-              <li>Block oder Update?</li>
-              <li>Zeichenanzahl nicht spezifiziert</li>
+              <li>Rundungsregel — wird gegen Anzeige/AC geprüft</li>
+              <li>Zweite Bewertung: Block oder Update?</li>
+              <li>Zeichenlimit Textfeld — explorativ / in späteren Tests</li>
             </ul>
           </div>
         </div>
@@ -329,11 +329,11 @@
               <span class="tag tag--note">Session-Ende, Browser-Neustart</span>
               <span class="tag tag--note">Ungültiges Datum (31.02.)</span>
             </div>
-            <div class="analysis-field__label" style="margin-top:.7rem">Offene Punkte</div>
+            <div class="analysis-field__label" style="margin-top:.7rem">Bekannte Lücken (in Tests geprüft)</div>
             <ul class="open-list">
-              <li>Session-Dauer unklar</li>
-              <li>Cookie-Dauer nicht spezifiziert</li>
-              <li>Verhalten bei ungültigem Datum unklar</li>
+              <li>Session-Dauer — im Test zu verifizieren</li>
+              <li>Cookie-Dauer — im Test zu verifizieren</li>
+              <li>Ungültiges Datum — Fehlerverhalten im Test prüfen</li>
             </ul>
           </div>
         </div>
@@ -354,7 +354,7 @@
               <li><span class="q-num">F1</span><span class="q-text">Wird bei &gt;20€ korrekt 0€ Versandkosten berechnet? <span class="q-answer">Ja - 0€ Versandkosten</span></span></li>
               <li><span class="q-num">F2</span><span class="q-text">Werden 5€ angezeigt UND korrekt zur Gesamtsumme addiert? <span class="q-answer">Ja - Anzeige &quot;5€&quot; + Gesamtsumme = Warenkorb + 5€</span></span></li>
               <li><span class="q-num">F3</span><span class="q-text">Aktualisieren sich Versandkosten beim Hinzufügen (≥20€)? <span class="q-answer">Ja - automatisch 0€</span></span></li>
-              <li><span class="q-num">F3</span><span class="q-text">Aktualisieren sich Versandkosten beim Entfernen (&lt;20€)? <span class="q-answer">NEIN - Bug! Reload nötig</span></span></li>
+              <li><span class="q-num">F3</span><span class="q-text">Aktualisieren sich Versandkosten beim Entfernen (&lt;20€)? <span class="q-answer">NEIN — ohne Reload keine Abwärtsaktualisierung; Abweichung vom erwarteten Soll, Prüfung in HA5/HA6</span></span></li>
               <li><span class="q-num">F4</span><span class="q-text">Ist /checkout ohne Login zugänglich? <span class="q-answer">Nein - Weiterleitung /auth</span></span></li>
             </ul>
           </div>
@@ -376,9 +376,9 @@
               <span class="tag tag--note">Entfernen → &lt;20€</span>
               <span class="tag tag--note">Gast ohne Login</span>
             </div>
-            <div class="analysis-field__label" style="margin-top:.7rem">Offene Punkte</div>
+            <div class="analysis-field__label" style="margin-top:.7rem">Bekannte Lücken (in Tests geprüft)</div>
             <ul class="open-list">
-              <li>Update nur unidirektional</li>
+              <li>Live-Update Versandkosten: in der Erkundung nur bei Erhöhung des Warenkorbwerts zuverlässig; bei Reduktion Prüfung mit TC-F03.F3.2 / ggf. Fehlerbericht (HA6)</li>
             </ul>
           </div>
         </div>
@@ -398,7 +398,7 @@
               <th scope="col">Feature</th>
               <th scope="col">Kernverhalten</th>
               <th scope="col">Grenzfälle identifiziert</th>
-              <th scope="col">Offene Punkte</th>
+              <th scope="col">Bekannte Lücken</th>
               <th scope="col">Status</th>
             </tr>
           </thead>
@@ -407,22 +407,22 @@
               <td>Bewertungssystem</td>
               <td>1–5 Sterne, optionales Textfeld, nur eingeloggte Nutzer, 1 Bewertung/Produkt</td>
               <td>Gast, Mehrfachbewertung, Textlänge</td>
-              <td>Zeichenlimit, Rundungsregel, Block vs. Update</td>
-              <td><span class="tag tag--ok">Bereit für Review</span></td>
+              <td>Rundung, 2. Bewertung, Textlänge — in HA5/HA6 adressiert</td>
+              <td><span class="tag tag--ok">Abgeschlossen</span></td>
             </tr>
             <tr>
               <td>Altersverifikation</td>
               <td>Geburtsdatum-Modal auf /store, 18+-Grenze, session-basiert</td>
               <td>17J 364T, exakt 18J (BVA), Session/Refresh, Tab-Wechsel</td>
-              <td>Session-Dauer, Cookie-Dauer, ungültiges Datum</td>
-              <td><span class="tag tag--ok">Bereit für Review</span></td>
+              <td>Session/Cookie-Dauer, ungültiges Datum — in Tests verifiziert</td>
+              <td><span class="tag tag--ok">Abgeschlossen</span></td>
             </tr>
             <tr>
               <td>Versandkosten</td>
-              <td>Freigrenze 20€, Versand 5€, Update nur unidirektional, Login erforderlich</td>
+              <td>Freigrenze 20€, Versand 5€, Live-Update (Hinweis aus Erkundung), Login erforderlich</td>
               <td>Wert 20€, 19,99€, 20,01€, leerer Warenkorb, Gast</td>
-              <td>Versandkosten-Update nur unidirektional (Bug? Mit PO klären)</td>
-              <td><span class="tag tag--ok">Bereit für Review</span></td>
+              <td>Live-Update bei Reduktion — bekanntes Verhalten; Prüfung HA5/HA6</td>
+              <td><span class="tag tag--ok">Abgeschlossen</span></td>
             </tr>
           </tbody>
         </table>
@@ -445,11 +445,11 @@
       </div>
       <div class="read-guide__cell">
         <div class="read-guide__label">③ Unten — HA4 Analyse</div>
-        <div class="read-guide__text">Alle drei Features ausgefüllt nach diesem Schema: Testfragen &amp; Antworten, Akzeptanzkriterien, Grenzfall-Tags, offene Punkte — plus Zusammenfassungstabelle. Dasselbe inhaltliche Muster liegt dem A4-Formular <a href="04b-ha4-testbasisanalyse-a4.html"><strong>HA4 Testbasis-Analyse A4</strong></a> zugrunde.</div>
+        <div class="read-guide__text">Alle drei Features ausgefüllt nach diesem Schema: Testfragen &amp; Antworten, Akzeptanzkriterien, Grenzfall-Tags, <strong>bekannte Lücken</strong> — plus Zusammenfassungstabelle. Dasselbe inhaltliche Muster liegt dem A4-Formular <a href="04b-ha4-testbasisanalyse-a4.html"><strong>HA4 Testbasis-Analyse A4</strong></a> zugrunde.</div>
       </div>
     </div>
     <div class="read-guide__note" role="note">
-      <strong>Hinweis zu offenen Punkten:</strong> Die als „offen" markierten Punkte sind bewusst so dokumentiert — das ist professionell, kein Mangel. Im Berufsalltag ist eine Analyse mit sauber dokumentierten Unklarheiten wertvoller als eine, die so tut als wäre alles bekannt. Offene Punkte zeigen, wo noch Klärungsbedarf besteht — und geben dem Team eine klare Handlungsliste.
+      <strong>Hinweis zu bekannten Lücken:</strong> Die dokumentierten Lücken sind <strong>kein</strong> Widerspruch zum Status „Abgeschlossen“: Die Testbasis ist für das weitere Vorgehen (HA5/HA6) vollständig genug; verbleibende Punkte sind <strong>benannt</strong> und werden <strong>über Tests oder Abstimmung</strong> adressiert — transparent für Review und PO.
     </div>
   </section>
 

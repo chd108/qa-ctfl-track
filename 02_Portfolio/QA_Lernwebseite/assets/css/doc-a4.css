@@ -331,6 +331,11 @@ body { padding: 0 3rem 4rem; max-width: 1200px; margin: 0 auto; }
   border-color: var(--doc-review);
   background: var(--doc-review-bg);
 }
+.doc-body .status-badge--done {
+  color: var(--doc-acc);
+  border-color: var(--doc-acc);
+  background: #eaf4ee;
+}
 
 /* ─── Zusammenfassungsseite: Summentabelle + Leseanleitung ─── */
 .doc-body .ref-table table.sum-table { margin-top: 10pt; }
