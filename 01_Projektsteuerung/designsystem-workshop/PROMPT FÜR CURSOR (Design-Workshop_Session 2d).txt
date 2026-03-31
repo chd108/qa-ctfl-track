@@ -1,0 +1,272 @@
+KONTEXT: Designsystem-Workshop - Session 2d (Fundamentales Verständnis)
+
+HINTERGRUND - WICHTIGE ERKENNTNIS:
+Der User hat während unserer Diskussion etwas Grundlegendes erkannt:
+Die Website ist NICHT einfach "Chaos mit Farben", sondern folgt einem
+DREI-EBENEN-MODELL von der Idee zur Darstellung.
+
+Diese Erkenntnis ist ZENTRAL für das gesamte Designsystem.
+
+RECHERCHE-KONTEXT:
+
+Web-Recherche zu "Information Architecture Layers" zeigt:
+- "Separation of Concerns" ist Standard in IA
+- Content → Semantic → Presentation ist etabliertes Modell
+- Gilt für alle Content-Websites (Kurse, Docs, News)
+
+Quellen erwähnen:
+- "Content Modeling" (strukturierter Content-Ansatz)
+- "Semantic Layer" (Bedeutung/Funktion von Daten)
+- "Presentation Layer" (wie es aussieht)
+
+In Semantic Web: XML → RDF → Ontology → Logic → UI
+In Content Strategy: Thema → Didaktik → Layout
+
+→ DAS IST WISSENSCHAFTLICH FUNDIERT, nicht nur Theorie!
+
+SESSION 2d ZIEL: Drei-Ebenen-Modell dokumentieren & anwenden
+
+DEINE AUFGABE:
+
+TEIL 1: THEORIE VERSTEHEN & DOKUMENTIEREN
+
+1. DEINE MEINUNG ZUERST:
+   - Kennst du dieses Drei-Ebenen-Modell aus deinem Training?
+   - Wie würdest DU es benennen? (Fachbegriffe)
+   - Passt es zur QA-Lernwebsite?
+   - Siehst du Schwachstellen in unserer Interpretation?
+
+2. RECHERCHE EINORDNEN:
+   - Was sagen die Quellen wirklich?
+   - Welche Begriffe sind Standard?
+   - Gibt es ANDERE Modelle, die besser passen?
+   - Wo weicht unsere Interpretation ab?
+
+3. FÜR DIE WEBSITE KONKRETISIEREN:
+   
+   EBENE 1: CONTENT LAYER (Thematische Domäne)
+   
+   "Was IST das Wissen?"
+   
+   BEISPIELE:
+   - ISTQB CTFL Prüfungsstoff
+   - QA allgemein (nicht Prüfung)
+   - Meta/Projekt-Info
+   
+   FRAGE AN DICH:
+   - Sind das die richtigen Kategorien?
+   - Fehlt was? (z.B. "Berufspraxis", "Tool-Wissen")
+   - Überschneidungen?
+   
+   EBENE 2: SEMANTIC LAYER (Didaktische Funktion)
+   
+   "Wozu DIENT es in der Lehre?"
+   
+   BEISPIELE:
+   - Pflicht lernen
+   - Verstehen/Vertiefen
+   - Warnung/Risiko
+   - Orientierung/Navigation
+   - Story/Kontext
+   
+   FRAGE AN DICH:
+   - Welche didaktischen Funktionen gibt es WIRKLICH?
+   - Standard in E-Learning?
+   - Fehlt was? (z.B. "Übung", "Reflexion")
+   
+   EBENE 3: PRESENTATION LAYER (Darstellungsform)
+   
+   "Wie SIEHT es aus?"
+   
+   BEISPIELE:
+   - Reiner Text
+   - Formatierter Text (fett, kursiv, Farbe)
+   - Strukturierter Text (Listen, Boxen)
+   - Tabellen/Matrizen
+   - Grafiken (SVG, Diagramme)
+   - Interaktiv (Animation, Canvas)
+   
+   FRAGE AN DICH:
+   - Vollständig?
+   - Andere Kategorisierung besser?
+
+TEIL 2: DIE 17 TYPEN ANALYSIEREN
+
+LIES GRÜNDLICH:
+- 02-informations-taxonomie-2026-03-30.md (die 17 Typen)
+- 02b-darstellungs-patterns-2026-03-30.md (Patterns)
+- 02c-vollstaendige-seitenmatrix-2026-03-30.md (IST-Stand)
+- 01-vision-ziele-2026-03-30.md (Kontext)
+- Alle anderen Workshop-Dateien
+
+DANN ANALYSIERE:
+
+1. VERTEILUNG AUF EBENEN:
+   
+   Für jeden der 17 Typen:
+   
+   Beispiel T-PFLICHT:
+   - Ebene 1 (Content)? → JA (ISTQB-Stoff)
+   - Ebene 2 (Semantic)? → JA (muss gelernt werden)
+   - Ebene 3 (Presentation)? → NEIN
+   
+   → T-PFLICHT gehört zu EBENE 1+2 (vermischt!)
+   
+   Beispiel D-WARN:
+   - Ebene 1? → NEIN (kein Thema)
+   - Ebene 2? → JA (didaktische Funktion)
+   - Ebene 3? → NEIN
+   
+   → D-WARN ist rein EBENE 2
+   
+   Mache das für ALLE 17!
+
+2. PROBLEM ERKENNEN:
+   
+   Wo sind Typen über mehrere Ebenen vermischt?
+   Wo gehört was wirklich hin?
+
+3. REDUNDANZEN FINDEN:
+   
+   - Gibt es Typen, die das Gleiche meinen?
+   - Unterschiedliche Namen für gleiche Funktion?
+   - Überflüssige Kategorien?
+   
+   Beispiel-Fragen:
+   - Ist D-ERKLAER und D-HINWEIS wirklich unterschiedlich?
+   - Ist T-EXTRA notwendig oder Catchall?
+   - Brauchen wir T-KURS (Masterschool) wirklich?
+
+4. LÜCKEN FINDEN:
+   
+   - Fehlen wichtige Kategorien?
+   - Was kommt auf den Seiten vor, hat aber keinen Typ?
+   - Was SOLLTE es geben? (didaktisch sinnvoll)
+   
+   Beispiel-Fragen:
+   - Gibt es "Übungen/Aufgaben" als Typ?
+   - Gibt es "Beispiele aus der Praxis"?
+   - Gibt es "Zusammenfassung/TL;DR"?
+
+TEIL 3: WEITERDENKEN
+
+ÜBER DEN TELLERRAND:
+
+1. Andere Websites/Projekte:
+   - Wie machen es Udemy, Coursera, MDN?
+   - Welche Content-Typen haben DIE?
+   - Was können wir lernen?
+
+2. QA-Spezifisch:
+   - Gibt es QA-typische Content-Typen?
+   - Normen (ISO, IEEE) → eigener Typ?
+   - Tool-Dokumentation → eigener Typ?
+   - Fallstudien/Case Studies?
+
+3. Zukunft:
+   - Wenn die Website wächst, was braucht man?
+   - Neue Kapitel, neue HA-Typen?
+   - Skaliert das Modell?
+
+4. DEINE EXPERTISE:
+   - Was würdest DU anders machen?
+   - Welche Fehler siehst du?
+   - Best Practices aus deinem Training?
+
+TEIL 4: VORSCHLAG SOLL-ZUSTAND
+
+ENTWICKLE:
+
+1. Neue/bereinigte Content-Typen:
+   
+   EBENE 1 (Content):
+   - [deine Liste]
+   
+   EBENE 2 (Semantic):
+   - [deine Liste]
+   
+   EBENE 3 (Presentation):
+   - [Verweis auf Session 2.5]
+
+2. Mapping ALT → NEU:
+   
+   T-PFLICHT → bleibt, Ebene 1
+   D-ERKLAER + D-HINWEIS → zusammenführen zu ...?
+   etc.
+
+3. Was fehlt/hinzufügen:
+   
+   - Übungen/Quizzes
+   - Zusammenfassungen
+   - etc.
+
+OUTPUT:
+
+ERSTELLE: 01_Projektsteuerung/designsystem-workshop/02d-drei-ebenen-modell-2026-03-30.md
+
+STRUKTUR (du entscheidest Details):
+
+# Session 2d: Drei-Ebenen-Modell (Content → Semantic → Presentation)
+
+## 0. Executive Summary
+[Was ist das, warum wichtig]
+
+## 1. Theoretische Fundierung
+[Recherche, Fachbegriffe, Standards]
+
+## 2. Die drei Ebenen (konkret für QA-Website)
+[Ebene 1, 2, 3 mit Beispielen]
+
+## 3. Analyse der 17 Typen
+[Verteilung, Probleme, Vermischungen]
+
+## 4. Redundanzen & Lücken
+[Was ist doppelt? Was fehlt?]
+
+## 5. Weitergedacht
+[Andere Projekte, QA-Spezifika, Zukunft]
+
+## 6. Vorschlag: Bereinigte Taxonomie
+[Neue/geänderte Typen, Mapping]
+
+## 7. Auswirkungen auf Session 3
+[Was bedeutet das für Design-Tokens?]
+
+## 8. Offene Fragen
+[Was ist noch unklar?]
+
+WICHTIG:
+
+DENKE WIRKLICH NACH:
+- Nicht nur zusammenfassen, was wir schon haben
+- KRITISCH sein
+- NEUE Perspektiven einbringen
+- EHRLICH, wenn was nicht passt
+
+WISSENSCHAFTLICH ARBEITEN:
+- Begriffe korrekt verwenden
+- Quellen nennen (Recherche)
+- Alternative Modelle erwähnen
+
+PRAKTISCH BLEIBEN:
+- Wie hilft das dem Redesign?
+- Wie nutzt das Session 3?
+- Konkrete Beispiele von den 23 Seiten
+
+ZEITAUFWAND:
+- Nimm dir Zeit (30-60 Min)
+- Gründlich > schnell
+- Lieber nachfragen als raten
+
+BEVOR DU STARTEST:
+
+FEEDBACK-SCHLEIFE:
+1. Verstehst du die Aufgabe?
+2. Brauchst du mehr Kontext?
+3. Andere Struktur besser?
+4. Zusätzliche Quellen nötig?
+5. Wie lange brauchst du ungefähr?
+
+DANN: Erstelle die Analyse
+
+FERTIG
