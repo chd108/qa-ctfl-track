@@ -1,6 +1,6 @@
 # Session 2d: Drei-Ebenen-Modell (Content → Semantic → Presentation)
 
-**Stand:** 2026-03-30  
+**Stand:** 2026-04-01  
 **Workshop:** Designsystem — Fundamentales Verständnis (Ergänzung zu Session 2)  
 **Vorgänger:** [02-informations-taxonomie-2026-03-30.md](02-informations-taxonomie-2026-03-30.md), [02b-darstellungs-patterns-2026-03-30.md](02b-darstellungs-patterns-2026-03-30.md), [02c-vollstaendige-seitenmatrix-2026-03-30.md](02c-vollstaendige-seitenmatrix-2026-03-30.md), [01-vision-ziele-2026-03-30.md](01-vision-ziele-2026-03-30.md)
 
@@ -21,6 +21,25 @@ Die QA-Lernwebsite wirkt auf den ersten Blick wie ein **Mosaik aus lokalen CSS-K
 ---
 
 ## 1. Theoretische Fundierung
+
+### 1.0 Begriffe: IA, Content Taxonomy, Problem / Lösung
+
+**Einordnung:** Mit **Information Architecture (IA)** ist die **strukturelle** Gestaltung geteilter Informationsumgebungen gemeint. **Content Taxonomies** (inhaltliche Taxonomien) liefern dafür häufig ein **kontrolliertes Vokabular** zur **Klassifikation** und zum **Wiederfinden** von Inhalten — ein **professioneller Standard** in IA und UX, nicht eine Projekt-Erfindung.
+
+**Im QA-Track:** Systematische Benennung von **Content-Typen** (Domäne), **Funktionen** (didaktisch / Dokument) und **Darstellungsformen** — in diesem Workshop ausgedrückt als **drei Ebenen** (siehe §0) und in Session 2f als **SOLL-Codes** (**C-** / **F-** / **S-** / **P-**).
+
+**Problem → Lösung:** Viele **CSS-Klassen** wachsen historisch; **gleiche oder ähnliche Absicht** kann unter **verschiedenen Namen** stehen (z. B. mehrere Boxen für einen **Story-/Dokumenten-Verweis**). Ohne gemeinsame **Semantik** bleibt die Pflege **fragil**. **Lösung:** **Eine** fachliche Sprache — z. B. „Dokumenten-/Story-Verweis“ = **F-CHAIN** ([02f](02f-soll-taxonomie-session3-2026-03-30.md) §3.2) — und darauf abgestimmte **Design-Tokens** (Session 3), statt nur isolierte Klassennamen.
+
+**Software / Frontend:** Die Trennung **Content / Semantic / Presentation** entspricht **separation of concerns**: derselbe **SOLL-Baustein** soll **über Kontexte** (Web, A4, Druck) **gleiche Bedeutung** tragen können bei **angepasster** Darstellung — sofern **Bedeutung** und **Form** nicht vermischt werden (siehe §1.1 ff.).
+
+**Kurzreferenzen (extern, ergänzend zu §1.1):**
+
+| Thema | Hinweis |
+|-------|---------|
+| IA, Auffindbarkeit | [Nielsen Norman Group — Information Architecture](https://www.nngroup.com/articles/information-architecture-3/) |
+| Taxonomien, Tagging | [Nielsen Norman Group — Tagging & Taxonomies](https://www.nngroup.com/articles/tagging-taxonomy/) |
+
+*Hinweis:* Die **drei Ebenen** und die Workshop-Dokumente (**02d**–**02f**) bleiben die **maßgebliche** Projektfassung; die Links dienen der **Einordnung** in die **Breite** der Branche.
 
 ### 1.1 Einordnung: Ja, dieses Grundmuster ist Standard
 
@@ -285,4 +304,4 @@ Unverändert **Session 2.5** — **P-TABELLE**, **P-SVG**, **P-CANVAS**, **P-KAR
 
 ---
 
-*Ende Session 2d — Drei-Ebenen-Modell (2026-03-30).*
+*Ende Session 2d — Drei-Ebenen-Modell (Stand 2026-04-01).*

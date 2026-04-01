@@ -1,6 +1,6 @@
 # Session 2f: SOLL-Taxonomie & Weg zu Session 3 (Top-down)
 
-**Stand:** 2026-03-30  
+**Stand:** 2026-04-01  
 **Workshop:** Designsystem — **SOLL** vor **IST** (Fundament für Design-Tokens)  
 **Vorgänger:** [01-vision-ziele-2026-03-30.md](01-vision-ziele-2026-03-30.md), [02-informations-taxonomie-2026-03-30.md](02-informations-taxonomie-2026-03-30.md), [02b-darstellungs-patterns-2026-03-30.md](02b-darstellungs-patterns-2026-03-30.md), [02c-vollstaendige-seitenmatrix-2026-03-30.md](02c-vollstaendige-seitenmatrix-2026-03-30.md), [02d-drei-ebenen-modell-2026-03-30.md](02d-drei-ebenen-modell-2026-03-30.md), [02e-diataxis-integration-kritisch-2026-03-30.md](02e-diataxis-integration-kritisch-2026-03-30.md)
 
@@ -35,12 +35,14 @@
 
 **Top-down:** Von **Lernzielen und Standards** (Charter, README, [03_Project_Standards.md](../03_Project_Standards.md)) → **Schichten** (Session 2d) → **minimale Typmenge** → **Session 3 = Tokens + Komponenten** mappen.
 
+**IA / Taxonomie (Warum drei Schichten, kontrolliertes Vokabular, Problem/Lösung):** [02d](02d-drei-ebenen-modell-2026-03-30.md) **§1.0** — dort **Begriffe**, **professionelle Einordnung** und **Kurzreferenzen** (Branche).
+
 **Wissenschaftlich / Best-Practice-Bezüge (kurz, ohne Spekulation):**
 
 | Bezug | Nutzen für SOLL |
 |--------|------------------|
 | **Informationsarchitektur** — Inhalt getrennt von Darstellung; Struktur vor Oberfläche (vgl. etablierte Content-/IA-Literatur, [02d](02d-drei-ebenen-modell-2026-03-30.md) §1) | Begründet **drei Schichten** (Domäne → Funktion → Darstellung). |
-| **[Diátaxis](https://diataxis.fr/)** (Procida) | Vier **Seiten-/Dokumentmodi** (Tutorial, How-to, Reference, Explanation) — **optional** auf **Seite**-Ebene ([02e](02e-diataxis-integration-kritisch-2026-03-30.md)). |
+| **[Diátaxis](https://diataxis.fr/)** (Procida) | Vier **Seiten-/Dokumentmodi** (Tutorial, How-to, Reference, Explanation) — **für Leser erkennbar** zu machen („label by type“); **nicht** nur interne Redaktionsnotiz ([02e](02e-diataxis-integration-kritisch-2026-03-30.md)). **Rollout:** nach **C/F/P** in Session 3 (Priorität), **S-***-Labels **phasenweise** (§3.2 **2a**, §8). |
 | **Technische Dokumentation / Testdokumentation** | Im Projekt: **IEEE 829** / **ISO/IEC/IEEE 29119-3** als **Struktur** für Testartefakte (Charter/Standards — **Lernkontext**, keine Vollnorm). Begründet **formale Dokument-Komponenten** (A4-Modus), nicht die **CTFL-Kapiteltexte**. |
 | **Barrierefreiheit** | Für **Presentation**: Kontrast, Fokus, semantisches HTML — **W3C WAI** / WCAG als **Qualitätsrahmen** für Token-Entscheide (Farben, Schriftgrößen), nicht als neue „Typ-ID“. |
 
@@ -70,7 +72,7 @@ Eine QA-Lernwebsite mit eurem Auftrag **soll** unterscheiden können:
 
 ### 3.2 Ebene 2 — Semantic / Funktion (**WOZU** dient das Element?)
 
-**2a — Seitenmodus (optional, [Diátaxis](https://diataxis.fr/))**
+**2a — Seitenmodus ([Diátaxis](https://diataxis.fr/), S-*)**
 
 | SOLL | Code |
 |------|------|
@@ -79,7 +81,7 @@ Eine QA-Lernwebsite mit eurem Auftrag **soll** unterscheiden können:
 | Nachschlagen | **S-REFERENCE** |
 | Konzepte verstehen | **S-EXPLAIN** |
 
-**Genau ein** Modus pro Seite (Redaktion), siehe [02e](02e-diataxis-integration-kritisch-2026-03-30.md).
+**Redaktionseinheit (S-*, Diátaxis):** Ein **S-**-Modus gilt pro **Redaktionseinheit** — entweder **ganze Seite** (wenn die Seite einer **einheitlichen** Diátaxis-Logik folgt) **oder** **H2-Hauptabschnitt** (wenn eine Seite **mehrere** Diátaxis-Modi **verbindet**). **Gemischte** Modi sind **erlaubt**; **nicht** pro Box/Callout (das bleibt **F-***). **Ziel für Leser:** Modus **sichtbar** (kurzes **Label** / **Badge** am Seitenkopf oder vor **H2** — vgl. **P-CHROME** / **P-SECTION**); das entspricht dem Diátaxis-Prinzip, **Typ** der Dokumentation erkennbar zu machen. Ausführung: [02e](02e-diataxis-integration-kritisch-2026-03-30.md) (u. a. §0b); Steuerungskurzfassung: [02_Project_Status.md](../02_Project_Status.md) (Abschnitt Session 2e).
 
 **2b — Komponentenfunktionen (Callouts, Rahmen, Spezial)**
 
@@ -122,12 +124,12 @@ SOLL aus **02b** + Session-2-Priorität — **keine** „50 Typen“, sondern **
 
 ## 4. SOLL-Taxonomie — kompakte Gesamtliste
 
-**Zählweise:** Domäne **C-*** (6+1) · Seitenmodus **S-*** (4, optional) · Funktion **F-*** (11) · Darstellung **P-*** (~10) — **nicht** alles ist ein eigenes CSS-Präfix; **C/F/S** sind **semantische** Zielnamen, **P-** mappt auf **Komponenten**.
+**Zählweise:** Domäne **C-*** (6+1) · Seitenmodus **S-*** (4) · Funktion **F-*** (11) · Darstellung **P-*** (~10) — **nicht** alles ist ein eigenes CSS-Präfix; **C/F/S** sind **semantische** Zielnamen, **P-** mappt auf **Komponenten**.
 
 | Schicht | Anzahl (Ziel) | Rolle in Session 3 |
 |---------|---------------|---------------------|
 | **C-*** | 6 + Attribut | **Farb-Tokens** Chips, ggf. Badge |
-| **S-*** | 4 | **Kein** Pflicht-CSS — Redaktion/README; optional später `data-page-mode` |
+| **S-*** | 4 | **Leser-sichtbare** Kennzeichnung des Modus (Label/Badge am **Seitenkopf** oder **H2**); Umsetzung über **P-CHROME** / **P-SECTION** + Tokens — **Priorität nach** **C/F/P**; optional `data-section-mode` / `data-page-mode` wenn sinnvoll |
 | **F-*** | 11 | **Callout-Varianten**, Meta, Kette, Matrix-Achse, Kanal |
 | **P-*** | ~10 | **Layout-/Komponenten-Tokens** (Spacing, Radius, Tabellenkopf, …) |
 
@@ -152,7 +154,7 @@ SOLL aus **02b** + Session-2-Priorität — **keine** „50 Typen“, sondern **
 ## 6. Weg zu Session 3 (konkret)
 
 1. **02f** als **normatives SOLL** für Workshop und Session 3 verwenden (diese Datei).  
-2. **Session 3 Artefakt:** `03-token-mapping-…md` (oder gleichwertig): Spalten **Komponente / Pattern**, **SOLL-Code (C/F/P)**, **IST (CSS-Klassen)**, **Token-Name**.  
+2. **Session 3 Artefakt:** `03-token-mapping-…md` (oder gleichwertig): Spalten **Komponente / Pattern**, **SOLL-Code (C/F/P)**, **IST (CSS-Klassen)**, **Token-Name**; **S-*** (Diátaxis) als **eigener Block** oder Spalten (**SOLL S-***, **sichtbares Label**, **DOM/CSS**) wenn die **Leser-Kennzeichnung** ansteht (nach Prio C/F/P).  
 3. **02e nicht duplizieren:** Diátaxis bleibt in **02e**; **02f** verankert **S**-* nur als **SOLL-Zeile**.  
 4. **Charter/README:** Keine Änderung zwingend nötig — **02f** ist die **Designsystem-spezifische** Verdichtung.
 
@@ -161,16 +163,16 @@ SOLL aus **02b** + Session-2-Priorität — **keine** „50 Typen“, sondern **
 ## 7. Essenz (Shared Mental Model)
 
 - **SOLL** war **teilweise** in Vision + Session 2 §4 angedeutet — **nicht** als **ein** Komponenten-SOLL.  
-- **Professionell** für euch heißt: **Syllabus klar**, **Praxis abgegrenzt**, **Story HA**, **Normen referenziert**, **Artefakte** druckbar, **Orientierung** in Navigation — das **übersetzt** sich in **C-** + **F-** + **P-** + optional **S-**.  
-- **Session 3** baut **P-** und **visuelle C-/F-Zuordnung** — **nicht** 17× Umbenennung im HTML an Tag eins.
+- **Professionell** für euch heißt: **Syllabus klar**, **Praxis abgegrenzt**, **Story HA**, **Normen referenziert**, **Artefakte** druckbar, **Orientierung** in Navigation — das **übersetzt** sich in **C-** + **F-** + **P-** + **S-** (Diátaxis: **Leser** erkennen **Modus**).  
+- **Session 3** baut zuerst **P-** und **visuelle C-/F-Zuordnung**; **S-***-**Labels** (sichtbar) **anschließend** oder **phasenweise** — **nicht** 17× Umbenennung im HTML an Tag eins.
 
 ---
 
 ## 8. Offene Punkte (bewusst)
 
 - **F-INFO** eine oder zwei **visuelle** Varianten (Definition vs. Wegweiser)? — **Session 4** Schreibregeln oder zwei Token.  
-- **S-*** in HTML **persistent** machen oder nur **Dokumentation**? — **Empfehlung:** erst **Dokumentation**, keine Blockade für CSS.
+- **S-*** (Diátaxis) — **Zielbild:** Modus für **Leser sichtbar** (Text-Label, ggf. Icon, dezente **P-CHROME**-/Badge-Styles). **Umsetzung:** **phasenweise**; **Session 3** priorisiert **C/F/P**-Tokens — **S-***-Labels folgen im selben Designsystem (kein „nur Doku“ als **Endzustand**). Technisch: HTML/Markup + CSS-Tokens für **Label-Leiste** oder **Abschnitts-Badge**; optional `data-*` für spätere Auswertung — **nicht** Ersatz für Sichtbarkeit.
 
 ---
 
-*Ende Session 2f — SOLL-Taxonomie & Brücke zu Session 3 (2026-03-30).*
+*Ende Session 2f — SOLL-Taxonomie & Brücke zu Session 3 (Stand 2026-04-01).*

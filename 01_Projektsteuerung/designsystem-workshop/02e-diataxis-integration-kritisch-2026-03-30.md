@@ -1,6 +1,6 @@
 # Session 2e: Diátaxis & Taxonomie — kritische Einordnung
 
-**Stand:** 2026-03-30  
+**Stand:** 2026-04-01  
 **Workshop:** Designsystem — Reflexionspunkt vor Session 3  
 **Vorgänger:** [02-informations-taxonomie-2026-03-30.md](02-informations-taxonomie-2026-03-30.md), [02d-drei-ebenen-modell-2026-03-30.md](02d-drei-ebenen-modell-2026-03-30.md), [02c-vollstaendige-seitenmatrix-2026-03-30.md](02c-vollstaendige-seitenmatrix-2026-03-30.md)
 
@@ -21,11 +21,26 @@
 
 **Ehrliche Meinung:** Wenn „**Einfacher werden**“ das Ziel ist, dann **gefährdet** Diátaxis das Ziel **genau dann**, wenn es als **zweites vollständiges Klassifikationssystem** neben **T-/D-/O-/…** gelebt wird — **ohne** klare Regel, *wo* es hingehört.
 
-**Wann hilft Diátaxis?** Wenn es **eine** optionale **Ebene** bleibt: z. B. „**Seitenmodus**“ für Redaktion und Navigation — **nicht** als Ersatz für Callouts.
+**Wann hilft Diátaxis?** Wenn es eine **eigene** **Ebene** bleibt: „**Seitenmodus**“ für **Leser-Orientierung** — **sichtbar** (Label/Badge), **nicht** nur interne Notiz — und **nicht** als Ersatz für Callouts (**F-***).
 
 **Wann schadet es?** Wenn **Option A** (siehe unten) wörtlich genommen wird: **D-ERKLAER** mit **Explanation** gleichzusetzen ist **fachlich falsch** — *Explanation* ist eine **Gesamtdokumentation** („Warum?“), **D-ERKLAER** ist oft eine **inline-Box** („Was ist X?“). Ein **How-to** kann **dutzend** D-ERKLAER-Boxen enthalten; umgekehrt ist eine **Explanation-Seite** nicht „nur D-ERKLAER“.
 
 **Einfacher als Diátaxis?** Für **Session 3** ja: **Token-Familien** (Chips, Callouts, Chrome, A4) + **Mapping** von CSS-Klassen → **keine** 50 semantischen Codes im Stylesheet.
+
+---
+
+## 0b. Diátaxis-Modi und Nutzerbedürfnis (Referenz)
+
+Die folgende **Matrix** fasst die **vier Modi** und das **Nutzerbedürfnis** nach [Diátaxis](https://diataxis.fr/) zusammen — **einmalig** hier; in **02f** §3.2 **2a** erscheinen dieselben Modi als **S-***-Codes (**S-EXPLAIN** = **Explanation**).
+
+| Modus | Nutzer-Bedürfnis | Dimensionen |
+|-------|------------------|---------------|
+| **Tutorial** | Learning | Acquisition + Action |
+| **How-to** | Goals | Action + Application |
+| **Explanation** | Understanding | Acquisition + Cognition |
+| **Reference** | Information | Application + Cognition |
+
+*Quelle der Zuordnung Modus / Bedürfnis / Dimensionen: [diataxis.fr](https://diataxis.fr/).*
 
 ---
 
@@ -49,7 +64,7 @@
 | Trennt **„Seitenrolle“** von **„Box-Rolle“** | **Zwei** Ebenen in Ebene 2 — **mehr** zu dokumentieren |
 | Entspricht der Realität: **Seite** ≠ **Komponente** | Risiko: **Doppelpflege** („Jede Box noch einen Diátaxis-Typ?“ — **nein**) |
 
-**Urteil:** **Grundsätzlich richtig** — **wenn** `2a` **nur** auf **Seite** (oder **Hauptabschnitt**) angewendet wird und **2b** die **Callouts/Tags** bleiben. **Voraussetzung:** klare Regel: **Diátaxis nie pro Box**, nur **pro Seite** (oder optional: pro **H1-Bereich**).
+**Urteil:** **Grundsätzlich richtig** — **wenn** `2a` auf **Redaktionseinheit** (**ganze Seite** oder **H2-Hauptabschnitt**, siehe **02f** §3.2 **2a**) angewendet wird und **2b** die **Callouts/Tags** bleiben. **Voraussetzung:** klare Regel: **Diátaxis nie pro Box**; **gemischte** Modi auf **einer** Seite über **mehrere H2** sind **erlaubt**.
 
 ---
 
@@ -67,7 +82,7 @@
 ### Option D: Synthese (Vorschlag)
 
 1. **Drei Ebenen** behalten — **als Denkmodell**, **ohne** Pflicht-Umbenennung in **C-/F-/P-** vor Session 3.  
-2. **Diátaxis** = **optional** `Seitenmodus` (einer von vier) — **nur** Ebene 2 „oberhalb“ der Boxen; **ersetzt** keine **D-**\* / **O-**\* .  
+2. **Diátaxis** = `Seitenmodus` (einer von vier) — **nur** Ebene 2 „oberhalb“ der Boxen; **ersetzt** keine **D-**\* / **O-**\* . **Für Leser** soll der Modus **erkennbar** sein (vgl. **02f** §3.2 **2a**, §8); **Rollout** kann **nach** C/F/P erfolgen.  
 3. **17 → ~12** **Redaktions**-Typen durch **Zusammenführen** wo sinnvoll; **Tokens** im CSS **~10–15** Familien.  
 4. **Option B** in **leicht**-Form: **nur** wo es **nutzt** (README, ggf. später Frontmatter).
 
@@ -81,7 +96,7 @@
 |------|----------|
 | **P0** | **Session 3:** Komponenten + **Token-Liste** (Farben, Callout-Varianten, Chip-Skala, A4) — **Mapping** `Klassenname → Token`. |
 | **P1** | **Taxonomie aufräumen:** **D-ERKLAER** und **D-HINWEIS** **nicht** mit Diátaxis vermischen; optional **D-EXPLAIN** als **Oberbegriff** mit **Unterarten** `definition` / `signpost` **nur in der Doku** (oder Schreibregeln in Session 4). |
-| **P2** | **Diátaxis:** In **einer** Tabelle „**Seite → Diátaxis-Modus (optional)**“ für die **23 Seiten** — **Navigation/Verständnis** für Autor, **kein** Pflichtfeld im HTML. |
+| **P2** | **Diátaxis:** Tabelle „**Seite/H2 → S-Modus**“ für **Redaktion**; **Ziel:** dieselben Modi **für Leser sichtbar** (Label/Badge), **nicht** nur interne Tabelle. **HTML/CSS** folgt **Priorität** nach Session-3-C/F/P; **Endzustand** ≠ „nur Doku“. |
 | **P3** | **T-EXTRA** vs. **T-VERTIEF:** **Kriterium** festhalten (siehe [02d](02d-drei-ebenen-modell-2026-03-30.md), §4) — **oder** zu **T-PLUS** zusammenführen mit **Facet** „normativ“ vs. „didaktisch extra“. |
 
 **Warum nicht Option A:** Sie verwechselt **Dokumentationsmodus** mit **UI-Semantik**.
@@ -94,7 +109,7 @@
 
 ## 3. Konkrete Taxonomie (Vorschlag — so wenig wie nötig)
 
-**Prinzip:** Zwei **Achsen** nicht vermischen: **(A) Thema** · **(B) Seitenmodus (optional)** · **(C) Komponentenfunktion** · **(D) Darstellung**.
+**Prinzip:** Zwei **Achsen** nicht vermischen: **(A) Thema** · **(B) Seitenmodus (Diátaxis)** · **(C) Komponentenfunktion** · **(D) Darstellung**.
 
 ### Ebene 1 — Thema / Domäne (Chips)
 
@@ -107,9 +122,9 @@
 
 *Anzahl: **3–4** sichtbare Chip-Typen + MS-Badge.*
 
-### Ebene 2a — Seitenmodus (optional, Diátaxis)
+### Ebene 2a — Seitenmodus (Diátaxis)
 
-**Genau ein Wert** pro Seite (Redaktion), **nicht** pro Box:
+**Ein Wert** pro **Redaktionseinheit** (ganze Seite **oder** H2-Hauptabschnitt), **nicht** pro Box — siehe **02f** §3.2 **2a** und **Abschnitt 0b** oben.
 
 | Modus | Wann |
 |--------|------|
@@ -183,9 +198,9 @@ Unverändert **Session 2.5** — **P-TABELLE**, **P-SVG**, …; **nicht** als �
 
 | Risiko | Beschreibung |
 |--------|----------------|
-| **Diátaxis-Müdigkeit** | Jede Seite **zwingend** einordnen — **Aufwand** ohne CSS-Nutzen |
+| **Diátaxis-Müdigkeit** | Jede Seite **zwingend** einordnen — **Aufwand**; **gegensteuern** mit **phasenweiser** Einführung **sichtbarer** Labels (**02f** §8) |
 | **Falsche Zuordnung** | **REFERENCE** vs. **EXPLANATION** bei Mischseiten (02c) — **grenzwertig** |
-| **Doppelarbeit** | **README** sagt Diátaxis, **HTML** sagt **nichts** — **Drift** |
+| **Doppelarbeit** | **README** sagt Diátaxis, **HTML** zeigt **keinen** Modus — **Drift**; **Ziel:** HTML/Label **alignen** mit Workshop-Tabelle |
 | **Holzweg** | **Alle** Probleme in **Taxonomie** lösen wollen — **Session 3** braucht **Tokens**, **nicht** 20 neue Namen |
 | **Eigene Vorschläge** | Ich habe **D-INFO** als Merge vorgeschlagen — wenn ihr **zwei** Styles **bewusst** braucht, **bleibt** bei zwei IDs |
 
@@ -193,8 +208,8 @@ Unverändert **Session 2.5** — **P-TABELLE**, **P-SVG**, …; **nicht** als �
 
 ## 6. Nächste Schritte (weg zu Session 3)
 
-1. **Entscheidung einfrieren:** Diátaxis **nur** als **optionaler Seitenmodus** (Tabelle im Workshop) **oder** **gar nicht** erst in HTML — **kein** Blocker für Tokens.  
-2. **Session 3 Artefakt:** `03-token-mapping-…md` (oder gleichwertig): **Komponente** → **CSS-Token** → **optional** Typ-ID.  
+1. **SOLL fest:** **S-***-Modi **für Leser sichtbar** machen (**02f** §3.2 **2a**, §8); **Reihenfolge:** Session 3 zuerst **C/F/P**-Tokens — **S-***-Label-System (Badge/Chrome) **danach** oder **parallel** niedriger Prio — **kein** Widerspruch zu „label by type“.  
+2. **Session 3 Artefakt:** `03-token-mapping-…md` (oder gleichwertig): **Komponente** → **CSS-Token** → **SOLL-Code**; **S-***-**Sichtbarkeit** als eigenständiger Abschnitt.  
 3. **Pilot:** **eine** Callout-Familie + **eine** Chip-Skala vereinheitlichen (z. B. **warn-box** / **info-box--warn** / **doc-info-box--warn** → **ein** `callout-danger`).  
 4. **Session 4:** **Schreibregeln** für **D-INFO** (Definition vs. Wegweiser) **oder** bewusst **zwei** D-IDs behalten.
 
@@ -204,13 +219,13 @@ Unverändert **Session 2.5** — **P-TABELLE**, **P-SVG**, …; **nicht** als �
 
 Wir **verwechseln** nicht:
 
-- **„Was für eine **Seite** ist das?“** (Diátaxis / **optional**)  
+- **„Was für eine **Seite** ist das?“** (Diátaxis / **S-*** — **Leser** soll es **sehen** können)  
 - **„Was für eine **Box** ist das?“** (D-/O-*)  
 - **„Wovon handelt der **Stoff**?“** (T-*)  
 - **„Wie sieht es **aus**?“** (P-*, CSS)
 
-**Einfachheit** entsteht, wenn **Session 3** **nur** die **unterste** Schicht (Styles + Komponenten) **bindet** — die **oberen** Schichten (Diátaxis, Redaktion) **dürfen** leichter sein.
+**Einfachheit** entsteht, wenn **Session 3** zuerst **C/F/P** **bindet** (Tokens) — **S-***-**Labels** folgen **ohne** Diátaxis zum **reinen** internen Schema zu machen.
 
 ---
 
-*Ende Session 2e — kritische Einordnung Diátaxis (2026-03-30).*
+*Ende Session 2e — kritische Einordnung Diátaxis (Stand 2026-04-01).*

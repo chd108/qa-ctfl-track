@@ -1,9 +1,10 @@
 # Session 1: Vision & Ziele
 
-**Stand:** 2026-03-30  
+**Stand:** 2026-04-01  
 **Workshop:** Designsystem — Session 1 von 4 (Top-down: WARUM → WAS → WIE)  
 **Primärquellen:** [01_Project_Charter.md](../01_Project_Charter.md), [03_Project_Standards.md](../03_Project_Standards.md) (v. a. §2, §3, §6, §7), [README QA_Lernwebseite](../../02_Portfolio/QA_Lernwebseite/README.md)  
-**Ergänzend:** Root-[README.md](../../README.md), [index.html](../../02_Portfolio/QA_Lernwebseite/index.html) (Willkommenstext), [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md) (Meta-Stichproben), [komponenten-analyse-2026-03-30.md](komponenten-analyse-2026-03-30.md) (technische Bestandsaufnahme — **kanonisch** in diesem Ordner).
+**Ergänzend:** Root-[README.md](../../README.md), [index.html](../../02_Portfolio/QA_Lernwebseite/index.html) (Willkommenstext), [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md) (Meta-Stichproben), [komponenten-analyse-2026-03-30.md](komponenten-analyse-2026-03-30.md) (technische Bestandsaufnahme — **kanonisch** in diesem Ordner).  
+**Diátaxis (S-*, Leser-sichtbar):** normativ [02f](02f-soll-taxonomie-session3-2026-03-30.md) §3.2 **2a** · §8.
 
 *Die folgenden Abschnitte sind **Auswertung und Zusammenführung**, keine wörtliche Abschrift.*
 
