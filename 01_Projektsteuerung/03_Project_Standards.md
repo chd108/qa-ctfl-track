@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-29 — Git: kein Subtree/Zweit-Remote „website“ mehr; nur Monorepo  
+Letzte Aktualisierung: 2026-04-02 — Abschn. 6: Token-Mapping + Pilot-Phase Design-Taxonomie  
 Zweck: Definiert Regeln und Standards für Repo-Struktur, Dokumentation und Qualität  
 Klassifizierung: Projektsteuerung / Standards  
 Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE 829-2008**, **ISO/IEC/IEEE 29119-3** (jeweils im **Lern- und Portfolio-Kontext**, ohne Anspruch auf vollständige Normenzertifizierung).
@@ -260,6 +260,13 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 
 - Semantisches **HTML**, sinnvolle **Überschriftenhierarchie**, **Skip-Link**, **`main id="main"`**, nachvollziehbare **Linktexte** und **`aria-label`** für Navigationsleisten — gemäß Vorlagen und bestehendem Hauptsystem.  
 - **Keine unnötige Komplexität** in CSS/JS; Wartbarkeit vor Effekt.
+
+### Informationsarchitektur und Designsystem-Workshop (Verweis)
+
+- **Fundierung (IA, Content Taxonomy, Drei Ebenen):** `01_Projektsteuerung/designsystem-workshop/02d-drei-ebenen-modell-2026-03-30.md` — **§1.0** (Begriffe, Problem/Lösung, Kurzreferenzen), **§1.1** (Trennung von Belangen).  
+- **SOLL-Codes** (C / F / S / P) und Brücke zu Session 3: `designsystem-workshop/02f-soll-taxonomie-session3-2026-03-30.md`.  
+- **IST-Typen** (Session 2): `designsystem-workshop/02-informations-taxonomie-2026-03-30.md`.  
+- **Design-Taxonomie (definiert, Pilot-Phase):** IST→SOLL→Token — `designsystem-workshop/03-token-mapping-2026-04-01.md`; **Umsetzung** der **ca. 15–30** Ziel-Variablen **schrittweise** in `02_Portfolio/QA_Lernwebseite/assets/css/` — siehe [02_Project_Status.md](02_Project_Status.md).
 
 ---
 
