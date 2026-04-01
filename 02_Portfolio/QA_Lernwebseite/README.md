@@ -1,6 +1,6 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-03-29
+> Zuletzt aktualisiert: 2026-03-31
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
@@ -109,11 +109,11 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 |----------|-----|---------|
 | **Systemkonzept / Steuerung** (IA, Seitentypen, Benennung) | QA-Track: `01_Projektsteuerung/` (Charter, Standards, …); Archiv: `06_Archiv/` | Ein **Git-Repository** (`qa-ctfl-track`) für Programm und Website. |
 | **Commit-/Push-Regeln** | [04_Project_Guidelines.md](../../01_Projektsteuerung/04_Project_Guidelines.md) | Gilt für das **gesamte** Repo; Website-Änderungen unter `02_Portfolio/QA_Lernwebseite/`. |
-| **Website-Analyse (IST / Roadmap)** | [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md) (dieser Ordner) | Meta-Analyse (Stichproben, Stärken/Schwächen, priorisierte Verbesserungen, Roadmap). **Ausgangsbasis** für **Komponentenstil / Designsystem light** ([02_Project_Status.md](../../01_Projektsteuerung/02_Project_Status.md), Arbeitspaket **P1**). |
+| **IST-Analysen (Website + Komponenten, Roadmap)** | [website-analyse-2026-03-28.md](../../01_Projektsteuerung/designsystem-workshop/website-analyse-2026-03-28.md), [komponenten-analyse-2026-03-30.md](../../01_Projektsteuerung/designsystem-workshop/komponenten-analyse-2026-03-30.md) (`01_Projektsteuerung/designsystem-workshop/`) | Meta- und technische Bestandsaufnahme; **kanonische Ablage** beim **Designsystem-Workshop** (keine zweite Kopie hier). **Ausgangsbasis** für **Komponentenstil / Designsystem light** ([02_Project_Status.md](../../01_Projektsteuerung/02_Project_Status.md), Arbeitspaket **P1**). |
 
 ### Analysen & Roadmap
 
-- **`website-analyse-2026-03-28.md`** — umfassende IST-Bewertung der Lernwebsite und Vorschlags-Backlog bis zu Erfolgskriterien; dient der Phase **Komponentenstil** vor schriftlicher Kanonisierung in den Project\_*-Standards. Neuere Reviews können als zusätzliche Datei `website-analyse-YYYY-MM-DD.md` folgen.
+- **`website-analyse-2026-03-28.md`** / **`komponenten-analyse-2026-03-30.md`** — liegen unter **`01_Projektsteuerung/designsystem-workshop/`**; umfassende IST-Bewertung bzw. Komponenten-Inventar und Vorschlags-Backlog; dienen der Phase **Komponentenstil** vor schriftlicher Kanonisierung in den Project\_*-Standards. Neuere Website-Reviews können dort als zusätzliche Datei `website-analyse-YYYY-MM-DD.md` folgen.
 
 ---
 
@@ -122,9 +122,9 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | | |
 |--|--|
 | **README erstellt** | 2026-03-12 |
-| **README zuletzt aktualisiert** | **2026-03-28** |
+| **README zuletzt aktualisiert** | **2026-03-31** |
 
-**Kurzüberblick (Stand 28.03.2026)**
+**Kurzüberblick (Stand 31.03.2026)**
 
 - **Hauptsystem:** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **02c** im gemeinsamen Section-Muster.  
 - **HA4/HA5/HA6:** inhaltlich und formal gehärtet — Meta-Informationen, Kette Web ↔ A4, Terminologie **Testbasis-Analyse**; HA6 mit **Testprotokoll A4**, **Fehlerbericht A4** (Musterdokument BUG-001 / BUG-002), **Testabschlussbericht A4** (ISO/IEC/IEEE 29119-3); Ergänzungen in **`doc-a4.css`** (u. a. Status-Badge für Review).  

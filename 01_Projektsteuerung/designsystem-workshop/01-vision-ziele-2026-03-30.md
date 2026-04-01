@@ -3,7 +3,7 @@
 **Stand:** 2026-03-30  
 **Workshop:** Designsystem — Session 1 von 4 (Top-down: WARUM → WAS → WIE)  
 **Primärquellen:** [01_Project_Charter.md](../01_Project_Charter.md), [03_Project_Standards.md](../03_Project_Standards.md) (v. a. §2, §3, §6, §7), [README QA_Lernwebseite](../../02_Portfolio/QA_Lernwebseite/README.md)  
-**Ergänzend:** Root-[README.md](../../README.md), [index.html](../../02_Portfolio/QA_Lernwebseite/index.html) (Willkommenstext), [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md) (Meta-Stichproben), [komponenten-analyse-2026-03-30.md](../../02_Portfolio/QA_Lernwebseite/komponenten-analyse-2026-03-30.md) (technische Bestandsaufnahme — liegt unter `02_Portfolio/QA_Lernwebseite/`, nicht im Workshop-Ordner).
+**Ergänzend:** Root-[README.md](../../README.md), [index.html](../../02_Portfolio/QA_Lernwebseite/index.html) (Willkommenstext), [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md) (Meta-Stichproben), [komponenten-analyse-2026-03-30.md](komponenten-analyse-2026-03-30.md) (technische Bestandsaufnahme — **kanonisch** in diesem Ordner).
 
 *Die folgenden Abschnitte sind **Auswertung und Zusammenführung**, keine wörtliche Abschrift.*
 
@@ -97,7 +97,7 @@ Die *QA_Lernwebseite* ist im Programm **QA-Track** das **sichtbare digitale Haup
 
 - **Kein zentrales Tag-System** in Charter/Standards beschrieben.  
 - **Landkarte** wird auf der Einstiegskarte mit **„Themen-Tagging“** beworben ([index.html](../../02_Portfolio/QA_Lernwebseite/index.html)) — Detailgrad der Tags **nicht** in den Primärquellen spezifiziert.  
-- **Spezialseite `02c-teststufen.html`** nutzt eigene **Klassen-Tags** (`.tag-ctfl`, `.tag-praxis`, …) — **lokal**, nicht als globales Kategorienschema dokumentiert ([komponenten-analyse](../../02_Portfolio/QA_Lernwebseite/komponenten-analyse-2026-03-30.md)).
+- **Spezialseite `02c-teststufen.html`** nutzt eigene **Klassen-Tags** (`.tag-ctfl`, `.tag-praxis`, …) — **lokal**, nicht als globales Kategorienschema dokumentiert ([komponenten-analyse](komponenten-analyse-2026-03-30.md)).
 
 **Quellen:** [README QA_Lernwebseite](../../02_Portfolio/QA_Lernwebseite/README.md); [03_Project_Standards.md](../03_Project_Standards.md) §2, §6, §7; [index.html](../../02_Portfolio/QA_Lernwebseite/index.html).
 
@@ -111,7 +111,7 @@ Die *QA_Lernwebseite* ist im Programm **QA-Track** das **sichtbare digitale Haup
 | **Vorkenntnisse** | Keine explizite Definition; kein „Minimum vor Kapitel 4“ o. Ä. |
 | **Informations-Typen als Design-Tokens** | Begriffe wie **Story**, **Warnung**, **Dokumentenkette** sind **inhaltlich** da, aber **nicht** als einheitliche **IA- oder UI-Typologie** im Steuerwerk festgeschrieben. |
 | **Tagging / Kategorien** | **Keine** kanonische Tag-Liste; Landkarte vs. `02c`-Tags möglicherweise **inkonsistent** für ein Designsystem. |
-| **Pfad Komponenten-Analyse** | Workshop-Prompt verwies auf `designsystem-workshop/komponenten-analyse-…` — **Ist-Ablage:** `02_Portfolio/QA_Lernwebseite/komponenten-analyse-2026-03-30.md`. |
+| **Pfad Komponenten-Analyse** | **Kanonisch:** `01_Projektsteuerung/designsystem-workshop/komponenten-analyse-2026-03-30.md` (gemeinsam mit **website-analyse** im Workshop-Ordner). |
 
 ---
 
