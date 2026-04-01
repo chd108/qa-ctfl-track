@@ -1,6 +1,6 @@
 # QA-Track
 
-> Zuletzt aktualisiert: 2026-03-29
+> Zuletzt aktualisiert: 2026-04-02
 
 **Quality Assurance — Software Testing** · ISTQB CTFL-orientiertes Lern- und Arbeitsrepository (MasterSchool).
 
@@ -34,7 +34,7 @@ Lokales Archiv für **Kursarbeit**, **Referenzen**, **Hausaufgaben** und die ein
 | **`04_Referenzen/`** | ISTQB-Lehrplan, Normen, weiteres Lehr- und Referenzmaterial |
 | **`05_Notizen/`** | Persönliche Lernnotizen |
 | **`06_Archiv/`** | Archivierte oder ersetzte Inhalte (u. a. frühere Steuerdateien) |
-| **`07_Tests/`** | Testautomatisierung (PyTest, Selenium, XPath) |
+| **`07_Tests/`** | Testautomatisierung (PyTest, Selenium, XPath) — lokal; per **`.gitignore`** nicht im Standard-Remote-Umfang |
 
 ---
 

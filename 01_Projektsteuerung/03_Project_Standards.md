@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-02 — Abschn. 6: Token-Mapping + Pilot-Phase Design-Taxonomie  
+Letzte Aktualisierung: 2026-04-02 — Abschn. 3 / 8: `07_Tests/` in `.gitignore` und Geltungsbereich; Abschn. 6: Token-Mapping + Pilot-Phase Design-Taxonomie  
 Zweck: Definiert Regeln und Standards für Repo-Struktur, Dokumentation und Qualität  
 Klassifizierung: Projektsteuerung / Standards  
 Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE 829-2008**, **ISO/IEC/IEEE 29119-3** (jeweils im **Lern- und Portfolio-Kontext**, ohne Anspruch auf vollständige Normenzertifizierung).
@@ -27,6 +27,7 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 | **Referenzen** | `04_Referenzen/` (u. a. ISTQB-PDFs). |
 | **Notizen** | `05_Notizen/`. |
 | **Archiv** | `06_Archiv/`. |
+| **Tests** | `07_Tests/` (lokal; per **`.gitignore`** nicht im Standard-Remote-Umfang). |
 
 ### Abgrenzung zu anderen Steuerungsdokumenten (nur **Project_*-Serie**)
 
@@ -82,7 +83,7 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 | **HA5** | Testkonzept & Testfallentwurf | `HA5_Testkonzept_Testfallentwurf/` (inkl. `arbeitsmaterialien/` für **Portfolio-Einrichtung** im Kurs-Sinne, Aufgaben 00–03) |
 | **HA6** | Testdurchführung | `HA6_Testdurchfuehrung/` |
 
-**Hinweis „Portfolio“:** Das **Arbeits- und Nachweis-Repository** für dieses Programm ist **`qa-ctfl-track`** (**ein** Git-Monorepo) mit der Lernwebsite unter **`02_Portfolio/QA_Lernwebseite/`**. **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`** und **`06_Archiv/`** sind per **`.gitignore`** derzeit **nicht versioniert** (lokal vorhanden; spätere Aufnahme möglich). Eine **zusätzliche**, separat zu pflegende Bewerbungs-Portfolio-Repository ist **kein** Bestandteil der hier beschriebenen Struktur.
+**Hinweis „Portfolio“:** Das **Arbeits- und Nachweis-Repository** für dieses Programm ist **`qa-ctfl-track`** (**ein** Git-Monorepo) mit der Lernwebsite unter **`02_Portfolio/QA_Lernwebseite/`**. **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`**, **`06_Archiv/`** und **`07_Tests/`** sind per **`.gitignore`** derzeit **nicht versioniert** (lokal vorhanden; spätere Aufnahme möglich). Eine **zusätzliche**, separat zu pflegende Bewerbungs-Portfolio-Repository ist **kein** Bestandteil der hier beschriebenen Struktur.
 
 ### Scope (Ablage — für Qualitätssicherung)
 
@@ -116,6 +117,7 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 | **`04_Referenzen/`** | ISTQB-Lehrplan, Sample Exams, Normen-PDFs, externe Links — README pflegen. |
 | **`05_Notizen/`** | Unterrichtsnotizen, Übungen, temporäre Texte (`ddmm.txt` o. Ä. kann historisch existieren). |
 | **`06_Archiv/`** | Abgeschlossene oder ersetzte Themen; Unterordner nach Thema möglich (z. B. `alt-claude-PW/`, `Projektsteuerung_alt/`); jeweils kurz per **README** erklären. |
+| **`07_Tests/`** | Lokale Test-/Experimentier-Artefakte; per **`.gitignore`** derzeit **nicht** Teil des Standard-Commit-Umfangs. |
 
 **Root:** Keine losen Arbeitsdateien; ausnahmslos **`README.md`** als Einstieg (siehe Abschnitt 8 — Referenz-Snapshot).
 
@@ -306,17 +308,17 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 | **Root-Dokumentation** | Klar; Verweis auf Projektsteuerung soll auf **Charter / Status / Standards** zeigen |
 | **Dokumentationsqualität** | Gut — READMEs in Hauptordnern; Steuerung wird konsolidiert |
 | **Konsistenz** | Ordner- und HA-Schema überwiegend konsequent; vereinzelte Ausnahmen (siehe unten) |
-| **Git-Struktur** | **Ein** Repository **qa-ctfl-track**; Lernwebsite unter **`02_Portfolio/QA_Lernwebseite/`**; **`03_`–`06_`** per **`.gitignore`** optional lokal, nicht im Remote-Pflichtumfang |
+| **Git-Struktur** | **Ein** Repository **qa-ctfl-track**; Lernwebsite unter **`02_Portfolio/QA_Lernwebseite/`**; **`03_Hausaufgaben/`** bis **`07_Tests/`** (jeweils per **`.gitignore`**) optional lokal, nicht im Remote-Pflichtumfang |
 | **Sauberkeit** | Root ohne lose Dateien; punktuelle Redundanzen |
 
 **Gesamt: Gut.** Die genannten Schwachstellen sind **klein** und **priorisierbar**.
 
 ### Stärken
 
-- **Klare Top-Level-Ordner** (`01_`–`06_`) mit erkennbarem Zweck.  
+- **Klare Top-Level-Ordner** (`01_`–`07_`) mit erkennbarem Zweck.  
 - **Root-README** als Einstieg; **QA_Lernwebseite** mit eigenem README und klarer Rolle.  
 - **HA-Ordner** mit wiederkehrendem Schema (`00_Loesung`, `01_Original`, …).  
-- **Arbeitsbaum:** öffentliche Website unter **`02_Portfolio/`**; HA/Referenzen/Notizen/Archiv können **lokal** genutzt werden, sind per **`.gitignore`** im Remote **optional**.  
+- **Arbeitsbaum:** öffentliche Website unter **`02_Portfolio/`**; HA/Referenzen/Notizen/Archiv/Tests können **lokal** genutzt werden, sind per **`.gitignore`** im Remote **optional**.  
 - **Archiv** mit README und Themen-Unterordnern.
 
 ### Schwachstellen und Risiken

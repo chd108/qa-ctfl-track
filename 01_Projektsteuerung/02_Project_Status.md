@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-02 (**Narrativ** Mapping → Pilot in §1–§4, §7 abgestimmt; **Design-Taxonomie** / [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md))  
+Letzte Aktualisierung: 2026-04-02 (**`.gitignore`:** `07_Tests/`; **Narrativ** Mapping → Pilot in §1–§4, §7; **Design-Taxonomie** / [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md))  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -154,7 +154,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 | **`05_Notizen/`** | Unterrichtsnotizen, temporäre Arbeitstexte. |
 | **`06_Archiv/`** | Archivierte Themen inkl. ggf. älterer Steuerungskopien (`Projektsteuerung_alt` o. Ä.). |
 
-*Git / Monorepo:* **`qa-ctfl-track`** ist **ein** Repository (**Remote:** `origin` auf GitHub). **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`** und **`06_Archiv/`** sind per **`.gitignore`** derzeit **ausgeschlossen** (lokal nutzbar; spätere Versionierung möglich).
+*Git / Monorepo:* **`qa-ctfl-track`** ist **ein** Repository (**Remote:** `origin` auf GitHub). **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`**, **`06_Archiv/`** und **`07_Tests/`** sind per **`.gitignore`** derzeit **ausgeschlossen** (lokal nutzbar; spätere Versionierung möglich).
 
 *Hinweis:* Ältere Detailstände zur **Design-Harmonisierung** (frühere Phasen 1–5, Formular-Basis-Migration) sind bei Bedarf in **Git-Historie**, **Archiv** oder älteren Statuspassagen nachvollziehbar.
 
@@ -211,6 +211,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 | Datum (ca.) | Entscheidung / Änderung |
 |-------------|-------------------------|
 | **2026-04-02** | **Design-Taxonomie definiert (Pilot-Phase):** [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md) — IST→SOLL→Token über **C-/F-/P-/S-***; **ca. 15–30** konsolidierte CSS-Variablen **Zielgröße**; **Workshop-Ordner** bleibt **Referenz**; **Umsetzung** im Stylesheet = **Pilot**, nicht Abschluss. **Außerdem:** **02_Project_Status.md** — **einheitliches Narrativ** (**Session 3** *schriftlich* = Mapping **liegt vor**; **nächster technischer Schritt** = **Pilot** in CSS); §2–§4 und Fußnote §7 **abgestimmt**. |
+| **2026-04-02** | **`.gitignore`:** Top-Level **`07_Tests/`** ausgeschlossen; **[03_Project_Standards.md](03_Project_Standards.md)** (Geltungsbereich, §3, §8), **[04_Project_Guidelines.md](04_Project_Guidelines.md)**, **[05_Reference_Quick.md](05_Reference_Quick.md)** und **dieses Dokument** (Repo-Tabelle §2) **abgestimmt**. |
 | **2026-04-01** | **Diátaxis (S-*)** in **02e** / **02f** geklärt: Modus **für Leser sichtbar** (Label/Badge) — **Zielbild**; **Session 3** priorisiert **C/F/P**-Tokens, **S-***-Umsetzung **phasenweise**; **kein** „nur Doku“ als Endzustand. |
 | **2026-03-31** | **IST-Analysen** (`website-analyse-…`, `komponenten-analyse-…`): **kanonische Ablage** = `01_Projektsteuerung/designsystem-workshop/`; **Kopie** der Website-Analyse unter `02_Portfolio/QA_Lernwebseite/` **entfernt**; [README QA_Lernwebseite](../02_Portfolio/QA_Lernwebseite/README.md) und Verweise in **diesem Dokument** zeigen auf den **Workshop-Ordner** (eine gültige Fassung, kein Drift). |
 | **2026-03-30** | **Designsystem-Workshop (Sessions 2–2f)** als **Steuerungsgrundlage** für **P1** anerkannt: **Drei Ebenen** (Content / Semantic / Presentation); **Diátaxis** in **Semantic** (**S-***: **nicht** pro Box; **mehrere Modi pro Seite** über Abschnitte möglich; **Ziel** Leser-sichtbare **Labels**); **SOLL-Codes** **C-/F-/S-/P-** als **Zielbild** — **finale Benennung** mit **Session 3 (Tokens)**. **Priorität** Session 3: **C/F/P** zuerst; **S-***-Sichtbarkeit **phasenweise** (§**02f**). |

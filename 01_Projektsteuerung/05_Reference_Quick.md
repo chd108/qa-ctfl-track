@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-29 — Repo_Health_Check-Prompt: kein Zweit-Remote „website“ mehr  
+Letzte Aktualisierung: 2026-04-02 — `.gitignore`: **07_Tests/** ergänzt (Hinweis Abschnitt mit Repo-Check); vormals 2026-03-29: Repo_Health_Check-Prompt, kein Zweit-Remote „website“  
 Zweck: Schnellzugriff auf Pfade, Prompts und externe Ressourcen  
 Klassifizierung: Projektsteuerung / Referenz  
 Normative Orientierung: ISO 21502 — Zugänglichkeit von Projektinformationen.
@@ -129,7 +129,7 @@ Kontext — aktuelles System (Ist-Architektur)
 - **Lernwebsite** liegt im **selben** Repo unter **02_Portfolio/QA_Lernwebseite/** (keine eigene `.git` dort).
 - **GitHub Pages:** Deployment per **GitHub Actions** — Workflow **.github/workflows/deploy-pages.yml**; Artifact-Pfad **`02_Portfolio/QA_Lernwebseite`** (Root der Site = u. a. **index.html**).
 - **Kanonisch** für öffentliche Site und Historie ist **nur** das Monorepo (**origin** → **qa-ctfl-track**); ein früheres separates Website-Repository existiert nicht mehr.
-- **.gitignore:** u. a. **03_Hausaufgaben/**, **04_Referenzen/**, **05_Notizen/**, **06_Archiv/** — diese Bereiche sind oft **nur lokal**; im Check klar von **getracktem** Remote-Umfang trennen.
+- **.gitignore:** u. a. **03_Hausaufgaben/**, **04_Referenzen/**, **05_Notizen/**, **06_Archiv/**, **07_Tests/** — diese Bereiche sind oft **nur lokal**; im Check klar von **getracktem** Remote-Umfang trennen.
 - Verbindliche Git-/Commit-Regeln und verbotene Trailer (z. B. Tool-Zeilen in Messages): **01_Projektsteuerung/04_Project_Guidelines.md**.
 - Kanonische Repo-Struktur und Website-Workflow: **01_Projektsteuerung/03_Project_Standards.md** (u. a. Abschnitt 3 und Website-Integrationsworkflow).
 

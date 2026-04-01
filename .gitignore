@@ -34,3 +34,6 @@ node_modules/
 
 # Archiv (später versionieren)
 06_Archiv/
+
+# Tests (lokal / Projektordner; nicht Standard-Commit-Umfang)
+07_Tests/

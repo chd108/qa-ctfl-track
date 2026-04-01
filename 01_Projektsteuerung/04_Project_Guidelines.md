@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-29 (Versionskontrolle: gesamtes Repo qa-ctfl-track / Monorepo; kein Remote „website“; Commit: ausführliche Message mit Meta; nach Push: Erfolgsmeldung + Message wortgleich im Chat)  
+Letzte Aktualisierung: 2026-04-02 (`.gitignore`: **`07_Tests/`** ergänzt; vormals 2026-03-29: Versionskontrolle Monorepo; kein Remote „website“; Commit: ausführliche Message mit Meta; nach Push: Erfolgsmeldung + Message wortgleich im Chat)  
 Zweck: Definiert Arbeitsweisen für KI-gestützte Arbeit, ein verbindliches fachliches Rollenmodell (Autor / KI-Werkzeuge) und Versionskontrolle  
 Klassifizierung: Projektsteuerung / Guidelines  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an KI-gestützte Ein-Personen-Arbeit.
@@ -12,7 +12,7 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an KI-gestützte Ein-Pers
 
 Dieses Dokument regelt **Zusammenarbeit mit KI-gestützten Werkzeugen** (ChatGPT, Cursor, Claude), das **verbindliche fachliche Rollenmodell** (Abschnitt 2) sowie **Versionskontrolle und Commit-Praxis** für das **gesamte Git-Repository *qa-ctfl-track*** (Monorepo: Steuerung, Workflow, Website unter **`02_Portfolio/QA_Lernwebseite/`**) — im Einklang mit [03_Project_Standards.md](03_Project_Standards.md) (Geltungsbereich, Steuerungslogik).
 
-**Geltung:** Verbindlich für alle Arbeiten, bei denen KI den **QA-Track** (`qa-ctfl-track`) oder die **Lernwebsite** unterstützt oder verändert, und für alle **Git-Commits und Pushes** auf **`origin`** (siehe Abschnitt 5). Ordner **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`**, **`06_Archiv/`** sind per **`.gitignore`** derzeit **nicht** Teil des Standard-Commit-Umfangs.
+**Geltung:** Verbindlich für alle Arbeiten, bei denen KI den **QA-Track** (`qa-ctfl-track`) oder die **Lernwebsite** unterstützt oder verändert, und für alle **Git-Commits und Pushes** auf **`origin`** (siehe Abschnitt 5). Ordner **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`**, **`06_Archiv/`**, **`07_Tests/`** sind per **`.gitignore`** derzeit **nicht** Teil des Standard-Commit-Umfangs.
 
 **Lesereihenfolge mit anderen Steuerungsdokumenten:** Zuerst [01_Project_Charter.md](01_Project_Charter.md) und [03_Project_Standards.md](03_Project_Standards.md) für Kontext und Ablage; dieses Dokument für **Kommunikation, Prompting und Git** (Monorepo).
 
@@ -106,7 +106,7 @@ Prompts sollen **eindeutig, vollständig und handlungsorientiert** sein: **wo** 
 
 - **Git-Root:** Arbeitsverzeichnis **`qa-ctfl-track/`** (ein **`.git`**).  
 - **Lernwebsite:** Pfad **`02_Portfolio/QA_Lernwebseite/`** — **kein** eigenes Unter-Repository; Änderungen gehen in **dieselbe** Historie wie Steuerung und Workflow-Dateien.  
-- **`.gitignore`:** **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`**, **`06_Archiv/`** sind standardmäßig **ausgeschlossen** — dortige Dateien **erscheinen nicht** in `git status`, bis die Regeln bewusst geändert werden.
+- **`.gitignore`:** **`03_Hausaufgaben/`**, **`04_Referenzen/`**, **`05_Notizen/`**, **`06_Archiv/`**, **`07_Tests/`** sind standardmäßig **ausgeschlossen** — dortige Dateien **erscheinen nicht** in `git status`, bis die Regeln bewusst geändert werden.
 
 **Hinweis:** Ein früheres **separates** Website-Repository und ein Git-Remote **`website`** sind **nicht** mehr Bestandteil des Workflows; die Lernwebsite wird **ausschließlich** unter **`02_Portfolio/QA_Lernwebseite/`** im Monorepo **qa-ctfl-track** gepflegt.
 
