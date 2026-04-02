@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-02 — **B.13 F-CHAIN** (Dokumentenkette Web, creme/pastell); zuvor Metablock Variante B; Teil B Spec (B.11 F-META, **B.12 F-LEGEND**)  
+Letzte Aktualisierung: 2026-04-02 — **B.13.1a** F-CHAIN **Standort** (`<main>`); zuvor B.13 creme/pastell; Metablock Variante B; B.11/B.12  
 Zweck: Domain CTFL — Entscheidungsregeln (Teil A) und Design-Spec meta-bar / Chip / Legende (Teil B).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Normativ  
 Normative Orientierung: [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md) (**C-SYLLABUS**, **F-META**, **F-LEGEND**); [P04-00-spec-overview.md](P04-00-spec-overview.md)
@@ -348,8 +348,14 @@ Bereits vorhandene Tokens nutzen: `var(--bdr)`, `var(--mid)`, `var(--text)`.
 | Element | Vorgabe |
 |---------|---------|
 | Container | **`aside.chain-callout`** mit **`role="complementary"`** und **`aria-labelledby`** auf die Titel-ID |
-| Titel | **`h3.chain-callout__title`** (eindeutige **`id`**) — Überschriftenebene an Seitenstruktur anpassen, falls nötig |
+| Titel | **`h2.chain-callout__title`** oder **`h3.…`** (eindeutige **`id`**) — Überschriftenebene an **B.13.1a** anpassen; **Slot oben** im `<main>` typisch **`h2`** |
 | Inhalt | **`div.chain-callout__content`** — Fließtext + **Links** zu benachbarten Dokumenten |
+
+#### B.13.1a Standort im `<main>` (verbindlich)
+
+- **`aside.chain-callout`** ist **direktes Kind** von **`<main>`** — **nicht** in `.section__body` o. Ä. verschachtelt.
+- **Reihenfolge:** **`meta-bar`** → **optional** seitenweite **F-INFO** (z. B. „Was ist HA4?“, „CTFL vs. IEEE“) → **`aside.chain-callout`** → **erste** inhaltliche **`<section>`** (oder weiterer Fließinhalt).
+- **Nicht** erst **nach** allen Sektionen am Seitenende (Orientierung gehört **oben** in den Lesefluss).
 
 #### B.13.2 Design-Tokens (`:root` / `base.css`)
 
@@ -393,6 +399,7 @@ Bereits vorhandene Tokens nutzen: `var(--bdr)`, `var(--mid)`, `var(--text)`.
 #### B.13.6 Abgleich IST → Soll
 
 - **Drei** Web-Seiten: `aside.chain-callout` statt `div.info-box.info-box--note` für die **Dokumentenkette**-Box; lokales CSS für **Kette** entfernen.
+- **Standort:** **B.13.1a** — alle drei Seiten gleiche **Slot-Reihenfolge** (`main` → … → Kette → erste Section).
 - **P03** §2: IST **`.chain-callout`** + Token wie oben.
 
 ---

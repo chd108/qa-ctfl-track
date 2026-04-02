@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-31  
-Letzte Aktualisierung: 2026-04-02 — **§ Dokumentenkette (F-CHAIN)**; zuvor Metablock Variante B; Stand 2026-03-31 (meta-bar, **ISTQB K-Stufen** im **Hinweis**)  
+Letzte Aktualisierung: 2026-04-02 — F-CHAIN **Standort** (04d **B.13.1a**); zuvor § Dokumentenkette; Metablock Variante B; 2026-03-31 (meta-bar, K-Stufen)  
 Zweck: Redaktionelle Harmonisierung (Texte, Labels, meta-bar-Inhalte) — abgegrenzt von visueller Spec **04d** B.11/B.12/**B.13**.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Redaktion  
 Normative Orientierung: Visuell [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) Teil B (u. a. **B.13** F-CHAIN)
@@ -52,7 +52,7 @@ Nach der visuellen Vereinheitlichung der meta-bar fallen **inhaltliche** Inkonsi
 
 ## Dokumentenkette (F-CHAIN) — wozu die Box?
 
-**Kontext:** Auf ausgewählten **HA-Web-Seiten** (nicht A4-HTML) steht eine **Kurzbox** mit der Überschrift **„Dokumentenkette — …“**. Visuell: **04d B.13**; technisch: **`aside.chain-callout`** in `base.css`.
+**Kontext:** Auf ausgewählten **HA-Web-Seiten** (nicht A4-HTML) steht eine **Kurzbox** mit der Überschrift **„Dokumentenkette — …“**. Visuell: **04d B.13**; technisch: **`aside.chain-callout`** in `base.css`. **Platzierung:** **04d B.13.1a** — unter **meta-bar** (und nach **optionaler** seitenweiter F-INFO), **vor** dem ersten inhaltlichen Abschnitt.
 
 **Sinn (in wenigen Sätzen):** In **Software-Testen** und **QA** gehören **Artefakte** (Analyse, Testbasis, Testfälle, Konzept, Ausführung …) **logisch** zusammen — das nennt man u. a. **Traceability** und **Dokumentation der Teststrecke**. Die Box macht diese **Kette für die Lernreihe sichtbar**: *Wo bin ich? Welches Dokument baut worauf auf? Welcher Link führt zum nächsten Schritt?* Der **Name** „Dokumentenkette“ soll **schon** die Idee tragen; der **Text in der Box** ist **kein** Ersatz für Lehrbuchkapitel, sondern ein **Kompass** und **Einordnung** — klassische **QA-/Test-Dokumentations-Logik**, didaktisch auf die **Portfolio-Strecke** zugeschnitten.
 
