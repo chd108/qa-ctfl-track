@@ -45,7 +45,7 @@
 
 | Pattern | Wo | Wofür | Technik | Beschreibung |
 |---------|-----|--------|---------|----------------|
-| **Großes Kategorie-Baum-SVG** | `04-testverfahren.html` | 4 Verfahrensklassen + 11 Verfahren + HA-Badges | **Inline-SVG** (`viewBox="0 0 1440 945"`), Linien/Rechtecke | Zentrales „Organigramm“; dazu **Legende** `.legend` und **4-Spalten-Karten** `card-grid` unter/unabhängig vom SVG |
+| **Großes Kategorie-Baum-SVG** | `04-testverfahren.html` | 4 Verfahrensklassen + 11 Verfahren + HA-Badges | **Inline-SVG** (`viewBox="0 0 1440 945"`), Linien/Rechtecke | Zentrales „Organigramm“; **Legende** `nav.legend` **oberhalb** der Grafik (direkt unter meta-bar, 04d B.12); **4-Spalten-Karten** `card-grid` unter der Section mit SVG |
 | **Testpyramide / Schichten-SVG** | `05-testmanagement.html` | Unit vs. Integration vs. E2E | Inline-SVG ca. 400×280 | Neben **Praxis-Box** `.praxis-box` und **Quad-Grid** |
 | **Wartungs-Szenarien-SVG** | `02c-teststufen.html` | Release vs. Hotfix vs. Migration vs. Decommissioning | Zwei kleine SVGs in `.visual-grid` | Illustrative **Vier-Felder**-Logik |
 | **Hypozykel (Canvas)** | `02a-sdlc-statisch.html` | SDLC + ISTQB-Testprozess | **HTML5 Canvas** + JS-Zeichnung | Einmaliges Laden; anderes Medium als SVG |

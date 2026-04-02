@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-03 (**Design-Spec-Cluster:** [04-design-system-overview.md](designsystem-workshop/04-design-system-overview.md) · CTFL-Domain [04d-domain-ctfl-lernwebsite-2026-04-02.md](designsystem-workshop/04d-domain-ctfl-lernwebsite-2026-04-02.md) inkl. **B.11**; **`.gitignore`:** `07_Tests/`; **Narrativ** Mapping → Pilot in §1–§4, §7; **Design-Taxonomie** / [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md))  
+Letzte Aktualisierung: 2026-03-31 (**Pilot CSS:** **F-META** / **F-LEGEND** in **`base.css`**; **K-Stufen**-Kurzzeile in der **meta-bar** nur dort, wo **FL-(Kx)** o. ä. vorkommt (**9** Kernseiten); **SDLC** 02a/02b Triptych **max-width 1400px**; **04b** *Umsetzungsstand* **F-META**; **04d B.10** Korrekturleiste tokenisiert; **Redaktion** [05-redaktionelle-harmonisierung-2026-04-03.md](designsystem-workshop/05-redaktionelle-harmonisierung-2026-04-03.md) **Fortschreibung** Status / **§2.4 K-Stufen**)  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -8,7 +8,7 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 
 # Project Status — QA-Track
 
-**Berichtsstichtag:** 2026-04-03 · **Projektinhaber (Alias):** chd108  
+**Berichtsstichtag:** 2026-03-31 · **Projektinhaber (Alias):** chd108  
 
 *Kurzkontext:* QA-Track ist das **gesamte** ISTQB-CTFL-orientierte Lernprogramm (Material, Hausaufgaben, Portfolio, Website, Notizen, Referenzen, Steuerung). **Vision, Ziele und Scope** siehe [01_Project_Charter.md](01_Project_Charter.md); **Ablage, Benennung, Repo-Struktur und Health Check** siehe [03_Project_Standards.md](03_Project_Standards.md) (insb. Abschnitt 3 und 8).
 
@@ -21,14 +21,20 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 | Kennzahl | Einschätzung |
 |----------|----------------|
 | **Programm-Gesamt** | **Stabil / auf Kurs** — Lern- und Arbeitsrepo ist nutzbar; Kursintegration über Notion/MasterSchool maßgeblich. |
-| **Website *QA_Lernwebseite*** | **Technische Basis abgeschlossen** — einheitliches Hauptsystem, `index.html` als alleiniger Einstieg, Benennungslogik inkl. Matrix für aktive Seiten umgesetzt. |
+| **Website *QA_Lernwebseite*** | **Technische Basis abgeschlossen** — einheitliches Hauptsystem, `index.html` als alleiniger Einstieg, Benennungslogik inkl. Matrix für aktive Seiten umgesetzt; **Designsystem-Pilot:** **F-META** / **F-LEGEND** / Korrekturkomponenten in **`base.css`**, **meta-bar** auf **11** Kernseiten; **K-Stufen**-Kurzzeile im **Hinweis** nur wenn die **meta-bar** bereits **(K1)/(K2)/(K3)** oder **FL-… K1/K2/K3** enthält (**9** Seiten); **SDLC**-Seiten **02a/02b** mit Triptych-Layout und **1400px** Inhaltsbreite. |
 | **Lernstrecke HA4/HA5 (Website)** | **Phasen 1–4 abgeschlossen** (Stand **21.03.2026**) — Konsistenz, Story-/UX, formale Einheitlichkeit (**Phase 3 Abschluss:** **21.03.2026**, siehe Abschnitt 2), Standards-Review inkl. CTFL-/IEEE-829-Zitierlogik; Details und Evidenz siehe Abschnitt 2 und 7. |
 | **Hausaufgabe HA6 (Testdurchführung)** | **Website-Portfolio:** Testprotokoll, Fehlerbericht und Testabschlussbericht als **A4-Seiten** unter `02_Portfolio/QA_Lernwebseite/pages/` (**06a–06c**) **vorhanden**; **Kursordner** `03_Hausaufgaben/HA6_Testdurchfuehrung/` ggf. separat nach Kursvorgaben (siehe Abschnitt 3). |
-| **Nächster Schwerpunkt** | **Komponentenstil / Designsystem light** — **Design-Spec** für CTFL/meta-bar in **04d** inkl. **B.11** (Typo, Abstände, Chip-Maße) und **Component-Spec-Checkliste** in [04-design-system-overview.md](designsystem-workshop/04-design-system-overview.md) **liegt vor**. **Pilot** (CSS/HTML) kann starten — **IST→SOLL→Token-Mapping** in [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md); **konzeptionelle Basis** im Ordner **`01_Projektsteuerung/designsystem-workshop/`** (Sessions **1**–**2f** + **04**). Token-Familien in **`base.css`** / **`doc-a4.css`** verankern. Verankerung in [03_Project_Standards.md](03_Project_Standards.md) (Abschn. 6); **Charter** bei Bedarf nach **Pilot-Abschluss**. |
+| **Nächster Schwerpunkt** | **Komponentenstil / Designsystem light** — **Pilot** (**F-META**, **F-LEGEND**, Korrekturleiste) **in `base.css` umgesetzt** (siehe **04d B.10/B.11/B.12**, **04b** *Umsetzungsstand*). **Nächste Iteration:** weiteres Abbauen von Seiten-Inline-CSS wo sinnvoll, **Callout**-Familien (**F-CHAIN** …) nach Priorität **04b**; Verankerung ausgewählter Regeln in [03_Project_Standards.md](03_Project_Standards.md) (Abschn. 6) bei Bedarf nach Review; **IST→SOLL→Token** weiter [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md). |
 | **Lessons learned (aktuell)** | Teile der **Komponentenlogik** (Story-/Dokumentenkette-Boxen) wurden **vor** dem formalen Designsystem **praktisch eingeführt** — fachlich sinnvoll für die Lernstrecke; **verbindliche Standardisierung** folgt im Architekturblock. Der Workshop hat **explizit** getrennt: **Domäne** (z. B. Syllabus-Chips), **didaktische Funktion** (Callouts, Orientierung), **Darstellung** (Tabellen, SVG, A4) — reduziert Vermischung und gibt **Token-Mapping und Pilot-Phase** eine **Zielrichtung**. |
 
-**Aktueller Fokus (Stand 03.04.2026):**  
-Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgeschlossen**; die HA4/HA5-Strecke ist **inhaltlich** durch die Phasen 1–4 **abgedeckt**. **P1 (Pilot):** **Spec vollständig genug zum Start** — [04d](designsystem-workshop/04d-domain-ctfl-lernwebsite-2026-04-02.md) Teil B inkl. **B.11** (visuelle Sollwerte), Checkliste in [04-design-system-overview.md](designsystem-workshop/04-design-system-overview.md). **Nächster Schritt:** Umsetzung **Pilot** (`base.css`, meta-bar/Chip, v. a. **01c-testmittel.html**). **Token-Mapping** [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md) bleibt die **normative** Brücke; **kein** vollständiges Umbenennen aller Klassen vor dem Pilot.
+**Aktueller Fokus (Stand 31.03.2026):**  
+Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgeschlossen**; die HA4/HA5-Strecke ist **inhaltlich** durch die Phasen 1–4 **abgedeckt**. **P1:** Erster **CSS-Pilot** **umgesetzt** — **meta-bar** / Syllabus-Chip / **F-LEGEND** / **correction-bar** in **`base.css`**; **K-Stufen**-Hinweis **nur** bei **FL-(Kx)** in der **meta-bar**; **04d B.10** Follow-up größtenteils erledigt. **Nächster Schritt:** **Iteration** (weitere Token-Familien, Callouts, ggf. **`doc-a4.css`**); **03-token-mapping** bei Schemaänderungen fortschreiben.
+
+### Redaktioneller Backlog (Website)
+
+**Dokumentation:** [05-redaktionelle-harmonisierung-2026-04-03.md](designsystem-workshop/05-redaktionelle-harmonisierung-2026-04-03.md) — **Stand 2026-03-31:** **§2.4 ISTQB K-Stufen** (Regel, **9** Seiten, **01b** **FL-1.4.3 (K2)**).
+
+**meta-bar (11 Lernseiten):** **HTML nach SOLL umgesetzt** — Raster Quelle / Syllabus / Lernziele·Funktion·Seitenrolle / Hinweis; **Testmanagement** mit gebündelten **Lernzielen** (5.1–5.5); **K-Stufen**-Legende im **Hinweis** siehe **05** **§2.4**. **Offen** (Backlog): weitere redaktionelle Harmonisierung (Begriffe site-weit, Tonalität, Strukturen) siehe Abschn. 3 ff. in **05-…**.
 
 ---
 
@@ -37,6 +43,14 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 *(Chronologisch **absteigend**: zuerst das Neueste / zuletzt Abgeschlossene.)*
 
 **So ist dieser Abschnitt gemeint:** Hier steht, **was** im Projekt **schon erledigt** ist — mit Datum und oft mit Fachbegriffen (Git, Phasen, Dateinamen). Nach vielen Blöcken folgt ein kurzer Absatz **„In Klartext“**: was das **praktisch** bedeutet, **ohne** dass man alle Kürzel kennen muss.
+
+### 2026-03-31 — Designsystem: Pilot CSS (F-META, F-LEGEND, Korrekturleiste)
+
+- **`base.css`:** **F-META** (`.meta-bar`, Syllabus-Chip), **F-LEGEND** (`--legend-*`), semantische Aliase **`--ok` / `--warn`**, globale Styles **`.correction-bar`** / **`.ctfl-fix`** (vormals nur auf **01c** mit Hardcodes) — siehe **04d** **B.10**–**B.12**.
+- **Kern-Lernseiten** mit **FL-(Kx)** in der **meta-bar:** kompakte **K-Stufen**-Zeile im **Hinweis** (**9** Seiten); **HA**-Seiten **04a / 04c / 05a / 00a** ohne dupliziertes **`.meta-bar`**-CSS.
+- **04b:** Abschnitt *Umsetzungsstand* zu **F-META** ergänzt.
+
+**In Klartext:** Der erste **sichtbare** Designsystem-Schritt im Stylesheet ist **drin** — nicht nur auf dem Papier des Token-Mappings, sondern **live** auf den Kernseiten und mit **weniger** doppeltem CSS auf den HA-Seiten.
 
 ### 2026-04-02 — Designsystem: Session 3 (Mapping) schriftlich; Pilot-Phase als nächster technischer Schritt
 
@@ -167,7 +181,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 
 | P | Arbeitspaket | Stand / Kurzbeschreibung |
 |---|----------------|---------------------------|
-| **P1** | **Komponentenstil / Designsystem light** (*QA_Lernwebseite*) | **Konzept:** `designsystem-workshop/` Sessions **1 + 2–2f**; **schriftliches Session-3-Artefakt** [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md) (**IST→SOLL→Token**, **02f**). **Nächster technischer Schritt:** **Pilot** — **Design-Tokens** (Farben, Typografie, Spacing, Callout-/Chip-Familien, A4-Kanal) in **`base.css`** / **`doc-a4.css`** für **1–2** Familien **verankern** und **evaluieren**; Mapping bei Bedarf **iterieren** (kein zweites Parallel-Mapping-System). Darstellungsregeln **kanonischer** Komponenten **nach belastbarem Pilot** in **[03_Project_Standards.md](03_Project_Standards.md)** (Abschn. 6 ff.) sowie ggf. **[01_Project_Charter.md](01_Project_Charter.md)** **schärfen**. **Ausgangsbasis IST:** [website-analyse-2026-03-28.md](designsystem-workshop/website-analyse-2026-03-28.md), [komponenten-analyse-2026-03-30.md](designsystem-workshop/komponenten-analyse-2026-03-30.md); **Ausgangsbasis SOLL/Semantik:** Workshop **02f**, **02d**, **02e**. |
+| **P1** | **Komponentenstil / Designsystem light** (*QA_Lernwebseite*) | **Konzept:** `designsystem-workshop/` Sessions **1 + 2–2f**; [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md). **Pilot (Stand 2026-03-31):** **F-META** / **F-LEGEND** / **correction-bar** in **`base.css`**; **04b** dokumentiert *Umsetzungsstand* **F-META**. **Weiter:** **1–2** weitere Familien (Callouts, A4) in **`base.css`** / **`doc-a4.css`** **evaluieren**; Mapping **iterieren**. Regeln **nach** Review in **[03_Project_Standards.md](03_Project_Standards.md)** (Abschn. 6 ff.) schärfen. **IST:** [website-analyse-2026-03-28.md](designsystem-workshop/website-analyse-2026-03-28.md), [komponenten-analyse-2026-03-30.md](designsystem-workshop/komponenten-analyse-2026-03-30.md); **SOLL/Semantik:** **02f**, **02d**, **02e**. |
 | **P2** | **Konsistenz- und Darstellungsregel-Ebene** (Website, außerhalb HA4/HA5-Kern) | Einheitliche Regeln auch für Module **außerhalb** der fertiggestellten Kernstrecke; ggf. offene Seiten gemäß **Lernplan** ([03_Project_Standards.md](03_Project_Standards.md) Abschn. 2) und Charta-Zielen nachziehen. |
 | **P3** | **Kurs- und Portfoliopfad** | Fortführung gemäß **Notion-Lernplan** und MasterSchool-Vorgaben; **HA6** auf der **Lernwebsite** als Kette **06a–06c** abgebildet (siehe Abschnitt 3); weitere offene optionale Punkte (z. B. Portfolio-Automation, Issues) siehe ggf. archivierte oder neue **Hausaufgaben-Analysen** (`06_Archiv/Projektsteuerung_alt/` bzw. Schema `YYYY-MM-DD_Hausaufgabenanalyse.md` in `01_Projektsteuerung/`). |
 
@@ -198,7 +212,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 
 | ID | Risiko / Problem | Auswirkung | Gegensteuerung (geplant / aktiv) |
 |----|-------------------|------------|-----------------------------------|
-| **R1** | **Designsystem light** verzögert sich | Visuelle und strukturelle **Inkonsistenzen** bleiben länger **implizit** | Priorisierung **P1**; **Workshop 02–2f** + **03-token-mapping** liefern **SOLL- und Mapping-Basis**; **Risiko jetzt** eher **Pilot/Umsetzung** (CSS) und **Zeit** für Evaluierung — Verankerung in **[03_Project_Standards.md](03_Project_Standards.md)** / **[01_Project_Charter.md](01_Project_Charter.md)** **nach** belastbarem Pilot |
+| **R1** | **Designsystem light** — Rollout über Callouts/A4 **noch offen** | **Teil** der Seiten kann noch **uneinheitlich** wirken | Priorisierung **P1**; **Pilot F-META/F-LEGEND** (2026-03-31) **reduziert** Drift auf Kernseiten; **nächste** Evaluierung: weitere Token-Familien — Verankerung in **[03_Project_Standards.md](03_Project_Standards.md)** / **[01_Project_Charter.md](01_Project_Charter.md)** **nach** belastbarer Iteration |
 | **R2** | **Drift Steuerung ↔ Umsetzung** nach größeren Website- oder Strukturänderungen | **Project\_*-Dokumente** oder **README** veralten gegenüber **main** | Manuelle **Querprüfung** bei Architektur-Änderungen; **[04_Project_Guidelines.md](04_Project_Guidelines.md)** (Versionskontrolle & Git) für **qa-ctfl-track**; bei Bedarf **Status** / **Standards** nachziehen |
 | **R3** | **Veraltete Steuerkopien** im Ordner | **Fehlnavigation** für Leser | **Einstieg nur** über **Project\_***; Altdateien archivieren; **dieses Dokument** und **[03_Project_Standards.md](03_Project_Standards.md)** als maßgebliche Orientierung |
 | **R4** | **Ein-Personen-Engpass** | Verzögerung bei parallelen Kurs- und Website-Meilensteinen | Strikte **Priorisierung**; Fokus **Kursfristen** vor „Nice-to-have“-Website-Themen |

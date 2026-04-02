@@ -38,4 +38,11 @@
 
 ---
 
+## Umsetzungsstand (Stand 2026-03-31)
+
+- **F-META (P0):** **umgesetzt** — `assets/css/base.css` (`.meta-bar`, Syllabus-Chip, `--chrome-meta-*`); **11** Kern-Lernseiten; visuelle Sollwerte **04d** Teil **B.11**. Duplizierte Inline-Styles für **`.meta-bar`** auf **04a-ha4**, **04c-ha5-testfallentwurf**, **05a-ha5-testkonzept**, **00a-ha-einordnung** entfernt (ein globales Stylesheet).
+- **F-LEGEND** und weitere F-* außerhalb **F-META:** nicht Inhalt dieser Datei; siehe **04d B.12** bzw. **03-token-mapping**.
+
+---
+
 *Ende 04b.*

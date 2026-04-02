@@ -63,6 +63,22 @@
   --chip-gap: 0.4rem;
   --chip-border: 1px solid rgba(0, 0, 0, 0.08);
   --chip-font-size: 13px;
+
+  /* F-LEGEND — Seitenlegende (04d B.12.9) */
+  --legend-gap: 1rem;
+  --legend-padding-y: 0.65rem;
+  --legend-padding-x: 1rem;
+  --legend-margin-bottom: 1.5rem;
+  --legend-font-size: 0.8125rem;
+  --legend-line-height: 1.4;
+  --legend-surface: rgba(255, 255, 255, 0.45);
+  --legend-swatch-size: 12px;
+  --legend-item-gap: 0.5rem;
+  /* Semantische Aliase (Callouts, Korrekturleiste 01c; gleiche Werte wie C-SYLLABUS / C-PRAXIS) */
+  --ok: var(--ctfl);
+  --ok-bg: var(--ctfl-bg);
+  --warn: var(--praxis);
+  --warn-bg: var(--praxis-bg);
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
@@ -227,4 +243,145 @@ main { width: 100%; }
   border: var(--chip-border);
   vertical-align: middle;
   flex-shrink: 0;
+}
+
+/*
+ * F-LEGEND — Seitenlegende unterhalb F-META (04d B.12)
+ * Block .legend; Elemente .legend__item, .legend__swatch; optional .legend__sep
+ */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: var(--legend-gap);
+  padding: var(--legend-padding-y) var(--legend-padding-x);
+  margin-top: 0;
+  margin-bottom: var(--legend-margin-bottom);
+  border-radius: 8px;
+  border: 1px solid var(--bdr);
+  background: var(--legend-surface);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: var(--legend-font-size);
+  font-weight: 400;
+  line-height: var(--legend-line-height);
+  color: var(--mid);
+}
+.legend strong {
+  color: var(--text);
+}
+
+.legend__item,
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: var(--legend-item-gap);
+  min-height: 1.25rem;
+}
+
+.legend__swatch,
+.legend-swatch {
+  box-sizing: border-box;
+  width: var(--legend-swatch-size);
+  height: var(--legend-swatch-size);
+  flex-shrink: 0;
+  border-radius: 50%;
+}
+
+/* Kachel-Variante (B.12.4) — z. B. Verfahrensklassen, SDLC-Farbfelder */
+.legend__swatch--tile,
+.legend-swatch--tile {
+  border-radius: 3px;
+}
+
+/* Vertikaler Trenner zwischen Legenden-Gruppen (02c) */
+.legend__sep {
+  width: 1px;
+  align-self: stretch;
+  min-height: 1.25rem;
+  background: var(--bdr);
+  margin: 0 0.5rem;
+  flex-shrink: 0;
+}
+
+/* Landkarte — Farbpunkte Kapitelkacheln */
+.legend__swatch--ctfl { background: var(--ctfl); }
+.legend__swatch--praxis { background: var(--praxis); }
+.legend__swatch--advanced { background: var(--advanced); }
+.legend__swatch--extra { background: var(--extra); }
+
+/* Hypozykel SDLC / ISTQB (02a, 02b) — Kacheln + Ausnahme T2-Ring (B.12) */
+.legend__swatch--sdlc { background: #b3cdb6; border-radius: 3px; }
+.legend__swatch--istqb { background: #a5bfce; border-radius: 3px; }
+.legend__swatch--t2 { background: #c8a96a; border-radius: 3px; }
+.legend__swatch--t2ring {
+  width: 22px;
+  height: 0;
+  min-height: 0;
+  border-radius: 0;
+  background: transparent;
+  border: none;
+  border-top: 2px dashed rgba(200, 169, 106, 0.55);
+  margin-top: 1px;
+}
+
+/* Testmittel (01c): Korrekturleiste + CTFL-Fix-Tag — 04d B.10 (Token, keine Seiten-Hardcodes) */
+.correction-bar {
+  background: var(--warn-bg);
+  border: 1px solid rgba(156, 106, 42, 0.25);
+  border-left: 3px solid var(--warn);
+  border-radius: 0 8px 8px 0;
+  padding: 0.7rem 1.1rem;
+  margin-bottom: 1.8rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: var(--warn);
+  line-height: 1.6;
+}
+.correction-bar strong {
+  font-weight: 700;
+}
+.correction-bar table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0.5rem;
+  font-size: 11.5px;
+}
+.correction-bar td {
+  padding: 0.2rem 0.6rem;
+  vertical-align: top;
+}
+.correction-bar td:first-child {
+  font-weight: 700;
+  color: var(--warn);
+  white-space: nowrap;
+}
+.correction-bar td:nth-child(2) {
+  color: var(--mid);
+}
+.correction-bar td:nth-child(3) {
+  color: var(--ok);
+  font-weight: 600;
+}
+
+.ctfl-fix {
+  display: inline-flex;
+  align-items: center;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 9px;
+  font-weight: 700;
+  padding: 0.05rem 0.35rem;
+  border-radius: 3px;
+  margin-left: 0.4rem;
+  background: var(--ok-bg);
+  color: var(--ok);
+  border: 1px solid rgba(74, 124, 89, 0.3);
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+@media (max-width: 480px) {
+  .legend {
+    gap: 0.75rem;
+  }
 }

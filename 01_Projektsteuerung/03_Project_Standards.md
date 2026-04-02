@@ -247,7 +247,7 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 
 ### QA_Lernwebseite — gemeinsamer Seitenrahmen
 
-- **Unterseiten** nutzen den **gemeinsamen sichtbaren Rahmen** (Navigation, Titel, Untertitel, optional Legende/Meta, Inhalt, Footer).  
+- **Unterseiten** nutzen den **gemeinsamen sichtbaren Rahmen** (Navigation, Titel, Untertitel, **meta-bar**, optional **Seitenlegende** `nav.legend`, Inhalt, Footer). **Technik und Platz** der Legende: **04d** Teil **B.12** (**F-LEGEND**); **keine** Standort-Ausnahmen pro Seite.  
 - **Index (`index.html`):** bewusste Ausnahme — **Einstiegs-/Übersichtsseite**; **Karten** ersetzen dort die **obere** Navigationslogik der Unterseiten.  
 - **Formular- / A4-Seiten:** kein eigener „Sondertyp“ im Sinne eines völlig freien Layouts außerhalb des Systems; **Abweichungen** primär im **lokalen Formular-/A4-Inhaltsbereich** (technisch gekapselt).  
 - **Dokument-/A4-Modus:** eigener **Präsentations-/Layoutmodus** innerhalb desselben Systems — Rahmen im **[01_Project_Charter.md](01_Project_Charter.md)**; Umsetzungs- und Konsistenzregeln in **diesem Dokument** (Abschnitt 6 und 7).
@@ -269,6 +269,7 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 - **SOLL-Codes** (C / F / S / P) und Brücke zu Session 3: `designsystem-workshop/02f-soll-taxonomie-session3-2026-03-30.md`.  
 - **IST-Typen** (Session 2): `designsystem-workshop/02-informations-taxonomie-2026-03-30.md`.  
 - **Design-Taxonomie (definiert, Pilot-Phase):** IST→SOLL→Token — `designsystem-workshop/03-token-mapping-2026-04-01.md`; **Umsetzung** der **ca. 15–30** Ziel-Variablen **schrittweise** in `02_Portfolio/QA_Lernwebseite/assets/css/` — siehe [02_Project_Status.md](02_Project_Status.md).
+- **Domain CTFL — meta-bar & Seitenlegende:** `designsystem-workshop/04d-domain-ctfl-lernwebsite-2026-04-02.md` (**B.11** F-META, **B.12** F-LEGEND); **Redaktion** (Labels, *wann* Legende, **ISTQB K-Stufen** im **Hinweis** — **§2.4**): `designsystem-workshop/05-redaktionelle-harmonisierung-2026-04-03.md`.
 - **Design-Spec-Cluster (Einstieg, Priorität, Domain CTFL):** `designsystem-workshop/04-design-system-overview.md` — **ergänzt** das Token-Mapping um **04a–d**; **kein** zweites normatives Mapping; Drift-Vermeidung: normative Tabelle bleibt **03-token-mapping**.
 
 ---

@@ -17,20 +17,18 @@
       --co: #6a4a8c; --co-bg: #d4c4e0;
     }
     body { font-size: var(--fs); padding: 0 3rem 4rem; max-width: 1400px; margin: 0 auto; }
-    /* .meta-bar + Syllabus-Chip: assets/css/base.css (B.11) */
+    /* .meta-bar + Syllabus-Chip: assets/css/base.css (B.11); F-LEGEND .legend in base.css (B.12); Verfahrensfarben lokal */
     .info-box { padding: .9rem 1.1rem; margin-bottom: 1.5rem; background: #e8f0e8; border-left: 4px solid var(--bb); border-radius: 4px; font-size: 0.9rem; }
     .section { margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .section__header { padding: .7rem 1.2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .04em; background: rgba(0,0,0,0.04); border-bottom: 1px solid var(--bdr); }
     .section__body { padding: 1rem; background: rgba(255,255,255,0.35); }
     .viz-area { width: 100%; overflow-x: auto; }
     .viz-area svg { display: block; width: 100%; height: auto; }
-    .legend { display: flex; flex-wrap: wrap; justify-content: center; gap: 1.5rem; padding: .8rem 1.2rem; margin-bottom: 1.5rem; background: rgba(255,255,255,0.45); border: 1px solid var(--bdr); border-radius: 8px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: var(--mid); }
-    .legend-item { display: flex; align-items: center; gap: .5rem; }
-    .legend-swatch { width: 14px; height: 14px; border-radius: 3px; flex-shrink: 0; }
-    .legend-swatch--bb { background: var(--bb-bg); border: 1px solid rgba(74,124,89,0.4); }
-    .legend-swatch--wb { background: var(--wb-bg); border: 1px solid rgba(42,84,124,0.4); }
-    .legend-swatch--ex { background: var(--ex-bg); border: 1px solid rgba(156,106,42,0.4); }
-    .legend-swatch--co { background: var(--co-bg); border: 1px solid rgba(106,74,140,0.4); }
+    /* F-LEGEND: Container in base.css (B.12); Farben nur hier (Seiten-:root) */
+    .legend__swatch--vf-bb { background: var(--bb-bg); border: 1px solid rgba(74,124,89,0.4); }
+    .legend__swatch--vf-wb { background: var(--wb-bg); border: 1px solid rgba(42,84,124,0.4); }
+    .legend__swatch--vf-ex { background: var(--ex-bg); border: 1px solid rgba(156,106,42,0.4); }
+    .legend__swatch--vf-co { background: var(--co-bg); border: 1px solid rgba(106,74,140,0.4); }
     .card-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
     @media (max-width: 1000px) { .card-grid { grid-template-columns: 1fr 1fr; } }
     @media (max-width: 600px) { .card-grid { grid-template-columns: 1fr; } }
@@ -93,13 +91,21 @@
 <main id="main">
   <div class="meta-bar" role="region" aria-label="Seitenkontext">
     <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Inhalt nach ISTQB CTFL Lehrplan (Syllabus)"></span>
-    <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB 2025)</span>
-    <span><strong>Kontext:</strong> Kapitel 4 — Testanalyse und -entwurf</span>
-    <span><strong>Inhalt:</strong> Vier Verfahrensklassen, 11 Einzelverfahren, HA-Zuordnung in Grafik</span>
+    <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</span>
+    <span><strong>Syllabus:</strong> Kap. 4 — Überblick Testverfahren (Struktur 4.1–4.5)</span>
+    <span><strong>Lernziele:</strong> FL-4.1.1 (K2) — Einordnung Black-Box, White-Box, erfahrungsbasiert, kollaborativ</span>
+    <span><strong>Hinweis:</strong> Vier Verfahrensklassen, 11 Einzelverfahren, HA-Zuordnung in Grafik · keine Vertiefung einzelner Techniken (FL-4.2–4.5) · <strong>K-Stufen:</strong> K1 (erinnern) · K2 (verstehen) · K3 (anwenden)</span>
   </div>
 
+  <nav class="legend" aria-label="Legende Verfahrensklassen">
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile legend__swatch--vf-bb" aria-hidden="true"></span>4.2 — Black-Box-Testverfahren</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile legend__swatch--vf-wb" aria-hidden="true"></span>4.3 — White-Box-Testverfahren</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile legend__swatch--vf-ex" aria-hidden="true"></span>4.4 — Erfahrungsbasierter Test</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile legend__swatch--vf-co" aria-hidden="true"></span>4.5 — Auf Zusammenarbeit basierender Testansatz</div>
+  </nav>
+
   <div class="info-box" role="note">
-    <strong>Hinweis:</strong> Die Grafik zeigt die Struktur der Testverfahren nach CTFL 4.0: vier Oberkategorien (4.2–4.5) mit zugeordneten Einzelverfahren. HA-Badges verweisen auf Hausaufgaben im Curriculum. Die Legende unten erklärt die Farben; die Karten fassen jede Verfahrensklasse kurz zusammen.
+    <strong>Hinweis:</strong> Die Grafik zeigt die Struktur der Testverfahren nach CTFL 4.0: vier Oberkategorien (4.2–4.5) mit zugeordneten Einzelverfahren. HA-Badges verweisen auf Hausaufgaben im Curriculum. Die <strong>Legende</strong> (direkt unter der Kontextzeile) erklärt die Farben; die Karten fassen jede Verfahrensklasse kurz zusammen.
   </div>
 
   <section class="section" aria-labelledby="viz-heading">
@@ -243,13 +249,6 @@
       </div>
     </div>
   </section>
-
-  <nav class="legend" aria-label="Legende Verfahrensklassen">
-    <div class="legend-item"><span class="legend-swatch legend-swatch--bb" aria-hidden="true"></span>4.2 — Black-Box-Testverfahren</div>
-    <div class="legend-item"><span class="legend-swatch legend-swatch--wb" aria-hidden="true"></span>4.3 — White-Box-Testverfahren</div>
-    <div class="legend-item"><span class="legend-swatch legend-swatch--ex" aria-hidden="true"></span>4.4 — Erfahrungsbasierter Test</div>
-    <div class="legend-item"><span class="legend-swatch legend-swatch--co" aria-hidden="true"></span>4.5 — Auf Zusammenarbeit basierender Testansatz</div>
-  </nav>
 
   <section class="section" aria-labelledby="cards-heading">
     <div class="section__header" id="cards-heading">Verfahrensklassen — Kurzüberblick</div>

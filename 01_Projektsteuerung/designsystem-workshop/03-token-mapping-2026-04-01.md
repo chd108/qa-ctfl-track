@@ -1,6 +1,6 @@
 # Session 3: IST → SOLL → Token-Mapping
 
-**Stand:** 2026-04-01  
+**Stand:** 2026-04-01 · **F-LEGEND**-Zeile ergänzt 2026-03-31 (Abgleich **04d** B.12.9)  
 **Ort:** `01_Projektsteuerung/designsystem-workshop/`  
 **Normative SOLL-Basis:** [02f-soll-taxonomie-session3-2026-03-30.md](02f-soll-taxonomie-session3-2026-03-30.md) · IST-Inventar u. a. [komponenten-analyse-2026-03-30.md](komponenten-analyse-2026-03-30.md)
 
@@ -47,6 +47,7 @@
 | IST | SOLL | Token | Hinweis | Was passiert? | Beispiel IST |
 |-----|------|-------|---------|---------------|--------------|
 | `.meta-bar` (inline auf Hauptsystem-Seiten) | **F-META** | `--chrome-meta-bg`, `--chrome-meta-border`, `--chrome-meta-text` | Web (+ teils A4) | Die **Kontextzeile** unter der Navigation (Kap., Bezug) sieht **überall** gleich aus und nutzt gemeinsame Variablen. | `pages/01b-grundlagen.html` — Zeile „Kap. 1 …“ unterhalb Nav |
+| **`nav.legend` / `.legend` / `.legend__item` / `.legend__swatch`** in `base.css` | **F-LEGEND** | `--legend-gap`, `--legend-padding-*`, `--legend-margin-bottom`, `--legend-font-size`, `--legend-line-height`, `--legend-surface`, `--legend-swatch-size`, `--legend-item-gap` (+ seitenbezogene Swatch-Modifier nur bei Bedarf) | Web | **Seitenlegende** unterhalb F-META, einheitlicher **Standort** (04d B.12, keine Ausnahmen). | `pages/01-landkarte.html`, `01a-glossar.html`, `02a`/`02b`, `02c`, `04-testverfahren.html` |
 | `.info-box--note` (Dokumentenkette / blaue Kette) | **F-CHAIN** | `--callout-chain-bg`, `--callout-chain-border` (*oder* gemeinsam mit F-INFO, bis unterscheidbar) | Web, Callout | **Verweise auf die HA-/Dokumentenkette** haben ein **einheitliches** „Ketten“-Erscheinungsbild. | `pages/04c-ha5-testfallentwurf.html` — Box „Dokumentenkette — HA4 → …“ |
 | `.term-note` (A4) | **F-TERM** | `--callout-term-border`, `--callout-term-bg` | A4, Screen | **Begriffs-Klarstellungen** (Testprotokoll vs. Bericht) sind visuell **eigen** und nicht mit normalen Infoboxen verwechselbar. | `pages/06a-ha6-testprotokoll-a4.html` — Begriffshinweise (falls vorhanden) |
 | `.info-box`, `.info-box--note` (allgemeine Erklärung / Wegweiser) | **F-INFO** | `--callout-info-bg`, `--callout-info-border`, `--callout-info-title` | Web (+ inline) | **Neutrale Infokästen** (blau/grau) werden **über Seiten hinweg** gleich gestaltet. | `pages/01b-grundlagen.html` — Kästen „Was ist Testing?“ o. ä.; `pages/05a-ha5-testkonzept.html` — viele `.info-box` |

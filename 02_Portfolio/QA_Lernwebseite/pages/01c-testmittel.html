@@ -43,22 +43,7 @@
     }
     .intro-box strong { color: var(--text); }
 
-    /* Korrekturhinweis */
-    .correction-bar {
-      background: var(--warn-bg); border: 1px solid rgba(156,106,42,0.25);
-      border-left: 3px solid var(--warn); border-radius: 0 8px 8px 0;
-      padding: .7rem 1.1rem; margin-bottom: 1.8rem;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 12px; color: var(--warn); line-height: 1.6;
-    }
-    .correction-bar strong { font-weight: 700; }
-    .correction-bar table {
-      width: 100%; border-collapse: collapse; margin-top: .5rem; font-size: 11.5px;
-    }
-    .correction-bar td { padding: .2rem .6rem; vertical-align: top; }
-    .correction-bar td:first-child { font-weight: 700; color: #8a5a2a; white-space: nowrap; }
-    .correction-bar td:nth-child(2) { color: #5a3a10; }
-    .correction-bar td:nth-child(3) { color: var(--ok); font-weight: 600; }
+    /* Korrekturhinweis: .correction-bar / .ctfl-fix → assets/css/base.css (04d B.10) */
 
     /* Aktivitäten-Grid */
     .activity-grid {
@@ -121,17 +106,6 @@
     }
     .mittel-name { font-weight: 600; color: var(--text); }
     .mittel-desc { color: var(--mid); font-size: 12px; margin-top: .1rem; }
-
-    /* Korrektur-Tag im Item */
-    .ctfl-fix {
-      display: inline-flex; align-items: center;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 9px; font-weight: 700; padding: .05rem .35rem;
-      border-radius: 3px; margin-left: .4rem;
-      background: var(--ok-bg); color: var(--ok);
-      border: 1px solid rgba(74,124,89,0.3);
-      vertical-align: middle; white-space: nowrap;
-    }
 
     /* Übersichtstabelle */
     .overview-section {
@@ -238,10 +212,10 @@
 <main id="main">
 <div class="meta-bar" role="region" aria-label="Seitenkontext">
   <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Inhalt nach ISTQB CTFL Lehrplan (Syllabus)"></span>
-  <div><strong>CTFL-Referenz:</strong> Kap. 1.4.3 (FL-1.4.3 K2)</div>
-  <div><strong>Lernziel:</strong> Testmittel, die die Testaktivitäten unterstützen, benennen</div>
-  <div><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</div>
-  <div><strong>Kursreferenz:</strong> Udemy Kap. 2.5 → entspricht CTFL Kap. 1.4.3</div>
+  <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</span>
+  <span><strong>Syllabus:</strong> Kap. 1.4.3 (FL-1.4.3 K2)</span>
+  <span><strong>Lernziele:</strong> Testmittel benennen, die die Testaktivitäten unterstützen</span>
+  <span><strong>Hinweis:</strong> Kursreferenz: Udemy Kap. 2.5 → CTFL Kap. 1.4.3 · <strong>K-Stufen:</strong> K1 (erinnern) · K2 (verstehen) · K3 (anwenden)</span>
 </div>
 
 <div class="intro-box">

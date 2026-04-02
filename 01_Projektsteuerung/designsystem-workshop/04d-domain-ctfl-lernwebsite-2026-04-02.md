@@ -1,11 +1,11 @@
 # Domain: CTFL-Orientierung (Lernwebsite)
 
-**Stand:** 2026-04-02 · **Teil B Spec:** 2026-04-03 (inkl. B.11 Visuelle Spezifikation)  
+**Stand:** 2026-04-02 · **Teil B Spec:** 2026-04-03 (inkl. B.11 F-META, **B.12 F-LEGEND**)  
 **Ort:** `01_Projektsteuerung/designsystem-workshop/`  
 **Cluster-Überblick:** [04-design-system-overview.md](04-design-system-overview.md)  
-**Normative technische Anbindung:** [03-token-mapping-2026-04-01.md](03-token-mapping-2026-04-01.md) (**C-SYLLABUS**, **F-META**)
+**Normative technische Anbindung:** [03-token-mapping-2026-04-01.md](03-token-mapping-2026-04-01.md) (**C-SYLLABUS**, **F-META**, **F-LEGEND**)
 
-Diese Datei bündelt **Teil A — Entscheidungsregeln** und **Teil B — Design-Spec** (Syllabus-Chip / meta-bar). Inhalt übernommen aus den vormals getrennten Dateien `04-ctfl-orientierung-regeln-2026-04-02.md` und `04-design-spec-ctfl-meta-chip-2026-04-02.md` (ersetzt durch diese Datei).
+Diese Datei bündelt **Teil A — Entscheidungsregeln** und **Teil B — Design-Spec** (Syllabus-Chip / meta-bar / **Seitenlegende**). Inhalt übernommen aus den vormals getrennten Dateien `04-ctfl-orientierung-regeln-2026-04-02.md` und `04-design-spec-ctfl-meta-chip-2026-04-02.md` (ersetzt durch diese Datei).
 
 ---
 
@@ -45,7 +45,7 @@ Eine **zu harte** Lesart („kein CTFL mehr als einmal“, „nicht dreimal im B
 
 ---
 
-## Teil B — Design-Spec: Syllabus-Chip (visuell) + meta-bar (F-META)
+## Teil B — Design-Spec: Syllabus-Chip (visuell) + meta-bar (F-META) + Seitenlegende (F-LEGEND)
 
 **Entscheidung (Option A):** Der **Syllabus-Chip** ist **nur visuell** — grüne Fläche/Badge, **ohne** sichtbaren Text im Chip (kein „CTFL 4.0.2“ im Element). Semantik für Hilfstechnologien über **`aria-label`** auf dem Chip-Element. Pilot-Code folgt dieser Spec.
 
@@ -57,6 +57,7 @@ Teil B definiert **konkret** HTML/CSS/Tokens für:
 
 - **F-META:** die Zeile `.meta-bar` unterhalb `page-chrome` (bestehendes Muster).
 - **C-SYLLABUS:** ein **optionaler** grüner **Syllabus-Chip** in oder neben der meta-bar als **einheitliches Erkennungsmerkmal** (siehe Teil A).
+- **F-LEGEND:** die **Seitenlegende** `.legend` unterhalb F-META, wo **Farben/Symbole** der Karte oder des Diagramms erklärt werden (**B.12**).
 
 Ziel: **eine** nachvollziehbare Umsetzung für den Pilot — ohne jede Lernseite neu zu erfinden.
 
@@ -68,6 +69,7 @@ Ziel: **eine** nachvollziehbare Umsetzung für den Pilot — ohne jede Lernseite
 |-----------|----------------------|
 | **C-SYLLABUS** | Visueller Chip (Badge); Farben über `--chip-syllabus-*` |
 | **F-META** | Container `.meta-bar`; optional `--chrome-meta-*` **nach** Einführung in `base.css` (Pilot Schritt 2) |
+| **F-LEGEND** | Container `.legend`; Items/Swatches; Tokens `--legend-*` (**B.12**) |
 
 Die **vollständige** IST→SOLL→Token-Tabelle bleibt in **03**; hier keine Duplikation der Mapping-Zeilen.
 
@@ -206,11 +208,133 @@ Die **vollständige** IST→SOLL→Token-Tabelle bleibt in **03**; hier keine Du
 
 ---
 
+### B.12 Visuelle Spezifikation — Seitenlegende (F-LEGEND)
+
+**Ziel:** Ein **Soll-Raster** für die **Kontextzeile unterhalb** der meta-bar (F-META), wo **Farben/Symbole** der **Landkarte, Diagramme oder SVGs** erklärt werden — **nicht** die redaktionelle Regel *wann* eine Legende nötig ist (siehe [05-redaktionelle-harmonisierung-2026-04-03.md](05-redaktionelle-harmonisierung-2026-04-03.md)); hier nur **Darstellung** und **Technik**.
+
+**Standort (verbindlich, keine Ausnahmen):** **`nav.legend`** steht in **`main`** **unmittelbar nach** **`div.meta-bar`** und **vor** jedem weiteren Block (Infobox, Sections, Visualisierung). Die Legende bezieht sich inhaltlich auf die Grafik/Tabelle weiter unten; die Position ist **site-weit einheitlich**.
+
+**Semantik:** **F-LEGEND** = Fläche **`.legend`** mit **Items** + **Swatches**; **kein** Ersatz für F-META (Syllabus-Quelle, Lernziele).
+
+**IST → Soll (Umsetzung):** **F-LEGEND** ist in **`assets/css/base.css`** mit **`--legend-*`** und BEM **`.legend` / `.legend__item` / `.legend__swatch`** verankert; die **11 Kern-Lernseiten** nutzen **`nav.legend`** unmittelbar **nach** **`div.meta-bar`** (siehe **Standort** oben — **ohne** Standort-Ausnahmen). Verbleibende Feinarbeit: **03-token-mapping** um Zeile **F-LEGEND** ergänzen; Inline-Reduktion wo noch lokal dupliziert.
+
+#### B.12.1 Typografie (`.legend`)
+
+| Eigenschaft | Soll (Pilot) | Anmerkung |
+|-------------|----------------|-----------|
+| `font-family` | `"Helvetica Neue", Helvetica, Arial, sans-serif` | Wie B.11.1 |
+| `font-size` | `0.8125rem` (13px bei 16px Root) | **Eine** Stufe kleiner als meta-bar (`0.9rem`), damit F-LEGEND untergeordnet wirkt |
+| `font-weight` | `400` (normal) | |
+| `line-height` | `1.4` | Explizit; mehrsprachige oder zweizeilige Labels nicht „kleben“ |
+| `color` | `var(--mid)` | |
+| `strong` | `color: var(--text)` | Falls in Items genutzt |
+
+**Konkrekt (CSS-Ausschnitt, Ziel `base.css`):**
+
+```css
+.legend {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  color: var(--mid);
+}
+```
+
+#### B.12.2 Abstände & Layout (Container `.legend`)
+
+| Eigenschaft | Soll (Pilot) | Anmerkung |
+|-------------|----------------|-----------|
+| `display` | `flex` | |
+| `flex-wrap` | `wrap` | |
+| `justify-content` | `center` | |
+| `align-items` | `center` | |
+| `gap` | `1rem` | Token: `--legend-gap` |
+| `padding` | `0.65rem 1rem` | Token: `--legend-padding-y` / `--legend-padding-x` |
+| `margin-bottom` | `1.5rem` | Gleicher Abstand wie F-META nach unten; Token: `--legend-margin-bottom` |
+| `margin-top` | `0` | Keine abweichenden Sonderfälle pro Seite |
+| `border-radius` | `8px` | Wie B.11.2 |
+| `border` | `1px solid var(--bdr)` | |
+| `background` | `rgba(255, 255, 255, 0.45)` | Etwas **zurückhaltender** als meta-bar `0.55`; Token: `--legend-surface` |
+
+#### B.12.3 Legenden-Item (`.legend__item`)
+
+| Eigenschaft | Soll (Pilot) |
+|-------------|----------------|
+| `display` | `flex` |
+| `align-items` | `center` |
+| `gap` | `0.5rem` | Token: `--legend-item-gap` |
+| `min-height` | optional `1.25rem` | Touch-Follow-up |
+
+**BEM (Soll):** Block **`.legend`**, Elemente **`.legend__item`**, **`.legend__swatch`**. Bestehende Klasse **`.legend-item`** (ohne BEM) → Migration auf **`legend__item`** im Rollout.
+
+#### B.12.4 Swatch (`.legend__swatch`)
+
+| Eigenschaft | Soll (Pilot) | Anmerkung |
+|-------------|----------------|-----------|
+| Breite × Höhe | `12px` × `12px` (oder `0.75rem`) | **Eine** Standardgröße; Token: `--legend-swatch-size` |
+| `flex-shrink` | `0` | |
+| `border-radius` | `50%` (**Punkt**) **oder** `3px` (**Kachel**) | Zwei erlaubte Varianten: Modifikator **`.legend__swatch--tile`** für eckige Kacheln (z. B. Verfahrensklassen) |
+| `border` | optional `1px solid …` | Wo semantisch nötig (Kontrast zum Hintergrund) |
+| `aria-hidden` | `true` auf **dekorativen** Swatches | Bedeutung nur im **sichtbaren Text** des Items |
+
+**Kein** Mix aus 11px / 12px / 14px ohne dokumentierten Modifikator (z. B. **`.legend__swatch--lg`** = `14px` nur nach Freigabe).
+
+#### B.12.5 Responsive
+
+| Regel | Soll (Pilot) |
+|--------|----------------|
+| Standard | `flex-wrap: wrap` reicht |
+| Schmal | Optional unter `max-width: 480px`: `gap` auf `0.75rem` reduzieren |
+| Überlauf | Optional: `max-width: min(100%, 90vw)` auf `.legend` bei schmalen Viewports — **falls** global eingeführt; keine seitenbezogenen Sonderklassen |
+
+#### B.12.6 Zustände (Hover / Focus)
+
+| Element | Hover | Focus |
+|---------|--------|--------|
+| Container `.legend` | **kein** Pflicht-Hover | — |
+| **Keine** interaktiven Steuerelemente in der Standard-Legende | — | — |
+
+#### B.12.7 Druck / A4
+
+- **Follow-up:** `print-color-adjust` auf Swatches, wo **Farbe** in PDF-Abgaben sichtbar bleiben soll — analog `doc-a4.css`-Muster.
+
+#### B.12.8 Accessibility
+
+| Thema | Vorgabe |
+|-------|---------|
+| **Container** | **`nav`** mit **`aria-label`** **spezifisch** (z. B. „Legende Farben Kapitelkacheln“, „Legende Hypozykel“, „Legende Teststufen“, „Legende Verfahrensklassen“) — **nicht** nur „Legende“ ohne Kontext |
+| **Alternative** | `role="region"` + `aria-label` nur wenn **`nav`** semantisch unpassend — **Soll:** bevorzugt **`nav`** für seiteninterne Orientierung |
+| **Swatch** | `aria-hidden="true"` wenn Text daneben die Bedeutung trägt |
+
+#### B.12.9 Design-Tokens (`:root` / Pilot `base.css`)
+
+| Token | Wert (Pilot) |
+|-------|----------------|
+| `--legend-gap` | `1rem` |
+| `--legend-padding-y` | `0.65rem` |
+| `--legend-padding-x` | `1rem` |
+| `--legend-margin-bottom` | `1.5rem` |
+| `--legend-font-size` | `0.8125rem` |
+| `--legend-line-height` | `1.4` |
+| `--legend-surface` | `rgba(255, 255, 255, 0.45)` |
+| `--legend-swatch-size` | `12px` |
+| `--legend-item-gap` | `0.5rem` |
+
+Bereits vorhandene Tokens nutzen: `var(--bdr)`, `var(--mid)`, `var(--text)`.
+
+#### B.12.10 Abgleich IST → Soll (Pilot-Aufgabe)
+
+- Seiten mit **abweichendem** gap, padding, Schriftgröße, Swatch-Größe oder veralteten Klassennamen (`legend-item` vs `legend__item`) auf **B.12.1–B.12.4** angleichen; verbleibende **IST-Abweichungen** nur **bewusst** in einer Prüftabelle festhalten — **kein** stillschweigendes Mischen (keine **Standort**-Sonderregeln für `.legend`).
+- **Pilot:** Tokens in `base.css` → **eine** Referenzseite (empfohlen: `04-testverfahren.html` oder `01-landkarte.html`) → Rollout Landkarte, 02a, 02b, 02c, 04; Inline-`<style>` reduzieren.
+
+---
+
 ### B.7 Abgrenzung
 
 | Baustein | Abgrenzung |
 |----------|------------|
 | **`.chip--syllabus-visual` in meta-bar** | Nur **grünes** Erkennungsmerkmal; **kein** Text im Chip. Kapitel/Version stehen in **Header** oder **meta-bar-Textspalten**. |
+| **F-LEGEND (`.legend`)** | **Schlüssel** zu Farben/Symbolen **auf derselben Seite** (Karte, Diagramm, SVG); **kein** zweites Syllabus-Signal, **kein** Ersatz für F-META. Redaktion **wann** Legende: **05**; **wie** sichtbar: **B.12**. |
 | **Landkarte `.tag--ctfl`** | Text-Chips mit Ref — **anderes** Muster, gleiche **Farbfamilie** über `--chip-syllabus-*` / `--ctfl-bg`. |
 | **`.ctfl-fix`** (z. B. 01c) | Kleines **Text**-Label „CTFL“ an Begriffen — **kein** Ersatz für den Meta-Syllabus-Chip; beide dürfen auf einer Seite coexistieren (Teil A). |
 | **correction-bar** | Inline-„CTFL“-Hervorhebung — perspektivisch auf **Klassen + Token** angleichen (Pilot-Follow-up), nicht Teil des ersten Chip-in-meta-bar-Schritts zwingend. |
@@ -243,10 +367,11 @@ Die **vollständige** IST→SOLL→Token-Tabelle bleibt in **03**; hier keine Du
 
 ### B.10 Follow-up
 
-- Meta-bar-Styles **global** in `base.css` / `subpage.css` bündeln; Seiten-Inline-`<style>` abbauen.
-- **correction-bar** / `.ctfl-fix`: Farben auf Token umstellen (keine Hardcodes `#cde8d2`).
-- **04b** (`F-META`): nach Pilot Abschnitt „F-META umgesetzt“ ergänzen.
-- **Syllabus-Chip punktuell** außerhalb meta-bar: gleiche Klassen + `aria-label`, nicht neue Farbe erfinden.
+- Meta-bar-Styles **global** in `base.css` / `subpage.css` bündeln; Seiten-Inline-`<style>` abbauen — **Stand 2026-03-31:** **04a / 04c / 05a / 00a** ohne lokales **`.meta-bar`**-CSS; weitere Seiten bei Bedarf nachziehen.
+- **F-LEGEND:** **erledigt** — `base.css` + Kernseiten; **03-token-mapping:** Zeile **F-LEGEND** / `--legend-*` — bei Token-Drift mit **04d B.12.9** abgleichen.
+- **correction-bar** / `.ctfl-fix`: **erledigt** — in `base.css` mit **`--ok` / `--warn`** (Aliase zu **C-SYLLABUS** / **C-PRAXIS**), keine Seiten-Hardcodes für Farben auf **01c**.
+- **04b** (`F-META`): **erledigt** — Abschnitt *Umsetzungsstand* in **04b-semantic-function-2026-04-02.md**.
+- **Syllabus-Chip punktuell** außerhalb meta-bar: gleiche Klassen + `aria-label`, nicht neue Farbe erfinden — **offen** nur bei neuen Sonderfällen.
 
 ---
 

@@ -15,15 +15,8 @@
       --ms: #b5451b; --ms-bg: #f5d5cc;
     }
     body { font-size: var(--fs); padding: 0 3rem 4rem; }
-    /* .meta-bar + Syllabus-Chip: zentral in assets/css/base.css (B.11) */
+    /* .meta-bar + Syllabus-Chip: zentral in assets/css/base.css (B.11); F-LEGEND .legend in base.css (B.12) */
     .info-box { padding: .9rem 1.1rem; margin-bottom: 1.5rem; background: var(--praxis-bg); border-left: 4px solid var(--praxis); border-radius: 4px; font-size: 0.9rem; }
-    .legend { display: flex; justify-content: center; gap: 1.8rem; flex-wrap: wrap; margin-bottom: 2rem; padding: .8rem 1.2rem; background: rgba(255,255,255,0.45); border: 1px solid var(--bdr); border-radius: 8px; }
-    .legend-item { display: flex; align-items: center; gap: .5rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; color: var(--mid); }
-    .legend-swatch { width: 12px; height: 12px; border-radius: 50%; flex-shrink: 0; }
-    .legend-swatch--ctfl { background: var(--ctfl); }
-    .legend-swatch--praxis { background: var(--praxis); }
-    .legend-swatch--advanced { background: var(--advanced); }
-    .legend-swatch--extra { background: var(--extra); }
     .ms-mark { font-size: 9px; font-weight: 800; color: var(--ms); letter-spacing: .04em; margin-left: .3rem; background: var(--ms-bg); padding: .05rem .3rem; border-radius: 3px; border: 1px solid var(--ms); }
     .ms-mark-inferred { font-size: 9px; font-weight: 700; color: var(--ms); letter-spacing: .04em; margin-left: .3rem; background: transparent; padding: .05rem .3rem; border-radius: 3px; border: 1px dashed var(--ms); opacity: .55; }
     .section { margin-bottom: 0; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
@@ -140,21 +133,19 @@
 <main id="main">
   <div class="meta-bar" role="region" aria-label="Seitenkontext">
     <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Inhalt nach ISTQB CTFL Lehrplan (Syllabus)"></span>
-    <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB 2025)</span>
-    <span><strong>Seite:</strong> Testuniversum (Hauptsystem)</span>
+    <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</span>
+    <span><strong>Syllabus:</strong> Kap. 1–6 — Übersicht (Lehrplan v4.0.2)</span>
+    <span><strong>Seitenrolle:</strong> Testuniversum (Hauptsystem)</span>
+    <span><strong>Hinweis:</strong> <strong>MS</strong> = Masterschool-Curriculum (gesichert); <strong>MS?</strong> = erschlossen. Farben kennzeichnen CTFL-Pflichtstoff, Praxis, Advanced, Kontext/Vollständigkeit — Details siehe Legende unten.</span>
   </div>
 
-  <div class="info-box" role="note">
-    <strong>Hinweis:</strong> MS = Masterschool-Curriculum (gesichert); MS? = erschlossen. Farben kennzeichnen CTFL-Pflicht, Praxis, Advanced, Kontext.
-  </div>
-
-  <nav class="legend" aria-label="Legende">
-    <div class="legend-item"><span class="legend-swatch legend-swatch--ctfl" aria-hidden="true"></span>CTFL-Pflichtstoff (Foundation Level)</div>
-    <div class="legend-item"><span class="legend-swatch legend-swatch--praxis" aria-hidden="true"></span>Praxisrelevant (nicht CTFL)</div>
-    <div class="legend-item"><span class="legend-swatch legend-swatch--advanced" aria-hidden="true"></span>Weiterführend (Advanced Level / ISO)</div>
-    <div class="legend-item"><span class="legend-swatch legend-swatch--extra" aria-hidden="true"></span>Vollständigkeit / Kontext</div>
-    <div class="legend-item"><span class="ms-mark" style="margin-left:0">MS</span> Masterschool (gesichert)</div>
-    <div class="legend-item"><span class="ms-mark-inferred" style="margin-left:0">MS?</span> Masterschool (erschlossen)</div>
+  <nav class="legend" aria-label="Legende Farben Kapitelkacheln">
+    <div class="legend__item"><span class="legend__swatch legend__swatch--ctfl" aria-hidden="true"></span>CTFL-Pflichtstoff (Foundation Level)</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--praxis" aria-hidden="true"></span>Praxisrelevant (nicht CTFL)</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--advanced" aria-hidden="true"></span>Weiterführend (Advanced Level / ISO)</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--extra" aria-hidden="true"></span>Vollständigkeit / Kontext</div>
+    <div class="legend__item"><span class="ms-mark" style="margin-left:0">MS</span> Masterschool (gesichert)</div>
+    <div class="legend__item"><span class="ms-mark-inferred" style="margin-left:0">MS?</span> Masterschool (erschlossen)</div>
   </nav>
 
   <div class="universe-grid">

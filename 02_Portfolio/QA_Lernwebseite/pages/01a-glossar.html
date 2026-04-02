@@ -16,7 +16,8 @@
       --note: #2a547c; --note-bg: #c4d8ee;
     }
     body { font-size: var(--fs); padding: 0 3rem 4rem; max-width: 1400px; margin: 0 auto; }
-    /* .meta-bar + Syllabus-Chip: zentral in assets/css/base.css (B.11) */
+    /* .meta-bar + Syllabus-Chip: base.css (B.11); F-LEGEND .legend + Tokens: base.css (B.12) */
+    .legend .badge { flex-shrink: 0; }
     .info-box { padding: .9rem 1.1rem; margin-bottom: 1.25rem; background: var(--note-bg); border-left: 4px solid var(--note); border-radius: 4px; font-size: 0.9rem; }
     .section { margin-bottom: 1.4rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .section__header { display: flex; align-items: baseline; gap: 1rem; padding: .7rem 1.2rem; flex-wrap: wrap; }
@@ -142,13 +143,16 @@
   <div class="meta-bar" role="region" aria-label="Seitenkontext">
     <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Inhalt nach ISTQB CTFL Lehrplan (Syllabus)"></span>
     <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</span>
-    <span><strong>Umfang:</strong> <strong>97</strong> eindeutige K1-Lemmata · <strong>102</strong> Tabellenzeilen (fünf Begriffe im Lehrplan kapitelweise doppelt)</span>
-    <span><strong>Legende:</strong>
-      <span class="badge badge--syn">Syn</span> Synonym ·
-      <span class="badge badge--nvw">✗</span> Nicht verwenden ·
-      <span class="badge badge--trap">⚠</span> Häufige Verwechslung
-    </span>
+    <span><strong>Syllabus:</strong> K1-Schlüsselbegriffe · Kap. 1–6</span>
+    <span><strong>Funktion:</strong> Nachschlagen · DE/EN · Abkürzungen</span>
+    <span><strong>Hinweis:</strong> <strong>97</strong> / <strong>102</strong> Lemmata-Zählung (siehe Infobox). Symbole in der Spalte „Hinweise“: <strong>Legende</strong> in der Zeile darunter.</span>
   </div>
+
+  <nav class="legend" aria-label="Legende Tabellen-Badges">
+    <div class="legend__item"><span class="badge badge--syn">Syn</span> Synonym</div>
+    <div class="legend__item"><span class="badge badge--nvw">✗</span> Nicht verwenden</div>
+    <div class="legend__item"><span class="badge badge--trap">⚠</span> Häufige Verwechslung</div>
+  </nav>
 
   <div class="info-box" role="note">
     <p><strong>Nachschlagen:</strong> Jedes Kapitel enthält die K1-Pflichtbegriffe des CTFL-Lehrplans. DE/EN und Abkürzungen sind normativ; Hinweise dienen der Einordnung und Abgrenzung.</p>
