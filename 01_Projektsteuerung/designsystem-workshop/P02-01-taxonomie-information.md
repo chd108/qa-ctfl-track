@@ -1,8 +1,15 @@
+Datei erstellt: 2026-03-30  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-30  
+Zweck: Informations-Taxonomie (T-/O-/D-/M-/X-Typen) — Designsystem-Workshop Session 2.  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / Konzept  
+Normative Orientierung: Vorgänger [P01-vision-ziele.md](P01-vision-ziele.md); Grundlage für Session 3
+
+---
+
 # Session 2: Informations-Taxonomie
 
-**Stand:** 2026-03-30  
 **Workshop:** Designsystem — Session 2 von 4  
-**Vorgänger:** [01-vision-ziele-2026-03-30.md](01-vision-ziele-2026-03-30.md)
+**Vorgänger:** [P01-vision-ziele.md](P01-vision-ziele.md)
 
 ---
 
@@ -14,7 +21,7 @@
 | **Wie vorgehen?** | (1) Roh-Typen aus Markup/CSS sammeln → (2) **fachlich** clustern → (3) mit **Lernzielen** (Charter / Session 1) abgleichen → (4) **Soll-Menge** definieren (weniger Klassen-Namen, mehr **Bedeutungstypen**). |
 | **Was fehlt?** | **Eine** bereits beschlossene „offizielle“ Taxonomie im Repo gibt es **nicht** — diese Datei ist der **erste** konsolidierte Vorschlag. Einzelne Seiten nutzen **parallele** Benennungen (`tag--ctfl` vs. `tag-ctfl`). |
 
-**Ausgewertete Quellen:** `01-landkarte.html` (Legende + Tags), `02c-teststufen.html` (`.tag-*`, `.stag-*`, `.aha-box`/`.warn-box`), [komponenten-analyse-2026-03-30.md](komponenten-analyse-2026-03-30.md), [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md), ergänzend Session 1 (Vision/Lernziele).
+**Ausgewertete Quellen:** `01-landkarte.html` (Legende + Tags), `02c-teststufen.html` (`.tag-*`, `.stag-*`, `.aha-box`/`.warn-box`), [IST-02-analyse-komponenten.md](IST-02-analyse-komponenten.md), [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md), ergänzend Session 1 (Vision/Lernziele).
 
 ---
 
@@ -68,7 +75,7 @@
 
 ### 1.5 Website-Analyse — empfohlene *zusätzliche* Typen (noch nicht umgesetzt)
 
-Aus [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md): u. a. **TL;DR / Key Takeaways**, **Callouts** für Praxis vs. Theorie, Icons für **Praxistipp / CTFL-Pflicht / häufige Fehler**, klarere Trennung **Kern vs. Randnotiz**.
+Aus [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md): u. a. **TL;DR / Key Takeaways**, **Callouts** für Praxis vs. Theorie, Icons für **Praxistipp / CTFL-Pflicht / häufige Fehler**, klarere Trennung **Kern vs. Randnotiz**.
 
 ---
 

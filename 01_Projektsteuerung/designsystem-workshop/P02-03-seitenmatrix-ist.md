@@ -1,8 +1,15 @@
+Datei erstellt: 2026-03-30  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-30  
+Zweck: Vollständige Seitenmatrix (`index` + `pages/*.html`) als IST-Basis für Mapping und Rollout-Planung.  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / IST  
+Normative Orientierung: Faktenbasis für [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)
+
+---
+
 # Session 2.6: Vollständige Seitenmatrix (IST)
 
-**Stand:** 2026-03-30  
 **Workshop:** Designsystem — Bestandsaufnahme für Session 3/4  
-**Vorgänger:** [02-informations-taxonomie-2026-03-30.md](02-informations-taxonomie-2026-03-30.md), [02b-darstellungs-patterns-2026-03-30.md](02b-darstellungs-patterns-2026-03-30.md)  
+**Vorgänger:** [P02-01-taxonomie-information.md](P02-01-taxonomie-information.md), [P02-02-darstellung-patterns.md](P02-02-darstellung-patterns.md)  
 **Umfang:** `02_Portfolio/QA_Lernwebseite/index.html` + alle `pages/*.html` (**23** Seiten, **ohne** `templates/`).
 
 ---

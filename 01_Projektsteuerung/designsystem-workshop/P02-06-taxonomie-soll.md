@@ -1,8 +1,15 @@
+Datei erstellt: 2026-03-30  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-04-01  
+Zweck: SOLL-Taxonomie C/F/P/S (Top-down) als Eingabe für Session 3 (Token-Mapping).  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / Konzept → Normativ  
+Normative Orientierung: [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md) baut darauf auf
+
+---
+
 # Session 2f: SOLL-Taxonomie & Weg zu Session 3 (Top-down)
 
-**Stand:** 2026-04-01  
 **Workshop:** Designsystem — **SOLL** vor **IST** (Fundament für Design-Tokens)  
-**Vorgänger:** [01-vision-ziele-2026-03-30.md](01-vision-ziele-2026-03-30.md), [02-informations-taxonomie-2026-03-30.md](02-informations-taxonomie-2026-03-30.md), [02b-darstellungs-patterns-2026-03-30.md](02b-darstellungs-patterns-2026-03-30.md), [02c-vollstaendige-seitenmatrix-2026-03-30.md](02c-vollstaendige-seitenmatrix-2026-03-30.md), [02d-drei-ebenen-modell-2026-03-30.md](02d-drei-ebenen-modell-2026-03-30.md), [02e-diataxis-integration-kritisch-2026-03-30.md](02e-diataxis-integration-kritisch-2026-03-30.md)
+**Vorgänger:** [P01-vision-ziele.md](P01-vision-ziele.md), [P02-01-taxonomie-information.md](P02-01-taxonomie-information.md), [P02-02-darstellung-patterns.md](P02-02-darstellung-patterns.md), [P02-03-seitenmatrix-ist.md](P02-03-seitenmatrix-ist.md), [P02-04-modell-drei-ebenen.md](P02-04-modell-drei-ebenen.md), [P02-05-diataxis-kritik.md](P02-05-diataxis-kritik.md)
 
 **Hinweis:** Im Workshop-Ordner gibt es **keine** Datei `02a`; die Kette ist **02 → 02b → 02c → 02d → 02e → 02f**.
 
@@ -20,8 +27,8 @@
 
 | Quelle | Was sie liefert | Reicht als „Komponenten-SOLL“? |
 |--------|-----------------|--------------------------------|
-| **Session 1** ([01-vision-ziele](01-vision-ziele-2026-03-30.md), Charter, README) | **Warum** die Site existiert: CTFL-Kern, Orientierung, Visualisierung, HA/Portfolio, **zwei Kanäle** (Web + A4), IEEE/ISO als **strukturierende** Referenz für Artefakte | **Ja** für **strategische** Anforderungen — **nein** für eine **geschlossene** Liste von UI-/Dokument-Komponententypen |
-| **Session 2** §4 „Soll-Vorschlag“ ([02-informations-taxonomie](02-informations-taxonomie-2026-03-30.md)) | **Prioritäten** (P0/P1/P2) für **Taxonomie-Bündelung** (Chips, Callouts, …) | **Teil-SOLL** auf **Semantik-Ebene**, **kein** vollständiges **Komponentenverzeichnis** |
+| **Session 1** ([01-vision-ziele](P01-vision-ziele.md), Charter, README) | **Warum** die Site existiert: CTFL-Kern, Orientierung, Visualisierung, HA/Portfolio, **zwei Kanäle** (Web + A4), IEEE/ISO als **strukturierende** Referenz für Artefakte | **Ja** für **strategische** Anforderungen — **nein** für eine **geschlossene** Liste von UI-/Dokument-Komponententypen |
+| **Session 2** §4 „Soll-Vorschlag“ ([02-informations-taxonomie](P02-01-taxonomie-information.md)) | **Prioritäten** (P0/P1/P2) für **Taxonomie-Bündelung** (Chips, Callouts, …) | **Teil-SOLL** auf **Semantik-Ebene**, **kein** vollständiges **Komponentenverzeichnis** |
 | **Session 2d** §6 | Optional **C-***/**F-***/**P-** Namensvorschlag | **Konzeptionell** hilfreich — **nicht** beschlossenes Projekt-SOLL |
 | **Session 2e** | Diátaxis **orthogonal** zu D-*; **kein** Ersatz für Callouts | **Klärung** der Rollen — **kein** SOLL-Katalog |
 | **02b** | **IST-Patterns** (P-TABELLE, P-SVG, …) | **Darstellung IST**, nicht SOLL-Minimum |
@@ -35,14 +42,14 @@
 
 **Top-down:** Von **Lernzielen und Standards** (Charter, README, [03_Project_Standards.md](../03_Project_Standards.md)) → **Schichten** (Session 2d) → **minimale Typmenge** → **Session 3 = Tokens + Komponenten** mappen.
 
-**IA / Taxonomie (Warum drei Schichten, kontrolliertes Vokabular, Problem/Lösung):** [02d](02d-drei-ebenen-modell-2026-03-30.md) **§1.0** — dort **Begriffe**, **professionelle Einordnung** und **Kurzreferenzen** (Branche).
+**IA / Taxonomie (Warum drei Schichten, kontrolliertes Vokabular, Problem/Lösung):** [02d](P02-04-modell-drei-ebenen.md) **§1.0** — dort **Begriffe**, **professionelle Einordnung** und **Kurzreferenzen** (Branche).
 
 **Wissenschaftlich / Best-Practice-Bezüge (kurz, ohne Spekulation):**
 
 | Bezug | Nutzen für SOLL |
 |--------|------------------|
-| **Informationsarchitektur** — Inhalt getrennt von Darstellung; Struktur vor Oberfläche (vgl. etablierte Content-/IA-Literatur, [02d](02d-drei-ebenen-modell-2026-03-30.md) §1) | Begründet **drei Schichten** (Domäne → Funktion → Darstellung). |
-| **[Diátaxis](https://diataxis.fr/)** (Procida) | Vier **Seiten-/Dokumentmodi** (Tutorial, How-to, Reference, Explanation) — **für Leser erkennbar** zu machen („label by type“); **nicht** nur interne Redaktionsnotiz ([02e](02e-diataxis-integration-kritisch-2026-03-30.md)). **Rollout:** nach **C/F/P** in Session 3 (Priorität), **S-***-Labels **phasenweise** (§3.2 **2a**, §8). |
+| **Informationsarchitektur** — Inhalt getrennt von Darstellung; Struktur vor Oberfläche (vgl. etablierte Content-/IA-Literatur, [02d](P02-04-modell-drei-ebenen.md) §1) | Begründet **drei Schichten** (Domäne → Funktion → Darstellung). |
+| **[Diátaxis](https://diataxis.fr/)** (Procida) | Vier **Seiten-/Dokumentmodi** (Tutorial, How-to, Reference, Explanation) — **für Leser erkennbar** zu machen („label by type“); **nicht** nur interne Redaktionsnotiz ([02e](P02-05-diataxis-kritik.md)). **Rollout:** nach **C/F/P** in Session 3 (Priorität), **S-***-Labels **phasenweise** (§3.2 **2a**, §8). |
 | **Technische Dokumentation / Testdokumentation** | Im Projekt: **IEEE 829** / **ISO/IEC/IEEE 29119-3** als **Struktur** für Testartefakte (Charter/Standards — **Lernkontext**, keine Vollnorm). Begründet **formale Dokument-Komponenten** (A4-Modus), nicht die **CTFL-Kapiteltexte**. |
 | **Barrierefreiheit** | Für **Presentation**: Kontrast, Fokus, semantisches HTML — **W3C WAI** / WCAG als **Qualitätsrahmen** für Token-Entscheide (Farben, Schriftgrößen), nicht als neue „Typ-ID“. |
 
@@ -66,7 +73,7 @@ Eine QA-Lernwebsite mit eurem Auftrag **soll** unterscheiden können:
 | Didaktische Ergänzung / Kontext | **C-EXTRA** | Motivation, Randmodelle — Session 2 |
 | Fallstudie / Traceability-Story | **C-CASE** | GroceryMate HA4–HA6 — README |
 | Projekt- & Engineering-Meta | **C-PROJEKT** | Standards-Seite, Repo — nicht CTFL-Kapitel |
-| Curriculum-Provenienz (optional) | **attr:curriculum** | MS / MS? — **Attribut**, kein „Wissens“-Typ ([02e](02e-diataxis-integration-kritisch-2026-03-30.md)) |
+| Curriculum-Provenienz (optional) | **attr:curriculum** | MS / MS? — **Attribut**, kein „Wissens“-Typ ([02e](P02-05-diataxis-kritik.md)) |
 
 **Anzahl (Ebene 1):** **6 Domänen** + **1 Attribut** — oder **4 Chip-Farben** + Badge, wenn **C-ADV** und **C-EXTRA** getrennt bleiben sollen (wie heute).
 
@@ -81,7 +88,7 @@ Eine QA-Lernwebsite mit eurem Auftrag **soll** unterscheiden können:
 | Nachschlagen | **S-REFERENCE** |
 | Konzepte verstehen | **S-EXPLAIN** |
 
-**Redaktionseinheit (S-*, Diátaxis):** Ein **S-**-Modus gilt pro **Redaktionseinheit** — entweder **ganze Seite** (wenn die Seite einer **einheitlichen** Diátaxis-Logik folgt) **oder** **H2-Hauptabschnitt** (wenn eine Seite **mehrere** Diátaxis-Modi **verbindet**). **Gemischte** Modi sind **erlaubt**; **nicht** pro Box/Callout (das bleibt **F-***). **Ziel für Leser:** Modus **sichtbar** (kurzes **Label** / **Badge** am Seitenkopf oder vor **H2** — vgl. **P-CHROME** / **P-SECTION**); das entspricht dem Diátaxis-Prinzip, **Typ** der Dokumentation erkennbar zu machen. Ausführung: [02e](02e-diataxis-integration-kritisch-2026-03-30.md) (u. a. §0b); Steuerungskurzfassung: [02_Project_Status.md](../02_Project_Status.md) (Abschnitt Session 2e).
+**Redaktionseinheit (S-*, Diátaxis):** Ein **S-**-Modus gilt pro **Redaktionseinheit** — entweder **ganze Seite** (wenn die Seite einer **einheitlichen** Diátaxis-Logik folgt) **oder** **H2-Hauptabschnitt** (wenn eine Seite **mehrere** Diátaxis-Modi **verbindet**). **Gemischte** Modi sind **erlaubt**; **nicht** pro Box/Callout (das bleibt **F-***). **Ziel für Leser:** Modus **sichtbar** (kurzes **Label** / **Badge** am Seitenkopf oder vor **H2** — vgl. **P-CHROME** / **P-SECTION**); das entspricht dem Diátaxis-Prinzip, **Typ** der Dokumentation erkennbar zu machen. Ausführung: [02e](P02-05-diataxis-kritik.md) (u. a. §0b); Steuerungskurzfassung: [02_Project_Status.md](../02_Project_Status.md) (Abschnitt Session 2e).
 
 **2b — Komponentenfunktionen (Callouts, Rahmen, Spezial)**
 
@@ -154,7 +161,7 @@ SOLL aus **02b** + Session-2-Priorität — **keine** „50 Typen“, sondern **
 ## 6. Weg zu Session 3 (konkret)
 
 1. **02f** als **normatives SOLL** für Workshop und Session 3 verwenden (diese Datei).  
-2. **Session 3 Artefakt:** `03-token-mapping-…md` (oder gleichwertig): Spalten **Komponente / Pattern**, **SOLL-Code (C/F/P)**, **IST (CSS-Klassen)**, **Token-Name**; **S-*** (Diátaxis) als **eigener Block** oder Spalten (**SOLL S-***, **sichtbares Label**, **DOM/CSS**) wenn die **Leser-Kennzeichnung** ansteht (nach Prio C/F/P).  
+2. **Session 3 Artefakt:** `P03-mapping-ist-soll-token.md` (oder gleichwertig): Spalten **Komponente / Pattern**, **SOLL-Code (C/F/P)**, **IST (CSS-Klassen)**, **Token-Name**; **S-*** (Diátaxis) als **eigener Block** oder Spalten (**SOLL S-***, **sichtbares Label**, **DOM/CSS**) wenn die **Leser-Kennzeichnung** ansteht (nach Prio C/F/P).  
 3. **02e nicht duplizieren:** Diátaxis bleibt in **02e**; **02f** verankert **S**-* nur als **SOLL-Zeile**.  
 4. **Charter/README:** Keine Änderung zwingend nötig — **02f** ist die **Designsystem-spezifische** Verdichtung.
 

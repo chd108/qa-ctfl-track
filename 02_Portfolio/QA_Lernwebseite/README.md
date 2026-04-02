@@ -50,7 +50,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `index.html` | **Einstieg** — zwei Kartenbereiche (**Lernmaterial** / **Hausaufgaben**), **12** Verweiskarten Lernmaterial und **10** Hausaufgaben; layoutspezifisches CSS inline, sonst wie Hauptsystem. |
 | `pages/` | **22** aktive Lern- bzw. HA-Seiten (siehe Tabelle unten). |
 | `assets/qa-favicon-256.png` | **Favicon** (PNG 256×256, **QA**-Monogramm); dieselbe Datei als **Logo** im ersten Nav-Punkt (`main-nav__home`). In allen HTML-Seiten per `<link rel="icon" …>`. |
-| `assets/css/base.css` | Globale Variablen (`:root`), u. a. **`--nav-inline-logo-height`** (Darstellung des Logos in Nav 1), Body-Hintergrund, **`.top-nav-zone`**, **`.main-nav`** / **`.main-nav--assignments`**, **`.main-nav__home`**, Skip-Link; **Designsystem-Pilot:** **`.meta-bar`** (**F-META**), Syllabus-Chip, **Seitenlegende** **`.legend`** (**F-LEGEND**, `--legend-*`), **`--ok`/`--warn`**-Aliase, **`.correction-bar`** / **`.ctfl-fix`** (siehe `01_Projektsteuerung/designsystem-workshop/04d-domain-ctfl-lernwebsite-2026-04-02.md`). |
+| `assets/css/base.css` | Globale Variablen (`:root`), u. a. **`--nav-inline-logo-height`** (Darstellung des Logos in Nav 1), Body-Hintergrund, **`.top-nav-zone`**, **`.main-nav`** / **`.main-nav--assignments`**, **`.main-nav__home`**, Skip-Link; **Designsystem-Pilot:** **`.meta-bar`** (**F-META**), Syllabus-Chip, **Seitenlegende** **`.legend`** (**F-LEGEND**, `--legend-*`), **`--ok`/`--warn`**-Aliase, **`.correction-bar`** / **`.ctfl-fix`** (siehe `01_Projektsteuerung/designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md`). |
 | `assets/css/subpage.css` | Gemeinsame **`header`**-/`footer`-Typo für Unterseiten. |
 | `assets/css/doc-a4.css` | **A4-/Dokumentmodus** inkl. Screen-`body`-Ränder; **Flex-Spalte** auf `.doc-a4` (`.doc-body` wächst, **`.doc-footer`** mit `margin-top: auto` am unteren Blattrand); Druck: `@page` A4, `min-height`/`width` angepasst; schmale Viewports: seitliches Scrollen statt Quetschen. Wird von HA-A4-Seiten zusätzlich eingebunden. |
 | `assets/css/index.css` | Ältere/alternative Einstiegs-Styles — **`index.html` lädt derzeit `base.css` + `subpage.css` und lokales `<style>`**; Datei bleibt im Repo zur Referenz und Standards-Doku. |
@@ -98,7 +98,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 
 - **Stack:** statisches **HTML/CSS**, optional **JavaScript** nur wo nötig (z. B. SDLC-Animation).  
 - **Kein** Framework, **keine** Build-Pipeline, **keine** CDN-Pflicht für Kernseiten.  
-- **Design tokens:** Farben und Abstände über **`:root`** in `base.css` (`--bg`, `--text`, `--e1`–`--e6`, `--nav-vertical-rhythm`, **`--nav-inline-logo-height`**, …). **Pilot P1 (Chips):** `--ctfl` / `--ctfl-bg` und **Alias** `--chip-syllabus-*` … `--chip-extra-*` sowie `--chip-padding-*`, `--chip-gap` (siehe `01_Projektsteuerung/designsystem-workshop/03-token-mapping-2026-04-01.md`).  
+- **Design tokens:** Farben und Abstände über **`:root`** in `base.css` (`--bg`, `--text`, `--e1`–`--e6`, `--nav-vertical-rhythm`, **`--nav-inline-logo-height`**, …). **Pilot P1 (Chips):** `--ctfl` / `--ctfl-bg` und **Alias** `--chip-syllabus-*` … `--chip-extra-*` sowie `--chip-padding-*`, `--chip-gap` (siehe `01_Projektsteuerung/designsystem-workshop/P03-mapping-ist-soll-token.md`).  
 - **Druck:** Navigationsbereich ausblendbar wo vorgesehen; A4-Seiten nutzen zusätzlich Druckregeln in `doc-a4.css`.
 
 ---
@@ -109,11 +109,11 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 |----------|-----|---------|
 | **Systemkonzept / Steuerung** (IA, Seitentypen, Benennung) | QA-Track: `01_Projektsteuerung/` (Charter, Standards, …); Archiv: `06_Archiv/` | Ein **Git-Repository** (`qa-ctfl-track`) für Programm und Website. |
 | **Commit-/Push-Regeln** | [04_Project_Guidelines.md](../../01_Projektsteuerung/04_Project_Guidelines.md) | Gilt für das **gesamte** Repo; Website-Änderungen unter `02_Portfolio/QA_Lernwebseite/`. |
-| **IST-Analysen (Website + Komponenten, Roadmap)** | [website-analyse-2026-03-28.md](../../01_Projektsteuerung/designsystem-workshop/website-analyse-2026-03-28.md), [komponenten-analyse-2026-03-30.md](../../01_Projektsteuerung/designsystem-workshop/komponenten-analyse-2026-03-30.md) (`01_Projektsteuerung/designsystem-workshop/`) | Meta- und technische Bestandsaufnahme; **kanonische Ablage** beim **Designsystem-Workshop** (keine zweite Kopie hier). **Ausgangsbasis** für **Komponentenstil / Designsystem light** ([02_Project_Status.md](../../01_Projektsteuerung/02_Project_Status.md), Arbeitspaket **P1**). |
+| **IST-Analysen (Website + Komponenten, Roadmap)** | [IST-01-analyse-website-meta.md](../../01_Projektsteuerung/designsystem-workshop/IST-01-analyse-website-meta.md), [IST-02-analyse-komponenten.md](../../01_Projektsteuerung/designsystem-workshop/IST-02-analyse-komponenten.md) (`01_Projektsteuerung/designsystem-workshop/`) | Meta- und technische Bestandsaufnahme; **kanonische Ablage** beim **Designsystem-Workshop** (keine zweite Kopie hier). **Ausgangsbasis** für **Komponentenstil / Designsystem light** ([02_Project_Status.md](../../01_Projektsteuerung/02_Project_Status.md), Arbeitspaket **P1**). |
 
 ### Analysen & Roadmap
 
-- **`website-analyse-2026-03-28.md`** / **`komponenten-analyse-2026-03-30.md`** — liegen unter **`01_Projektsteuerung/designsystem-workshop/`**; umfassende IST-Bewertung bzw. Komponenten-Inventar und Vorschlags-Backlog; dienen der Phase **Komponentenstil** vor schriftlicher Kanonisierung in den Project\_*-Standards. Neuere Website-Reviews können dort als zusätzliche Datei `website-analyse-YYYY-MM-DD.md` folgen.
+- **`IST-01-analyse-website-meta.md`** / **`IST-02-analyse-komponenten.md`** — liegen unter **`01_Projektsteuerung/designsystem-workshop/`**; umfassende IST-Bewertung bzw. Komponenten-Inventar und Vorschlags-Backlog; dienen der Phase **Komponentenstil** vor schriftlicher Kanonisierung in den Project\_*-Standards. Neuere Website-Reviews können dort als zusätzliche Datei `website-analyse-YYYY-MM-DD.md` folgen.
 
 ---
 

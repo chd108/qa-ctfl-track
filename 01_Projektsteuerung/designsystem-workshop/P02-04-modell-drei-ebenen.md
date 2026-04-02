@@ -1,8 +1,15 @@
+Datei erstellt: 2026-03-30  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-04-01  
+Zweck: Drei-Ebenen-Modell (Content → Semantic → Presentation) — Grundlage für Token- und Komponentenlogik.  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / Konzept  
+Normative Orientierung: Brücke zwischen Session 2 und Session 3
+
+---
+
 # Session 2d: Drei-Ebenen-Modell (Content → Semantic → Presentation)
 
-**Stand:** 2026-04-01  
 **Workshop:** Designsystem — Fundamentales Verständnis (Ergänzung zu Session 2)  
-**Vorgänger:** [02-informations-taxonomie-2026-03-30.md](02-informations-taxonomie-2026-03-30.md), [02b-darstellungs-patterns-2026-03-30.md](02b-darstellungs-patterns-2026-03-30.md), [02c-vollstaendige-seitenmatrix-2026-03-30.md](02c-vollstaendige-seitenmatrix-2026-03-30.md), [01-vision-ziele-2026-03-30.md](01-vision-ziele-2026-03-30.md)
+**Vorgänger:** [P02-01-taxonomie-information.md](P02-01-taxonomie-information.md), [P02-02-darstellung-patterns.md](P02-02-darstellung-patterns.md), [P02-03-seitenmatrix-ist.md](P02-03-seitenmatrix-ist.md), [P01-vision-ziele.md](P01-vision-ziele.md)
 
 ---
 
@@ -28,7 +35,7 @@ Die QA-Lernwebsite wirkt auf den ersten Blick wie ein **Mosaik aus lokalen CSS-K
 
 **Im QA-Track:** Systematische Benennung von **Content-Typen** (Domäne), **Funktionen** (didaktisch / Dokument) und **Darstellungsformen** — in diesem Workshop ausgedrückt als **drei Ebenen** (siehe §0) und in Session 2f als **SOLL-Codes** (**C-** / **F-** / **S-** / **P-**).
 
-**Problem → Lösung:** Viele **CSS-Klassen** wachsen historisch; **gleiche oder ähnliche Absicht** kann unter **verschiedenen Namen** stehen (z. B. mehrere Boxen für einen **Story-/Dokumenten-Verweis**). Ohne gemeinsame **Semantik** bleibt die Pflege **fragil**. **Lösung:** **Eine** fachliche Sprache — z. B. „Dokumenten-/Story-Verweis“ = **F-CHAIN** ([02f](02f-soll-taxonomie-session3-2026-03-30.md) §3.2) — und darauf abgestimmte **Design-Tokens** (Session 3), statt nur isolierte Klassennamen.
+**Problem → Lösung:** Viele **CSS-Klassen** wachsen historisch; **gleiche oder ähnliche Absicht** kann unter **verschiedenen Namen** stehen (z. B. mehrere Boxen für einen **Story-/Dokumenten-Verweis**). Ohne gemeinsame **Semantik** bleibt die Pflege **fragil**. **Lösung:** **Eine** fachliche Sprache — z. B. „Dokumenten-/Story-Verweis“ = **F-CHAIN** ([02f](P02-06-taxonomie-soll.md) §3.2) — und darauf abgestimmte **Design-Tokens** (Session 3), statt nur isolierte Klassennamen.
 
 **Software / Frontend:** Die Trennung **Content / Semantic / Presentation** entspricht **separation of concerns**: derselbe **SOLL-Baustein** soll **über Kontexte** (Web, A4, Druck) **gleiche Bedeutung** tragen können bei **angepasster** Darstellung — sofern **Bedeutung** und **Form** nicht vermischt werden (siehe §1.1 ff.).
 
@@ -73,7 +80,7 @@ Aus dem Training und der einschlägigen Literatur ist die **Trennung von Belange
 
 ### 1.4 Passt das zur QA-Lernwebsite?
 
-**Ja — mit einer Präzisierung:** Das Projekt hat bereits **zwei Darstellungsmodi** (Hauptsystem vs. **A4/Dokument**, vgl. [01-vision-ziele-2026-03-30.md](01-vision-ziele-2026-03-30.md), Charter). Das ist **Ebene 3** auf Meta-Ebene (Kanal „Web“ vs. „Druck-PDF“). **Ebene 1** ist bei euch zusätzlich **gespalten**: CTFL-Syllabus · QA/Praxis · Portfolio-/Normenkontext · **Projekt-Meta** (`00b`).
+**Ja — mit einer Präzisierung:** Das Projekt hat bereits **zwei Darstellungsmodi** (Hauptsystem vs. **A4/Dokument**, vgl. [P01-vision-ziele.md](P01-vision-ziele.md), Charter). Das ist **Ebene 3** auf Meta-Ebene (Kanal „Web“ vs. „Druck-PDF“). **Ebene 1** ist bei euch zusätzlich **gespalten**: CTFL-Syllabus · QA/Praxis · Portfolio-/Normenkontext · **Projekt-Meta** (`00b`).
 
 **Schwäche der naiven Dreiteilung:** **Traceability** (HA4→HA6) ist gleichzeitig **Story** (E2) und **fachlicher Gegenstand** (E1 — Fallstudie). Solche **Querschnittsthemen** sind nicht „falsch“, aber sie zeigen: Manchmal braucht es **explizite Regeln**, welche Ebene **führt**.
 
@@ -124,13 +131,13 @@ Typische **Funktionen** (nicht zwingend 1:1 mit euren IDs):
 
 - **Übung / Aufgabe** (Assessment, frei textlich in HA, aber **kein** eigener Typ-ID)  
 - **Reflexion / Selbstcheck** (nicht modelliert)  
-- **Zusammenfassung / TL;DR** (in [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md) gewünscht — **D-TLDR** nur als Soll-Idee in Session 2)
+- **Zusammenfassung / TL;DR** (in [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md) gewünscht — **D-TLDR** nur als Soll-Idee in Session 2)
 
 ### Ebene 3 — Presentation Layer (Darstellung)
 
 **Frage:** *Welches **Pattern** wird verwendet?*
 
-Verweis auf **[02b-darstellungs-patterns-2026-03-30.md](02b-darstellungs-patterns-2026-03-30.md)** — Tabellen, SVG, Canvas, Karten-Grids, Chip-Leisten, Section-Container, A4-Layout (`doc-a4`), Typografie.
+Verweis auf **[P02-02-darstellung-patterns.md](P02-02-darstellung-patterns.md)** — Tabellen, SVG, Canvas, Karten-Grids, Chip-Leisten, Section-Container, A4-Layout (`doc-a4`), Typografie.
 
 **Wichtig:** Dieselbe **Ebene-2-Funktion** (z. B. D-WARN) kann als `warn-box`, als Randfarbe in einer Tabelle oder (schlecht) nur als **fetter Text** erscheinen — **Ebene 3 ist austauschbar**, Ebene 2 sollte **stabil** bleiben.
 
@@ -300,7 +307,7 @@ Unverändert **Session 2.5** — **P-TABELLE**, **P-SVG**, **P-CANVAS**, **P-KAR
 1. Swanson, L.: *Content Architecture* — Überblick Strategy / Modeling / IA / Design / UX Writing ([larryswanson.com/content-architecture](https://www.larryswanson.com/content-architecture/)).  
 2. *Separating content and presentation* — Diskussion Trägheit vs. Barrierefreiheit ([storyneedle.com](https://storyneedle.com/separating-content-and-presentation-moving-past-fud/)).  
 3. Procida, D.: *Diátaxis* — systematischer Ansatz für technische Dokumentation (Tutorials, How-to, Reference, Explanation): [diataxis.fr](https://diataxis.fr/).  
-4. Workshop-intern: [02-informations-taxonomie-2026-03-30.md](02-informations-taxonomie-2026-03-30.md), [02b-darstellungs-patterns-2026-03-30.md](02b-darstellungs-patterns-2026-03-30.md), [02c-vollstaendige-seitenmatrix-2026-03-30.md](02c-vollstaendige-seitenmatrix-2026-03-30.md), [01-vision-ziele-2026-03-30.md](01-vision-ziele-2026-03-30.md).
+4. Workshop-intern: [P02-01-taxonomie-information.md](P02-01-taxonomie-information.md), [P02-02-darstellung-patterns.md](P02-02-darstellung-patterns.md), [P02-03-seitenmatrix-ist.md](P02-03-seitenmatrix-ist.md), [P01-vision-ziele.md](P01-vision-ziele.md).
 
 ---
 

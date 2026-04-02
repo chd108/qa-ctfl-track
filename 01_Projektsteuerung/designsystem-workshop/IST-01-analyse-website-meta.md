@@ -1,8 +1,14 @@
+Datei erstellt: 2026-03-28  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-28  
+Zweck: Meta-Analyse der Website (Stichproben) — IST/Roadmap-Bezug für späteres Designsystem.  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / IST  
+Normative Orientierung: Ergänzt [IST-02-analyse-komponenten.md](IST-02-analyse-komponenten.md)
+
+---
+
 # QA Lernwebseite - Umfassende Website-Analyse
 
-**Datum:** 2026-03-28  
 **Kontext:** Meta-Analyse der kompletten Website mit neutralem, kritischem Blick  
-**Zweck:** Dokumentation für spätere Komponenten-Überarbeitung  
 **Methodik:** Stichproben aus 6 von ~20 Seiten, inhaltliche & konzeptionelle Bewertung
 
 ---

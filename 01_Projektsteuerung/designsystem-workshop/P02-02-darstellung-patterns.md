@@ -1,8 +1,15 @@
+Datei erstellt: 2026-03-30  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-30  
+Zweck: Darstellungs-Patterns (WIE vs. WAS) — Ergänzung zu Session 2.  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / Konzept  
+Normative Orientierung: Kopplung an [P02-01-taxonomie-information.md](P02-01-taxonomie-information.md)
+
+---
+
 # Session 2.5: Darstellungs-Patterns
 
-**Stand:** 2026-03-30  
 **Workshop:** Designsystem — Ergänzung zu Session 2 (Informations-Typen = **WAS**; hier **WIE** / Präsentation)  
-**Vorgänger:** [02-informations-taxonomie-2026-03-30.md](02-informations-taxonomie-2026-03-30.md), [komponenten-analyse-2026-03-30.md](komponenten-analyse-2026-03-30.md), [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md)
+**Vorgänger:** [P02-01-taxonomie-information.md](P02-01-taxonomie-information.md), [IST-02-analyse-komponenten.md](IST-02-analyse-komponenten.md), [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md)
 
 ---
 
@@ -165,7 +172,7 @@ Legende: **●** = stark/nachweisbar · **◐** = teilweise · **—** = kaum/ni
 
 | Bereich | Befund | Konkrete Idee (ohne Umsetzung) |
 |---------|--------|--------------------------------|
-| **01b-grundlagen** | Lang, **monotone** Section-Kette (vgl. [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md)) | Sprungmarken/TOC oben; **Key-Takeaways-Box** pro Hauptabschnitt; optional **Icon** für Kernprinzipien |
+| **01b-grundlagen** | Lang, **monotone** Section-Kette (vgl. [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md)) | Sprungmarken/TOC oben; **Key-Takeaways-Box** pro Hauptabschnitt; optional **Icon** für Kernprinzipien |
 | **01-landkarte** | Sehr **dicht** | Accordion pro Kapitel oder „**Kurzüberblick**“-Zeile oben |
 | **Einheitliche Section-Hülle** | Mal `.section` mit Schatten, mal bloßes `<section>` | **Ein** Section-Pattern (P0) für Lernseiten |
 | **Diagramme** | **Kein** Wiederverwendungs-Template; SVG-Code **dupliziert** Logik | Token für **Kantenfarben** / Typo in SVG-Text (P1) |

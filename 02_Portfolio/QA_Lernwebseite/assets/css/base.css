@@ -29,7 +29,7 @@
 
   /*
    * P1 Pilot — Chip-Palette & Aliase (Workshop: C-SYLLABUS … C-EXTRA)
-   * Doku: 01_Projektsteuerung/designsystem-workshop/03-token-mapping-2026-04-01.md
+   * Doku: 01_Projektsteuerung/designsystem-workshop/P03-mapping-ist-soll-token.md
    *
    * --ctfl / --ctfl-bg … --extra-bg: „Akzent“ + „Fläche“ (früher u. a. in 01-landkarte.html
    * und 02c dupliziert). Jetzt eine Quelle; Aliase --chip-* für SOLL-Codes.
@@ -227,7 +227,7 @@ main { width: 100%; }
 
 /*
  * F-META — meta-bar & C-SYLLABUS visueller Chip (Pilot B.11)
- * Norm: 01_Projektsteuerung/designsystem-workshop/04d-domain-ctfl-lernwebsite-2026-04-02.md
+ * Norm: 01_Projektsteuerung/designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md
  * Farbe Chip: --chip-syllabus-bg (Alias → --ctfl-bg), nicht hardcodiertes „Grün“.
  */
 .meta-bar {

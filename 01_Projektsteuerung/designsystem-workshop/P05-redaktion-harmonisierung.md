@@ -1,8 +1,15 @@
+Datei erstellt: 2026-03-31  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-31 (meta-bar, **ISTQB K-Stufen** im **Hinweis**)  
+Zweck: Redaktionelle Harmonisierung (Texte, Labels, meta-bar-Inhalte) — abgegrenzt von visueller Spec **04d** B.11/B.12.  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / Redaktion  
+Normative Orientierung: Visuell [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) Teil B
+
+---
+
 # Redaktionelle Harmonisierung — QA_Lernwebseite
 
-**Stand:** 2026-03-31 (Fortschreibung: meta-bar-Status, **ISTQB K-Stufen** im **Hinweis**)  
 **Ort:** `01_Projektsteuerung/designsystem-workshop/`  
-**Bezug Design (visuell):** [04d-domain-ctfl-lernwebsite-2026-04-02.md](04d-domain-ctfl-lernwebsite-2026-04-02.md) Teil **B.11** (meta-bar / Chip) und **B.12** (Seitenlegende **F-LEGEND** — umgesetzt in `base.css` + Lernseiten). **Standort** der Legende: **nur** 04d B.12 (**keine** Ausnahmen).
+**Bezug Design (visuell):** [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) Teil **B.11** (meta-bar / Chip) und **B.12** (Seitenlegende **F-LEGEND** — umgesetzt in `base.css` + Lernseiten). **Standort** der Legende: **nur** 04d B.12 (**keine** Ausnahmen).
 
 ---
 
@@ -159,4 +166,4 @@ Umsetzung in HTML: **eine** Region **Lernziele** mit **mehreren** Zeilen (z. B
 
 ---
 
-*Ende 05-redaktionelle-harmonisierung-2026-04-03.md*
+*Ende P05-redaktion-harmonisierung.md*

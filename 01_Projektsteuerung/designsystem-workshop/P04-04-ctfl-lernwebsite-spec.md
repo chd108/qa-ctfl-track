@@ -1,9 +1,15 @@
+Datei erstellt: 2026-04-02  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-04-02, Teil B Spec 2026-04-03 (B.11 F-META, **B.12 F-LEGEND**)  
+Zweck: Domain CTFL — Entscheidungsregeln (Teil A) und Design-Spec meta-bar / Chip / Legende (Teil B).  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / Normativ  
+Normative Orientierung: [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md) (**C-SYLLABUS**, **F-META**, **F-LEGEND**); [P04-00-spec-overview.md](P04-00-spec-overview.md)
+
+---
+
 # Domain: CTFL-Orientierung (Lernwebsite)
 
-**Stand:** 2026-04-02 · **Teil B Spec:** 2026-04-03 (inkl. B.11 F-META, **B.12 F-LEGEND**)  
 **Ort:** `01_Projektsteuerung/designsystem-workshop/`  
-**Cluster-Überblick:** [04-design-system-overview.md](04-design-system-overview.md)  
-**Normative technische Anbindung:** [03-token-mapping-2026-04-01.md](03-token-mapping-2026-04-01.md) (**C-SYLLABUS**, **F-META**, **F-LEGEND**)
+**Cluster-Überblick:** [P04-00-spec-overview.md](P04-00-spec-overview.md)
 
 Diese Datei bündelt **Teil A — Entscheidungsregeln** und **Teil B — Design-Spec** (Syllabus-Chip / meta-bar / **Seitenlegende**). Inhalt übernommen aus den vormals getrennten Dateien `04-ctfl-orientierung-regeln-2026-04-02.md` und `04-design-spec-ctfl-meta-chip-2026-04-02.md` (ersetzt durch diese Datei).
 
@@ -63,7 +69,7 @@ Ziel: **eine** nachvollziehbare Umsetzung für den Pilot — ohne jede Lernseite
 
 ---
 
-### B.2 Bezug zu [03-token-mapping-2026-04-01.md](03-token-mapping-2026-04-01.md)
+### B.2 Bezug zu [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)
 
 | SOLL-Code | Rolle in dieser Spec |
 |-----------|----------------------|
@@ -210,13 +216,13 @@ Die **vollständige** IST→SOLL→Token-Tabelle bleibt in **03**; hier keine Du
 
 ### B.12 Visuelle Spezifikation — Seitenlegende (F-LEGEND)
 
-**Ziel:** Ein **Soll-Raster** für die **Kontextzeile unterhalb** der meta-bar (F-META), wo **Farben/Symbole** der **Landkarte, Diagramme oder SVGs** erklärt werden — **nicht** die redaktionelle Regel *wann* eine Legende nötig ist (siehe [05-redaktionelle-harmonisierung-2026-04-03.md](05-redaktionelle-harmonisierung-2026-04-03.md)); hier nur **Darstellung** und **Technik**.
+**Ziel:** Ein **Soll-Raster** für die **Kontextzeile unterhalb** der meta-bar (F-META), wo **Farben/Symbole** der **Landkarte, Diagramme oder SVGs** erklärt werden — **nicht** die redaktionelle Regel *wann* eine Legende nötig ist (siehe [P05-redaktion-harmonisierung.md](P05-redaktion-harmonisierung.md)); hier nur **Darstellung** und **Technik**.
 
 **Standort (verbindlich, keine Ausnahmen):** **`nav.legend`** steht in **`main`** **unmittelbar nach** **`div.meta-bar`** und **vor** jedem weiteren Block (Infobox, Sections, Visualisierung). Die Legende bezieht sich inhaltlich auf die Grafik/Tabelle weiter unten; die Position ist **site-weit einheitlich**.
 
 **Semantik:** **F-LEGEND** = Fläche **`.legend`** mit **Items** + **Swatches**; **kein** Ersatz für F-META (Syllabus-Quelle, Lernziele).
 
-**IST → Soll (Umsetzung):** **F-LEGEND** ist in **`assets/css/base.css`** mit **`--legend-*`** und BEM **`.legend` / `.legend__item` / `.legend__swatch`** verankert; die **11 Kern-Lernseiten** nutzen **`nav.legend`** unmittelbar **nach** **`div.meta-bar`** (siehe **Standort** oben — **ohne** Standort-Ausnahmen). Verbleibende Feinarbeit: **03-token-mapping** um Zeile **F-LEGEND** ergänzen; Inline-Reduktion wo noch lokal dupliziert.
+**IST → Soll (Umsetzung):** **F-LEGEND** ist in **`assets/css/base.css`** mit **`--legend-*`** und BEM **`.legend` / `.legend__item` / `.legend__swatch`** verankert; die **11 Kern-Lernseiten** nutzen **`nav.legend`** unmittelbar **nach** **`div.meta-bar`** (siehe **Standort** oben — **ohne** Standort-Ausnahmen). Verbleibende Feinarbeit: **P03-mapping-ist-soll-token.md** um Zeile **F-LEGEND** ergänzen; Inline-Reduktion wo noch lokal dupliziert.
 
 #### B.12.1 Typografie (`.legend`)
 
@@ -368,9 +374,9 @@ Bereits vorhandene Tokens nutzen: `var(--bdr)`, `var(--mid)`, `var(--text)`.
 ### B.10 Follow-up
 
 - Meta-bar-Styles **global** in `base.css` / `subpage.css` bündeln; Seiten-Inline-`<style>` abbauen — **Stand 2026-03-31:** **04a / 04c / 05a / 00a** ohne lokales **`.meta-bar`**-CSS; weitere Seiten bei Bedarf nachziehen.
-- **F-LEGEND:** **erledigt** — `base.css` + Kernseiten; **03-token-mapping:** Zeile **F-LEGEND** / `--legend-*` — bei Token-Drift mit **04d B.12.9** abgleichen.
+- **F-LEGEND:** **erledigt** — `base.css` + Kernseiten; **P03-mapping-ist-soll-token.md:** Zeile **F-LEGEND** / `--legend-*` — bei Token-Drift mit **04d B.12.9** abgleichen.
 - **correction-bar** / `.ctfl-fix`: **erledigt** — in `base.css` mit **`--ok` / `--warn`** (Aliase zu **C-SYLLABUS** / **C-PRAXIS**), keine Seiten-Hardcodes für Farben auf **01c**.
-- **04b** (`F-META`): **erledigt** — Abschnitt *Umsetzungsstand* in **04b-semantic-function-2026-04-02.md**.
+- **04b** (`F-META`): **erledigt** — Abschnitt *Umsetzungsstand* in **P04-02-f-semantic-function.md**.
 - **Syllabus-Chip punktuell** außerhalb meta-bar: gleiche Klassen + `aria-label`, nicht neue Farbe erfinden — **offen** nur bei neuen Sonderfällen.
 
 ---

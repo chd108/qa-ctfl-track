@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-02 — Abschn. 3 / 8: `07_Tests/` in `.gitignore` und Geltungsbereich; Abschn. 6: Token-Mapping + Pilot-Phase Design-Taxonomie  
+Letzte Aktualisierung: 2026-04-02 — Abschn. README: Ausnahme `designsystem-workshop/README.md` (Metablock Variante B); zuvor Abschn. 3 / 8: `07_Tests/` …; Abschn. 6: Token-Mapping …  
 Zweck: Definiert Regeln und Standards für Repo-Struktur, Dokumentation und Qualität  
 Klassifizierung: Projektsteuerung / Standards  
 Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE 829-2008**, **ISO/IEC/IEEE 29119-3** (jeweils im **Lern- und Portfolio-Kontext**, ohne Anspruch auf vollständige Normenzertifizierung).
@@ -208,6 +208,7 @@ Die Metadaten stehen am **Anfang** der Datei; danach Trennlinie `---` und der Ha
 | **Mini-Metablock** | Eine Zeile als **Blockzitat** (Markdown `>`): **`> Zuletzt aktualisiert: YYYY-MM-DD`** |
 | **Position** | **Unmittelbar unter** der **Hauptüberschrift** der Datei (`# …`) — vor dem ersten Fließtext-Absatz |
 | **Kein voller Metablock** | **Keine** Zeilen wie „Datei erstellt“, „Zweck“, „Klassifizierung“ — das bleibt den **Project\_*-Steuerdateien** in `01_Projektsteuerung/` vorbehalten |
+| **Ausnahme** | **`01_Projektsteuerung/designsystem-workshop/README.md`** — **Master-Dokument**-Einstieg zum Workshop: **Variante B** (Abschnitt *Metablock für Master-Dokumente in `01_Projektsteuerung/`* in diesem Dokument) mit **Datei erstellt** und **Letzte Aktualisierung** **vor** der `#`-Überschrift, danach `---`, dann Inhalt (gleiche Reihenfolge wie Project\_*-Serie). |
 | **Aktualisieren** | Datum bei **inhaltlichen** Änderungen am README anpassen |
 
 **Begründung:** READMEs sind **Einstiegs-** und **Orientierungsdokumente**, keine Steuerungs-Masterdateien. **Schnelle Lesbarkeit** wiegt schwerer als vollständige Metadaten; das **Datum** signalisiert **Aktualität**.
@@ -265,12 +266,12 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 
 ### Informationsarchitektur und Designsystem-Workshop (Verweis)
 
-- **Fundierung (IA, Content Taxonomy, Drei Ebenen):** `01_Projektsteuerung/designsystem-workshop/02d-drei-ebenen-modell-2026-03-30.md` — **§1.0** (Begriffe, Problem/Lösung, Kurzreferenzen), **§1.1** (Trennung von Belangen).  
-- **SOLL-Codes** (C / F / S / P) und Brücke zu Session 3: `designsystem-workshop/02f-soll-taxonomie-session3-2026-03-30.md`.  
-- **IST-Typen** (Session 2): `designsystem-workshop/02-informations-taxonomie-2026-03-30.md`.  
-- **Design-Taxonomie (definiert, Pilot-Phase):** IST→SOLL→Token — `designsystem-workshop/03-token-mapping-2026-04-01.md`; **Umsetzung** der **ca. 15–30** Ziel-Variablen **schrittweise** in `02_Portfolio/QA_Lernwebseite/assets/css/` — siehe [02_Project_Status.md](02_Project_Status.md).
-- **Domain CTFL — meta-bar & Seitenlegende:** `designsystem-workshop/04d-domain-ctfl-lernwebsite-2026-04-02.md` (**B.11** F-META, **B.12** F-LEGEND); **Redaktion** (Labels, *wann* Legende, **ISTQB K-Stufen** im **Hinweis** — **§2.4**): `designsystem-workshop/05-redaktionelle-harmonisierung-2026-04-03.md`.
-- **Design-Spec-Cluster (Einstieg, Priorität, Domain CTFL):** `designsystem-workshop/04-design-system-overview.md` — **ergänzt** das Token-Mapping um **04a–d**; **kein** zweites normatives Mapping; Drift-Vermeidung: normative Tabelle bleibt **03-token-mapping**.
+- **Fundierung (IA, Content Taxonomy, Drei Ebenen):** `01_Projektsteuerung/designsystem-workshop/P02-04-modell-drei-ebenen.md` — **§1.0** (Begriffe, Problem/Lösung, Kurzreferenzen), **§1.1** (Trennung von Belangen).  
+- **SOLL-Codes** (C / F / S / P) und Brücke zu Session 3: `designsystem-workshop/P02-06-taxonomie-soll.md`.  
+- **IST-Typen** (Session 2): `designsystem-workshop/P02-01-taxonomie-information.md`.  
+- **Design-Taxonomie (definiert, Pilot-Phase):** IST→SOLL→Token — `designsystem-workshop/P03-mapping-ist-soll-token.md`; **Umsetzung** der **ca. 15–30** Ziel-Variablen **schrittweise** in `02_Portfolio/QA_Lernwebseite/assets/css/` — siehe [02_Project_Status.md](02_Project_Status.md).
+- **Domain CTFL — meta-bar & Seitenlegende:** `designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md` (**B.11** F-META, **B.12** F-LEGEND); **Redaktion** (Labels, *wann* Legende, **ISTQB K-Stufen** im **Hinweis** — **§2.4**): `designsystem-workshop/P05-redaktion-harmonisierung.md`.
+- **Design-Spec-Cluster (Einstieg, Priorität, Domain CTFL):** `designsystem-workshop/P04-00-spec-overview.md` — **ergänzt** das Token-Mapping um **04a–d**; **kein** zweites normatives Mapping; Drift-Vermeidung: normative Tabelle bleibt **P03-mapping-ist-soll-token.md**.
 
 ---
 

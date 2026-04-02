@@ -1,9 +1,16 @@
+Datei erstellt: 2026-03-30  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-30  
+Zweck: Technische Komponenten-Bestandsaufnahme (IST) — kanonisch in diesem Ordner neben [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md).  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / IST  
+Normative Orientierung: Grundlage für [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)
+
+---
+
 # Komponenten-Bestandsaufnahme — QA_Lernwebseite
 
-**Stand:** 2026-03-30  
 **Umfang:** `index.html`, alle Dateien unter `pages/` (**23** Seiten) — **ohne** `templates/` und **ohne** `archive/`.  
 **Quellen:** HTML-Dateien sowie `assets/css/` (**base.css**, **subpage.css**, **doc-a4.css**; ergänzend **index.css** als Legacy-/Referenzdatei); **seitenlokales `<style>`** (häufig duplizierte Komponenten wie `.info-box`, `.meta-bar`).  
-**Bezug:** Ergänzt [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md) (IST/Roadmap); fokussiert auf **technische und konzeptuelle Wiederholungen** als Grundlage für ein späteres **Designsystem light** (vgl. P1 in `01_Projektsteuerung/02_Project_Status.md`).
+**Bezug:** Ergänzt [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md) (IST/Roadmap); fokussiert auf **technische und konzeptuelle Wiederholungen** als Grundlage für ein späteres **Designsystem light** (vgl. P1 in `01_Projektsteuerung/02_Project_Status.md`).
 
 **Methode:** Systematische Durchsicht der Stylesheets und Stichproben-/Vollabgleich der HTML-Seiten per Suche nach wiederkehrenden Klassennamen; konzeptuelle Zuordnung („gleiche Absicht“) manuell begründet.
 

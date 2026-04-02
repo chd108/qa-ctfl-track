@@ -93,10 +93,10 @@ TEIL 1: THEORIE VERSTEHEN & DOKUMENTIEREN
 TEIL 2: DIE 17 TYPEN ANALYSIEREN
 
 LIES GRÜNDLICH:
-- 02-informations-taxonomie-2026-03-30.md (die 17 Typen)
-- 02b-darstellungs-patterns-2026-03-30.md (Patterns)
-- 02c-vollstaendige-seitenmatrix-2026-03-30.md (IST-Stand)
-- 01-vision-ziele-2026-03-30.md (Kontext)
+- P02-01-taxonomie-information.md (die 17 Typen)
+- P02-02-darstellung-patterns.md (Patterns)
+- P02-03-seitenmatrix-ist.md (IST-Stand)
+- P01-vision-ziele.md (Kontext)
 - Alle anderen Workshop-Dateien
 
 DANN ANALYSIERE:
@@ -202,7 +202,7 @@ ENTWICKLE:
 
 OUTPUT:
 
-ERSTELLE: 01_Projektsteuerung/designsystem-workshop/02d-drei-ebenen-modell-2026-03-30.md
+ERSTELLE: 01_Projektsteuerung/designsystem-workshop/P02-04-modell-drei-ebenen.md
 
 STRUKTUR (du entscheidest Details):
 

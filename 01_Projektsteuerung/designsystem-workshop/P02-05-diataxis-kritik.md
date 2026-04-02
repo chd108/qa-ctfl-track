@@ -1,8 +1,15 @@
+Datei erstellt: 2026-03-30  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-04-01  
+Zweck: Kritische Einordnung von Diátaxis vs. Callouts (F-*) und Taxonomie.  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / Konzept  
+Normative Orientierung: [02f](P02-06-taxonomie-soll.md) §3.2; [03](P03-mapping-ist-soll-token.md) §4 S-*
+
+---
+
 # Session 2e: Diátaxis & Taxonomie — kritische Einordnung
 
-**Stand:** 2026-04-01  
 **Workshop:** Designsystem — Reflexionspunkt vor Session 3  
-**Vorgänger:** [02-informations-taxonomie-2026-03-30.md](02-informations-taxonomie-2026-03-30.md), [02d-drei-ebenen-modell-2026-03-30.md](02d-drei-ebenen-modell-2026-03-30.md), [02c-vollstaendige-seitenmatrix-2026-03-30.md](02c-vollstaendige-seitenmatrix-2026-03-30.md)
+**Vorgänger:** [P02-01-taxonomie-information.md](P02-01-taxonomie-information.md), [P02-04-modell-drei-ebenen.md](P02-04-modell-drei-ebenen.md), [P02-03-seitenmatrix-ist.md](P02-03-seitenmatrix-ist.md)
 
 **Externe Referenz:** [Diátaxis](https://diataxis.fr/) — vier Dokumentationsformen (Tutorial, How-to, Reference, Explanation), Daniele Procida.
 
@@ -97,7 +104,7 @@ Die folgende **Matrix** fasst die **vier Modi** und das **Nutzerbedürfnis** nac
 | **P0** | **Session 3:** Komponenten + **Token-Liste** (Farben, Callout-Varianten, Chip-Skala, A4) — **Mapping** `Klassenname → Token`. |
 | **P1** | **Taxonomie aufräumen:** **D-ERKLAER** und **D-HINWEIS** **nicht** mit Diátaxis vermischen; optional **D-EXPLAIN** als **Oberbegriff** mit **Unterarten** `definition` / `signpost` **nur in der Doku** (oder Schreibregeln in Session 4). |
 | **P2** | **Diátaxis:** Tabelle „**Seite/H2 → S-Modus**“ für **Redaktion**; **Ziel:** dieselben Modi **für Leser sichtbar** (Label/Badge), **nicht** nur interne Tabelle. **HTML/CSS** folgt **Priorität** nach Session-3-C/F/P; **Endzustand** ≠ „nur Doku“. |
-| **P3** | **T-EXTRA** vs. **T-VERTIEF:** **Kriterium** festhalten (siehe [02d](02d-drei-ebenen-modell-2026-03-30.md), §4) — **oder** zu **T-PLUS** zusammenführen mit **Facet** „normativ“ vs. „didaktisch extra“. |
+| **P3** | **T-EXTRA** vs. **T-VERTIEF:** **Kriterium** festhalten (siehe [02d](P02-04-modell-drei-ebenen.md), §4) — **oder** zu **T-PLUS** zusammenführen mit **Facet** „normativ“ vs. „didaktisch extra“. |
 
 **Warum nicht Option A:** Sie verwechselt **Dokumentationsmodus** mit **UI-Semantik**.
 
@@ -209,7 +216,7 @@ Unverändert **Session 2.5** — **P-TABELLE**, **P-SVG**, …; **nicht** als �
 ## 6. Nächste Schritte (weg zu Session 3)
 
 1. **SOLL fest:** **S-***-Modi **für Leser sichtbar** machen (**02f** §3.2 **2a**, §8); **Reihenfolge:** Session 3 zuerst **C/F/P**-Tokens — **S-***-Label-System (Badge/Chrome) **danach** oder **parallel** niedriger Prio — **kein** Widerspruch zu „label by type“.  
-2. **Session 3 Artefakt:** `03-token-mapping-…md` (oder gleichwertig): **Komponente** → **CSS-Token** → **SOLL-Code**; **S-***-**Sichtbarkeit** als eigenständiger Abschnitt.  
+2. **Session 3 Artefakt:** `P03-mapping-ist-soll-token.md` (oder gleichwertig): **Komponente** → **CSS-Token** → **SOLL-Code**; **S-***-**Sichtbarkeit** als eigenständiger Abschnitt.  
 3. **Pilot:** **eine** Callout-Familie + **eine** Chip-Skala vereinheitlichen (z. B. **warn-box** / **info-box--warn** / **doc-info-box--warn** → **ein** `callout-danger`).  
 4. **Session 4:** **Schreibregeln** für **D-INFO** (Definition vs. Wegweiser) **oder** bewusst **zwei** D-IDs behalten.
 

@@ -1,10 +1,17 @@
+Datei erstellt: 2026-03-30  
+Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-04-01  
+Zweck: Vision, Ziele und Informationsarchitektur der *QA_Lernwebseite* — Designsystem-Workshop Session 1.  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / Konzept  
+Normative Orientierung: [01_Project_Charter.md](../01_Project_Charter.md), [03_Project_Standards.md](../03_Project_Standards.md); S-* siehe [02f](P02-06-taxonomie-soll.md)
+
+---
+
 # Session 1: Vision & Ziele
 
-**Stand:** 2026-04-01  
 **Workshop:** Designsystem — Session 1 von 4 (Top-down: WARUM → WAS → WIE)  
 **Primärquellen:** [01_Project_Charter.md](../01_Project_Charter.md), [03_Project_Standards.md](../03_Project_Standards.md) (v. a. §2, §3, §6, §7), [README QA_Lernwebseite](../../02_Portfolio/QA_Lernwebseite/README.md)  
-**Ergänzend:** Root-[README.md](../../README.md), [index.html](../../02_Portfolio/QA_Lernwebseite/index.html) (Willkommenstext), [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md) (Meta-Stichproben), [komponenten-analyse-2026-03-30.md](komponenten-analyse-2026-03-30.md) (technische Bestandsaufnahme — **kanonisch** in diesem Ordner).  
-**Diátaxis (S-*, Leser-sichtbar):** normativ [02f](02f-soll-taxonomie-session3-2026-03-30.md) §3.2 **2a** · §8.
+**Ergänzend:** Root-[README.md](../../README.md), [index.html](../../02_Portfolio/QA_Lernwebseite/index.html) (Willkommenstext), [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md) (Meta-Stichproben), [IST-02-analyse-komponenten.md](IST-02-analyse-komponenten.md) (technische Bestandsaufnahme — **kanonisch** in diesem Ordner).  
+**Diátaxis (S-*, Leser-sichtbar):** normativ [02f](P02-06-taxonomie-soll.md) §3.2 **2a** · §8.
 
 *Die folgenden Abschnitte sind **Auswertung und Zusammenführung**, keine wörtliche Abschrift.*
 
@@ -98,7 +105,7 @@ Die *QA_Lernwebseite* ist im Programm **QA-Track** das **sichtbare digitale Haup
 
 - **Kein zentrales Tag-System** in Charter/Standards beschrieben.  
 - **Landkarte** wird auf der Einstiegskarte mit **„Themen-Tagging“** beworben ([index.html](../../02_Portfolio/QA_Lernwebseite/index.html)) — Detailgrad der Tags **nicht** in den Primärquellen spezifiziert.  
-- **Spezialseite `02c-teststufen.html`** nutzt eigene **Klassen-Tags** (`.tag-ctfl`, `.tag-praxis`, …) — **lokal**, nicht als globales Kategorienschema dokumentiert ([komponenten-analyse](komponenten-analyse-2026-03-30.md)).
+- **Spezialseite `02c-teststufen.html`** nutzt eigene **Klassen-Tags** (`.tag-ctfl`, `.tag-praxis`, …) — **lokal**, nicht als globales Kategorienschema dokumentiert ([komponenten-analyse](IST-02-analyse-komponenten.md)).
 
 **Quellen:** [README QA_Lernwebseite](../../02_Portfolio/QA_Lernwebseite/README.md); [03_Project_Standards.md](../03_Project_Standards.md) §2, §6, §7; [index.html](../../02_Portfolio/QA_Lernwebseite/index.html).
 
@@ -112,7 +119,7 @@ Die *QA_Lernwebseite* ist im Programm **QA-Track** das **sichtbare digitale Haup
 | **Vorkenntnisse** | Keine explizite Definition; kein „Minimum vor Kapitel 4“ o. Ä. |
 | **Informations-Typen als Design-Tokens** | Begriffe wie **Story**, **Warnung**, **Dokumentenkette** sind **inhaltlich** da, aber **nicht** als einheitliche **IA- oder UI-Typologie** im Steuerwerk festgeschrieben. |
 | **Tagging / Kategorien** | **Keine** kanonische Tag-Liste; Landkarte vs. `02c`-Tags möglicherweise **inkonsistent** für ein Designsystem. |
-| **Pfad Komponenten-Analyse** | **Kanonisch:** `01_Projektsteuerung/designsystem-workshop/komponenten-analyse-2026-03-30.md` (gemeinsam mit **website-analyse** im Workshop-Ordner). |
+| **Pfad Komponenten-Analyse** | **Kanonisch:** `01_Projektsteuerung/designsystem-workshop/IST-02-analyse-komponenten.md` (gemeinsam mit **IST-01** im Workshop-Ordner). |
 
 ---
 
@@ -127,7 +134,7 @@ Die *QA_Lernwebseite* ist im Programm **QA-Track** das **sichtbare digitale Haup
 **Welche Quellen zusätzlich helfen könnten**
 
 - [02_Project_Status.md](../02_Project_Status.md) — aktuelle Priorität **P1 Designsystem light**.  
-- [website-analyse-2026-03-28.md](website-analyse-2026-03-28.md) — bereits **Nutzerperspektive** (Stichproben, was funktioniert).  
+- [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md) — bereits **Nutzerperspektive** (Stichproben, was funktioniert).  
 - Einzelne **High-Impact-Seiten** (`01-landkarte`, `05a`, `04d`) für **Story- und Boxen-Muster** beim Feintuning.
 
 **Was ich anders angehen würde (methodisch)**

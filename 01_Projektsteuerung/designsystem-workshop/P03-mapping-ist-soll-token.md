@@ -1,8 +1,14 @@
+Datei erstellt: 2026-04-01  
+Letzte Aktualisierung: 2026-04-02 — Phase 3: §6 Verweis Rollout-Scope; zuvor Metablock, 2026-04-01 / F-LEGEND 2026-03-31  
+Zweck: IST → SOLL → Token-Mapping-Tabellen (Session 3) — maßgebliche technische Quelle für C/F/P/S.  
+Klassifizierung: Projektsteuerung / Designsystem-Workshop / Normativ  
+Normative SOLL-Basis: [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md) · IST-Inventar u. a. [IST-02-analyse-komponenten.md](IST-02-analyse-komponenten.md); Cluster [P04-00-spec-overview.md](P04-00-spec-overview.md)
+
+---
+
 # Session 3: IST → SOLL → Token-Mapping
 
-**Stand:** 2026-04-01 · **F-LEGEND**-Zeile ergänzt 2026-03-31 (Abgleich **04d** B.12.9)  
-**Ort:** `01_Projektsteuerung/designsystem-workshop/`  
-**Normative SOLL-Basis:** [02f-soll-taxonomie-session3-2026-03-30.md](02f-soll-taxonomie-session3-2026-03-30.md) · IST-Inventar u. a. [komponenten-analyse-2026-03-30.md](komponenten-analyse-2026-03-30.md)
+**Ort:** `01_Projektsteuerung/designsystem-workshop/`
 
 **Hinweise vor der Tabelle**
 
@@ -10,8 +16,8 @@
 - Geschätzte **Anzahl benannter CSS-Variablen** im Endausbau: **ca. 15–30** (Bandbreite, **nicht** eine fixe Zahl pro Komponente; nicht jede Tabellenzeile erzwingt eine neue Variable).
 - **Bestehende** `:root`-Variablen in **`base.css`** / **`doc-a4.css`** wo möglich **fortführen oder aliassen** — vermeidet eine **zweite** Token-Welt parallel zu den bereits genutzten `--e1`–`--e6`, `--note`, `--ctfl-bg` usw.
 - **S-\*** (Diátaxis): **Aussehen** von Label/Badge (**Emoji, Farbe, Text, Icon**) ist **noch nicht** entschieden — in den S-Zeilen steht nur: **„Label-System für Leser (Details folgen)“**.
-- **Workshop-Ordner** `designsystem-workshop/` bleibt die **maßgebliche Referenz** für **02f**, **03-token-mapping** und Sessions — **nicht** „eingefrorenes Archiv“; Verdichtung in **03_Project_Standards** kann **ergänzend** erfolgen, ersetzt die Quelldateien **nicht** ohne Beschluss.
-- **Design-Spec-Cluster (04):** [04-design-system-overview.md](04-design-system-overview.md) — **ergänzt** dieses Dokument um **Priorität** (P0/P1) und **Domain CTFL**; **normativ** für IST/SOLL/Token bleibt **weiterhin diese Datei (03)**. Vereinfachungs- und Drift-Risiken: siehe Risiko-Register im Overview.
+- **Workshop-Ordner** `designsystem-workshop/` bleibt die **maßgebliche Referenz** für **02f**, **P03-mapping-ist-soll-token.md** und Sessions — **nicht** „eingefrorenes Archiv“; Verdichtung in **03_Project_Standards** kann **ergänzend** erfolgen, ersetzt die Quelldateien **nicht** ohne Beschluss.
+- **Design-Spec-Cluster (04):** [P04-00-spec-overview.md](P04-00-spec-overview.md) — **ergänzt** dieses Dokument um **Priorität** (P0/P1) und **Domain CTFL**; **normativ** für IST/SOLL/Token bleibt **weiterhin diese Datei (03)**. Vereinfachungs- und Drift-Risiken: siehe Risiko-Register im Overview.
 
 ---
 
@@ -110,13 +116,15 @@
 2. **Pilot:** eine Callout-Familie + Chip-Skala auf Variablen umstellen.  
 3. **S-*:** Workshop-Entscheidung **Label-System** (ohne Festlegung Emoji/Icon) → dann HTML/CSS.
 
+**Welche HTML-Seiten zuerst?** — Nicht jede Seite gleichzeitig: der **Rollout** (zuerst Lerninhalte + Startseite + Standards, später Hausaufgaben/A4) steht in [P04-00-spec-overview.md](P04-00-spec-overview.md) unter **Rollout-Plan — Scope** (Phase A / Phase B). Technische **Prio** (**P0**/**P1**) und diese **Seiten-Reihenfolge** ergänzen sich.
+
 ---
 
 ## 7. Design-Spec-Cluster (04) und CTFL-Domain
 
-**Einstieg:** [04-design-system-overview.md](04-design-system-overview.md) — Navigation zu **04a** (C-*), **04b** (F-*), **04c** (P-*), **04d** (Domain CTFL Lernwebsite); **Risiko-Register** und Vereinfachungs-Optionen oben in der Overview.
+**Einstieg:** [P04-00-spec-overview.md](P04-00-spec-overview.md) — Navigation zu **04a** (C-*), **04b** (F-*), **04c** (P-*), **04d** (Domain CTFL Lernwebsite); **Risiko-Register** und Vereinfachungs-Optionen oben in der Overview.
 
-**CTFL-Orientierung (Regeln + Syllabus-Chip-Spec, zusammengeführt):** [04d-domain-ctfl-lernwebsite-2026-04-02.md](04d-domain-ctfl-lernwebsite-2026-04-02.md) — Referenzseite **01c-testmittel.html**; Teil B Spec ggf. noch Platzhalter bis Pilot-Detail.
+**CTFL-Orientierung (Regeln + Syllabus-Chip-Spec, zusammengeführt):** [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) — Referenzseite **01c-testmittel.html**; Teil B Spec ggf. noch Platzhalter bis Pilot-Detail.
 
 ---
 
