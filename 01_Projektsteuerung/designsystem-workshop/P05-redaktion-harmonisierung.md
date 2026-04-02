@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-31  
-Letzte Aktualisierung: 2026-04-02 — F-CHAIN **Standort** (04d **B.13.1a**); zuvor § Dokumentenkette; Metablock Variante B; 2026-03-31 (meta-bar, K-Stufen)  
+Letzte Aktualisierung: 2026-04-02 — **§ CTFL-Lehrplan vs. Portfolio (HA5)** (Einsteiger-Sprache); zuvor F-CHAIN Standort; Metablock Variante B; 2026-03-31 (meta-bar, K-Stufen)  
 Zweck: Redaktionelle Harmonisierung (Texte, Labels, meta-bar-Inhalte) — abgegrenzt von visueller Spec **04d** B.11/B.12/**B.13**.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Redaktion  
 Normative Orientierung: Visuell [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) Teil B (u. a. **B.13** F-CHAIN)
@@ -36,6 +36,8 @@ Nach der visuellen Vereinheitlichung der meta-bar fallen **inhaltliche** Inkonsi
 | **Lernseiten (IST-Analyse)** | `01-landkarte.html` bis `06-testwerkzeuge.html` (**11 Seiten**) |
 | **Nicht Gegenstand dieser Datei (optional später)** | Einstieg (`index.html`), Standards (`00b`), Hausaufgaben-Seiten (`00a`, `04a`–`06c` …) — **eigenes** Vorgehen möglich |
 
+*Ausnahme:* **§ CTFL-Lehrplan vs. Portfolio (HA5)** oben — **redaktionelle** Leitlinie für ausgewählte HA-Texte; **kein** Ersatz für die didaktischen Inhalte auf den Seiten.
+
 ---
 
 ## Ziel
@@ -46,7 +48,7 @@ Nach der visuellen Vereinheitlichung der meta-bar fallen **inhaltliche** Inkonsi
 
 **Status ISTQB K-Stufen (Hinweis):** **Umgesetzt** (2026-03-31) — kompakte Legende **`K-Stufen: K1 (erinnern) · K2 (verstehen) · K3 (anwenden)`** nur in der **meta-bar**, wenn dort bereits eine **Lernziel-Kennzeichnung** vorkommt: **(K1)** / **(K2)** / **(K3)** oder **FL-…** mit **K1/K2/K3** (Lehrplan v4.0.2). **9** Kern-Lernseiten; **ohne** K-Stufen-Zeile: **Landkarte**, **Glossar** (keine FL-(Kx) in der Kontextzeile). **Grundlagen (01b):** im Hinweis **`FL-1.4.3 (K2)`** (Testmittel), damit die Regel greift — siehe **§2.4**.
 
-**Weitere** redaktionelle Themen (Abschn. 3 ff. unten) **offen**.
+**Weitere** redaktionelle Themen (Abschn. 3 ff. unten) **offen**, soweit nicht durch **§ CTFL-Lehrplan vs. Portfolio (HA5)** oben abgedeckt.
 
 ---
 
@@ -57,6 +59,39 @@ Nach der visuellen Vereinheitlichung der meta-bar fallen **inhaltliche** Inkonsi
 **Sinn (in wenigen Sätzen):** In **Software-Testen** und **QA** gehören **Artefakte** (Analyse, Testbasis, Testfälle, Konzept, Ausführung …) **logisch** zusammen — das nennt man u. a. **Traceability** und **Dokumentation der Teststrecke**. Die Box macht diese **Kette für die Lernreihe sichtbar**: *Wo bin ich? Welches Dokument baut worauf auf? Welcher Link führt zum nächsten Schritt?* Der **Name** „Dokumentenkette“ soll **schon** die Idee tragen; der **Text in der Box** ist **kein** Ersatz für Lehrbuchkapitel, sondern ein **Kompass** und **Einordnung** — klassische **QA-/Test-Dokumentations-Logik**, didaktisch auf die **Portfolio-Strecke** zugeschnitten.
 
 **Redaktionsregel (minimal):** **Ein** klarer **einordnender** Absatz plus **funktionierende Links** zu den **unmittelbar** vorherigen/nächsten **Dokumenten** der Strecke — **kein** langes Tutorial in der Box. **Nicht** dieselbe Box für reine **Begriffsklärung** (z. B. CTFL vs. IEEE) — dafür bleiben **andere** Infokästen (**F-INFO** / `.info-box--note`).
+
+---
+
+## CTFL-Lehrplan vs. diese Website — Reihenfolge bei HA5
+
+*Normative Kurzfassung für Redaktion und Prüfung auf Widersprüche. Ausführliche, leserfreundliche Texte auf den HA-Seiten (z. B. blaue Infoboxen auf **05a** / **04c**); hier die **gemeinsame Linie** in klaren Worten.*
+
+### Was Einsteiger wissen sollen
+
+Im **ISTQB-Lehrplan (CTFL)** stehen die **Themen** in einer bestimmten Reihenfolge: In **Kapitel 4** geht es um Testanalyse und -entwurf (also auch: wie man Testfälle ableitet). **Kapitel 5** behandelt Testmanagement — darunter fällt bei uns das **Testkonzept**. **Warum zuerst 4, dann 5?** Weil der Lehrplan so aufgebaut ist, dass man **zuerst die Techniken** versteht und **danach** das **Organisatorische** — gut zum **Lernen** und zur **Prüfung**.
+
+Auf **dieser Website** (Portfolio, Navigation) ist die **Dokumenten-Reihenfolge** bei HA5 **anders gemeint**: In der **Hausaufgaben-Leiste** steht **zuerst das Testkonzept**, **danach** der **Testfallentwurf** mit den ausführlichen Testfällen. Das entspricht einer **sehr üblichen Arbeitsweise**: **Erst** Rahmen, Plan, Risiko — **dann** die konkreten Testfälle. Viele **Normen** (z. B. aus dem IEEE-/ISO-Umfeld) beschreiben eine **ähnliche Praxis-Reihenfolge**.
+
+### Warum das kein Widerspruch ist
+
+Hier sind **zwei Ebenen**, die man nicht vermischen soll:
+
+| Ebene | Was sie bedeutet |
+|-------|------------------|
+| **Lehrplan (CTFL)** | In welcher Reihenfolge du die **Fach-Themen** lernst und in der Prüfung siehst (Kap. 4 vor Kap. 5). |
+| **Portfolio (diese Website)** | In welcher Reihenfolge du hier **Dokumente** ablegst und in der **Nav** durchklickst (**Testkonzept → Testfallentwurf**). |
+
+Beides ist **richtig** — es geht um **unterschiedliche Zwecke** (Lernpfad vs. Arbeits-/Abgabe-Reihenfolge).
+
+### Dateinamen (04…, 05…) und Verwirrung vermeiden
+
+Die **Ziffern am Anfang der Dateinamen** (z. B. `04c-ha5-…` und `05a-ha5-…`) sind **historisch** aus der Projektentwicklung gewachsen. Sie sortieren sich im Ordner **nicht** automatisch so, wie du die Seiten **lesen** oder **bearbeiten** sollst. **Maßgeblich** für „Was kommt zuerst?“ sind die **Navigation** und die **Dokumentenkette** auf den Seiten — **nicht** die bloße Sortierung nach Dateiname.
+
+### Redaktionsregel (verbindlich)
+
+- Wenn irgendwo eine **Reihenfolge** genannt wird, klar trennen: **„im CTFL-Lehrplan / in Kap. 4–5“** vs. **„auf dieser Website / in der Nav“**.
+- **Keine** Formulierungen, die so klingen, als müsste die **Website-Reihenfolge** **1:1** der **Kapitelnummern** im Lehrplan entsprechen.
+- Verweise auf **tiefere** Erklärung: Infobox **„Reihenfolge und Begrifflichkeit — CTFL vs. IEEE/ISO“** auf **05a**; ergänzend **04c** (Kurzverweis).
 
 ---
 
