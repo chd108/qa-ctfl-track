@@ -18,9 +18,29 @@
 
 ---
 
+## Component Spec — Mindestinhalt (Checkliste)
+
+Vor Abnahme einer **Component-/Pattern-Spec** (z. B. in **04d**, künftig weitere Cluster) prüfen — **nicht** nur Farben/Tokens:
+
+| Kategorie | Pflichtinhalt (je nach Baustein) |
+|-----------|-----------------------------------|
+| **Farben / Tokens** | `:root`-Namen, Semantik (C/F/P) |
+| **Typografie** | `font-family`, `font-size`, `line-height`, `font-weight` wo relevant |
+| **Abstände** | `padding`, `margin`, `gap` (Container & Kinder) |
+| **Maße** | `width`/`height` oder `min-*`, ggf. Chip-Geometrie |
+| **Radius / Rand** | `border-radius`, `border` |
+| **Zustände** | `hover` / `focus-visible` / `active` — oder **bewusst nein** |
+| **Schatten / Motion** | `box-shadow`, `transition` — oder **bewusst keine** |
+| **Responsive** | Wrap/Breakpoints — oder **bewusst nur Flex-Wrap** |
+| **Accessibility** | `role`, `aria-*`, Tastatur, Kontrast-Hinweis |
+
+**Prozess:** Spec als **unvollständig** kennzeichnen, wenn ein Pflichtfeld fehlt („offen: …“). Verweis: [04d-domain-ctfl-lernwebsite-2026-04-02.md](04d-domain-ctfl-lernwebsite-2026-04-02.md) Teil B inkl. **B.11** (Visuelle Spezifikation).
+
+---
+
 # Design-System-Spec (Cluster) — Überblick
 
-**Stand:** 2026-04-02  
+**Stand:** 2026-04-02 · **Checkliste ergänzt:** 2026-04-03  
 **Ort:** `01_Projektsteuerung/designsystem-workshop/`  
 **Normatives Mapping (IST→SOLL→Token):** [03-token-mapping-2026-04-01.md](03-token-mapping-2026-04-01.md)  
 **SOLL-Taxonomie (C/F/P/S):** [02f-soll-taxonomie-session3-2026-03-30.md](02f-soll-taxonomie-session3-2026-03-30.md)
@@ -64,7 +84,7 @@ Die **04*-Dateien** ergänzen sie um:
 ## Pilot & Status
 
 - **P1 Pilot** (CSS): nach freigegebener Spec — siehe [02_Project_Status.md](../02_Project_Status.md).
-- **CTFL/Syllabus-Chip:** Regeln und Platzhalter-Spec in **04d**, Teil A + B.
+- **CTFL/Syllabus-Chip:** **04d** Teil A + B inkl. **B.11** (visuelle Sollwerte meta-bar / Chip).
 
 ---
 
