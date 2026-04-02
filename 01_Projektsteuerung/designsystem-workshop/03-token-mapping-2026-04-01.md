@@ -11,6 +11,7 @@
 - **Bestehende** `:root`-Variablen in **`base.css`** / **`doc-a4.css`** wo möglich **fortführen oder aliassen** — vermeidet eine **zweite** Token-Welt parallel zu den bereits genutzten `--e1`–`--e6`, `--note`, `--ctfl-bg` usw.
 - **S-\*** (Diátaxis): **Aussehen** von Label/Badge (**Emoji, Farbe, Text, Icon**) ist **noch nicht** entschieden — in den S-Zeilen steht nur: **„Label-System für Leser (Details folgen)“**.
 - **Workshop-Ordner** `designsystem-workshop/` bleibt die **maßgebliche Referenz** für **02f**, **03-token-mapping** und Sessions — **nicht** „eingefrorenes Archiv“; Verdichtung in **03_Project_Standards** kann **ergänzend** erfolgen, ersetzt die Quelldateien **nicht** ohne Beschluss.
+- **Design-Spec-Cluster (04):** [04-design-system-overview.md](04-design-system-overview.md) — **ergänzt** dieses Dokument um **Priorität** (P0/P1) und **Domain CTFL**; **normativ** für IST/SOLL/Token bleibt **weiterhin diese Datei (03)**. Vereinfachungs- und Drift-Risiken: siehe Risiko-Register im Overview.
 
 ---
 
@@ -110,4 +111,12 @@
 
 ---
 
-*Ende Session 3 Mapping-Dokument — Stand 2026-04-01.*
+## 7. Design-Spec-Cluster (04) und CTFL-Domain
+
+**Einstieg:** [04-design-system-overview.md](04-design-system-overview.md) — Navigation zu **04a** (C-*), **04b** (F-*), **04c** (P-*), **04d** (Domain CTFL Lernwebsite); **Risiko-Register** und Vereinfachungs-Optionen oben in der Overview.
+
+**CTFL-Orientierung (Regeln + Syllabus-Chip-Spec, zusammengeführt):** [04d-domain-ctfl-lernwebsite-2026-04-02.md](04d-domain-ctfl-lernwebsite-2026-04-02.md) — Referenzseite **01c-testmittel.html**; Teil B Spec ggf. noch Platzhalter bis Pilot-Detail.
+
+---
+
+*Ende Session 3 Mapping-Dokument — Stand 2026-04-01; Abschnitt 7 aktualisiert 2026-04-02 (Cluster 04).*

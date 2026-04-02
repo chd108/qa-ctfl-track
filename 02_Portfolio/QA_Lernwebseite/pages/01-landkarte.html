@@ -11,10 +11,7 @@
   <style>
     :root {
       --fs: 15px;
-      --ctfl: #4a7c59; --ctfl-bg: #cde8d2;
-      --praxis: #9c6a2a; --praxis-bg: #f0dfc0;
-      --advanced: #2a547c; --advanced-bg: #c4d8ee;
-      --extra: #8a5a6a; --extra-bg: #ead8de;
+      /* --ctfl … --chip-* aus base.css (Pilot P1 Chips) */
       --ms: #b5451b; --ms-bg: #f5d5cc;
     }
     body { font-size: var(--fs); padding: 0 3rem 4rem; }
@@ -49,13 +46,13 @@
     .tag-group:last-child { margin-bottom: 0; }
     .tag-group__title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; color: var(--soft); margin-bottom: .5rem; padding-bottom: .3rem; border-bottom: 1px solid var(--bdr); }
     .tag-group__title .ref { font-size: 10px; font-weight: 400; opacity: .55; letter-spacing: .04em; margin-left: .4em; }
-    .tags { display: flex; flex-wrap: wrap; gap: .4rem; }
-    .tag { display: inline-flex; align-items: center; gap: .35rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 13px; padding: .28rem .65rem; border-radius: 4px; border: 1px solid rgba(0,0,0,0.08); line-height: 1.3; }
+    .tags { display: flex; flex-wrap: wrap; gap: var(--chip-gap); }
+    .tag { display: inline-flex; align-items: center; gap: .35rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: var(--chip-font-size); padding: var(--chip-padding-y) var(--chip-padding-x); border-radius: var(--chip-radius); border: var(--chip-border); line-height: 1.3; }
     .tag .tdot { width: 7px; height: 7px; border-radius: 50%; flex-shrink: 0; }
-    .tag--ctfl { background: var(--ctfl-bg); color: #1a2e1a; }
-    .tag--praxis { background: var(--praxis-bg); color: #1e2210; }
-    .tag--advanced { background: var(--advanced-bg); color: #0e1e30; }
-    .tag--extra { background: var(--extra-bg); color: #2a2820; }
+    .tag--ctfl { background: var(--chip-syllabus-bg); color: var(--chip-syllabus-fg); }
+    .tag--praxis { background: var(--chip-praxis-bg); color: var(--chip-praxis-fg); }
+    .tag--advanced { background: var(--chip-advanced-bg); color: var(--chip-advanced-fg); }
+    .tag--extra { background: var(--chip-extra-bg); color: var(--chip-extra-fg); }
     .tag .ref { font-size: 10px; opacity: .55; font-weight: 600; letter-spacing: .04em; }
     .universe-grid { display: grid; grid-template-columns: repeat(6, 1fr); gap: 1rem; align-items: start; }
     @media (max-width: 1400px) { .universe-grid { grid-template-columns: repeat(3, 1fr); } }

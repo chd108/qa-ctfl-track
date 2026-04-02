@@ -23,10 +23,7 @@
       --ts4d: #4a2a6a;
       --ts5d: #6a2a2a;
 
-      --ctfl:     #4a7c59;  --ctfl-bg:    #cde8d2;
-      --praxis:   #9c6a2a;  --praxis-bg:  #f0dfc0;
-      --advanced: #2a547c;  --advanced-bg:#c4d8ee;
-      --extra:    #8a5a6a;  --extra-bg:   #ead8de;
+      /* CTFL-Chips: --ctfl … --chip-* aus base.css (Pilot P1) */
       --warn:     #9c6a2a;  --warn-bg:    #f0dfc0;
       --note:     #2a547c;  --note-bg:    #c4d8ee;
       --ok:       #4a7c59;  --ok-bg:      #cde8d2;
@@ -82,10 +79,10 @@
       border-radius: 4px; border: 1px solid rgba(0,0,0,0.08); line-height: 1.3;
     }
     .tdot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
-    .tag-ctfl     { background: var(--ctfl-bg);    color: #1a2e1a; }
-    .tag-praxis   { background: var(--praxis-bg);  color: #1e2210; }
-    .tag-advanced { background: var(--advanced-bg);color: #0e1e30; }
-    .tag-extra    { background: var(--extra-bg);   color: #2a2820; }
+    .tag-ctfl     { background: var(--chip-syllabus-bg); color: var(--chip-syllabus-fg); }
+    .tag-praxis   { background: var(--chip-praxis-bg); color: var(--chip-praxis-fg); }
+    .tag-advanced { background: var(--chip-advanced-bg); color: var(--chip-advanced-fg); }
+    .tag-extra    { background: var(--chip-extra-bg); color: var(--chip-extra-fg); }
     .ref { font-size: 10px; opacity: .55; font-weight: 600; letter-spacing: .04em; }
 
     /* ── Hinweis-Boxen (optisch an .info-box angeglichen) ── */

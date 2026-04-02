@@ -24,6 +24,45 @@
   --e3form: #cfbdb6;
   /* Vertikaler Rhythmus: oben in Nav-Zone, zwischen Nav 1/2, unter Nav bis page-chrome */
   --nav-vertical-rhythm: 1.75rem;
+
+  /*
+   * P1 Pilot — Chip-Palette & Aliase (Workshop: C-SYLLABUS … C-EXTRA)
+   * Doku: 01_Projektsteuerung/designsystem-workshop/03-token-mapping-2026-04-01.md
+   *
+   * --ctfl / --ctfl-bg … --extra-bg: „Akzent“ + „Fläche“ (früher u. a. in 01-landkarte.html
+   * und 02c dupliziert). Jetzt eine Quelle; Aliase --chip-* für SOLL-Codes.
+   *
+   * Sichtbar auf: 01-landkarte.html (Klassen .tag--ctfl … .tag--extra in .tag-group).
+   * 02c-teststufen.html nutzt andere Klassen (.stag-*) für die Stufen-Karten, aber dieselben
+   * Farbvariablen (--ctfl-bg, --praxis-bg …) in base.css — Legende + Matrix-Styling.
+   */
+  --ctfl: #4a7c59;
+  --ctfl-bg: #cde8d2;
+  --praxis: #9c6a2a;
+  --praxis-bg: #f0dfc0;
+  --advanced: #2a547c;
+  --advanced-bg: #c4d8ee;
+  --extra: #8a5a6a;
+  --extra-bg: #ead8de;
+  /* C-SYLLABUS (ISTQB-Lehrplan / „grüne“ Chip-Familie) — Hintergrund + Text */
+  --chip-syllabus-bg: var(--ctfl-bg);
+  --chip-syllabus-fg: #1a2e1a;
+  /* C-PRAXIS (Berufs-/Praxisbezug) */
+  --chip-praxis-bg: var(--praxis-bg);
+  --chip-praxis-fg: #1e2210;
+  /* C-ADV (Vertiefung, Normen, Kapitel-3-Blau) */
+  --chip-advanced-bg: var(--advanced-bg);
+  --chip-advanced-fg: #0e1e30;
+  /* C-EXTRA (Extra-Kontext, nicht Syllabus-Pflicht) */
+  --chip-extra-bg: var(--extra-bg);
+  --chip-extra-fg: #2a2820;
+  /* P-CHIPS: gemeinsame „Hülle“ — nur auf Landkarte an .tag/.tags gebunden (02c: eigene .tag-Maße) */
+  --chip-padding-y: 0.28rem;
+  --chip-padding-x: 0.65rem;
+  --chip-radius: 4px;
+  --chip-gap: 0.4rem;
+  --chip-border: 1px solid rgba(0, 0, 0, 0.08);
+  --chip-font-size: 13px;
 }
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
