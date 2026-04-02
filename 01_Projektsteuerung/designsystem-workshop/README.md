@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-02 — **Umbenennung** aller Workshop-`.md` (Konvention P01/IST/P04/P05); Verweise im Repo angepasst; **Aufräum-Plan** (Abschnitt unten); **02_Project_Status** nachgezogen; zuvor Phase 3 Doku  
+Letzte Aktualisierung: 2026-04-02 — **Aufräum-Plan / Phase 4:** Schritt **C** (Klarnamen) als erledigt dokumentiert; **B** (optional Zusammenlegen P04-01–03) bewusst offen; zuvor **Umbenennung** aller Workshop-`.md` (Konvention P01/IST/P04/P05); Verweise im Repo angepasst; **02_Project_Status** nachgezogen; zuvor Phase 3 Doku  
 Zweck: Living Documentation — Einstieg in den **Designsystem-Workshop** (Rollen, Inventar, Lesereihenfolge, Zielbaum).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop  
 Normative Orientierung: [03_Project_Standards.md](../03_Project_Standards.md) (Metablock, README-Ausnahme); Mapping [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)
@@ -73,22 +73,22 @@ Living Documentation zum **Designsystem** der *QA_Lernwebseite* (ISTQB-CTFL-orie
 
 ## Aufräum-Plan (Empfehlung)
 
-**Wo wir stehen:** Phasen **1–3** haben den Ordner **lesbarer** gemacht (Köpfe, eine **Prio**-Sprache, **Rollout**, keine falsche „zweite Wahrheit“ in 04 vs. 03). **Noch nicht** erledigt ist eine **starke Verdichtung** (weniger Dateien durch **Zusammenlegen** oder **Umbenennen**).
+**Wo wir stehen:** Phasen **1–3** haben den Ordner **lesbarer** gemacht (Köpfe, eine **Prio**-Sprache, **Rollout**, keine falsche „zweite Wahrheit“ in 04 vs. 03). **Schritt C** (eindeutige Workshop-Dateinamen statt verwechselbarer `04a-…` / Datums-Suffixe) ist mit der **Konvention P01 / P02-* / P03 / P04-* / P05 / IST-*** (2026-04) **umgesetzt** — inklusive repo-weiter Link-Anpassung. **Noch offen** ist nur eine **freiwillige Verdichtung** durch **Zusammenlegen** der drei Cluster-Dateien **P04-01 / P04-02 / P04-03** (früher Schritt **B**): mehr Pflege in einem Rutsch, kein struktureller Zwang.
 
-**Ziel:** Entweder **bewusst bei ~16 Dateien bleiben** (aktuell: überschaubar) **oder** die Anzahl **reduzieren**, ohne Inhalt zu verlieren — mit **klarem** Ablauf und **Links**, die nicht kaputt gehen.
+**Ziel:** Entweder **bewusst bei der aktuellen Datei-Anzahl** bleiben **oder** **B** angehen, ohne Inhalt zu verlieren — mit **klarem** Ablauf und **Links**, die nicht kaputt gehen.
 
 | Schritt | Was | Warum (einfach) | Risiko |
 |---------|-----|------------------|--------|
 | **A — Link-Inventar** | Repo durchsuchen: wer verlinkt auf `designsystem-workshop/` (Pfade in **02_Project_Status**, **03_Project_Standards**, **Charter**, ggf. **QA_Lernwebseite/README**)? Liste anlegen. | Vor jedem Umbenennen oder Zusammenlegen muss man wissen, **was** angepasst werden muss. | gering |
-| **B — Optional: 04a+04b+04c zusammenlegen** | Eine Datei z. B. `04-cluster-cfp-priorities.md` mit drei großen Kapiteln **C / F / P**; Inhalt aus den jetzigen drei Dateien **verschieben**; alte drei Dateien **löschen** oder nur noch **Weiterleitungshinweis** (ein Satz + Link). | **Weniger** Dateien zum Pflegen; **ein** Ort für „Priorität pro Cluster“. | mittel (viele Links aktualisieren) |
-| **C — Optional: Dateien umbenennen** | Z. B. Präfix `cluster-c-…` statt `04a-…`, damit **keine** Verwechslung mit **`pages/04a-ha4…`**. | **Klarere** Namen — aber **alle** Verweise im Repo müssen mit. | mittel bis hoch |
-| **D — Nicht anfassen (Empfehlung vorerst)** | **Session-2-Kette** (02, 02b–02f) als **einzelne** Dateien lassen — das ist eure **Denk-/Arbeitsgeschichte**; Zusammenlegen lohnt selten. | Historische Lesbarkeit bleibt; weniger „alles in einem Riesendokument“. | — |
+| **B — Optional: P04-01+P04-02+P04-03 zusammenlegen** | Eine Datei z. B. mit drei großen Kapiteln **C / F / P**; Inhalt aus den jetzigen drei Dateien **verschieben**; alte drei Dateien **löschen** oder nur noch **Weiterleitungshinweis** (ein Satz + Link). | **Weniger** Dateien zum Pflegen; **ein** Ort für „Priorität pro Cluster“. | mittel (viele Links aktualisieren) |
+| **C — Umbenennung / klare Namen** | **Erledigt (2026-04):** stabile Präfixe **P04-01 … P04-04** u. a. — **keine** Namenskollision mit **`pages/04a-ha4…`** auf der Ebene der Workshop-Dateinamen. | Lesbarkeit, Suche, einheitliche Verweise. | (war: mittel bis hoch) |
+| **D — Nicht anfassen (Empfehlung vorerst)** | **Session-2-Kette** (**P02-01**–**P02-06**) als **einzelne** Dateien lassen — **Denk-/Arbeitsgeschichte**; Zusammenlegen lohnt selten. | Historische Lesbarkeit bleibt; weniger „alles in einem Riesendokument“. | — |
 
-**Vorgehen, das ich vorschlage (du bestätigst mit Go):**
+**Vorgehen:**
 
-1. **Schritt A** — Link-Inventar (erste Fassung **unten erledigt**). **Kein** Löschen, **kein** Umbenennen.  
-2. Dann **gemeinsam** entscheiden: wollt ihr **B** (Zusammenlegen 04a–c) **ja/nein**? Wenn **ja**, ein **einziger** Commit mit allen Link-Fixes.  
-3. **C** nur, wenn ihr nach **README-Tabelle** „04a–c vs. HTML“ immer noch **verwechselt** — sonst **Kosten** > **Nutzen**.
+1. **Schritt A** — Link-Inventar (erste Fassung **unten erledigt**).  
+2. **Schritt B** — **nur** bei Bedarf und mit **Go**: ein **einziger** Commit mit allen Link-Fixes; sonst **bewusst offen lassen** (drei Dateien sind mit **P03**-Verweisen gut handhabbar).  
+3. **Schritt C** — siehe Tabelle: **abgeschlossen** durch die **P-/IST-**-Umbenennung; weitere Umbenennungen nur bei neuem Bedarf.
 
 ### Link-Inventar (Schritt A — erste Fassung, Stand 2026-04-02)
 
@@ -98,13 +98,13 @@ Living Documentation zum **Designsystem** der *QA_Lernwebseite* (ISTQB-CTFL-orie
 |--------|--------------------------------|
 | [02_Project_Status.md](../02_Project_Status.md) | README, 03, 04-overview, 02c, 05, Sessions, Analysen, viele Einzeldateien |
 | [03_Project_Standards.md](../03_Project_Standards.md) | `designsystem-workshop/README.md` (Metablock-Ausnahme) |
-| [QA_Lernwebseite/README.md](../../02_Portfolio/QA_Lernwebseite/README.md) | 04d, 03, Analysen, `02_Project_Status` |
-| [base.css](../../02_Portfolio/QA_Lernwebseite/assets/css/base.css) | Kommentar: 03, 04d |
+| [QA_Lernwebseite/README.md](../../02_Portfolio/QA_Lernwebseite/README.md) | P04-04, P03, IST-Analysen, `02_Project_Status` |
+| [base.css](../../02_Portfolio/QA_Lernwebseite/assets/css/base.css) | Kommentar: P03-Mapping, P04-04-Spec |
 | **Dieser Ordner** (`designsystem-workshop/*.md`) | untereinander (relative Links) |
 
 **Hinweis:** [01_Project_Charter.md](../01_Project_Charter.md) und Root-**README** verlinken den Workshop-Ordner **nicht** direkt (Stand Suche 2026-04-02).
 
-**Zielbaum Phase 4** (unten): Schritt **A** gilt mit dieser Tabelle als **erste Runde erledigt**; **B/C** bleiben **optional** bis zu eurem **Go**.
+**Zielbaum Phase 4** (unten): Schritt **A** gilt mit dieser Tabelle als **erste Runde erledigt**; **C** ist mit der **P-/IST-Umbenennung** erledigt; **B** bleibt **optional** bis zu eurem **Go**.
 
 ---
 
@@ -113,7 +113,7 @@ Living Documentation zum **Designsystem** der *QA_Lernwebseite* (ISTQB-CTFL-orie
 - **Phase 1 (erledigt):** Inventar + dieses README; **Metablock Variante B** in allen Workshop-`.md` (inkl. **03**, **04a–04d**, Analysen).  
 - **Phase 2 (erledigt):** Abschnitt **Rollout-Plan — Scope** in [P04-00-spec-overview.md](P04-00-spec-overview.md) — **Phase A** = Lerninhalte + `index` + `00b`; **Phase B** = HA-Web + A4 (siehe Tabellen dort, Grundlage **02c** §1).  
 - **Phase 3 (erledigt):** **F-LEGEND** in **04b**-Prioritätstabelle; **gemeinsame P0/P1-Erklärung** in [P04-00-spec-overview.md](P04-00-spec-overview.md); **§6** in **03** mit Verweis **Rollout**; **04c** Sortierhinweis vs. **03** §3.  
-- **Phase 4 (teilweise — Abschnitt *Aufräum-Plan* oben):** **Link-Inventar** Schritt **A** (erste Tabelle); **optional** **Zusammenlegen** 04a–c (B) und/oder **Umbenennen** (C) nur mit **Go** und **Link-Fixes**. Phase 4 ist **abgeschlossen**, wenn **B** und **C** bewusst **verworfen** oder **umgesetzt** sind.
+- **Phase 4 (teilweise — Abschnitt *Aufräum-Plan* oben):** **A** erledigt; **C** (**Klarnamen P04-*/IST-***) erledigt (2026-04). **Optional:** **B** (Zusammenlegen **P04-01–03**) nur mit **Go** und einem Commit für alle Links. Phase 4 gilt als **abgeschlossen**, wenn **B** bewusst **verworfen** oder **umgesetzt** ist.
 
 ---
 
