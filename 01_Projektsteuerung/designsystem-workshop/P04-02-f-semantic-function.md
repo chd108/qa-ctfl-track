@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-02 — Phase 3: **F-LEGEND** in Prioritätstabelle; Verweis Projektstatus  
+Letzte Aktualisierung: 2026-04-02 — **F-CHAIN** (Pilot, 04d B.13); zuvor F-LEGEND in Prioritätstabelle  
 Zweck: Cluster **F-*** — Priorität und Detail zur normativen Tabelle in [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md) §2.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Normativ  
 Normative Orientierung: Bei Abweichung gilt [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)
@@ -31,7 +31,7 @@ Normative Orientierung: Bei Abweichung gilt [P03-mapping-ist-soll-token.md](P03-
 |------|------|---------------------|
 | **F-META** | **P0** | `.meta-bar`; Token `--chrome-meta-*`; optional Syllabus-Chip-Slot — [04d](P04-04-ctfl-lernwebsite-spec.md) |
 | **F-LEGEND** | **P0** | Seitenlegende `.legend` / `nav.legend`; Token `--legend-*`; Standort **04d** B.12 — mit **F-META** verzahnt |
-| **F-CHAIN** | P1 | Dokumentenkette HA |
+| **F-CHAIN** | **P1** | **`aside.chain-callout`** — HA-Dokumentenkette (Web); **creme/pastell** (`--callout-chain-*`), **nicht** F-INFO — **04d** B.13; Redaktion **P05** § F-CHAIN |
 | **F-TERM** | P1 | A4 Begriffshinweise |
 | **F-INFO** | P1 | Basis-Infobox |
 | **F-SUCCESS** | P1 | OK-Boxen |
@@ -51,6 +51,7 @@ Normative Orientierung: Bei Abweichung gilt [P03-mapping-ist-soll-token.md](P03-
 - **Gesamtprojekt / Meilensteine:** [02_Project_Status.md](../02_Project_Status.md) — hier nur **Kurz** zum Workshop.
 - **F-META (P0):** **umgesetzt** — `assets/css/base.css` (`.meta-bar`, Syllabus-Chip, `--chrome-meta-*`); **11** Kern-Lernseiten; visuelle Sollwerte **04d** Teil **B.11**. Duplizierte Inline-Styles für **`.meta-bar`** auf **04a-ha4**, **04c-ha5-testfallentwurf**, **05a-ha5-testkonzept**, **00a-ha-einordnung** entfernt (ein globales Stylesheet).
 - **F-LEGEND (P0):** **umgesetzt** in `base.css` — siehe **04d** B.12; vollständige Zeile in **03** §2.
+- **F-CHAIN (P1):** **Pilot umgesetzt** — `assets/css/base.css` (`.chain-callout`, `--callout-chain-*`); **drei** HA-Web-Seiten (`04a`, `04c`, `05a`) mit Titel „Dokumentenkette — …“; visuelle Sollwerte **04d** B.13. **Keine** A4-HTML.
 
 ---
 

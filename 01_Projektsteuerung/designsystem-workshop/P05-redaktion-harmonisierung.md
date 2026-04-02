@@ -1,15 +1,15 @@
 Datei erstellt: 2026-03-31  
-Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-31 (meta-bar, **ISTQB K-Stufen** im **Hinweis**)  
-Zweck: Redaktionelle Harmonisierung (Texte, Labels, meta-bar-Inhalte) — abgegrenzt von visueller Spec **04d** B.11/B.12.  
+Letzte Aktualisierung: 2026-04-02 — **§ Dokumentenkette (F-CHAIN)**; zuvor Metablock Variante B; Stand 2026-03-31 (meta-bar, **ISTQB K-Stufen** im **Hinweis**)  
+Zweck: Redaktionelle Harmonisierung (Texte, Labels, meta-bar-Inhalte) — abgegrenzt von visueller Spec **04d** B.11/B.12/**B.13**.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Redaktion  
-Normative Orientierung: Visuell [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) Teil B
+Normative Orientierung: Visuell [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) Teil B (u. a. **B.13** F-CHAIN)
 
 ---
 
 # Redaktionelle Harmonisierung — QA_Lernwebseite
 
 **Ort:** `01_Projektsteuerung/designsystem-workshop/`  
-**Bezug Design (visuell):** [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) Teil **B.11** (meta-bar / Chip) und **B.12** (Seitenlegende **F-LEGEND** — umgesetzt in `base.css` + Lernseiten). **Standort** der Legende: **nur** 04d B.12 (**keine** Ausnahmen).
+**Bezug Design (visuell):** [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) Teil **B.11** (meta-bar / Chip), **B.12** (Seitenlegende **F-LEGEND**) und **B.13** (**F-CHAIN** / Dokumentenkette Web). **Standort** der Legende: **nur** 04d B.12 (**keine** Ausnahmen). **F-CHAIN:** siehe **B.13** + **§ unten**.
 
 ---
 
@@ -19,7 +19,7 @@ Dieses Dokument sammelt **redaktionelle** Harmonisierungsarbeit für die **gesam
 **Erster Abschnitt:** meta-bar-**Texte** und Informationsarchitektur der Kontextzeile (IST/SOLL).  
 **Weitere Abschnitte** folgen schrittweise (Begrifflichkeiten, „Kap.“ vs. „Kapitel“, Tonalität, …).
 
-**Abgrenzung:** Keine erneute **visuelle** Spec — die gilt weiter **04d B.11** (meta-bar) und **B.12** (Legende: Darstellung, HTML, **verbindlicher** Platz in `main`). Hier geht es um **Inhalt**, **Labels** und **Wiedererkennbarkeit** für Leserinnen und Leser. **Wann** eine Seitenlegende inhaltlich sinnvoll ist, bleibt **redaktionell** (diese Datei); **wo** sie steht, ist **technisch** in **04d B.12** festgelegt (**keine** Standort-Ausnahmen).
+**Abgrenzung:** Keine erneute **visuelle** Spec — die gilt weiter **04d B.11** (meta-bar), **B.12** (Legende) und **B.13** (Dokumentenkette: Farben, HTML, Token). Hier geht es um **Inhalt**, **Labels** und **Wiedererkennbarkeit** für Leserinnen und Leser. **Wann** eine Seitenlegende inhaltlich sinnvoll ist, bleibt **redaktionell** (diese Datei); **wo** sie steht, ist **technisch** in **04d B.12** festgelegt (**keine** Standort-Ausnahmen). **Wozu** die Dokumentenkette-Box textlich dient: **§ Dokumentenkette (F-CHAIN)** unten.
 
 ---
 
@@ -47,6 +47,16 @@ Nach der visuellen Vereinheitlichung der meta-bar fallen **inhaltliche** Inkonsi
 **Status ISTQB K-Stufen (Hinweis):** **Umgesetzt** (2026-03-31) — kompakte Legende **`K-Stufen: K1 (erinnern) · K2 (verstehen) · K3 (anwenden)`** nur in der **meta-bar**, wenn dort bereits eine **Lernziel-Kennzeichnung** vorkommt: **(K1)** / **(K2)** / **(K3)** oder **FL-…** mit **K1/K2/K3** (Lehrplan v4.0.2). **9** Kern-Lernseiten; **ohne** K-Stufen-Zeile: **Landkarte**, **Glossar** (keine FL-(Kx) in der Kontextzeile). **Grundlagen (01b):** im Hinweis **`FL-1.4.3 (K2)`** (Testmittel), damit die Regel greift — siehe **§2.4**.
 
 **Weitere** redaktionelle Themen (Abschn. 3 ff. unten) **offen**.
+
+---
+
+## Dokumentenkette (F-CHAIN) — wozu die Box?
+
+**Kontext:** Auf ausgewählten **HA-Web-Seiten** (nicht A4-HTML) steht eine **Kurzbox** mit der Überschrift **„Dokumentenkette — …“**. Visuell: **04d B.13**; technisch: **`aside.chain-callout`** in `base.css`.
+
+**Sinn (in wenigen Sätzen):** In **Software-Testen** und **QA** gehören **Artefakte** (Analyse, Testbasis, Testfälle, Konzept, Ausführung …) **logisch** zusammen — das nennt man u. a. **Traceability** und **Dokumentation der Teststrecke**. Die Box macht diese **Kette für die Lernreihe sichtbar**: *Wo bin ich? Welches Dokument baut worauf auf? Welcher Link führt zum nächsten Schritt?* Der **Name** „Dokumentenkette“ soll **schon** die Idee tragen; der **Text in der Box** ist **kein** Ersatz für Lehrbuchkapitel, sondern ein **Kompass** und **Einordnung** — klassische **QA-/Test-Dokumentations-Logik**, didaktisch auf die **Portfolio-Strecke** zugeschnitten.
+
+**Redaktionsregel (minimal):** **Ein** klarer **einordnender** Absatz plus **funktionierende Links** zu den **unmittelbar** vorherigen/nächsten **Dokumenten** der Strecke — **kein** langes Tutorial in der Box. **Nicht** dieselbe Box für reine **Begriffsklärung** (z. B. CTFL vs. IEEE) — dafür bleiben **andere** Infokästen (**F-INFO** / `.info-box--note`).
 
 ---
 

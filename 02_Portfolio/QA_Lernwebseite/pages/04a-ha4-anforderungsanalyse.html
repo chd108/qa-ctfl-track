@@ -19,8 +19,6 @@
     body { font-size: var(--fs); padding: 0 3rem 4rem; max-width: 1400px; margin: 0 auto; }
     /* .meta-bar: assets/css/base.css (04d B.11) */
     .info-box { padding: .9rem 1.1rem; margin-bottom: 1.5rem; background: var(--note-bg); border-left: 4px solid var(--note); border-radius: 4px; font-size: 0.9rem; line-height: 1.55; }
-    /* Explizit wie 04c/05a: blaue Story-/Dokumentenkette-Boxen (info-box--note) */
-    .info-box--note { background: var(--note-bg); border-left-color: var(--note); }
     .info-box__title { font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; color: var(--note); margin-bottom: .5rem; }
     .info-box__content { font-size: 13px; line-height: 1.6; }
     .info-box .info-box__content p { margin: .5rem 0; }
@@ -453,14 +451,14 @@
     </div>
   </section>
 
-  <div class="info-box info-box--note" role="note" aria-labelledby="ha4-a4-handin-heading">
-    <div class="info-box__title" id="ha4-a4-handin-heading">Dokumentenkette — HA4 Anforderungsanalyse → HA4 Testbasis-Analyse</div>
-    <div class="info-box__content">
-      <p>Die GroceryMate-Lernstrecke besteht aus aufeinander aufbauenden Dokumenten. Die Box ordnet die aktuelle Position in der Kette ein und beschreibt den Zusammenhang der Dokumente.</p>
+  <aside class="chain-callout" role="complementary" aria-labelledby="ha4-a4-handin-heading">
+    <h3 class="chain-callout__title" id="ha4-a4-handin-heading">Dokumentenkette — HA4 Anforderungsanalyse → HA4 Testbasis-Analyse</h3>
+    <div class="chain-callout__content">
+      <p>Artefakte in QA/Test bauen logisch aufeinander auf (Traceability). Diese Box zeigt, wo du in der <strong>GroceryMate-Strecke</strong> stehst — der Name „Dokumentenkette“ trägt die Idee schon; Details liegen in den verlinkten Dokumenten.</p>
       <p>Diese Seite enthält die <strong>Anforderungsanalyse</strong> (Testbasis aus Tester-Sicht) im Web-Format. Derselbe Inhalt liegt zusätzlich als formales <strong>A4-Dokument</strong> zur <strong>Abgabe als Hausaufgabe</strong> vor:
       <a href="04b-ha4-testbasisanalyse-a4.html"><strong>HA4 Testbasis-Analyse A4</strong></a>.</p>
     </div>
-  </div>
+  </aside>
 </main>
 
 <footer>

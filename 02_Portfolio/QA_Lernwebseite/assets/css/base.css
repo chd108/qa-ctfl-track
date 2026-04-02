@@ -76,6 +76,18 @@
   --legend-surface: rgba(255, 255, 255, 0.45);
   --legend-swatch-size: 12px;
   --legend-item-gap: 0.5rem;
+  /* F-CHAIN — Dokumentenkette HA (Web); 04d B.13 — creme/pastell, nicht F-INFO-Blau */
+  --callout-chain-bg: #fbf9f5;
+  --callout-chain-surface: rgba(255, 252, 248, 0.88);
+  --callout-chain-border-outer: rgba(74, 64, 54, 0.14);
+  --callout-chain-border-accent: #8b7d6c;
+  --callout-chain-title: #3a342c;
+  --callout-chain-body: var(--mid);
+  --callout-chain-radius: 8px;
+  --callout-chain-padding-y: 0.85rem;
+  --callout-chain-padding-x: 1.1rem;
+  --callout-chain-margin-bottom: 1.5rem;
+  --callout-chain-accent-width: 5px;
   /* Semantische Aliase (Callouts, Korrekturleiste 01c; gleiche Werte wie C-SYLLABUS / C-PRAXIS) */
   --ok: var(--ctfl);
   --ok-bg: var(--ctfl-bg);
@@ -342,6 +354,41 @@ main { width: 100%; }
   border: none;
   border-top: 2px dashed rgba(200, 169, 106, 0.55);
   margin-top: 1px;
+}
+
+/* F-CHAIN — Dokumentenkette (Web); Block .chain-callout; 04d B.13 */
+.chain-callout {
+  background: var(--callout-chain-bg);
+  border: 1px solid var(--callout-chain-border-outer);
+  border-left: var(--callout-chain-accent-width) solid var(--callout-chain-border-accent);
+  border-radius: var(--callout-chain-radius);
+  padding: var(--callout-chain-padding-y) var(--callout-chain-padding-x);
+  margin-bottom: var(--callout-chain-margin-bottom);
+}
+.chain-callout__title {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.6875rem;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--callout-chain-title);
+  line-height: 1.35;
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+.chain-callout__content {
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--callout-chain-body);
+}
+.chain-callout__content p {
+  margin: 0.5rem 0;
+}
+.chain-callout__content p:first-child {
+  margin-top: 0;
+}
+.chain-callout__content p:last-child {
+  margin-bottom: 0;
 }
 
 /* Testmittel (01c): Korrekturleiste + CTFL-Fix-Tag — 04d B.10 (Token, keine Seiten-Hardcodes) */

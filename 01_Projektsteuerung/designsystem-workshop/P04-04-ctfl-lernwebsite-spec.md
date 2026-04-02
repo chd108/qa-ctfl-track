@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-04-02, Teil B Spec 2026-04-03 (B.11 F-META, **B.12 F-LEGEND**)  
+Letzte Aktualisierung: 2026-04-02 — **B.13 F-CHAIN** (Dokumentenkette Web, creme/pastell); zuvor Metablock Variante B; Teil B Spec (B.11 F-META, **B.12 F-LEGEND**)  
 Zweck: Domain CTFL — Entscheidungsregeln (Teil A) und Design-Spec meta-bar / Chip / Legende (Teil B).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Normativ  
 Normative Orientierung: [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md) (**C-SYLLABUS**, **F-META**, **F-LEGEND**); [P04-00-spec-overview.md](P04-00-spec-overview.md)
@@ -335,12 +335,75 @@ Bereits vorhandene Tokens nutzen: `var(--bdr)`, `var(--mid)`, `var(--text)`.
 
 ---
 
+### B.13 Visuelle Spezifikation — Dokumentenkette (F-CHAIN)
+
+**Ziel:** Ein **eigenes** Erscheinungsbild für die **HA-Dokumentenkette** (Web) — **pastell / creme / hell**, an die **Seitenphilosophie** (`--bg`, warmes Papier) angelehnt, **nicht** dasselbe Blau wie **F-INFO** (`.info-box--note`). **Abgrenzung:** **F-META** = Kontextzeile; **F-LEGEND** = Farb-/Symbolschlüssel zu Grafiken; **F-CHAIN** = **Position in der Abgaben-Kette** inkl. **Links** zu vorherigen/nächsten **Artefakten**.
+
+**Geltung:** **Nur** die **drei** Web-Seiten mit **Titel** „**Dokumentenkette — …**“ (`04a-ha4-anforderungsanalyse.html`, `04c-ha5-testfallentwurf.html`, `05a-ha5-testkonzept.html`). **Keine** A4-HTML-Dateien.
+
+**Redaktion (kurz):** *Wozu der Kasten?* — siehe [P05-redaktion-harmonisierung.md](P05-redaktion-harmonisierung.md) **§ Dokumentenkette (F-CHAIN)**. Visuell nur diese Spec; inhaltliche **Länge** der Box bleibt **minimal** (Orientierung + Links).
+
+#### B.13.1 HTML-Struktur
+
+| Element | Vorgabe |
+|---------|---------|
+| Container | **`aside.chain-callout`** mit **`role="complementary"`** und **`aria-labelledby`** auf die Titel-ID |
+| Titel | **`h3.chain-callout__title`** (eindeutige **`id`**) — Überschriftenebene an Seitenstruktur anpassen, falls nötig |
+| Inhalt | **`div.chain-callout__content`** — Fließtext + **Links** zu benachbarten Dokumenten |
+
+#### B.13.2 Design-Tokens (`:root` / `base.css`)
+
+| Token | Soll (Pilot) | Anmerkung |
+|-------|----------------|-----------|
+| `--callout-chain-bg` | `#fbf9f5` | Warmes **Creme**, heller als `--bg` (`#f0ece6`), **kein** kühles Blau |
+| `--callout-chain-surface` | `rgba(255, 252, 248, 0.88)` | Optional für **Verlauf** / Überlagerung — Pilot: **gleich** `--callout-chain-bg` oder nur Rand |
+| `--callout-chain-border-outer` | `rgba(74, 64, 54, 0.14)` | Dezenter **Rahmen** rundum |
+| `--callout-chain-border-accent` | `#8b7d6c` | **Linke** Betonung (Taupe, **nicht** Syllabus-Grün, **nicht** Info-Blau) |
+| `--callout-chain-title` | `#3a342c` | Dunkles Warmgrau |
+| `--callout-chain-body` | `var(--mid)` | Fließtext |
+| `--callout-chain-radius` | `8px` | Wie meta-bar / Legende **ein** Radius |
+| `--callout-chain-padding-y` | `0.85rem` | |
+| `--callout-chain-padding-x` | `1.1rem` | |
+| `--callout-chain-margin-bottom` | `1.5rem` | |
+| `--callout-chain-accent-width` | `5px` | Linke Kante |
+
+#### B.13.3 Typografie
+
+| Element | Soll |
+|---------|------|
+| **Titel** | `font-family: "Helvetica Neue", Helvetica, Arial, sans-serif`; `font-size: 0.6875rem` (11px); `font-weight: 800`; `letter-spacing: 0.1em`; `text-transform: uppercase`; `color: var(--callout-chain-title)`; `line-height: 1.35`; `margin-bottom: 0.5rem` |
+| **Fließtext** | `font-size: 0.875rem`–`0.9rem`; `line-height: 1.55`; `color: var(--callout-chain-body)`; **`p` + `a`** wie Seitenfluss |
+
+#### B.13.4 Layout (Container)
+
+- `background`: `var(--callout-chain-bg)`  
+- `border`: `1px solid var(--callout-chain-border-outer)`  
+- `border-left`: `var(--callout-chain-accent-width) solid var(--callout-chain-border-accent)`  
+- `border-radius`: `var(--callout-chain-radius)`  
+- `padding`: `var(--callout-chain-padding-y) var(--callout-chain-padding-x)`  
+- `margin-bottom`: `var(--callout-chain-margin-bottom)`  
+
+#### B.13.5 Abgrenzung
+
+| Baustein | Abgrenzung |
+|----------|------------|
+| **`.info-box.info-box--note` (F-INFO)** | **Blaue** Infokästen (z. B. „CTFL vs. IEEE“ auf **04c** / **05a**) — **bleiben**; **kein** `chain-callout`. |
+| **`.chain-callout` (F-CHAIN)** | **Nur** Titel **„Dokumentenkette — …“** |
+
+#### B.13.6 Abgleich IST → Soll
+
+- **Drei** Web-Seiten: `aside.chain-callout` statt `div.info-box.info-box--note` für die **Dokumentenkette**-Box; lokales CSS für **Kette** entfernen.
+- **P03** §2: IST **`.chain-callout`** + Token wie oben.
+
+---
+
 ### B.7 Abgrenzung
 
 | Baustein | Abgrenzung |
 |----------|------------|
 | **`.chip--syllabus-visual` in meta-bar** | Nur **grünes** Erkennungsmerkmal; **kein** Text im Chip. Kapitel/Version stehen in **Header** oder **meta-bar-Textspalten**. |
 | **F-LEGEND (`.legend`)** | **Schlüssel** zu Farben/Symbolen **auf derselben Seite** (Karte, Diagramm, SVG); **kein** zweites Syllabus-Signal, **kein** Ersatz für F-META. Redaktion **wann** Legende: **05**; **wie** sichtbar: **B.12**. |
+| **F-CHAIN (`.chain-callout`)** | **Orientierung** in der **HA-Dokumentenkette** (Web); **creme/pastell**, **nicht** F-INFO-Blau. Redaktion **wozu** die Box: **05** (F-CHAIN); **wie** sichtbar: **B.13**. |
 | **Landkarte `.tag--ctfl`** | Text-Chips mit Ref — **anderes** Muster, gleiche **Farbfamilie** über `--chip-syllabus-*` / `--ctfl-bg`. |
 | **`.ctfl-fix`** (z. B. 01c) | Kleines **Text**-Label „CTFL“ an Begriffen — **kein** Ersatz für den Meta-Syllabus-Chip; beide dürfen auf einer Seite coexistieren (Teil A). |
 | **correction-bar** | Inline-„CTFL“-Hervorhebung — perspektivisch auf **Klassen + Token** angleichen (Pilot-Follow-up), nicht Teil des ersten Chip-in-meta-bar-Schritts zwingend. |
