@@ -341,7 +341,7 @@ Bereits vorhandene Tokens nutzen: `var(--bdr)`, `var(--mid)`, `var(--text)`.
 
 **Geltung:** **Nur** die **drei** Web-Seiten mit **Titel** „**Dokumentenkette — …**“ (`04a-ha4-anforderungsanalyse.html`, `04c-ha5-testfallentwurf.html`, `05a-ha5-testkonzept.html`). **Keine** A4-HTML-Dateien.
 
-**Redaktion (kurz):** *Wozu der Kasten?* — siehe [P05-redaktion-harmonisierung.md](P05-redaktion-harmonisierung.md) **§ Dokumentenkette (F-CHAIN)**. Visuell nur diese Spec; inhaltliche **Länge** der Box bleibt **minimal** (Orientierung + Links).
+**Redaktion (kurz):** *Wozu der Kasten?* — siehe [P05-redaktion-harmonisierung.md](P05-redaktion-harmonisierung.md) **§ Dokumentenkette (F-CHAIN)**. *Reihenfolge CTFL vs. Nav/Portfolio bei HA5?* — **P05** **§ CTFL-Lehrplan vs. diese Website — Reihenfolge bei HA5** (nicht die visuelle Spec). Visuell nur diese Spec; inhaltliche **Länge** der Box bleibt **minimal** (Orientierung + Links).
 
 #### B.13.1 HTML-Struktur
 

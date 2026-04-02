@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-02 — **F-CHAIN** (Dokumentenkette Web, **`aside.chain-callout`**, **04d** B.13; Redaktion **P05** § F-CHAIN); zuvor **Aufräum-Plan Phase 4 abgeschlossen** (Zusammenlegen **P04-01–03** verworfen) … siehe §2)  
+Letzte Aktualisierung: 2026-04-02 — **Abschluss-Schnitt** Designsystem/Redaktion: **P05** § **CTFL-Lehrplan vs. Portfolio (HA5)** + Nachzug Status/README; zuvor **F-CHAIN** (**04d** B.13, **P05** § F-CHAIN); **Aufräum-Plan Phase 4** … siehe §2)  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -25,16 +25,16 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 | **Lernstrecke HA4/HA5 (Website)** | **Phasen 1–4 abgeschlossen** (Stand **21.03.2026**) — Konsistenz, Story-/UX, formale Einheitlichkeit (**Phase 3 Abschluss:** **21.03.2026**, siehe Abschnitt 2), Standards-Review inkl. CTFL-/IEEE-829-Zitierlogik; Details und Evidenz siehe Abschnitt 2 und 7. |
 | **Hausaufgabe HA6 (Testdurchführung)** | **Website-Portfolio:** Testprotokoll, Fehlerbericht und Testabschlussbericht als **A4-Seiten** unter `02_Portfolio/QA_Lernwebseite/pages/` (**06a–06c**) **vorhanden**; **Kursordner** `03_Hausaufgaben/HA6_Testdurchfuehrung/` ggf. separat nach Kursvorgaben (siehe Abschnitt 3). |
 | **Nächster Schwerpunkt** | **Zwei Spuren:** (1) **Workshop-Doku** — Living Docs, Konsolidierung **03↔P04-Cluster** (C/F/P), **Rollout**; **strukturelles** Zusammenlegen der Dateien **P04-01–03** ist **nicht** vorgesehen (Phase-4-Entscheidung, [README](designsystem-workshop/README.md) *Aufräum-Plan*). (2) **Website/CSS** — **Komponentenstil / Designsystem light**: **Pilot** (**F-META**, **F-LEGEND**, **F-CHAIN**, Korrekturleiste) **in `base.css` umgesetzt** (siehe **04d B.10–B.13**, **04b** *Umsetzungsstand*). **Nächste CSS-Iteration:** Abbau von Inline-CSS wo sinnvoll, **weitere** Callout-Familien nach Priorität **04b** und **Rollout Phase A** (Lerninhalte zuerst); bei Bedarf Regeln in [03_Project_Standards.md](03_Project_Standards.md) (Abschn. 6); **IST→SOLL→Token** [P03-mapping-ist-soll-token.md](designsystem-workshop/P03-mapping-ist-soll-token.md). |
-| **Lessons learned (aktuell)** | Teile der **Komponentenlogik** (Story-/Dokumentenkette-Boxen) wurden **vor** dem formalen Designsystem **praktisch eingeführt** — fachlich sinnvoll für die Lernstrecke; **F-CHAIN** ist **nach** **04d** B.13 / **P05** § jetzt **spezifiziert** und **umgesetzt** (`aside.chain-callout`). Der Workshop hat **explizit** getrennt: **Domäne** (z. B. Syllabus-Chips), **didaktische Funktion** (Callouts, Orientierung), **Darstellung** (Tabellen, SVG, A4) — reduziert Vermischung und gibt **Token-Mapping und Pilot-Phase** eine **Zielrichtung**. |
+| **Lessons learned (aktuell)** | Teile der **Komponentenlogik** (Story-/Dokumentenkette-Boxen) wurden **vor** dem formalen Designsystem **praktisch eingeführt** — fachlich sinnvoll für die Lernstrecke; **F-CHAIN** ist **nach** **04d** B.13 / **P05** § jetzt **spezifiziert** und **umgesetzt** (`aside.chain-callout`). **HA5:** Lehrplan-Reihenfolge (Kap. 4/5) vs. Nav/Portfolio ist in **P05** und auf **04c/05a** **einheitlich** erklärt. Der Workshop hat **explizit** getrennt: **Domäne** (z. B. Syllabus-Chips), **didaktische Funktion** (Callouts, Orientierung), **Darstellung** (Tabellen, SVG, A4) — reduziert Vermischung und gibt **Token-Mapping und Pilot-Phase** eine **Zielrichtung**. |
 
 **Aktueller Fokus (Stand 02.04.2026):**  
 Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgeschlossen**; die HA4/HA5-Strecke ist **inhaltlich** durch die Phasen 1–4 **abgedeckt**. **Kopfzeile** der Website ist mit **Logo-in-Nav** und aktualisierter **README** dokumentiert (Commit **`95d6f18`**). **P1:** Erster **CSS-Pilot** **umgesetzt** — **meta-bar** / Syllabus-Chip / **F-LEGEND** / **F-CHAIN** / **correction-bar** in **`base.css`**; **K-Stufen**-Hinweis **nur** bei **FL-(Kx)** in der **meta-bar**; **04d B.10** Follow-up größtenteils erledigt. **Designsystem-Workshop:** **Einstiegs-README**, **einheitliche Metablöcke**, **Rollout** (Phase A = Lerninhalte zuerst), **Phase 3** Doku (Drift 03/04, **F-LEGEND** in **04b**, gemeinsame **P0/P1**-Erklärung); **Aufräum-Plan Phase 4** **abgeschlossen** — Zusammenlegen **P04-01–03** **verworfen** (siehe Workshop-**README**). **Nächster Schritt (wählbar):** **CSS-Iteration** (Callouts, Phase-A-Seiten) **oder** redaktionelle/steuerungsseitige Feinpflege — siehe **Nächster Schwerpunkt** oben.
 
 ### Redaktioneller Backlog (Website)
 
-**Dokumentation:** [P05-redaktion-harmonisierung.md](designsystem-workshop/P05-redaktion-harmonisierung.md) — **Stand 2026-03-31:** **§2.4 ISTQB K-Stufen** (Regel, **9** Seiten, **01b** **FL-1.4.3 (K2)**).
+**Dokumentation:** [P05-redaktion-harmonisierung.md](designsystem-workshop/P05-redaktion-harmonisierung.md) — **Stand 2026-04-02:** **§2.4 ISTQB K-Stufen** (Regel, **9** Seiten, **01b** **FL-1.4.3 (K2)**); **§ CTFL-Lehrplan vs. Portfolio (HA5)** (Zwei-Ebenen-Regel; Verankerung **04c/05a**).
 
-**meta-bar (11 Lernseiten):** **HTML nach SOLL umgesetzt** — Raster Quelle / Syllabus / Lernziele·Funktion·Seitenrolle / Hinweis; **Testmanagement** mit gebündelten **Lernzielen** (5.1–5.5); **K-Stufen**-Legende im **Hinweis** siehe **05** **§2.4**. **Offen** (Backlog): weitere redaktionelle Harmonisierung (Begriffe site-weit, Tonalität, Strukturen) siehe Abschn. 3 ff. in **05-…**.
+**meta-bar (11 Lernseiten):** **HTML nach SOLL umgesetzt** — Raster Quelle / Syllabus / Lernziele·Funktion·Seitenrolle / Hinweis; **Testmanagement** mit gebündelten **Lernzielen** (5.1–5.5); **K-Stufen**-Legende im **Hinweis** siehe **05** **§2.4**. **Offen** (Backlog, niedrigere Prio): weitere redaktionelle Harmonisierung (Begriffe site-weit, Tonalität, Strukturen) siehe Abschn. 3 ff. in **05-…** — **HA5-Reihenfolge** ist für diesen Schnitt **abgeschlossen**.
 
 ---
 
@@ -43,6 +43,12 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 *(Chronologisch **absteigend**: zuerst das Neueste / zuletzt Abgeschlossene.)*
 
 **So ist dieser Abschnitt gemeint:** Hier steht, **was** im Projekt **schon erledigt** ist — mit Datum und oft mit Fachbegriffen (Git, Phasen, Dateinamen). Nach vielen Blöcken folgt ein kurzer Absatz **„In Klartext“**: was das **praktisch** bedeutet, **ohne** dass man alle Kürzel kennen muss.
+
+### 2026-04-02 — Designsystem & Redaktion: Schnitt nach HA5-/F-CHAIN-Arbeit
+
+- **Workshop:** [P05-redaktion-harmonisierung.md](designsystem-workshop/P05-redaktion-harmonisierung.md) — **§ CTFL-Lehrplan vs. Portfolio (HA5)** (normative Kurzfassung); Verweise **04d** B.13 (F-CHAIN) und **04b** Umsetzungsstand bleiben maßgeblich.  
+- **Website:** Texte **04c** / **05a** zur **Nav-Reihenfolge** und **Lehrplan vs. Website** mit P05 abgestimmt; **kein** Eingriff **00a** (bewusst).  
+- **Repo:** [designsystem-workshop/README.md](designsystem-workshop/README.md) und dieser Status nachgezogen — **Abschluss** einer zusammenhängenden Iteration (kein neues Großthema).
 
 ### 2026-04-02 — *Designsystem-Workshop*: Living Documentation, Rollout, Phase 3 (Doku)
 

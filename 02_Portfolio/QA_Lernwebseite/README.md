@@ -1,6 +1,6 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-03-31
+> Zuletzt aktualisiert: 2026-04-02 — Redaktion HA5 (Lehrplan vs. Website) in **P05** und auf **04c/05a** verankert; siehe `01_Projektsteuerung/designsystem-workshop/P05-redaktion-harmonisierung.md`.
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).

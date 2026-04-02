@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-31  
-Letzte Aktualisierung: 2026-04-02 — **§ CTFL-Lehrplan vs. Portfolio (HA5)** (Einsteiger-Sprache); zuvor F-CHAIN Standort; Metablock Variante B; 2026-03-31 (meta-bar, K-Stufen)  
+Letzte Aktualisierung: 2026-04-02 — **Nächste Schritte** § HA5 als erledigt; **§ CTFL-Lehrplan vs. Portfolio (HA5)**; zuvor F-CHAIN Standort; Metablock Variante B; 2026-03-31 (meta-bar, K-Stufen)  
 Zweck: Redaktionelle Harmonisierung (Texte, Labels, meta-bar-Inhalte) — abgegrenzt von visueller Spec **04d** B.11/B.12/**B.13**.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Redaktion  
 Normative Orientierung: Visuell [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) Teil B (u. a. **B.13** F-CHAIN)
@@ -207,7 +207,8 @@ Umsetzung in HTML: **eine** Region **Lernziele** mit **mehreren** Zeilen (z. B
 1. ~~**Quelle-Zeile:** ein **verbindliches** Datums-/GTB-Format festlegen.~~ **Erledigt:** `(GTB, 01.03.2025)` in der meta-bar.  
 2. ~~**HTML meta-bar** nach SOLL~~ **Erledigt** (s. Status oben).  
 3. ~~**ISTQB K-Stufen** im **Hinweis** (Regel + **9** Seiten, **01b** mit **FL-1.4.3 (K2)**)~~ **Erledigt** (s. Status oben, **§2.4**).  
-4. **Folge:** Begrifflichkeiten, Tonalität, weitere Bausteine (Abschn. 3 ff.) — bei Bedarf **versionieren** (Stand-Datum im Kopf anpassen).
+4. ~~**HA5:** Lehrplan (Kap. 4/5) vs. Nav/Portfolio~~ **Erledigt** (s. **§ CTFL-Lehrplan vs. diese Website — Reihenfolge bei HA5**; HTML **04c** / **05a**).  
+5. **Folge:** Begrifflichkeiten, Tonalität, weitere Bausteine (Abschn. 3 ff.) — bei Bedarf **versionieren** (Stand-Datum im Kopf anpassen).
 
 ---
 

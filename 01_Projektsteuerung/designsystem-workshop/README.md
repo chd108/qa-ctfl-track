@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-02 — **Aufräum-Plan / Phase 4:** **abgeschlossen** — **C** (Klarnamen) erledigt; **B** (Zusammenlegen **P04-01–03**) **bewusst verworfen** (siehe Abschnitt *Aufräum-Plan*); zuvor **Umbenennung** aller Workshop-`.md` (Konvention P01/IST/P04/P05); Verweise im Repo angepasst; **02_Project_Status** nachgezogen; zuvor Phase 3 Doku  
+Letzte Aktualisierung: 2026-04-02 — **P05** § **CTFL-Lehrplan vs. Portfolio (HA5)** + Status/README-**Nachzug** (Abschluss-Schnitt); zuvor **Aufräum-Plan Phase 4** (**C** Klarnamen, **B** verworfen); Umbenennung Workshop-`.md`; **02_Project_Status**; Phase 3 Doku  
 Zweck: Living Documentation — Einstieg in den **Designsystem-Workshop** (Rollen, Inventar, Lesereihenfolge, Zielbaum).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop  
 Normative Orientierung: [03_Project_Standards.md](../03_Project_Standards.md) (Metablock, README-Ausnahme); Mapping [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)
@@ -35,6 +35,8 @@ Living Documentation zum **Designsystem** der *QA_Lernwebseite* (ISTQB-CTFL-orie
 2. **[P04-00-spec-overview.md](P04-00-spec-overview.md)** — **Navigation** zum Spec-Cluster **04a–04d**, Risiko-Register, Checklisten.  
 3. **[P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)** — **maßgebliche Tabellen** IST / SOLL / Token (bei Widerspruch zu Einzeldateien zuerst hier klären, dann Anpassung).  
 4. Nach Bedarf: **04d** (Domain CTFL Lernwebsite), **04a–04c** (C / F / P), **05** (Redaktion).
+
+**Redaktion ([P05-redaktion-harmonisierung.md](P05-redaktion-harmonisierung.md)):** u. a. **§ CTFL-Lehrplan vs. Portfolio (HA5)** — feste **Zwei-Ebenen-Regel** (Syllabus-Kapitel vs. Nav/Dokumente auf der Website); Verankerung auf **04c** / **05a**; ergänzend **§ Dokumentenkette (F-CHAIN)**.
 
 ---
 
