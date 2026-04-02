@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-03-31 (**Pilot CSS:** **F-META** / **F-LEGEND** in **`base.css`**; **K-Stufen**-Kurzzeile in der **meta-bar** nur dort, wo **FL-(Kx)** o. ä. vorkommt (**9** Kernseiten); **SDLC** 02a/02b Triptych **max-width 1400px**; **04b** *Umsetzungsstand* **F-META**; **04d B.10** Korrekturleiste tokenisiert; **Redaktion** [05-redaktionelle-harmonisierung-2026-04-03.md](designsystem-workshop/05-redaktionelle-harmonisierung-2026-04-03.md) **Fortschreibung** Status / **§2.4 K-Stufen**)  
+Letzte Aktualisierung: 2026-04-02 (**QA_Lernwebseite:** Kopfnavigation — **Logo** als erster Punkt in **Nav 1** (`main-nav__home`), kein separates Header-Logo; **`base.css`** / **README** / alle **`pages/`** + Vorlage; Commit **`95d6f18`**; zuvor 2026-03-31: **Pilot CSS** **F-META** / **F-LEGEND** … siehe §2)  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -8,7 +8,7 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 
 # Project Status — QA-Track
 
-**Berichtsstichtag:** 2026-03-31 · **Projektinhaber (Alias):** chd108  
+**Berichtsstichtag:** 2026-04-02 · **Projektinhaber (Alias):** chd108  
 
 *Kurzkontext:* QA-Track ist das **gesamte** ISTQB-CTFL-orientierte Lernprogramm (Material, Hausaufgaben, Portfolio, Website, Notizen, Referenzen, Steuerung). **Vision, Ziele und Scope** siehe [01_Project_Charter.md](01_Project_Charter.md); **Ablage, Benennung, Repo-Struktur und Health Check** siehe [03_Project_Standards.md](03_Project_Standards.md) (insb. Abschnitt 3 und 8).
 
@@ -21,14 +21,14 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 | Kennzahl | Einschätzung |
 |----------|----------------|
 | **Programm-Gesamt** | **Stabil / auf Kurs** — Lern- und Arbeitsrepo ist nutzbar; Kursintegration über Notion/MasterSchool maßgeblich. |
-| **Website *QA_Lernwebseite*** | **Technische Basis abgeschlossen** — einheitliches Hauptsystem, `index.html` als alleiniger Einstieg, Benennungslogik inkl. Matrix für aktive Seiten umgesetzt; **Designsystem-Pilot:** **F-META** / **F-LEGEND** / Korrekturkomponenten in **`base.css`**, **meta-bar** auf **11** Kernseiten; **K-Stufen**-Kurzzeile im **Hinweis** nur wenn die **meta-bar** bereits **(K1)/(K2)/(K3)** oder **FL-… K1/K2/K3** enthält (**9** Seiten); **SDLC**-Seiten **02a/02b** mit Triptych-Layout und **1400px** Inhaltsbreite. |
+| **Website *QA_Lernwebseite*** | **Technische Basis abgeschlossen** — einheitliches Hauptsystem, `index.html` als alleiniger Einstieg, Benennungslogik inkl. Matrix für aktive Seiten umgesetzt; **Kopfnavigation (Stand 2026-04-02):** **Startseite** als **Logo** im ersten Listenpunkt der **Lernmaterial**-Nav (Favicon-Asset, **`--nav-inline-logo-height`**), kein zweites Logo links außerhalb der Leisten; **Designsystem-Pilot:** **F-META** / **F-LEGEND** / Korrekturkomponenten in **`base.css`**, **meta-bar** auf **11** Kernseiten; **K-Stufen**-Kurzzeile im **Hinweis** nur wenn die **meta-bar** bereits **(K1)/(K2)/(K3)** oder **FL-… K1/K2/K3** enthält (**9** Seiten); **SDLC**-Seiten **02a/02b** mit Triptych-Layout und **1400px** Inhaltsbreite. |
 | **Lernstrecke HA4/HA5 (Website)** | **Phasen 1–4 abgeschlossen** (Stand **21.03.2026**) — Konsistenz, Story-/UX, formale Einheitlichkeit (**Phase 3 Abschluss:** **21.03.2026**, siehe Abschnitt 2), Standards-Review inkl. CTFL-/IEEE-829-Zitierlogik; Details und Evidenz siehe Abschnitt 2 und 7. |
 | **Hausaufgabe HA6 (Testdurchführung)** | **Website-Portfolio:** Testprotokoll, Fehlerbericht und Testabschlussbericht als **A4-Seiten** unter `02_Portfolio/QA_Lernwebseite/pages/` (**06a–06c**) **vorhanden**; **Kursordner** `03_Hausaufgaben/HA6_Testdurchfuehrung/` ggf. separat nach Kursvorgaben (siehe Abschnitt 3). |
 | **Nächster Schwerpunkt** | **Komponentenstil / Designsystem light** — **Pilot** (**F-META**, **F-LEGEND**, Korrekturleiste) **in `base.css` umgesetzt** (siehe **04d B.10/B.11/B.12**, **04b** *Umsetzungsstand*). **Nächste Iteration:** weiteres Abbauen von Seiten-Inline-CSS wo sinnvoll, **Callout**-Familien (**F-CHAIN** …) nach Priorität **04b**; Verankerung ausgewählter Regeln in [03_Project_Standards.md](03_Project_Standards.md) (Abschn. 6) bei Bedarf nach Review; **IST→SOLL→Token** weiter [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md). |
 | **Lessons learned (aktuell)** | Teile der **Komponentenlogik** (Story-/Dokumentenkette-Boxen) wurden **vor** dem formalen Designsystem **praktisch eingeführt** — fachlich sinnvoll für die Lernstrecke; **verbindliche Standardisierung** folgt im Architekturblock. Der Workshop hat **explizit** getrennt: **Domäne** (z. B. Syllabus-Chips), **didaktische Funktion** (Callouts, Orientierung), **Darstellung** (Tabellen, SVG, A4) — reduziert Vermischung und gibt **Token-Mapping und Pilot-Phase** eine **Zielrichtung**. |
 
-**Aktueller Fokus (Stand 31.03.2026):**  
-Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgeschlossen**; die HA4/HA5-Strecke ist **inhaltlich** durch die Phasen 1–4 **abgedeckt**. **P1:** Erster **CSS-Pilot** **umgesetzt** — **meta-bar** / Syllabus-Chip / **F-LEGEND** / **correction-bar** in **`base.css`**; **K-Stufen**-Hinweis **nur** bei **FL-(Kx)** in der **meta-bar**; **04d B.10** Follow-up größtenteils erledigt. **Nächster Schritt:** **Iteration** (weitere Token-Familien, Callouts, ggf. **`doc-a4.css`**); **03-token-mapping** bei Schemaänderungen fortschreiben.
+**Aktueller Fokus (Stand 02.04.2026):**  
+Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgeschlossen**; die HA4/HA5-Strecke ist **inhaltlich** durch die Phasen 1–4 **abgedeckt**. **Kopfzeile** der Website ist mit **Logo-in-Nav** und aktualisierter **README** dokumentiert (Commit **`95d6f18`**). **P1:** Erster **CSS-Pilot** **umgesetzt** — **meta-bar** / Syllabus-Chip / **F-LEGEND** / **correction-bar** in **`base.css`**; **K-Stufen**-Hinweis **nur** bei **FL-(Kx)** in der **meta-bar**; **04d B.10** Follow-up größtenteils erledigt. **Nächster Schritt:** **Iteration** (weitere Token-Familien, Callouts, ggf. **`doc-a4.css`**); **03-token-mapping** bei Schemaänderungen fortschreiben.
 
 ### Redaktioneller Backlog (Website)
 
@@ -44,13 +44,10 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 
 **So ist dieser Abschnitt gemeint:** Hier steht, **was** im Projekt **schon erledigt** ist — mit Datum und oft mit Fachbegriffen (Git, Phasen, Dateinamen). Nach vielen Blöcken folgt ein kurzer Absatz **„In Klartext“**: was das **praktisch** bedeutet, **ohne** dass man alle Kürzel kennen muss.
 
-### 2026-03-31 — Designsystem: Pilot CSS (F-META, F-LEGEND, Korrekturleiste)
+### 2026-04-02 — *QA_Lernwebseite*: Kopfnavigation (Logo in Nav 1), README nachgezogen
 
-- **`base.css`:** **F-META** (`.meta-bar`, Syllabus-Chip), **F-LEGEND** (`--legend-*`), semantische Aliase **`--ok` / `--warn`**, globale Styles **`.correction-bar`** / **`.ctfl-fix`** (vormals nur auf **01c** mit Hardcodes) — siehe **04d** **B.10**–**B.12**.
-- **Kern-Lernseiten** mit **FL-(Kx)** in der **meta-bar:** kompakte **K-Stufen**-Zeile im **Hinweis** (**9** Seiten); **HA**-Seiten **04a / 04c / 05a / 00a** ohne dupliziertes **`.meta-bar`**-CSS.
-- **04b:** Abschnitt *Umsetzungsstand* zu **F-META** ergänzt.
-
-**In Klartext:** Der erste **sichtbare** Designsystem-Schritt im Stylesheet ist **drin** — nicht nur auf dem Papier des Token-Mappings, sondern **live** auf den Kernseiten und mit **weniger** doppeltem CSS auf den HA-Seiten.
+- **Commit `95d6f18`** (Branch **`main`**, Remote **`origin`):** **Kein** separates Logo mehr links neben den Nav-Leisten; **Startseite** erscheint in **`main-nav--learn`** als **erster Listenpunkt** mit **Logo** (`class="main-nav__home"`, Bild **`qa-favicon-256.png`**, CSS-Variable **`--nav-inline-logo-height`**, u. a. **2rem**); **`base.css`** — zentrierte **`.top-nav-zone__brand-row`**, **`align-items: center`** auf **`.main-nav ul`**; **`README.md`** der Lernwebsite an den Ist-Stand angepasst; **`index.html`**, **22** Seiten unter **`pages/`**, **`templates/referenzvorlage-hauptsystem.html`** konsolidiert.
+- **In Klartext:** Die **Startseite** ist weiterhin der **Einstieg** — sichtbar als **kleines QA-Logo** in der **ersten** Nav-Zelle statt des Wortes „Einstieg“; doppeltes Branding (Logo extra links) entfiel. Doku (**README**) und Steuerung (**dieses Dokument**) sind wieder **auf einer Linie** mit **`main`**.
 
 ### 2026-04-02 — Designsystem: Session 3 (Mapping) schriftlich; Pilot-Phase als nächster technischer Schritt
 
@@ -61,6 +58,14 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 - **Design-Spec-Cluster (Workshop 04):** [04-design-system-overview.md](designsystem-workshop/04-design-system-overview.md) — **Risiko-Register**, **Component-Spec-Checkliste**, **04a–c** (C/F/P Priorität); **CTFL-Domain** [04d-domain-ctfl-lernwebsite-2026-04-02.md](designsystem-workshop/04d-domain-ctfl-lernwebsite-2026-04-02.md) — Syllabus-Chip / **F-META**, **B.11** (visuelle Sollwerte); **Referenzseite** `01c-testmittel.html`. **Pilot P1** kann starten (siehe §1 Dashboard).
 
 **In Klartext:** **Session 3** meint hier **zwei Dinge sauber trennen:** (1) **schriftlich** — **welche** Tokens und Zuordnungen gelten (**liegt vor**); (2) **technisch** — **Pilot** im CSS, ob sich das **bewährt**. **Rollout** und **Charter/Standards** werden **nach** belastbarer Pilot-Erfahrung geschärft — nicht vor dem ersten Lauf.
+
+### 2026-03-31 — Designsystem: Pilot CSS (F-META, F-LEGEND, Korrekturleiste)
+
+- **`base.css`:** **F-META** (`.meta-bar`, Syllabus-Chip), **F-LEGEND** (`--legend-*`), semantische Aliase **`--ok` / `--warn`**, globale Styles **`.correction-bar`** / **`.ctfl-fix`** (vormals nur auf **01c** mit Hardcodes) — siehe **04d** **B.10**–**B.12**.
+- **Kern-Lernseiten** mit **FL-(Kx)** in der **meta-bar:** kompakte **K-Stufen**-Zeile im **Hinweis** (**9** Seiten); **HA**-Seiten **04a / 04c / 05a / 00a** ohne dupliziertes **`.meta-bar`**-CSS.
+- **04b:** Abschnitt *Umsetzungsstand* zu **F-META** ergänzt.
+
+**In Klartext:** Der erste **sichtbare** Designsystem-Schritt im Stylesheet ist **drin** — nicht nur auf dem Papier des Token-Mappings, sondern **live** auf den Kernseiten und mit **weniger** doppeltem CSS auf den HA-Seiten.
 
 ### 2026-03-30 — Designsystem-Workshop: Sessions 2–2f (konzeptioneller Abschluss vor Session 3)
 
@@ -225,6 +230,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 
 | Datum (ca.) | Entscheidung / Änderung |
 |-------------|-------------------------|
+| **2026-04-02** | ***QA_Lernwebseite* — Kopfnavigation:** Startseite als **Logo** im ersten Listenpunkt von Nav 1 (`main-nav__home`, Asset **`qa-favicon-256.png`**); kein zweites Logo links; **`base.css`**, **[README QA_Lernwebseite](../02_Portfolio/QA_Lernwebseite/README.md)**, **`index.html`**, **`pages/`**, **`templates/referenzvorlage-hauptsystem.html`**; Commit **`95d6f18`**; **02_Project_Status.md** (§1, §2) nachgezogen. |
 | **2026-04-02** | **Design-Taxonomie definiert (Pilot-Phase):** [03-token-mapping-2026-04-01.md](designsystem-workshop/03-token-mapping-2026-04-01.md) — IST→SOLL→Token über **C-/F-/P-/S-***; **ca. 15–30** konsolidierte CSS-Variablen **Zielgröße**; **Workshop-Ordner** bleibt **Referenz**; **Umsetzung** im Stylesheet = **Pilot**, nicht Abschluss. **Außerdem:** **02_Project_Status.md** — **einheitliches Narrativ** (**Session 3** *schriftlich* = Mapping **liegt vor**; **nächster technischer Schritt** = **Pilot** in CSS); §2–§4 und Fußnote §7 **abgestimmt**. |
 | **2026-04-02** | **`.gitignore`:** Top-Level **`07_Tests/`** ausgeschlossen; **[03_Project_Standards.md](03_Project_Standards.md)** (Geltungsbereich, §3, §8), **[04_Project_Guidelines.md](04_Project_Guidelines.md)**, **[05_Reference_Quick.md](05_Reference_Quick.md)** und **dieses Dokument** (Repo-Tabelle §2) **abgestimmt**. |
 | **2026-04-01** | **Diátaxis (S-*)** in **02e** / **02f** geklärt: Modus **für Leser sichtbar** (Label/Badge) — **Zielbild**; **Session 3** priorisiert **C/F/P**-Tokens, **S-***-Umsetzung **phasenweise**; **kein** „nur Doku“ als Endzustand. |
@@ -259,7 +265,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 
 | Evidenz | Hinweis |
 |---------|---------|
-| **Commits (Auszug)** | Website-Meilensteine u. a.: Phase 2 **`9b4349e`** (2026-03-21 08:43 UTC+1); Phase 3 **`1eb5b8f`** (2026-03-21 **09:19** UTC+1); Phase 4 **`0c43f00`** (2026-03-21 09:44 UTC+1); Repo-Links Einstieg/Standards: **`78ee176`** — Historie der Seiten liegt in **einem** Repo (**qa-ctfl-track**), Pfad **`02_Portfolio/QA_Lernwebseite/`**; Branch **`main`**, Remote **`origin`**. |
+| **Commits (Auszug)** | Website-Meilensteine u. a.: Phase 2 **`9b4349e`** (2026-03-21 08:43 UTC+1); Phase 3 **`1eb5b8f`** (2026-03-21 **09:19** UTC+1); Phase 4 **`0c43f00`** (2026-03-21 09:44 UTC+1); Repo-Links Einstieg/Standards: **`78ee176`**; **Kopfnavigation / README (Logo in Nav 1):** **`95d6f18`** (2026-04-02) — Historie der Seiten liegt in **einem** Repo (**qa-ctfl-track**), Pfad **`02_Portfolio/QA_Lernwebseite/`**; Branch **`main`**, Remote **`origin`**. |
 | **Architektur-Website (Rahmen & Regeln)** | [01_Project_Charter.md](01_Project_Charter.md) — Programmrahmen, Website-Rolle, Qualitätsmaßstab; [03_Project_Standards.md](03_Project_Standards.md) — Ordnerlogik, IA/Benennung im Workflow, A4-/Dokumentmodus (Abschn. 3, 6, 7). |
 | **Charter (Programm)** | [01_Project_Charter.md](01_Project_Charter.md) — Vision, Scope, Grenzen. |
 | **Status (Ist)** | **Dieses Dokument** — Meilensteine, Arbeitspakete, Risiken. |
