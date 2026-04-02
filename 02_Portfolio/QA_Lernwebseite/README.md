@@ -31,15 +31,15 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | Bereich | Inhalt |
 |--------|--------|
 | **Skip-Link** | Sprung zu `#main` (Tastatur/Screenreader). |
-| **`.top-nav-zone`** | Volle Viewport-Breite; **zwei** `<nav>`-Elemente untereinander. |
-| **Nav 1 — Lernmaterial** | `class="main-nav main-nav--learn"`, `aria-label="Lernmaterial"`: Einstieg, Landkarte, Glossar, Grundlagen, Testmittel, SDLC statisch/animiert, Teststufen, Statisches Testen, Testverfahren, Testmanagement, Testwerkzeuge, Standards. |
+| **`.top-nav-zone`** | Volle Viewport-Breite; **`.top-nav-zone__brand-row`** zentriert den Inhalt (`display: flex`, `justify-content: center`) und umschließt nur **`.top-nav-zone__nav-stack`** — **zwei** `<nav>` untereinander (**Lernmaterial** / **Hausaufgaben**). Kein separates Logo links außerhalb der Leisten. |
+| **Nav 1 — Lernmaterial** | `class="main-nav main-nav--learn"`, `aria-label="Lernmaterial"`: **erster Punkt** = **Startseite** als **Logo** (`class="main-nav__home"`, Bild `qa-favicon-256.png`, Höhe **`--nav-inline-logo-height`** in `base.css`), dann Landkarte, Glossar, … Standards. Auf der Startseite: `aria-current="page"` / `.current` am Logo-Link. |
 | **Nav 2 — Hausaufgaben** | `class="main-nav main-nav--assignments"`, `aria-label="Hausaufgaben"`: HA-Einordnung, HA4–HA6 (Web- und A4-Seiten). Optisch: etwas **kleinere Schrift**, Linkfarbe **`var(--mid)`**; Hover und aktuelle Seite **`var(--text)`**. |
 | **`.page-chrome`** | Kopf mit Seitentitel und Untertitel (`subpage.css`). |
 | **`main#main`** | Seiteninhalt. |
 
-**Vertikaler Rhythmus** in der Kopfzone: CSS-Variable **`--nav-vertical-rhythm: 1.75rem`** in `base.css` — Abstand oben in der Zone, **zwischen** den beiden Nav-Leisten und **unter** der zweiten Leiste vor dem Seitentitel. Der **obere** Außenabstand der Seite kommt aus der Zone; **`body`** hat auf den betroffenen Seiten **`padding-top: 0`** (seitlich und unten bleiben die jeweiligen Seitenwerte).
+**Vertikaler Rhythmus** in der Kopfzone: CSS-Variable **`--nav-vertical-rhythm: 1.75rem`** in `base.css` — Abstand oben in der Zone, **zwischen** den beiden Nav-Leisten und **unter** der zweiten Leiste vor dem Seitentitel. **Horizontal:** Nav-Blöcke bleiben **zur Viewport-Mitte zentriert** (über die zentrierte **`.top-nav-zone__brand-row`**). In beiden **`.main-nav ul`** ist **`align-items: center`** gesetzt, damit **Logo** und **Textlinks** in einer Zeile optisch **mittig** zueinander stehen. Der **obere** Außenabstand der Seite kommt aus der Zone; **`body`** hat auf den betroffenen Seiten **`padding-top: 0`** (seitlich und unten bleiben die jeweiligen Seitenwerte).
 
-**Pfade:** von `pages/` aus zeigt **Einstieg** auf `../index.html`; die Vorlage unter `templates/` nutzt `../index.html` und `../pages/…`.
+**Pfade:** der **erste Link** in Nav 1 zeigt von `pages/` aus auf **`../index.html`** (Logo, `aria-label="Zur Startseite QA Lernwebseite"`); auf **`index.html`** auf **`index.html`** (Startseite, mit `aria-label` / `aria-current` wie im Markup). Die Vorlage unter `templates/` nutzt dieselben relativen Pfade zu `index.html` und `pages/…`.
 
 ---
 
@@ -49,8 +49,8 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 |------|----------------|
 | `index.html` | **Einstieg** — zwei Kartenbereiche (**Lernmaterial** / **Hausaufgaben**), **12** Verweiskarten Lernmaterial und **10** Hausaufgaben; layoutspezifisches CSS inline, sonst wie Hauptsystem. |
 | `pages/` | **22** aktive Lern- bzw. HA-Seiten (siehe Tabelle unten). |
-| `assets/qa-favicon-256.png` | **Favicon** (PNG 256×256, **QA**-Monogramm); in allen HTML-Seiten per `<link rel="icon" …>`. |
-| `assets/css/base.css` | Globale Variablen (`:root`), Body-Hintergrund, **`.top-nav-zone`**, **`.main-nav`** / **`.main-nav--assignments`**, Skip-Link; **Designsystem-Pilot:** **`.meta-bar`** (**F-META**), Syllabus-Chip, **Seitenlegende** **`.legend`** (**F-LEGEND**, `--legend-*`), **`--ok`/`--warn`**-Aliase, **`.correction-bar`** / **`.ctfl-fix`** (siehe `01_Projektsteuerung/designsystem-workshop/04d-domain-ctfl-lernwebsite-2026-04-02.md`). |
+| `assets/qa-favicon-256.png` | **Favicon** (PNG 256×256, **QA**-Monogramm); dieselbe Datei als **Logo** im ersten Nav-Punkt (`main-nav__home`). In allen HTML-Seiten per `<link rel="icon" …>`. |
+| `assets/css/base.css` | Globale Variablen (`:root`), u. a. **`--nav-inline-logo-height`** (Darstellung des Logos in Nav 1), Body-Hintergrund, **`.top-nav-zone`**, **`.main-nav`** / **`.main-nav--assignments`**, **`.main-nav__home`**, Skip-Link; **Designsystem-Pilot:** **`.meta-bar`** (**F-META**), Syllabus-Chip, **Seitenlegende** **`.legend`** (**F-LEGEND**, `--legend-*`), **`--ok`/`--warn`**-Aliase, **`.correction-bar`** / **`.ctfl-fix`** (siehe `01_Projektsteuerung/designsystem-workshop/04d-domain-ctfl-lernwebsite-2026-04-02.md`). |
 | `assets/css/subpage.css` | Gemeinsame **`header`**-/`footer`-Typo für Unterseiten. |
 | `assets/css/doc-a4.css` | **A4-/Dokumentmodus** inkl. Screen-`body`-Ränder; **Flex-Spalte** auf `.doc-a4` (`.doc-body` wächst, **`.doc-footer`** mit `margin-top: auto` am unteren Blattrand); Druck: `@page` A4, `min-height`/`width` angepasst; schmale Viewports: seitliches Scrollen statt Quetschen. Wird von HA-A4-Seiten zusätzlich eingebunden. |
 | `assets/css/index.css` | Ältere/alternative Einstiegs-Styles — **`index.html` lädt derzeit `base.css` + `subpage.css` und lokales `<style>`**; Datei bleibt im Repo zur Referenz und Standards-Doku. |
@@ -98,7 +98,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 
 - **Stack:** statisches **HTML/CSS**, optional **JavaScript** nur wo nötig (z. B. SDLC-Animation).  
 - **Kein** Framework, **keine** Build-Pipeline, **keine** CDN-Pflicht für Kernseiten.  
-- **Design tokens:** Farben und Abstände über **`:root`** in `base.css` (`--bg`, `--text`, `--e1`–`--e6`, `--nav-vertical-rhythm`, …). **Pilot P1 (Chips):** `--ctfl` / `--ctfl-bg` und **Alias** `--chip-syllabus-*` … `--chip-extra-*` sowie `--chip-padding-*`, `--chip-gap` (siehe `01_Projektsteuerung/designsystem-workshop/03-token-mapping-2026-04-01.md`).  
+- **Design tokens:** Farben und Abstände über **`:root`** in `base.css` (`--bg`, `--text`, `--e1`–`--e6`, `--nav-vertical-rhythm`, **`--nav-inline-logo-height`**, …). **Pilot P1 (Chips):** `--ctfl` / `--ctfl-bg` und **Alias** `--chip-syllabus-*` … `--chip-extra-*` sowie `--chip-padding-*`, `--chip-gap` (siehe `01_Projektsteuerung/designsystem-workshop/03-token-mapping-2026-04-01.md`).  
 - **Druck:** Navigationsbereich ausblendbar wo vorgesehen; A4-Seiten nutzen zusätzlich Druckregeln in `doc-a4.css`.
 
 ---
@@ -122,13 +122,13 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | | |
 |--|--|
 | **README erstellt** | 2026-03-12 |
-| **README zuletzt aktualisiert** | **2026-04-02** |
+| **README zuletzt aktualisiert** | **2026-03-31** |
 
-**Kurzüberblick (Stand 02.04.2026)**
+**Kurzüberblick (Stand 31.03.2026)**
 
 - **Hauptsystem:** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **02c** im gemeinsamen Section-Muster; **Chip-Tokens** (Landkarte, Teststufen-Tags) **zentral** in `base.css` (Pilot **P1**).  
 - **HA4/HA5/HA6:** inhaltlich und formal gehärtet — Meta-Informationen, Kette Web ↔ A4, Terminologie **Testbasis-Analyse**; HA6 mit **Testprotokoll A4**, **Fehlerbericht A4** (Musterdokument BUG-001 / BUG-002), **Testabschlussbericht A4** (ISO/IEC/IEEE 29119-3); Ergänzungen in **`doc-a4.css`** (u. a. Status-Badge für Review).  
 - **Einstieg (`index.html`):** gleiche maximale Lesespalte wie die übrigen Hauptseiten (`max-width` 1400px), **zwei Bereichsüberschriften** (Lernmaterial / Hausaufgaben), kompaktes Intro und Orientierungshinweis; Kartenbeschreibungen mit **Kap.-Bezug** (Lernmaterial) bzw. **GroceryMate / Druck** (HA); HA-Meta **Thematisch · Kap. …** bzw. **Formular · A4** (Badge); Karten in jeder Rasterzeile **gleich hoch** (Flex-Spalte).  
-- **Kopfnavigation:** **Zwei Leisten** in `.top-nav-zone` — **Lernmaterial** vs. **Hausaufgaben**, semantisch getrennt, `aria-label`s; vertikaler Rhythmus **`--nav-vertical-rhythm` (1,75rem)**; HA-Leiste über **`.main-nav--assignments`** visuell abgesetzt.  
+- **Kopfnavigation:** **Zwei Leisten** in `.top-nav-zone` — **Lernmaterial** vs. **Hausaufgaben**, semantisch getrennt, `aria-label`s; **Startseite** als **Logo** im ersten Punkt von Nav 1 (Favicon-Asset, **`--nav-inline-logo-height`**); kein zusätzliches Header-Logo links; Zeilen mit **`align-items: center`**; vertikaler Rhythmus **`--nav-vertical-rhythm` (1,75rem)**; HA-Leiste über **`.main-nav--assignments`** visuell abgesetzt.  
 
 Details und Historie: **Monorepo [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** (Branch `main`; Website-Pfad `02_Portfolio/QA_Lernwebseite/`).
