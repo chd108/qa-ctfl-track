@@ -153,22 +153,7 @@
       text-decoration: underline;
     }
 
-    /* Anschluss an andere Lernseiten (Meta-Bar, Intro, Kontext) */
-    .meta-bar {
-      display: flex;
-      flex-wrap: wrap;
-      align-items: center;
-      gap: 1rem;
-      padding: .6rem 1rem;
-      margin-bottom: 1.5rem;
-      background: rgba(255,255,255,0.5);
-      border: 1px solid var(--bdr);
-      border-radius: 8px;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 0.9rem;
-      color: var(--mid);
-    }
-    .meta-bar strong { color: var(--text); }
+    /* Meta-Bar + Syllabus-Chip: assets/css/base.css (B.11) */
 
     .intro-box {
       padding: 1rem 1.25rem;
@@ -315,6 +300,7 @@
 <main id="main">
 
   <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Inhalt nach ISTQB CTFL Lehrplan (Syllabus)"></span>
     <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 · Kapitel 1</span>
     <span><strong>Aufbau:</strong> 1.1–1.5 · Begriffe · Fehlerterminologie · Grundsätze · Testprozess · Kompetenzen</span>
     <span><strong>Vertiefung:</strong> <a href="01c-testmittel.html">Testmittel</a> · <a href="05-testmanagement.html">Testmanagement</a></span>

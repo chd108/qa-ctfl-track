@@ -189,3 +189,42 @@ main { width: 100%; }
   aspect-ratio: 1 / 1;
   object-fit: contain;
 }
+
+/*
+ * F-META — meta-bar & C-SYLLABUS visueller Chip (Pilot B.11)
+ * Norm: 01_Projektsteuerung/designsystem-workshop/04d-domain-ctfl-lernwebsite-2026-04-02.md
+ * Farbe Chip: --chip-syllabus-bg (Alias → --ctfl-bg), nicht hardcodiertes „Grün“.
+ */
+.meta-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1.5rem;
+  border-radius: 8px;
+  border: 1px solid var(--bdr);
+  background: rgba(255, 255, 255, 0.55);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  color: var(--mid);
+}
+.meta-bar strong {
+  color: var(--text);
+}
+
+/* Option A: kein sichtbarer Text im Element; Bedeutung nur aria-label (04d B.4 / B.8) */
+.chip.chip--syllabus.chip--syllabus-visual {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 10px;
+  height: 20px;
+  min-width: 10px;
+  min-height: 20px;
+  border-radius: var(--chip-radius);
+  background: var(--chip-syllabus-bg);
+  border: var(--chip-border);
+  vertical-align: middle;
+  flex-shrink: 0;
+}

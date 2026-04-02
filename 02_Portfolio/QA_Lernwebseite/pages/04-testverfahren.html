@@ -17,8 +17,7 @@
       --co: #6a4a8c; --co-bg: #d4c4e0;
     }
     body { font-size: var(--fs); padding: 0 3rem 4rem; max-width: 1400px; margin: 0 auto; }
-    .meta-bar { display: flex; flex-wrap: wrap; align-items: center; gap: 1rem; padding: .6rem 1rem; margin-bottom: 1.25rem; background: rgba(255,255,255,0.5); border: 1px solid var(--bdr); border-radius: 8px; font-size: 0.9rem; color: var(--mid); }
-    .meta-bar strong { color: var(--text); }
+    /* .meta-bar + Syllabus-Chip: assets/css/base.css (B.11) */
     .info-box { padding: .9rem 1.1rem; margin-bottom: 1.5rem; background: #e8f0e8; border-left: 4px solid var(--bb); border-radius: 4px; font-size: 0.9rem; }
     .section { margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
     .section__header { padding: .7rem 1.2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 14px; font-weight: 700; letter-spacing: .04em; background: rgba(0,0,0,0.04); border-bottom: 1px solid var(--bdr); }
@@ -93,6 +92,7 @@
 
 <main id="main">
   <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Inhalt nach ISTQB CTFL Lehrplan (Syllabus)"></span>
     <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB 2025)</span>
     <span><strong>Kontext:</strong> Kapitel 4 — Testanalyse und -entwurf</span>
     <span><strong>Inhalt:</strong> Vier Verfahrensklassen, 11 Einzelverfahren, HA-Zuordnung in Grafik</span>
