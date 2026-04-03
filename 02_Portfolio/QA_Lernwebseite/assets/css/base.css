@@ -149,6 +149,10 @@
   flex-wrap: wrap;
   gap: var(--chip-gap);
 }
+/* Abstand Syllabus-Zeile → Praxis-Zeile: wie Chip-Gap, nicht wie Untertitel (0,85rem wirkte zu groß) */
+.tag-group .tags + .tags {
+  margin-top: var(--chip-gap);
+}
 .tag-group .tag {
   display: inline-flex;
   align-items: center;

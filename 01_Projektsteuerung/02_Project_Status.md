@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-03 — Landkarte **Kap. 3–4** (Leitfragen, Kap.-**4** ohne **`~Kap. 4`**, Praxis-Chips), **P04-04** **A.0.1b** nachgezogen, **Glossar**/**README**; zuvor **Kap. 4** TOC + `.ref`-Semantik siehe §2; zuvor **2026-04-02** siehe §2  
+Letzte Aktualisierung: 2026-04-03 — Landkarte **Praxis-/Syllabus-Feinschnitt** (Kap. **6**, **Smoke**, **SonarQube**, **C-PRAXIS**-Konvention), **P04**/**P03**/**README** nachgezogen; zuvor Kopf **5.3** siehe §2  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -44,21 +44,38 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 
 **So ist dieser Abschnitt gemeint:** Hier steht, **was** im Projekt **schon erledigt** ist — mit Datum und oft mit Fachbegriffen (Git, Phasen, Dateinamen). Nach vielen Blöcken folgt ein kurzer Absatz **„In Klartext“**: was das **praktisch** bedeutet, **ohne** dass man alle Kürzel kennen muss.
 
+### 2026-04-03 — *QA_Lernwebseite*: Landkarte — Praxis-Chips harmonisiert, Kap. 6, Smoke, Doku
+
+- **Landkarte** `pages/01-landkarte.html`: Kap. **6** mit Syllabus-Stichpunkten **6.1** und **6.2** (Nutzen/Risiken); **C-PRAXIS**-Texte **kurz**, Konvention **Ausführlich (Kürzel)** (u. a. **DoD**, **UAT**, **PR**); **SonarQube (Werkzeug, Kap. 6)** in Kap. **3**, Werkzeugliste Kap. **6**; **Smoke-Tests** als **C-SYLLABUS** **`ref` 5.1.7** in **5.1** und **C-PRAXIS** **Smoke-Tests (Build-Gate)** in Kap. **2**; **FMEA** als Advanced **Langform (Kürzel)**; **`base.css`:** vertikaler Abstand `.tag-group .tags + .tags` (Syllabus- vs. Praxis-Zeile).
+- **Doku:** [P04-04-ctfl-lernwebsite-spec.md](designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md) **A.0.1b/c**, [P03-mapping-ist-soll-token.md](designsystem-workshop/P03-mapping-ist-soll-token.md) §1, [README](../02_Portfolio/QA_Lernwebseite/README.md) — **Stand** und Landkarten-Zeile.
+- **In Klartext:** Die **Legende** (drei Farben) reicht; **derselbe** Begriff kann **bewusst** zweimal mit **unterschiedlicher** Chip-Farbe vorkommen, wenn der **Kapitelkontext** das erklärt (**P04** **A.0.1c**).
+
+### 2026-04-03 — *QA_Lernwebseite*: Landkarte — Kopf einheitlich, Doku bereinigt
+
+- **Landkarte** `01-landkarte.html`: **Kap. 1–6** gleicher **Kopf** (`section__header--landkarte-leit`, `section__sub--landkarte-leit`); **`section__sub--emph`** entfällt. **5.3:** drei **TOC**-Chips **5.3.1–5.3.3** unter Gruppe **5.3**.
+- **Doku:** [P04-04-ctfl-lernwebsite-spec.md](designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md) A.0.1b, [README](../02_Portfolio/QA_Lernwebseite/README.md) — **Ist** ohne veraltete Klassen-/Metrik-Hinweise.
+
+### 2026-04-03 — *QA_Lernwebseite*: Landkarte Kap. 5 (TOC-Ausrichtung)
+
+- **Landkarte** `pages/01-landkarte.html`: Kap. **5** — **5.1**/**5.2** **wortgleich** Lehrplan-Unterüberschriften; **5.4**/**5.5** mit **`ref`**. **Smoke-Tests:** später **C-SYLLABUS** **`ref` 5.1.7** in **5.1** ergänzt (siehe Eintrag **Landkarte — Praxis-Chips harmonisiert**).
+- **Workshop:** [P04-04-ctfl-lernwebsite-spec.md](designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md) **A.0.1b**.
+- **In Klartext:** Grün = **TOC**-Anker (**`.ref`**) **oder** Syllabus-Begriff mit gewähltem Anker (z. B. **Smoke** unter **5.1.7**).
+
 ### 2026-04-03 — *QA_Lernwebseite*: Landkarte Kap. 4 (TOC) + Feinabgleich Doku
 
-- **Landkarte** `pages/01-landkarte.html`: Kap. **4** an **ISTQB CTFL v4.0.2** TOC — **4.1**–**4.5** mit Lehrplan-Überschriften, Kapiteltitel **„Testanalyse und -entwurf“**; **4.5.3** **Abnahmetestgetriebene Entwicklung (ATDD)**; **keine** Sammelgruppe **„Testmodelle & Hilfsmittel“** / **`~Kap. 4`** — **Kontrollflussgraph (KFG)** unter **4.3.2**, **Überdeckungsanalyse** als Praxis-Chip in **4.3**; **Äquivalenzklassentabelle** **C-PRAXIS** mit **MS**, **ohne** Syllabus-**.ref**; **Kap. 3**-Leitfrage **„Wie prüfen, ohne Software auszuführen?“**; **Kap. 4**-Leitfrage **„Wie werden Testfälle entworfen?“** mit **`section__sub--emph`** (zentriert, fett, kursiv); Praxis-Benennungen **Behavior-Driven Development (BDD)** (Kap. **4.5**), **Continuous Integration / Delivery (CI/CD)** (Kap. **2**) — Langform zuerst.
-- **Workshop / Steuerung:** [P04-04-ctfl-lernwebsite-spec.md](designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md) **A.0.1b** — **`.ref`**-Semantik unverändert; Kap.-**4**-Struktur und Header-Muster (**Kap. 1–3** Leit-Layout, **Kap. 4** **`section__sub--emph`**) wie im HTML.
+- **Landkarte** `pages/01-landkarte.html`: Kap. **4** an **ISTQB CTFL v4.0.2** TOC — **4.1**–**4.5** mit Lehrplan-Überschriften, Kapiteltitel **„Testanalyse und -entwurf“**; **4.5.3** **Abnahmetestgetriebene Entwicklung (ATDD)**; **keine** Sammelgruppe **„Testmodelle & Hilfsmittel“** / **`~Kap. 4`** — **Kontrollflussgraph (KFG)** unter **4.3.2**, **Überdeckungsanalyse** als Praxis-Chip in **4.3**; **Äquivalenzklassentabelle** **C-PRAXIS** mit **MS**, **ohne** Syllabus-**.ref**; Leitfragen Kap. **3**/**4** wie im HTML; Praxis-Benennungen **BDD** (Kap. **4.5**), **CI/CD** (Kap. **2**) — Langform zuerst.
+- **Workshop / Steuerung:** [P04-04-ctfl-lernwebsite-spec.md](designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md) **A.0.1b** — **`.ref`**-Semantik; Kopf-Muster siehe Eintrag **2026-04-03**.
 - **Glossar** `pages/01a-glossar.html`: Abschnitt Kap. **4** — Überschrift **„Testanalyse und -entwurf“** (wie Lehrplan/Landkarte).
 - **README** `02_Portfolio/QA_Lernwebseite/README.md`: Zeile **Landkarte** und **Stand**-Abschnitt zum Ist-Stand nachgezogen.
 - **In Klartext:** Landkarte, **P04-04**, Status, Glossar und Website-**README** beschreiben **dieselbe** Kap.-**4**-Gliederung; **`.ref`** bleibt **Anker**, nicht „jede Zeile TOC“.
 
-### 2026-04-04 — *QA_Lernwebseite*: Landkarte Kap. 2 + Chip-Legende + Doku-Schnitt
+### 2026-04-03 — *QA_Lernwebseite*: Landkarte Kap. 2 + Chip-Legende + Doku-Schnitt
 
-- **Landkarte** `pages/01-landkarte.html`: Kap. **2** an **ISTQB CTFL v4.0.2** TOC (Abschnitte **2.1–2.3**); Kapitelüberschrift **„Testen während des SDLC“**; Legende **drei** Inhaltsfarben (Syllabus / Praxis / Vertiefung), **MS** orthogonal; Chips **Alpha/Beta/Smoke/Sanity** usw. nach **P04-04** **A.0.1c**; **Header:** `section__title-cluster` (Titel + MS nicht umbrechend), Kap. **1/2** mit **Leituntertitel** über **`section__header--landkarte-leit`** / **`section__header-row`** (zwei Zeilen).
+- **Landkarte** `pages/01-landkarte.html`: Kap. **2** an **ISTQB CTFL v4.0.2** TOC (Abschnitte **2.1–2.3**); Kapitelüberschrift **„Testen während des SDLC“**; Legende **drei** Inhaltsfarben (Syllabus / Praxis / Vertiefung), **MS** orthogonal; Chips nach **P04-04** **A.0.1c**; Kopf-Muster siehe **2026-04-03**.
 - **Workshop:** [P04-04-ctfl-lernwebsite-spec.md](designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md) **A.0.1b/c**; [P03-mapping-ist-soll-token.md](designsystem-workshop/P03-mapping-ist-soll-token.md) (`.tag--extra` Legacy); [P02-01-taxonomie-information.md](designsystem-workshop/P02-01-taxonomie-information.md), [P02-04-modell-drei-ebenen.md](designsystem-workshop/P02-04-modell-drei-ebenen.md) — Living Docs zur **drei**-Chip-Logik.
 - **In Klartext:** Die **Landkarte** ist für **Kap. 2** syllabus-nah; **Kontext/Extra** als vierte Chip-Farbe entfällt; **MS-Badge** klebt optisch am Titel. **README**-Zeile zur Landkarte: siehe nachfolgenden Status-Eintrag **2026-04-03** (Feinabgleich).
 
-### 2026-04-04 — *QA_Lernwebseite*: Landkarte Kap. 3 (TOC)
+### 2026-04-03 — *QA_Lernwebseite*: Landkarte Kap. 3 (TOC)
 
 - **Landkarte** `pages/01-landkarte.html`: Kap. **3** an **ISTQB CTFL v4.0.2** TOC (**3.1** / **3.2**); Gruppentitel **„Grundlagen des statischen Tests“**, **„Feedback- und Reviewprozess“**; Syllabus-Chips **3.1.1–3.1.3**, **3.2.1–3.2.5** sowie **3.2.4**-Review-Arten einzeln; **Header** **`section__header--landkarte-leit`** / **`section__header-row`** (zwei Zeilen), **ohne** MS-Badge (Lehrplan).
 - **Workshop:** [P04-04-ctfl-lernwebsite-spec.md](designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md) **A.0.1b** Ergänzung Kap. 3.

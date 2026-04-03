@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-01  
-Letzte Aktualisierung: 2026-04-03 — **§1** `.tag-group` + `.tag--*` in **`base.css`** (Landkarte); **C-EXTRA**-Zeile; **A.0.0** [P04-04](P04-04-ctfl-lernwebsite-spec.md); zuvor F-CHAIN  
+Letzte Aktualisierung: 2026-04-03 — Verweis **Landkarte:** **C-PRAXIS**-Konvention, **Smoke**/**SonarQube** (Doppelrolle) in [P04-04](P04-04-ctfl-lernwebsite-spec.md) **A.0.1b/c**; **§1** `.tag-group` / `.tags + .tags` in **`base.css`**; zuvor **C-EXTRA**, **A.0.0**  
 Zweck: IST → SOLL → Token-Mapping-Tabellen (Session 3) — maßgebliche technische Quelle für C/F/P/S.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Normativ  
 Normative SOLL-Basis: [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md) · IST-Inventar u. a. [IST-02-analyse-komponenten.md](IST-02-analyse-komponenten.md); Cluster [P04-00-spec-overview.md](P04-00-spec-overview.md)
@@ -40,7 +40,7 @@ Normative SOLL-Basis: [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md) · IS
 | IST | SOLL | Token | Hinweis | Was passiert? | Beispiel IST |
 |-----|------|-------|---------|---------------|--------------|
 | `.tag--ctfl` (Farben in `assets/css/base.css`; Hülle/Maße ggf. seitenlokal) | **C-SYLLABUS** | `--chip-syllabus-bg`, `--chip-syllabus-fg` (alias zu bestehenden `--ctfl-bg` / Textfarbe) | Web, Chips | Die grünliche Kennzeichnung für **Prüfungs-/Syllabus-Stoff** wird überall gleich benannt und lässt sich zentral feinjustieren. | `pages/01-landkarte.html` — Chip „CTFL“ / Kap.-Tags in der Landkarte |
-| `.tag--praxis` | **C-PRAXIS** | `--chip-praxis-bg`, `--chip-praxis-fg` | Web, Chips | **Berufs-/Praxis**-Bezug ist optisch einheitlich und klar von Syllabus-Chips getrennt. | `pages/01-landkarte.html` — Chips „Praxis“ |
+| `.tag--praxis` | **C-PRAXIS** | `--chip-praxis-bg`, `--chip-praxis-fg` | Web, Chips | **Berufs-/Praxis**-Bezug ist optisch einheitlich und klar von Syllabus-Chips getrennt. Redaktion Landkarte: **kurz**, **Ausführlich (Kürzel)** — [P04-04](P04-04-ctfl-lernwebsite-spec.md) **A.0.1b**. | `pages/01-landkarte.html` — Chips „Praxis“ |
 | `.tag--advanced` | **C-ADV** | `--chip-advanced-bg`, `--chip-advanced-fg` | Web, Chips | **Vertiefung/Advanced** teilt sich eine erkennbare Farbfamilie (Normen, K3-Hinweise). | `pages/01-landkarte.html` — „Advanced“-Chips |
 | `.tag--extra` (optional/Legacy) | *kein SOLL mehr auf Landkarte* | `--chip-extra-bg`, `--chip-extra-fg` | Web | Früher „Kontext“; **A.0.1c:** Lern-Chips → **C-SYLLABUS** oder **C-PRAXIS**. Klasse kann in CSS bleiben. | — |
 | (inhaltlich Fallstudie; keine eigene Chip-Klasse „C-CASE“) | **C-CASE** | *wie* **C-SYLLABUS** / **C-PRAXIS** je Kontext oder später `--chip-case-*` | Web + HA | Die **GroceryMate-/HA-Kette** bleibt inhaltlich markierbar; Farblogik kann später **eigenes** Chip-Token erhalten. | `pages/04c-ha5-testfallentwurf.html` — Kasten „Dokumentenkette“; HA4–HA6 allgemein |
