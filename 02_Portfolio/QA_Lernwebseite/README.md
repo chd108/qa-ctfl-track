@@ -1,6 +1,6 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-04-02 — Redaktion HA5 (Lehrplan vs. Website) in **P05** und auf **04c/05a** verankert; siehe `01_Projektsteuerung/designsystem-workshop/P05-redaktion-harmonisierung.md`.
+> Zuletzt aktualisiert: 2026-04-03 — **Landkarte** (`01-landkarte.html`): Kap. **4** TOC ohne **`~Kap. 4`**-Sammelgruppe, Leitfragen Kap. **3/4**, Glossar-Überschrift „Testanalyse und -entwurf“; Spec **P04-04** **A.0.1b** und **02_Project_Status** nachgezogen. Zuvor: HA5-Redaktion in **P05** / **04c/05a** (2026-04-02).
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
@@ -67,7 +67,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 
 | Datei | Inhalt | CTFL (Orientierung) |
 |-------|--------|----------------------|
-| `01-landkarte.html` | Inhaltsverzeichnis / Landkarte des CTFL-Lehrplans v4.0.2 | Kap. 1–6 |
+| `01-landkarte.html` | **Landkarte** — visuelles Inhaltsverzeichnis **ISTQB CTFL v4.0.2 (DE)**: Kap. **1–6** in TOC-Reihenfolge, **drei** Chip-Farben (Syllabus / Praxis / Vertiefung), **MS** orthogonal; **Leitfragen** u. a. Kap. **3** („… ohne Software auszuführen?“), Kap. **4** (**`section__sub--emph`**); Kap. **4** ohne separate **`~Kap. 4`**-Gruppe (**KFG** unter **4.3.2**, Praxis **Überdeckungsanalyse**). Siehe **P04-04** A.0.1b. | Kap. 1–6 |
 | `01a-glossar.html` | Schlüsselbegriffe CTFL v4.0.2; Zählung **97** eindeutige K1-Lemmata vs. **102** Tabellenzeilen; alphabetisches **A–Z**-Register | Kap. 1–6 |
 | `01b-grundlagen.html` | Grundlagen des Testens (Was/Warum, QA vs. Testen, Fehlerkette, Grundsätze, Aktivitäten) | Kap. 1 |
 | `01c-testmittel.html` | Testmittel und Testaktivitäten | Kap. 1.4.3 |
@@ -122,11 +122,11 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | | |
 |--|--|
 | **README erstellt** | 2026-03-12 |
-| **README zuletzt aktualisiert** | **2026-03-31** |
+| **README zuletzt aktualisiert** | **2026-04-03** |
 
-**Kurzüberblick (Stand 31.03.2026)**
+**Kurzüberblick (Stand 03.04.2026)**
 
-- **Hauptsystem:** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **02c** im gemeinsamen Section-Muster; **Chip-Tokens** (Landkarte, Teststufen-Tags) **zentral** in `base.css` (Pilot **P1**).  
+- **Hauptsystem:** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **02c** im gemeinsamen Section-Muster; **Chip-Tokens** (Landkarte, Teststufen-Tags) **zentral** in `base.css` (Pilot **P1**). **Landkarte:** TOC-gliedrige Kap.-**4**-Darstellung, Leitfragen und **P04-04** A.0.1b sind mit `01_Projektsteuerung` abgestimmt; Glossar Kap.-**4**-Überschrift **„Testanalyse und -entwurf“**.  
 - **HA4/HA5/HA6:** inhaltlich und formal gehärtet — Meta-Informationen, Kette Web ↔ A4, Terminologie **Testbasis-Analyse**; HA6 mit **Testprotokoll A4**, **Fehlerbericht A4** (Musterdokument BUG-001 / BUG-002), **Testabschlussbericht A4** (ISO/IEC/IEEE 29119-3); Ergänzungen in **`doc-a4.css`** (u. a. Status-Badge für Review).  
 - **Einstieg (`index.html`):** gleiche maximale Lesespalte wie die übrigen Hauptseiten (`max-width` 1400px), **zwei Bereichsüberschriften** (Lernmaterial / Hausaufgaben), kompaktes Intro und Orientierungshinweis; Kartenbeschreibungen mit **Kap.-Bezug** (Lernmaterial) bzw. **GroceryMate / Druck** (HA); HA-Meta **Thematisch · Kap. …** bzw. **Formular · A4** (Badge); Karten in jeder Rasterzeile **gleich hoch** (Flex-Spalte).  
 - **Kopfnavigation:** **Zwei Leisten** in `.top-nav-zone` — **Lernmaterial** vs. **Hausaufgaben**, semantisch getrennt, `aria-label`s; **Startseite** als **Logo** im ersten Punkt von Nav 1 (Favicon-Asset, **`--nav-inline-logo-height`**); kein zusätzliches Header-Logo links; Zeilen mit **`align-items: center`**; vertikaler Rhythmus **`--nav-vertical-rhythm` (1,75rem)**; HA-Leiste über **`.main-nav--assignments`** visuell abgesetzt.  

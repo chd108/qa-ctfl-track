@@ -50,6 +50,15 @@
       flex-basis: auto;
       width: 100%;
     }
+    /* Einzelne Leitfrage unter Titel (z. B. Kap. 4): eigene Zeile, zentriert, fett */
+    .section__header .section__sub--emph {
+      flex-basis: 100%;
+      width: 100%;
+      text-align: center;
+      font-weight: 700;
+      font-style: italic;
+      opacity: 0.9;
+    }
     .section__body { padding: 1rem 1.2rem 1.2rem; background: rgba(255,255,255,0.38); border-top: 1px solid rgba(0,0,0,0.06); }
     .section--e1 .section__header { background: var(--e1); }
     .section--e2 .section__header { background: var(--e2); }
@@ -103,6 +112,28 @@
     .landkarte-lernmodule--related > strong {
       text-transform: none;
       letter-spacing: 0.06em;
+    }
+    /* Unterabschnitte: gleicher Stil wie .landkarte-lernmodule strong („Lernmodule“) */
+    .tag-group__subtitle {
+      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--soft);
+      display: block;
+      width: 100%;
+      margin-top: 0.85rem;
+      margin-bottom: 0.35rem;
+    }
+    .tag-group__title + .tag-group__subtitle {
+      margin-top: 0.35rem;
+    }
+    .tag-group__subtitle .ref {
+      font-size: 10px;
+      font-weight: 400;
+      letter-spacing: 0.1em;
+      opacity: 0.65;
     }
   </style>
 </head>
@@ -194,14 +225,19 @@
       <a href="01c-testmittel.html">Testmittel</a>
     </div>
     <div class="tag-group">
-      <div class="tag-group__title">1.1 Was ist Testen? · 1.2 Warum ist Testen notwendig? <span class="ref">1.1–1.2</span></div>
+      <div class="tag-group__title">Was ist Testen? <span class="ref">1.1</span></div>
       <div class="tags">
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Testziele <span class="ref">1.1.1</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Testen und Debugging <span class="ref">1.1.2</span></span>
+      </div>
+    </div>
+    <div class="tag-group">
+      <div class="tag-group__title">Warum ist Testen notwendig? <span class="ref">1.2</span></div>
+      <div class="tags">
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Der Beitrag des Testens zum Erfolg <span class="ref">1.2.1</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Testen und Qualitätssicherung <span class="ref">1.2.2</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Fehlhandlungen, Fehlerzustände, Fehlerwirkungen und Grundursachen <span class="ref">1.2.3</span><span class="ms-mark">MS</span></span>
-        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Bug vs. Defect vs. Failure (Praxisbegriffe)</span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Bug vs. Defect vs. Failure</span>
         <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>ISO/IEC 25010 Qualitätsmodell</span>
       </div>
     </div>
@@ -225,7 +261,7 @@
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Testmittel <span class="ref">1.4.3</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Verfolgbarkeit zwischen der Testbasis und den Testmitteln <span class="ref">1.4.4</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Rollen des Testens <span class="ref">1.4.5</span></span>
-        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>QA Engineer · SDET · Test Lead (Praxisrollen)</span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>QA Engineer · SDET · Test Lead</span>
       </div>
     </div>
     <div class="tag-group">
@@ -271,14 +307,16 @@
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Retrospektiven und Prozessverbesserung <span class="ref">2.1.6</span></span>
         <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Kanban</span>
         <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>SAFe (Scaled Agile)</span>
-        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>CI/CD (Continuous Integration / Delivery)<span class="ms-mark-inferred">MS?</span></span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Continuous Integration / Delivery (CI/CD)<span class="ms-mark-inferred">MS?</span></span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Smoke-Tests (typ. Build-Gate)</span>
         <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Continuous Testing</span>
         <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Chaos Engineering</span>
         <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>KI-gestütztes Testen</span>
       </div>
     </div>
     <div class="tag-group">
-      <div class="tag-group__title">Teststufen <span class="ref">2.2.1</span></div>
+      <div class="tag-group__title">Teststufen und Testarten <span class="ref">2.2</span></div>
+      <div class="tag-group__subtitle">Teststufen <span class="ref">2.2.1</span></div>
       <div class="tags">
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Komponententest <span class="ref">2.2.1</span><span class="ms-mark">MS</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Komponenten-Integrationstest <span class="ref">2.2.1</span></span>
@@ -287,16 +325,13 @@
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Abnahmetest <span class="ref">2.2.1</span><span class="ms-mark">MS</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Alpha-Test <span class="ref">2.2.1</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Beta-Test <span class="ref">2.2.1</span></span>
-        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Unit Test (Entwicklerbegriff)</span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Unit Test (engl. für Komponententest)</span>
         <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>End-to-End-Test (E2E)</span>
         <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>API-Test</span>
-        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>UAT (= Abnahmetest, Praxisbegriff)</span>
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Smoke-Test <span class="ref">5.1.7</span></span>
-        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Sanity-Test (Praxisbegriff)</span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>UAT (= Abnahmetest)</span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Sanity-Test</span>
       </div>
-    </div>
-    <div class="tag-group">
-      <div class="tag-group__title">Testarten <span class="ref">2.2.2</span></div>
+      <div class="tag-group__subtitle">Testarten <span class="ref">2.2.2</span></div>
       <div class="tags">
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Funktionale Tests <span class="ref">2.2.2</span><span class="ms-mark">MS</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Nicht-funktionale Tests <span class="ref">2.2.2</span><span class="ms-mark">MS</span></span>
@@ -306,9 +341,7 @@
         <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Usability-Test</span>
         <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>Zuverlässigkeitstest (ISO/IEC 25010)</span>
       </div>
-    </div>
-    <div class="tag-group">
-      <div class="tag-group__title">Fehlernachtest und Regressionstest <span class="ref">2.2.3</span></div>
+      <div class="tag-group__subtitle">Fehlernachtest und Regressionstest <span class="ref">2.2.3</span></div>
       <div class="tags">
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Fehlernachtest (Confirmation Testing) <span class="ref">2.2.3</span><span class="ms-mark-inferred">MS?</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Regressionstest <span class="ref">2.2.3</span><span class="ms-mark-inferred">MS?</span></span>
@@ -325,10 +358,12 @@
   </section>
 
   <section class="section section--e3" aria-labelledby="section-3-title">
-  <div class="section__header">
-    <span class="section__num">Kap. 3</span>
-    <span class="section__title" id="section-3-title">Statischer Test <span class="ref">80 min</span></span>
-    <span class="section__sub">Prüfen ohne Ausführung</span>
+  <div class="section__header section__header--landkarte-leit">
+    <div class="section__header-row">
+      <span class="section__num">Kap. 3</span>
+      <span class="section__title" id="section-3-title">Statischer Test <span class="ref">80 min</span></span>
+    </div>
+    <span class="section__sub section__sub--landkarte-leit">Wie prüfen, ohne Software auszuführen?</span>
   </div>
   <div class="section__body">
     <div class="landkarte-lernmodule" role="navigation" aria-label="Lernmodule Kap. 3">
@@ -336,26 +371,31 @@
       <a href="03-statisches-testen.html">Statisches Testen</a>
     </div>
     <div class="tag-group">
-      <div class="tag-group__title">Grundlagen statischer Test <span class="ref">3.1</span></div>
+      <div class="tag-group__title">Grundlagen des statischen Tests <span class="ref">3.1</span></div>
       <div class="tags">
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Untersuchbare Arbeitsergebnisse <span class="ref">3.1.1</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Statische Analyse <span class="ref">3.1</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Arbeitsergebnisse, die durch statische Tests untersucht werden können <span class="ref">3.1.1</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Wert des statischen Tests <span class="ref">3.1.2</span></span>
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Statisch vs. dynamisch <span class="ref">3.1.3</span></span>
-        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Statische Analyse (Linting / SonarQube)</span>
-        <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>ISO/IEC 20246 (Review-Standard)</span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Unterschiede zwischen statischem Test und dynamischem Test <span class="ref">3.1.3</span></span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Linting — prüft den Quellcode regelbasiert</span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>SonarQube — misst Qualität und zeigt Befunde</span>
       </div>
     </div>
     <div class="tag-group">
-      <div class="tag-group__title">Feedback &amp; Reviewprozess <span class="ref">3.2</span></div>
+      <div class="tag-group__title">Feedback- und Reviewprozess <span class="ref">3.2</span></div>
       <div class="tags">
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Vorteile frühzeitigen Stakeholder-Feedbacks <span class="ref">3.2.1</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Vorteile eines frühzeitigen und häufigen Stakeholder-Feedbacks <span class="ref">3.2.1</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Aktivitäten des Reviewprozesses <span class="ref">3.2.2</span></span>
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Rollen: Autor · Gutachter · Moderator · Reviewleiter <span class="ref">3.2.3</span></span>
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Informelles Review · Walkthrough <span class="ref">3.2.4</span></span>
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Technisches Review · Inspektion <span class="ref">3.2.4</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Rollen und Verantwortlichkeiten bei Reviews <span class="ref">3.2.3</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Arten von Reviews <span class="ref">3.2.4</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Informelles Review <span class="ref">3.2.4</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Walkthrough <span class="ref">3.2.4</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Technisches Review <span class="ref">3.2.4</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Inspektion <span class="ref">3.2.4</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Erfolgsfaktoren für Reviews <span class="ref">3.2.5</span></span>
         <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Code Review (Pull Request / Peer Review)</span>
-        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Review-Checklisten in der Praxis</span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Review-Checklisten</span>
+        <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>ISO/IEC 20246 (Review-Standard)</span>
       </div>
     </div>
   </div>
@@ -365,9 +405,9 @@
   <div class="section__header">
     <span class="section__num">Kap. 4</span>
     <span class="section__title-cluster">
-      <span class="section__title" id="section-4-title">Testanalyse &amp; -entwurf <span class="ref">390 min</span></span><span class="ms-badge">MS</span>
+      <span class="section__title" id="section-4-title">Testanalyse und -entwurf <span class="ref">390 min</span></span><span class="ms-badge">MS</span>
     </span>
-    <span class="section__sub">Wie werden Testfälle entworfen?</span>
+    <span class="section__sub section__sub--emph">Wie werden Testfälle entworfen?</span>
   </div>
   <div class="section__body">
     <div class="landkarte-lernmodule" role="navigation" aria-label="Lernmodule Kap. 4">
@@ -385,12 +425,22 @@
       <a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a>
     </div>
     <div class="tag-group">
+      <div class="tag-group__title">Testverfahren im Überblick <span class="ref">4.1</span></div>
+      <div class="tags">
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Black-Box-Testverfahren, White-Box-Testverfahren und erfahrungsbasierte Testverfahren unterscheiden <span class="ref">4.1.1</span><span class="ms-mark">MS</span></span>
+      </div>
+    </div>
+    <div class="tag-group">
       <div class="tag-group__title">Black-Box-Testverfahren <span class="ref">4.2</span></div>
       <div class="tags">
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Äquivalenzklassenbildung <span class="ref">4.2.1</span><span class="ms-mark">MS</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Grenzwertanalyse (2- &amp; 3-wertig) <span class="ref">4.2.2</span><span class="ms-mark">MS</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Entscheidungstabellentest <span class="ref">4.2.3</span><span class="ms-mark">MS</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Entscheidungstabelle <span class="ref">4.2.3</span><span class="ms-mark">MS</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Zustandsübergangstest <span class="ref">4.2.4</span><span class="ms-mark">MS</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Zustandsdiagramm <span class="ref">4.2.4</span><span class="ms-mark">MS</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Zustandstabelle <span class="ref">4.2.4</span><span class="ms-mark">MS</span></span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Äquivalenzklassentabelle <span class="ms-mark">MS</span></span>
         <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>Use-Case-Test (CTAL-TA)</span>
         <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>Ursache-Wirkungs-Analyse (CTAL-TA)</span>
       </div>
@@ -398,15 +448,18 @@
     <div class="tag-group">
       <div class="tag-group__title">White-Box-Testverfahren <span class="ref">4.3</span></div>
       <div class="tags">
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Anweisungstest &amp; -überdeckung <span class="ref">4.3.1</span><span class="ms-mark">MS</span></span>
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Zweigtest &amp; -überdeckung <span class="ref">4.3.2</span><span class="ms-mark">MS</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Anweisungstest und Anweisungsüberdeckung <span class="ref">4.3.1</span><span class="ms-mark">MS</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Zweigtest und Zweigüberdeckung <span class="ref">4.3.2</span><span class="ms-mark">MS</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Kontrollflussgraph (KFG) <span class="ref">4.3.2</span><span class="ms-mark">MS</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Der Wert des White-Box-Tests <span class="ref">4.3.3</span><span class="ms-mark">MS</span></span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Überdeckungsanalyse<span class="ms-mark">MS</span></span>
         <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>Pfadtest (CTAL-TTA)</span>
         <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>Bedingungstest (CTAL-TTA)</span>
         <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>Zyklomatische Komplexität / McCabe</span>
       </div>
     </div>
     <div class="tag-group">
-      <div class="tag-group__title">Erfahrungsbasierte Verfahren <span class="ref">4.4</span></div>
+      <div class="tag-group__title">Erfahrungsbasierter Test <span class="ref">4.4</span></div>
       <div class="tags">
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Intuitive Testfallermittlung (Error Guessing) <span class="ref">4.4.1</span><span class="ms-mark">MS</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Explorativer Test <span class="ref">4.4.2</span><span class="ms-mark">MS</span></span>
@@ -414,24 +467,13 @@
       </div>
     </div>
     <div class="tag-group">
-      <div class="tag-group__title">Kollaborativer Testansatz <span class="ref">4.5</span></div>
+      <div class="tag-group__title">Auf Zusammenarbeit basierende Testansätze <span class="ref">4.5</span></div>
       <div class="tags">
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Gemeinsames Schreiben von User-Storys <span class="ref">4.5.1</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Akzeptanzkriterien <span class="ref">4.5.2</span><span class="ms-mark">MS</span></span>
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>ATDD <span class="ref">4.5.3</span><span class="ms-mark-inferred">MS?</span></span>
-        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>BDD (Behavior-Driven Development)</span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Abnahmetestgetriebene Entwicklung (ATDD) <span class="ref">4.5.3</span><span class="ms-mark-inferred">MS?</span></span>
+        <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Behavior-Driven Development (BDD)</span>
         <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Gherkin (Given / When / Then)</span>
-      </div>
-    </div>
-    <div class="tag-group">
-      <div class="tag-group__title">Testmodelle &amp; Hilfsmittel <span class="ref">~Kap. 4</span></div>
-      <div class="tags">
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Äquivalenzklassentabelle<span class="ms-mark">MS</span></span>
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Entscheidungstabelle<span class="ms-mark">MS</span></span>
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Zustandsübergangsdiagramm<span class="ms-mark">MS</span></span>
-        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Zustandsübergangstabelle<span class="ms-mark">MS</span></span>
-        <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>Kontrollflussgraph (KFG)</span>
-        <span class="tag tag--advanced"><span class="tdot" style="background:var(--advanced)"></span>Überdeckungsanalyse</span>
       </div>
     </div>
   </div>
@@ -470,6 +512,7 @@
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Priorisierung von Testfällen <span class="ref">5.1.5</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Testpyramide <span class="ref">5.1.6</span></span>
         <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Testquadranten <span class="ref">5.1.7</span></span>
+        <span class="tag tag--ctfl"><span class="tdot" style="background:var(--ctfl)"></span>Smoke-Tests <span class="ref">5.1.7</span></span>
         <span class="tag tag--praxis"><span class="tdot" style="background:var(--praxis)"></span>Definition of Done (DoD)</span>
       </div>
     </div>
