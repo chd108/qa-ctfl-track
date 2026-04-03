@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-01  
-Letzte Aktualisierung: 2026-04-02 — **§2 F-CHAIN** → `aside.chain-callout`, `04d` B.13; zuvor Phase 3 §6 Rollout-Scope  
+Letzte Aktualisierung: 2026-04-03 — **§1** `.tag-group` + `.tag--*` in **`base.css`** (Landkarte); **C-EXTRA**-Zeile; **A.0.0** [P04-04](P04-04-ctfl-lernwebsite-spec.md); zuvor F-CHAIN  
 Zweck: IST → SOLL → Token-Mapping-Tabellen (Session 3) — maßgebliche technische Quelle für C/F/P/S.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Normativ  
 Normative SOLL-Basis: [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md) · IST-Inventar u. a. [IST-02-analyse-komponenten.md](IST-02-analyse-komponenten.md); Cluster [P04-00-spec-overview.md](P04-00-spec-overview.md)
@@ -18,6 +18,7 @@ Normative SOLL-Basis: [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md) · IS
 - **S-\*** (Diátaxis): **Aussehen** von Label/Badge (**Emoji, Farbe, Text, Icon**) ist **noch nicht** entschieden — in den S-Zeilen steht nur: **„Label-System für Leser (Details folgen)“**.
 - **Workshop-Ordner** `designsystem-workshop/` bleibt die **maßgebliche Referenz** für **02f**, **P03-mapping-ist-soll-token.md** und Sessions — **nicht** „eingefrorenes Archiv“; Verdichtung in **03_Project_Standards** kann **ergänzend** erfolgen, ersetzt die Quelldateien **nicht** ohne Beschluss.
 - **Design-Spec-Cluster (04):** [P04-00-spec-overview.md](P04-00-spec-overview.md) — **ergänzt** dieses Dokument um **Priorität** (P0/P1) und **Domain CTFL**; **normativ** für IST/SOLL/Token bleibt **weiterhin diese Datei (03)**. Vereinfachungs- und Drift-Risiken: siehe Risiko-Register im Overview.
+- **Inhaltliche Bedeutung der C-\*-Codes** (einheitlicher Sinn über Lernseiten): [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) **§ A.0** / **A.0.0** (C-SYLLABUS redaktionell) — **ergänzend** zu den Tabellen hier; bei Widerspruch zuerst **Taxonomie (02f)** und **03** klären, dann A.0 anpassen.
 
 ---
 
@@ -38,10 +39,10 @@ Normative SOLL-Basis: [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md) · IS
 
 | IST | SOLL | Token | Hinweis | Was passiert? | Beispiel IST |
 |-----|------|-------|---------|---------------|--------------|
-| `.tag--ctfl` (lokal in `01-landkarte.html`) | **C-SYLLABUS** | `--chip-syllabus-bg`, `--chip-syllabus-fg` (alias zu bestehenden `--ctfl-bg` / Textfarbe) | Web, Chips | Die grünliche Kennzeichnung für **Prüfungs-/Syllabus-Stoff** wird überall gleich benannt und lässt sich zentral feinjustieren. | `pages/01-landkarte.html` — Chip „CTFL“ / Kap.-Tags in der Landkarte |
+| `.tag--ctfl` (Farben in `assets/css/base.css`; Hülle/Maße ggf. seitenlokal) | **C-SYLLABUS** | `--chip-syllabus-bg`, `--chip-syllabus-fg` (alias zu bestehenden `--ctfl-bg` / Textfarbe) | Web, Chips | Die grünliche Kennzeichnung für **Prüfungs-/Syllabus-Stoff** wird überall gleich benannt und lässt sich zentral feinjustieren. | `pages/01-landkarte.html` — Chip „CTFL“ / Kap.-Tags in der Landkarte |
 | `.tag--praxis` | **C-PRAXIS** | `--chip-praxis-bg`, `--chip-praxis-fg` | Web, Chips | **Berufs-/Praxis**-Bezug ist optisch einheitlich und klar von Syllabus-Chips getrennt. | `pages/01-landkarte.html` — Chips „Praxis“ |
 | `.tag--advanced` | **C-ADV** | `--chip-advanced-bg`, `--chip-advanced-fg` | Web, Chips | **Vertiefung/Advanced** teilt sich eine erkennbare Farbfamilie (Normen, K3-Hinweise). | `pages/01-landkarte.html` — „Advanced“-Chips |
-| `.tag--extra` | **C-EXTRA** | `--chip-extra-bg`, `--chip-extra-fg` | Web, Chips | **Extra-/Kontext**-Inhalte sind als solche erkennbar, ohne mit Praxis verwechselt zu werden. | `pages/01-landkarte.html` — „Extra“-Chips |
+| `.tag--extra` (optional/Legacy) | *kein SOLL mehr auf Landkarte* | `--chip-extra-bg`, `--chip-extra-fg` | Web | Früher „Kontext“; **A.0.1c:** Lern-Chips → **C-SYLLABUS** oder **C-PRAXIS**. Klasse kann in CSS bleiben. | — |
 | (inhaltlich Fallstudie; keine eigene Chip-Klasse „C-CASE“) | **C-CASE** | *wie* **C-SYLLABUS** / **C-PRAXIS** je Kontext oder später `--chip-case-*` | Web + HA | Die **GroceryMate-/HA-Kette** bleibt inhaltlich markierbar; Farblogik kann später **eigenes** Chip-Token erhalten. | `pages/04c-ha5-testfallentwurf.html` — Kasten „Dokumentenkette“; HA4–HA6 allgemein |
 | `.cat-*` / Tabellen in `00b-standards.html` (Projekt-Meta) | **C-PROJEKT** | `--surface-meta` / `--text-meta` (oder Verweis auf P-Tabelle) | Web | **Repo/Tooling/Standards** wirken als **eigener** visueller Bereich, nicht wie CTFL-Lernchips. | `pages/00b-standards.html` — Kategorien-Tabelle |
 | **attr:curriculum** (SOLL: noch **kein** durchgängiges Attribut im HTML) | **attr:curriculum** | `--badge-curriculum-bg`, `--badge-curriculum-fg` (geplant) | Meta | Sobald **Kurs vs. Syllabus** maschinell/visuell getrennt wird, gibt es **ein** Badge-Token statt fünf Varianten im Freitext. | Aktuell: eher **Freitext** „Masterschool …“ in Fußzeilen (z. B. `05b-ha5-testkonzept-a4.html`); **kein** einheitliches `data-*` |
@@ -128,4 +129,4 @@ Normative SOLL-Basis: [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md) · IS
 
 ---
 
-*Ende Session 3 Mapping-Dokument — Stand 2026-04-01; Abschnitt 7 aktualisiert 2026-04-02 (Cluster 04).*
+*Ende Session 3 Mapping-Dokument — Stand 2026-04-01; Abschnitt 7 aktualisiert 2026-04-02 (Cluster 04); Hinweise vor §1 ergänzt (**A.0** / **A.0.0**); §1 `.tag--*` **base.css** 2026-04-03.*

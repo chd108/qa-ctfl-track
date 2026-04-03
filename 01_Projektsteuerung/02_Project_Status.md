@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-02 — **Abschluss-Schnitt** Designsystem/Redaktion: **P05** § **CTFL-Lehrplan vs. Portfolio (HA5)** + Nachzug Status/README; zuvor **F-CHAIN** (**04d** B.13, **P05** § F-CHAIN); **Aufräum-Plan Phase 4** … siehe §2)  
+Letzte Aktualisierung: 2026-04-04 — **Schnitt** Landkarte **Kap. 2** (TOC), Legende **drei** Chip-Kategorien (**A.0.1c**), **P02-01/04** nachgezogen, Header **MS** (`section__title-cluster`, Kap. 1/2 **Leit**-Layout); zuvor **2026-04-02** siehe §2  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -8,7 +8,7 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 
 # Project Status — QA-Track
 
-**Berichtsstichtag:** 2026-04-02 · **Projektinhaber (Alias):** chd108  
+**Berichtsstichtag:** 2026-04-04 · **Projektinhaber (Alias):** chd108  
 
 *Kurzkontext:* QA-Track ist das **gesamte** ISTQB-CTFL-orientierte Lernprogramm (Material, Hausaufgaben, Portfolio, Website, Notizen, Referenzen, Steuerung). **Vision, Ziele und Scope** siehe [01_Project_Charter.md](01_Project_Charter.md); **Ablage, Benennung, Repo-Struktur und Health Check** siehe [03_Project_Standards.md](03_Project_Standards.md) (insb. Abschnitt 3 und 8).
 
@@ -27,7 +27,7 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 | **Nächster Schwerpunkt** | **Zwei Spuren:** (1) **Workshop-Doku** — Living Docs, Konsolidierung **03↔P04-Cluster** (C/F/P), **Rollout**; **strukturelles** Zusammenlegen der Dateien **P04-01–03** ist **nicht** vorgesehen (Phase-4-Entscheidung, [README](designsystem-workshop/README.md) *Aufräum-Plan*). (2) **Website/CSS** — **Komponentenstil / Designsystem light**: **Pilot** (**F-META**, **F-LEGEND**, **F-CHAIN**, Korrekturleiste) **in `base.css` umgesetzt** (siehe **04d B.10–B.13**, **04b** *Umsetzungsstand*). **Nächste CSS-Iteration:** Abbau von Inline-CSS wo sinnvoll, **weitere** Callout-Familien nach Priorität **04b** und **Rollout Phase A** (Lerninhalte zuerst); bei Bedarf Regeln in [03_Project_Standards.md](03_Project_Standards.md) (Abschn. 6); **IST→SOLL→Token** [P03-mapping-ist-soll-token.md](designsystem-workshop/P03-mapping-ist-soll-token.md). |
 | **Lessons learned (aktuell)** | Teile der **Komponentenlogik** (Story-/Dokumentenkette-Boxen) wurden **vor** dem formalen Designsystem **praktisch eingeführt** — fachlich sinnvoll für die Lernstrecke; **F-CHAIN** ist **nach** **04d** B.13 / **P05** § jetzt **spezifiziert** und **umgesetzt** (`aside.chain-callout`). **HA5:** Lehrplan-Reihenfolge (Kap. 4/5) vs. Nav/Portfolio ist in **P05** und auf **04c/05a** **einheitlich** erklärt. Der Workshop hat **explizit** getrennt: **Domäne** (z. B. Syllabus-Chips), **didaktische Funktion** (Callouts, Orientierung), **Darstellung** (Tabellen, SVG, A4) — reduziert Vermischung und gibt **Token-Mapping und Pilot-Phase** eine **Zielrichtung**. |
 
-**Aktueller Fokus (Stand 02.04.2026):**  
+**Aktueller Fokus (Stand 04.04.2026):**  
 Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgeschlossen**; die HA4/HA5-Strecke ist **inhaltlich** durch die Phasen 1–4 **abgedeckt**. **Kopfzeile** der Website ist mit **Logo-in-Nav** und aktualisierter **README** dokumentiert (Commit **`95d6f18`**). **P1:** Erster **CSS-Pilot** **umgesetzt** — **meta-bar** / Syllabus-Chip / **F-LEGEND** / **F-CHAIN** / **correction-bar** in **`base.css`**; **K-Stufen**-Hinweis **nur** bei **FL-(Kx)** in der **meta-bar**; **04d B.10** Follow-up größtenteils erledigt. **Designsystem-Workshop:** **Einstiegs-README**, **einheitliche Metablöcke**, **Rollout** (Phase A = Lerninhalte zuerst), **Phase 3** Doku (Drift 03/04, **F-LEGEND** in **04b**, gemeinsame **P0/P1**-Erklärung); **Aufräum-Plan Phase 4** **abgeschlossen** — Zusammenlegen **P04-01–03** **verworfen** (siehe Workshop-**README**). **Nächster Schritt (wählbar):** **CSS-Iteration** (Callouts, Phase-A-Seiten) **oder** redaktionelle/steuerungsseitige Feinpflege — siehe **Nächster Schwerpunkt** oben.
 
 ### Redaktioneller Backlog (Website)
@@ -43,6 +43,12 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 *(Chronologisch **absteigend**: zuerst das Neueste / zuletzt Abgeschlossene.)*
 
 **So ist dieser Abschnitt gemeint:** Hier steht, **was** im Projekt **schon erledigt** ist — mit Datum und oft mit Fachbegriffen (Git, Phasen, Dateinamen). Nach vielen Blöcken folgt ein kurzer Absatz **„In Klartext“**: was das **praktisch** bedeutet, **ohne** dass man alle Kürzel kennen muss.
+
+### 2026-04-04 — *QA_Lernwebseite*: Landkarte Kap. 2 + Chip-Legende + Doku-Schnitt
+
+- **Landkarte** `pages/01-landkarte.html`: Kap. **2** an **ISTQB CTFL v4.0.2** TOC (Abschnitte **2.1–2.3**); Kapitelüberschrift **„Testen während des SDLC“**; Legende **drei** Inhaltsfarben (Syllabus / Praxis / Vertiefung), **MS** orthogonal; Chips **Alpha/Beta/Smoke/Sanity** usw. nach **P04-04** **A.0.1c**; **Header:** `section__title-cluster` (Titel + MS nicht umbrechend), Kap. **1/2** mit **Leituntertitel** über **`section__header--landkarte-leit`** / **`section__header-row`** (zwei Zeilen).
+- **Workshop:** [P04-04-ctfl-lernwebsite-spec.md](designsystem-workshop/P04-04-ctfl-lernwebsite-spec.md) **A.0.1b/c**; [P03-mapping-ist-soll-token.md](designsystem-workshop/P03-mapping-ist-soll-token.md) (`.tag--extra` Legacy); [P02-01-taxonomie-information.md](designsystem-workshop/P02-01-taxonomie-information.md), [P02-04-modell-drei-ebenen.md](designsystem-workshop/P02-04-modell-drei-ebenen.md) — Living Docs zur **drei**-Chip-Logik.
+- **In Klartext:** Die **Landkarte** ist für **Kap. 2** syllabus-nah; **Kontext/Extra** als vierte Chip-Farbe entfällt; **MS-Badge** klebt optisch am Titel; **Kein** eigener Muss für README-Änderung, solange die Tabelle **01-landkarte** dort noch stimmt.
 
 ### 2026-04-02 — Designsystem & Redaktion: Schnitt nach HA5-/F-CHAIN-Arbeit
 

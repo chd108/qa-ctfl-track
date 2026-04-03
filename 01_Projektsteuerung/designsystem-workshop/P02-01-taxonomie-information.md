@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-30  
-Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-30  
+Letzte Aktualisierung: 2026-04-03 — Landkarte: **drei** Chip-Kategorien (Syllabus, Praxis, Vertiefung); `.tag--extra` nur Legacy; normativ [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) **A.0.1c**  
 Zweck: Informations-Taxonomie (T-/O-/D-/M-/X-Typen) — Designsystem-Workshop Session 2.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Konzept  
 Normative Orientierung: Vorgänger [P01-vision-ziele.md](P01-vision-ziele.md); Grundlage für Session 3
@@ -31,18 +31,18 @@ Normative Orientierung: Vorgänger [P01-vision-ziele.md](P01-vision-ziele.md); G
 
 | Technisch (CSS) | In der Legende benannt | Kurzbeschreibung (Seite) |
 |-------------------|-------------------------|---------------------------|
-| `.tag--ctfl` | **CTFL-Pflichtstoff (Foundation Level)** | Syllabus-Pflichtinhalt |
-| `.tag--praxis` | **Praxisrelevant (nicht CTFL)** | Berufs-/Tool-Begriffe, die nicht Prüfungskern sind |
-| `.tag--advanced` | *(als „Advanced“ in Farblogik)* | z. B. ISO-25010, KI-Test, Norm-Vertiefung — **über** Foundation hinaus |
-| `.tag--extra` | *(als „Kontext/Extra“ in Farblogik)* | ergänzende Modelle (Spiral, Smoke, …) |
-| Zusatzmarker | **MS / MS?** | Masterschool-Curriculum gesichert vs. erschlossen |
+| `.tag--ctfl` | **Syllabus / Lehrplan (CTFL v4.0.2)** | Offizieller Lehrplan-Inhalt |
+| `.tag--praxis` | **Praxis / Berufsbezug** | Nicht als CTFL-Prüfungsfokus gemeint, beruflich relevant |
+| `.tag--advanced` | **Vertiefung** | ISTQB Advanced/Specialist oder Normen (z. B. ISO) |
+| `.tag--extra` | *(Legacy; nicht mehr in Landkarte-Legende)* | Inhalte → Syllabus oder Praxis zuordnen ([P04-04](P04-04-ctfl-lernwebsite-spec.md) **A.0.1c**) |
+| Zusatzmarker | **MS / MS?** | Masterschool-Curriculum gesichert vs. erschlossen — **orthogonal** zu Chip-Farben |
 
-*Hinweis Landkarte:* „Farben kennzeichnen CTFL-Pflicht, Praxis, Advanced, Kontext.“ (`01-landkarte.html`)
+*Hinweis Landkarte:* Drei Farben: Syllabus, Praxis, Vertiefung. **Reihenfolge** in einer `.tags`-Zeile: **Syllabus → Praxis → Vertiefung** (`01-landkarte.html`).
 
 ### 1.2 Teststufen-Seite (`02c`) — zwei Ebenen
 
 **Ebene A — Syllabus-Nähe (Legende oben, analog Landkarte):**  
-`.tag-ctfl`, `.tag-praxis`, `.tag-advanced`, `.tag-extra` (gleiche **Semantik** wie Landkarte, **anderer** Klassen-Präfix `tag-` statt `tag--`).
+`.tag-ctfl`, `.tag-praxis`, `.tag-advanced` (gleiche **Semantik** wie Landkarte, **anderer** Klassen-Präfix `tag-` statt `tag--`). `.tag-extra` nur falls noch Legacy.
 
 **Ebene B — Matrix-Zellen (Stufen-Karten):** semantische Mini-Tags **ohne** die vier Syllabus-Farben:
 
@@ -89,8 +89,8 @@ Die folgenden **Cluster** mischen *inhaltliche* und *darstellungsbezogene* Typen
 |--------------|---------------|-----------|
 | **A1 Pflicht / Prüfungskern** | `tag--ctfl`, `tag-ctfl` | Foundation-Syllabus |
 | **A2 Praxis / Berufsfeld** | `tag--praxis`, `tag-praxis` | Nicht Prüfungskern, aber jobrelevant |
-| **A3 Vertiefung / Advanced** | `tag--advanced`, `tag-advanced` | Normen, KI, ISO-Nuance — „darüber hinaus“ |
-| **A4 Kontext / Extra** | `tag--extra`, `tag-extra` | Ergänzende Modelle, nicht Pflicht |
+| **A3 Vertiefung / Advanced** | `tag--advanced`, `tag-advanced` | Normen, ISTQB Advanced, „darüber hinaus“ |
+| **A4** | *entfällt als Chip-Farbe* | Früher „Kontext/Extra“ → Zuordnung A1 oder A2 ([P04-04](P04-04-ctfl-lernwebsite-spec.md) **A.0.1c**) |
 | **A5 Kurs-Ort** | MS, MS? | **Meta zum Curriculum**, kein Lerninhalt |
 
 ### Cluster B — **Orientierung & Rahmen** (Wo stehe ich? Wohin verweist die Seite?)
@@ -144,7 +144,7 @@ Die Tabelle fasst **wiederkehrende Bedeutungen** zusammen — unabhängig davon,
 | **T-PFLICHT** | CTFL-Pflichtstoff | Lernziel Prüfung: Kernlehrplan | Themen, die im Syllabus **explizit** gefordert sind | Landkarte: Tag „7 Grundprinzipien“ mit `.tag--ctfl` |
 | **T-PRAXIS** | Praxisbezug | Berufliche Begriffe, Tools, Rollen **ohne** CTFL-Pflichtcharakter | Abgrenzung: „im Job“, nicht „in der Klausur“ | „QA Engineer · SDET“ (`.tag--praxis`) |
 | **T-VERTIEF** | Vertiefung / Advanced | Über Foundation hinaus: Norm, Spezialthema | Optional, Portfolio-Nuance | „KI-gestütztes Testen“ (`.tag--advanced`) |
-| **T-EXTRA** | Kontext / Extra | Didaktische Ergänzung, nicht klausurrelevant | Motivation, Randmodelle | „Chaos Engineering“ (`.tag--extra`) |
+| **T-EXTRA** | *deprecated als Chip-Typ* | Inhalte über **T-PFLICHT** / **T-PRAXIS** abbilden | — | Siehe **A.0.1c** |
 | **T-KURS** | Curriculum-Marker | Transparenz **Kurs vs. Syllabus** | Nur wo MS/MS? Sinn macht | MS-Badge an Landkarten-Tags |
 | **O-META** | Seiten-Kontext | Orientierung: wo bin ich, welches Kap.? | Oben unterhalb Nav | `.meta-bar` „Kap. 4 · Testentwurf“ |
 | **O-KETTE** | Dokumenten-/Story-Kette | Verständnis der **HA-Reihe** und Artefakte | HA-Webseiten, Verweise A4↔Web | „Dokumentenkette — HA4 → HA5“ (`info-box--note`) |
@@ -165,7 +165,7 @@ Die Tabelle fasst **wiederkehrende Bedeutungen** zusammen — unabhängig davon,
 
 **Ableitung aus Vision / Lernzielen** ([01_Project_Charter.md](../01_Project_Charter.md), Session 1):
 
-1. **Prüfungsvorbereitung** → Mindestens klar trennen: **Pflicht (T-PFLICHT)** vs. **Nicht-Pflicht** (T-PRAXIS, T-VERTIEF, T-EXTRA).  
+1. **Prüfungsvorbereitung** → Mindestens klar trennen: **Pflicht (T-PFLICHT)** vs. **Nicht-Pflicht** (T-PRAXIS, T-VERTIEF).  
 2. **Portfolio & Normen** → eigener Modus **X-DOK** + **O-KETTE** (Traceability), dazu **O-BEGRIFF** wo Begriffe kollidieren.  
 3. **Berufsnähe** → T-PRAXIS und D-AUTO explizit behalten.  
 4. **Transparenz Kurs** → T-KURS (MS) optional, aber **einheitlich** benennen.  
@@ -175,7 +175,7 @@ Die Tabelle fasst **wiederkehrende Bedeutungen** zusammen — unabhängig davon,
 
 | Priorität | Typen bündeln auf … |
 |-----------|---------------------|
-| **P0** | T-PFLICHT, T-PRAXIS, T-VERTIEF, T-EXTRA **eine** Farb-/Token-Skala (wie Landkarte) |
+| **P0** | T-PFLICHT, T-PRAXIS, T-VERTIEF **eine** Farb-/Token-Skala (wie Landkarte; drei Legendenzeilen) |
 | **P0** | D-HINWEIS, D-OK, D-WARN, D-ERKLAER **eine** Callout-Familie (Web + A4 visuell spiegeln) |
 | **P1** | O-META, O-KETTE, O-BEGRIFF als **strukturelle** Muster (nicht zwingend neue Farben) |
 | **P2** | M-MATRIX nur auf Seiten mit Fach-Matrix — **nicht** mit Syllabus-Tags vermischen |
@@ -201,4 +201,4 @@ Die Tabelle fasst **wiederkehrende Bedeutungen** zusammen — unabhängig davon,
 
 ---
 
-*Ende Session 2 — Informations-Taxonomie (2026-03-30).*
+*Ende Session 2 — Informations-Taxonomie (Stand 2026-04-03).*

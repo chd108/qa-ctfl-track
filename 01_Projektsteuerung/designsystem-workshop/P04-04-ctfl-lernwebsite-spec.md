@@ -1,6 +1,6 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-02 — **B.13.1a** F-CHAIN **Standort** (`<main>`); zuvor B.13 creme/pastell; Metablock Variante B; B.11/B.12  
-Zweck: Domain CTFL — Entscheidungsregeln (Teil A) und Design-Spec meta-bar / Chip / Legende (Teil B).  
+Letzte Aktualisierung: 2026-04-04 — **A.0.1b** Landkarte Kap. 2 TOC + Header **MS** (`section__title-cluster`, **Leit** Kap. 1/2); zuvor **A.0.1c** Legende **drei** Kategorien  
+Zweck: Domain CTFL — Entscheidungsregeln (Teil A, inkl. **A.0**) und Design-Spec meta-bar / Chip / Legende (Teil B).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Normativ  
 Normative Orientierung: [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md) (**C-SYLLABUS**, **F-META**, **F-LEGEND**); [P04-00-spec-overview.md](P04-00-spec-overview.md)
 
@@ -16,6 +16,95 @@ Diese Datei bündelt **Teil A — Entscheidungsregeln** und **Teil B — Design-
 ---
 
 ## Teil A — Entscheidungsregeln
+
+### A.0 Domänen — einheitlicher Sinn (C-\*)
+
+**Warum dieser Abschnitt:** Die **Farben und Chip-Klassen** (`C-SYLLABUS`, `C-PRAXIS`, …) sollen **überall dieselbe Bedeutung** haben — unabhängig davon, ob etwas in der **meta-bar**, in der **Landkarte** oder später **im Fließtext** markiert wird. **Diese Tabelle ist die inhaltliche Norm**; die **technische** Zuordnung (Klassen, Token) steht in [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md) §1.
+
+### A.0.0 C-SYLLABUS — redaktionell (final)
+
+**Definition:** **C-SYLLABUS** bezeichnet bei uns den offiziellen **ISTQB-CTFL-Lehrplan v4.0.2** (Kapitel 1 bis 6) sowie alle Lerninhalte, die sich **ausdrücklich darauf beziehen** und ihn **ohne vom Lehrplan abweichenden Kern** abbilden — **einschließlich** Zusammenfassungen und Beispiele, **solange** der Lehrplanbezug klar erkennbar bleibt.
+
+**Hauptzweck der Lernwebsite:** Die Module orientieren sich am **ISTQB CTFL v4.0.2** und decken die **Kapitel 1 bis 6** ab. Entsprechend hat **C-SYLLABUS** **Vorrang** vor allen anderen Domänen-Kennzeichnungen: Was **eindeutig** Lehrplan- und prüfungsrelevant ist, wird **immer** als Syllabus erkennbar gemacht — in der **Regel** mit der **grünen** Kennzeichnung (Chips, Badges, Legende, wo vorgesehen). **Lernziel-Stufen (K1/K2/K3)** und **Fundamental-Liste (FL) bzw. FL-Nummern** sind **Bestandteil** dieser Syllabus-Orientierung: Sie gehören zum **gleichen Lesekontext** wie Kapitel- und Begriffsbezüge und sind **keine** eigene „Neben-Domäne“ neben dem Syllabus. Wo sich Inhalte **überschneiden** (z. B. syllabus-relevant und praxisnah), gilt die **vereinbarte Priorität**: zuerst **Syllabus**; alles darüber hinaus wird nur dort zusätzlich gekennzeichnet, wo es **sachlich** Sinn ergibt — in der Praxis wird **wenig** oder **keine** zweite Markierung nötig sein.
+
+#### Drei Ebenen (Orientierung statt „zu vieler CTFL-Taxonomien“)
+
+| Ebene | Was | Kurz |
+|-------|-----|------|
+| **Inhaltliche Codes (C-*)** | **Drei** Chip-Bedeutungen auf der Landkarte | Syllabus, Praxis, Vertiefung — **keine** Pflicht-Bausteine auf jeder Seite. **MS** = gesondert (`ms-mark` / `ms-badge`), **kein** vierter Chip-Typ. |
+| **UI-Stufen (A.0.1)** | **Wo** es erscheint | meta-bar, Landkarte-Chip, Legende, Inline — **dieselbe** Semantik, **verschiedene** Orte. |
+| **Technische Namen (HTML/CSS)** | z. B. `.tag--ctfl`, `--chip-syllabus-*`, Lesetext „CTFL“ | **Implementierung**; **leser**seitig zählt: **grün = Syllabus**. |
+
+#### Masterschool (**MS**) — nicht Syllabus-Chip
+
+**`ms-mark` / `ms-badge`** kennzeichnen **Masterschool-Curriculum** (gesichert / erschlossen). **Orthogonal** zu **C-SYLLABUS** — ersetzt keine Lehrplan-Kennzeichnung.
+
+#### Wo Syllabus sichtbar sein soll (Prinzipien)
+
+| Ort / Stufe | Rolle für Leser:innen |
+|-------------|------------------------|
+| **Seite (meta-bar)** | Grüner Syllabus-/CTFL-Bezug: **Rahmen** — Kapitel, FL, K-Stufe, Quelle, wo sinnvoll. |
+| **Landkarte / Thema** | Pro Thema/Kachel: eindeutig Syllabus → **C-SYLLABUS** (grüner Chip / gleiche Token-Farbe). |
+| **Grafik / Legende** | Farbe Syllabus = dieselbe Semantik wie in der Tabelle unten. |
+| **Inline** | Punktuell: Begriff syllabus-relevant oder auf Lehrplan-Terminologie zugeführt (z. B. `.ctfl-fix`). |
+
+**Nicht Syllabus (Kurz):** **C-PRAXIS** — QA-/Berufsbezug; **C-ADV** — Vertiefung. **Masterschool** siehe **`ms-mark` / `ms-badge`** (nicht als vierter Chip-Farbtyp).
+
+| SOLL-Code | Sinn für Leser:innen | Typische Inhalte |
+|-----------|----------------------|------------------|
+| **C-SYLLABUS** | Gehört zum **ISTQB CTFL v4.0.2-Lehrplan** / **Prüfungsrelevanz** in diesem Kurs. | Lehrplan-Kapitel, FL-Referenzen, K-Stufen, prüfungsnahe Begriffe |
+| **C-PRAXIS** | **Berufsbezug**; **nicht** als CTFL-Prüfungsfokus gemeint, aber im Job üblich. | Rollen, Tools, Branchenbegriffe; frühere „Kontext“-Themen ohne Lehrplanzeile |
+| **C-ADV** | **Vertiefung:** ISTQB **Advanced/Specialist** (über Foundation) **oder** **Normen** (z. B. ISO/IEC). | Normenbezüge, syllabusfremde Vertiefung |
+
+**Wichtig:** **Drei** Chip-Rollen — **keine** Bewertung „besser/schlechter“. **Grün** = Syllabus; **Warm** = Praxis; **Blau** = Vertiefung. **MS** = eigene Badges, nicht Rosa-Chip.
+
+#### A.0.1 Gleicher Sinn, verschiedene **Stufen** (UI)
+
+Derselbe Code kann **unterschiedlich dargestellt** werden — **ohne** den Sinn zu ändern:
+
+| Stufe | Beispiel | Rolle |
+|-------|----------|--------|
+| **Seite** | Grüner **Syllabus-Badge** in der **meta-bar** (`.chip--syllabus-visual`) | „Diese Seite ist im Syllabus-Kontext.“ |
+| **Begriff / Thema** | **Text-Chips** auf der Landkarte (`.tag--ctfl`, `.tag--praxis`, …) | „Dieses konkrete Thema fällt unter diese Domäne.“ |
+| **Grafik** | **Legende** unter der meta-bar (`.legend__swatch--*`) | „Diese Farbe in der Grafik = diese Domäne.“ |
+| **Inline** | z. B. `.ctfl-fix` | „Dieses Wort ist syllabus-relevant / korrigiert.“ |
+
+**Regel:** Überall **dieselben Token** (`--chip-syllabus-*`, `--chip-praxis-*`, …) — **keine** zweiten Grüntöne für „ähnlich Syllabus“.
+
+**Legende vs. Chip-Fläche:** Auf der Landkarte zeigen **`.legend__swatch--*`** dieselbe **Chip-Hintergrundfarbe** (`--chip-*-bg`) wie die **Tags** — **nicht** nur den Akzent (`--ctfl` / Punkt im Chip), damit Legende und Chips **gleich** wirken. Legendentexte folgen **A.0.0** und **A.0.1c**; **C-PRAXIS** z. B.: „Praxis / Berufsbezug — nicht als CTFL-Prüfungsfokus gemeint“.
+
+**Klarheit:** Mehrere sichtbare Syllabus-/CTFL-Signale sind oft **dieselbe inhaltliche Aussage an verschiedenen Stellen** (Orientierung im Kopf vs. Quellenzeile vs. Begriff) — **keine** zweite Taxonomie parallel zu **C-SYLLABUS**.
+
+#### A.0.1a Abgrenzung: **`.praxis-box`** (z. B. `05-testmanagement.html`)
+
+Die Klasse **`.praxis-box`** („In der Praxis …“) ist ein **Fließtext-Kasten** mit **didaktischer** Funktion — **nicht** dasselbe Muster wie **C-PRAXIS**-Chips auf der Landkarte (`.tag--praxis`). Farben können sich an **C-PRAXIS**/`--ok` anlehnen; **Semantik:** Arbeitswelt-Beispiel, **kein** Ersatz für eine Domänen-Zuordnung wie bei Themen-Chips.
+
+#### A.0.1b Landkarte (`01-landkarte.html`) — Lehrplan-Bezug & Chip-Reihenfolge
+
+- **Kap. 1 (Pilot):** `tag-group__title` und Syllabus-Chips (**C-SYLLABUS**) sind an die **Kapitel-/Unterkapitel-Bezeichnungen** des offiziellen **ISTQB CTFL v4.0.2** (deutsch) angeglichen — Referenzdatei im Repo: `04_Referenzen/ISTQB/ISTQB_CTFL_Lehrplan-2025_V4.0.2_DE.md` (TOC).
+- **Kap. 2:** Abschnittsüberschrift „Testen während des SDLC“; **2.1** „Testen im Kontext eines SDLC“ mit **2.1.1–2.1.6** in TOC-Reihenfolge; **2.2** in drei Gruppen **2.2.1 / 2.2.2 / 2.2.3**; **2.3** Wartungstest. **Weitere Kapitel** nach demselben Muster.
+- **Header mit MS-Badge:** **`section__title-cluster`** umschließt **Titel** (inkl. **`.ref`**) und **`ms-badge`**, `flex-wrap: nowrap`, damit das Badge nicht allein umbricht. **Leituntertitel** (Kap. **1** und **2**): **`section__header--landkarte-leit`** mit **`section__header-row`** (erste Zeile: Kap.-Nummer + Cluster; zweite Zeile: zentrierter Leitsatz) — vermeidet **drei** optische Zeilen durch Flex-Umbruch.
+- **Reihenfolge** innerhalb einer **`.tags`**-Zeile: **zuerst** `.tag--ctfl`, **danach** `.tag--praxis`, **danach** `.tag--advanced`.
+
+#### A.0.1c Legende Landkarte — **drei** Inhaltszeilen (final)
+
+- **Entscheidung:** Die vierte Legendenzeile **„Kontext / Zusatz“** entfällt. Themen ohne eigene Syllabus-Zeile werden **entweder** **C-SYLLABUS** (Begriff steht im DE-Lehrplan) **oder** **C-PRAXIS** (Beruf/Branche) zugeordnet — Priorität **A.0.0**.
+- **Umsetzung:** Auf der Landkarte **keine** `.tag--extra` für Lerninhalte; CSS-Klasse kann vorerst in `base.css` bleiben.
+- **MS:** unverändert (`ms-mark` / `ms-badge`).
+
+#### A.0.2 Technischer Fahrplan (für die Umsetzung)
+
+*Reihenfolge für Einsteiger — nach und nach, nicht alles auf einmal:*
+
+1. **Inhalt:** Diese Tabelle (A.0) ist die **Abmachung**; **P03** §1 bleibt die **Mapping-Tabelle** (IST-Klassen → SOLL → Token).
+2. **CSS global:** In **`base.css`:** **`.tag--*`** (Farben), **`.tag-group`** / **`.tag-group .tag`** (Hülle, Tdot, Ref) — **ein** Ort; **kein** Konflikt mit anderen Seiten: nur Landkarte nutzt **`.tag-group`**; HA-Seiten behalten eigene **`.tag`**-Regeln.
+3. **Pilot-Seite:** **Landkarte** (`01-landkarte.html`) — Domain-Chips aus **`base.css`**; seitenlokal nur noch **Testuniversum** (Raster, Sektionen, Masterschool-Badges, …).
+4. **Rollout:** andere **Lernseiten** nur dort, wo **Tags** oder **zusätzliche** Markierungen hinzukommen; **meta-bar-Chip** bleibt **C-SYLLABUS**-Seitensignal (bereits umgesetzt).
+5. **C-ADV** in der **Praxis** seltener — **perspektivisch** nachreichen, wenn Inhalte es brauchen.
+
+**Abgrenzung A4:** Diese Domänen-Logik gilt **primär für die Web-Lernseiten**. **A4** (`doc-a4.css`) ist ein **eigenes** Paket (später; **F-TERM** usw.).
+
+---
 
 ### A.1 Beschlossene Richtung (Kurz)
 

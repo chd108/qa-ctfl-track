@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-02 — Phase 3: Abschnitt „Priorität P0/P1“; zuvor Hinweis 04a–c vs. HTML, Rollout-Scope, Metablock  
+Letzte Aktualisierung: 2026-04-03 — **04d** **A.0.0** C-SYLLABUS final + Pilot `.tag--*` `base.css`; zuvor Navigationszeile A.0; Phase 3 P0/P1  
 Zweck: Navigation zum Design-System-Spec-Cluster **04a–04d**, Risiko-Register, Checklisten, **Rollout-Scope**.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Spec-Überblick  
 Normative Orientierung: [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md); bei Konflikt zuerst Mapping klären.
@@ -93,7 +93,7 @@ Die **Cluster-Dateien** formulieren dasselbe noch **fachlich** (nur C, nur F, nu
 | [P04-01-c-domain-tokens.md](P04-01-c-domain-tokens.md) | **C-*** Content/Domäne + Chip-Semantik |
 | [P04-02-f-semantic-function.md](P04-02-f-semantic-function.md) | **F-*** Semantik / Funktion (Callouts, meta-bar, …) |
 | [P04-03-p-presentation.md](P04-03-p-presentation.md) | **P-*** Presentation / Pattern-Familien |
-| [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) | **Domain:** CTFL-Orientierung Lernwebsite (Regeln + Syllabus-Chip-Spec) |
+| [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) | **Domain:** CTFL-Orientierung (Regeln, **A.0** vier Domänen-Codes, Syllabus-Chip-Spec Teil B) |
 
 **Nicht verwechseln:** Die Dateien **04a / 04b / 04c** **hier** sind die **Spec-Cluster** **C-*** / **F-*** / **P-*** (Markdown in diesem Ordner). Das sind **nicht** die HTML-Seiten **`04a-ha4-…`**, **`04b-ha4-…`**, **`04c-ha5-…`** unter `02_Portfolio/QA_Lernwebseite/pages/` (Hausaufgaben). Ausführliche Tabelle: [README.md](README.md) — Abschnitt *Workshop 04a–04c vs. HTML-Seiten*.
 

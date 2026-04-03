@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-30  
-Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-04-01  
+Letzte Aktualisierung: 2026-04-03 — Ebene 1: **drei** Chip-Domänen (kein „Kontext/Extra“-Chip); normativ [P04-04](P04-04-ctfl-lernwebsite-spec.md) **A.0.1c**  
 Zweck: Drei-Ebenen-Modell (Content → Semantic → Presentation) — Grundlage für Token- und Komponentenlogik.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Konzept  
 Normative Orientierung: Brücke zwischen Session 2 und Session 3
@@ -96,8 +96,8 @@ Aus dem Training und der einschlägigen Literatur ist die **Trennung von Belange
 |----------------------|-----------------------------|-----------|
 | **Syllabus / CTFL** | Kapitel 1–6, Lernziele, Prüfungskern | Landkarten-Tags `tag--ctfl` / `tag-ctfl` |
 | **Praxis / Berufsfeld** | Rollen, Tools, nicht-klausurrelevante Begriffe | `tag--praxis` |
-| **Vertiefung / Norm** | ISO-Nuance, KI-Test, „Advanced“ | `tag--advanced` |
-| **Kontext / Extra** | Spiralmodell, Smoke — didaktische Ergänzung | `tag--extra` |
+| **Vertiefung / Norm** | ISO-Nuance, KI-Test, ISTQB Advanced | `tag--advanced` |
+| *(früher Kontext/Extra)* | Zuordnung zu Syllabus oder Praxis | `.tag--extra` nicht mehr für Landkarte; siehe **A.0.1c** |
 | **Fallstudie / Artefaktlinie** | GroceryMate, HA4–HA6 | Inhaltlich E1, funktional stark mit O-KETTE verknüpft |
 | **Projekt- & Web-Standards** | `00b-standards.html` | **X-STD** — technische Meta-Domäne, kein CTFL-Kapitel |
 | **Kurs-/Curriculum-Meta** | MS / MS? | **T-KURS** — *kein* fachlicher Sachverhalt, sondern **Provenienz** |
@@ -154,7 +154,7 @@ Die Spalte **„Vermischung“** beschreibt das **eigentliche Problem**: Wo IDs 
 | **T-PFLICHT** | ✓ | ✓ (~) | (~) | Domänenlabel „Syllabus-Kern“ **+** Lernpriorität „muss ich für CTFL“ — **+** Chip-Farbe ist **E3**. |
 | **T-PRAXIS** | ✓ | ✓ (~) | (~) | Wie T-PFLICHT: Domäne „Job“ + Priorität „nicht Klausur“ + **Chip** (E3). |
 | **T-VERTIEF** | ✓ | ✓ (~) | (~) | Domäne „darüber hinaus“ + didaktisch „optional vertiefen“ + Chip. |
-| **T-EXTRA** | ✓ | ✓ (~) | (~) | Grenze zu T-VERTIEF **fließend** — Risiko **Catchall** (siehe §4). |
+| **T-EXTRA** | *deprecated* | — | — | Kein eigener Chip-Typ mehr; Inhalte **T-PFLICHT** / **T-PRAXIS** (siehe **A.0.1c**). |
 | **T-KURS** | ✓ (~) | — | (~) | **Provenienz-Meta** (MS) — **nicht** Wissensinhalt; Marker kann **E3** (Badge) sein. |
 | **O-META** | — | ✓ | ✓ (~) | Rein **Navigation/Kontext** (E2); Umsetzung `.meta-bar` (E3). Trennung i. d. R. klar. |
 | **O-KETTE** | (~) | ✓ | ✓ (~) | **Story** GroceryMate ist E1-nah, *Funktion* „Dokumentenpfad“ ist E2; blaue Box (E3). |
@@ -185,8 +185,8 @@ Die Spalte **„Vermischung“** beschreibt das **eigentliche Problem**: Wo IDs 
 | Thema | Befund | Empfehlung (Vorschlag) |
 |-------|--------|-------------------------|
 | **D-ERKLAER vs. D-HINWEIS** | Inhaltlich oft: „erklärt + verweist“ in **einer** Box (v. a. HA-Seiten) | **Schreibregeln** statt sofortiger Zusammenlegung: *ERKLAER* = definitorisch neutral; *HINWEIS* = Navigation zwischen Artefakten/Kapiteln. Wenn eine Box beides tut: **primäre** Funktion taggen. |
-| **T-EXTRA vs. T-VERTIEF** | Beide „nicht Pflicht“ — **T-EXTRA** neigt zum **Sammelbecken** | Kriterium: **VERTIEF** = normativ/spezialisiert (ISO, KI); **EXTRA** = didaktisches **Randmodell** ohne Prüfungsnähe. Sonst **abschaffen oder umbenennen**. |
-| **T-KURS (MS)** | Orthogonal zu CTFL-Inhalten | Als **Overlay/Attribut** modellieren (z. B. „`curriculum=ms`“), **nicht** als gleichwertige „Wissensart“ mit T-PFLICHT — außer ihr wollt explizit **vier** Chip-Farben + MS-Badge dauerhaft. |
+| **T-EXTRA** | Entfällt als vierte Chip-Farbe | **A.0.1c:** Landkarte **drei** Zeilen; frühere Extra-Themen → Syllabus oder Praxis. |
+| **T-KURS (MS)** | Orthogonal zu CTFL-Inhalten | **MS**-Badges (`ms-mark`), **nicht** vierte Chip-Farbe. |
 | **D-AHA vs. D-WARN vs. D-ERKLAER** | CSS: `aha-box` / `warn-box` / `info-box` — ähnliche **visuelle** Familie | Session 3: **eine Callout-Komponente**, Varianten nach **Ebene 2** (nicht nach Seiten-Datei). |
 | **`praxis-box` (05-testmanagement)** | Nicht als eigene ID geführt — **funktional** nahe D-ERKLAER + T-PRAXIS | Explizit zu **D-PRAXIS** oder Mapping „praxis-box → D-ERKLAER (Variante Praxis)“ entscheiden. |
 
@@ -247,12 +247,12 @@ Das **Drei-Ebenen-Modell skaliert**, solange **Session 3** Tokens **pro Kanal** 
 | **C-SYLLABUS** | CTFL-Kern | Prüfungsrelevant nach Syllabus |
 | **C-PRAXIS** | Berufsfeld | Job/Tool ohne Pflichtcharakter |
 | **C-VERTIEF** | Vertiefung | Norm/Spezialthema über Foundation |
-| **C-EXTRA** | Kontext | Didaktische Ergänzung, klausurfremd |
+| **C-EXTRA** | *kein SOLL-Chip mehr* | Siehe [P04-04](P04-04-ctfl-lernwebsite-spec.md) **A.0.1c** |
 | **C-FALLSTUDIE** | Fallstudie | GroceryMate / Szenario (optional explizit) |
 | **C-PROJEKT** | Projekt-Meta | Standards, Repo, Web — **X-STD**-Inhalt |
 | *Attribut* | **curriculum** | z. B. `ms` — **statt** eigener „T-KURS“-Gleichordnung |
 
-*Mapping:* T-PFLICHT → **C-SYLLABUS**; T-PRAXIS → **C-PRAXIS**; T-VERTIEF → **C-VERTIEF**; T-EXTRA → **C-EXTRA**; X-STD-Inhalt → **C-PROJEKT**; T-KURS → **Attribut** `curriculum`.
+*Mapping:* T-PFLICHT → **C-SYLLABUS**; T-PRAXIS → **C-PRAXIS**; T-VERTIEF → **C-VERTIEF**; früheres T-EXTRA → **C-SYLLABUS** oder **C-PRAXIS**; X-STD-Inhalt → **C-PROJEKT**; T-KURS → **Attribut** `curriculum` / MS-Badges.
 
 ### 6.2 Ebene 2 — Semantic (Funktion)
 
@@ -295,7 +295,7 @@ Unverändert **Session 2.5** — **P-TABELLE**, **P-SVG**, **P-CANVAS**, **P-KAR
 ## 8. Offene Fragen
 
 1. Soll **T-KURS** dauerhaft **gleichwertig** zu Syllabus-Tags bleiben oder in ein **Attribut** wandern?  
-2. Ist **T-EXTRA** noch **10 Jahre haltbar**, oder wird es zum **Resteimer**?  
+2. ~~Ist **T-EXTRA** noch haltbar~~ — **entschieden:** kein vierter Chip-Typ auf der Landkarte (**A.0.1c**).  
 3. Soll **`praxis-box`** offiziell **D-PRAXIS** / **F-PRAXIS** werden?  
 4. Wann ist **ein** Callout **D-ERKLAER vs. D-HINWEIS** — **Redaktionsrichtlinie** nötig (Session 4)?  
 5. Sollen **externe Leser** (Portfolio) eigene **E2-Funktionen** bekommen (z. B. „Portfoliotauglichkeit“-Hinweis)? — bisher nicht modelliert.
