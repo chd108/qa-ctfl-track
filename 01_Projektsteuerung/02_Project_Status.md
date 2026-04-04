@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-04 — **HA3** SVG nach **`QA_Lernwebseite/assets/ha3-svg/`**, Pfade/HTML/README/**03_Standards**, **HA3_Ueberdeckung.md**; zuvor **2026-04-03** Landkarte **Praxis-/Syllabus-Feinschnitt** (Kap. **6**, **Smoke**, **SonarQube**, **C-PRAXIS**-Konvention), **P04**/**P03**/**README** nachgezogen; zuvor Kopf **5.3** siehe §2  
+Letzte Aktualisierung: 2026-04-04 — **HA3 Content-Pilot** (`pilot-ha3-content.txt`, `pilot-ha3-content-phasen.md`, Workshop-**README**); zuvor **HA3** SVG **`assets/ha3-svg/`**, Pfade/HTML/**03_Standards**; davor **2026-04-03** Landkarte **Praxis-/Syllabus-Feinschnitt** (Kap. **6**, **Smoke**, **SonarQube**, **C-PRAXIS**-Konvention), **P04**/**P03**/**README** nachgezogen; zuvor Kopf **5.3** siehe §2  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -49,6 +49,13 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 - **Asset:** `HA3-Teil2_DAG.svg` — Ablage **`02_Portfolio/QA_Lernwebseite/assets/ha3-svg/`** (statt Verweis aus `03_Hausaufgaben/…` über `../../../`), Einbindung **`pages/04e-ha3-ueberdeckung.html`** mit **`../assets/ha3-svg/HA3-Teil2_DAG.svg`**.
 - **Doku:** [README.md](../02_Portfolio/QA_Lernwebseite/README.md) (Projektstruktur-Tabelle, Stand-Zeile, Zeile **04e**); [03_Project_Standards.md](03_Project_Standards.md) (HA3-Zeile); [HA3_Ueberdeckung.md](../03_Hausaufgaben/HA3_Zustandsuebergang_Ueberdeckung/HA3_Ueberdeckung/HA3_Ueberdeckung.md) (Verweis auf Website-Pfad, Überschrift Teil 1 wie Web).
 - **In Klartext:** Die **öffentliche** Lernseite trägt das Diagramm **bei sich** unter **`assets/`** — passt zu **GitHub Pages** und kurzen relativen Pfaden.
+
+### 2026-04-04 — *Designsystem-Workshop*: HA3 Content-Pilot (`04e`), Phasen 0–3
+
+- **Artefakte:** [pilot-ha3-content.txt](designsystem-workshop/pilot-ha3-content.txt) — Phase-0-**Rohinhalt** (Aufgabe + Lösung, SVG-Referenz; inhaltliche **1:1**-Vorgabe zur Seite laut Vereinbarung in der Pilot-`.md`); [pilot-ha3-content-phasen.md](designsystem-workshop/pilot-ha3-content-phasen.md) — **Arbeits-Tabelle** (Phasen **0–3** dokumentiert): Diátaxis-Quadranten **A–J**, **drei Seitenabschnitte**, **Überschriftenhierarchie** H1–H4 (**Lösung** statt „Musterlösung“, Anker `#loesung`), **Content-Treue**, **B** als Intro ohne H3 unter Aufgabenstellung.
+- **Workshop-README:** Inventarzeilen, Metablock **Letzte Aktualisierung** nachgezogen.
+- **Hinweis:** Ordner **`03_Hausaufgaben/`** steht unter **`.gitignore`** — etwaige parallele Textänderungen dort **erscheinen nicht** in diesem Commit.
+- **In Klartext:** Es gibt eine **stabile Textbasis** und eine **beschriebene IA** für **04e**; die **HTML-Umsetzung** kann darauf folgen, ohne den Fachinhalt zu verwässern.
 
 ### 2026-04-03 — *QA_Lernwebseite*: Landkarte — Praxis-Chips harmonisiert, Kap. 6, Smoke, Doku
 

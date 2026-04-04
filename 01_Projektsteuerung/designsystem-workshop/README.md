@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-02 — **P05** § **CTFL-Lehrplan vs. Portfolio (HA5)** + Status/README-**Nachzug** (Abschluss-Schnitt); zuvor **Aufräum-Plan Phase 4** (**C** Klarnamen, **B** verworfen); Umbenennung Workshop-`.md`; **02_Project_Status**; Phase 3 Doku  
+Letzte Aktualisierung: 2026-04-04 — **HA3 Content-Pilot:** [pilot-ha3-content.txt](pilot-ha3-content.txt) + [pilot-ha3-content-phasen.md](pilot-ha3-content-phasen.md) (Phasen **0–3** dokumentiert); zuvor **2026-04-03** Inventar **pilot-ha3-content.txt**; davor **pilot-ha3-content-phasen**, **P05**, Aufräum-Plan  
 Zweck: Living Documentation — Einstieg in den **Designsystem-Workshop** (Rollen, Inventar, Lesereihenfolge, Zielbaum).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop  
 Normative Orientierung: [03_Project_Standards.md](../03_Project_Standards.md) (Metablock, README-Ausnahme); Mapping [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)
@@ -68,6 +68,8 @@ Living Documentation zum **Designsystem** der *QA_Lernwebseite* (ISTQB-CTFL-orie
 | [P05-redaktion-harmonisierung.md](P05-redaktion-harmonisierung.md) | Redaktion | Begriffe, meta-bar, K-Stufen |
 | [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md) | IST | Meta-Stichproben, Roadmap-Bezug |
 | [IST-02-analyse-komponenten.md](IST-02-analyse-komponenten.md) | IST | Komponenten-Inventar (kanonisch im Ordner) |
+| [pilot-ha3-content-phasen.md](pilot-ha3-content-phasen.md) | Pilot / Arbeitsdokument | HA3 **04e**: Muster **Phasen 0–6** + Arbeits-Tabelle Content → Struktur (iterativ) |
+| [pilot-ha3-content.txt](pilot-ha3-content.txt) | Pilot / Input Phase 0 | HA3 **04e**: Roher Lösungstext (Aufgabe, Code, Coverage) + SVG-Referenz — **Nachbar** der `pilot-ha3-content-phasen.md` |
 
 **Hinweis:** `z_PROMPT-cursor-session-2d.txt` ist **Hilfsmittel** (Prompt), **keine** normative Spezifikation.
 
