@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-04  
-Letzte Aktualisierung: 2026-04-04 — Terminologie **Lösung** statt „Musterlösung“ (Seitenabschnitt H2, Anker `#loesung`); zuvor Phase 3 (Hierarchie), Vereinbarung Content-Treue, Phase 1–2  
+Letzte Aktualisierung: 2026-04-04 — **Phase 6** (Presentation Patterns, **04e**); zuvor Phase 5 (Diátaxis ↔ Komponenten), Phase 4–1  
 Zweck: **Pilot** — methodische Grundlage zur Content-Strukturierung der HA3-Überdeckungs-Seite; Erkenntnisse fließen in Designsystem-Entscheidungen (Workshop).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Pilot-HA3  
 Normative Orientierung: [README.md](README.md), [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md), [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) — bei Konflikt zuerst Workshop-README und P04-00-Overview.
@@ -53,9 +53,11 @@ Normative Orientierung: [README.md](README.md), [P02-06-taxonomie-soll.md](P02-0
 | 1 | Content Analysis & Diátaxis Mapping | Diátaxis Framework | Roher Content ([pilot-ha3-content.txt](pilot-ha3-content.txt)) | Content-Einheiten **A–J** mit **Diátaxis-Quadranten** (primär/sekundär); vgl. Abschnitt *Quadranten-Zuordnung* unten |
 | 2 | Content Modeling | Structured Content | Diátaxis-typisierte Einheiten (Phase 1) | **3 Seitenabschnitte** mit Zuordnung der Content-Einheiten; vgl. *Seitenabschnitte (Phase 2)* unten |
 | 3 | Information Architecture | IA Taxonomy | 3 Seitenabschnitte + Content-Einheiten (Phase 2) | Konkrete **Überschriftenhierarchie** (H1–H4), **Anker-Navigation**; vgl. *Überschriftenhierarchie (Phase 3)* unten |
-| | | | | |
+| 4 | Component Architecture | Atomic Design | Überschriftenhierarchie + Content-Einheiten (Phase 3, B–I) | **UI-Komponenten** mit Zuordnung **B–I** (Code, Tabellen, Listen, SVG, Callouts); vgl. *UI-Komponenten (Phase 4)* unten |
+| 5 | Documentation Framework | Diátaxis | UI-Komponenten-Typen (Phase 4, 8 Bausteine) | **Typisierte Komponenten:** Quadranten-Zuordnung **primär/sekundär** + Kontext; vgl. *Documentation Framework — Diátaxis (Phase 5)* unten |
+| 6 | Presentation Patterns | UI Patterns | Typisierte Komponenten (Phase 5) | **Darstellungsregeln** für die **8** UI-Typen (`base.css`-Tokens); vgl. *Presentation Patterns (Phase 6)* unten |
 
-*(Hier dokumentieren wir den **laufenden** Stand für **Phasen 0–6** (und ggf. Zwischenschritte) für **diese** HA3-Seite. Zeilen hinzufügen, wenn z. B. Meilensteine oder Teiliterationen festgehalten werden sollen.)*
+*(Phasen **0–6** der Arbeits-Tabelle sind für diesen Pilot **befüllt**; bei Bedarf **zusätzliche** Zeilen für Meilensteine oder Teiliterationen möglich.)*
 
 ---
 
@@ -111,6 +113,186 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 | **B** | **Kein** H3 „Kontext & Quellen“ — Links gehören zum **Einstieg in Aufgabenstellung**, **ohne** eigene Überschriftenebene. |
 | **H4** | Unter **Überdeckung** optional; **Begründung** unter Variante **H4** (entspricht `####` im Rohtext). |
 | **Content-Treue** | Alle sichtbaren Texte aus Aufgabe/Lösung **1:1** zu [pilot-ha3-content.txt](pilot-ha3-content.txt); nur **Struktur und Präsentation** variieren. |
+
+---
+
+## UI-Komponenten — HA3 `04e` (Abschluss Phase 4)
+
+**Ziel:** Konkrete **UI-Bausteine** für die Umsetzung in `02_Portfolio/QA_Lernwebseite/pages/04e-ha3-ueberdeckung.html` — abgestimmt auf **Hierarchie (Phase 3)** und **Content-Einheiten B–I** (ohne **A**, typischerweise nicht auf der Lernseite).
+
+**Bezug Technik:** Bestehende Seiten nutzen **`base.css`**-Muster (Absätze, `<pre><code>`, Tabellen, ggf. **Callouts**). **Exakte Klassennamen** werden bei der Umsetzung gegen [P04-03-p-presentation.md](P04-03-p-presentation.md) und **04b** (Priorität/Umsetzungsstand) geklärt — hier zuerst die **inhaltliche** Komponentenwahl.
+
+### Wiederkehrende Bausteine (Querschnitt)
+
+| Muster | Vorkommen |
+|--------|-----------|
+| **Absatz / Fließtext** | **B**, **C**, Erklärtexte bei **F**, **G**, **H**, **I** |
+| **Fett / Inline-Code** | Überall dort, wo die TXT `**…**` / `` `…` `` vorsieht |
+| **Externe Links** | **B** (Notion) |
+| **Überschriften** | Struktur aus Phase 3 (H2–H4); layoutrelevant |
+| **Tabellen** | **F**, **H**, **I** (Datentabellen; Spalten-/Zeilenzahl unterschiedlich) |
+| **Codeblock** | **D** (zweimal Python) — dieselbe Komponente wiederholt |
+| **Optional: TOC / Sprungmarken** | Seite global (Phase 3) |
+
+### Pro Content-Einheit
+
+| Einheit | Inhalt | Komponente(n) | Besonderheiten |
+|--------|--------|---------------|----------------|
+| **B** | Titelbezug + zwei Notion-Links | **Absatz** mit **Inline-Links** (oder kompakte Link-Zeile) | Kein eigener H3; direkt unter **H2 Aufgabenstellung** |
+| **C** | Rahmen + Geschäftsregel | **Absatz(e)**; Regel mit **Strong** wie in TXT | Optional: **Callout** „Szenario“ / „Regel“ zur optischen Trennung — **inhaltlich** weiter 1:1 |
+| **D** | Code + Testaufrufe | **Zwei Codeblöcke** (`<pre><code class="language-python">` o. ä.) | Optional **Präsentations-Zwischenüberschrift** (z. B. „Code“ / „Gegebene Testaufrufe“) — **ohne** neuen Fachtext |
+| **E** | Teilaufgaben 1–3 | **Geordnete Liste** (`<ol>`) | **ACTION:** z. B. **Callout**-Wrapper, falls im Designsystem vorgesehen — sonst Klasse am `<ol>`-Container |
+| **F** | Statement-Index | **Einleitungsabsatz** + **eine Tabelle** | Viel **Inline-Code** in Zellen; erste Spalte numerisch — **`th`/`scope`** für Barrierefreiheit |
+| **G** | DAG + Kanten/Knoten | **`figure`** mit eingebettetem **SVG** (`<img src="…">` oder inline `<svg>`) + optional **figcaption** + **Absatz** | Pfad **`../assets/ha3-svg/HA3-Teil2_DAG.svg`**; Max-Breite/Skalierung per CSS |
+| **H** | Coverage | **Zwei Tabellen** + **Fließtext** (Vereinigung, %, fehlender Zweig) | Optional **zwei H4**-Blöcke; Branch-Tabelle mit **starker** Zeile wie in TXT |
+| **I** | Variante + Begründung | **Eine Tabelle** + **Aufzählungsliste** (`<ul>`) unter **H4 Begründung** | Drei Bulletpoints **1:1** aus TXT |
+
+### Wiederholungen (explizit)
+
+- **Codeblock:** **2×** bei **D** (gleiche Komponente).
+- **Tabelle:** **F** (1×), **H** (2×), **I** (1×) → **ein** Tabellen-Stil / eine Komponentenfamilie, **Varianten** (2 vs. 3 Spalten, hervorgehobene Zeile).
+- **Liste:** **E** = `<ol>`, **I** (Begründung) = `<ul>` — strukturell Liste, **optisch** unterscheidbar (ACTION vs. Erklärung).
+- **Callout:** sinnvoll bei **E**, optional bei **C**; für **F/G/H/I** nicht zwingend, wenn Tabelle/Code genug Struktur bieten.
+
+### Kurz-Inventar (Checkliste Umsetzung)
+
+1. Intro-Links (Absatz)  
+2. Fließtext / Strong / Inline-Code  
+3. Codeblock (Python), mehrfach  
+4. Ordered List + optional ACTION-Callout  
+5. Data Table (Varianten)  
+6. Figure + SVG + Begleittext  
+7. Unordered List (Begründung)  
+8. Optional: TOC / Anker (Seite)  
+
+---
+
+## Documentation Framework — Diátaxis (Abschluss Phase 5)
+
+**Ziel:** Die **8 Komponenten-Typen** aus Phase 4 (*Kurz-Inventar*) den **vereinbarten Quadranten** zuordnen — **primärer Zweck** pro Komponente, damit später **ACTION** vs. **APPLICATION** (und **COGNITION**) **visuell** sauber trennbar sind (CSS / Callout-Familien).
+
+**Rahmen (wie Phase 1):** **ACQUISITION** = Aufgabe + Beispiel · **COGNITION** = Erklärungen · **APPLICATION** = Tabellen/Daten/SVG · **ACTION** = Teilaufgaben (konkrete Schritte).
+
+### 1. Intro-Links (Absatz)
+
+| | |
+|--|--|
+| **Primär** | **APPLICATION** |
+| **Kontext / Einheiten** | **B** — Notion-Links als **Referenz**; optional Wiederholung im Abschnitt **Quellen**. |
+| **Visuell** | eher **ruhig / informativ**, nicht wie Handlungsaufforderung. |
+
+### 2. Fließtext / Strong / Inline-Code
+
+| | |
+|--|--|
+| **Primär** | **kontextabhängig** (Trägerkomponente) |
+| **Kontext / Einheiten** | **C:** überwiegend **ACQUISITION** + **COGNITION**. **F, G, H:** **ACQUISITION** (Musterlösung) + Anteile **COGNITION**. **I:** **ACQUISITION** (Variante) + **COGNITION** im Fließtext neben Liste. |
+| **Visuell** | Semantik aus **Umgebung** (Abschnitt Aufgabe vs. Lösung), nicht pro Absatz eigene „Quadranten-Farbe“. |
+
+### 3. Codeblock (Python), mehrfach
+
+| | |
+|--|--|
+| **Primär** | **APPLICATION** |
+| **Kontext / Einheiten** | **D** — Code und Testaufrufe als **Artefakte** (Daten/Referenz). |
+| **Visuell** | Monospace, klar abgegrenzt; **kein** Tutorial-Schritt-Look. |
+
+### 4. Geordnete Liste (`<ol>`) + optional ACTION-Callout
+
+| | |
+|--|--|
+| **Primär** | **ACTION** |
+| **Kontext / Einheiten** | **E** — die drei **Teilaufgaben**; Callout verstärkt **Handlung**. |
+| **Visuell** | **hervorgehoben**, klar von **APPLICATION**-Blöcken (Tabellen, Code) trennen. |
+
+### 5. Data Table (Varianten)
+
+| | |
+|--|--|
+| **Primär** | **APPLICATION** |
+| **Sekundär (auf 04e)** | **ACQUISITION** — Tabellen in **F / H / I** tragen das **durchgerechnete Beispiel** (Mitverstehen des Lernpfads). |
+| **Kontext / Einheiten** | **F:** Index (**APPLICATION** dominiert). **H:** Coverage — **APPLICATION** + **ACQUISITION**. **I:** Metrik-Vergleich — **APPLICATION** + **ACQUISITION**. |
+| **Visuell** | ein Tabellen-Stil; Unterscheidung Aufgabe/Lösung eher über **H2/H3** als über zwei Table-Designs. |
+
+### 6. Figure + SVG + Begleittext
+
+| | |
+|--|--|
+| **Primär** | **APPLICATION** |
+| **Kontext / Einheiten** | **G** — Diagramm als **Daten/Modell**; Kanten-/Knoten-Texte: **APPLICATION** + etwas **COGNITION**. |
+| **Visuell** | diagrammartig; von Code und Tabelle unterscheidbar. |
+
+### 7. Unordered List (`<ul>`) — Begründung
+
+| | |
+|--|--|
+| **Primär** | **COGNITION** |
+| **Kontext / Einheiten** | **I** unter **H4 Begründung** — Definitionen, ISTQB-Bezug, fehlende Kante; **nicht** mit **ACTION** verwechseln. |
+| **Visuell** | eher **Erklär-Oberfläche** (z. B. an Erklär-Callout angleichen), **nicht** wie **E** (`<ol>`). |
+
+### 8. TOC / Sprungmarken (optional)
+
+| | |
+|--|--|
+| **Primär** | **APPLICATION** (Navigation als **Information**) |
+| **Sekundär** | **ACQUISITION** — Orientierung im langen Beispiel. |
+| **Kontext / Einheiten** | Seite global; z. B. `#aufgabenstellung`, `#loesung`, `#quellen`. |
+| **Visuell** | kompakt, navigativ; **nicht** wie **ACTION**-Callout. |
+
+### Kurzmatrix (CSS / Umsetzung)
+
+| # | Komponenten-Typ | Primär |
+|---|-------------------|--------|
+| 1 | Intro-Links | APPLICATION |
+| 2 | Fließtext / Strong / Inline-Code | kontextabhängig (ACQ / COG) |
+| 3 | Codeblock | APPLICATION |
+| 4 | Ordered List (+ Callout) | **ACTION** |
+| 5 | Data Table | APPLICATION (+ ACQUISITION in Lösung) |
+| 6 | Figure + SVG | APPLICATION |
+| 7 | Unordered List (Begründung) | **COGNITION** |
+| 8 | TOC / Anker | APPLICATION |
+
+**Leitplanken Umsetzung:** **4** (**ACTION**) klar von **3, 5, 6** (**APPLICATION**) trennen; **7** (**COGNITION**) nicht wie **ACTION** stylen.
+
+---
+
+## Presentation Patterns — HA3 `04e` (Abschluss Phase 6)
+
+**Ziel:** Konkrete **Darstellungsregeln** für die **8 Komponenten-Typen** (Phase 4/5) — Farben, Abstände, Rahmen — abgestimmt auf **`02_Portfolio/QA_Lernwebseite/assets/css/base.css`** (`:root`). **Umsetzung** in HTML/CSS erfolgt **gesondert** (Pilot-Architektur Phasen 0–5); hier nur die **verbindliche Spezifikation** für **04e**.
+
+**Design-Referenz (Tokens):** `--bg` `#f0ece6`, `--text` `#283535`, `--mid`, `--soft`, `--bdr`, Fließtext **Georgia** (body), UI-Akzente **Helvetica Neue** …; `--ctfl-bg` `#cde8d2`, `--ctfl` `#4a7c59`; `--callout-chain-*` (**F-CHAIN**, 04d B.13); Karten `--e3` / `--e4` für Aufgabe-/Lösungs-Köpfe (wie bestehende HA-Sheets).
+
+### Fest getroffene Entscheidungen (Empfehlungen übernommen)
+
+| Thema | Festlegung |
+|--------|------------|
+| **COGNITION / Begründungsliste (7)** | **F-CHAIN / Creme:** `--callout-chain-bg`, `--callout-chain-border-outer`, linker Akzent `--callout-chain-accent-width` + `--callout-chain-border-accent` — **nicht** Vollflächen-`--advanced-bg` (Vermeidung falscher „Vertiefungs“-Assoziation). |
+| **Hervorgehobene Tabellenzeile** (z. B. fehlender Zweig in **H**) | **Dezente Zeilen-Tint** `rgba(201, 232, 210, 0.35)` (abgeschwächtes Syllabus-Grün) **plus** **`font-weight: 600`** in der **ersten Spalte** (Kante) — **kein** Zebra-Streifen auf der ganzen Tabelle. |
+| **ACTION / Teilaufgaben (4)** | Hintergrund **`--ctfl-bg` `#cde8d2`**, klar von weißen Tabellen/Code getrennt. |
+
+### Regeln pro Komponente (1–8)
+
+**1. Intro-Links (APPLICATION)** — Kein eigener Kasten; Absatz auf Seitenhintergrund. Links farbig (`--ctfl` oder `--advanced`), Unterstreichung nur `:hover`. Abstand nach unten `1rem`.
+
+**2. Fließtext / Strong / Inline-Code** — Absatz: `line-height` 1.65–1.7, `margin-bottom` `1rem`, `--text`. **Strong:** `font-weight` 600/700. **Inline-Code:** Monospace, leicht verkleinert, Hintergrund `rgba(255,255,255,0.55)`, `padding` `0.12em 0.35em`, `border-radius` `4px`, `border` `1px solid var(--bdr)`. Quadranten nur über Kontext (Überschriften/Sheets), nicht pro Absatz eigene Fläche.
+
+**3. Codeblock Python (APPLICATION)** — Hintergrund `rgba(255,255,255,0.6)`; Rahmen `1px solid var(--bdr)`; **Radius** `6px`; Padding `1rem 1.2rem`; Außen `1rem 0`. Monospace; optional Sans-Überschrift (`--mid`, ~`1.05rem`).
+
+**4. Geordnete Liste + ACTION-Callout (ACTION)** — Container: **`--ctfl-bg`**, Rahmen z. B. `1px solid rgba(74, 124, 89, 0.25)` oder linker Akzent `4px solid var(--ctfl)`; **Padding** `1rem`–`1.25rem`; **Radius** `8px`; Außen `1.25rem 0`. `ol` innen ohne Zusatzmargen, `padding-left` ~`1.35rem`, `line-height` ~`1.65`.
+
+**5. Data Table (APPLICATION / ACQUISITION)** — Volle Breite, `border-collapse: collapse`; Außenrahmen `1px solid var(--bdr)`; **Radius** `8px`, `overflow: hidden`; Zellenhintergrund `rgba(255,255,255,0.5)`; Zellenpadding ~`0.7rem 1rem`; Trennlinien `1px solid var(--bdr)`; **Header:** Hintergrund `rgba(0,0,0,0.04)`, **fett**, Text `--soft` oder `--mid`; **kein Zebra**; **Highlight-Zeile** wie oben (Tint + erste Spalte fett). Schriftgröße ~`0.9rem` (optional `0.82rem` in engen Layouts).
+
+**6. Figure + SVG (APPLICATION)** — `margin` `1rem 0 1.5rem`; SVG max. Breite (z. B. `540px`) oder `100%` mit Cap; Rahmen optional `1px solid var(--bdr)`. Caption/Begleittext: `0.85rem`, `--soft`, `line-height` 1.4.
+
+**7. Unordered List Begründung (COGNITION)** — Wrapper im **F-CHAIN-Stil** (`--callout-chain-bg`, Border, linker Akzent, Padding/Radius wie `--callout-chain-*`). `ul` mit üblichem `padding-left`. **Nicht** ACTION-Grün.
+
+**8. TOC / Anker (APPLICATION)** — Hintergrund z. B. `--legend-surface` oder `rgba(255,255,255,0.45)`; Rahmen `1px solid var(--bdr)`; Radius `6–8px`; Padding ~`0.65rem 1rem`; Sans, klein (~`0.8125rem`), `--mid`; `margin-bottom` ~`1.25–1.5rem`. Kein Button-Look.
+
+### Querschnitt
+
+- **Vertikaler Rhythmus:** zwischen Blöcken **1–1,5rem**; H3/H4-Abstände an bestehende HA-Sheet-Logik anlehnen.  
+- **Radien:** Code **6px**, Karten/Callouts/Tabellen **8px**.  
+- **Trennung:** ACTION (**grün**) vs. APPLICATION (**weiß/transparenz + `--bdr`**) vs. COGNITION (**F-CHAIN-Creme**).
 
 ---
 

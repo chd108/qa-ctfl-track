@@ -1,6 +1,6 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-04-04 — **HA3** Überdeckung: Diagramm-SVG unter **`assets/ha3-svg/HA3-Teil2_DAG.svg`**, Einbindung **`04e-ha3-ueberdeckung.html`**; zuvor **2026-04-03** Nav/Index/Seitenliste; **Landkarte:** Kap. **6** (Syllabus **6.1**/**6.2**), **C-PRAXIS** kurz und **Ausführlich (Kürzel)**; **Smoke-Tests** grün **`ref` 5.1.7** (Kap. **5.1**) + Praxis Build-Gate (Kap. **2**); **SonarQube (Werkzeug, Kap. 6)** in Kap. **3**; Spec **P04-04** **A.0.1b/c**, **P03** §1, **02_Project_Status** nachgezogen. Zuvor: Kap. **4** TOC, Kopf Kap. **1–6**.
+> Zuletzt aktualisiert: 2026-04-04 — **Referenzvorlage** `templates/referenzvorlage-hauptsystem.html`: kanonische **`.meta-bar`**/**`.legend`** aus **`base.css`**, **`body`** `max-width: 1400px`; **README** (Projektstruktur + Verweis auf **`01c-testmittel`**, **`04e-ha3-ueberdeckung`**). **HA3** Überdeckung: Diagramm-SVG unter **`assets/ha3-svg/HA3-Teil2_DAG.svg`**, Einbindung **`04e-ha3-ueberdeckung.html`**; zuvor **2026-04-03** Nav/Index/Seitenliste; **Landkarte:** Kap. **6** (Syllabus **6.1**/**6.2**), **C-PRAXIS** kurz und **Ausführlich (Kürzel)**; **Smoke-Tests** grün **`ref` 5.1.7** (Kap. **5.1**) + Praxis Build-Gate (Kap. **2**); **SonarQube (Werkzeug, Kap. 6)** in Kap. **3**; Spec **P04-04** **A.0.1b/c**, **P03** §1, **02_Project_Status** nachgezogen. Zuvor: Kap. **4** TOC, Kopf Kap. **1–6**.
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
@@ -41,6 +41,8 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 
 **Pfade:** der **erste Link** in Nav 1 zeigt von `pages/` aus auf **`../index.html`** (Logo, `aria-label="Zur Startseite QA Lernwebseite"`); auf **`index.html`** auf **`index.html`** (Startseite, mit `aria-label` / `aria-current` wie im Markup). Die Vorlage unter `templates/` nutzt dieselben relativen Pfade zu `index.html` und `pages/…`.
 
+**Referenzvorlage:** Meta und Legende nicht als eigenes Muster duplizieren — **`.meta-bar`** und **`.legend`** wie auf Lernseiten (z. B. **`pages/01c-testmittel.html`**, **`pages/04e-ha3-ueberdeckung.html`**).
+
 ---
 
 ## Projektstruktur
@@ -57,7 +59,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `assets/js/` | u. a. **`sdlc-hypocycle-animiert.js`** für die animierte SDLC-Seite. |
 | `assets/ha3-svg/` | **HA3** — **`HA3-Teil2_DAG.svg`** (Zustandsübergangsdiagramm / DAG zu `is_shipping_free`); eingebunden in **`pages/04e-ha3-ueberdeckung.html`** (`<object>`, Pfad `../assets/ha3-svg/…`). |
 | `assets/ha6-screenshots/` | **HA6** — Screenshots zur **Testausführung** im Testprotokoll (`06a-ha6-testprotokoll-a4.html`, PASS) sowie zu **BUG-001 / BUG-002** im Fehlerbericht (`06b-ha6-fehlerbericht-a4.html`); liegt im **Pages-Artifact** und ist öffentlich erreichbar. |
-| `templates/referenzvorlage-hauptsystem.html` | Referenz für neue **Hauptsystem**-Seiten (Nav, `page-chrome`, `main`). |
+| `templates/referenzvorlage-hauptsystem.html` | **Gerüst** wie echte Seiten: Kopf-Nav + **`.page-chrome`** + **`main#main`**. Im **`main`** zuerst kanonische **`base.css`**-Komponenten **`.meta-bar`** (F-META, Syllabus-Chip) und **`.legend`** (F-LEGEND) mit Platzhaltertext; die **`ref-*`**-Blöcke darunter sind nur **generische Strukturbeispiele** (Section, Card, Info, Tabelle), keine 1:1-Pflicht fürs Produktionsmarkup. **`body`:** `max-width: 1400px`, seitliche/untere Abstände wie typische Lernseiten. |
 | `archive/` | Nicht aktive ältere Versionen — nur Dokumentation. |
 
 **Systemkonzept (Programm):** Architektur und Steuerung im übergeordneten **QA-Track** unter **`01_Projektsteuerung/`** (Project\_*-Serie) und ggf. **`06_Archiv/`** (z. B. ältere Konzept-Snapshots). Die Lernwebsite wird **nur** im Monorepo **qa-ctfl-track** versioniert (früheres separates Website-Repository ist nicht mehr vorhanden).
