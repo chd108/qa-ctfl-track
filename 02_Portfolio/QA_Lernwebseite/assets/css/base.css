@@ -358,6 +358,21 @@ main { width: 100%; }
   flex-shrink: 0;
 }
 
+/* Hausaufgabe mit CTFL-Bezug: gleiche Maße wie Syllabus-Chip, Farbe HA-Palette (--e3), nicht C-SYLLABUS-Grün */
+.chip.chip--syllabus.chip--syllabus-assign {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 10px;
+  height: 20px;
+  min-width: 10px;
+  min-height: 20px;
+  border-radius: var(--chip-radius);
+  background: var(--e3);
+  border: var(--chip-border);
+  vertical-align: middle;
+  flex-shrink: 0;
+}
+
 /*
  * F-LEGEND — Seitenlegende unterhalb F-META (04d B.12)
  * Block .legend; Elemente .legend__item, .legend__swatch; optional .legend__sep

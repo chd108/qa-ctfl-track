@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-03 — §6: Tabelle **CSS-Dateien** (`base.css` / `subpage.css` / `doc-a4.css`); zuvor 2026-04-04 §5 HA-Markdown, …  
+Letzte Aktualisierung: 2026-04-04 — Hausaufgaben-Tabelle **HA3**: Web-SVG unter **`QA_Lernwebseite/assets/ha3-svg/`**; zuvor **2026-04-03** §6 **CSS-Dateien**; …  
 Zweck: Definiert Regeln und Standards für Repo-Struktur, Dokumentation und Qualität  
 Klassifizierung: Projektsteuerung / Standards  
 Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE 829-2008**, **ISO/IEC/IEEE 29119-3** (jeweils im **Lern- und Portfolio-Kontext**, ohne Anspruch auf vollständige Normenzertifizierung).
@@ -78,7 +78,7 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 |-----|-------|----------------------------------|
 | **HA1** | Äquivalenzklassen & Grenzwertanalyse | `HA1_Aequivalenzklassen_Grenzwertanalyse/` |
 | **HA2** | Entscheidungstabellentest | `HA2_Entscheidungstabellentest/` |
-| **HA3** | Zustandsübergang & Überdeckung | `HA3_Zustandsuebergang_Ueberdeckung/` |
+| **HA3** | Zustandsübergang & Überdeckung | `HA3_Zustandsuebergang_Ueberdeckung/` — **Web-Diagramm (SVG):** `02_Portfolio/QA_Lernwebseite/assets/ha3-svg/HA3-Teil2_DAG.svg`, Seite `pages/04e-ha3-ueberdeckung.html` |
 | **HA4** | Anforderungen / Testbasis (GroceryMate) | `HA4_Anforderungsanalyse/` |
 | **HA5** | Testkonzept & Testfallentwurf | `HA5_Testkonzept_Testfallentwurf/` (inkl. `arbeitsmaterialien/` für **Portfolio-Einrichtung** im Kurs-Sinne, Aufgaben 00–03) |
 | **HA6** | Testdurchführung | `HA6_Testdurchfuehrung/` |

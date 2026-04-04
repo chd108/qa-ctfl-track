@@ -1,6 +1,6 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-04-03 — **HA3** Überdeckung (`04e-ha3-ueberdeckung.html`, Nav, Index-Karte, Seitenliste); **Landkarte:** Kap. **6** (Syllabus **6.1**/**6.2**), **C-PRAXIS** kurz und **Ausführlich (Kürzel)**; **Smoke-Tests** grün **`ref` 5.1.7** (Kap. **5.1**) + Praxis Build-Gate (Kap. **2**); **SonarQube (Werkzeug, Kap. 6)** in Kap. **3**; Spec **P04-04** **A.0.1b/c**, **P03** §1, **02_Project_Status** nachgezogen. Zuvor: Kap. **4** TOC, Kopf Kap. **1–6**.
+> Zuletzt aktualisiert: 2026-04-04 — **HA3** Überdeckung: Diagramm-SVG unter **`assets/ha3-svg/HA3-Teil2_DAG.svg`**, Einbindung **`04e-ha3-ueberdeckung.html`**; zuvor **2026-04-03** Nav/Index/Seitenliste; **Landkarte:** Kap. **6** (Syllabus **6.1**/**6.2**), **C-PRAXIS** kurz und **Ausführlich (Kürzel)**; **Smoke-Tests** grün **`ref` 5.1.7** (Kap. **5.1**) + Praxis Build-Gate (Kap. **2**); **SonarQube (Werkzeug, Kap. 6)** in Kap. **3**; Spec **P04-04** **A.0.1b/c**, **P03** §1, **02_Project_Status** nachgezogen. Zuvor: Kap. **4** TOC, Kopf Kap. **1–6**.
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
@@ -55,6 +55,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `assets/css/doc-a4.css` | **A4-/Dokumentmodus** inkl. Screen-`body`-Ränder; **Flex-Spalte** auf `.doc-a4` (`.doc-body` wächst, **`.doc-footer`** mit `margin-top: auto` am unteren Blattrand); Druck: `@page` A4, `min-height`/`width` angepasst; schmale Viewports: seitliches Scrollen statt Quetschen. Wird von HA-A4-Seiten zusätzlich eingebunden. |
 | `assets/css/index.css` | Ältere/alternative Einstiegs-Styles — **`index.html` lädt derzeit `base.css` + `subpage.css` und lokales `<style>`**; Datei bleibt im Repo zur Referenz und Standards-Doku. |
 | `assets/js/` | u. a. **`sdlc-hypocycle-animiert.js`** für die animierte SDLC-Seite. |
+| `assets/ha3-svg/` | **HA3** — **`HA3-Teil2_DAG.svg`** (Zustandsübergangsdiagramm / DAG zu `is_shipping_free`); eingebunden in **`pages/04e-ha3-ueberdeckung.html`** (`<object>`, Pfad `../assets/ha3-svg/…`). |
 | `assets/ha6-screenshots/` | **HA6** — Screenshots zur **Testausführung** im Testprotokoll (`06a-ha6-testprotokoll-a4.html`, PASS) sowie zu **BUG-001 / BUG-002** im Fehlerbericht (`06b-ha6-fehlerbericht-a4.html`); liegt im **Pages-Artifact** und ist öffentlich erreichbar. |
 | `templates/referenzvorlage-hauptsystem.html` | Referenz für neue **Hauptsystem**-Seiten (Nav, `page-chrome`, `main`). |
 | `archive/` | Nicht aktive ältere Versionen — nur Dokumentation. |
@@ -88,7 +89,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `06c-ha6-testabschlussbericht-a4.html` | HA6 — Testabschlussbericht **A4** (Test Completion Report, Blankovorlage) | Kap. 5 |
 | `06-testwerkzeuge.html` | Testwerkzeuge: Kategorien, Nutzen &amp; Risiken der Testautomatisierung | Kap. 6 |
 | `00a-ha-einordnung.html` | Einordnung der Hausaufgaben im CTFL-Kontext | — |
-| `04e-ha3-ueberdeckung.html` | HA3 — Überdeckung (Kontrollflussgraph, Statement/ Branch Coverage, White-Box) | Kap. 4 |
+| `04e-ha3-ueberdeckung.html` | HA3 — Überdeckung (DAG/SVG unter `assets/ha3-svg/`, Statement/ Branch Coverage, White-Box) | Kap. 4 |
 | `00b-standards.html` | Standards, Projektstatus, Referenzen | — |
 
 **Ist-Stand:** Alle genannten Dateien sind vorhanden und in **beiden Nav-Leisten** sowie auf der **Einstiegsseite** verlinkt.
