@@ -1,0 +1,361 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../assets/qa-favicon-256.png" type="image/png">
+  <meta name="description" content="Lösung Hausaufgabe HA3 — Überdeckung (White-Box): Kontrollflussgraph, Anweisungs- und Zweigüberdeckung">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>HA3 Überdeckung — QA Lernwebseite</title>
+  <style>
+    /* Wie typische Lerninhalt-Seiten (z. B. Grundlagen): begrenzte Gesamtbreite */
+    body { padding: 0 3rem 4rem; max-width: 1400px; margin: 0 auto; }
+
+    .content-section { margin-bottom: 2.5rem; }
+
+    .content-section h2 {
+      font-size: 1.3rem;
+      font-weight: normal;
+      color: var(--text);
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--bdr);
+      padding-bottom: 0.3rem;
+    }
+
+    .content-section h3 {
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--mid);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+
+    .content-section h4 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--mid);
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .content-section p { line-height: 1.7; margin-bottom: 1rem; }
+
+    pre.code-block {
+      background: rgba(255, 255, 255, 0.6);
+      border: 1px solid var(--bdr);
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      overflow-x: auto;
+    }
+
+    pre.code-block code {
+      font-family: 'Courier New', Courier, monospace;
+      display: block;
+      white-space: pre;
+    }
+
+    pre.kfg-diagram {
+      background: rgba(255, 255, 255, 0.4);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 1.5rem 0 0.75rem;
+      font-size: 0.85rem;
+      line-height: 1.8;
+      overflow-x: auto;
+    }
+
+    pre.kfg-diagram code {
+      font-family: 'Courier New', Courier, monospace;
+      display: block;
+      white-space: pre;
+    }
+
+    .result-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    .result-table th,
+    .result-table td {
+      padding: 0.7rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--bdr);
+    }
+
+    .result-table th {
+      background: rgba(0, 0, 0, 0.04);
+      font-weight: 600;
+      color: var(--soft);
+    }
+
+    .result-table tr:last-child td { border-bottom: none; }
+
+    .result-box {
+      background: var(--ok-bg);
+      border: 1px solid rgba(74, 124, 89, 0.25);
+      border-left: 4px solid var(--ok);
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      margin: 1.5rem 0;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    }
+
+    .result-box strong { color: var(--ok); }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <div class="top-nav-zone__brand-row">
+    <div class="top-nav-zone__nav-stack">
+      <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="../index.html" class="main-nav__home" aria-label="Zur Startseite QA Lernwebseite"><img class="main-nav__home-img" src="../assets/qa-favicon-256.png" alt="" width="48" height="48" decoding="async"></a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01b-grundlagen.html">Grundlagen</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="02c-teststufen.html">Teststufen</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="06-testwerkzeuge.html">Testwerkzeuge</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04e-ha3-ueberdeckung.html" aria-current="page">HA3 Überdeckung</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+    </div>
+  </div>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>HA3 — Überdeckung</h1>
+    <p>Kontrollflussgraph · Anweisungs- und Zweigüberdeckung</p>
+  </header>
+</div>
+
+<main id="main">
+
+  <div class="meta-bar" role="region" aria-label="Metadaten">
+    <span><strong>Klassifizierung:</strong> 03_Hausaufgaben / HA3 / Lösung</span>
+    <span><strong>Norm:</strong> ISTQB CTFL v4.0.2 — Kap. 4 (White-Box, Überdeckung)</span>
+    <span><strong>Erstellt:</strong> 2026-04-04</span>
+  </div>
+
+  <section class="content-section">
+    <h2>Aufgabe</h2>
+
+    <h3>Sachverhalt</h3>
+    <p>Dein Teamkollege hat Testfälle für das folgende Code-Stück erstellt.</p>
+
+    <p><strong>Geschäftsregel:</strong> Solange ein Kunde <strong>mehr als 50 €</strong> ausgibt, soll der Versand <strong>kostenlos</strong> sein. Wenn es <strong>mehr als 25 €</strong> sind, aber <strong>weniger als 3 Artikel</strong> versendet werden müssen, soll er ebenfalls kostenlos sein. Wenn es <strong>nur einen Artikel</strong> gibt, der <strong>mehr als 10 €</strong> kostet, soll es einen <strong>Rabatt</strong> geben, aber der Versand soll <strong>nicht</strong> kostenlos sein. In <strong>anderen Fällen</strong> soll der <strong>volle Versandpreis</strong> gezahlt werden.</p>
+
+    <p>Er fragt, ob seine Tests den Code <strong>ausreichend abdecken</strong>.</p>
+
+    <h3>Code</h3>
+    <pre class="code-block"><code>def is_shipping_free(price, numberOfItems, isPrimeShoppingMember):
+    print("Additional Statement 1")
+    if price &gt; 50 or isPrimeShoppingMember:
+        print("Additional Statement 2")
+    if price &gt; 25 and numberOfItems &lt; 3:
+        print("Additional Statement 3")
+    elif price &gt; 10 and numberOfItems == 1:
+        print("Additional Statement 4(discount)")
+        return False
+    return True
+    print("Additional Statement 5")</code></pre>
+
+    <h3>Gegebene Testaufrufe</h3>
+    <pre class="code-block"><code>print("----------------")
+is_shipping_free(30, 2, True)
+print("----------------")
+is_shipping_free(15, 1, False)
+print("----------------")
+is_shipping_free(15, 1, True)
+print("----------------")
+is_shipping_free(50, 1, False)</code></pre>
+
+    <h3>Teilaufgaben</h3>
+    <ol>
+      <li>Zustandsübergangsdiagramm bzw. <strong>Kontrollfluss</strong> als <strong>gerichteter azyklischer Graph</strong> für diesen Codeabschnitt zeichnen.</li>
+      <li><strong>Anweisungsüberdeckung</strong> (Statement Coverage) und <strong>Zweigüberdeckung</strong> (Branch Coverage) für die vier Tests berechnen.</li>
+      <li>Dieselben Kennzahlen, wenn die Zeile <code>print("Additional Statement 5")</code> <strong>entfernt</strong> wird.</li>
+    </ol>
+  </section>
+
+  <section class="content-section" aria-labelledby="loesung-heading">
+    <h2 id="loesung-heading">Lösung</h2>
+
+    <h3>Zuordnung: Statement-Index</h3>
+    <p>Die folgenden Indizes 1–10 entsprechen der Auszählung (ohne die Zeile <code>def …</code>):</p>
+
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th style="text-align: right;">Index</th>
+          <th>Element im Code</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td style="text-align: right;">1</td><td><code>print("Additional Statement 1")</code></td></tr>
+        <tr><td style="text-align: right;">2</td><td><code>if price &gt; 50 or isPrimeShoppingMember</code></td></tr>
+        <tr><td style="text-align: right;">3</td><td><code>print("Additional Statement 2")</code></td></tr>
+        <tr><td style="text-align: right;">4</td><td><code>if price &gt; 25 and numberOfItems &lt; 3</code></td></tr>
+        <tr><td style="text-align: right;">5</td><td><code>print("Additional Statement 3")</code></td></tr>
+        <tr><td style="text-align: right;">6</td><td><code>elif price &gt; 10 and numberOfItems == 1</code></td></tr>
+        <tr><td style="text-align: right;">7</td><td><code>print("Additional Statement 4(discount)")</code></td></tr>
+        <tr><td style="text-align: right;">8</td><td><code>return False</code></td></tr>
+        <tr><td style="text-align: right;">9</td><td><code>return True</code></td></tr>
+        <tr><td style="text-align: right;">10</td><td><code>print("Additional Statement 5")</code> — <strong>unerreichbar</strong></td></tr>
+      </tbody>
+    </table>
+
+    <h3>1. Kontrollflussgraph</h3>
+
+    <pre class="kfg-diagram"><code>Start
+  ↓
+S1  (print Statement 1)
+  ↓
+D1  (if price &gt; 50 OR isPrime?)
+      ├─ True  → S2 (print Statement 2) ───┐
+      └─ False ─────────────────────────────┤
+                                            ↓
+                                       [Merge]
+                                            ↓
+                              D2 (if price &gt; 25 AND items &lt; 3?)
+                                    ├─ True  → S3 (print Statement 3) → return True
+                                    └─ False → D3 (elif price &gt; 10 AND items == 1?)
+                                                  ├─ True  → S4 (print Statement 4) → return False
+                                                  └─ False → return True</code></pre>
+    <p><strong>12 Kanten insgesamt</strong> (alle Pfeile zählen)</p>
+
+    <p><strong>Knoten:</strong> Start, S1, D1, S2, Merge, D2, S3, D3, S4, Rückgaben (über <code>return True</code> / <code>return False</code>).</p>
+
+    <h3>2. Coverage mit den vier gegebenen Tests</h3>
+
+    <h4>Anweisungsüberdeckung (Statement Coverage)</h4>
+
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>Test</th>
+          <th>Parameter <code>(price, numberOfItems, isPrime)</code></th>
+          <th>Ausgeführte Statement-Indizes</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>T1</td><td><code>(30, 2, True)</code></td><td>1, 2, 3, 4, 5, 9</td></tr>
+        <tr><td>T2</td><td><code>(15, 1, False)</code></td><td>1, 2, 4, 6, 7, 8</td></tr>
+        <tr><td>T3</td><td><code>(15, 1, True)</code></td><td>1, 2, 3, 4, 6, 7, 8</td></tr>
+        <tr><td>T4</td><td><code>(50, 1, False)</code></td><td>1, 2, 4, 5, 9</td></tr>
+      </tbody>
+    </table>
+
+    <p><strong>Vereinigung:</strong> Indizes <strong>1–9</strong>; Index <strong>10</strong> wird <strong>nie</strong> erreicht.</p>
+
+    <div class="result-box">
+      <strong>Statement Coverage: 9 / 10 = 90 %</strong>
+    </div>
+
+    <h4>Zweigüberdeckung (Branch Coverage)</h4>
+
+    <p>Alle <strong>12 Kanten</strong> prüfen:</p>
+
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>Kante</th>
+          <th>Von Testfällen abgedeckt?</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>Start → S1</td><td>alle vier</td></tr>
+        <tr><td>S1 → D1</td><td>alle vier</td></tr>
+        <tr><td>D1 → S2 (True)</td><td>T1, T3</td></tr>
+        <tr><td>D1 → Merge (False)</td><td>T2, T4</td></tr>
+        <tr><td>S2 → Merge</td><td>T1, T3</td></tr>
+        <tr><td>Merge → D2</td><td>alle vier</td></tr>
+        <tr><td>D2 → S3 (True)</td><td>T1, T4</td></tr>
+        <tr><td>D2 → D3 (False)</td><td>T2, T3</td></tr>
+        <tr><td>S3 → return True</td><td>T1, T4</td></tr>
+        <tr><td>D3 → S4 (True)</td><td>T2, T3</td></tr>
+        <tr><td><strong>D3 → return True (False-Zweig des elif)</strong></td><td><strong>fehlt</strong></td></tr>
+        <tr><td>S4 → return False</td><td>T2, T3</td></tr>
+      </tbody>
+    </table>
+
+    <div class="result-box">
+      <strong>Branch Coverage: 11 / 12 ≈ 91,67 %</strong>
+    </div>
+
+    <p><strong>Fehlender Zweig:</strong> Kante <strong>D3 → return True</strong> (z. B. abdeckbar mit <code>(15, 2, False)</code> — Rabattpfad ausgeschlossen, aber kein kostenloser Versand über die zweite if-Bedingung).</p>
+
+    <h3>3. Ohne <code>print("Additional Statement 5")</code></h3>
+
+    <p>Nach Entfernen dieser Zeile:</p>
+
+    <table class="result-table">
+      <thead>
+        <tr>
+          <th>Metrik</th>
+          <th>Ergebnis</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Statement Coverage</strong></td>
+          <td><strong>9 ausführbare Anweisungen</strong>, alle <strong>9</strong> werden von den vier Tests erreicht → <strong>9 / 9 = 100 %</strong></td>
+        </tr>
+        <tr>
+          <td><strong>Branch Coverage</strong></td>
+          <td><strong>unverändert 11 / 12 ≈ 91,67 %</strong> — die entfernte Zeile war <strong>keine zusätzliche Kante</strong> im Graph</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Begründung</h3>
+    <ul>
+      <li><strong>Anweisungsüberdeckung:</strong> Anteil der <strong>ausführbaren Anweisungen</strong>, die mindestens ein Test ausführt.</li>
+      <li><strong>Zweigüberdeckung (ISTQB):</strong> <strong>Alle Kanten</strong> des Kontrollflussgraphen — nicht nur die Booleschen Entscheidungen isoliert.</li>
+      <li>Der fehlende Pfad <strong>D3 → return True</strong> erklärt <strong>eine</strong> nicht getestete Kante von <strong>12</strong>.</li>
+    </ul>
+  </section>
+
+</main>
+
+<footer>
+  <p class="source-note">HA3 Überdeckung · QA Lernwebseite · ISTQB CTFL v4.0.2 Kap. 4 · Erstellt 2026-04-04</p>
+</footer>
+
+</body>
+</html>

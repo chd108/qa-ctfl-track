@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../assets/qa-favicon-256.png" type="image/png">
-  <meta name="description" content="SDLC und ISTQB Hypozykel — statische Darstellung.">
+  <meta name="description" content="Hypozykloide: SDLC und ISTQB-Testprozess — statische Darstellung.">
   <link rel="stylesheet" href="../assets/css/base.css">
   <link rel="stylesheet" href="../assets/css/subpage.css">
   <title>SDLC statisch — QA Lernwebseite</title>
@@ -123,6 +123,7 @@
   <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
     <ul>
       <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04e-ha3-ueberdeckung.html">HA3 Überdeckung</a></li>
       <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
       <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
       <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
@@ -149,11 +150,11 @@
   <div class="meta-bar" role="region" aria-label="Seitenkontext">
     <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Inhalt nach ISTQB CTFL Lehrplan (Syllabus)"></span>
     <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</span>
-    <span><strong>Syllabus:</strong> Kap. 2.1 — Visualisierung SDLC &#x2194; Testprozess (Hypozykel)</span>
+    <span><strong>Syllabus:</strong> Kap. 2.1 — Visualisierung SDLC &#x2194; Testprozess (Hypozykloide)</span>
     <span><strong>Hinweis:</strong> Bezug FL-2.1.1 (K2), ergänzend · kein Steckbrief zu FL-2.1.2–2.1.6 · statische Darstellung (12-Uhr-Fixpunkt) · <strong>K-Stufen:</strong> K1 (erinnern) · K2 (verstehen) · K3 (anwenden)</span>
   </div>
 
-  <nav class="legend" aria-label="Legende Hypozykel">
+  <nav class="legend" aria-label="Legende zur Hypozykloide">
     <div class="legend__item"><span class="legend__swatch legend__swatch--sdlc" aria-hidden="true"></span>SDLC &#x2014; 6 Phasen</div>
     <div class="legend__item"><span class="legend__swatch legend__swatch--istqb" aria-hidden="true"></span>ISTQB &#x2014; 6 Aktivit&#xe4;ten</div>
     <div class="legend__item"><span class="legend__swatch legend__swatch--t2" aria-hidden="true"></span>T&#x202F;2 &#x2014; Test&#xfc;berwachung &amp; &#x2011;steuerung</div>
@@ -161,7 +162,7 @@
   </nav>
 
   <div class="info-box" role="note">
-    <strong>Inhalt:</strong> Diese Seite zeigt das Hypozykel&#x2011;Modell als statisches Diagramm: SDLC mit sechs Phasen als äußerer Ring, ISTQB&#x2011;Testprozess mit sechs Aktivitäten als innerer Kreis. Kontaktpunkt bei 12 Uhr: Anforderungen &#x2194; Testplanung. Die animierte Variante finden Sie unter „SDLC animiert“.
+    <strong>Inhalt:</strong> Diese Seite zeigt die Hypozykloide als statisches Diagramm: SDLC mit sechs Phasen als äußerer Ring, ISTQB&#x2011;Testprozess mit sechs Aktivitäten als innerer Kreis. Kontaktpunkt bei 12 Uhr: Anforderungen &#x2194; Testplanung. Die animierte Variante finden Sie unter „SDLC animiert“.
   </div>
 
   <div class="sdlc-triptych">
@@ -174,7 +175,7 @@
       Test, Betrieb &amp; Wartung) und den ISTQB&#x2011;Testprozess (Foundation Level)
       mit seinen sechs Aktivitäten (Testplanung, Test&#xfc;berwachung &amp; &#x2011;steuerung,
       Testanalyse, Testdesign, Testrealisierung, Testdurchf&#xfc;hrung &amp; Testabschluss)
-      als Hypozykel&#x2011;Modell. Der SDLC bildet einen feststehenden
+      als Darstellung der Hypozykloide. Der SDLC bildet einen feststehenden
       &#xe4;u&#xdf;eren Ring; der Testprozess ist als kleinerer Kreis dargestellt, der auf
       der Innenwand des SDLC&#x2011;Rings abrollt. Der dargestellte Zustand ist fest: Kontaktpunkt bei 12 Uhr
       (Anforderungen &#x2194; Testplanung). Da
@@ -189,11 +190,11 @@
     <div class="sdlc-triptych__center">
       <section class="section" aria-labelledby="diagram-heading">
         <div class="section__header">
-          <h2 id="diagram-heading" class="section__title">Hypozykel&#x2011;Diagramm</h2>
+          <h2 id="diagram-heading" class="section__title">Diagramm der Hypozykloide</h2>
         </div>
         <div class="diagram-wrap">
           <canvas id="c" width="820" height="800"
-                  aria-label="Hypozykel-Diagramm: SDLC-Ring mit ISTQB-Testprozess als innerem Kreis. Kontaktpunkt bei 12 Uhr: T1 Testplanung trifft Phase 1 Anforderungen."></canvas>
+                  aria-label="Diagramm der Hypozykloide: SDLC-Ring mit ISTQB-Testprozess als innerem Kreis. Kontaktpunkt bei 12 Uhr: T1 Testplanung trifft Phase 1 Anforderungen."></canvas>
         </div>
       </section>
     </div>
@@ -207,7 +208,7 @@
       <strong>einmalig beim Laden</strong> auf einem HTML5&#x2011;<code>canvas</code>&#x2011;Element
       (820&#x202F;&times;&#x202F;800&#x202F;px) gezeichnet &#x2014; es gibt keine Animation und
       keine Steuerelemente. Der dargestellte Zustand ist fest: Kontaktpunkt bei 12 Uhr
-      (Anforderungen &#x2194; Testplanung). Die Geometrie entspricht dem Hypozykel&#x2011;Modell
+      (Anforderungen &#x2194; Testplanung). Die Geometrie entspricht dem Modell der Hypozykloide
       (Radien, Verh&#xe4;ltnis 16&#x202F;:&#x202F;11); Segmente sind Kreisring&#x2011;Sektoren
       (<code>arc</code>&#x2011;Pfade). Das aktive Segmentpaar (Anforderungen &#x2194; Testplanung)
       wird durch abgesetzte F&#xfc;llfarbe und leichten Schatten hervorgehoben. Der
@@ -223,7 +224,7 @@
 </main>
 
 <footer>
-  <p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB 2025) · SDLC &amp; Testaktivitäten im Lebenszyklus (Hypozykel-Modell)</p>
+  <p class="source-note">Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB 2025) · SDLC &amp; Testaktivitäten im Lebenszyklus (Modell der Hypozykloide)</p>
 </footer>
 
 <script src="../assets/js/sdlc-hypocycle-statisch.js" defer></script>

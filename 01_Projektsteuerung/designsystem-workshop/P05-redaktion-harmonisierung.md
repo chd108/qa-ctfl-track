@@ -178,7 +178,7 @@ Umsetzung in HTML: **eine** Region **Lernziele** mit **mehreren** Zeilen (z. B
 ## 2.5 Seitenlegende (F-LEGEND) — redaktionell vs. technisch
 
 - **Technik und Platz:** ausschließlich **04d B.12** — **`nav.legend`** unmittelbar **nach** **`div.meta-bar`**, **vor** Infobox/Sections; **keine** abweichenden Standorte auf Einzelseiten.
-- **Redaktion:** *Ob* eine Seite eine Legende braucht (Farben/Symbole/Badges erklären), bleibt **inhaltliche** Entscheidung; die **11** Kernseiten mit Legende sind in der Praxis abgebildet (u. a. Landkarte, Hypozykel, Teststufen, Testverfahren, Glossar).
+- **Redaktion:** *Ob* eine Seite eine Legende braucht (Farben/Symbole/Badges erklären), bleibt **inhaltliche** Entscheidung; die **11** Kernseiten mit Legende sind in der Praxis abgebildet (u. a. Landkarte, Hypozykloide, Teststufen, Testverfahren, Glossar).
 
 ## 2.6 Kurzbeispiele SOLL (nicht final — zur Freigabe)
 

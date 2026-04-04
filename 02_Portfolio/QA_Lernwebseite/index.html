@@ -69,68 +69,59 @@
     }
     .entry-info-box strong { color: var(--mid); }
 
-    /* Karten: je Zeile Lernmaterial | Hausaufgaben (gleiche Zeilenhöhe), darin 3 Spalten */
+    /* Zwei Bereiche nebeneinander: links Lernmaterial, rechts Hausaufgaben — je Spalte eigenes 3-Spalten-Raster */
     .entry-card-split {
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
       width: 100%;
       margin-top: 1rem;
     }
-    .entry-card-row {
+    .entry-card-cols {
       display: grid;
       grid-template-columns: 1fr 1fr;
       gap: 2rem;
-      align-items: stretch;
+      align-items: start;
     }
-    .entry-card-row .entry-card-grid {
+    @media (max-width: 900px) {
+      .entry-card-cols {
+        grid-template-columns: 1fr;
+      }
+    }
+    .entry-board {
+      margin: 0;
+      padding: 0;
+      border: none;
+      min-width: 0;
+    }
+    .entry-board__title {
+      margin: 0 0 1rem;
+      font-family: Georgia, 'Palatino Linotype', serif;
+      font-size: 1.4rem;
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--text);
+    }
+    .entry-card-grid {
       display: grid;
       grid-template-columns: repeat(3, minmax(0, 1fr));
       gap: 1rem;
       align-items: stretch;
-      align-content: stretch;
-      min-height: 0;
-      height: 100%;
-    }
-    .entry-card-row .entry-card-grid--ha-last {
-      grid-template-rows: minmax(0, 1fr);
-    }
-    .entry-card-row--heads {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 2rem;
-    }
-    .entry-card-row--heads .entry-block-heading {
-      margin: 0 0 0.75rem;
-      text-align: left;
-      font-weight: 700;
-      font-size: 1.4rem;
-    }
-    @media (max-width: 900px) {
-      .entry-card-row,
-      .entry-card-row--heads {
-        grid-template-columns: 1fr;
-      }
     }
     @media (max-width: 640px) {
-      .entry-card-row .entry-card-grid {
+      .entry-card-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .entry-block-heading {
-      font-family: Georgia, 'Palatino Linotype', serif;
-      font-size: var(--subtitle-size);
-      font-weight: normal;
-      letter-spacing: 0.05em;
-      color: var(--text);
-      margin: 0 0 0.75rem;
-    }
-
+    /* Einheitliche Kartenfläche: leicht quer (kürzer als Quadrat), Mindesthöhe gegen „flache“ Zeilen */
     .entry-card {
       display: flex;
       flex-direction: column;
-      height: 100%;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      min-height: 10.5rem;
+      /* width:height ≈ 5:4 → etwas niedriger als 1:1 (rund drei weniger sichtbare Textzeilen) */
+      aspect-ratio: 5 / 4;
+      height: auto;
       text-decoration: none;
       color: inherit;
       border-radius: 10px;
@@ -172,6 +163,8 @@
       display: flex;
       flex-direction: column;
       min-height: 0;
+      overflow-y: auto;
+      -webkit-overflow-scrolling: touch;
     }
     .entry-card__title {
       font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -227,6 +220,7 @@
       <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
         <ul>
       <li><a href="pages/00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="pages/04e-ha3-ueberdeckung.html">HA3 Überdeckung</a></li>
       <li><a href="pages/04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
       <li><a href="pages/04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
       <li><a href="pages/05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
@@ -264,20 +258,17 @@
   </section>
 
   <div class="entry-info-box" role="note">
-    <strong>Orientierung:</strong> Der Einstieg ist in zwei Kartenbereiche gegliedert.<br>
+    <strong>Orientierung:</strong> Der Einstieg ist in zwei Kartenbereiche gegliedert: <strong>Lernmaterial</strong> links, <strong>Hausaufgaben</strong> rechts (auf schmalen Viewports untereinander).<br>
     <strong>Lernmaterial</strong> umfasst die CTFL-Inhalte (Kap.&nbsp;1–6) von der Landkarte über Glossar und Grundlagen bis zu Testwerkzeugen.<br>
     <strong>Standards</strong> ist dazu ein eigener Überblick &mdash; nicht Teil des Lehrplans, sondern zu Projektstandards, Web-Konventionen und zum Status dieser Website im Repository.<br>
     <strong>Hausaufgaben</strong> bündelt die praktischen Aufgaben zur Fallstudie, von der Einordnung im Lehrplan bis zur Ausführung und zu den HA6-Berichten. A4-Formulare gibt es durchgängig in HA4&ndash;HA6.
   </div>
 
   <div class="entry-card-split">
-    <div class="entry-card-row entry-card-row--heads">
-      <h2 class="entry-block-heading">Lernmaterial:</h2>
-      <h2 class="entry-block-heading">Hausaufgaben:</h2>
-    </div>
-
-    <div class="entry-card-row">
-    <div class="entry-card-grid" role="group" aria-label="Lernmaterial Zeile 1">
+    <div class="entry-card-cols">
+    <section class="entry-board" aria-labelledby="entry-lm-heading">
+      <h2 id="entry-lm-heading" class="entry-board__title">Lernmaterial</h2>
+      <div class="entry-card-grid" role="group" aria-label="Lernmaterial — alle Karten">
     <a class="entry-card entry-card--landkarte" href="pages/01-landkarte.html">
       <div class="entry-card__header">
         <span class="entry-card__icon" aria-hidden="true">✦</span>
@@ -300,9 +291,9 @@
       </div>
     </a>
 
-    <a class="entry-card entry-card--terminologie" href="pages/01b-grundlagen.html">
+    <a class="entry-card entry-card--testverfahren" href="pages/01b-grundlagen.html">
       <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">§</span>
+        <span class="entry-card__icon" aria-hidden="true">⬡</span>
         <span class="entry-card__meta">Kap.&nbsp;1</span>
       </div>
       <div class="entry-card__body">
@@ -310,48 +301,10 @@
         <div class="entry-card__desc">Ziele · Fehlerkette · Grundsätze · Aktivitäten &amp; Kompetenzen · Kap.&nbsp;1</div>
       </div>
     </a>
-    </div>
-    <div class="entry-card-grid" role="group" aria-label="Hausaufgaben Zeile 1">
-    <a class="entry-card entry-card--ha" href="pages/00a-ha-einordnung.html">
-      <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">◆</span>
-        <span class="entry-card__meta">Thematisch · Kap.&nbsp;4</span>
-      </div>
-      <div class="entry-card__body">
-        <div class="entry-card__title">HA-Einordnung</div>
-        <div class="entry-card__desc">HA 1–4 · Zuordnung zu den Testverfahren aus Kap.&nbsp;4</div>
-      </div>
-    </a>
 
-    <a class="entry-card entry-card--ha" href="pages/04a-ha4-anforderungsanalyse.html">
-      <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">◆</span>
-        <span class="entry-card__meta">Thematisch · Kap.&nbsp;4.1</span>
-      </div>
-      <div class="entry-card__body">
-        <div class="entry-card__title">HA4 Anforderungsanalyse</div>
-        <div class="entry-card__desc">Bewertung, Altersverifikation, Versand · Kap.&nbsp;4.1</div>
-      </div>
-    </a>
-
-    <a class="entry-card entry-card--form" href="pages/04b-ha4-testbasisanalyse-a4.html">
-      <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">◆</span>
-        <span class="entry-card__meta"><span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span> · A4</span>
-      </div>
-      <div class="entry-card__body">
-        <div class="entry-card__title">HA4 Testbasis-Analyse A4</div>
-        <div class="entry-card__desc">Testbasis pro Feature · Kap.&nbsp;4.1</div>
-      </div>
-    </a>
-    </div>
-    </div>
-
-    <div class="entry-card-row">
-    <div class="entry-card-grid" role="group" aria-label="Lernmaterial Zeile 2">
     <a class="entry-card entry-card--testverfahren" href="pages/01c-testmittel.html">
       <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">§</span>
+        <span class="entry-card__icon" aria-hidden="true">⬡</span>
         <span class="entry-card__meta">Kap.&nbsp;1.4.3</span>
       </div>
       <div class="entry-card__body">
@@ -363,63 +316,25 @@
     <a class="entry-card entry-card--visual" href="pages/02a-sdlc-statisch.html">
       <div class="entry-card__header">
         <span class="entry-card__icon" aria-hidden="true">⬡</span>
-        <span class="entry-card__meta">Visualisierung</span>
+        <span class="entry-card__meta">visuell - KAP.&nbsp;2</span>
       </div>
       <div class="entry-card__body">
         <div class="entry-card__title">SDLC &amp; Testprozess (statisch)</div>
-        <div class="entry-card__desc">Diagramm · SDLC &amp; Testprozess im Überblick · Kap.&nbsp;2</div>
+        <div class="entry-card__desc">Diagramm · SDLC &amp; Testprozess · Überblick · Kap.&nbsp;2</div>
       </div>
     </a>
 
     <a class="entry-card entry-card--visual" href="pages/02b-sdlc-animiert.html">
       <div class="entry-card__header">
         <span class="entry-card__icon" aria-hidden="true">⬡</span>
-        <span class="entry-card__meta">Visualisierung</span>
+        <span class="entry-card__meta">visuell - KAP.&nbsp;2</span>
       </div>
       <div class="entry-card__body">
         <div class="entry-card__title">SDLC &amp; Testprozess (animiert)</div>
-        <div class="entry-card__desc">Animation · Hypozyklus · SDLC &amp; Testen · Kap.&nbsp;2</div>
-      </div>
-    </a>
-    </div>
-    <div class="entry-card-grid" role="group" aria-label="Hausaufgaben Zeile 2">
-    <a class="entry-card entry-card--ha" href="pages/05a-ha5-testkonzept.html">
-      <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">◆</span>
-        <span class="entry-card__meta">Thematisch · Kap.&nbsp;5</span>
-      </div>
-      <div class="entry-card__body">
-        <div class="entry-card__title">HA5 Testkonzept</div>
-        <div class="entry-card__desc">Planung, Risiken, Testfälle · Kap.&nbsp;5</div>
+        <div class="entry-card__desc">Animation · SDLC &amp; Testprozess · Hypozykloide · Kap.&nbsp;2</div>
       </div>
     </a>
 
-    <a class="entry-card entry-card--form" href="pages/05b-ha5-testkonzept-a4.html">
-      <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">◆</span>
-        <span class="entry-card__meta"><span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span> · A4</span>
-      </div>
-      <div class="entry-card__body">
-        <div class="entry-card__title">HA5 Testkonzept A4</div>
-        <div class="entry-card__desc">Testkonzept, IEEE-orientiert · Kap.&nbsp;5</div>
-      </div>
-    </a>
-
-    <a class="entry-card entry-card--ha" href="pages/04c-ha5-testfallentwurf.html">
-      <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">◆</span>
-        <span class="entry-card__meta">Thematisch · Kap.&nbsp;4.2</span>
-      </div>
-      <div class="entry-card__body">
-        <div class="entry-card__title">HA5 Testfallentwurf</div>
-        <div class="entry-card__desc">9 Testfälle, Entwurfsmethoden · Kap.&nbsp;4.2</div>
-      </div>
-    </a>
-    </div>
-    </div>
-
-    <div class="entry-card-row">
-    <div class="entry-card-grid" role="group" aria-label="Lernmaterial Zeile 3">
     <a class="entry-card entry-card--testverfahren" href="pages/02c-teststufen.html">
       <div class="entry-card__header">
         <span class="entry-card__icon" aria-hidden="true">⬡</span>
@@ -444,53 +359,15 @@
 
     <a class="entry-card entry-card--testverfahren" href="pages/04-testverfahren.html">
       <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">◈</span>
-        <span class="entry-card__meta">Kap.&nbsp;4 · Testverfahren</span>
+        <span class="entry-card__icon" aria-hidden="true">⬡</span>
+        <span class="entry-card__meta">Kap.&nbsp;4</span>
       </div>
       <div class="entry-card__body">
         <div class="entry-card__title">Testverfahren</div>
         <div class="entry-card__desc">Black-Box · White-Box · erfahrungsbasiert · Kap.&nbsp;4</div>
       </div>
     </a>
-    </div>
-    <div class="entry-card-grid" role="group" aria-label="Hausaufgaben Zeile 3">
-    <a class="entry-card entry-card--form" href="pages/04d-ha5-testfallentwurf-a4.html">
-      <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">◆</span>
-        <span class="entry-card__meta"><span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span> · A4</span>
-      </div>
-      <div class="entry-card__body">
-        <div class="entry-card__title">HA5 Testfallentwurf A4</div>
-        <div class="entry-card__desc">9 Testfälle, Summary und Detail · Kap.&nbsp;4.2</div>
-      </div>
-    </a>
 
-    <a class="entry-card entry-card--form" href="pages/06a-ha6-testprotokoll-a4.html">
-      <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">◆</span>
-        <span class="entry-card__meta"><span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span> · A4</span>
-      </div>
-      <div class="entry-card__body">
-        <div class="entry-card__title">HA6 Testprotokoll A4</div>
-        <div class="entry-card__desc">Ausführungsprotokoll, 9 Testfälle · Kap.&nbsp;5.3</div>
-      </div>
-    </a>
-
-    <a class="entry-card entry-card--form" href="pages/06b-ha6-fehlerbericht-a4.html">
-      <div class="entry-card__header">
-        <span class="entry-card__icon" aria-hidden="true">◆</span>
-        <span class="entry-card__meta"><span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span> · A4</span>
-      </div>
-      <div class="entry-card__body">
-        <div class="entry-card__title">HA6 Fehlerbericht A4</div>
-        <div class="entry-card__desc">Fehlerbericht, BUG-001/002 · Kap.&nbsp;5.5</div>
-      </div>
-    </a>
-    </div>
-    </div>
-
-    <div class="entry-card-row">
-    <div class="entry-card-grid" role="group" aria-label="Lernmaterial Zeile 4">
     <a class="entry-card entry-card--testverfahren" href="pages/05-testmanagement.html">
       <div class="entry-card__header">
         <span class="entry-card__icon" aria-hidden="true">⬡</span>
@@ -523,8 +400,122 @@
         <div class="entry-card__desc">Web- und Projektstandards · Repo-Status · Referenzen &amp; Informationsarchitektur (IA)</div>
       </div>
     </a>
-    </div>
-    <div class="entry-card-grid entry-card-grid--ha-last" role="group" aria-label="Hausaufgaben Zeile 4">
+      </div>
+    </section>
+
+    <section class="entry-board" aria-labelledby="entry-ha-heading">
+      <h2 id="entry-ha-heading" class="entry-board__title">Hausaufgaben</h2>
+      <div class="entry-card-grid" role="group" aria-label="Hausaufgaben — alle Karten">
+    <a class="entry-card entry-card--ha" href="pages/00a-ha-einordnung.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Thematisch · Kap.&nbsp;4</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA-Einordnung</div>
+        <div class="entry-card__desc">HA 1–4 · Zuordnung zu den Testverfahren aus Kap.&nbsp;4</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--ha" href="pages/04e-ha3-ueberdeckung.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Kap.&nbsp;4.3 · White-Box</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA3 Überdeckung</div>
+        <div class="entry-card__desc">Kontrollflussgraph · Statement &amp; Branch Coverage</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--ha" href="pages/04a-ha4-anforderungsanalyse.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Thematisch · Kap.&nbsp;4.1</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA4 Anforderungsanalyse</div>
+        <div class="entry-card__desc">Bewertung, Altersverifikation, Versand · Kap.&nbsp;4.1</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/04b-ha4-testbasisanalyse-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta"><span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span> · A4</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA4 Testbasis-Analyse A4</div>
+        <div class="entry-card__desc">Testbasis pro Feature · Kap.&nbsp;4.1</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--ha" href="pages/05a-ha5-testkonzept.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Thematisch · Kap.&nbsp;5</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA5 Testkonzept</div>
+        <div class="entry-card__desc">Planung, Risiken, Testfälle · Kap.&nbsp;5</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/05b-ha5-testkonzept-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta"><span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span> · A4</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA5 Testkonzept A4</div>
+        <div class="entry-card__desc">Testkonzept, IEEE-orientiert · Kap.&nbsp;5</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--ha" href="pages/04c-ha5-testfallentwurf.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta">Thematisch · Kap.&nbsp;4.2</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA5 Testfallentwurf</div>
+        <div class="entry-card__desc">9 Testfälle, Entwurfsmethoden · Kap.&nbsp;4.2</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/04d-ha5-testfallentwurf-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta"><span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span> · A4</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA5 Testfallentwurf A4</div>
+        <div class="entry-card__desc">9 Testfälle, Summary und Detail · Kap.&nbsp;4.2</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/06a-ha6-testprotokoll-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta"><span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span> · A4</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA6 Testprotokoll A4</div>
+        <div class="entry-card__desc">Ausführungsprotokoll, 9 Testfälle · Kap.&nbsp;5.3</div>
+      </div>
+    </a>
+
+    <a class="entry-card entry-card--form" href="pages/06b-ha6-fehlerbericht-a4.html">
+      <div class="entry-card__header">
+        <span class="entry-card__icon" aria-hidden="true">◆</span>
+        <span class="entry-card__meta"><span style="background: var(--e2); color: var(--text); padding: 0 4px; border-radius: 2px;">Formular</span> · A4</span>
+      </div>
+      <div class="entry-card__body">
+        <div class="entry-card__title">HA6 Fehlerbericht A4</div>
+        <div class="entry-card__desc">Fehlerbericht, BUG-001/002 · Kap.&nbsp;5.5</div>
+      </div>
+    </a>
+
     <a class="entry-card entry-card--form" href="pages/06c-ha6-testabschlussbericht-a4.html">
       <div class="entry-card__header">
         <span class="entry-card__icon" aria-hidden="true">◆</span>
@@ -535,7 +526,8 @@
         <div class="entry-card__desc">Testabschlussbericht · Kap.&nbsp;5.3</div>
       </div>
     </a>
-    </div>
+      </div>
+    </section>
     </div>
   </div>
 </main>

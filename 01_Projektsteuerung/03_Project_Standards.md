@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-02 — Abschn. README: Ausnahme `designsystem-workshop/README.md` (Metablock Variante B); zuvor Abschn. 3 / 8: `07_Tests/` …; Abschn. 6: Token-Mapping …  
+Letzte Aktualisierung: 2026-04-03 — §6: Tabelle **CSS-Dateien** (`base.css` / `subpage.css` / `doc-a4.css`); zuvor 2026-04-04 §5 HA-Markdown, …  
 Zweck: Definiert Regeln und Standards für Repo-Struktur, Dokumentation und Qualität  
 Klassifizierung: Projektsteuerung / Standards  
 Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE 829-2008**, **ISO/IEC/IEEE 29119-3** (jeweils im **Lern- und Portfolio-Kontext**, ohne Anspruch auf vollständige Normenzertifizierung).
@@ -167,6 +167,7 @@ Dieses Dokument **bündelt** früher auf mehrere Steuerungsdateien verteilte The
 3. Neue dateibasierte Artefakte: **Datum** `YYYY-MM-DD` im Namen, sofern nicht ausnahmsweise sinnlos (z. B. feste Kursvorlagen).  
 4. Abgeschlossene oder ersetzte Themen: nach **`06_Archiv/`** verschieben; **ursprünglichen Dateinamen** bevorzugt **beibehalten**.  
 5. **HA-Navigation in Verweiszeilen:** Reihenfolge **Original** vor **umformulierte Aufgabe**: `01_Original_*` → `02_Aufgabe_umformuliert_*`.
+6. **Markdown-Metadaten** für **neue** oder **inhaltlich überarbeitete** `.md`-Artefakte: **§5** *Markdown in `03_Hausaufgaben/`* — **Metablock Variante B** (nicht nur README-Kurzform).
 
 ### Ausnahmen und technische Sonderfälle
 
@@ -225,6 +226,18 @@ Kurzer Einleitungstext …
 
 *Alternative:* Das Blockzitat kann **direkt vor** der ersten `#`-Überschrift stehen (z. B. ganz oben in der Datei), wenn die Überschrift den Projektnamen trägt — dann bleibt die **Zeile „Zuletzt aktualisiert“** sichtbar ohne die H1 zu spalten.
 
+### Markdown in `03_Hausaufgaben/` (Hausaufgaben-Artefakte)
+
+**Geltung:** Markdown-Dateien unter **`03_Hausaufgaben/`** (z. B. **Lösungen**, Teilbearbeitungen, strukturierte Abgabetexte) — **nicht** die **`README.md`**-Kurzregel aus dem vorigen Abschnitt.
+
+**Metablock:** **Variante B** wie unter *Metablock für Master-Dokumente in `01_Projektsteuerung/`* — **Datei erstellt**, **Letzte Aktualisierung**, **Zweck**, **Klassifizierung**; **Normative Orientierung** **optional** (z. B. ISTQB-Kapitel, Kursbezug).
+
+**Aufbau:** Metadaten **am Anfang** der Datei (vor der ersten `#`-Überschrift), danach **`---`**, dann **Hauptüberschrift** und Fließtext — gleiche Reihenfolge wie bei der **Project\_*-Serie**.
+
+**Klassifizierung (Beispiele):** `03_Hausaufgaben / HA3 / Lösung` bzw. `… / Arbeitsmaterial` — kurz und wiedererkennbar (Nummer der jeweiligen HA einsetzen).
+
+**Bestandsdateien** ohne diesen Kopf: **kein** Pflicht-Rückbau; bei **nächster inhaltlicher Bearbeitung** den Metablock **ergänzen**. Neue Dateien **von Anfang an** so anlegen.
+
 ### Chronologische Inhalte
 
 Bei Changelogs, Protokollen, Status-Historien:
@@ -252,6 +265,16 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 - **Index (`index.html`):** bewusste Ausnahme — **Einstiegs-/Übersichtsseite**; **Karten** ersetzen dort die **obere** Navigationslogik der Unterseiten.  
 - **Formular- / A4-Seiten:** kein eigener „Sondertyp“ im Sinne eines völlig freien Layouts außerhalb des Systems; **Abweichungen** primär im **lokalen Formular-/A4-Inhaltsbereich** (technisch gekapselt).  
 - **Dokument-/A4-Modus:** eigener **Präsentations-/Layoutmodus** innerhalb desselben Systems — Rahmen im **[01_Project_Charter.md](01_Project_Charter.md)**; Umsetzungs- und Konsistenzregeln in **diesem Dokument** (Abschnitt 6 und 7).
+
+### CSS-Dateien: Rollen (`assets/css/`)
+
+**Einordnung:** Aufteilung in mehrere Stylesheets ist **Organisation** (Schichten, Wartbarkeit), **kein** technisches Muss des Browsers; analog zu gängigen Architekturmustern (z. B. **Basis** vs. **Layout**).
+
+| Datei | Inhalt (Oberbegriffe) | Strategie / Warum |
+|--------|------------------------|-------------------|
+| **`base.css`** | Design-Tokens (`:root`), globale Typo/Grundlagen, Navigations-/Page-Chrome, wiederverwendbare Bausteine (Chips, Legenden, Kacheln, …) | **Gemeinsame Basis** für die ganze Site; ein Ort für alles, was überall oder oft vorkommt. |
+| **`subpage.css`** | Layout-Muster **Seitenkopf** (`header`, `h1`, Untertitel) und **Fuß** (`.source-note`) | **Schicht** für ein wiederkehrendes Unterseiten-Muster, getrennt von der großen Basisdatei — kürzer, gezielter pflegbar. |
+| **`doc-a4.css`** | Zusätzliche Schicht für **A4-/Formularseiten** (Druck-/Dokumentlayout) | Wird **nach** `base.css` und `subpage.css` eingebunden, wo der A4-Modus gilt (siehe Checkliste unten, §7). |
 
 ### Inhaltliche und terminologische Konsistenz
 
@@ -285,7 +308,7 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 ### Checkliste: neue oder geänderte Seite
 
 1. **Benennung & Pflichtfelder** gemäß **[01_Project_Charter.md](01_Project_Charter.md)** und **diesem Dokument** (Abschnitt 3 und 7; Benennungslogik, Root-`index.html`, `pages/`).  
-2. **Neue Datei** unter `pages/` anlegen; Anbindung: `assets/css/base.css`, `subpage.css`, bei A4/Formular **`doc-a4.css`**; **Skip-Link**, **`.page-chrome`**, `<main id="main">`, Footer mit Quellenzeile, sinnvolle **Meta-Description**. Orientierung: `templates/referenzvorlage-hauptsystem.html`.  
+2. **Neue Datei** unter `pages/` anlegen; Anbindung: `assets/css/base.css`, `subpage.css`, bei A4/Formular **`doc-a4.css`** (Reihenfolge der `<link>`-Tags wie genannt); **Rollen** der Dateien: **Abschnitt 6**, Unterabschnitt *CSS-Dateien: Rollen*. **Skip-Link**, **`.page-chrome`**, `<main id="main">`, Footer mit Quellenzeile, sinnvolle **Meta-Description**. Orientierung: `templates/referenzvorlage-hauptsystem.html`.  
 3. **Kopfnavigation — zwei Leisten** in `.top-nav-zone` (gleiche Reihenfolge überall):  
    - **Lernmaterial:** `nav.main-nav.main-nav--learn` · `aria-label="Lernmaterial"`  
    - **Hausaufgaben:** `nav.main-nav.main-nav--assignments` · `aria-label="Hausaufgaben"`  

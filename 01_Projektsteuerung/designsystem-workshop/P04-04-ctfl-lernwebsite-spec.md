@@ -404,7 +404,7 @@ Die **vollständige** IST→SOLL→Token-Tabelle bleibt in **03**; hier keine Du
 
 | Thema | Vorgabe |
 |-------|---------|
-| **Container** | **`nav`** mit **`aria-label`** **spezifisch** (z. B. „Legende Farben Kapitelkacheln“, „Legende Hypozykel“, „Legende Teststufen“, „Legende Verfahrensklassen“) — **nicht** nur „Legende“ ohne Kontext |
+| **Container** | **`nav`** mit **`aria-label`** **spezifisch** (z. B. „Legende Farben Kapitelkacheln“, „Legende zur Hypozykloide“, „Legende Teststufen“, „Legende Verfahrensklassen“) — **nicht** nur „Legende“ ohne Kontext |
 | **Alternative** | `role="region"` + `aria-label` nur wenn **`nav`** semantisch unpassend — **Soll:** bevorzugt **`nav`** für seiteninterne Orientierung |
 | **Swatch** | `aria-hidden="true"` wenn Text daneben die Bedeutung trägt |
 

@@ -1,6 +1,6 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-04-03 — **Landkarte:** Kap. **6** (Syllabus **6.1**/**6.2**), **C-PRAXIS** kurz und **Ausführlich (Kürzel)**; **Smoke-Tests** grün **`ref` 5.1.7** (Kap. **5.1**) + Praxis Build-Gate (Kap. **2**); **SonarQube (Werkzeug, Kap. 6)** in Kap. **3**; Spec **P04-04** **A.0.1b/c**, **P03** §1, **02_Project_Status** nachgezogen. Zuvor: Kap. **4** TOC, Kopf Kap. **1–6**.
+> Zuletzt aktualisiert: 2026-04-03 — **HA3** Überdeckung (`04e-ha3-ueberdeckung.html`, Nav, Index-Karte, Seitenliste); **Landkarte:** Kap. **6** (Syllabus **6.1**/**6.2**), **C-PRAXIS** kurz und **Ausführlich (Kürzel)**; **Smoke-Tests** grün **`ref` 5.1.7** (Kap. **5.1**) + Praxis Build-Gate (Kap. **2**); **SonarQube (Werkzeug, Kap. 6)** in Kap. **3**; Spec **P04-04** **A.0.1b/c**, **P03** §1, **02_Project_Status** nachgezogen. Zuvor: Kap. **4** TOC, Kopf Kap. **1–6**.
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
@@ -33,7 +33,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | **Skip-Link** | Sprung zu `#main` (Tastatur/Screenreader). |
 | **`.top-nav-zone`** | Volle Viewport-Breite; **`.top-nav-zone__brand-row`** zentriert den Inhalt (`display: flex`, `justify-content: center`) und umschließt nur **`.top-nav-zone__nav-stack`** — **zwei** `<nav>` untereinander (**Lernmaterial** / **Hausaufgaben**). Kein separates Logo links außerhalb der Leisten. |
 | **Nav 1 — Lernmaterial** | `class="main-nav main-nav--learn"`, `aria-label="Lernmaterial"`: **erster Punkt** = **Startseite** als **Logo** (`class="main-nav__home"`, Bild `qa-favicon-256.png`, Höhe **`--nav-inline-logo-height`** in `base.css`), dann Landkarte, Glossar, … Standards. Auf der Startseite: `aria-current="page"` / `.current` am Logo-Link. |
-| **Nav 2 — Hausaufgaben** | `class="main-nav main-nav--assignments"`, `aria-label="Hausaufgaben"`: HA-Einordnung, HA4–HA6 (Web- und A4-Seiten). Optisch: etwas **kleinere Schrift**, Linkfarbe **`var(--mid)`**; Hover und aktuelle Seite **`var(--text)`**. |
+| **Nav 2 — Hausaufgaben** | `class="main-nav main-nav--assignments"`, `aria-label="Hausaufgaben"`: HA-Einordnung, HA3 Überdeckung, HA4–HA6 (Web- und A4-Seiten). Optisch: etwas **kleinere Schrift**, Linkfarbe **`var(--mid)`**; Hover und aktuelle Seite **`var(--text)`**. |
 | **`.page-chrome`** | Kopf mit Seitentitel und Untertitel (`subpage.css`). |
 | **`main#main`** | Seiteninhalt. |
 
@@ -88,6 +88,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `06c-ha6-testabschlussbericht-a4.html` | HA6 — Testabschlussbericht **A4** (Test Completion Report, Blankovorlage) | Kap. 5 |
 | `06-testwerkzeuge.html` | Testwerkzeuge: Kategorien, Nutzen &amp; Risiken der Testautomatisierung | Kap. 6 |
 | `00a-ha-einordnung.html` | Einordnung der Hausaufgaben im CTFL-Kontext | — |
+| `04e-ha3-ueberdeckung.html` | HA3 — Überdeckung (Kontrollflussgraph, Statement/ Branch Coverage, White-Box) | Kap. 4 |
 | `00b-standards.html` | Standards, Projektstatus, Referenzen | — |
 
 **Ist-Stand:** Alle genannten Dateien sind vorhanden und in **beiden Nav-Leisten** sowie auf der **Einstiegsseite** verlinkt.

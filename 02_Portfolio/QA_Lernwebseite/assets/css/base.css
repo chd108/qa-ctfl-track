@@ -438,7 +438,7 @@ main { width: 100%; }
   border: 1px solid rgba(138, 90, 106, 0.28);
 }
 
-/* Hypozykel SDLC / ISTQB (02a, 02b) — Kacheln + Ausnahme T2-Ring (B.12) */
+/* Legende zur Hypozykloide (SDLC/ISTQB, 02a/02b) — Kacheln + Ausnahme T2-Ring (B.12) */
 .legend__swatch--sdlc { background: #b3cdb6; border-radius: 3px; }
 .legend__swatch--istqb { background: #a5bfce; border-radius: 3px; }
 .legend__swatch--t2 { background: #c8a96a; border-radius: 3px; }

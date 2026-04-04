@@ -55,7 +55,7 @@ Normative Orientierung: Kopplung an [P02-01-taxonomie-information.md](P02-01-tax
 | **Großes Kategorie-Baum-SVG** | `04-testverfahren.html` | 4 Verfahrensklassen + 11 Verfahren + HA-Badges | **Inline-SVG** (`viewBox="0 0 1440 945"`), Linien/Rechtecke | Zentrales „Organigramm“; **Legende** `nav.legend` **oberhalb** der Grafik (direkt unter meta-bar, 04d B.12); **4-Spalten-Karten** `card-grid` unter der Section mit SVG |
 | **Testpyramide / Schichten-SVG** | `05-testmanagement.html` | Unit vs. Integration vs. E2E | Inline-SVG ca. 400×280 | Neben **Praxis-Box** `.praxis-box` und **Quad-Grid** |
 | **Wartungs-Szenarien-SVG** | `02c-teststufen.html` | Release vs. Hotfix vs. Migration vs. Decommissioning | Zwei kleine SVGs in `.visual-grid` | Illustrative **Vier-Felder**-Logik |
-| **Hypozykel (Canvas)** | `02a-sdlc-statisch.html` | SDLC + ISTQB-Testprozess | **HTML5 Canvas** + JS-Zeichnung | Einmaliges Laden; anderes Medium als SVG |
+| **Hypozykloide (Canvas)** | `02a-sdlc-statisch.html` | SDLC + ISTQB-Testprozess | **HTML5 Canvas** + JS-Zeichnung | Einmaliges Laden; anderes Medium als SVG |
 | **Animierter SDLC** | `02b-sdlc-animiert.html` | Interaktiver Ablauf | JS (`sdlc-hypocycle-animiert.js`) | **Animation**, nicht statisches Diagramm |
 
 **Hinweis:** **Kein** einheitliches „Diagramm-Modul“ — jedes große visuelle Element ist **seiten-spezifisch** eingebettet.
@@ -85,7 +85,7 @@ Normative Orientierung: Kopplung an [P02-01-taxonomie-information.md](P02-01-tax
 | **Nummerierte Testschritte** | `04c`, `04d` (Web/A4) | TC-Schritte | `<ol class="tc__steps">` bzw. `ol.doc-steps` |
 | **Phasen-Zeitleiste (Tabelle)** | `05a` | Zeitplan Deliverables | `table.timeline-table` (kein horizontales Zeitstrahl-SVG) |
 | **Ablauf implicit** | `02b` | SDLC | Animation statt Schrittliste |
-| **Hypozykel** | `02a` | Phasen im Kreis | Canvas |
+| **Hypozykloide** | `02a` | Phasen im Kreis | Canvas |
 
 **Echte Timelines** (horizontale Achse, Milestones) — **nicht** vorhanden; stattdessen **tabellarische** Zeitplanung auf `05a`.
 
