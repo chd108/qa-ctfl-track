@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-04 — **HA3 Content-Pilot** (`pilot-ha3-content.txt`, `pilot-ha3-content-phasen.md`, Workshop-**README**); zuvor **HA3** SVG **`assets/ha3-svg/`**, Pfade/HTML/**03_Standards**; davor **2026-04-03** Landkarte **Praxis-/Syllabus-Feinschnitt** (Kap. **6**, **Smoke**, **SonarQube**, **C-PRAXIS**-Konvention), **P04**/**P03**/**README** nachgezogen; zuvor Kopf **5.3** siehe §2  
+Letzte Aktualisierung: 2026-04-05 — **QA_Lernwebseite** **`04e-ha3-ueberdeckung.html`** Neubau nach **HA3-Pilot** (Phasen **0–6**, **`ha3p-*`**, zweispaltige **Lösung**); Steuerungs-/Workshop-Doku (**README**, **pilot-ha3-content-phasen.md**, **03_Project_Standards**, **02_Project_Status**) nachgezogen. Zuvor **2026-04-04** **HA3 Content-Pilot** (Text/IA), SVG **`assets/ha3-svg/`**; davor **2026-04-03** Landkarte **Praxis-/Syllabus-Feinschnitt**; zuvor Kopf **5.3** siehe §2  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -8,7 +8,7 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 
 # Project Status — QA-Track
 
-**Berichtsstichtag:** 2026-04-04 · **Projektinhaber (Alias):** chd108  
+**Berichtsstichtag:** 2026-04-05 · **Projektinhaber (Alias):** chd108  
 
 *Kurzkontext:* QA-Track ist das **gesamte** ISTQB-CTFL-orientierte Lernprogramm (Material, Hausaufgaben, Portfolio, Website, Notizen, Referenzen, Steuerung). **Vision, Ziele und Scope** siehe [01_Project_Charter.md](01_Project_Charter.md); **Ablage, Benennung, Repo-Struktur und Health Check** siehe [03_Project_Standards.md](03_Project_Standards.md) (insb. Abschnitt 3 und 8).
 
@@ -27,7 +27,7 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 | **Nächster Schwerpunkt** | **Zwei Spuren:** (1) **Workshop-Doku** — Living Docs, Konsolidierung **03↔P04-Cluster** (C/F/P), **Rollout**; **strukturelles** Zusammenlegen der Dateien **P04-01–03** ist **nicht** vorgesehen (Phase-4-Entscheidung, [README](designsystem-workshop/README.md) *Aufräum-Plan*). (2) **Website/CSS** — **Komponentenstil / Designsystem light**: **Pilot** (**F-META**, **F-LEGEND**, **F-CHAIN**, Korrekturleiste) **in `base.css` umgesetzt** (siehe **04d B.10–B.13**, **04b** *Umsetzungsstand*). **Nächste CSS-Iteration:** Abbau von Inline-CSS wo sinnvoll, **weitere** Callout-Familien nach Priorität **04b** und **Rollout Phase A** (Lerninhalte zuerst); bei Bedarf Regeln in [03_Project_Standards.md](03_Project_Standards.md) (Abschn. 6); **IST→SOLL→Token** [P03-mapping-ist-soll-token.md](designsystem-workshop/P03-mapping-ist-soll-token.md). |
 | **Lessons learned (aktuell)** | Teile der **Komponentenlogik** (Story-/Dokumentenkette-Boxen) wurden **vor** dem formalen Designsystem **praktisch eingeführt** — fachlich sinnvoll für die Lernstrecke; **F-CHAIN** ist **nach** **04d** B.13 / **P05** § jetzt **spezifiziert** und **umgesetzt** (`aside.chain-callout`). **HA5:** Lehrplan-Reihenfolge (Kap. 4/5) vs. Nav/Portfolio ist in **P05** und auf **04c/05a** **einheitlich** erklärt. Der Workshop hat **explizit** getrennt: **Domäne** (z. B. Syllabus-Chips), **didaktische Funktion** (Callouts, Orientierung), **Darstellung** (Tabellen, SVG, A4) — reduziert Vermischung und gibt **Token-Mapping und Pilot-Phase** eine **Zielrichtung**. |
 
-**Aktueller Fokus (Stand 04.04.2026):**  
+**Aktueller Fokus (Stand 05.04.2026):**  
 Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgeschlossen**; die HA4/HA5-Strecke ist **inhaltlich** durch die Phasen 1–4 **abgedeckt**. **Kopfzeile** der Website ist mit **Logo-in-Nav** und aktualisierter **README** dokumentiert (Commit **`95d6f18`**). **P1:** Erster **CSS-Pilot** **umgesetzt** — **meta-bar** / Syllabus-Chip / **F-LEGEND** / **F-CHAIN** / **correction-bar** in **`base.css`**; **K-Stufen**-Hinweis **nur** bei **FL-(Kx)** in der **meta-bar**; **04d B.10** Follow-up größtenteils erledigt. **Designsystem-Workshop:** **Einstiegs-README**, **einheitliche Metablöcke**, **Rollout** (Phase A = Lerninhalte zuerst), **Phase 3** Doku (Drift 03/04, **F-LEGEND** in **04b**, gemeinsame **P0/P1**-Erklärung); **Aufräum-Plan Phase 4** **abgeschlossen** — Zusammenlegen **P04-01–03** **verworfen** (siehe Workshop-**README**). **Nächster Schritt (wählbar):** **CSS-Iteration** (Callouts, Phase-A-Seiten) **oder** redaktionelle/steuerungsseitige Feinpflege — siehe **Nächster Schwerpunkt** oben.
 
 ### Redaktioneller Backlog (Website)
@@ -43,6 +43,13 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 *(Chronologisch **absteigend**: zuerst das Neueste / zuletzt Abgeschlossene.)*
 
 **So ist dieser Abschnitt gemeint:** Hier steht, **was** im Projekt **schon erledigt** ist — mit Datum und oft mit Fachbegriffen (Git, Phasen, Dateinamen). Nach vielen Blöcken folgt ein kurzer Absatz **„In Klartext“**: was das **praktisch** bedeutet, **ohne** dass man alle Kürzel kennen muss.
+
+### 2026-04-05 — *QA_Lernwebseite* / HA3 **04e**: Seite nach Content-Pilot neu aufgebaut
+
+- **Seite:** [`04e-ha3-ueberdeckung.html`](../02_Portfolio/QA_Lernwebseite/pages/04e-ha3-ueberdeckung.html) — **Inhalt** wortgetreu [pilot-ha3-content.txt](designsystem-workshop/pilot-ha3-content.txt); **Struktur und Darstellung** gemäß [pilot-ha3-content-phasen.md](designsystem-workshop/pilot-ha3-content-phasen.md) (**Phasen 0–6**): **`ha3p-*`**-Klassen im Seiten-`<style>` (Presentation Patterns / **base.css**-Tokens), Abschnitte **Aufgabenstellung** / **Lösung** / **Quellen**, optional **Sprungmarken**.
+- **Layout Lösung:** **Zwei Spalten** (≥ ca. 960px): **links** komplette Bearbeitung **Aufgabe 1** (Kontrollfluss / DAG inkl. SVG-**`<object>`**), **rechts** **Aufgaben 2+3** (Statement-Indizes, Coverage-Tabellen, Variante ohne `print("Additional Statement 5")`, Begründung); schmale Viewports: **untereinander** (DOM-Reihenfolge beibehalten).
+- **Doku:** [README.md](../02_Portfolio/QA_Lernwebseite/README.md) (Stand-Zeile, Tabellenzeile **04e**); [pilot-ha3-content-phasen.md](designsystem-workshop/pilot-ha3-content-phasen.md) (Kopf + Notizen); [designsystem-workshop/README.md](designsystem-workshop/README.md); [03_Project_Standards.md](03_Project_Standards.md) (HA3-Zeile, Metablock).
+- **In Klartext:** Die **öffentliche HA3-Überdeckungs-Seite** ist nicht nur mit Diagramm **befüllt**, sondern **einheitlich** nach dem **Workshop-Pilot** gebaut — inklusive **Platz sparendem** zweispaltigen **Lösungs**-Layout wie bei **Code \| Testaufrufe** in der Aufgabenstellung.
 
 ### 2026-04-04 — *QA_Lernwebseite* / HA3: Diagramm-SVG unter `assets/ha3-svg/`, Doku nachgezogen
 

@@ -9,30 +9,46 @@
   <link rel="stylesheet" href="../assets/css/subpage.css">
   <title>HA3 Überdeckung — QA Lernwebseite</title>
   <style>
-    /* .meta-bar + Chip: base.css — chip--syllabus-assign (HA-Farbe, B.11) */
-    /* Wie typische Lerninhalt-Seiten: begrenzte Gesamtbreite */
+    /* HA3 04e — Presentation Patterns (Pilot Phase 6, pilot-ha3-content-phasen.md). Tokens: base.css :root */
+
     body { padding: 0 3rem 4rem; max-width: 1400px; margin: 0 auto; }
 
-    /* Hüllen wie HA4 (04a): Kopf + Body, getrennte Farben Aufgabe vs. Lösung */
-    .ha3-sheet {
+    /* 8 — TOC / Sprungmarken */
+    .ha3p-toc {
+      background: var(--legend-surface);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      padding: 0.65rem 1rem;
+      margin: 0 0 1.5rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.8125rem;
+      color: var(--mid);
+      line-height: 1.5;
+    }
+    .ha3p-toc strong { font-weight: 600; color: var(--soft); margin-right: 0.35rem; }
+    .ha3p-toc a {
+      color: var(--ctfl);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .ha3p-toc a:hover { border-bottom-color: var(--ctfl); }
+
+    /* Aufgabe- vs. Lösungs-Hülle (Tokens --e3 / --e4, Phase 6 Querschnitt) */
+    .ha3p-sheet {
       margin-bottom: 2rem;
       border-radius: 10px;
       overflow: hidden;
       box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
       border: 1px solid var(--bdr);
     }
-    .ha3-sheet__header {
+    .ha3p-sheet__header {
       padding: 0.7rem 1.2rem;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       border-bottom: 1px solid var(--bdr);
     }
-    .ha3-sheet--aufgabe .ha3-sheet__header {
-      background: var(--e3);
-    }
-    .ha3-sheet--loesung .ha3-sheet__header {
-      background: var(--e4);
-    }
-    .ha3-sheet__title {
+    .ha3p-sheet--task .ha3p-sheet__header { background: var(--e3); }
+    .ha3p-sheet--answer .ha3p-sheet__header { background: var(--e4); }
+    .ha3p-sheet__header h2 {
       margin: 0;
       font-size: 1rem;
       font-weight: 700;
@@ -40,95 +56,62 @@
       line-height: 1.35;
       color: var(--text);
     }
-    .ha3-sheet__body {
+    .ha3p-sheet__body {
       padding: 1rem 1.25rem 1.35rem;
       background: rgba(255, 255, 255, 0.38);
     }
-    .ha3-sheet__body h3 {
+
+    .ha3p-sheet__body h3 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 1.1rem;
       font-weight: 600;
       color: var(--mid);
       margin-top: 1.5rem;
       margin-bottom: 0.75rem;
     }
-    .ha3-sheet__body h3:first-child {
-      margin-top: 0;
-    }
-    .ha3-sheet__body h4 {
+    .ha3p-sheet__body h3:first-child { margin-top: 0; }
+    .ha3p-sheet__body h4 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 1rem;
       font-weight: 600;
       color: var(--mid);
       margin-top: 1.25rem;
       margin-bottom: 0.5rem;
     }
-    .ha3-sheet__body p {
+
+    /* 1 — Intro-Links */
+    .ha3p-intro { margin-bottom: 1rem; }
+    .ha3p-intro p {
+      line-height: 1.65;
+      margin: 0 0 0.65rem;
+      color: var(--text);
+    }
+    .ha3p-intro a {
+      color: var(--ctfl);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    .ha3p-intro a:hover { border-bottom-color: var(--ctfl); }
+
+    /* 2 — Fließtext */
+    .ha3p-prose p {
       line-height: 1.7;
-      margin-bottom: 1rem;
-    }
-    .ha3-sheet__body ol {
-      line-height: 1.65;
       margin: 0 0 1rem;
-      padding-left: 1.35rem;
+      color: var(--text);
     }
-    .ha3-sheet__body li {
-      margin-bottom: 0.35rem;
-    }
-    .ha3-sheet__body ul {
-      line-height: 1.65;
-      margin: 0 0 1rem;
-      padding-left: 1.35rem;
-    }
-
-    /* Code und Testfälle nebeneinander (schmal: untereinander) */
-    .ha3-code-pair {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem 1.35rem;
-      align-items: start;
-      margin: 0 0 0.25rem;
-    }
-    .ha3-code-pair__col {
-      min-width: 0;
-    }
-    .ha3-code-pair__col h3 {
-      margin-top: 0;
-      margin-bottom: 0.65rem;
-      font-size: 1.05rem;
-      line-height: 1.35;
-    }
-    .ha3-code-pair__col .code-block {
-      margin-top: 0;
-    }
-    @media (max-width: 960px) {
-      .ha3-code-pair {
-        grid-template-columns: 1fr;
-      }
-      .ha3-code-pair__col + .ha3-code-pair__col h3 {
-        margin-top: 1.25rem;
-      }
-      .ha3-code-pair--loesung .ha3-code-pair__col + .ha3-code-pair__col .ha3-loesung-col-heading {
-        margin-top: 1.25rem;
-      }
+    .ha3p-prose strong { font-weight: 600; }
+    .ha3p-prose code,
+    .ha3p-table code {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.92em;
+      background: rgba(255, 255, 255, 0.55);
+      padding: 0.12em 0.35em;
+      border-radius: 4px;
+      border: 1px solid var(--bdr);
     }
 
-    /* Lösung Aufgaben 1+2: zwei Spalten wie Aufgabenstellung */
-    .ha3-loesung-col-heading {
-      margin-top: 0;
-      margin-bottom: 0.65rem;
-      font-size: 1.05rem;
-      font-weight: 600;
-      color: var(--mid);
-      line-height: 1.35;
-    }
-    .ha3-code-pair--loesung .result-table {
-      font-size: 0.82rem;
-    }
-    .ha3-code-pair--loesung .result-table th,
-    .ha3-code-pair--loesung .result-table td {
-      padding: 0.5rem 0.55rem;
-    }
-
-    pre.code-block {
+    /* 3 — Codeblöcke */
+    pre.ha3p-code {
       background: rgba(255, 255, 255, 0.6);
       border: 1px solid var(--bdr);
       border-radius: 6px;
@@ -139,65 +122,103 @@
       overflow-x: auto;
       color: #000;
     }
-
-    pre.code-block code {
-      font-family: 'Courier New', Courier, monospace;
+    pre.ha3p-code code {
+      font-family: "Courier New", Courier, monospace;
       display: block;
       white-space: pre;
       color: inherit;
-    }
-
-    /* SVG mit foreignObject: <object> statt <img> */
-    .ha3-dag-figure {
-      margin: 1rem 0 1.5rem;
-    }
-    .ha3-dag-aspect {
-      margin: 0 auto;
-      max-width: 540px;
-      width: 100%;
-      aspect-ratio: 539.646 / 1368.65;
-    }
-    .ha3-dag-aspect object {
-      display: block;
-      width: 100%;
-      height: 100%;
+      background: none;
       border: 0;
+      padding: 0;
     }
-    .ha3-dag-caption {
-      margin: 0.5rem 0 0;
-      font-size: 0.85rem;
-      color: var(--soft);
-      text-align: center;
-      line-height: 1.4;
+    .ha3p-codepair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.35rem;
+      align-items: start;
+      margin: 0 0 0.25rem;
+    }
+    .ha3p-codepair__col { min-width: 0; }
+    .ha3p-code-label {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--mid);
+      margin: 0 0 0.65rem;
+      line-height: 1.35;
+    }
+    .ha3p-codepair__col pre.ha3p-code { margin-top: 0; }
+    @media (max-width: 960px) {
+      .ha3p-codepair { grid-template-columns: 1fr; }
+      .ha3p-codepair__col + .ha3p-codepair__col .ha3p-code-label { margin-top: 1.25rem; }
     }
 
-    .result-table {
+    /* Lösung: zwei Spalten wie Aufgabenstellung — links Aufgabe 1 (DAG), rechts Aufgabe 2 + 3 */
+    .ha3p-loesung-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.35rem;
+      align-items: start;
+    }
+    .ha3p-loesung-cols__left,
+    .ha3p-loesung-cols__right {
+      min-width: 0;
+    }
+    .ha3p-loesung-cols__left > h3:first-child,
+    .ha3p-loesung-cols__right > h3:first-child {
+      margin-top: 0;
+    }
+    @media (max-width: 960px) {
+      .ha3p-loesung-cols {
+        grid-template-columns: 1fr;
+      }
+      .ha3p-loesung-cols__right > h3:first-child {
+        margin-top: 1.5rem;
+      }
+    }
+
+    /* 4 — ACTION / Teilaufgaben */
+    .ha3p-action {
+      background: var(--ctfl-bg);
+      border: 1px solid rgba(74, 124, 89, 0.25);
+      border-left: 4px solid var(--ctfl);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .ha3p-action ol {
+      margin: 0;
+      padding-left: 1.35rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .ha3p-action li { margin-bottom: 0.35rem; }
+
+    /* 5 — Tabellen */
+    .ha3p-table {
       width: 100%;
       border-collapse: collapse;
-      margin: 1.5rem 0;
+      margin: 1rem 0 1.5rem;
       font-size: 0.9rem;
       background: rgba(255, 255, 255, 0.5);
       border: 1px solid var(--bdr);
       border-radius: 8px;
       overflow: hidden;
     }
-
-    .result-table th,
-    .result-table td {
+    .ha3p-table th,
+    .ha3p-table td {
       padding: 0.7rem 1rem;
       text-align: left;
       border-bottom: 1px solid var(--bdr);
+      vertical-align: top;
     }
-
-    .result-table th {
+    .ha3p-table th {
       background: rgba(0, 0, 0, 0.04);
       font-weight: 600;
       color: var(--soft);
     }
-
-    .result-table tr:last-child td { border-bottom: none; }
-
-    .result-table caption {
+    .ha3p-table tr:last-child td { border-bottom: none; }
+    .ha3p-table caption {
       caption-side: top;
       text-align: left;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -207,42 +228,78 @@
       padding: 0 0 0.55rem;
       line-height: 1.4;
     }
-
-    .result-table th.col-num,
-    .result-table td.col-num {
+    .ha3p-table .ha3p-table__num {
       text-align: right;
       font-variant-numeric: tabular-nums;
     }
+    .ha3p-table__row--hl td {
+      background: rgba(201, 232, 210, 0.35);
+    }
+    .ha3p-table__row--hl td:first-child { font-weight: 600; }
 
-    .result-box {
+    /* Kennzahlen-Zeilen (APPLICATION, kein ACTION-Kasten) */
+    .ha3p-metric {
       background: var(--ok-bg);
       border: 1px solid rgba(74, 124, 89, 0.25);
       border-left: 4px solid var(--ok);
-      border-radius: 6px;
+      border-radius: 8px;
       padding: 1rem 1.2rem;
-      margin: 1.5rem 0;
+      margin: 1rem 0 1.25rem;
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.5;
+    }
+    .ha3p-metric strong { color: var(--ok); }
+
+    /* 6 — Figure / SVG */
+    .ha3p-figure { margin: 1rem 0 1.5rem; }
+    .ha3p-dag-aspect {
+      margin: 0 auto;
+      max-width: 540px;
+      width: 100%;
+      aspect-ratio: 539.646 / 1368.65;
+    }
+    .ha3p-dag-aspect object {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .ha3p-figcaption {
+      margin: 0.5rem 0 0;
+      font-size: 0.85rem;
+      color: var(--soft);
+      text-align: center;
+      line-height: 1.4;
     }
 
-    .result-box strong { color: var(--ok); }
-
-    /* Drei Lösungsteile: gleiches Section-Muster wie 04c-ha5-testfallentwurf.html */
-    .section { margin-bottom: 1.5rem; border-radius: 10px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); }
-    .section__header { display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap; padding: .7rem 1.2rem; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; background: rgba(0,0,0,0.04); border-bottom: 1px solid var(--bdr); }
-    .section__num { font-size: 11px; font-weight: 800; letter-spacing: .12em; text-transform: uppercase; color: var(--soft); white-space: nowrap; }
-    .section__title { margin: 0; font-size: 15px; font-weight: 700; }
-    .section__body { padding: 1rem 1.2rem; background: rgba(255,255,255,0.35); }
-    .section--e1 .section__header { background: var(--e1); }
-    .section--e2 .section__header { background: var(--e2); }
-    .section--e3 .section__header { background: var(--e3); }
-    .section--e4 .section__header { background: var(--e4); }
-    .section--e6 .section__header { background: var(--e6); }
-    .ha3-sheet__body > .section {
-      box-shadow: none;
-      margin-bottom: 1.25rem;
-      border: 1px solid var(--bdr);
+    /* 7 — COGNITION / Begründung */
+    .ha3p-cognition {
+      background: var(--callout-chain-bg);
+      border: 1px solid var(--callout-chain-border-outer);
+      border-left: var(--callout-chain-accent-width) solid var(--callout-chain-border-accent);
+      border-radius: var(--callout-chain-radius);
+      padding: var(--callout-chain-padding-y) var(--callout-chain-padding-x);
+      margin: 1rem 0 0;
     }
-    .ha3-sheet__body > .section:last-child { margin-bottom: 0; }
+    .ha3p-cognition ul {
+      margin: 0;
+      padding-left: 1.35rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .ha3p-cognition li { margin-bottom: 0.35rem; }
+
+    /* Abschnitt Quellen (außerhalb Sheet) */
+    #quellen.ha3p-quellen { margin-top: 0.5rem; }
+    #quellen.ha3p-quellen h2 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      color: var(--text);
+      margin: 0 0 0.75rem;
+    }
   </style>
 </head>
 <body>
@@ -304,23 +361,36 @@
     <span><strong>CTFL-Bezug:</strong> ISTQB CTFL v4.0.2 (GTB, 01.03.2025) — Kap. 4: White-Box, Kontrollfluss, Anweisungs- und Zweigüberdeckung</span>
   </div>
 
-  <section class="ha3-sheet ha3-sheet--aufgabe" aria-labelledby="aufgabe-heading">
-    <div class="ha3-sheet__header">
-      <h2 class="ha3-sheet__title" id="aufgabe-heading">Aufgabe - Überdeckung</h2>
+  <nav class="ha3p-toc" aria-label="Sprungmarken auf dieser Seite">
+    <strong>Inhalt:</strong>
+    <a href="#aufgabenstellung">Aufgabenstellung</a> ·
+    <a href="#loesung">Lösung</a> ·
+    <a href="#quellen">Quellen</a>
+  </nav>
+
+  <section id="aufgabenstellung" class="ha3p-sheet ha3p-sheet--task" aria-labelledby="ha3-h2-aufgabe">
+    <div class="ha3p-sheet__header">
+      <h2 id="ha3-h2-aufgabe">Aufgabenstellung</h2>
     </div>
-    <div class="ha3-sheet__body">
+    <div class="ha3p-sheet__body">
 
-    <aside class="chain-callout" role="region" aria-label="Einleitung zur Aufgabe">
-      <div class="chain-callout__content">
-        <p>Dein Teamkollege hat <strong>einige Testfälle</strong> für das folgende <strong>Code-Stück</strong> erstellt.</p>
-        <p>Solange ein Kunde <strong>mehr als 50 €</strong> ausgibt, sollte der Versand <strong>kostenlos</strong> sein. Wenn es <strong>mehr als 25 €</strong> sind, aber <strong>weniger als 3 Artikel</strong> versendet werden müssen, sollte er ebenfalls <strong>kostenlos</strong> sein. Wenn es <strong>nur einen Artikel</strong> gibt, der <strong>mehr als 10 €</strong> kostet, sollte es einen <strong>Rabatt</strong> geben, aber der Versand sollte <strong>nicht</strong> kostenlos sein. In <strong>anderen Fällen</strong> sollte der <strong>volle Versandpreis</strong> gezahlt werden.</p>
+      <div class="ha3p-intro">
+        <p><strong>Originalaufgabe (Kurs):</strong> <a href="https://masterschool.notion.site/1-Hausaufgabe-Zustands-bergangstest-2219418319f380e6ad92e72ae1e9a21c?pvs=25" target="_blank" rel="noopener noreferrer">Hausaufgabe — Zustandsübergangstest (Masterschool / Notion)</a></p>
+        <p><strong>Beispielaufgabe (Kurs):</strong> <a href="https://masterschool.notion.site/Beispielaufgabe-Zustands-bergangstest-berdeckung-2219418319f380bcb362e37dfdc07e98" target="_blank" rel="noopener noreferrer">Zustandsübergang &amp; Überdeckung (Masterschool / Notion)</a></p>
       </div>
-    </aside>
 
-    <div class="ha3-code-pair">
-      <div class="ha3-code-pair__col">
-        <h3 id="aufgabe-code-heading">Code</h3>
-        <pre class="code-block" aria-labelledby="aufgabe-code-heading"><code>def is_shipping_free(price, numberOfItems, isPrimeShoppingMember):
+      <h3>Sachverhalt &amp; Regel</h3>
+      <div class="ha3p-prose">
+        <p>Dein Teamkollege hat Testfälle für das folgende Code-Stück erstellt.</p>
+        <p><strong>Geschäftsregel (verbal):</strong> Solange ein Kunde <strong>mehr als 50 €</strong> ausgibt, soll der Versand <strong>kostenlos</strong> sein. Wenn es <strong>mehr als 25 €</strong> sind, aber <strong>weniger als 3 Artikel</strong> versendet werden müssen, soll er ebenfalls kostenlos sein. Wenn es <strong>nur einen Artikel</strong> gibt, der <strong>mehr als 10 €</strong> kostet, soll es einen <strong>Rabatt</strong> geben, aber der Versand soll <strong>nicht</strong> kostenlos sein. In <strong>anderen Fällen</strong> soll der <strong>volle Versandpreis</strong> gezahlt werden.</p>
+        <p>Er fragt, ob seine Tests den Code <strong>ausreichend abdecken</strong>.</p>
+      </div>
+
+      <h3>Code &amp; Testaufrufe</h3>
+      <div class="ha3p-codepair">
+        <div class="ha3p-codepair__col">
+          <h4 class="ha3p-code-label">Code</h4>
+          <pre class="ha3p-code"><code>def is_shipping_free(price, numberOfItems, isPrimeShoppingMember):
     print("Additional Statement 1")
     if price &gt; 50 or isPrimeShoppingMember:
         print("Additional Statement 2")
@@ -331,10 +401,10 @@
         return False
     return True
     print("Additional Statement 5")</code></pre>
-      </div>
-      <div class="ha3-code-pair__col">
-        <h3 id="aufgabe-tests-heading">Er hat die folgenden Tests geschrieben und fragt dich, ob diese <strong>Testfälle</strong> den <strong>Code</strong> <strong>abdecken</strong>:</h3>
-        <pre class="code-block" aria-labelledby="aufgabe-tests-heading"><code>print("----------------")
+        </div>
+        <div class="ha3p-codepair__col">
+          <h4 class="ha3p-code-label">Gegebene Testaufrufe</h4>
+          <pre class="ha3p-code"><code>print("----------------")
 is_shipping_free(30,2,True)
 print("----------------")
 is_shipping_free(15,1,False)
@@ -342,209 +412,187 @@ print("----------------")
 is_shipping_free(15,1,True)
 print("----------------")
 is_shipping_free(50,1,False)</code></pre>
+        </div>
       </div>
-    </div>
 
-    <aside class="chain-callout" role="region" aria-labelledby="aufgaben-liste-heading">
-      <p class="chain-callout__title" id="aufgaben-liste-heading">Aufgaben</p>
-      <div class="chain-callout__content">
+      <h3>Teilaufgaben</h3>
+      <div class="ha3p-action">
         <ol>
-          <li>Zeichne ein <strong>Zustandsübergangsdiagramm</strong> (<strong>gerichteter azyklischer Graph</strong>) für diesen <strong>Codeabschnitt</strong></li>
-          <li>Berechne die <strong>Anweisungsüberdeckung</strong> (Statement Coverage) und die <strong>Zweigüberdeckung</strong> (Branch Coverage)</li>
-          <li>Berechne die <strong>Anweisungsüberdeckung</strong> und die <strong>Zweigüberdeckung</strong>, wenn die Zeile <code>print("Additional Statement 5")</code> aus dem Code <strong>entfernt</strong> wird.</li>
+          <li>Zustandsübergangsdiagramm bzw. <strong>Kontrollfluss</strong> als <strong>gerichteter azyklischer Graph</strong> für diesen Codeabschnitt zeichnen.</li>
+          <li><strong>Anweisungsüberdeckung</strong> (Statement Coverage) und <strong>Zweigüberdeckung</strong> (Branch Coverage) für die vier Tests berechnen.</li>
+          <li>Dieselben Kennzahlen, wenn die Zeile <code>print("Additional Statement 5")</code> <strong>entfernt</strong> wird.</li>
         </ol>
       </div>
-    </aside>
 
     </div>
   </section>
 
-  <section class="ha3-sheet ha3-sheet--loesung" aria-labelledby="loesung-heading">
-    <div class="ha3-sheet__header">
-      <h2 class="ha3-sheet__title" id="loesung-heading">Lösung</h2>
+  <section id="loesung" class="ha3p-sheet ha3p-sheet--answer" aria-labelledby="ha3-h2-loesung">
+    <div class="ha3p-sheet__header">
+      <h2 id="ha3-h2-loesung">Lösung</h2>
     </div>
-    <div class="ha3-sheet__body">
+    <div class="ha3p-sheet__body">
 
-    <section class="section section--e1" aria-labelledby="ha3-loes-teil12-heading">
-      <div class="section__header">
-        <span class="section__num">Aufgaben 1 &amp; 2</span>
-        <h3 class="section__title" id="ha3-loes-teil12-heading">Diagramm (DAG) und Überdeckung mit vier Tests</h3>
+      <div class="ha3p-loesung-cols">
+        <div class="ha3p-loesung-cols__left" role="region" aria-label="Lösung Teil 1 — Kontrollfluss (DAG)">
+      <h3>Kontrollfluss (DAG)</h3>
+      <div class="ha3p-prose">
+        <p><strong>Grafik (DAG):</strong> Das <strong>Zustandsübergangsdiagramm</strong> als SVG liegt im Repo unter <strong><code>02_Portfolio/QA_Lernwebseite/assets/ha3-svg/HA3-Teil2_DAG.svg</code></strong>.</p>
       </div>
-      <div class="section__body">
-        <div class="ha3-code-pair ha3-code-pair--loesung">
-          <div class="ha3-code-pair__col">
-            <h4 class="ha3-loesung-col-heading" id="ha3-loes-teil1-heading">Aufgabe 1 · Zustandsübergangsdiagramm (gerichteter azyklischer Graph)</h4>
-            <aside class="chain-callout" role="region" aria-labelledby="ha3-kern-teil1-heading">
-              <p class="chain-callout__title" id="ha3-kern-teil1-heading">Kernaussage</p>
-              <div class="chain-callout__content">
-                <p><strong>Kontrollfluss:</strong> <strong>11 Kanten</strong> im Graphen; Statement-Index <strong>10</strong> (<code>print("Additional Statement 5")</code>) ist <strong>unerreichbar</strong>.</p>
-              </div>
-            </aside>
+      <figure class="ha3p-figure">
+        <div class="ha3p-dag-aspect">
+          <object
+            type="image/svg+xml"
+            data="../assets/ha3-svg/HA3-Teil2_DAG.svg"
+            role="img"
+            aria-label="Zustandsübergangsdiagramm (DAG): Start, Anweisungen, Entscheidungen und Rückgaben für is_shipping_free">
+            <a href="../assets/ha3-svg/HA3-Teil2_DAG.svg">Diagramm als SVG öffnen</a>
+          </object>
+        </div>
+        <figcaption class="ha3p-figcaption">Zustandsübergangsdiagramm (DAG) zu <code>is_shipping_free</code></figcaption>
+      </figure>
+      <div class="ha3p-prose">
+        <p>11 Kanten insgesamt (jede gezeichnete Kante einmal).</p>
+        <p><strong>Knoten:</strong> Start, S1, D1, S2, D2, S3, D3, S4, Rückgaben (über <code>return True</code> / <code>return False</code>).</p>
+      </div>
+        </div>
 
-            <figure class="ha3-dag-figure">
-              <div class="ha3-dag-aspect">
-                <object
-                  type="image/svg+xml"
-                  data="../assets/ha3-svg/HA3-Teil2_DAG.svg"
-                  role="img"
-                  aria-label="Zustandsübergangsdiagramm (DAG): Start, Anweisungen, Entscheidungen und Rückgaben für is_shipping_free">
-                  <a href="../assets/ha3-svg/HA3-Teil2_DAG.svg">Diagramm als SVG öffnen</a>
-                </object>
-              </div>
-              <figcaption class="ha3-dag-caption">Zustandsübergangsdiagramm (DAG) zu <code>is_shipping_free</code></figcaption>
-            </figure>
+        <div class="ha3p-loesung-cols__right" role="region" aria-label="Lösung Teil 2 und 3 — Überdeckung und Variante">
+      <h3>Zuordnung: Statement-Indizes</h3>
+      <div class="ha3p-prose">
+        <p>Die folgenden <strong>Indizes 1–10</strong> entsprechen der Auszählung in der Lösung (ohne die Zeile <code>def …</code>); sie ordnen die <strong>Ausführungspfad-Tabellen</strong> unten dem Code zu.</p>
+      </div>
+      <table class="ha3p-table">
+        <caption>Zuordnung Statement-Index zu Element im Code</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="ha3p-table__num">Index</th>
+            <th scope="col">Element im Code</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="ha3p-table__num">1</td><td><code>print("Additional Statement 1")</code></td></tr>
+          <tr><td class="ha3p-table__num">2</td><td><code>if price &gt; 50 or isPrimeShoppingMember</code></td></tr>
+          <tr><td class="ha3p-table__num">3</td><td><code>print("Additional Statement 2")</code></td></tr>
+          <tr><td class="ha3p-table__num">4</td><td><code>if price &gt; 25 and numberOfItems &lt; 3</code></td></tr>
+          <tr><td class="ha3p-table__num">5</td><td><code>print("Additional Statement 3")</code></td></tr>
+          <tr><td class="ha3p-table__num">6</td><td><code>elif price &gt; 10 and numberOfItems == 1</code></td></tr>
+          <tr><td class="ha3p-table__num">7</td><td><code>print("Additional Statement 4(discount)")</code></td></tr>
+          <tr><td class="ha3p-table__num">8</td><td><code>return False</code></td></tr>
+          <tr><td class="ha3p-table__num">9</td><td><code>return True</code></td></tr>
+          <tr><td class="ha3p-table__num">10</td><td><code>print("Additional Statement 5")</code> — <strong>unerreichbar</strong> (toter Code nach <code>return True</code>)</td></tr>
+        </tbody>
+      </table>
 
-            <p><strong>11 Kanten insgesamt</strong> (jede gezeichnete Kante einmal)</p>
+      <h3>Überdeckung</h3>
+      <div class="ha3p-prose">
+        <p><strong>2. Coverage mit den vier gegebenen Tests</strong></p>
+      </div>
 
-            <p><strong>Knoten:</strong> Start, S1, D1, S2, D2, S3, D3, S4, Rückgaben (über <code>return True</code> / <code>return False</code>).</p>
-          </div>
-          <div class="ha3-code-pair__col">
-            <h4 class="ha3-loesung-col-heading" id="ha3-loes-teil2-heading">Aufgabe 2 · Anweisungs- und Zweigüberdeckung (vier gegebene Tests)</h4>
-            <aside class="chain-callout" role="region" aria-labelledby="ha3-kern-teil2-heading">
-              <p class="chain-callout__title" id="ha3-kern-teil2-heading">Kernaussage</p>
-              <div class="chain-callout__content">
-                <p><strong>Vier gegebene Tests:</strong> Anweisungsüberdeckung <strong>9 / 10 = 90 %</strong> (Index 10 wird nie ausgeführt); Zweigüberdeckung <strong>10 / 11 ≈ 90,91 %</strong> — es fehlt die Kante <strong>D3 → return True</strong>.</p>
-              </div>
-            </aside>
+      <h4>Anweisungsüberdeckung (Statement Coverage)</h4>
+      <table class="ha3p-table">
+        <caption>Anweisungsüberdeckung — ausgeführte Statement-Indizes je Test</caption>
+        <thead>
+          <tr>
+            <th scope="col">Test</th>
+            <th scope="col">Parameter <code>(price, numberOfItems, isPrime)</code></th>
+            <th scope="col">Ausgeführte Statement-Indizes</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>T1</td><td><code>(30, 2, True)</code></td><td>1, 2, 3, 4, 5, 9</td></tr>
+          <tr><td>T2</td><td><code>(15, 1, False)</code></td><td>1, 2, 4, 6, 7, 8</td></tr>
+          <tr><td>T3</td><td><code>(15, 1, True)</code></td><td>1, 2, 3, 4, 6, 7, 8</td></tr>
+          <tr><td>T4</td><td><code>(50, 1, False)</code></td><td>1, 2, 4, 5, 9</td></tr>
+        </tbody>
+      </table>
+      <div class="ha3p-prose">
+        <p><strong>Vereinigung:</strong> Indizes <strong>1–9</strong>; Index <strong>10</strong> wird <strong>nie</strong> erreicht.</p>
+      </div>
+      <p class="ha3p-metric"><strong>Statement Coverage:</strong> <strong>9 / 10 = 90 %</strong></p>
 
-            <h4>Zuordnung: Statement-Index</h4>
-            <p>Die folgenden Indizes 1–10 entsprechen der Auszählung (ohne die Zeile <code>def …</code>):</p>
+      <h4>Zweigüberdeckung (Branch Coverage)</h4>
+      <div class="ha3p-prose">
+        <p>Alle <strong>11 Kanten</strong> prüfen:</p>
+      </div>
+      <table class="ha3p-table">
+        <caption>Zweigüberdeckung — Kanten und Abdeckung durch die vier Tests</caption>
+        <thead>
+          <tr>
+            <th scope="col">Kante</th>
+            <th scope="col">Von Testfällen abgedeckt?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Start → S1</td><td>alle vier</td></tr>
+          <tr><td>S1 → D1</td><td>alle vier</td></tr>
+          <tr><td>D1 → S2 (True)</td><td>T1, T3</td></tr>
+          <tr><td>D1 → D2 (False, ohne S2)</td><td>T2, T4</td></tr>
+          <tr><td>S2 → D2</td><td>T1, T3</td></tr>
+          <tr><td>D2 → S3 (True)</td><td>T1, T4</td></tr>
+          <tr><td>D2 → D3 (False)</td><td>T2, T3</td></tr>
+          <tr><td>S3 → <code>return True</code></td><td>T1, T4</td></tr>
+          <tr><td>D3 → S4 (True)</td><td>T2, T3</td></tr>
+          <tr class="ha3p-table__row--hl"><td><strong>D3 → <code>return True</code> (False-Zweig des <code>elif</code>)</strong></td><td><strong>fehlt</strong></td></tr>
+          <tr><td>S4 → <code>return False</code></td><td>T2, T3</td></tr>
+        </tbody>
+      </table>
+      <p class="ha3p-metric"><strong>Branch Coverage:</strong> <strong>10 / 11 ≈ 90,91 %</strong></p>
+      <div class="ha3p-prose">
+        <p><strong>Fehlender Zweig:</strong> Kante <strong>D3 → <code>return True</code></strong> (z.&nbsp;B. abdeckbar mit <strong><code>(15, 2, False)</code></strong> — Rabattpfad ausgeschlossen, aber kein kostenloser Versand über die zweite <code>if</code>-Bedingung).</p>
+      </div>
 
-            <table class="result-table">
-              <caption>Zuordnung der Statement-Indizes 1–10 zu Elementen im Code (ohne Zeile <code>def …</code>)</caption>
-              <thead>
-                <tr>
-                  <th scope="col" class="col-num">Index</th>
-                  <th scope="col">Element im Code</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td class="col-num">1</td><td><code>print("Additional Statement 1")</code></td></tr>
-                <tr><td class="col-num">2</td><td><code>if price &gt; 50 or isPrimeShoppingMember</code></td></tr>
-                <tr><td class="col-num">3</td><td><code>print("Additional Statement 2")</code></td></tr>
-                <tr><td class="col-num">4</td><td><code>if price &gt; 25 and numberOfItems &lt; 3</code></td></tr>
-                <tr><td class="col-num">5</td><td><code>print("Additional Statement 3")</code></td></tr>
-                <tr><td class="col-num">6</td><td><code>elif price &gt; 10 and numberOfItems == 1</code></td></tr>
-                <tr><td class="col-num">7</td><td><code>print("Additional Statement 4(discount)")</code></td></tr>
-                <tr><td class="col-num">8</td><td><code>return False</code></td></tr>
-                <tr><td class="col-num">9</td><td><code>return True</code></td></tr>
-                <tr><td class="col-num">10</td><td><code>print("Additional Statement 5")</code> — <strong>unerreichbar</strong></td></tr>
-              </tbody>
-            </table>
+      <h3>Variante ohne Statement 5</h3>
+      <div class="ha3p-prose">
+        <p>Nach Entfernen dieser Zeile:</p>
+      </div>
+      <table class="ha3p-table">
+        <caption>Kennzahlen nach Entfernen von <code>print("Additional Statement 5")</code></caption>
+        <thead>
+          <tr>
+            <th scope="col">Metrik</th>
+            <th scope="col">Ergebnis</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Statement Coverage</strong></td>
+            <td><strong>9 ausführbare Anweisungen</strong>, alle <strong>9</strong> werden von den vier Tests erreicht → <strong>9 / 9 = 100 %</strong></td>
+          </tr>
+          <tr>
+            <td><strong>Branch Coverage</strong></td>
+            <td><strong>unverändert 10 / 11 ≈ 90,91 %</strong> — die entfernte Zeile war <strong>keine zusätzliche Kante</strong> im Graph</td>
+          </tr>
+        </tbody>
+      </table>
 
-            <h4>Anweisungsüberdeckung (Statement Coverage)</h4>
+      <h4>Begründung (kurz)</h4>
+      <div class="ha3p-cognition">
+        <ul>
+          <li><strong>Anweisungsüberdeckung:</strong> Anteil der <strong>ausführbaren Anweisungen</strong> (bzw. hier der vereinbarten Indizes), die mindestens ein Test ausführt.</li>
+          <li><strong>Zweigüberdeckung (ISTQB):</strong> <strong>Alle Kanten</strong> des Kontrollflussgraphen — nicht nur die Booleschen Entscheidungen isoliert.</li>
+          <li>Der fehlende Pfad <strong>D3 → <code>return True</code></strong> erklärt <strong>eine</strong> nicht getestete Kante von <strong>11</strong>.</li>
+        </ul>
+      </div>
 
-            <table class="result-table">
-              <caption>Anweisungsüberdeckung: ausgeführte Statement-Indizes je gegebenem Testaufruf</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Test</th>
-                  <th scope="col">Parameter <code>(price, numberOfItems, isPrime)</code></th>
-                  <th scope="col">Ausgeführte Statement-Indizes</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>T1</td><td><code>(30, 2, True)</code></td><td>1, 2, 3, 4, 5, 9</td></tr>
-                <tr><td>T2</td><td><code>(15, 1, False)</code></td><td>1, 2, 4, 6, 7, 8</td></tr>
-                <tr><td>T3</td><td><code>(15, 1, True)</code></td><td>1, 2, 3, 4, 6, 7, 8</td></tr>
-                <tr><td>T4</td><td><code>(50, 1, False)</code></td><td>1, 2, 4, 5, 9</td></tr>
-              </tbody>
-            </table>
-
-            <p><strong>Vereinigung:</strong> Indizes <strong>1–9</strong>; Index <strong>10</strong> wird <strong>nie</strong> erreicht.</p>
-
-            <div class="result-box">
-              <strong>Statement Coverage: 9 / 10 = 90 %</strong>
-            </div>
-
-            <h4>Zweigüberdeckung (Branch Coverage)</h4>
-
-            <p>Alle <strong>11 Kanten</strong> des Graphen prüfen:</p>
-
-            <table class="result-table">
-              <caption>Zweigüberdeckung: Kanten und Abdeckung durch die vier Tests</caption>
-              <thead>
-                <tr>
-                  <th scope="col">Kante</th>
-                  <th scope="col">Von Testfällen abgedeckt?</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr><td>Start → S1</td><td>alle vier</td></tr>
-                <tr><td>S1 → D1</td><td>alle vier</td></tr>
-                <tr><td>D1 → S2 (True)</td><td>T1, T3</td></tr>
-                <tr><td>D1 → D2 (False, ohne S2)</td><td>T2, T4</td></tr>
-                <tr><td>S2 → D2</td><td>T1, T3</td></tr>
-                <tr><td>D2 → S3 (True)</td><td>T1, T4</td></tr>
-                <tr><td>D2 → D3 (False)</td><td>T2, T3</td></tr>
-                <tr><td>S3 → return True</td><td>T1, T4</td></tr>
-                <tr><td>D3 → S4 (True)</td><td>T2, T3</td></tr>
-                <tr><td><strong>D3 → return True (False-Zweig des elif)</strong></td><td><strong>fehlt</strong></td></tr>
-                <tr><td>S4 → return False</td><td>T2, T3</td></tr>
-              </tbody>
-            </table>
-
-            <div class="result-box">
-              <strong>Branch Coverage: 10 / 11 ≈ 90,91 %</strong>
-            </div>
-
-            <p><strong>Fehlender Zweig:</strong> Kante <strong>D3 → return True</strong> (z. B. abdeckbar mit <code>(15, 2, False)</code> — Rabattpfad ausgeschlossen, aber kein kostenloser Versand über die zweite if-Bedingung).</p>
-
-            <h4>Begründung</h4>
-            <ul>
-              <li><strong>Anweisungsüberdeckung:</strong> Anteil der <strong>ausführbaren Anweisungen</strong>, die mindestens ein Test ausführt.</li>
-              <li><strong>Zweigüberdeckung (ISTQB):</strong> <strong>Alle Kanten</strong> des Kontrollflussgraphen — nicht nur die Booleschen Entscheidungen isoliert.</li>
-              <li>Der fehlende Pfad <strong>D3 → return True</strong> erklärt <strong>eine</strong> nicht getestete Kante von <strong>11</strong>.</li>
-            </ul>
-          </div>
         </div>
       </div>
-    </section>
 
-    <section class="section section--e3" aria-labelledby="ha3-loes-teil3-heading">
-      <div class="section__header">
-        <span class="section__num">Aufgabe 3</span>
-        <h3 class="section__title" id="ha3-loes-teil3-heading">Ohne <code>print("Additional Statement 5")</code></h3>
-      </div>
-      <div class="section__body">
-        <aside class="chain-callout" role="region" aria-labelledby="ha3-kern-teil3-heading">
-          <p class="chain-callout__title" id="ha3-kern-teil3-heading">Kernaussage</p>
-          <div class="chain-callout__content">
-            <p><strong>Ohne</strong> die Zeile <code>print("Additional Statement 5")</code>: Anweisungsüberdeckung <strong>9 / 9 = 100 %</strong>; Zweigüberdeckung <strong>unverändert</strong> 10 / 11 (die Zeile war keine zusätzliche Kante).</p>
-          </div>
-        </aside>
+    </div>
+  </section>
 
-        <p>Nach Entfernen dieser Zeile:</p>
-
-        <table class="result-table">
-          <caption>Auswirkung des Entfernens von <code>print("Additional Statement 5")</code> auf die Kennzahlen</caption>
-          <thead>
-            <tr>
-              <th scope="col">Metrik</th>
-              <th scope="col">Ergebnis</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td><strong>Statement Coverage</strong></td>
-              <td><strong>9 ausführbare Anweisungen</strong>, alle <strong>9</strong> werden von den vier Tests erreicht → <strong>9 / 9 = 100 %</strong></td>
-            </tr>
-            <tr>
-              <td><strong>Branch Coverage</strong></td>
-              <td><strong>unverändert 10 / 11 ≈ 90,91 %</strong> — die entfernte Zeile war <strong>keine zusätzliche Kante</strong> im Graph</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </section>
-
+  <section id="quellen" class="ha3p-quellen" aria-labelledby="ha3-h2-quellen">
+    <h2 id="ha3-h2-quellen">Quellen</h2>
+    <div class="ha3p-intro">
+      <p><strong>Originalaufgabe (Kurs):</strong> <a href="https://masterschool.notion.site/1-Hausaufgabe-Zustands-bergangstest-2219418319f380e6ad92e72ae1e9a21c?pvs=25" target="_blank" rel="noopener noreferrer">Hausaufgabe — Zustandsübergangstest (Masterschool / Notion)</a></p>
+      <p><strong>Beispielaufgabe (Kurs):</strong> <a href="https://masterschool.notion.site/Beispielaufgabe-Zustands-bergangstest-berdeckung-2219418319f380bcb362e37dfdc07e98" target="_blank" rel="noopener noreferrer">Zustandsübergang &amp; Überdeckung (Masterschool / Notion)</a></p>
     </div>
   </section>
 
 </main>
 
 <footer>
-  <p class="source-note">HA3 Überdeckung · QA Lernwebseite · ISTQB CTFL v4.0.2 Kap. 4 · Erstellt 2026-04-04</p>
+  <p class="source-note">HA3 Überdeckung · QA Lernwebseite · ISTQB CTFL v4.0.2 Kap. 4 · Stand 2026-04-05</p>
 </footer>
 
 </body>

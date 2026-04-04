@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-04  
-Letzte Aktualisierung: 2026-04-04 — **Phase 6** (Presentation Patterns, **04e**); zuvor Phase 5 (Diátaxis ↔ Komponenten), Phase 4–1  
+Letzte Aktualisierung: 2026-04-05 — **04e** produktiv umgesetzt (`pages/04e-ha3-ueberdeckung.html`): **`ha3p-*`** nach Phase 6, Inhalt **1:1** `pilot-ha3-content.txt`, **Lösung** zweispaltig (**`.ha3p-loesung-cols`**: links DAG/Aufgabe 1, rechts Index+Coverage+Variante/Aufgaben 2+3); zuvor **2026-04-04** Phase 6 (Presentation Patterns, **04e**-Spec); zuvor Phase 5–1  
 Zweck: **Pilot** — methodische Grundlage zur Content-Strukturierung der HA3-Überdeckungs-Seite; Erkenntnisse fließen in Designsystem-Entscheidungen (Workshop).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Pilot-HA3  
 Normative Orientierung: [README.md](README.md), [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md), [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) — bei Konflikt zuerst Workshop-README und P04-00-Overview.
@@ -330,5 +330,7 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 ---
 
 ## Notizen (frei)
+
+- **2026-04-05:** **IST-Umsetzung** — Lernseite **`02_Portfolio/QA_Lernwebseite/pages/04e-ha3-ueberdeckung.html`** entspricht dem Pilot **Phasen 0–6**; Layout **Lösung** wie zweispaltige **Aufgabenstellung** (Code \| Testaufrufe): **Aufgabe 1** (DAG) **links**, **Aufgaben 2+3** **rechts** (`@media` ≤960px untereinander).
 
 *(Iterationen, offene Fragen, Verweise auf P03/P04/P05, Ausnahmen „Doku ausgelagert nach …“ — nach Bedarf.)*

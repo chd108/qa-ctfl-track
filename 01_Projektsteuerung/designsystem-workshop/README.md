@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-04 — **HA3 Content-Pilot:** [pilot-ha3-content.txt](pilot-ha3-content.txt) + [pilot-ha3-content-phasen.md](pilot-ha3-content-phasen.md) (Phasen **0–3** dokumentiert); zuvor **2026-04-03** Inventar **pilot-ha3-content.txt**; davor **pilot-ha3-content-phasen**, **P05**, Aufräum-Plan  
+Letzte Aktualisierung: 2026-04-05 — **04e** auf der **Lernwebsite** umgesetzt (HTML/CSS **`ha3p-*`**, Pilot **0–6**, zweispaltige **Lösung**); **Pilot-Doku** [pilot-ha3-content-phasen.md](pilot-ha3-content-phasen.md) / [pilot-ha3-content.txt](pilot-ha3-content.txt) nachgezogen. Zuvor **2026-04-04** Phasen **0–6** in **pilot-ha3-content-phasen.md**; zuvor **2026-04-03** Inventar **pilot-ha3-content.txt**; davor **P05**, Aufräum-Plan  
 Zweck: Living Documentation — Einstieg in den **Designsystem-Workshop** (Rollen, Inventar, Lesereihenfolge, Zielbaum).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop  
 Normative Orientierung: [03_Project_Standards.md](../03_Project_Standards.md) (Metablock, README-Ausnahme); Mapping [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)

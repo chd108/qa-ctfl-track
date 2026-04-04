@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-04  
-Letzte Aktualisierung: 2026-04-04  
+Letzte Aktualisierung: 2026-04-05 — Verweis: **04e** auf der Lernwebsite entspricht diesem Rohtext inhaltlich **1:1** (Struktur/Layout siehe **pilot-ha3-content-phasen.md**). Zuvor **2026-04-04**  
 Zweck: Lösung Hausaufgabe **HA3** — Teil **Überdeckung** (White-Box): Kontrollflussgraph, Anweisungs- und Zweigüberdeckung; Bezug zur Beispielaufgabe Masterschool.  
 Klassifizierung: 03_Hausaufgaben / HA3 / Lösung  
 Normative Orientierung: ISTQB CTFL Syllabus **v4.0.2** — Kap. 4 (Testanalyse und -entwurf, White-Box, Überdeckung); Kurs-/Aufgabenkontext Masterschool.
