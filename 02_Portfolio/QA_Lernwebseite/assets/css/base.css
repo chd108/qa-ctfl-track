@@ -93,6 +93,14 @@
   --ok-bg: var(--ctfl-bg);
   --warn: var(--praxis);
   --warn-bg: var(--praxis-bg);
+  /*
+   * HA3 (04e): ACTION (Teilaufgaben) = Ocker; Kopf Lösungs-Hülle (.ha3p-sheet--answer) = ctfl-grün.
+   * Nur 04e nutzt --surface-loesung-kopf-bg; 04c/05a section--e4 = Palette --e4 (Feature-Band), Landkarte/Glossar = --e4.
+   */
+  --surface-handlung-bg: var(--e4);
+  --surface-handlung-border-outer: rgba(156, 106, 42, 0.25);
+  --surface-handlung-accent: var(--praxis);
+  --surface-loesung-kopf-bg: var(--ctfl-bg);
 }
 
 /*

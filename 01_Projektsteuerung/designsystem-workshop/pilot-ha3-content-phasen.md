@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-04  
-Letzte Aktualisierung: 2026-04-05 — **04e** produktiv umgesetzt (`pages/04e-ha3-ueberdeckung.html`): **`ha3p-*`** nach Phase 6, Inhalt **1:1** `pilot-ha3-content.txt`, **Lösung** zweispaltig (**`.ha3p-loesung-cols`**: links DAG/Aufgabe 1, rechts Index+Coverage+Variante/Aufgaben 2+3); zuvor **2026-04-04** Phase 6 (Presentation Patterns, **04e**-Spec); zuvor Phase 5–1  
+Letzte Aktualisierung: 2026-04-05 — **04e** produktiv: **`ha3p-*`**, Inhalt **1:1** `pilot-ha3-content.txt`, **Lösung** zweispaltig (**`.ha3p-loesung-cols`**). **Farbregel HA** (ACTION vs. Lösungskopf): **`base.css`** + **Phase 6** unten · normativ **[P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md) §2** · **[03_Project_Standards.md](../03_Project_Standards.md) §6**. Zuvor **2026-04-04** Phase 6 (**04e**-Spec); zuvor Phase 5–1  
 Zweck: **Pilot** — methodische Grundlage zur Content-Strukturierung der HA3-Überdeckungs-Seite; Erkenntnisse fließen in Designsystem-Entscheidungen (Workshop).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Pilot-HA3  
 Normative Orientierung: [README.md](README.md), [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md), [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) — bei Konflikt zuerst Workshop-README und P04-00-Overview.
@@ -260,7 +260,7 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 
 **Ziel:** Konkrete **Darstellungsregeln** für die **8 Komponenten-Typen** (Phase 4/5) — Farben, Abstände, Rahmen — abgestimmt auf **`02_Portfolio/QA_Lernwebseite/assets/css/base.css`** (`:root`). **Umsetzung** in HTML/CSS erfolgt **gesondert** (Pilot-Architektur Phasen 0–5); hier nur die **verbindliche Spezifikation** für **04e**.
 
-**Design-Referenz (Tokens):** `--bg` `#f0ece6`, `--text` `#283535`, `--mid`, `--soft`, `--bdr`, Fließtext **Georgia** (body), UI-Akzente **Helvetica Neue** …; `--ctfl-bg` `#cde8d2`, `--ctfl` `#4a7c59`; `--callout-chain-*` (**F-CHAIN**, 04d B.13); Karten `--e3` / `--e4` für Aufgabe-/Lösungs-Köpfe (wie bestehende HA-Sheets).
+**Design-Referenz (Tokens):** Seitenbasis `--bg`, `--text`, `--mid`, `--soft`, `--bdr`; **`--ctfl`** / **`--ctfl-bg`**; Karten **`--e3`** / **`--e4`** (Aufgaben-Kopf `--e3`); **`--callout-chain-*`** (**F-CHAIN**). **HA-Flächen (nur 04e):** **`--surface-handlung-*`** (ACTION), **`--surface-loesung-kopf-bg`** (Kopf Lösungs-Hülle). **`04c`/`05a`** / Landkarte / Glossar: **`section--e4`** → **`--e4`** (kein Lösungs-Token). **Kein** globales Tauschen von `--e4`/`--ctfl-bg`. Konkrete Werte/Maße: Tabelle *Fest getroffene Entscheidungen* + Regeln Komponente **4** / **Querschnitt** unten.
 
 ### Fest getroffene Entscheidungen (Empfehlungen übernommen)
 
@@ -268,7 +268,8 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 |--------|------------|
 | **COGNITION / Begründungsliste (7)** | **F-CHAIN / Creme:** `--callout-chain-bg`, `--callout-chain-border-outer`, linker Akzent `--callout-chain-accent-width` + `--callout-chain-border-accent` — **nicht** Vollflächen-`--advanced-bg` (Vermeidung falscher „Vertiefungs“-Assoziation). |
 | **Hervorgehobene Tabellenzeile** (z. B. fehlender Zweig in **H**) | **Dezente Zeilen-Tint** `rgba(201, 232, 210, 0.35)` (abgeschwächtes Syllabus-Grün) **plus** **`font-weight: 600`** in der **ersten Spalte** (Kante) — **kein** Zebra-Streifen auf der ganzen Tabelle. |
-| **ACTION / Teilaufgaben (4)** | Hintergrund **`--ctfl-bg` `#cde8d2`**, klar von weißen Tabellen/Code getrennt. |
+| **ACTION / Teilaufgaben (4)** | Fläche **`--surface-handlung-bg`** (Ocker, alias **`--e4`**), Rand **`1px solid var(--surface-handlung-border-outer)`**, linker Akzent **`4px solid var(--surface-handlung-accent)`** — klar von weißen Tabellen/Code getrennt. |
+| **Kopf Lösungs-Hülle** (`.ha3p-sheet--answer`, **nur** **04e**) | Hintergrund **`--surface-loesung-kopf-bg`** (Syllabus-Grün, alias **`--ctfl-bg`**). |
 
 ### Regeln pro Komponente (1–8)
 
@@ -278,13 +279,13 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 
 **3. Codeblock Python (APPLICATION)** — Hintergrund `rgba(255,255,255,0.6)`; Rahmen `1px solid var(--bdr)`; **Radius** `6px`; Padding `1rem 1.2rem`; Außen `1rem 0`. Monospace; optional Sans-Überschrift (`--mid`, ~`1.05rem`).
 
-**4. Geordnete Liste + ACTION-Callout (ACTION)** — Container: **`--ctfl-bg`**, Rahmen z. B. `1px solid rgba(74, 124, 89, 0.25)` oder linker Akzent `4px solid var(--ctfl)`; **Padding** `1rem`–`1.25rem`; **Radius** `8px`; Außen `1.25rem 0`. `ol` innen ohne Zusatzmargen, `padding-left` ~`1.35rem`, `line-height` ~`1.65`.
+**4. Geordnete Liste + ACTION-Callout (ACTION)** — Container: **`--surface-handlung-bg`**, **`border: 1px solid var(--surface-handlung-border-outer)`**, **`border-left: 4px solid var(--surface-handlung-accent)`**; **Padding** `1rem`–`1.25rem`; **Radius** `8px`; Außen `1.25rem 0`. `ol` innen ohne Zusatzmargen, `padding-left` ~`1.35rem`, `line-height` ~`1.65`.
 
 **5. Data Table (APPLICATION / ACQUISITION)** — Volle Breite, `border-collapse: collapse`; Außenrahmen `1px solid var(--bdr)`; **Radius** `8px`, `overflow: hidden`; Zellenhintergrund `rgba(255,255,255,0.5)`; Zellenpadding ~`0.7rem 1rem`; Trennlinien `1px solid var(--bdr)`; **Header:** Hintergrund `rgba(0,0,0,0.04)`, **fett**, Text `--soft` oder `--mid`; **kein Zebra**; **Highlight-Zeile** wie oben (Tint + erste Spalte fett). Schriftgröße ~`0.9rem` (optional `0.82rem` in engen Layouts).
 
 **6. Figure + SVG (APPLICATION)** — `margin` `1rem 0 1.5rem`; SVG max. Breite (z. B. `540px`) oder `100%` mit Cap; Rahmen optional `1px solid var(--bdr)`. Caption/Begleittext: `0.85rem`, `--soft`, `line-height` 1.4.
 
-**7. Unordered List Begründung (COGNITION)** — Wrapper im **F-CHAIN-Stil** (`--callout-chain-bg`, Border, linker Akzent, Padding/Radius wie `--callout-chain-*`). `ul` mit üblichem `padding-left`. **Nicht** ACTION-Grün.
+**7. Unordered List Begründung (COGNITION)** — Wrapper im **F-CHAIN-Stil** (`--callout-chain-bg`, Border, linker Akzent, Padding/Radius wie `--callout-chain-*`). `ul` mit üblichem `padding-left`. **Nicht** wie der **ACTION**-Kasten (Ocker); **F-CHAIN-Creme** beibehalten.
 
 **8. TOC / Anker (APPLICATION)** — Hintergrund z. B. `--legend-surface` oder `rgba(255,255,255,0.45)`; Rahmen `1px solid var(--bdr)`; Radius `6–8px`; Padding ~`0.65rem 1rem`; Sans, klein (~`0.8125rem`), `--mid`; `margin-bottom` ~`1.25–1.5rem`. Kein Button-Look.
 
@@ -292,7 +293,7 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 
 - **Vertikaler Rhythmus:** zwischen Blöcken **1–1,5rem**; H3/H4-Abstände an bestehende HA-Sheet-Logik anlehnen.  
 - **Radien:** Code **6px**, Karten/Callouts/Tabellen **8px**.  
-- **Trennung:** ACTION (**grün**) vs. APPLICATION (**weiß/transparenz + `--bdr`**) vs. COGNITION (**F-CHAIN-Creme**).
+- **Trennung:** ACTION (**Ocker**, `--surface-handlung-*`) vs. **Kopf Lösungs-Hülle** (**Syllabus-Grün**, `--surface-loesung-kopf-bg`) vs. APPLICATION (**weiß/transparenz + `--bdr`**) vs. COGNITION (**F-CHAIN-Creme**).
 
 ---
 
@@ -331,6 +332,6 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 
 ## Notizen (frei)
 
-- **2026-04-05:** **IST-Umsetzung** — Lernseite **`02_Portfolio/QA_Lernwebseite/pages/04e-ha3-ueberdeckung.html`** entspricht dem Pilot **Phasen 0–6**; Layout **Lösung** wie zweispaltige **Aufgabenstellung** (Code \| Testaufrufe): **Aufgabe 1** (DAG) **links**, **Aufgaben 2+3** **rechts** (`@media` ≤960px untereinander).
+- **2026-04-05:** **IST-Umsetzung** — **`04e-ha3-ueberdeckung.html`** Pilot **0–6**; **Lösung** zweispaltig (DAG links, Aufgaben 2+3 rechts; schmal untereinander).
 
 *(Iterationen, offene Fragen, Verweise auf P03/P04/P05, Ausnahmen „Doku ausgelagert nach …“ — nach Bedarf.)*

@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-05 — **04e** auf der **Lernwebsite** umgesetzt (HTML/CSS **`ha3p-*`**, Pilot **0–6**, zweispaltige **Lösung**); **Pilot-Doku** [pilot-ha3-content-phasen.md](pilot-ha3-content-phasen.md) / [pilot-ha3-content.txt](pilot-ha3-content.txt) nachgezogen. Zuvor **2026-04-04** Phasen **0–6** in **pilot-ha3-content-phasen.md**; zuvor **2026-04-03** Inventar **pilot-ha3-content.txt**; davor **P05**, Aufräum-Plan  
+Letzte Aktualisierung: 2026-04-03 — **HA3-Pilot → Transfer:** Leitplanken + **bewusst offene** Punkte (Abschnitt **„HA3-Pilot und Transfer“** unten). Zuvor **2026-04-05** **04e** (**`ha3p-*`**, Pilot **0–6**); [pilot-ha3-content-phasen.md](pilot-ha3-content-phasen.md) · **03** §6 / [P03 §2](P03-mapping-ist-soll-token.md). Zuvor **2026-04-04** Phasen **0–6**; zuvor **2026-04-03** **pilot-ha3-content.txt**; davor **P05**, Aufräum-Plan  
 Zweck: Living Documentation — Einstieg in den **Designsystem-Workshop** (Rollen, Inventar, Lesereihenfolge, Zielbaum).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop  
 Normative Orientierung: [03_Project_Standards.md](../03_Project_Standards.md) (Metablock, README-Ausnahme); Mapping [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)
@@ -26,6 +26,16 @@ Living Documentation zum **Designsystem** der *QA_Lernwebseite* (ISTQB-CTFL-orie
 
 - **Workshop-Dateien 04a–04c** sind **Steuerungs-/Mapping-Dokumente** (C/F/P-Taxonomie). Sie gehören **nicht** zur „Hausaufgaben-Strecke später“ im Sinne des **Rollouts** — sie beschreiben **alle** Codes und sind für **Phase A** (Lerninhalte) genauso relevant wie für **Phase B** (HA/A4).  
 - **Rollout „zuerst Lerninhalte, HA/A4 später“** betrifft **welche HTML-Seiten** ihr beim **CSS-Pilot** zuerst anfasst — **nicht** das Weglassen der Workshop-Cluster-Dateien.
+
+### HA3-Pilot und Transfer (Workshop-Leitplanken)
+
+**Sinn:** **04e** ist **Referenz** für **Diátaxis-Rollen** + **Komponentenstil** (Tokens, `ha3p-*`, [pilot-ha3-content-phasen.md](pilot-ha3-content-phasen.md)); **stückweiser** Transfer auf **weitere** Lern-/HA-Seiten und **Einbindung** in **P02** (Ebenen, Diátaxis), **P03** (IST→SOLL→Token), **P04** (Priorität/Rollout), **03** §6 — **kein** Big Bang, **kein** zweites System.
+
+**Bewusst nicht abschließend / vor Transfer klären:** Abnahme pro Seite (nur Optik vs. Token + Mapping in **P03**)? **Web vs. A4** gleiche Semantik oder getrennt? **Zentral** in `base.css` vs. seitenlokal — wann auslagern? **HA3 beweist nicht** „ganzes Projekt = voll Diátaxis“ (vgl. [P02-05-diataxis-kritik.md](P02-05-diataxis-kritik.md)).
+
+**Lektion (Anti-Pattern):** **Semantische** Tokens (z. B. „Lösungskopf“) **nur** dort, wo die **fachliche Rolle** passt — **gleicher Klassen-/Modifier-Name** kann auf **anderen** Seiten **andere** Bedeutung haben (Beispiel: `section--e4` = Kapitel/Landkarte vs. Feature-Band vs. HA3-Lösungs-Hülle). **Vor** Wiederverwendung **Bedeutung** prüfen, nicht nur **Farbe**.
+
+**Warum das schriftlich steht:** Ohne diese Zeilen wirkt die Doku wie „alles geklärt“ — **Transfer und Risiken** sollen **sichtbar** bleiben (Lebendige Doku, nicht Schein-Vollständigkeit).
 
 ---
 

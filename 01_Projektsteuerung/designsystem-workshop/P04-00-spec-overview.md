@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-02  
-Letzte Aktualisierung: 2026-04-03 — **04d** **A.0.0** C-SYLLABUS final + Pilot `.tag--*` `base.css`; zuvor Navigationszeile A.0; Phase 3 P0/P1  
+Letzte Aktualisierung: 2026-04-03 — Risiko-Register: **Pilot vs. Vollständigkeit** (HA3-Transfer → [README](README.md), Abschnitt **HA3-Pilot und Transfer**). Zuvor **04d** **A.0.0** C-SYLLABUS + Pilot `.tag--*` `base.css`; Navigationszeile A.0; Phase 3 P0/P1  
 Zweck: Navigation zum Design-System-Spec-Cluster **04a–04d**, Risiko-Register, Checklisten, **Rollout-Scope**.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Spec-Überblick  
 Normative Orientierung: [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md); bei Konflikt zuerst Mapping klären.
@@ -17,6 +17,7 @@ Normative Orientierung: [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-tok
 **BEKANNTE RISIKEN:**
 
 - **Double Truth:** `P03-mapping-ist-soll-token` vs. **04a–c** — Drift-Gefahr, wenn Tabellen kopiert und später nur eine Seite gepflegt wird.
+- **Pilot vs. Vollständigkeit:** **HA3 (04e)** ist **Referenz** für Diátaxis/Komponenten — **nicht** Abschluss einer projektweiten Umsetzung; **offene Transfer-Punkte**, **Anti-Pattern** (Token nur bei passender Rolle) und **bewusst nicht Entschiedenes:** [README.md](README.md) — Abschnitt **„HA3-Pilot und Transfer (Workshop-Leitplanken)“**.
 - **Link-Brüche** bei Umbenennung oder Zusammenlegen von Dateien.
 - **Scope-Creep:** Fünf Dateien = mehr Pflegefläche als eine Monolith-Datei.
 
