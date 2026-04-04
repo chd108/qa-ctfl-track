@@ -106,6 +106,26 @@
       .ha3-code-pair__col + .ha3-code-pair__col h3 {
         margin-top: 1.25rem;
       }
+      .ha3-code-pair--loesung .ha3-code-pair__col + .ha3-code-pair__col .ha3-loesung-col-heading {
+        margin-top: 1.25rem;
+      }
+    }
+
+    /* Lösung Aufgaben 1+2: zwei Spalten wie Aufgabenstellung */
+    .ha3-loesung-col-heading {
+      margin-top: 0;
+      margin-bottom: 0.65rem;
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--mid);
+      line-height: 1.35;
+    }
+    .ha3-code-pair--loesung .result-table {
+      font-size: 0.82rem;
+    }
+    .ha3-code-pair--loesung .result-table th,
+    .ha3-code-pair--loesung .result-table td {
+      padding: 0.5rem 0.55rem;
     }
 
     pre.code-block {
@@ -125,25 +145,6 @@
       display: block;
       white-space: pre;
       color: inherit;
-    }
-
-    pre.kfg-diagram {
-      background: rgba(255, 255, 255, 0.4);
-      border: 1px solid var(--bdr);
-      border-radius: 8px;
-      padding: 1.5rem;
-      margin: 1.5rem 0 0.75rem;
-      font-size: 0.85rem;
-      line-height: 1.8;
-      overflow-x: auto;
-      color: #000;
-    }
-
-    pre.kfg-diagram code {
-      font-family: 'Courier New', Courier, monospace;
-      display: block;
-      color: inherit;
-      white-space: pre;
     }
 
     /* SVG mit foreignObject: <object> statt <img> */
@@ -364,151 +365,139 @@ is_shipping_free(50,1,False)</code></pre>
     </div>
     <div class="ha3-sheet__body">
 
-    <section class="section section--e1" aria-labelledby="ha3-loes-teil1-heading">
+    <section class="section section--e1" aria-labelledby="ha3-loes-teil12-heading">
       <div class="section__header">
-        <span class="section__num">Aufgabe 1</span>
-        <h3 class="section__title" id="ha3-loes-teil1-heading">Zustandsübergangsdiagramm (gerichteter azyklischer Graph)</h3>
+        <span class="section__num">Aufgaben 1 &amp; 2</span>
+        <h3 class="section__title" id="ha3-loes-teil12-heading">Diagramm (DAG) und Überdeckung mit vier Tests</h3>
       </div>
       <div class="section__body">
-        <aside class="chain-callout" role="region" aria-labelledby="ha3-kern-teil1-heading">
-          <p class="chain-callout__title" id="ha3-kern-teil1-heading">Kernaussage</p>
-          <div class="chain-callout__content">
-            <p><strong>Kontrollfluss:</strong> <strong>11 Kanten</strong> im Graphen; Statement-Index <strong>10</strong> (<code>print("Additional Statement 5")</code>) ist <strong>unerreichbar</strong>.</p>
+        <div class="ha3-code-pair ha3-code-pair--loesung">
+          <div class="ha3-code-pair__col">
+            <h4 class="ha3-loesung-col-heading" id="ha3-loes-teil1-heading">Aufgabe 1 · Zustandsübergangsdiagramm (gerichteter azyklischer Graph)</h4>
+            <aside class="chain-callout" role="region" aria-labelledby="ha3-kern-teil1-heading">
+              <p class="chain-callout__title" id="ha3-kern-teil1-heading">Kernaussage</p>
+              <div class="chain-callout__content">
+                <p><strong>Kontrollfluss:</strong> <strong>11 Kanten</strong> im Graphen; Statement-Index <strong>10</strong> (<code>print("Additional Statement 5")</code>) ist <strong>unerreichbar</strong>.</p>
+              </div>
+            </aside>
+
+            <figure class="ha3-dag-figure">
+              <div class="ha3-dag-aspect">
+                <object
+                  type="image/svg+xml"
+                  data="../assets/ha3-svg/HA3-Teil2_DAG.svg"
+                  role="img"
+                  aria-label="Zustandsübergangsdiagramm (DAG): Start, Anweisungen, Entscheidungen und Rückgaben für is_shipping_free">
+                  <a href="../assets/ha3-svg/HA3-Teil2_DAG.svg">Diagramm als SVG öffnen</a>
+                </object>
+              </div>
+              <figcaption class="ha3-dag-caption">Zustandsübergangsdiagramm (DAG) zu <code>is_shipping_free</code></figcaption>
+            </figure>
+
+            <p><strong>11 Kanten insgesamt</strong> (jede gezeichnete Kante einmal)</p>
+
+            <p><strong>Knoten:</strong> Start, S1, D1, S2, D2, S3, D3, S4, Rückgaben (über <code>return True</code> / <code>return False</code>).</p>
           </div>
-        </aside>
+          <div class="ha3-code-pair__col">
+            <h4 class="ha3-loesung-col-heading" id="ha3-loes-teil2-heading">Aufgabe 2 · Anweisungs- und Zweigüberdeckung (vier gegebene Tests)</h4>
+            <aside class="chain-callout" role="region" aria-labelledby="ha3-kern-teil2-heading">
+              <p class="chain-callout__title" id="ha3-kern-teil2-heading">Kernaussage</p>
+              <div class="chain-callout__content">
+                <p><strong>Vier gegebene Tests:</strong> Anweisungsüberdeckung <strong>9 / 10 = 90 %</strong> (Index 10 wird nie ausgeführt); Zweigüberdeckung <strong>10 / 11 ≈ 90,91 %</strong> — es fehlt die Kante <strong>D3 → return True</strong>.</p>
+              </div>
+            </aside>
 
-        <figure class="ha3-dag-figure">
-          <div class="ha3-dag-aspect">
-            <object
-              type="image/svg+xml"
-              data="../assets/ha3-svg/HA3-Teil2_DAG.svg"
-              role="img"
-              aria-label="Zustandsübergangsdiagramm (DAG): Start, Anweisungen, Entscheidungen und Rückgaben für is_shipping_free">
-              <a href="../assets/ha3-svg/HA3-Teil2_DAG.svg">Diagramm als SVG öffnen</a>
-            </object>
+            <h4>Zuordnung: Statement-Index</h4>
+            <p>Die folgenden Indizes 1–10 entsprechen der Auszählung (ohne die Zeile <code>def …</code>):</p>
+
+            <table class="result-table">
+              <caption>Zuordnung der Statement-Indizes 1–10 zu Elementen im Code (ohne Zeile <code>def …</code>)</caption>
+              <thead>
+                <tr>
+                  <th scope="col" class="col-num">Index</th>
+                  <th scope="col">Element im Code</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td class="col-num">1</td><td><code>print("Additional Statement 1")</code></td></tr>
+                <tr><td class="col-num">2</td><td><code>if price &gt; 50 or isPrimeShoppingMember</code></td></tr>
+                <tr><td class="col-num">3</td><td><code>print("Additional Statement 2")</code></td></tr>
+                <tr><td class="col-num">4</td><td><code>if price &gt; 25 and numberOfItems &lt; 3</code></td></tr>
+                <tr><td class="col-num">5</td><td><code>print("Additional Statement 3")</code></td></tr>
+                <tr><td class="col-num">6</td><td><code>elif price &gt; 10 and numberOfItems == 1</code></td></tr>
+                <tr><td class="col-num">7</td><td><code>print("Additional Statement 4(discount)")</code></td></tr>
+                <tr><td class="col-num">8</td><td><code>return False</code></td></tr>
+                <tr><td class="col-num">9</td><td><code>return True</code></td></tr>
+                <tr><td class="col-num">10</td><td><code>print("Additional Statement 5")</code> — <strong>unerreichbar</strong></td></tr>
+              </tbody>
+            </table>
+
+            <h4>Anweisungsüberdeckung (Statement Coverage)</h4>
+
+            <table class="result-table">
+              <caption>Anweisungsüberdeckung: ausgeführte Statement-Indizes je gegebenem Testaufruf</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Test</th>
+                  <th scope="col">Parameter <code>(price, numberOfItems, isPrime)</code></th>
+                  <th scope="col">Ausgeführte Statement-Indizes</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>T1</td><td><code>(30, 2, True)</code></td><td>1, 2, 3, 4, 5, 9</td></tr>
+                <tr><td>T2</td><td><code>(15, 1, False)</code></td><td>1, 2, 4, 6, 7, 8</td></tr>
+                <tr><td>T3</td><td><code>(15, 1, True)</code></td><td>1, 2, 3, 4, 6, 7, 8</td></tr>
+                <tr><td>T4</td><td><code>(50, 1, False)</code></td><td>1, 2, 4, 5, 9</td></tr>
+              </tbody>
+            </table>
+
+            <p><strong>Vereinigung:</strong> Indizes <strong>1–9</strong>; Index <strong>10</strong> wird <strong>nie</strong> erreicht.</p>
+
+            <div class="result-box">
+              <strong>Statement Coverage: 9 / 10 = 90 %</strong>
+            </div>
+
+            <h4>Zweigüberdeckung (Branch Coverage)</h4>
+
+            <p>Alle <strong>11 Kanten</strong> des Graphen prüfen:</p>
+
+            <table class="result-table">
+              <caption>Zweigüberdeckung: Kanten und Abdeckung durch die vier Tests</caption>
+              <thead>
+                <tr>
+                  <th scope="col">Kante</th>
+                  <th scope="col">Von Testfällen abgedeckt?</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr><td>Start → S1</td><td>alle vier</td></tr>
+                <tr><td>S1 → D1</td><td>alle vier</td></tr>
+                <tr><td>D1 → S2 (True)</td><td>T1, T3</td></tr>
+                <tr><td>D1 → D2 (False, ohne S2)</td><td>T2, T4</td></tr>
+                <tr><td>S2 → D2</td><td>T1, T3</td></tr>
+                <tr><td>D2 → S3 (True)</td><td>T1, T4</td></tr>
+                <tr><td>D2 → D3 (False)</td><td>T2, T3</td></tr>
+                <tr><td>S3 → return True</td><td>T1, T4</td></tr>
+                <tr><td>D3 → S4 (True)</td><td>T2, T3</td></tr>
+                <tr><td><strong>D3 → return True (False-Zweig des elif)</strong></td><td><strong>fehlt</strong></td></tr>
+                <tr><td>S4 → return False</td><td>T2, T3</td></tr>
+              </tbody>
+            </table>
+
+            <div class="result-box">
+              <strong>Branch Coverage: 10 / 11 ≈ 90,91 %</strong>
+            </div>
+
+            <p><strong>Fehlender Zweig:</strong> Kante <strong>D3 → return True</strong> (z. B. abdeckbar mit <code>(15, 2, False)</code> — Rabattpfad ausgeschlossen, aber kein kostenloser Versand über die zweite if-Bedingung).</p>
+
+            <h4>Begründung</h4>
+            <ul>
+              <li><strong>Anweisungsüberdeckung:</strong> Anteil der <strong>ausführbaren Anweisungen</strong>, die mindestens ein Test ausführt.</li>
+              <li><strong>Zweigüberdeckung (ISTQB):</strong> <strong>Alle Kanten</strong> des Kontrollflussgraphen — nicht nur die Booleschen Entscheidungen isoliert.</li>
+              <li>Der fehlende Pfad <strong>D3 → return True</strong> erklärt <strong>eine</strong> nicht getestete Kante von <strong>11</strong>.</li>
+            </ul>
           </div>
-          <figcaption class="ha3-dag-caption">Zustandsübergangsdiagramm (DAG) zu <code>is_shipping_free</code></figcaption>
-        </figure>
-
-        <pre class="kfg-diagram"><code>Start
-  ↓
-S1  (print Statement 1)
-  ↓
-D1  (if price &gt; 50 OR isPrime?)
-      ├─ True  → S2 (print Statement 2) ──→ D2 (if price &gt; 25 AND items &lt; 3?)
-      └─ False ───────────────────────────→ D2 (if price &gt; 25 AND items &lt; 3?)
-                                    ├─ True  → S3 (print Statement 3) → return True
-                                    └─ False → D3 (elif price &gt; 10 AND items == 1?)
-                                                  ├─ True  → S4 (print Statement 4) → return False
-                                                  └─ False → return True</code></pre>
-        <p><strong>11 Kanten insgesamt</strong> (jede gezeichnete Kante einmal)</p>
-
-        <p><strong>Knoten:</strong> Start, S1, D1, S2, D2, S3, D3, S4, Rückgaben (über <code>return True</code> / <code>return False</code>).</p>
-      </div>
-    </section>
-
-    <section class="section section--e2" aria-labelledby="ha3-loes-teil2-heading">
-      <div class="section__header">
-        <span class="section__num">Aufgabe 2</span>
-        <h3 class="section__title" id="ha3-loes-teil2-heading">Anweisungs- und Zweigüberdeckung (vier gegebene Tests)</h3>
-      </div>
-      <div class="section__body">
-        <aside class="chain-callout" role="region" aria-labelledby="ha3-kern-teil2-heading">
-          <p class="chain-callout__title" id="ha3-kern-teil2-heading">Kernaussage</p>
-          <div class="chain-callout__content">
-            <p><strong>Vier gegebene Tests:</strong> Anweisungsüberdeckung <strong>9 / 10 = 90 %</strong> (Index 10 wird nie ausgeführt); Zweigüberdeckung <strong>10 / 11 ≈ 90,91 %</strong> — es fehlt die Kante <strong>D3 → return True</strong>.</p>
-          </div>
-        </aside>
-
-        <h4>Zuordnung: Statement-Index</h4>
-        <p>Die folgenden Indizes 1–10 entsprechen der Auszählung (ohne die Zeile <code>def …</code>):</p>
-
-        <table class="result-table">
-          <caption>Zuordnung der Statement-Indizes 1–10 zu Elementen im Code (ohne Zeile <code>def …</code>)</caption>
-          <thead>
-            <tr>
-              <th scope="col" class="col-num">Index</th>
-              <th scope="col">Element im Code</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td class="col-num">1</td><td><code>print("Additional Statement 1")</code></td></tr>
-            <tr><td class="col-num">2</td><td><code>if price &gt; 50 or isPrimeShoppingMember</code></td></tr>
-            <tr><td class="col-num">3</td><td><code>print("Additional Statement 2")</code></td></tr>
-            <tr><td class="col-num">4</td><td><code>if price &gt; 25 and numberOfItems &lt; 3</code></td></tr>
-            <tr><td class="col-num">5</td><td><code>print("Additional Statement 3")</code></td></tr>
-            <tr><td class="col-num">6</td><td><code>elif price &gt; 10 and numberOfItems == 1</code></td></tr>
-            <tr><td class="col-num">7</td><td><code>print("Additional Statement 4(discount)")</code></td></tr>
-            <tr><td class="col-num">8</td><td><code>return False</code></td></tr>
-            <tr><td class="col-num">9</td><td><code>return True</code></td></tr>
-            <tr><td class="col-num">10</td><td><code>print("Additional Statement 5")</code> — <strong>unerreichbar</strong></td></tr>
-          </tbody>
-        </table>
-
-        <h4>Anweisungsüberdeckung (Statement Coverage)</h4>
-
-        <table class="result-table">
-          <caption>Anweisungsüberdeckung: ausgeführte Statement-Indizes je gegebenem Testaufruf</caption>
-          <thead>
-            <tr>
-              <th scope="col">Test</th>
-              <th scope="col">Parameter <code>(price, numberOfItems, isPrime)</code></th>
-              <th scope="col">Ausgeführte Statement-Indizes</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>T1</td><td><code>(30, 2, True)</code></td><td>1, 2, 3, 4, 5, 9</td></tr>
-            <tr><td>T2</td><td><code>(15, 1, False)</code></td><td>1, 2, 4, 6, 7, 8</td></tr>
-            <tr><td>T3</td><td><code>(15, 1, True)</code></td><td>1, 2, 3, 4, 6, 7, 8</td></tr>
-            <tr><td>T4</td><td><code>(50, 1, False)</code></td><td>1, 2, 4, 5, 9</td></tr>
-          </tbody>
-        </table>
-
-        <p><strong>Vereinigung:</strong> Indizes <strong>1–9</strong>; Index <strong>10</strong> wird <strong>nie</strong> erreicht.</p>
-
-        <div class="result-box">
-          <strong>Statement Coverage: 9 / 10 = 90 %</strong>
         </div>
-
-        <h4>Zweigüberdeckung (Branch Coverage)</h4>
-
-        <p>Alle <strong>11 Kanten</strong> des Graphen prüfen:</p>
-
-        <table class="result-table">
-          <caption>Zweigüberdeckung: Kanten und Abdeckung durch die vier Tests</caption>
-          <thead>
-            <tr>
-              <th scope="col">Kante</th>
-              <th scope="col">Von Testfällen abgedeckt?</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>Start → S1</td><td>alle vier</td></tr>
-            <tr><td>S1 → D1</td><td>alle vier</td></tr>
-            <tr><td>D1 → S2 (True)</td><td>T1, T3</td></tr>
-            <tr><td>D1 → D2 (False, ohne S2)</td><td>T2, T4</td></tr>
-            <tr><td>S2 → D2</td><td>T1, T3</td></tr>
-            <tr><td>D2 → S3 (True)</td><td>T1, T4</td></tr>
-            <tr><td>D2 → D3 (False)</td><td>T2, T3</td></tr>
-            <tr><td>S3 → return True</td><td>T1, T4</td></tr>
-            <tr><td>D3 → S4 (True)</td><td>T2, T3</td></tr>
-            <tr><td><strong>D3 → return True (False-Zweig des elif)</strong></td><td><strong>fehlt</strong></td></tr>
-            <tr><td>S4 → return False</td><td>T2, T3</td></tr>
-          </tbody>
-        </table>
-
-        <div class="result-box">
-          <strong>Branch Coverage: 10 / 11 ≈ 90,91 %</strong>
-        </div>
-
-        <p><strong>Fehlender Zweig:</strong> Kante <strong>D3 → return True</strong> (z. B. abdeckbar mit <code>(15, 2, False)</code> — Rabattpfad ausgeschlossen, aber kein kostenloser Versand über die zweite if-Bedingung).</p>
-
-        <h4>Begründung</h4>
-        <ul>
-          <li><strong>Anweisungsüberdeckung:</strong> Anteil der <strong>ausführbaren Anweisungen</strong>, die mindestens ein Test ausführt.</li>
-          <li><strong>Zweigüberdeckung (ISTQB):</strong> <strong>Alle Kanten</strong> des Kontrollflussgraphen — nicht nur die Booleschen Entscheidungen isoliert.</li>
-          <li>Der fehlende Pfad <strong>D3 → return True</strong> erklärt <strong>eine</strong> nicht getestete Kante von <strong>11</strong>.</li>
-        </ul>
       </div>
     </section>
 
