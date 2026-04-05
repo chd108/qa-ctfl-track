@@ -5,8 +5,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="icon" href="../assets/qa-favicon-256.png" type="image/png">
   <meta name="description" content="Lösung Hausaufgabe HA3 — Überdeckung (White-Box): Kontrollflussgraph, Anweisungs- und Zweigüberdeckung">
-  <link rel="stylesheet" href="../assets/css/base.css">
-  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <link rel="stylesheet" href="../assets/css/base.css?v=surface-handlung-1">
+  <link rel="stylesheet" href="../assets/css/subpage.css?v=surface-handlung-1">
   <title>HA3 Überdeckung — QA Lernwebseite</title>
   <style>
     /* HA3 04e — Presentation Patterns (Pilot Phase 6, pilot-ha3-content-phasen.md). Tokens: base.css :root */
@@ -224,11 +224,11 @@
       }
     }
 
-    /* 4 — ACTION / Aufgaben (nummerierte Liste) */
+    /* 4 — ACTION / Aufgaben (nummerierte Liste); Fallbacks = gleiche Hex wie base.css (falls alte CSS-Datei gecacht / Token fehlt) */
     .ha3p-action {
-      background: var(--surface-handlung-bg);
-      border: 1px solid var(--surface-handlung-border-outer);
-      border-left: 4px solid var(--surface-handlung-accent);
+      background: var(--surface-handlung-bg, #e7dac0);
+      border: 1px solid var(--surface-handlung-border-outer, rgba(156, 106, 42, 0.14));
+      border-left: 4px solid var(--surface-handlung-accent, #9f7a4e);
       border-radius: 8px;
       padding: 1rem 1.25rem;
       margin: 1.25rem 0;
