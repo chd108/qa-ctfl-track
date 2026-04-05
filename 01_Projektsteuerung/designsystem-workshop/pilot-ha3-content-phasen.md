@@ -1,5 +1,5 @@
 Datei erstellt: 2026-04-04  
-Letzte Aktualisierung: 2026-04-05 — **04e** produktiv: **`ha3p-*`**, Inhalt **1:1** `pilot-ha3-content.txt`, **Lösung** zweispaltig (**`.ha3p-loesung-cols`**). **Farbregel HA** (ACTION vs. Lösungskopf): **`base.css`** + **Phase 6** unten · normativ **[P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md) §2** · **[03_Project_Standards.md](../03_Project_Standards.md) §6**. Zuvor **2026-04-04** Phase 6 (**04e**-Spec); zuvor Phase 5–1  
+Letzte Aktualisierung: 2026-04-05 — **04e**-**IST:** zwei Hauptabschnitte (**Aufgabenstellung**, **Lösung**); kein **H2 Quellen** / keine `#quellen`-Sprungmarke (Links: **meta-bar** + **Intro**).  
 Zweck: **Pilot** — methodische Grundlage zur Content-Strukturierung der HA3-Überdeckungs-Seite; Erkenntnisse fließen in Designsystem-Entscheidungen (Workshop).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / Pilot-HA3  
 Normative Orientierung: [README.md](README.md), [P02-06-taxonomie-soll.md](P02-06-taxonomie-soll.md), [P04-04-ctfl-lernwebsite-spec.md](P04-04-ctfl-lernwebsite-spec.md) — bei Konflikt zuerst Workshop-README und P04-00-Overview.
@@ -67,9 +67,9 @@ Vorgabe für die **Webseitenstruktur** (bearbeitet in `02_Portfolio/QA_Lernwebse
 
 | Abschnitt | Content-Einheiten | Hinweis |
 |-----------|---------------------|---------|
-| **1. Aufgabenstellung** | **B**, **C**, **D**, **E** | **B** = Original-/Beispiel-Links als **Intro** direkt unter **H2 Aufgabenstellung** (**ohne** eigene H3); **C–E** mit fachlichen H3; E = Teilaufgaben (**ACTION**); A (Metablock) typischerweise **nicht** als Lernabschnitt auf der Seite |
-| **2. Lösung** | **G** → **F** → **H** → **I** | Auf der Seite **G vor F** (Diagramm zuerst, dann Statement-Index); danach Coverage (**H**) und Teil 3 inkl. **Begründung** (**I**) |
-| **3. Quellen** | optional **B** (gebündelt), ggf. Syllabus/Norm aus **A** | Nur falls Links oben schlank gehalten werden; sonsten Abschnitt entfallen |
+| **1. Aufgabenstellung** | **B**, **C**, **D**, **E** | **B** = Original-/Beispiel-Links als **Intro** direkt unter **H2** (**„Aufgabenstellung - Überdeckung“**; **ohne** eigene H3); **C–E** mit fachlichen H3; E = **Aufgaben** (**ACTION**, nummerierte Liste); A (Metablock) typischerweise **nicht** als Lernabschnitt auf der Seite |
+| **2. Lösung** | **G** → **F** → **H** → **I** | **H2** **„Lösung - Überdeckung“**; auf der Seite **G vor F** (Diagramm zuerst, dann Statement-Index); danach Coverage (**H**) und Teil 3 inkl. **Begründung** (**I**) |
+| **(kein 3. Abschnitt)** | — | **IST:** **kein** eigener **H2 „Quellen“**; **B** (Notion-Links) nur **meta-bar** + **Intro** unter Aufgabenstellung. Optional später wieder **Quellen**-H2, wenn das Intro schlanker werden soll. |
 
 **Abweichung zum Rohtext:** In [pilot-ha3-content.txt](pilot-ha3-content.txt) steht **F** vor **G**; die **Seite** setzt **G vor F** (didaktisch: zuerst sichtbares DAG, dann Index/Legende).
 
@@ -77,41 +77,41 @@ Vorgabe für die **Webseitenstruktur** (bearbeitet in `02_Portfolio/QA_Lernwebse
 
 ## Überschriftenhierarchie — HA3 `04e` (Abschluss Phase 3)
 
-**Ziel:** Umsetzung der **drei Seitenabschnitte** (Phase 2) mit **fachlichen** Überschriften (keine technischen Platzhalter wie „SVG-Verweis“ als H3-Titel). **Reihenfolge** im Abschnitt **Lösung** auf der Seite: **G → F → H → I** (s. Phase 2).
+**Ziel:** Umsetzung der **zwei Hauptabschnitte** (Phase 2) mit **fachlichen** Überschriften (keine technischen Platzhalter wie „SVG-Verweis“ als H3-Titel). **Reihenfolge** im Abschnitt **Lösung** auf der Seite: **G → F → H → I** (s. Phase 2).
 
-**Navigation:** Optional **Inhaltsverzeichnis** mit Sprungmarken (z. B. `#aufgabenstellung`, `#loesung`, `#quellen`); bei langer Seite Unteranker unter **Lösung** möglich (z. B. `#loesung-dag`, `#loesung-coverage`).
+**Navigation:** Optional **Inhaltsverzeichnis** mit Sprungmarken **`#aufgabenstellung`**, **`#loesung`** (ohne `#quellen` im **IST**); bei langer Seite Unteranker unter **Lösung** möglich (z. B. `#loesung-dag`, `#loesung-coverage`).
 
 ### Baum (H1 → H4)
 
 ```
 H1  [Seitentitel — z. B. HA3 – Überdeckung (White-Box)]
 
-H2  Aufgabenstellung
+H2  Aufgabenstellung - Überdeckung
     [Intro: B — Original-/Beispiel-Links ohne eigene Überschrift, direkt unter H2]
-    H3  Sachverhalt & Regel                    ← C
-    H3  Code & Testaufrufe                    ← D
-    H3  Teilaufgaben                            ← E
+    H3  Sachverhalt & Regel:                    ← C (Web: Bullet • + Unterstreichung)
+    H3  Code & Testfälle:                      ← D
+    H3  Aufgaben:                               ← E
 
-H2  Lösung
-    H3  Kontrollfluss (DAG)                   ← G (fachlicher Titel; SVG eingebettet)
-    H3  Zuordnung: Statement-Indizes            ← F
-    H3  Überdeckung                             ← H
-        H4  Anweisungsüberdeckung               ← optional, wenn visuell getrennt
-        H4  Zweigüberdeckung
-    H3  Variante ohne Statement 5             ← I
-        H4  Begründung                          ← Begründungsblock aus TXT (1:1)
-
-H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; sonst weglassen
+H2  Lösung - Überdeckung
+    H3  Zustandsübergangsdiagramm (gerichteter azyklischer Graph):  ← G (gleiche H3-Optik wie Aufgabe)
+    H3  2. … Statement/Branch Coverage:        ← F/H (H4 darunter unverändert)
+        H4  Zuordnung: Statement-Indizes
+        H4  Anweisungsüberdeckung …
+        H4  Zweigüberdeckung …
+    H3  3. Wenn die Zeile `…` entfernt wird:   ← I
+        H4  Begründung:                        ← Begründungsblock; Fließschrift wie `.ha3p-prose`
 ```
+*(Kein **H2 Quellen** im **IST** — siehe Tabelle **Seitenabschnitte** oben.)*
 
 ### Festlegungen
 
 | Thema | Vereinbarung |
 |--------|----------------|
 | **H1** | Eine Seite = **ein** H1 (Seitentitel). |
-| **H2** | Genau die **drei** Hauptabschnitte (bzw. zwei, wenn **Quellen** entfällt). |
+| **H2** | **Zwei** Hauptabschnitte (**Aufgabenstellung**, **Lösung**). **Kopfzeile:** optional thematischer Zusatz **„- Überdeckung“** bei Aufgabe und Lösung (einheitlich). |
+| **H3 (Aufgabe + Lösung)** | **Gleiche Darstellung:** Aufzählungszeichen **•** (CSS `::before`), **Doppelpunkt** am Titelende, **1px** schwarze Linie darunter; **Sans** `1.1rem` / `600` / `--mid`. Lösung: H3 sitzen in **`.ha3p-loesung-cols`**, nicht als direkte Kinder von `.ha3p-sheet__body`. |
 | **B** | **Kein** H3 „Kontext & Quellen“ — Links gehören zum **Einstieg in Aufgabenstellung**, **ohne** eigene Überschriftenebene. |
-| **H4** | Unter **Überdeckung** optional; **Begründung** unter Variante **H4** (entspricht `####` im Rohtext). |
+| **H4** | Unter **Abschnitt 2** der Lösung (Index, Coverage-Blöcke); **Begründung** unter Abschnitt 3 **H4** (entspricht `####` im Rohtext). **Optik** unverändert gegenüber Vor-Pilot (kein Bullet/Linie-Zwang). |
 | **Content-Treue** | Alle sichtbaren Texte aus Aufgabe/Lösung **1:1** zu [pilot-ha3-content.txt](pilot-ha3-content.txt); nur **Struktur und Präsentation** variieren. |
 
 ---
@@ -140,8 +140,8 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 |--------|--------|---------------|----------------|
 | **B** | Titelbezug + zwei Notion-Links | **Absatz** mit **Inline-Links** (oder kompakte Link-Zeile) | Kein eigener H3; direkt unter **H2 Aufgabenstellung** |
 | **C** | Rahmen + Geschäftsregel | **Absatz(e)**; Regel mit **Strong** wie in TXT | Optional: **Callout** „Szenario“ / „Regel“ zur optischen Trennung — **inhaltlich** weiter 1:1 |
-| **D** | Code + Testaufrufe | **Zwei Codeblöcke** (`<pre><code class="language-python">` o. ä.) | Optional **Präsentations-Zwischenüberschrift** (z. B. „Code“ / „Gegebene Testaufrufe“) — **ohne** neuen Fachtext |
-| **E** | Teilaufgaben 1–3 | **Geordnete Liste** (`<ol>`) | **ACTION:** z. B. **Callout**-Wrapper, falls im Designsystem vorgesehen — sonst Klasse am `<ol>`-Container |
+| **D** | Code + Testfälle | **Zwei Codeblöcke** (`<pre><code class="language-python">` o. ä.) unter einem H3 **„Code & Testfälle:“** | **Präsentations-Zwischenüberschrift** „Code:“ / „Gegebene Testfälle:“ — **ohne** neuen Fachtext |
+| **E** | Aufgaben 1–3 | **Geordnete Liste** (`<ol>`) unter H3 **„Aufgaben:“** | **ACTION:** z. B. **Callout**-Wrapper, falls im Designsystem vorgesehen — sonst Klasse am `<ol>`-Container |
 | **F** | Statement-Index | **Einleitungsabsatz** + **eine Tabelle** | Viel **Inline-Code** in Zellen; erste Spalte numerisch — **`th`/`scope`** für Barrierefreiheit |
 | **G** | DAG + Kanten/Knoten | **`figure`** mit eingebettetem **SVG** (`<img src="…">` oder inline `<svg>`) + optional **figcaption** + **Absatz** | Pfad **`../assets/ha3-svg/HA3-Teil2_DAG.svg`**; Max-Breite/Skalierung per CSS |
 | **H** | Coverage | **Zwei Tabellen** + **Fließtext** (Vereinigung, %, fehlender Zweig) | Optional **zwei H4**-Blöcke; Branch-Tabelle mit **starker** Zeile wie in TXT |
@@ -171,14 +171,14 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 
 **Ziel:** Die **8 Komponenten-Typen** aus Phase 4 (*Kurz-Inventar*) den **vereinbarten Quadranten** zuordnen — **primärer Zweck** pro Komponente, damit später **ACTION** vs. **APPLICATION** (und **COGNITION**) **visuell** sauber trennbar sind (CSS / Callout-Familien).
 
-**Rahmen (wie Phase 1):** **ACQUISITION** = Aufgabe + Beispiel · **COGNITION** = Erklärungen · **APPLICATION** = Tabellen/Daten/SVG · **ACTION** = Teilaufgaben (konkrete Schritte).
+**Rahmen (wie Phase 1):** **ACQUISITION** = Aufgabe + Beispiel · **COGNITION** = Erklärungen · **APPLICATION** = Tabellen/Daten/SVG · **ACTION** = **Aufgaben** (konkrete Schritte, H3 „Aufgaben:“).
 
 ### 1. Intro-Links (Absatz)
 
 | | |
 |--|--|
 | **Primär** | **APPLICATION** |
-| **Kontext / Einheiten** | **B** — Notion-Links als **Referenz**; optional Wiederholung im Abschnitt **Quellen**. |
+| **Kontext / Einheiten** | **B** — Notion-Links als **Referenz** in **meta-bar** und **Intro**; **kein** eigener **Quellen**-Abschnitt im **IST**. |
 | **Visuell** | eher **ruhig / informativ**, nicht wie Handlungsaufforderung. |
 
 ### 2. Fließtext / Strong / Inline-Code
@@ -194,7 +194,7 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 | | |
 |--|--|
 | **Primär** | **APPLICATION** |
-| **Kontext / Einheiten** | **D** — Code und Testaufrufe als **Artefakte** (Daten/Referenz). |
+| **Kontext / Einheiten** | **D** — Code und **gegebene Testfälle** als **Artefakte** (Daten/Referenz). |
 | **Visuell** | Monospace, klar abgegrenzt; **kein** Tutorial-Schritt-Look. |
 
 ### 4. Geordnete Liste (`<ol>`) + optional ACTION-Callout
@@ -202,7 +202,7 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 | | |
 |--|--|
 | **Primär** | **ACTION** |
-| **Kontext / Einheiten** | **E** — die drei **Teilaufgaben**; Callout verstärkt **Handlung**. |
+| **Kontext / Einheiten** | **E** — die drei nummerierten **Aufgaben**; Callout verstärkt **Handlung**. |
 | **Visuell** | **hervorgehoben**, klar von **APPLICATION**-Blöcken (Tabellen, Code) trennen. |
 
 ### 5. Data Table (Varianten)
@@ -236,7 +236,7 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 |--|--|
 | **Primär** | **APPLICATION** (Navigation als **Information**) |
 | **Sekundär** | **ACQUISITION** — Orientierung im langen Beispiel. |
-| **Kontext / Einheiten** | Seite global; z. B. `#aufgabenstellung`, `#loesung`, `#quellen`. |
+| **Kontext / Einheiten** | Seite global; **IST:** `#aufgabenstellung`, `#loesung`. |
 | **Visuell** | kompakt, navigativ; **nicht** wie **ACTION**-Callout. |
 
 ### Kurzmatrix (CSS / Umsetzung)
@@ -267,8 +267,8 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 | Thema | Festlegung |
 |--------|------------|
 | **COGNITION / Begründungsliste (7)** | **F-CHAIN / Creme:** `--callout-chain-bg`, `--callout-chain-border-outer`, linker Akzent `--callout-chain-accent-width` + `--callout-chain-border-accent` — **nicht** Vollflächen-`--advanced-bg` (Vermeidung falscher „Vertiefungs“-Assoziation). |
-| **Hervorgehobene Tabellenzeile** (z. B. fehlender Zweig in **H**) | **Dezente Zeilen-Tint** `rgba(201, 232, 210, 0.35)` (abgeschwächtes Syllabus-Grün) **plus** **`font-weight: 600`** in der **ersten Spalte** (Kante) — **kein** Zebra-Streifen auf der ganzen Tabelle. |
-| **ACTION / Teilaufgaben (4)** | Fläche **`--surface-handlung-bg`** (Ocker, alias **`--e4`**), Rand **`1px solid var(--surface-handlung-border-outer)`**, linker Akzent **`4px solid var(--surface-handlung-accent)`** — klar von weißen Tabellen/Code getrennt. |
+| **Hervorgehobene Tabellenzeile** (z. B. fehlender Zweig in **H**) | **Tint** `rgba(234, 216, 222, 0.55)` — gleiche Flächenfarbe wie Knoten **return False** im DAG-SVG (`#ead8de`); **kein** Fett in der Zeile; **kein** Zebra auf der ganzen Tabelle. |
+| **ACTION / Aufgaben (4)** | Fläche **`--surface-handlung-bg`** (Ocker), Rand **`1px solid var(--surface-handlung-border-outer)`**, linker Akzent **`4px solid var(--surface-handlung-accent)`** — klar von weißen Tabellen/Code getrennt. |
 | **Kopf Lösungs-Hülle** (`.ha3p-sheet--answer`, **nur** **04e**) | Hintergrund **`--surface-loesung-kopf-bg`** (Syllabus-Grün, alias **`--ctfl-bg`**). |
 
 ### Regeln pro Komponente (1–8)
@@ -281,7 +281,7 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 
 **4. Geordnete Liste + ACTION-Callout (ACTION)** — Container: **`--surface-handlung-bg`**, **`border: 1px solid var(--surface-handlung-border-outer)`**, **`border-left: 4px solid var(--surface-handlung-accent)`**; **Padding** `1rem`–`1.25rem`; **Radius** `8px`; Außen `1.25rem 0`. `ol` innen ohne Zusatzmargen, `padding-left` ~`1.35rem`, `line-height` ~`1.65`.
 
-**5. Data Table (APPLICATION / ACQUISITION)** — Volle Breite, `border-collapse: collapse`; Außenrahmen `1px solid var(--bdr)`; **Radius** `8px`, `overflow: hidden`; Zellenhintergrund `rgba(255,255,255,0.5)`; Zellenpadding ~`0.7rem 1rem`; Trennlinien `1px solid var(--bdr)`; **Header:** Hintergrund `rgba(0,0,0,0.04)`, **fett**, Text `--soft` oder `--mid`; **kein Zebra**; **Highlight-Zeile** wie oben (Tint + erste Spalte fett). Schriftgröße ~`0.9rem` (optional `0.82rem` in engen Layouts).
+**5. Data Table (APPLICATION / ACQUISITION)** — Volle Breite, `border-collapse: collapse`; Außenrahmen `1px solid var(--bdr)`; **Radius** `8px`, `overflow: hidden`; Zellenhintergrund `rgba(255,255,255,0.5)`; Zellenpadding ~`0.7rem 1rem`; Trennlinien `1px solid var(--bdr)`; **Header:** Hintergrund `rgba(0,0,0,0.04)`, **fett**, Text `--soft` oder `--mid`; **kein Zebra**; **Highlight-Zeile** fehlende Kante: Tint wie oben (`#ead8de`), **ohne** Zeilen-Fett. Schriftgröße ~`0.9rem` (optional `0.82rem` in engen Layouts).
 
 **6. Figure + SVG (APPLICATION)** — `margin` `1rem 0 1.5rem`; SVG max. Breite (z. B. `540px`) oder `100%` mit Cap; Rahmen optional `1px solid var(--bdr)`. Caption/Begleittext: `0.85rem`, `--soft`, `line-height` 1.4.
 
@@ -295,21 +295,29 @@ H2  Quellen                                   ← nur wenn Abschnitt 3 genutzt; 
 - **Radien:** Code **6px**, Karten/Callouts/Tabellen **8px**.  
 - **Trennung:** ACTION (**Ocker**, `--surface-handlung-*`) vs. **Kopf Lösungs-Hülle** (**Syllabus-Grün**, `--surface-loesung-kopf-bg`) vs. APPLICATION (**weiß/transparenz + `--bdr`**) vs. COGNITION (**F-CHAIN-Creme**).
 
+### Typografie: Aufgabenstellung und Lösung (Abschluss, verbindlich für **04e**)
+
+| Thema | Festlegung |
+|--------|------------|
+| **Abschnitts-H3** | **Aufgabe:** Selektor `#aufgabenstellung .ha3p-sheet__body > h3`. **Lösung:** `#loesung .ha3p-sheet__body .ha3p-loesung-cols h3`. **Gemeinsam:** Bullet `•` davor, **Doppelpunkt** im sichtbaren Titel, `border-bottom: 1px solid #000`, `padding-bottom: 0.2rem`, Schrift wie Sheet-H3-Sans oben. |
+| **`.ha3p-prose`** | In **beiden** Sheets: **Helvetica Neue** (Stack), **`0.9375rem`**, **`line-height` 1.62**; **`strong`:** `600`. |
+| **Begründung (`.ha3p-cognition` in Lösung)** | **`ul`:** dieselbe Schriftgröße/Zeilenführung wie `.ha3p-prose` (kein Georgia-Erben); **`strong`:** `600`. Tabellen/Captions/Metrik-Kästen bleiben bei den bestehenden Komponentenregeln (§ oben). |
+
 ---
 
 ## Quadranten-Zuordnung — Content-Einheiten A–J (Abschluss Phase 1)
 
-**Rahmen (vereinbart):** **ACQUISITION** = Aufgabe + Beispiel · **COGNITION** = Erklärungen · **APPLICATION** = Tabellen/Daten/SVG · **ACTION** = Teilaufgaben (konkrete Schritte).
+**Rahmen (vereinbart):** **ACQUISITION** = Aufgabe + Beispiel · **COGNITION** = Erklärungen · **APPLICATION** = Tabellen/Daten/SVG · **ACTION** = **Aufgaben** (konkrete Schritte, H3 „Aufgaben:“).
 
-**Hinweis zu J:** Die früher separate Einheit **Begründung** ist im Rohtext unter **I** (Teil 3, `#### Begründung (kurz)`); es gibt **kein eigenes J** mehr — die Zeile **J** unten = *entfällt / in I*.
+**Hinweis zu J:** Die früher separate Einheit **Begründung** ist im Rohtext unter **I** (Teil 3, `#### Begründung:`); es gibt **kein eigenes J** mehr — die Zeile **J** unten = *entfällt / in I*.
 
 | Einheit | Kurzinhalt (s. [pilot-ha3-content.txt](pilot-ha3-content.txt)) | Primär | Sekundär |
 |---------|----------------------------------------------------------------|--------|----------|
 | **A** | Metablock (Zweck, Klassifizierung, Norm) | APPLICATION | — |
 | **B** | Titelbezug + Notion-Links | APPLICATION | — |
 | **C** | Sachverhalt + Geschäftsregel | ACQUISITION | COGNITION |
-| **D** | Code + gegebene Testaufrufe | APPLICATION | — |
-| **E** | Teilaufgaben 1–3 | ACTION | — |
+| **D** | Code + gegebene Testfälle | APPLICATION | — |
+| **E** | Aufgaben 1–3 | ACTION | — |
 | **F** | Statement-Index (Tabelle + Satz) | APPLICATION | COGNITION |
 | **G** | DAG (SVG-Pfad/Embed), Kanten, Knoten | APPLICATION | COGNITION |
 | **H** | Statement-/Branch-Coverage, Tabellen, fehlender Zweig | ACQUISITION | APPLICATION |

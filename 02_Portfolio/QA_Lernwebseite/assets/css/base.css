@@ -94,12 +94,15 @@
   --warn: var(--praxis);
   --warn-bg: var(--praxis-bg);
   /*
-   * HA3 (04e): ACTION (Teilaufgaben) = Ocker; Kopf Lösungs-Hülle (.ha3p-sheet--answer) = ctfl-grün.
+   * HA3 (04e): ACTION (H3 „Aufgaben:“) = Ocker; Kopf Lösungs-Hülle (.ha3p-sheet--answer) = ctfl-grün.
    * Nur 04e nutzt --surface-loesung-kopf-bg; 04c/05a section--e4 = Palette --e4 (Feature-Band), Landkarte/Glossar = --e4.
+   * Handlung: bewusst weicher als reines --e4 (Mix mit Seitengrund), Rand/Akzent entschärft.
    */
-  --surface-handlung-bg: var(--e4);
-  --surface-handlung-border-outer: rgba(156, 106, 42, 0.25);
-  --surface-handlung-accent: var(--praxis);
+  --surface-handlung-bg: #e7dac0;
+  --surface-handlung-bg: color-mix(in srgb, var(--e4) 42%, var(--bg) 58%);
+  --surface-handlung-border-outer: rgba(156, 106, 42, 0.14);
+  --surface-handlung-accent: #9f7a4e;
+  --surface-handlung-accent: color-mix(in srgb, var(--praxis) 78%, var(--bg) 22%);
   --surface-loesung-kopf-bg: var(--ctfl-bg);
 }
 

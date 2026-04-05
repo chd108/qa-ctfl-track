@@ -40,7 +40,7 @@ def is_shipping_free(price, numberOfItems, isPrimeShoppingMember):
     print("Additional Statement 5")
 ```
 
-### Gegebene Testaufrufe
+### Gegebene Testfälle
 
 ```python
 print("----------------")
@@ -53,7 +53,7 @@ print("----------------")
 is_shipping_free(50, 1, False)
 ```
 
-### Teilaufgaben
+### Aufgaben
 
 1. Zustandsübergangsdiagramm bzw. **Kontrollfluss** als **gerichteter azyklischer Graph** für diesen Codeabschnitt zeichnen.  
 2. **Anweisungsüberdeckung** (Statement Coverage) und **Zweigüberdeckung** (Branch Coverage) für die vier Tests berechnen.  
@@ -70,13 +70,13 @@ Die folgenden **Indizes 1–10** entsprechen der Auszählung in der Lösung (ohn
 | Index | Element im Code |
 |------:|-----------------|
 | 1 | `print("Additional Statement 1")` |
-| 2 | `if price > 50 or isPrimeShoppingMember` |
-| 3 | `print("Additional Statement 2")` |
-| 4 | `if price > 25 and numberOfItems < 3` |
-| 5 | `print("Additional Statement 3")` |
-| 6 | `elif price > 10 and numberOfItems == 1` |
-| 7 | `print("Additional Statement 4(discount)")` |
-| 8 | `return False` |
+| 2 | `if price > 50 or isPrimeShoppingMember:` |
+| 3 | `    print("Additional Statement 2")` |
+| 4 | `if price > 25 and numberOfItems <3:` |
+| 5 | `    print("Additional Statement 3")` |
+| 6 | `elif price > 10 and numberOfItems == 1 :` |
+| 7 | `    print("Additional Statement 4(discount)")` |
+| 8 | `    return False` |
 | 9 | `return True` |
 | 10 | `print("Additional Statement 5")` — **unerreichbar** (toter Code nach `return True`) |
 
@@ -84,7 +84,8 @@ Die folgenden **Indizes 1–10** entsprechen der Auszählung in der Lösung (ohn
 
 ### 1. Zustandsübergangsdiagramm (gerichteter azyklischer Graph)
 
-**Grafik (DAG):** Das **Zustandsübergangsdiagramm** als SVG liegt im Repo unter **`02_Portfolio/QA_Lernwebseite/assets/ha3-svg/HA3-Teil2_DAG.svg`**.
+Grafik (DAG): Das Zustandsübergangsdiagramm als SVG liegt im Repo unter
+02_Portfolio/QA_Lernwebseite/assets/ha3-svg/HA3-Teil2_DAG.svg.
 
 11 Kanten insgesamt (jede gezeichnete Kante einmal).
 
@@ -103,13 +104,11 @@ Die folgenden **Indizes 1–10** entsprechen der Auszählung in der Lösung (ohn
 | T3 | `(15, 1, True)` | 1, 2, 3, 4, 6, 7, 8 |
 | T4 | `(50, 1, False)` | 1, 2, 4, 5, 9 |
 
-**Vereinigung:** Indizes **1–9**; Index **10** wird **nie** erreicht.
+Über alle vier Tests hinweg werden die Anweisungen mit den Indizes **1–9** jeweils mindestens einmal durchlaufen. **Index 10** taucht in keinem Test auf: die zugehörige Zeile steht im Code nach `return True` und ist damit unerreichbar. **Die Vereinigung** aller über die Tests ausgeführten Anweisungen ist also genau {1, …, 9} — ohne 10.
 
 **Statement Coverage:** **9 / 10 = 90 %**
 
 #### Zweigüberdeckung (Branch Coverage)
-
-Alle **11 Kanten** prüfen:
 
 | Kante | Von Testfällen abgedeckt? |
 |-------|---------------------------|
@@ -122,25 +121,24 @@ Alle **11 Kanten** prüfen:
 | D2 → D3 (False) | T2, T3 |
 | S3 → `return True` | T1, T4 |
 | D3 → S4 (True) | T2, T3 |
-| **D3 → `return True` (False-Zweig des `elif`)** | **fehlt** |
+| D3 → `return True` (False-Zweig des `elif`) | fehlt |
 | S4 → `return False` | T2, T3 |
 
-**Branch Coverage:** **10 / 11 ≈ 90,91 %**
-
+Für **jede der 11 Kanten** steht in der Tabelle, welche der vier Tests sie durchlaufen — so lässt sich die Zweigabdeckung ablesen.
 **Fehlender Zweig:** Kante **D3 → `return True`** (z. B. abdeckbar mit **`(15, 2, False)`** — Rabattpfad ausgeschlossen, aber kein kostenloser Versand über die zweite `if`-Bedingung).
+
+**Branch Coverage:** **10 / 11 ≈ 90,91 %**
 
 ---
 
 ### 3. Ohne `print("Additional Statement 5")`
-
-Nach Entfernen dieser Zeile:
 
 | Metrik | Ergebnis |
 |--------|----------|
 | **Statement Coverage** | **9 ausführbare Anweisungen**, alle **9** werden von den vier Tests erreicht → **9 / 9 = 100 %** |
 | **Branch Coverage** | **unverändert 10 / 11 ≈ 90,91 %** — die entfernte Zeile war **keine zusätzliche Kante** im Graph |
 
-#### Begründung (kurz)
+#### Begründung:
 
 - **Anweisungsüberdeckung:** Anteil der **ausführbaren Anweisungen** (bzw. hier der vereinbarten Indizes), die mindestens ein Test ausführt.  
 - **Zweigüberdeckung (ISTQB):** **Alle Kanten** des Kontrollflussgraphen — nicht nur die Booleschen Entscheidungen isoliert.  
