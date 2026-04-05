@@ -96,13 +96,11 @@
   /*
    * HA3 (04e): ACTION (H3 „Aufgaben:“) = Ocker; Kopf Lösungs-Hülle (.ha3p-sheet--answer) = ctfl-grün.
    * Nur 04e nutzt --surface-loesung-kopf-bg; 04c/05a section--e4 = Palette --e4 (Feature-Band), Landkarte/Glossar = --e4.
-   * Handlung: bewusst weicher als reines --e4 (Mix mit Seitengrund), Rand/Akzent entschärft.
+   * Handlung: bewusst weicher als reines --e4; feste Hex-Werte (kein color-mix), damit local/GitHub/Browser gleich aussehen — doppelte Zeilen mit color-mix wirkten je nach color-mix-Unterstützung unterschiedlich.
    */
   --surface-handlung-bg: #e7dac0;
-  --surface-handlung-bg: color-mix(in srgb, var(--e4) 42%, var(--bg) 58%);
   --surface-handlung-border-outer: rgba(156, 106, 42, 0.14);
   --surface-handlung-accent: #9f7a4e;
-  --surface-handlung-accent: color-mix(in srgb, var(--praxis) 78%, var(--bg) 22%);
   --surface-loesung-kopf-bg: var(--ctfl-bg);
 }
 
