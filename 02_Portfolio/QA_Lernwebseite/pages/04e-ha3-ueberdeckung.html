@@ -29,26 +29,6 @@
       }
     }
 
-    /* 8 — TOC / Sprungmarken */
-    .ha3p-toc {
-      background: var(--legend-surface);
-      border: 1px solid var(--bdr);
-      border-radius: 8px;
-      padding: 0.65rem 1rem;
-      margin: 0 0 1.5rem;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-      font-size: 0.8125rem;
-      color: var(--mid);
-      line-height: 1.5;
-    }
-    .ha3p-toc strong { font-weight: 600; color: var(--soft); margin-right: 0.35rem; }
-    .ha3p-toc a {
-      color: var(--ctfl);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-    }
-    .ha3p-toc a:hover { border-bottom-color: var(--ctfl); }
-
     /* Aufgabe-Kopf --e3; Lösungs-Kopf --surface-loesung-kopf-bg (global base.css) */
     .ha3p-sheet {
       margin-bottom: 2rem;
@@ -101,27 +81,7 @@
       margin-top: 1.45rem;
     }
 
-    /* 1 — Intro-Links */
-    .ha3p-intro { margin-bottom: 1rem; }
-    .ha3p-intro p {
-      line-height: 1.65;
-      margin: 0 0 0.65rem;
-      color: var(--text);
-    }
-    #aufgabenstellung .ha3p-intro p {
-      margin: 0 0 0.2rem;
-      line-height: 1.4;
-      color: var(--mid);
-    }
-    #aufgabenstellung .ha3p-intro p:last-child { margin-bottom: 0; }
-    .ha3p-intro a {
-      color: var(--ctfl);
-      text-decoration: none;
-      border-bottom: 1px solid transparent;
-    }
-    .ha3p-intro a:hover { border-bottom-color: var(--ctfl); }
-
-    /* Prose-Links in Lösung (z. B. Repo-Pfad SVG): gleiche Optik wie Intro (Kurslinks) */
+    /* Prose-Links in Lösung (z. B. Repo-Pfad SVG): Kurslink-Optik wie Meta-Bar */
     #loesung .ha3p-prose a {
       color: var(--ctfl);
       text-decoration: none;
@@ -211,6 +171,10 @@
     .ha3p-loesung-cols__right {
       min-width: 0;
     }
+    /* Mindestens ~7 Fließtextzeilen (1.62) frei unter Spalte 1, wenn Spalte 2 höher ist */
+    .ha3p-loesung-cols__left {
+      padding-bottom: calc(7 * 1.62em);
+    }
     .ha3p-loesung-cols__left > h3:first-child,
     .ha3p-loesung-cols__right > h3:first-child {
       margin-top: 0;
@@ -288,6 +252,12 @@
     .ha3p-table__row--hl td {
       background: rgba(234, 216, 222, 0.55);
     }
+    /* Kennzahlen „100 % Statement“: gleiche OK-Fläche wie .ha3p-metric */
+    .ha3p-table td.ha3p-table__cell--ok {
+      background: var(--ok-bg);
+      box-shadow: inset 4px 0 0 var(--ok);
+    }
+    .ha3p-table td.ha3p-table__cell--ok strong { color: var(--ok); }
 
     /* Rechte Spalte Lösung: flachere Tabellenzeilen (Statement-Index, Coverage, Variante) */
     .ha3p-loesung-cols__right .ha3p-table th,
@@ -297,6 +267,20 @@
     }
     .ha3p-loesung-cols__right .ha3p-table caption {
       padding: 0 0 0.35rem;
+    }
+    .ha3p-loesung-teil3-full .ha3p-table th,
+    .ha3p-loesung-teil3-full .ha3p-table td {
+      padding: 0.4rem 0.75rem;
+      line-height: 1.35;
+    }
+    .ha3p-loesung-teil3-full .ha3p-table caption {
+      padding: 0 0 0.35rem;
+    }
+    .ha3p-loesung-teil3-full {
+      margin-bottom: 0;
+    }
+    .ha3p-loesung-teil3-full .ha3p-cognition {
+      margin-bottom: 0;
     }
 
     /* Kennzahlen-Zeilen (APPLICATION, kein ACTION-Kasten) — flacher als Standard, nur vertikal */
@@ -398,9 +382,10 @@
     }
     #aufgabenstellung .ha3p-action strong { font-weight: 600; }
 
-    /* HA3 Abschnitts-H3: Aufgabe (direkte Kinder) + Lösung (in .ha3p-loesung-cols) — Bullet, Linie, Typo */
+    /* HA3 Abschnitts-H3: Aufgabe (direkte Kinder) + Lösung (2 Spalten + Teil 3 volle Breite) — Bullet, Linie, Typo */
     #aufgabenstellung .ha3p-sheet__body > h3,
-    #loesung .ha3p-sheet__body .ha3p-loesung-cols h3 {
+    #loesung .ha3p-sheet__body .ha3p-loesung-cols h3,
+    #loesung .ha3p-sheet__body .ha3p-loesung-teil3-full > h3 {
       font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
       font-size: 1.1rem;
       font-weight: 600;
@@ -409,7 +394,8 @@
       border-bottom: 1px solid #000;
     }
     #aufgabenstellung .ha3p-sheet__body > h3::before,
-    #loesung .ha3p-sheet__body .ha3p-loesung-cols h3::before {
+    #loesung .ha3p-sheet__body .ha3p-loesung-cols h3::before,
+    #loesung .ha3p-sheet__body .ha3p-loesung-teil3-full > h3::before {
       content: "•";
       margin-right: 0.45em;
       color: var(--mid);
@@ -475,23 +461,12 @@
     <span><strong>CTFL-Bezug:</strong> ISTQB CTFL v4.0.2 (GTB, 01.03.2025) — Kap. 4: White-Box, Kontrollfluss, Anweisungs- und Zweigüberdeckung</span>
   </div>
 
-  <nav class="ha3p-toc" aria-label="Sprungmarken auf dieser Seite">
-    <strong>Inhalt:</strong>
-    <a href="#aufgabenstellung">Aufgabenstellung</a> ·
-    <a href="#loesung">Lösung</a>
-  </nav>
-
   <div class="ha3p-aufgabe-loesung-cols">
   <section id="aufgabenstellung" class="ha3p-sheet ha3p-sheet--task" aria-labelledby="ha3-h2-aufgabe">
     <div class="ha3p-sheet__header">
       <h2 id="ha3-h2-aufgabe">Aufgabenstellung - Überdeckung</h2>
     </div>
     <div class="ha3p-sheet__body">
-
-      <div class="ha3p-intro">
-        <p>Originalaufgabe (Kurs): <a href="https://masterschool.notion.site/1-Hausaufgabe-Zustands-bergangstest-2219418319f380e6ad92e72ae1e9a21c?pvs=25" target="_blank" rel="noopener noreferrer">Hausaufgabe — Zustandsübergangstest (Masterschool / Notion)</a></p>
-        <p>Beispielaufgabe (Kurs): <a href="https://masterschool.notion.site/Beispielaufgabe-Zustands-bergangstest-berdeckung-2219418319f380bcb362e37dfdc07e98" target="_blank" rel="noopener noreferrer">Zustandsübergang &amp; Überdeckung (Masterschool / Notion)</a></p>
-      </div>
 
       <h3>Sachverhalt &amp; Regel:</h3>
       <div class="ha3p-prose">
@@ -532,7 +507,7 @@ is_shipping_free(50,1,False)</code></pre>
       <h3>Aufgaben:</h3>
       <div class="ha3p-action">
         <ol>
-          <li>Zeichne ein Zustandsübergangsdiagramm (gerichteter azyklischer Graph) für diesen Codeabschnitt</li>
+          <li>Zeichne ein Zustandsübergangsdiagramm / einen gerichteten azyklischen Graph (DAG) für diesen Codeabschnitt</li>
           <li>Berechne die <strong>Anweisungsüberdeckung</strong> (Statement Coverage) und die <strong>Zweigüberdeckung</strong> (Branch Coverage)</li>
           <li>Berechne die <strong>Anweisungsüberdeckung</strong> und die <strong>Zweigüberdeckung</strong>, wenn die Zeile <code>print("Additional Statement 5")</code> aus dem Code entfernt wird.</li>
         </ol>
@@ -548,8 +523,8 @@ is_shipping_free(50,1,False)</code></pre>
     <div class="ha3p-sheet__body">
 
       <div class="ha3p-loesung-cols">
-        <div class="ha3p-loesung-cols__left" role="region" aria-label="Lösung Teil 1 — Zustandsübergangsdiagramm (gerichteter azyklischer Graph)">
-      <h3>Zustandsübergangsdiagramm (gerichteter azyklischer Graph):</h3>
+        <div class="ha3p-loesung-cols__left" role="region" aria-label="Lösung Teil 1 — Zustandsübergangsdiagramm / gerichteter azyklischer Graph (DAG)">
+      <h3>1. Zustandsübergangsdiagramm / gerichteter azyklischer Graph (DAG):</h3>
       <div class="ha3p-prose">
         <p>Grafik (DAG): Das Zustandsübergangsdiagramm als SVG liegt im Repo unter<br>
         <a href="../assets/ha3-svg/HA3-Teil2_DAG.svg" target="_blank" rel="noopener noreferrer">02_Portfolio/QA_Lernwebseite/assets/ha3-svg/HA3-Teil2_DAG.svg</a>.</p>
@@ -576,7 +551,7 @@ is_shipping_free(50,1,False)</code></pre>
       </div>
         </div>
 
-        <div class="ha3p-loesung-cols__right" role="region" aria-label="Lösung Teil 2 und 3 — Anweisungs- und Zweigüberdeckung; Variante ohne Statement 5">
+        <div class="ha3p-loesung-cols__right" role="region" aria-label="Lösung Teil 2 — Anweisungs- und Zweigüberdeckung">
       <h3>2. Anweisungsüberdeckung (Statement Coverage) und<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Zweigüberdeckung (Branch Coverage):</h3>
       <h4>Zuordnung: Statement-Indizes</h4>
       <div class="ha3p-prose">
@@ -654,6 +629,10 @@ is_shipping_free(50,1,False)</code></pre>
       </div>
       <p class="ha3p-metric"><strong>Branch Coverage:</strong> <strong>10 / 11 ≈ 90,91 %</strong></p>
 
+        </div>
+      </div>
+
+      <div class="ha3p-loesung-teil3-full" role="region" aria-label="Lösung Teil 3 — Kennzahlen nach Entfernen von Statement 5">
       <h3>3. Wenn die Zeile <code>print("Additional Statement 5")</code> entfernt wird:</h3>
       <table class="ha3p-table">
         <caption>Kennzahlen nach Entfernen von <code>print("Additional Statement 5")</code></caption>
@@ -666,11 +645,11 @@ is_shipping_free(50,1,False)</code></pre>
         <tbody>
           <tr>
             <td><strong>Statement Coverage</strong></td>
-            <td><strong>9 ausführbare Anweisungen</strong>,<br>alle <strong>9</strong> werden von den vier Tests erreicht → <strong>9 / 9 = 100 %</strong></td>
+            <td class="ha3p-table__cell--ok"><strong>9 ausführbare Anweisungen</strong>, alle <strong>9</strong> werden von den vier Tests erreicht → <strong>9 / 9 = 100 %</strong></td>
           </tr>
           <tr>
             <td><strong>Branch Coverage</strong></td>
-            <td><strong>unverändert 10 / 11 ≈ 90,91 %</strong><br>— die entfernte Zeile war <strong>keine zusätzliche Kante</strong> im Graph</td>
+            <td><strong>unverändert 10 / 11 ≈ 90,91 %</strong> — die entfernte Zeile war <strong>keine zusätzliche Kante</strong> im Graph</td>
           </tr>
         </tbody>
       </table>
@@ -679,12 +658,10 @@ is_shipping_free(50,1,False)</code></pre>
       <div class="ha3p-cognition">
         <ul>
           <li><strong>Anweisungsüberdeckung:</strong> Anteil der <strong>ausführbaren Anweisungen</strong> (bzw. hier der vereinbarten Indizes), die mindestens ein Test ausführt.</li>
-          <li><strong>Zweigüberdeckung (ISTQB):</strong> <strong>Alle Kanten</strong> des Kontrollflussgraphen — nicht nur die Booleschen Entscheidungen isoliert.</li>
+          <li><strong>Zweigüberdeckung (ISTQB):</strong> <strong>Alle Kanten</strong> des Kontrollflussgraphen (DAG) — nicht nur die Booleschen Entscheidungen isoliert.</li>
           <li>Der fehlende Pfad <strong>D3 → <code>return True</code></strong> erklärt <strong>eine</strong> nicht getestete Kante von <strong>11</strong>.</li>
         </ul>
       </div>
-
-        </div>
       </div>
 
     </div>
