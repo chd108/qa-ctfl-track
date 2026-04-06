@@ -184,6 +184,63 @@ body.folien-lektion {
   opacity: 0.92;
 }
 
+/* Lektion 3 · gleiche Kopf-Farblogik wie Lektion 2 */
+.folien-lektion--l3 .folie--adv-kopf-hell .folie-header {
+  background: var(--advanced-bg);
+  border: 1px solid rgba(42, 84, 124, 0.22);
+  border-radius: 4px;
+  padding: 0.4rem 0.55rem;
+  margin: 0 0 0.35rem 0;
+}
+
+.folien-lektion--l3 .folie--adv-kopf-hell .folie-titel,
+.folien-lektion--l3 .folie--adv-kopf-hell .folie-nr {
+  color: var(--advanced);
+  opacity: 1;
+}
+
+.folien-lektion--l3 .folie--leer.folie--adv-kopf-hell {
+  opacity: 1;
+}
+
+.folien-lektion--l3 .folie--leer.folie--adv-kopf-hell .folie-nr {
+  opacity: 0.88;
+}
+
+.folien-lektion--l3 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header {
+  background: var(--advanced);
+  border: 1px solid rgba(14, 30, 48, 0.38);
+}
+
+.folien-lektion--l3 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
+.folien-lektion--l3 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
+  color: var(--advanced-bg);
+  opacity: 1;
+}
+
+.folien-lektion--l3 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
+  opacity: 0.92;
+}
+
+.folien-lektion--l3 .folie--wichtig.folie--adv-kopf-dunkel .folie-header {
+  background: var(--advanced);
+  border: 1px solid rgba(14, 30, 48, 0.38);
+  border-left: var(--callout-chain-accent-width) solid var(--advanced-bg);
+  border-radius: 5px 5px var(--callout-chain-radius) var(--callout-chain-radius);
+  padding: var(--callout-chain-padding-y) var(--callout-chain-padding-x);
+  margin: -0.6rem -0.9rem 0.45rem -0.9rem;
+}
+
+.folien-lektion--l3 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
+.folien-lektion--l3 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+  color: var(--advanced-bg);
+  opacity: 1;
+}
+
+.folien-lektion--l3 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+  opacity: 0.92;
+}
+
 /* Optional: wichtige Lernfolie mit hellerem ADV-Titelton (.folie--adv-titel-hell) */
 .folien-lektion .folie--wichtig.folie--adv-titel-hell .folie-titel {
   color: #6a9ec4;
