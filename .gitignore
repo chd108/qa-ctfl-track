@@ -37,3 +37,6 @@ node_modules/
 
 # Tests (lokal / Projektordner; nicht Standard-Commit-Umfang)
 07_Tests/
+
+# Masterschool QA-Folien (Versionierung nur lokal im Ordner, nicht ins Hauptrepo)
+08_MS_QA-Folien/
