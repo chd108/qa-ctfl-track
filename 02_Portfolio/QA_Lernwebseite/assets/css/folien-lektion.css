@@ -38,7 +38,7 @@ body.folien-lektion {
   font-style: italic;
 }
 
-/* Drei Spalten — Aufteilung Lektion 1: 10 + 7 + 8 Karten (F01–F12 | F13–F19 | F20–F27) */
+/* Drei Spalten — z. B. L1: 10+7+8; L2: 13+14+13 (F01–F13 | F14–F27 | F28–F40) */
 .folien-lektion .folien-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -100,7 +100,7 @@ body.folien-lektion {
   opacity: 0.55;
 }
 
-/* Gliederungs-Titelfolien (F02 → F03 / F09 / F13): C-ADV-Blau statt ausgewaschenem Leer-Look */
+/* Gliederungs-Titelfolien (Abschnittstitel, z. B. F03 / F08 / F14): C-ADV-Blau statt ausgewaschenem Leer-Look */
 .folien-lektion .folie--leer.folie--glieder {
   opacity: 1;
 }
@@ -122,12 +122,128 @@ body.folien-lektion {
   opacity: 0.8;
 }
 
-/* F02: blaue Quadrate als Bullets vor dem Text — exakt C-ADV (--advanced), wie F03/F09/F13 */
-.folien-lektion .folie ul.folie-glieder-list {
-  list-style: none;
+/*
+ * Lektion 2 · Kopf-Farblogik:
+ * hellblau (.folie--adv-kopf-hell) = Titelfolie, große Kapitelöffner (F24, F35)
+ * dunkelblau (Abschnittsfolien ohne Klasse) = Standard-Glieder, wie dunkles Bullet in F02
+ * dunkelblau (.folie--adv-kopf-dunkel auf .folie--wichtig) = inhaltlich/prüfungsnah (F17, F25, Quiz F36–40)
+ */
+.folien-lektion--l2 .folie--adv-kopf-hell .folie-header {
+  background: var(--advanced-bg);
+  border: 1px solid rgba(42, 84, 124, 0.22);
+  border-radius: 4px;
+  padding: 0.4rem 0.55rem;
+  margin: 0 0 0.35rem 0;
+}
+
+.folien-lektion--l2 .folie--adv-kopf-hell .folie-titel,
+.folien-lektion--l2 .folie--adv-kopf-hell .folie-nr {
+  color: var(--advanced);
+  opacity: 1;
+}
+
+.folien-lektion--l2 .folie--leer.folie--adv-kopf-hell {
+  opacity: 1;
+}
+
+.folien-lektion--l2 .folie--leer.folie--adv-kopf-hell .folie-nr {
+  opacity: 0.88;
+}
+
+.folien-lektion--l2 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header {
+  background: var(--advanced);
+  border: 1px solid rgba(14, 30, 48, 0.38);
+}
+
+.folien-lektion--l2 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
+.folien-lektion--l2 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
+  color: var(--advanced-bg);
+  opacity: 1;
+}
+
+.folien-lektion--l2 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
+  opacity: 0.92;
+}
+
+.folien-lektion--l2 .folie--wichtig.folie--adv-kopf-dunkel .folie-header {
+  background: var(--advanced);
+  border: 1px solid rgba(14, 30, 48, 0.38);
+  border-left: var(--callout-chain-accent-width) solid var(--advanced-bg);
+  border-radius: 5px 5px var(--callout-chain-radius) var(--callout-chain-radius);
+  padding: var(--callout-chain-padding-y) var(--callout-chain-padding-x);
+  margin: -0.6rem -0.9rem 0.45rem -0.9rem;
+}
+
+.folien-lektion--l2 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
+.folien-lektion--l2 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+  color: var(--advanced-bg);
+  opacity: 1;
+}
+
+.folien-lektion--l2 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+  opacity: 0.92;
+}
+
+/* Optional: wichtige Lernfolie mit hellerem ADV-Titelton (.folie--adv-titel-hell) */
+.folien-lektion .folie--wichtig.folie--adv-titel-hell .folie-titel {
+  color: #6a9ec4;
+  color: color-mix(in srgb, var(--advanced-bg) 35%, var(--advanced) 65%);
+}
+
+.folien-lektion .folie--wichtig.folie--adv-titel-hell .folie-nr {
+  color: #7aa6c8;
+  color: color-mix(in srgb, var(--advanced-bg) 42%, var(--advanced) 58%);
+  opacity: 1;
+}
+
+/* Gliederungslisten (Lektion 1 ul · Lektion 2 F02 Agenda ol/ul) */
+.folien-lektion .folie .folie-glieder-list {
   margin: 0.2rem 0 0;
   margin-left: 0;
   padding: 0;
+}
+
+.folien-lektion .folie ul.folie-glieder-list:not(.folie-glieder-list--agenda-haupt) {
+  list-style: none;
+}
+
+/* Lektion 2 F02: Hauptpunkte — hellblaues Viereck + 1.–4., stärkerer Einzug */
+.folien-lektion ol.folie-glieder-list--agenda-haupt {
+  list-style: none;
+  counter-reset: folie-agenda-haupt;
+  padding-left: 0;
+  margin-left: 1.45rem;
+}
+
+.folien-lektion ol.folie-glieder-list--agenda-haupt > li {
+  counter-increment: folie-agenda-haupt;
+  position: relative;
+  padding-left: 2.2rem;
+  margin-bottom: 0.45rem;
+}
+
+/* F02 Hauptpunkte: zuerst Nummer, dann hellblaues Viereck */
+.folien-lektion ol.folie-glieder-list--agenda-haupt > li::before {
+  content: counter(folie-agenda-haupt) ".";
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-weight: 700;
+  font-size: 0.95em;
+  color: var(--chip-advanced-fg);
+}
+
+.folien-lektion ol.folie-glieder-list--agenda-haupt > li::after {
+  content: "";
+  position: absolute;
+  left: 1.2rem;
+  top: 0.32em;
+  width: 0.55rem;
+  height: 0.55rem;
+  background-color: var(--advanced-bg);
+  border: 1px solid rgba(42, 84, 124, 0.22);
+  border-radius: 1px;
+  box-sizing: border-box;
 }
 
 .folien-lektion .folie-glieder-list > li {
@@ -136,17 +252,78 @@ body.folien-lektion {
   margin-bottom: 0.25rem;
 }
 
-.folien-lektion .folie-glieder-list > li::before {
+.folien-lektion ul.folie-glieder-list:not(.folie-glieder-list--agenda-haupt) > li::before {
   content: "";
   position: absolute;
   left: 0;
   top: 0.38em;
   width: 0.55rem;
   height: 0.55rem;
-  /* wie Titelfolien F03/F09/F13: gleiche Fläche wie .folie--glieder .folie-header */
+  /* wie Abschnittsfolien-Köpfe (--advanced-bg) */
   background-color: #c4d8ee;
   background-color: var(--advanced-bg);
   border: 1px solid rgba(42, 84, 124, 0.22);
+  border-radius: 1px;
+  box-sizing: border-box;
+}
+
+.folien-lektion .folie-glieder-list--agenda .folie-glieder-list__sub > li {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: baseline;
+  column-gap: 0.35rem;
+  row-gap: 0.15rem;
+}
+
+.folien-lektion .folie-glieder-list--agenda .folie-glieder-list__sub > li.folie-glieder-list__sub--meta {
+  display: block;
+  font-style: italic;
+  opacity: 0.92;
+  padding-left: 0.85rem;
+}
+
+.folien-lektion .folie-glieder-list__sub > li.folie-glieder-list__sub--meta::before {
+  display: none;
+}
+
+.folien-lektion .folie-glieder-list__range {
+  font-size: 0.88em;
+  font-variant-numeric: tabular-nums;
+  color: var(--chip-advanced-fg);
+  opacity: 0.88;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Agenda-Unterlisten (Lektion 2 F02) */
+.folien-lektion .folie ul.folie-glieder-list__sub {
+  list-style: none;
+  margin: 0.2rem 0 0.4rem 0;
+  margin-left: 0;
+  padding: 0 0 0 0.35rem;
+}
+
+.folien-lektion .folie-glieder-list__sub > li {
+  position: relative;
+  padding-left: 0.85rem;
+  margin-bottom: 0.15rem;
+  font-size: 0.9em;
+  line-height: 1.45;
+  color: #0e1e30;
+  color: var(--chip-advanced-fg);
+}
+
+.folien-lektion .folie-glieder-list__sub > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.42em;
+  width: 0.38rem;
+  height: 0.38rem;
+  background-color: #2a547c;
+  background-color: var(--advanced);
+  border: 1px solid rgba(14, 30, 48, 0.35);
   border-radius: 1px;
   box-sizing: border-box;
 }
