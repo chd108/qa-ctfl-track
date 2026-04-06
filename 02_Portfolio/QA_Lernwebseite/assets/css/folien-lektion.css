@@ -38,6 +38,32 @@ body.folien-lektion {
   font-style: italic;
 }
 
+/*
+ * Codeblöcke auf Folien — an HA3 Überdeckung (04e-ha3-ueberdeckung, pre.ha3p-code)
+ * angelehnt: helles Panel, schwarzer Rand, Monospace.
+ */
+.folien-lektion pre.folie-code-block {
+  background: rgba(255, 255, 255, 0.92);
+  border: 1px solid #000;
+  border-radius: 6px;
+  padding: 0.65rem 0.85rem;
+  margin: 0.35rem 0 0;
+  font-size: 0.82rem;
+  line-height: 1.55;
+  overflow-x: auto;
+  color: #000;
+}
+
+.folien-lektion pre.folie-code-block code {
+  font-family: "Courier New", Courier, monospace;
+  display: block;
+  white-space: pre;
+  color: inherit;
+  background: none;
+  border: 0;
+  padding: 0;
+}
+
 /* Drei Spalten — z. B. L1: 10+7+8; L2: 13+14+13 (F01–F13 | F14–F27 | F28–F40) */
 .folien-lektion .folien-cols {
   display: grid;
@@ -434,6 +460,141 @@ body.folien-lektion {
   object-fit: contain;
   border-radius: 4px;
   border: 1px solid var(--bdr);
+}
+
+/* Wenig Text + kompaktes Diagramm nebeneinander (z. B. Lektion 3 F15, F17) */
+.folien-lektion .folie-text-neben-grafik {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 0.85rem;
+  align-items: flex-start;
+  margin-top: 0.35rem;
+}
+
+.folien-lektion .folie-text-neben-grafik__text {
+  flex: 1 1 10rem;
+  min-width: min(100%, 9.5rem);
+}
+
+.folien-lektion .folie-text-neben-grafik__text p {
+  margin-top: 0;
+}
+
+.folien-lektion .folie-text-neben-grafik__text ul {
+  margin: 0.25rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.folien-lektion .folie-text-neben-grafik__fig {
+  margin: 0;
+  flex: 0 1 auto;
+  align-self: center;
+}
+
+.folien-lektion .folie-text-neben-grafik__fig img {
+  display: block;
+  max-width: min(346px, 100%);
+  width: auto;
+  height: auto;
+  max-height: min(276px, 44vh);
+  margin: 0;
+  object-fit: contain;
+  object-position: top center;
+  border-radius: 4px;
+  border: 1px solid var(--bdr);
+}
+
+@media (max-width: 22rem) {
+  .folien-lektion .folie-text-neben-grafik__fig {
+    flex-basis: 100%;
+    text-align: center;
+  }
+
+  .folien-lektion .folie-text-neben-grafik__fig img {
+    max-width: min(346px, 100%);
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/*
+ * Zwei Spalten: volle Kartenbreite, keine „dritte“ leere Zone.
+ * Früher: 1fr + auto → schmales Textfeld + Bild + viel Leerraum rechts.
+ * Jetzt: zwei gleich breite Spalten; Text links volle Hälfte, Grafik rechts
+ * in der rechten Hälfte rechtsbündig, skaliert mit max-width: 100%.
+ * (Lektion 3: F 15, F 17–F 21; F 25/F 27 Code + Liste: --code-liste, schmale Code-Spalte.)
+ */
+.folien-lektion .folie-text-neben-grafik--zwei-spalten {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 0.45rem 0.75rem;
+  align-items: start;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.35rem;
+}
+
+.folien-lektion .folie-text-neben-grafik--zwei-spalten .folie-text-neben-grafik__text {
+  min-width: 0;
+}
+
+.folien-lektion .folie-text-neben-grafik--zwei-spalten .folie-text-neben-grafik__fig {
+  margin: 0;
+  min-width: 0;
+  display: flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+}
+
+.folien-lektion .folie-text-neben-grafik--zwei-spalten .folie-text-neben-grafik__fig img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: min(276px, 44vh);
+  margin: 0;
+  object-fit: contain;
+  object-position: top right;
+  border-radius: 4px;
+  border: 1px solid var(--bdr);
+}
+
+@media (max-width: 22rem) {
+  .folien-lektion .folie-text-neben-grafik--zwei-spalten {
+    grid-template-columns: 1fr;
+  }
+
+  .folien-lektion .folie-text-neben-grafik--zwei-spalten .folie-text-neben-grafik__fig {
+    justify-content: center;
+  }
+}
+
+/* Lektion 3 · F25/F27: Code links schmal, Erläuterung rechts breit (überschreibt 50/50) */
+.folien-lektion .folie-text-neben-grafik--zwei-spalten.folie-text-neben-grafik--code-liste {
+  grid-template-columns: minmax(0, 31%) minmax(0, 1fr);
+}
+
+.folien-lektion .folie-text-neben-grafik--code-liste .folie-text-neben-grafik__text--code {
+  min-width: 0;
+}
+
+.folien-lektion .folie-text-neben-grafik--code-liste .folie-text-neben-grafik__text--code pre.folie-code-block {
+  margin-top: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.folien-lektion .folie-text-neben-grafik--code-liste .folie-text-neben-grafik__text--analyse ul {
+  margin: 0;
+  padding-left: 1.05rem;
+}
+
+.folien-lektion .folie-text-neben-grafik--code-liste .folie-text-neben-grafik__text--analyse li {
+  margin-bottom: 0.22rem;
+}
+
+.folien-lektion .folie-text-neben-grafik--code-liste .folie-text-neben-grafik__text--analyse li:last-child {
+  margin-bottom: 0;
 }
 
 /* Lektion 2 · F04: drei SDLC-Modellgrafiken nebeneinander (Karte mit folie--sdlc-drei-bilder höher) */
