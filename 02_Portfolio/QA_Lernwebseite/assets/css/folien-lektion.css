@@ -64,6 +64,98 @@ body.folien-lektion {
   padding: 0;
 }
 
+/* Eingebettete Diagramme (inline SVG, z. B. L4 Zahlenstrahl 2BVA/3BVA) */
+.folien-lektion .folie-diagram {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  margin: 0.45rem 0 0;
+  padding: 0;
+  max-width: 100%;
+}
+
+/* Zusätzlicher Abstand unter dem Diagramm vor folgendem Block (z. B. L4 F08 → ol) */
+.folien-lektion .folie-diagram.folie-diagram--gap-after {
+  margin-bottom: 0.55rem;
+}
+
+.folien-lektion .folie-diagram__caption {
+  font-size: 0.86rem;
+  margin: 0 0 0.42rem;
+  line-height: 1.38;
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  align-self: center;
+}
+
+.folien-lektion .folie-diagram__caption code {
+  font-size: 0.9em;
+}
+
+/* Zweite Zeile wie Caption, direkt unter dem SVG-Rahmen (L4 Zahlenstrahl) */
+.folien-lektion .folie-diagram__caption.folie-diagram__caption--after-frame {
+  margin: 0.32rem 0 0;
+}
+
+/* Wie pre.folie-code-block: gleicher Panel-Hintergrund und schwarzer Rand.
+   Rahmen ≈ 81 % Folienbreite (10 % kleiner als 90 %), zentriert; rechts weniger Innenabstand. */
+.folien-lektion .folie-diagram__frame {
+  width: 81%;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  box-sizing: border-box;
+  border: 1px solid #000;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 0.5rem 0.38rem 0.5rem 0.65rem;
+}
+
+.folien-lektion .folie-diagram__frame svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+  color: var(--text);
+}
+
+.folien-lektion .folie-diagram__frame img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* L4 F09: Lampe — symmetrisches Innenpadding, Inhalt größer und optisch zentriert im Rahmen */
+.folien-lektion .folie-diagram__frame.folie-diagram__frame--lampe {
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.22rem;
+}
+
+.folien-lektion .folie-diagram__frame.folie-diagram__frame--lampe img {
+  margin: 0;
+  flex: 0 0 auto;
+  object-fit: contain;
+  /* kleinerer Y-Wert = Darstellung nach oben schieben (mehr Luft unten zur Legende) */
+  object-position: center 32%;
+  transform: scale(1.09) translateY(-3.5%);
+  transform-origin: center center;
+}
+
+.folien-lektion .folie-diagram .folie-diagram__mark {
+  fill: var(--advanced);
+}
+
+.folien-lektion .folie-diagram .folie-diagram__mark--highlight {
+  fill: var(--advanced);
+  stroke: #b83232;
+  stroke-width: 2.2px;
+}
+
 /* Drei Spalten — z. B. L1: 10+7+8; L2: 13+14+13 (F01–F13 | F14–F27 | F28–F40) */
 .folien-lektion .folien-cols {
   display: grid;
@@ -264,6 +356,63 @@ body.folien-lektion {
 }
 
 .folien-lektion--l3 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+  opacity: 0.92;
+}
+
+/* Lektion 4 · gleiche Kopf-Farblogik wie Lektion 2 / 3 */
+.folien-lektion--l4 .folie--adv-kopf-hell .folie-header {
+  background: var(--advanced-bg);
+  border: 1px solid rgba(42, 84, 124, 0.22);
+  border-radius: 4px;
+  padding: 0.4rem 0.55rem;
+  margin: 0 0 0.35rem 0;
+}
+
+.folien-lektion--l4 .folie--adv-kopf-hell .folie-titel,
+.folien-lektion--l4 .folie--adv-kopf-hell .folie-nr {
+  color: var(--advanced);
+  opacity: 1;
+}
+
+.folien-lektion--l4 .folie--leer.folie--adv-kopf-hell {
+  opacity: 1;
+}
+
+.folien-lektion--l4 .folie--leer.folie--adv-kopf-hell .folie-nr {
+  opacity: 0.88;
+}
+
+.folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header {
+  background: var(--advanced);
+  border: 1px solid rgba(14, 30, 48, 0.38);
+}
+
+.folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
+.folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
+  color: var(--advanced-bg);
+  opacity: 1;
+}
+
+.folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
+  opacity: 0.92;
+}
+
+.folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-header {
+  background: var(--advanced);
+  border: 1px solid rgba(14, 30, 48, 0.38);
+  border-left: var(--callout-chain-accent-width) solid var(--advanced-bg);
+  border-radius: 5px 5px var(--callout-chain-radius) var(--callout-chain-radius);
+  padding: var(--callout-chain-padding-y) var(--callout-chain-padding-x);
+  margin: -0.6rem -0.9rem 0.45rem -0.9rem;
+}
+
+.folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
+.folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+  color: var(--advanced-bg);
+  opacity: 1;
+}
+
+.folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
   opacity: 0.92;
 }
 
@@ -735,6 +884,20 @@ body.folien-lektion {
   font-style: italic;
   color: var(--soft);
   font-size: 0.8rem;
+}
+
+/* Erfolgs-/Ergebnis-Zeile (z. B. L4 F05 — gleiches Grün wie Glossar --ok-bg / Seniorenrabatt-SVG) */
+.folien-lektion .folie .folie-callout--ok {
+  margin-top: 0.4rem;
+  margin-bottom: 0;
+  padding: 0.5rem 0.7rem;
+  background: #cde8d2;
+  color: #000;
+  font-size: 1rem;
+  line-height: 1.45;
+  font-style: normal;
+  font-weight: 500;
+  border-radius: 4px;
 }
 
 .folien-lektion .folie .tag-leer {
