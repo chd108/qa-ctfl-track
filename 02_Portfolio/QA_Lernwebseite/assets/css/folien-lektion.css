@@ -100,6 +100,57 @@ body.folien-lektion {
   opacity: 0.55;
 }
 
+/* Gliederungs-Titelfolien (F02 → F03 / F09 / F13): C-ADV-Blau statt ausgewaschenem Leer-Look */
+.folien-lektion .folie--leer.folie--glieder {
+  opacity: 1;
+}
+
+.folien-lektion .folie--leer.folie--glieder .folie-header {
+  background: var(--advanced-bg);
+  border: 1px solid rgba(42, 84, 124, 0.22);
+  border-radius: 4px;
+  padding: 0.4rem 0.55rem;
+  margin: 0 0 0.35rem 0;
+}
+
+.folien-lektion .folie--leer.folie--glieder .folie-titel {
+  color: var(--advanced);
+}
+
+.folien-lektion .folie--leer.folie--glieder .folie-nr {
+  color: var(--advanced);
+  opacity: 0.8;
+}
+
+/* F02: blaue Quadrate als Bullets vor dem Text — exakt C-ADV (--advanced), wie F03/F09/F13 */
+.folien-lektion .folie ul.folie-glieder-list {
+  list-style: none;
+  margin: 0.2rem 0 0;
+  margin-left: 0;
+  padding: 0;
+}
+
+.folien-lektion .folie-glieder-list > li {
+  position: relative;
+  padding-left: 1.05rem;
+  margin-bottom: 0.25rem;
+}
+
+.folien-lektion .folie-glieder-list > li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.38em;
+  width: 0.55rem;
+  height: 0.55rem;
+  /* wie Titelfolien F03/F09/F13: gleiche Fläche wie .folie--glieder .folie-header */
+  background-color: #c4d8ee;
+  background-color: var(--advanced-bg);
+  border: 1px solid rgba(42, 84, 124, 0.22);
+  border-radius: 1px;
+  box-sizing: border-box;
+}
+
 .folien-lektion .folie--wichtig {
   border-left: 3px solid var(--ctfl);
   background: rgba(205, 232, 210, 0.25);
