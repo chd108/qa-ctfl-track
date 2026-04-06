@@ -1,0 +1,221 @@
+/*
+ * Masterschool-Folien (08_MS_QA-Folien) — Lektions-HTML
+ * Voraussetzung: base.css (+ subpage.css) geladen; body.folien-lektion
+ */
+
+/* Aktive Lektion in der Folien-Nav (aria-current, kein .current-Klassenpflicht) */
+.folien-lektion-nav a[aria-current="page"] {
+  color: var(--text);
+  font-weight: normal;
+  border-bottom-color: var(--text);
+}
+
+/* Wie HA3/Landkarte: seitliches Padding auf body; kein max-width auf body (Nav volle Breite) */
+body.folien-lektion {
+  padding: 0 3rem 4rem;
+  font-size: 0.88rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 720px) {
+  body.folien-lektion {
+    padding: 0 1.25rem 2.5rem;
+  }
+}
+
+/* Wie Landkarte: volle nutzbare Breite (nur Body-Seitenpadding begrenzt) */
+.folien-lektion .page-chrome,
+.folien-lektion__main,
+.folien-lektion > footer {
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Untertitel wie bisher (subpage setzt header p auf --text) */
+.folien-lektion .page-chrome header p {
+  color: var(--soft);
+  font-style: italic;
+}
+
+/* Drei Spalten — Aufteilung Lektion 1: 10 + 7 + 8 Karten (F01–F12 | F13–F19 | F20–F27) */
+.folien-lektion .folien-cols {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0 1.25rem;
+  align-items: start;
+}
+
+@media (max-width: 1200px) {
+  .folien-lektion .folien-cols {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .folien-lektion .folien-cols > .folien-col:last-child {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 720px) {
+  .folien-lektion .folien-cols {
+    grid-template-columns: 1fr;
+  }
+
+  .folien-lektion .folien-cols > .folien-col:last-child {
+    grid-column: auto;
+  }
+}
+
+.folien-lektion .folie {
+  border: 1px solid var(--bdr);
+  border-radius: 6px;
+  padding: 0.6rem 0.9rem;
+  margin-bottom: 0.6rem;
+  background: rgba(255, 255, 255, 0.45);
+}
+
+.folien-lektion .folie-header {
+  display: flex;
+  align-items: baseline;
+  gap: 0.6rem;
+  margin-bottom: 0.3rem;
+}
+
+.folien-lektion .folie-nr {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: var(--soft);
+  white-space: nowrap;
+}
+
+.folien-lektion .folie-titel {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.folien-lektion .folie--leer {
+  opacity: 0.55;
+}
+
+.folien-lektion .folie--wichtig {
+  border-left: 3px solid var(--ctfl);
+  background: rgba(205, 232, 210, 0.25);
+  background: color-mix(in srgb, var(--ctfl-bg) 40%, transparent);
+}
+
+/*
+ * Titelkopf bei CTFL-Folien: gleiche Callout-Optik wie „Begründung“ (.ha3p-cognition)
+ * in HA3 Lösung (04e) — Hintergrund/ Rahmen aus base.css --callout-chain-*.
+ */
+.folien-lektion .folie--wichtig .folie-header {
+  background: var(--callout-chain-bg);
+  border: 1px solid var(--callout-chain-border-outer);
+  border-left: var(--callout-chain-accent-width) solid var(--callout-chain-border-accent);
+  /* Oben an Karteninnenkante; unten wie HA3-Begründung (.ha3p-cognition) */
+  border-radius: 5px 5px var(--callout-chain-radius) var(--callout-chain-radius);
+  padding: var(--callout-chain-padding-y) var(--callout-chain-padding-x);
+  margin: -0.6rem -0.9rem 0.45rem -0.9rem;
+}
+
+.folien-lektion .folie--grafik {
+  border-left: 3px solid var(--praxis);
+  background: rgba(240, 223, 192, 0.3);
+  background: color-mix(in srgb, var(--praxis-bg) 45%, transparent);
+}
+
+.folien-lektion .grafik-hinweis {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.78rem;
+  color: var(--praxis);
+  font-style: italic;
+  margin-top: 0.2rem;
+}
+
+/* Eingebettete Folien-Grafiken: in Kartenbreite/-höhe begrenzen */
+.folien-lektion .folie-grafik {
+  margin: 0.35rem 0 0;
+}
+
+.folien-lektion .folie-grafik img {
+  display: block;
+  max-width: 100%;
+  width: auto;
+  height: auto;
+  max-height: min(380px, 50vh);
+  margin: 0 auto;
+  object-fit: contain;
+  border-radius: 4px;
+  border: 1px solid var(--bdr);
+}
+
+.folien-lektion .folie ul,
+.folien-lektion .folie ol {
+  margin-left: 1.2rem;
+  margin-top: 0.2rem;
+}
+
+.folien-lektion .folie li {
+  margin-bottom: 0.1rem;
+}
+
+.folien-lektion .folie table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.84rem;
+  margin-top: 0.3rem;
+}
+
+.folien-lektion .folie th,
+.folien-lektion .folie td {
+  padding: 0.3rem 0.6rem;
+  border: 1px solid var(--bdr);
+  text-align: left;
+  vertical-align: top;
+}
+
+.folien-lektion .folie th {
+  background: rgba(0, 0, 0, 0.04);
+  font-weight: 600;
+  color: var(--soft);
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 0.78rem;
+}
+
+.folien-lektion .folie .note {
+  font-style: italic;
+  color: var(--soft);
+  font-size: 0.8rem;
+}
+
+.folien-lektion .folie .tag-leer {
+  color: var(--soft);
+  font-size: 0.78rem;
+  font-style: italic;
+}
+
+.folien-lektion .folie p {
+  margin-top: 0.25rem;
+}
+
+.folien-lektion .folie strong {
+  color: var(--text);
+}
+
+.folien-lektion .folie a {
+  color: var(--ctfl);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+}
+
+.folien-lektion .folie a:hover {
+  border-bottom-color: var(--ctfl);
+}
+
+/* Titelfolie / neutral — Legenden-Punkt grau */
+.folien-lektion .legend__swatch--neutral {
+  background: #aaa;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
