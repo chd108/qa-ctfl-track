@@ -120,6 +120,26 @@ body.folien-lektion {
   color: var(--text);
 }
 
+/* L4 F08: Kurznotation zentriert unter dem Diagrammrahmen (nicht im Kasten) */
+.folien-lektion .folie-diagram__kurzform-under {
+  text-align: center;
+  width: 100%;
+  max-width: 100%;
+  align-self: center;
+  margin: 0.38rem 0 0;
+  padding: 0;
+}
+
+.folien-lektion .folie-diagram__kurzform-under .folie-diagram__kurzform-line {
+  margin: 0;
+  font-family: system-ui, Segoe UI, sans-serif;
+  line-height: 1.45;
+}
+
+.folien-lektion .folie-diagram__kurzform-under .note {
+  margin: 0.28rem 0 0;
+}
+
 .folien-lektion .folie-diagram__frame img {
   display: block;
   width: 100%;
