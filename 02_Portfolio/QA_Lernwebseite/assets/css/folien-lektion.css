@@ -167,7 +167,7 @@ body.folien-lektion {
   transform-origin: center center;
 }
 
-/* L5 F03/F05: Login-Diagramm — zentriert, ohne Lampe-spezifische Skalierung */
+/* L5 F06/F08: Login-Diagramm — zentriert, ohne Lampe-spezifische Skalierung */
 .folien-lektion .folie-diagram__frame.folie-diagram__frame--login img {
   margin: 0;
   flex: 0 0 auto;
@@ -272,11 +272,12 @@ body.folien-lektion {
 }
 
 /*
- * Lektion 2 · Kopf-Farblogik:
+ * Lektion 1 / 2 · Kopf-Farblogik:
  * hellblau (.folie--adv-kopf-hell) = Titelfolie, große Kapitelöffner (F24, F35)
  * dunkelblau (Abschnittsfolien ohne Klasse) = Standard-Glieder, wie dunkles Bullet in F02
  * dunkelblau (.folie--adv-kopf-dunkel auf .folie--wichtig) = inhaltlich/prüfungsnah (F17, F25, Quiz F36–40)
  */
+.folien-lektion--l1 .folie--adv-kopf-hell .folie-header,
 .folien-lektion--l2 .folie--adv-kopf-hell .folie-header {
   background: var(--advanced-bg);
   border: 1px solid rgba(42, 84, 124, 0.22);
@@ -285,35 +286,44 @@ body.folien-lektion {
   margin: 0 0 0.35rem 0;
 }
 
+.folien-lektion--l1 .folie--adv-kopf-hell .folie-titel,
+.folien-lektion--l1 .folie--adv-kopf-hell .folie-nr,
 .folien-lektion--l2 .folie--adv-kopf-hell .folie-titel,
 .folien-lektion--l2 .folie--adv-kopf-hell .folie-nr {
   color: var(--advanced);
   opacity: 1;
 }
 
+.folien-lektion--l1 .folie--leer.folie--adv-kopf-hell,
 .folien-lektion--l2 .folie--leer.folie--adv-kopf-hell {
   opacity: 1;
 }
 
+.folien-lektion--l1 .folie--leer.folie--adv-kopf-hell .folie-nr,
 .folien-lektion--l2 .folie--leer.folie--adv-kopf-hell .folie-nr {
   opacity: 0.88;
 }
 
+.folien-lektion--l1 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header,
 .folien-lektion--l2 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header {
   background: var(--advanced);
   border: 1px solid rgba(14, 30, 48, 0.38);
 }
 
+.folien-lektion--l1 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
+.folien-lektion--l1 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
 .folien-lektion--l2 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
 .folien-lektion--l2 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
   color: var(--advanced-bg);
   opacity: 1;
 }
 
+.folien-lektion--l1 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
 .folien-lektion--l2 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
   opacity: 0.92;
 }
 
+.folien-lektion--l1 .folie--wichtig.folie--adv-kopf-dunkel .folie-header,
 .folien-lektion--l2 .folie--wichtig.folie--adv-kopf-dunkel .folie-header {
   background: var(--advanced);
   border: 1px solid rgba(14, 30, 48, 0.38);
@@ -323,12 +333,15 @@ body.folien-lektion {
   margin: -0.6rem -0.9rem 0.45rem -0.9rem;
 }
 
+.folien-lektion--l1 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
+.folien-lektion--l1 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
 .folien-lektion--l2 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
 .folien-lektion--l2 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
   color: var(--advanced-bg);
   opacity: 1;
 }
 
+.folien-lektion--l1 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
 .folien-lektion--l2 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
   opacity: 0.92;
 }
@@ -457,6 +470,42 @@ body.folien-lektion {
 
 .folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
 .folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+  opacity: 0.92;
+}
+
+/*
+ * L1 / L2 / L3 / L4 / L5 · Blocköffner (inhaltlicher Gliederungsblock):
+ * wie .folie--leer.folie--glieder (dunkler Kopf), für .folie--wichtig mit Inhalt.
+ * Nicht mit .folie--adv-kopf-dunkel kombinieren (nur Formalien).
+ */
+.folien-lektion--l1 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header,
+.folien-lektion--l2 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header,
+.folien-lektion--l3 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header,
+.folien-lektion--l4 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header,
+.folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header {
+  background: var(--advanced);
+  border: 1px solid rgba(14, 30, 48, 0.38);
+}
+
+.folien-lektion--l1 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-titel,
+.folien-lektion--l1 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l2 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-titel,
+.folien-lektion--l2 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l3 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-titel,
+.folien-lektion--l3 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l4 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-titel,
+.folien-lektion--l4 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-titel,
+.folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr {
+  color: var(--advanced-bg);
+  opacity: 1;
+}
+
+.folien-lektion--l1 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l2 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l3 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l4 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr {
   opacity: 0.92;
 }
 
@@ -1083,7 +1132,7 @@ body.folien-lektion {
 
 .folien-lektion .folie .note {
   font-style: italic;
-  color: var(--soft);
+  color: var(--text);
   font-size: 0.8rem;
 }
 
