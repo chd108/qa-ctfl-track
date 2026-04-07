@@ -148,7 +148,8 @@ body.folien-lektion {
 }
 
 /* L4 F09: Lampe — symmetrisches Innenpadding, Inhalt größer und optisch zentriert im Rahmen */
-.folien-lektion .folie-diagram__frame.folie-diagram__frame--lampe {
+.folien-lektion .folie-diagram__frame.folie-diagram__frame--lampe,
+.folien-lektion .folie-diagram__frame.folie-diagram__frame--login {
   overflow: hidden;
   display: flex;
   align-items: center;
@@ -164,6 +165,16 @@ body.folien-lektion {
   object-position: center 32%;
   transform: scale(1.09) translateY(-3.5%);
   transform-origin: center center;
+}
+
+/* L5 F03/F05: Login-Diagramm — zentriert, ohne Lampe-spezifische Skalierung */
+.folien-lektion .folie-diagram__frame.folie-diagram__frame--login img {
+  margin: 0;
+  flex: 0 0 auto;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  object-position: center center;
 }
 
 .folien-lektion .folie-diagram .folie-diagram__mark {
@@ -379,8 +390,9 @@ body.folien-lektion {
   opacity: 0.92;
 }
 
-/* Lektion 4 · gleiche Kopf-Farblogik wie Lektion 2 / 3 */
-.folien-lektion--l4 .folie--adv-kopf-hell .folie-header {
+/* Lektion 4 / 5 · gleiche Kopf-Farblogik wie Lektion 2 / 3 */
+.folien-lektion--l4 .folie--adv-kopf-hell .folie-header,
+.folien-lektion--l5 .folie--adv-kopf-hell .folie-header {
   background: var(--advanced-bg);
   border: 1px solid rgba(42, 84, 124, 0.22);
   border-radius: 4px;
@@ -389,35 +401,44 @@ body.folien-lektion {
 }
 
 .folien-lektion--l4 .folie--adv-kopf-hell .folie-titel,
-.folien-lektion--l4 .folie--adv-kopf-hell .folie-nr {
+.folien-lektion--l4 .folie--adv-kopf-hell .folie-nr,
+.folien-lektion--l5 .folie--adv-kopf-hell .folie-titel,
+.folien-lektion--l5 .folie--adv-kopf-hell .folie-nr {
   color: var(--advanced);
   opacity: 1;
 }
 
-.folien-lektion--l4 .folie--leer.folie--adv-kopf-hell {
+.folien-lektion--l4 .folie--leer.folie--adv-kopf-hell,
+.folien-lektion--l5 .folie--leer.folie--adv-kopf-hell {
   opacity: 1;
 }
 
-.folien-lektion--l4 .folie--leer.folie--adv-kopf-hell .folie-nr {
+.folien-lektion--l4 .folie--leer.folie--adv-kopf-hell .folie-nr,
+.folien-lektion--l5 .folie--leer.folie--adv-kopf-hell .folie-nr {
   opacity: 0.88;
 }
 
-.folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header {
+.folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header,
+.folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header {
   background: var(--advanced);
   border: 1px solid rgba(14, 30, 48, 0.38);
 }
 
 .folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
-.folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
+.folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
+.folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
+.folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
   color: var(--advanced-bg);
   opacity: 1;
 }
 
-.folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
+.folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
+.folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
   opacity: 0.92;
 }
 
-.folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-header {
+.folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-header,
+.folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-header {
   background: var(--advanced);
   border: 1px solid rgba(14, 30, 48, 0.38);
   border-left: var(--callout-chain-accent-width) solid var(--advanced-bg);
@@ -427,12 +448,15 @@ body.folien-lektion {
 }
 
 .folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
-.folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+.folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
+.folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
+.folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
   color: var(--advanced-bg);
   opacity: 1;
 }
 
-.folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+.folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
+.folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
   opacity: 0.92;
 }
 
@@ -758,12 +782,169 @@ body.folien-lektion {
   padding-left: 1.05rem;
 }
 
+.folien-lektion .folie-text-neben-grafik--code-liste .folie-text-neben-grafik__text--analyse ol {
+  margin: 0.25rem 0 0;
+  padding-left: 1.05rem;
+}
+
 .folien-lektion .folie-text-neben-grafik--code-liste .folie-text-neben-grafik__text--analyse li {
   margin-bottom: 0.22rem;
 }
 
 .folien-lektion .folie-text-neben-grafik--code-liste .folie-text-neben-grafik__text--analyse li:last-child {
   margin-bottom: 0;
+}
+
+/* L5 F03: Code + Testfallliste — 50/50, Block horizontal zentriert auf der Folie, Spalten vertikal ausmitteln */
+.folien-lektion .folie-text-neben-grafik--zwei-spalten.folie-text-neben-grafik--spalten-ausgewogen {
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  align-items: center;
+  gap: 0.5rem 1rem;
+  width: 100%;
+  max-width: min(48rem, 100%);
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 0.45rem;
+}
+
+.folien-lektion .folie-text-neben-grafik--spalten-ausgewogen .folie-text-neben-grafik__text--code pre.folie-code-block {
+  margin-top: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.folien-lektion .folie-text-neben-grafik--spalten-ausgewogen .folie-text-neben-grafik__text--analyse ol {
+  margin: 0.25rem 0 0;
+  padding-left: 1.05rem;
+}
+
+.folien-lektion .folie-text-neben-grafik--spalten-ausgewogen .folie-text-neben-grafik__text--analyse li {
+  margin-bottom: 0.22rem;
+}
+
+.folien-lektion .folie-text-neben-grafik--spalten-ausgewogen .folie-text-neben-grafik__text--analyse li:last-child {
+  margin-bottom: 0;
+}
+
+/* L5 F05: zwei Listen nebeneinander — links ansetzen; rechte Spalte nutzt Restbreite (weniger Umbruch) */
+.folien-lektion .folie-doppelspalte-listen {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: flex-start;
+  gap: 0.35rem 0.42rem;
+  width: 100%;
+  box-sizing: border-box;
+  margin-top: 0.35rem;
+}
+
+.folien-lektion .folie-doppelspalte-listen__col {
+  min-width: 0;
+}
+
+.folien-lektion .folie-doppelspalte-listen__col:first-child {
+  flex: 0 0 auto;
+}
+
+.folien-lektion .folie-doppelspalte-listen__col:last-child {
+  flex: 1 1 0;
+  min-width: min(12rem, 100%);
+}
+
+.folien-lektion .folie-doppelspalte-listen__col p {
+  margin: 0;
+}
+
+.folien-lektion .folie-doppelspalte-listen__col ul,
+.folien-lektion .folie-doppelspalte-listen__col ol {
+  margin: 0.25rem 0 0;
+  padding-left: 1.15rem;
+}
+
+.folien-lektion .folie-doppelspalte-listen__col li {
+  margin-bottom: 0.2rem;
+}
+
+.folien-lektion .folie-doppelspalte-listen__col li:last-child {
+  margin-bottom: 0;
+}
+
+/* L5 F06: Code links, Analyse rechts — pre ohne extra Abstand unter Überschrift */
+.folien-lektion .folie-doppelspalte-listen--code-analyse .folie-doppelspalte-listen__col:first-child pre.folie-code-block {
+  margin-top: 0;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+/* Kurze, dünne Linie als optische Pause zwischen zwei Gedankenschritten (z. B. L5 F06) */
+.folien-lektion hr.folie-pause-line {
+  border: 0;
+  margin: 0.52rem 0 0.32rem;
+  padding: 0;
+  height: 0;
+  border-top: 1px solid rgba(40, 53, 53, 0.22);
+  max-width: 10.5rem;
+  margin-left: 0;
+  margin-right: auto;
+}
+
+.folien-lektion hr.folie-pause-line + .folie-doppelspalte-listen--diagramm-merksaetze {
+  margin-top: 0.28rem;
+}
+
+/* L5 F06: Venn neben Merksätzen — +10 % Gesamtgröße; Zeichnung skaliert, Rahmen schlank (wenig Padding, gleiche Kantenlinie) */
+.folien-lektion .folie-doppelspalte-listen--diagramm-merksaetze {
+  margin-top: 0.45rem;
+}
+
+/* Merksätze optisch ~2 Zeilen unter die Diagramm-Caption setzen (Nebenlayout) */
+.folien-lektion .folie-doppelspalte-listen--diagramm-merksaetze .folie-doppelspalte-listen__col:last-child {
+  padding-top: calc(2 * 1.45em);
+}
+
+.folien-lektion .folie-doppelspalte-listen--diagramm-merksaetze .folie-diagram--f06-venn-kompakt {
+  margin: 0;
+  max-width: min(30rem, 100%);
+  overflow: visible;
+}
+
+.folien-lektion .folie-doppelspalte-listen--diagramm-merksaetze .folie-diagram--f06-venn-kompakt .folie-diagram__caption {
+  font-size: 0.924rem;
+  text-align: left;
+  margin-bottom: 0.4rem;
+}
+
+/* F06: Flex-Column stretch würde width:auto auf volle Spaltenbreite ziehen — align-self + feste max-width machen die Vergrößerung zuverlässig sichtbar */
+.folien-lektion .folie-doppelspalte-listen--diagramm-merksaetze .folie-diagram--f06-venn-kompakt .folie-diagram__frame.folie-diagram__frame--f06-venn {
+  align-self: flex-start;
+  width: 100%;
+  max-width: min(28rem, 100%);
+  margin-left: 0;
+  margin-right: auto;
+  padding: 0.14rem 0.2rem;
+  overflow: visible;
+  box-sizing: border-box;
+}
+
+.folien-lektion .folie-doppelspalte-listen--diagramm-merksaetze .folie-diagram--f06-venn-kompakt .folie-diagram__frame.folie-diagram__frame--f06-venn svg {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+@media (max-width: 22rem) {
+  .folien-lektion .folie-doppelspalte-listen {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .folien-lektion .folie-doppelspalte-listen__col:first-child,
+  .folien-lektion .folie-doppelspalte-listen__col:last-child {
+    flex: 0 0 auto;
+    width: 100%;
+    min-width: 0;
+  }
 }
 
 /* Lektion 2 · F04: drei SDLC-Modellgrafiken nebeneinander (Karte mit folie--sdlc-drei-bilder höher) */
