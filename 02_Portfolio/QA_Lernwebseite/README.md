@@ -71,6 +71,7 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | Datei | Inhalt | CTFL (Orientierung) |
 |-------|--------|----------------------|
 | `01-landkarte.html` | **Landkarte** — **ISTQB CTFL v4.0.2 (DE)**, Kap. **1–6**, **drei** Chip-Farben + **MS**; **Kopf** einheitlich (`section__header--landkarte-leit`). Kap. **4** ohne **`~Kap. 4`**; Kap. **5.3** **5.3.1–5.3.3**; Kap. **6** Syllabus **6.1**/**6.2** mit Stichpunkten/Nutzen/Risiken; **C-PRAXIS** kurz (**P04** **A.0.1b**); **Smoke-Tests** **C-SYLLABUS** **`ref` 5.1.7** + Praxis Kap. **2**; **SonarQube** Kap. **3**/**6**. **P04-04** A.0.1b/c. | Kap. 1–6 |
+| `01d-ctfl-baum.html` | **CTFL-Baum** — vollständige **Syllabus-Struktur** Kap. **1–6** als **Baumdiagramm** (Spalten je Kapitel); **Theorie/Praxis**-Kennzeichnung als didaktische Ergänzung | Kap. 1–6 |
 | `01a-glossar.html` | Schlüsselbegriffe CTFL v4.0.2; Zählung **97** eindeutige K1-Lemmata vs. **102** Tabellenzeilen; alphabetisches **A–Z**-Register | Kap. 1–6 |
 | `01b-grundlagen.html` | Grundlagen des Testens (Was/Warum, QA vs. Testen, Fehlerkette, Grundsätze, Aktivitäten) | Kap. 1 |
 | `01c-testmittel.html` | Testmittel und Testaktivitäten | Kap. 1.4.3 |

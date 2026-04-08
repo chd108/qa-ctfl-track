@@ -1,0 +1,665 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../assets/qa-favicon-256.png" type="image/png">
+  <meta name="description" content="CTFL v4.0.2 — Strukturbaum. Von oben nach unten. 6 Spalten nebeneinander.">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>CTFL-Baum — QA Lernwebseite</title>
+  <style>
+    body { padding: 0 1rem 4rem; max-width: 100%; margin: 0 auto; }
+
+    /* ══ Scroll-Wrapper ══════════════════════════════════════════════ */
+    .tree-outer {
+      overflow-x: auto;
+      background: rgba(255,255,255,0.3);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      margin-top: 1.5rem;
+      padding: 1.5rem 1rem 2.5rem;
+    }
+
+    /* Min-width keeps all 6 cols visible without layout breaks */
+    .tree-inner {
+      position: relative;
+      min-width: 960px;
+    }
+
+    /* ══ Root ════════════════════════════════════════════════════════ */
+    .tree-root-row {
+      text-align: center;
+      position: relative;
+      padding-bottom: 1.4rem;   /* space for vertical stem below root */
+    }
+
+    /* Vertical stem: root → horizontal bar */
+    .tree-root-row::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 1.4rem;
+      background: rgba(0,0,0,0.18);
+    }
+
+    .t-root {
+      display: inline-block;
+      background: var(--text);
+      color: #f5f1ec;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.9rem;
+      font-weight: 600;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      white-space: nowrap;
+    }
+
+    /* ══ Horizontal bar — separate element, trimmed to col centers ══ */
+    /* With 6 equal flex:1 cols, center of col1 = 1/12 from left     */
+    .tree-hbar {
+      height: 1px;
+      background: rgba(0,0,0,0.18);
+      margin: 0 calc(100% / 12);
+    }
+
+    /* ══ Columns ═════════════════════════════════════════════════════ */
+    .tree-cols {
+      display: flex;
+      flex-direction: row;
+      align-items: flex-start;
+    }
+
+    /* ══ Single column ═══════════════════════════════════════════════ */
+    .tree-col {
+      flex: 1;
+      min-width: 155px;
+      padding: 0 0.45rem;
+      padding-top: 1.3rem;   /* space for tick stem above chapter */
+      position: relative;
+      box-sizing: border-box;
+    }
+
+    /* Vertical tick: border-top → chapter header */
+    .tree-col::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1px;
+      height: 1.3rem;
+      background: rgba(0,0,0,0.18);
+    }
+
+    /* ══ Kap-to-sections connector ══════════════════════════════════ */
+    .kap-conn {
+      display: block;
+      width: 1px;
+      height: 0.5rem;
+      background: rgba(0,0,0,0.15);
+      margin-left: 0.65rem;
+    }
+
+    /* ══ Chapter header ══════════════════════════════════════════════ */
+    .t-kap {
+      display: block;
+      width: 100%;
+      text-align: center;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.32rem 0.4rem;
+      border-radius: 5px;
+      border: 1px solid rgba(0,0,0,0.1);
+      box-sizing: border-box;
+      white-space: nowrap;
+    }
+    .kap-num {
+      display: block;
+      font-size: 0.58rem;
+      font-weight: 700;
+      opacity: 0.5;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.1rem;
+    }
+    .kap-dur {
+      display: block;
+      font-size: 0.57rem;
+      font-weight: 400;
+      opacity: 0.42;
+      margin-top: 0.1rem;
+    }
+    .kap-badge {
+      display: inline-block;
+      font-size: 0.5rem;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 0.04rem 0.28rem;
+      border-radius: 3px;
+      margin-top: 0.18rem;
+      opacity: 0.65;
+      background: rgba(0,0,0,0.07);
+    }
+    .t-kap-theorie { background: rgba(186,209,220,0.55); color: var(--text); }
+    .t-kap-3       { background: var(--e3); color: var(--text); }
+    .t-kap-4       { background: var(--e1); color: var(--text); }
+
+    /* ══ Section container: gradient from top, clipped near last item ═ */
+    .tree-col-body {
+      margin-left: 0.65rem;
+      margin-top: 0;        /* kap-conn handles the gap above */
+      padding-left: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(0,0,0,0.15) 0%,
+          rgba(0,0,0,0.15) calc(100% - 1.1rem),
+          transparent      calc(100% - 1.1rem)
+        ) 0 0 / 1px 100% no-repeat;
+    }
+
+    /* ══ Section item ════════════════════════════════════════════════ */
+    .tree-sec-item {
+      position: relative;
+      padding: 0.22rem 0 0.22rem 0.75rem;
+    }
+
+    /* Horizontal tick: border-left → section label */
+    .tree-sec-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.62rem;
+      width: 0.7rem;
+      height: 1px;
+      background: rgba(0,0,0,0.15);
+    }
+
+    .t-sec {
+      display: inline-block;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.67rem;
+      padding: 0.18rem 0.45rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0,0,0,0.09);
+      background: rgba(255,255,255,0.65);
+      color: var(--text);
+      white-space: nowrap;
+    }
+    .t-sec .ref {
+      font-size: 0.56rem;
+      font-weight: 700;
+      opacity: 0.42;
+      margin-right: 0.25rem;
+      letter-spacing: 0.03em;
+    }
+
+    /* ══ Subsection container: gradient + ::before connects to section ═ */
+    .tree-subs {
+      position: relative;
+      margin-left: 1.35rem;
+      padding-left: 0;
+      background:
+        linear-gradient(to bottom,
+          rgba(0,0,0,0.1) 0%,
+          rgba(0,0,0,0.1) calc(100% - 0.88rem),
+          transparent     calc(100% - 0.88rem)
+        ) 0 0 / 1px 100% no-repeat;
+    }
+    /* Short connector from tree-subs up to the section label tick ═══ */
+    .tree-subs::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: -0.32rem;
+      height: 0.32rem;
+      width: 1px;
+      background: rgba(0,0,0,0.1);
+    }
+
+    /* ══ Subsection item ═════════════════════════════════════════════ */
+    .tree-sub-item {
+      position: relative;
+      padding: 0.14rem 0 0.14rem 0.65rem;
+    }
+
+    .tree-sub-item::before {
+      content: '';
+      position: absolute;
+      left: 0;
+      top: 0.54rem;
+      width: 0.6rem;
+      height: 1px;
+      background: rgba(0,0,0,0.1);
+    }
+
+    .t-sub {
+      display: inline-block;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.62rem;
+      padding: 0.13rem 0.38rem;
+      border-radius: 3px;
+      border: 1px solid rgba(0,0,0,0.07);
+      background: rgba(255,255,255,0.35);
+      color: var(--mid);
+      white-space: nowrap;
+    }
+    .t-sub .ref {
+      font-size: 0.53rem;
+      font-weight: 700;
+      opacity: 0.4;
+      margin-right: 0.2rem;
+    }
+
+    /* ══ Kap. 4 Farben ═══════════════════════════════════════════════ */
+    .t-sec-bb   { background: var(--ctfl-bg) !important; }
+    .t-sec-wb   { background: var(--advanced-bg) !important; }
+    .t-sec-eb   { background: var(--praxis-bg) !important; }
+    .t-sec-coop { background: var(--e5) !important; }
+
+    .t-sub-bb   { background: rgba(205,232,210,0.5) !important; }
+    .t-sub-wb   { background: rgba(196,216,238,0.5) !important; }
+    .t-sub-eb   { background: rgba(240,223,192,0.5) !important; }
+    .t-sub-coop { background: rgba(212,196,224,0.5) !important; }
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <div class="top-nav-zone__brand-row">
+    <div class="top-nav-zone__nav-stack">
+      <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="../index.html" class="main-nav__home" aria-label="Zur Startseite QA Lernwebseite"><img class="main-nav__home-img" src="../assets/qa-favicon-256.png" alt="" width="48" height="48" decoding="async"></a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01d-ctfl-baum.html" class="current">CTFL-Baum</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01b-grundlagen.html">Grundlagen</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="02c-teststufen.html">Teststufen</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="06-testwerkzeuge.html">Testwerkzeuge</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04e-ha3-ueberdeckung.html">HA3 Überdeckung</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+    </div>
+  </div>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>CTFL-Baum</h1>
+    <p>ISTQB CTFL v4.0.2 · Kap. 1–6 · Alle Abschnitte und Unterabschnitte · Von oben nach unten</p>
+  </header>
+</div>
+
+<main id="main">
+
+  <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="ISTQB CTFL Lehrplan"></span>
+    <span><strong>Quelle:</strong> ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025)</span>
+    <span><strong>Syllabus:</strong> Kap. 1–6 — vollständige Strukturübersicht</span>
+    <span><strong>Seitenrolle:</strong> Strukturbaum · Vogelperspektive</span>
+    <span><strong>Hinweis:</strong> Kap. 1, 2, 5, 6 = Theorie · Kap. 3, 4 = Praxis (konzeptuelle Ergänzung)</span>
+  </div>
+
+  <nav class="legend" aria-label="Farbcodierung">
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile" style="background:var(--text);"></span>Wurzel CTFL</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile" style="background:rgba(186,209,220,0.55);"></span>Theorie · Kap. 1, 2, 5, 6</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile" style="background:var(--e3);"></span>Kap. 3 · Statischer Test</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile" style="background:var(--e1);"></span>Kap. 4 · Testanalyse</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile" style="background:var(--ctfl-bg);"></span>4.2 Black-Box</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile" style="background:var(--advanced-bg);"></span>4.3 White-Box</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile" style="background:var(--praxis-bg);"></span>4.4 Erfahrungsbasiert</div>
+    <div class="legend__item"><span class="legend__swatch legend__swatch--tile" style="background:var(--e5);"></span>4.5 Zusammenarbeit</div>
+  </nav>
+
+  <div class="tree-outer">
+    <div class="tree-inner">
+
+      <!-- ══ Root ══════════════════════════════════════════════════ -->
+      <div class="tree-root-row">
+        <span class="t-root">CTFL v4.0.2</span>
+      </div>
+
+      <!-- ══ Horizontal bar ═══════════════════════════════════════════ -->
+      <div class="tree-hbar"></div>
+
+      <!-- ══ 6 Columns ═══════════════════════════════════════════════════ -->
+      <div class="tree-cols">
+
+        <!-- ── Kap. 1 ─────────────────────────────────────────── -->
+        <div class="tree-col">
+          <span class="t-kap t-kap-theorie">
+            <span class="kap-num">Kap. 1</span>
+            Grundlagen des Testens
+            <span class="kap-dur">180 min</span>
+            <span class="kap-badge">Theorie</span>
+          </span>
+          <div class="kap-conn"></div>
+          <div class="tree-col-body">
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">1.1</span>Was ist Testen?</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.1.1</span>Testziele</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.1.2</span>Testen und Debugging</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">1.2</span>Warum ist Testen notwendig?</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.2.1</span>Beitrag zum Erfolg</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.2.2</span>Testen und QS</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.2.3</span>Fehlhandlungen / Fehlerzustände</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">1.3</span>Grundsätze des Testens</span>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">1.4</span>Testaktivitäten, Testmittel, Rollen</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.4.1</span>Testaktivitäten und -aufgaben</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.4.2</span>Testprozess im Kontext</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.4.3</span>Testmittel</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.4.4</span>Verfolgbarkeit</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.4.5</span>Rollen des Testens</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">1.5</span>Kompetenzen und Praktiken</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.5.1</span>Allgemeine Kompetenzen</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.5.2</span>Whole-Team-Ansatz</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">1.5.3</span>Unabhängigkeit des Testens</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Kap. 2 ─────────────────────────────────────────── -->
+        <div class="tree-col">
+          <span class="t-kap t-kap-theorie">
+            <span class="kap-num">Kap. 2</span>
+            Testen im SDLC
+            <span class="kap-dur">130 min</span>
+            <span class="kap-badge">Theorie</span>
+          </span>
+          <div class="kap-conn"></div>
+          <div class="tree-col-body">
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">2.1</span>Testen im Kontext des SDLC</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">2.1.1</span>Auswirkungen des SDLC</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">2.1.2</span>SDLC und gute Praktiken</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">2.1.3</span>Testen als Treiber</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">2.1.4</span>DevOps und Testen</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">2.1.5</span>Shift-Left-Ansatz</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">2.1.6</span>Retrospektiven</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">2.2</span>Teststufen und Testarten</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">2.2.1</span>Teststufen</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">2.2.2</span>Testarten</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">2.2.3</span>Fehlernachtest / Regressionstest</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">2.3</span>Wartungstest</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Kap. 3 ─────────────────────────────────────────── -->
+        <div class="tree-col">
+          <span class="t-kap t-kap-3">
+            <span class="kap-num">Kap. 3</span>
+            Statischer Test
+            <span class="kap-dur">80 min</span>
+            <span class="kap-badge">Praxis</span>
+          </span>
+          <div class="kap-conn"></div>
+          <div class="tree-col-body">
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">3.1</span>Grundlagen des statischen Tests</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">3.1.1</span>Arbeitsergebnisse</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">3.1.2</span>Wert des statischen Tests</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">3.1.3</span>Unterschiede statisch / dynamisch</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">3.2</span>Feedback- und Reviewprozess</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">3.2.1</span>Vorteile frühzeitigen Feedbacks</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">3.2.2</span>Aktivitäten des Reviewprozesses</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">3.2.3</span>Rollen und Verantwortlichkeiten</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">3.2.4</span>Arten von Reviews</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">3.2.5</span>Erfolgsfaktoren für Reviews</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Kap. 4 ─────────────────────────────────────────── -->
+        <div class="tree-col">
+          <span class="t-kap t-kap-4">
+            <span class="kap-num">Kap. 4</span>
+            Testanalyse und -entwurf
+            <span class="kap-dur">390 min</span>
+            <span class="kap-badge">Praxis</span>
+          </span>
+          <div class="kap-conn"></div>
+          <div class="tree-col-body">
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">4.1</span>Testverfahren im Überblick</span>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec t-sec-bb"><span class="ref">4.2</span>Black-Box-Testverfahren</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub t-sub-bb"><span class="ref">4.2.1</span>Äquivalenzklassenbildung</span></div>
+                <div class="tree-sub-item"><span class="t-sub t-sub-bb"><span class="ref">4.2.2</span>Grenzwertanalyse</span></div>
+                <div class="tree-sub-item"><span class="t-sub t-sub-bb"><span class="ref">4.2.3</span>Entscheidungstabellentest</span></div>
+                <div class="tree-sub-item"><span class="t-sub t-sub-bb"><span class="ref">4.2.4</span>Zustandsübergangstest</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec t-sec-wb"><span class="ref">4.3</span>White-Box-Test</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub t-sub-wb"><span class="ref">4.3.1</span>Anweisungstest und -überdeckung</span></div>
+                <div class="tree-sub-item"><span class="t-sub t-sub-wb"><span class="ref">4.3.2</span>Zweigtest und Zweigüberdeckung</span></div>
+                <div class="tree-sub-item"><span class="t-sub t-sub-wb"><span class="ref">4.3.3</span>Wert des White-Box-Tests</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec t-sec-eb"><span class="ref">4.4</span>Erfahrungsbasierter Test</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub t-sub-eb"><span class="ref">4.4.1</span>Intuitive Testfallermittlung</span></div>
+                <div class="tree-sub-item"><span class="t-sub t-sub-eb"><span class="ref">4.4.2</span>Explorativer Test</span></div>
+                <div class="tree-sub-item"><span class="t-sub t-sub-eb"><span class="ref">4.4.3</span>Checklistenbasierter Test</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec t-sec-coop"><span class="ref">4.5</span>Auf Zusammenarbeit basierende Testansätze</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub t-sub-coop"><span class="ref">4.5.1</span>Gemeinsames Schreiben von User-Storys</span></div>
+                <div class="tree-sub-item"><span class="t-sub t-sub-coop"><span class="ref">4.5.2</span>Akzeptanzkriterien</span></div>
+                <div class="tree-sub-item"><span class="t-sub t-sub-coop"><span class="ref">4.5.3</span>ATDD</span></div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Kap. 5 ─────────────────────────────────────────── -->
+        <div class="tree-col">
+          <span class="t-kap t-kap-theorie">
+            <span class="kap-num">Kap. 5</span>
+            Management der Testaktivitäten
+            <span class="kap-dur">335 min</span>
+            <span class="kap-badge">Theorie</span>
+          </span>
+          <div class="kap-conn"></div>
+          <div class="tree-col-body">
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">5.1</span>Testplanung</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.1.1</span>Zweck eines Testkonzepts</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.1.2</span>Iterations- und Releaseplanung</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.1.3</span>Eingangs- und Endekriterien</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.1.4</span>Schätzverfahren</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.1.5</span>Priorisierung von Testfällen</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.1.6</span>Testpyramide</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.1.7</span>Testquadranten</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">5.2</span>Risikomanagement</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.2.1</span>Risikodefinition und -attribute</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.2.2</span>Projektrisiken und Produktrisiken</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.2.3</span>Produktrisikoanalyse</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.2.4</span>Produktrisikosteuerung</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">5.3</span>Testüberwachung und -abschluss</span>
+              <div class="tree-subs">
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.3.1</span>Beim Testen verwendete Metriken</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.3.2</span>Zweck und Inhalt von Testberichten</span></div>
+                <div class="tree-sub-item"><span class="t-sub"><span class="ref">5.3.3</span>Kommunikation des Teststatus</span></div>
+              </div>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">5.4</span>Konfigurationsmanagement</span>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">5.5</span>Fehlermanagement</span>
+            </div>
+
+          </div>
+        </div>
+
+        <!-- ── Kap. 6 ─────────────────────────────────────────── -->
+        <div class="tree-col">
+          <span class="t-kap t-kap-theorie">
+            <span class="kap-num">Kap. 6</span>
+            Testwerkzeuge
+            <span class="kap-dur">20 min</span>
+            <span class="kap-badge">Theorie</span>
+          </span>
+          <div class="kap-conn"></div>
+          <div class="tree-col-body">
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">6.1</span>Werkzeugunterstützung für das Testen</span>
+            </div>
+
+            <div class="tree-sec-item">
+              <span class="t-sec"><span class="ref">6.2</span>Nutzen und Risiken der Testautomatisierung</span>
+            </div>
+
+          </div>
+        </div>
+
+      </div><!-- /.tree-cols -->
+    </div><!-- /.tree-inner -->
+  </div><!-- /.tree-outer -->
+
+</main>
+
+<footer>
+  <p class="source-note">CTFL-Baum · Quelle: ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025) · Theorie/Praxis: konzeptuelle Ergänzung · QA Lernwebseite</p>
+</footer>
+
+
+  <script>
+    /* Clip vertical gradient lines precisely at the last item's tick position */
+    function clipTreeLines() {
+      const rem = parseFloat(getComputedStyle(document.documentElement).fontSize);
+
+      /* Section lists: tick at top 0.62rem of each sec-item */
+      document.querySelectorAll('.tree-col-body').forEach(body => {
+        const items = body.querySelectorAll(':scope > .tree-sec-item');
+        if (!items.length) return;
+        const last = items[items.length - 1];
+        const bodyRect = body.getBoundingClientRect();
+        const lastRect = last.getBoundingClientRect();
+        const tickPx = lastRect.top - bodyRect.top + 0.62 * rem;
+        const pct = (tickPx / bodyRect.height * 100).toFixed(2);
+        body.style.backgroundImage =
+          `linear-gradient(to bottom, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.15) ${pct}%, transparent ${pct}%)`;
+      });
+
+      /* Subsection lists: tick at top 0.54rem of each sub-item */
+      document.querySelectorAll('.tree-subs').forEach(subs => {
+        const items = subs.querySelectorAll(':scope > .tree-sub-item');
+        if (!items.length) return;
+        const last = items[items.length - 1];
+        const subsRect = subs.getBoundingClientRect();
+        const lastRect = last.getBoundingClientRect();
+        const tickPx = lastRect.top - subsRect.top + 0.54 * rem;
+        const pct = (tickPx / subsRect.height * 100).toFixed(2);
+        subs.style.backgroundImage =
+          `linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.1) ${pct}%, transparent ${pct}%)`;
+      });
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', clipTreeLines);
+    } else {
+      clipTreeLines();
+    }
+  </script>
+</body>
+</html>
