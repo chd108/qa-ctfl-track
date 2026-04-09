@@ -187,7 +187,7 @@ body.folien-lektion {
   stroke-width: 2.2px;
 }
 
-/* Drei Spalten — z. B. L1: 10+7+8; L2: 13+14+13 (F01–F13 | F14–F27 | F28–F40) */
+/* Drei Spalten — z. B. L1: 10+7+8; L2: 13+14+13; L6: 4+4+3; L7: 4+3+3; L8: 4+2+4 (je drei .folien-col im HTML) */
 .folien-lektion .folien-cols {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -403,9 +403,12 @@ body.folien-lektion {
   opacity: 0.92;
 }
 
-/* Lektion 4 / 5 · gleiche Kopf-Farblogik wie Lektion 2 / 3 */
+/* Lektion 4 / 5 / 6 / 7 / 8 · gleiche Kopf-Farblogik wie Lektion 2 / 3 */
 .folien-lektion--l4 .folie--adv-kopf-hell .folie-header,
-.folien-lektion--l5 .folie--adv-kopf-hell .folie-header {
+.folien-lektion--l5 .folie--adv-kopf-hell .folie-header,
+.folien-lektion--l6 .folie--adv-kopf-hell .folie-header,
+.folien-lektion--l7 .folie--adv-kopf-hell .folie-header,
+.folien-lektion--l8 .folie--adv-kopf-hell .folie-header {
   background: var(--advanced-bg);
   border: 1px solid rgba(42, 84, 124, 0.22);
   border-radius: 4px;
@@ -416,23 +419,38 @@ body.folien-lektion {
 .folien-lektion--l4 .folie--adv-kopf-hell .folie-titel,
 .folien-lektion--l4 .folie--adv-kopf-hell .folie-nr,
 .folien-lektion--l5 .folie--adv-kopf-hell .folie-titel,
-.folien-lektion--l5 .folie--adv-kopf-hell .folie-nr {
+.folien-lektion--l5 .folie--adv-kopf-hell .folie-nr,
+.folien-lektion--l6 .folie--adv-kopf-hell .folie-titel,
+.folien-lektion--l6 .folie--adv-kopf-hell .folie-nr,
+.folien-lektion--l7 .folie--adv-kopf-hell .folie-titel,
+.folien-lektion--l7 .folie--adv-kopf-hell .folie-nr,
+.folien-lektion--l8 .folie--adv-kopf-hell .folie-titel,
+.folien-lektion--l8 .folie--adv-kopf-hell .folie-nr {
   color: var(--advanced);
   opacity: 1;
 }
 
 .folien-lektion--l4 .folie--leer.folie--adv-kopf-hell,
-.folien-lektion--l5 .folie--leer.folie--adv-kopf-hell {
+.folien-lektion--l5 .folie--leer.folie--adv-kopf-hell,
+.folien-lektion--l6 .folie--leer.folie--adv-kopf-hell,
+.folien-lektion--l7 .folie--leer.folie--adv-kopf-hell,
+.folien-lektion--l8 .folie--leer.folie--adv-kopf-hell {
   opacity: 1;
 }
 
 .folien-lektion--l4 .folie--leer.folie--adv-kopf-hell .folie-nr,
-.folien-lektion--l5 .folie--leer.folie--adv-kopf-hell .folie-nr {
+.folien-lektion--l5 .folie--leer.folie--adv-kopf-hell .folie-nr,
+.folien-lektion--l6 .folie--leer.folie--adv-kopf-hell .folie-nr,
+.folien-lektion--l7 .folie--leer.folie--adv-kopf-hell .folie-nr,
+.folien-lektion--l8 .folie--leer.folie--adv-kopf-hell .folie-nr {
   opacity: 0.88;
 }
 
 .folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header,
-.folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header {
+.folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header,
+.folien-lektion--l6 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header,
+.folien-lektion--l7 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header,
+.folien-lektion--l8 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-header {
   background: var(--advanced);
   border: 1px solid rgba(14, 30, 48, 0.38);
 }
@@ -440,18 +458,30 @@ body.folien-lektion {
 .folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
 .folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
 .folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
-.folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
+.folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
+.folien-lektion--l6 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
+.folien-lektion--l6 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
+.folien-lektion--l7 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
+.folien-lektion--l7 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
+.folien-lektion--l8 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-titel,
+.folien-lektion--l8 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
   color: var(--advanced-bg);
   opacity: 1;
 }
 
 .folien-lektion--l4 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
-.folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
+.folien-lektion--l5 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
+.folien-lektion--l6 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
+.folien-lektion--l7 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr,
+.folien-lektion--l8 .folie--leer.folie--glieder:not(.folie--adv-kopf-hell) .folie-nr {
   opacity: 0.92;
 }
 
 .folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-header,
-.folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-header {
+.folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-header,
+.folien-lektion--l6 .folie--wichtig.folie--adv-kopf-dunkel .folie-header,
+.folien-lektion--l7 .folie--wichtig.folie--adv-kopf-dunkel .folie-header,
+.folien-lektion--l8 .folie--wichtig.folie--adv-kopf-dunkel .folie-header {
   background: var(--advanced);
   border: 1px solid rgba(14, 30, 48, 0.38);
   border-left: var(--callout-chain-accent-width) solid var(--advanced-bg);
@@ -463,18 +493,27 @@ body.folien-lektion {
 .folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
 .folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
 .folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
-.folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+.folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
+.folien-lektion--l6 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
+.folien-lektion--l6 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
+.folien-lektion--l7 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
+.folien-lektion--l7 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
+.folien-lektion--l8 .folie--wichtig.folie--adv-kopf-dunkel .folie-titel,
+.folien-lektion--l8 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
   color: var(--advanced-bg);
   opacity: 1;
 }
 
 .folien-lektion--l4 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
-.folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
+.folien-lektion--l5 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
+.folien-lektion--l6 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
+.folien-lektion--l7 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr,
+.folien-lektion--l8 .folie--wichtig.folie--adv-kopf-dunkel .folie-nr {
   opacity: 0.92;
 }
 
 /*
- * L1 / L2 / L3 / L4 / L5 · Blocköffner (inhaltlicher Gliederungsblock):
+ * L1 / L2 / L3 / L4 / L5 / L6 / L7 / L8 · Blocköffner (inhaltlicher Gliederungsblock):
  * wie .folie--leer.folie--glieder (dunkler Kopf), für .folie--wichtig mit Inhalt.
  * Nicht mit .folie--adv-kopf-dunkel kombinieren (nur Formalien).
  */
@@ -482,7 +521,10 @@ body.folien-lektion {
 .folien-lektion--l2 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header,
 .folien-lektion--l3 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header,
 .folien-lektion--l4 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header,
-.folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header {
+.folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header,
+.folien-lektion--l6 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header,
+.folien-lektion--l7 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header,
+.folien-lektion--l8 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-header {
   background: var(--advanced);
   border: 1px solid rgba(14, 30, 48, 0.38);
 }
@@ -496,7 +538,13 @@ body.folien-lektion {
 .folien-lektion--l4 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-titel,
 .folien-lektion--l4 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
 .folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-titel,
-.folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr {
+.folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l6 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-titel,
+.folien-lektion--l6 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l7 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-titel,
+.folien-lektion--l7 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l8 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-titel,
+.folien-lektion--l8 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr {
   color: var(--advanced-bg);
   opacity: 1;
 }
@@ -505,7 +553,10 @@ body.folien-lektion {
 .folien-lektion--l2 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
 .folien-lektion--l3 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
 .folien-lektion--l4 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
-.folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr {
+.folien-lektion--l5 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l6 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l7 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr,
+.folien-lektion--l8 .folie--wichtig.folie--kopf-block:not(.folie--adv-kopf-dunkel) .folie-nr {
   opacity: 0.92;
 }
 
