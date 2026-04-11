@@ -109,9 +109,15 @@
     .entry-board--lernzusammenfassung {
       margin-top: calc(1.5rem + 1rem);
     }
-    /* Lernzusammenfassung: volle Seitenbreite, aber Karten so schmal wie oben (1/3 einer der beiden Hauptspalten = 1/6 Zeile) */
+    /* Lernzusammenfassung: gleiche Kartenbreite wie Lernmaterial/HA (eine Spalte = 50% ÷ 3 → volle Breite ÷ 6) */
     .entry-board--lernzusammenfassung .entry-card-grid {
       grid-template-columns: repeat(6, minmax(0, 1fr));
+    }
+    /* Unter 900px: Split stapelt — oben je 3 Karten in voller Breite; LZ ebenfalls 3 Spalten */
+    @media (max-width: 900px) {
+      .entry-board--lernzusammenfassung .entry-card-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+      }
     }
     @media (max-width: 640px) {
       .entry-card-grid {
@@ -580,15 +586,95 @@
 
   <section class="entry-board entry-board--lernzusammenfassung" aria-labelledby="entry-lz-heading">
     <h2 id="entry-lz-heading" class="entry-board__title">Lernzusammenfassung</h2>
-    <div class="entry-card-grid" role="group" aria-label="Lernzusammenfassung — Kursfolien">
+    <div class="entry-card-grid" role="group" aria-label="Lernzusammenfassung und Kursfolien L1–L8">
       <a class="entry-card entry-card--summary" href="pages/03-lektionen/07-lernzusammenfassung.html">
         <div class="entry-card__header">
           <span class="entry-card__icon" aria-hidden="true">▣</span>
-          <span class="entry-card__meta">MasterSchool · CTFL</span>
+          <span class="entry-card__meta">Überblick · CTFL</span>
         </div>
         <div class="entry-card__body">
           <div class="entry-card__title">Lernzusammenfassung</div>
           <div class="entry-card__desc">Merksätze und Kapitelüberblicke · Spillner/Linz &amp; Lehrplan v4.0.2</div>
+        </div>
+      </a>
+      <a class="entry-card entry-card--summary" href="pages/03-lektionen/lektion1-grundlagen.html">
+        <div class="entry-card__header">
+          <span class="entry-card__icon" aria-hidden="true">▣</span>
+          <span class="entry-card__meta">Kursfolien · L1</span>
+        </div>
+        <div class="entry-card__body">
+          <div class="entry-card__title">L1 — Grundlagen</div>
+          <div class="entry-card__desc">Kurseinführung &amp; Grundlagen des Testens</div>
+        </div>
+      </a>
+      <a class="entry-card entry-card--summary" href="pages/03-lektionen/lektion2-sdlc-statisches-testen.html">
+        <div class="entry-card__header">
+          <span class="entry-card__icon" aria-hidden="true">▣</span>
+          <span class="entry-card__meta">Kursfolien · L2</span>
+        </div>
+        <div class="entry-card__body">
+          <div class="entry-card__title">L2 — SDLC &amp; statisches Testen</div>
+          <div class="entry-card__desc">Testen im SDLC · Review &amp; frühe Prüfung</div>
+        </div>
+      </a>
+      <a class="entry-card entry-card--summary" href="pages/03-lektionen/lektion3-testanalyse-testentwurf.html">
+        <div class="entry-card__header">
+          <span class="entry-card__icon" aria-hidden="true">▣</span>
+          <span class="entry-card__meta">Kursfolien · L3</span>
+        </div>
+        <div class="entry-card__body">
+          <div class="entry-card__title">L3 — Testanalyse &amp; Testentwurf</div>
+          <div class="entry-card__desc">Analyse, Prioritäten, Testentwurfstechniken</div>
+        </div>
+      </a>
+      <a class="entry-card entry-card--summary" href="pages/03-lektionen/lektion4-testverfahren-vertiefung.html">
+        <div class="entry-card__header">
+          <span class="entry-card__icon" aria-hidden="true">▣</span>
+          <span class="entry-card__meta">Kursfolien · L4</span>
+        </div>
+        <div class="entry-card__body">
+          <div class="entry-card__title">L4 — Testverfahren (Vertiefung)</div>
+          <div class="entry-card__desc">Black-Box, White-Box, Erfahrungsbasiert</div>
+        </div>
+      </a>
+      <a class="entry-card entry-card--summary" href="pages/03-lektionen/lektion5-testentwurfsverfahren.html">
+        <div class="entry-card__header">
+          <span class="entry-card__icon" aria-hidden="true">▣</span>
+          <span class="entry-card__meta">Kursfolien · L5</span>
+        </div>
+        <div class="entry-card__body">
+          <div class="entry-card__title">L5 — Testentwurfsverfahren</div>
+          <div class="entry-card__desc">Äquivalenz, Grenzwerte, Zustände, Entscheidungstabellen …</div>
+        </div>
+      </a>
+      <a class="entry-card entry-card--summary" href="pages/03-lektionen/lektion6-testprozess-testanalyse-testplanung.html">
+        <div class="entry-card__header">
+          <span class="entry-card__icon" aria-hidden="true">▣</span>
+          <span class="entry-card__meta">Kursfolien · L6</span>
+        </div>
+        <div class="entry-card__body">
+          <div class="entry-card__title">L6 — Testprozess (Analyse &amp; Planung)</div>
+          <div class="entry-card__desc">Teststrategie, Plan, Risiko, Fortschritt</div>
+        </div>
+      </a>
+      <a class="entry-card entry-card--summary" href="pages/03-lektionen/lektion7-testfallentwurf.html">
+        <div class="entry-card__header">
+          <span class="entry-card__icon" aria-hidden="true">▣</span>
+          <span class="entry-card__meta">Kursfolien · L7</span>
+        </div>
+        <div class="entry-card__body">
+          <div class="entry-card__title">L7 — Testfallentwurf</div>
+          <div class="entry-card__desc">Von Anforderungen zu Testfällen &amp; -daten</div>
+        </div>
+      </a>
+      <a class="entry-card entry-card--summary" href="pages/03-lektionen/lektion8-testumgebung-durchfuehrung-bericht.html">
+        <div class="entry-card__header">
+          <span class="entry-card__icon" aria-hidden="true">▣</span>
+          <span class="entry-card__meta">Kursfolien · L8</span>
+        </div>
+        <div class="entry-card__body">
+          <div class="entry-card__title">L8 — Umgebung · Durchführung · Bericht</div>
+          <div class="entry-card__desc">Testumgebung, Ausführung, Abschluss &amp; Reporting</div>
         </div>
       </a>
     </div>

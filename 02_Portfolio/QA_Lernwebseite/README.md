@@ -52,7 +52,7 @@ Auf **`index.html`**, allen Seiten unter **`pages/01-lerninhalte/`**, **`pages/0
 |------|----------------|
 | `tools/main_nav.json` | **Eine** Nav-Definition für alle drei Kopf-`<nav>` (Lernmaterial inkl. Home-Logo, Hausaufgaben, Lernzusammenfassung & L1–L8) — **Quelle der Wahrheit** für Labels und Dateizuordnung. |
 | `tools/build_main_nav.py` | Ersetzt den Block **`.top-nav-zone`** in **`index.html`**, **`pages/**/*.html`** und **`templates/referenzvorlage-hauptsystem.html`**. Aufruf: `python tools/build_main_nav.py` (Arbeitsverzeichnis: `QA_Lernwebseite`). |
-| `index.html` | **Einstieg** — zwei Kartenbereiche nebeneinander (**Lernmaterial** / **Hausaufgaben**) und darunter **Lernzusammenfassung** (eigener Kartenbereich); **12** Verweiskarten Lernmaterial, **10** Hausaufgaben, **1** Karte Lernzusammenfassung; layoutspezifisches CSS inline, sonst wie Hauptsystem. |
+| `index.html` | **Einstieg** — zwei Kartenbereiche nebeneinander (**Lernmaterial** / **Hausaufgaben**) und darunter **Lernzusammenfassung** (eigener Kartenbereich); **12** Verweiskarten Lernmaterial, **10** Hausaufgaben, **9** Karten Lernzusammenfassung (Überblick + L1–L8); layoutspezifisches CSS inline, sonst wie Hauptsystem. |
 | `pages/01-lerninhalte/` | **13** Lernseiten (Landkarte, Glossar, Kap.-Seiten, Standards). |
 | `pages/02-hausaufgaben/` | **11** HA-Seiten (Web und A4). |
 | `pages/03-lektionen/` | **9** Seiten: **Lernzusammenfassung** + **8** Lektionsfolien (`lektion1`–`lektion8`). |
