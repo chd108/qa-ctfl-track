@@ -1,6 +1,13 @@
 /* Gemeinsame Layout-Schicht für alle Unterseiten (pages/)
    Überschrift und Untertitel einheitlich. */
 
+/* Seitenbreite & Außenabstand — Standard-Unterseiten */
+body {
+  padding: 0 3rem 4rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
 header {
   margin-bottom: var(--header-margin-bottom);
 }
