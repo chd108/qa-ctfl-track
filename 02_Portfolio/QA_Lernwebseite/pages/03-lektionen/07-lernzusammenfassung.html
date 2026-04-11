@@ -342,6 +342,10 @@
   font-style: italic;
   color: #555;
 }
+/* Erster Absatz unter Kapitel-H2: nur kursiv, keine Abschwächung wie Inline-<em> im Text */
+.card-body h2[id^="sec-kapitel"] + p em {
+  color: inherit;
+}
 .card-body strong {
   font-weight: 600;
 }
@@ -359,6 +363,22 @@
 .card-body a:focus-visible {
   text-decoration: underline;
   text-underline-offset: 2px;
+}
+/* Interview-Tipp (+ ggf. Folgeabsätze): gleiche Fläche wie HA3 „Lösung — Überdeckung“ (--surface-loesung-kopf-bg) */
+.lz-interview-tip {
+  margin: .75rem 0 0;
+  padding: .65rem .85rem;
+  background: var(--surface-loesung-kopf-bg, #cde8d2);
+  border: 1px solid rgba(34, 100, 60, 0.12);
+  border-radius: 6px;
+}
+.lz-interview-tip p {
+  margin: 0 0 .5rem;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+.lz-interview-tip p:last-child {
+  margin-bottom: 0;
 }
 
 /* ── Tables ── */
@@ -722,8 +742,8 @@ Anhang
       <div class="card-body">
         
 <h2 id="sec-kapitel-2">Kapitel 2: Grundlagen des Softwaretestens</h2>
-<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 1</em>
-<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<p><em>Wer Software testet, braucht eine gemeinsame Sprache — denn ohne präzise Begriffe entstehen Missverständnisse, die teurer sind als die Fehler selbst.</em></p>
+<p>Entspricht CTFL v4.0.2, Kapitel 1 — Grundlagen des Testens. Behandelt Fehlerbegriff, Testprozess, die sieben Grundsätze und Qualitätssicherung. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
 <hr />
 <h2 id="sec-2-1">2.1 Begriffe und Motivation</h2>
 <h3 id="sec-2-1-1">2.1.1 Fehlerbegriff</h3>
@@ -859,8 +879,6 @@ Kapitel 2 in einem Satz: Testen ist eine systematische, geplante Aktivität zur 
 - Qualitätssicherung (Prozess) vs. Testen (Produkt)
 - Kontext bestimmt den Testprozess</p>
 <hr />
-<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
-<hr />
 <h2 id="sec-kap2-hinweise-claude">Hinweise zur Prüfungs- und Interviewvorbereitung <em>(Claude)</em></h2>
 <blockquote>
 <p>Dieser Abschnitt enthält Empfehlungen von Claude zur Priorisierung beim Lernen.
@@ -874,8 +892,10 @@ Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
 <li><strong>Verfolgbarkeit</strong> — klingt technisch, ist aber konzeptuell wichtig: Was verbindet Anforderung mit Testergebnis?</li>
 <li><strong>Qualitätssicherung vs. Testen</strong> — QA sichert Prozesse, Testen prüft Produkte. Diese Unterscheidung kommt im Interview häufig vor.</li>
 </ul>
+<div class="lz-interview-tip">
 <p><strong>Tipp für das Interview:</strong>
 Wenn du nach „Testen" gefragt wirst, nenne immer den vollständigen Testprozess (7 Aktivitäten) — das zeigt, dass du nicht nur „Tests ausführen" denkst, sondern den gesamten Prozess verstehst.</p>
+</div>
       </div>
     </article>
     
@@ -887,8 +907,8 @@ Wenn du nach „Testen" gefragt wirst, nenne immer den vollständigen Testprozes
       <div class="card-body">
         
 <h2 id="sec-kapitel-3">Kapitel 3: Testen im Softwareentwicklungslebenszyklus</h2>
-<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 2</em>
-<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<p><em>Testen ist kein Schritt am Ende — es ist ein roter Faden, der sich durch den gesamten Entwicklungsprozess zieht.</em></p>
+<p>Entspricht CTFL v4.0.2, Kapitel 2 — Testen im Softwareentwicklungslebenszyklus. Behandelt Entwicklungsmodelle, die vier Teststufen, Testarten sowie Regressions- und agiles Testen. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
 <hr />
 <h2 id="sec-3-1">3.1 Sequenzielle Entwicklungsmodelle</h2>
 <div class="merksatz"><span class="merksatz-label">Merksatz</span>
@@ -1039,8 +1059,6 @@ Kapitel 3 in einem Satz: Das SDLC-Modell bestimmt wann, wo und wie getestet wird
 - DevOps: Shift-Left + Shift-Right
 - Retrospektiven: kontinuierliche Prozessverbesserung</p>
 <hr />
-<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
-<hr />
 <h2 id="sec-kap3-hinweise-claude">Hinweise zur Prüfungs- und Interviewvorbereitung <em>(Claude)</em></h2>
 <blockquote>
 <p>Dieser Abschnitt enthält Empfehlungen von Claude zur Priorisierung beim Lernen.
@@ -1055,8 +1073,10 @@ Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
 <li><strong>TDD/BDD/ATDD</strong> — Konzepte kennen, nicht nur Abkürzungen. Besonders BDD mit Given/When/Then ist in agilen Teams Alltag.</li>
 <li><strong>Testarten vs. Teststufen</strong> — häufige Verwechslung: Teststufe = wo im Prozess (Komponente, System...), Testart = was wird geprüft (funktional, nicht-funktional...).</li>
 </ul>
+<div class="lz-interview-tip">
 <p><strong>Tipp für das Interview:</strong>
 Wenn du nach agilen Testmethoden gefragt wirst, verbinde immer: Scrum → Sprint → Whole-Team-Ansatz → ATDD/BDD → CI/CD. Das zeigt Zusammenhänge, nicht nur isoliertes Wissen.</p>
+</div>
       </div>
     </article>
     
@@ -1068,8 +1088,8 @@ Wenn du nach agilen Testmethoden gefragt wirst, verbinde immer: Scrum → Sprint
       <div class="card-body">
         
 <h2 id="sec-kapitel-4">Kapitel 4: Statischer Test</h2>
-<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 3</em>
-<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<p><em>Fehler lassen sich finden, bevor auch nur eine Zeile Code ausgeführt wird — durch das Lesen, Analysieren und Prüfen von Dokumenten.</em></p>
+<p>Entspricht CTFL v4.0.2, Kapitel 3 — Statischer Test. Behandelt Reviews, Reviewarten, Rollen im Reviewprozess und werkzeuggestützte statische Analyse. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
 <hr />
 <h2 id="sec-kap4-ueberblick">Überblick</h2>
 <div class="merksatz"><span class="merksatz-label">Merksatz</span>
@@ -1248,10 +1268,10 @@ Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
 <li><strong>Rollen im Reviewprozess</strong> — Moderator vs. Autor vs. Gutachter klar unterscheiden können.</li>
 <li><strong>Werkzeuge</strong> — SonarQube als Beispiel nennen können; zeigt Praxisbezug.</li>
 </ul>
+<div class="lz-interview-tip">
 <p><strong>Tipp für das Interview:</strong>
 Wenn du nach statischem Testen gefragt wirst, nenne konkret: „Reviews und statische Analyse sind die zwei Hauptformen. Reviews sind menschlich, statische Analyse ist werkzeuggestützt. Beide finden Fehler ohne die Software auszuführen." Das ist eine präzise, strukturierte Antwort.</p>
-<hr />
-<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
+</div>
       </div>
     </article>
     
@@ -1263,8 +1283,8 @@ Wenn du nach statischem Testen gefragt wirst, nenne konkret: „Reviews und stat
       <div class="card-body">
         
 <h2 id="sec-kapitel-5">Kapitel 5: Dynamischer Test</h2>
-<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 4</em>
-<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<p><em>Testfälle entstehen nicht zufällig — systematische Verfahren stellen sicher, dass die richtigen Dinge mit der richtigen Tiefe getestet werden.</em></p>
+<p>Entspricht CTFL v4.0.2, Kapitel 4 — Testentwurfsverfahren. Behandelt Blackbox-, Whitebox- und erfahrungsbasierte Verfahren. Das prüfungsrelevanteste Kapitel des Lehrplans. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
 <hr />
 <h2 id="sec-kap5-ueberblick">Überblick</h2>
 <div class="merksatz"><span class="merksatz-label">Merksatz</span>
@@ -1449,12 +1469,12 @@ Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
 <li><strong>Exploratives Testen</strong> — in agilen Projekten sehr praxisrelevant, wird im Interview gerne als Praxisfrage gestellt: „Wie würdest du eine neue Funktion ohne Spezifikation testen?"</li>
 <li><strong>Entscheidungstabellen</strong> — wenn du eine Tabelle mit Bedingungen und Aktionen siehst, ist das eine Entscheidungstabelle. Kannst du erklären, wie eine Regel entsteht?</li>
 </ul>
+<div class="lz-interview-tip">
 <p><strong>Tipp für das Interview:</strong>
 Wenn du nach Testverfahren gefragt wirst, strukturiere deine Antwort sofort: „Es gibt drei Kategorien — Blackbox, Whitebox und erfahrungsbasiert." Dann nenne pro Kategorie je ein oder zwei Verfahren mit einem Satz Erklärung. Das zeigt sofort, dass du systematisch denkst.</p>
 <p><strong>Verbindung zu eigenen Hausaufgaben:</strong>
 Du hast in Lektion 7 Äquivalenzklassenbildung und Grenzwertanalyse am Beispiel Altersverifikation (16 Jahre) und Zeichenbegrenzung (100 Zeichen) selbst angewendet — das sind deine eigenen Praxisbeispiele für das Interview!</p>
-<hr />
-<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
+</div>
       </div>
     </article>
     
@@ -1466,8 +1486,8 @@ Du hast in Lektion 7 Äquivalenzklassenbildung und Grenzwertanalyse am Beispiel 
       <div class="card-body">
         
 <h2 id="sec-kapitel-6">Kapitel 6: Testmanagement</h2>
-<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 5</em>
-<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<p><em>Gutes Testen braucht nicht nur Technik, sondern auch Planung, Priorisierung und die Fähigkeit, Qualität messbar zu machen.</em></p>
+<p>Entspricht CTFL v4.0.2, Kapitel 5 — Testmanagement. Behandelt Teststrategie, Risikobasiertes Testen, Fehlermanagement und Testberichte. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
 <hr />
 <h2 id="sec-kap6-ueberblick">Überblick</h2>
 <div class="merksatz"><span class="merksatz-label">Merksatz</span>
@@ -1673,10 +1693,10 @@ Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
 <li><strong>Testfortschrittsbericht vs. Testabschlussbericht</strong> — wann wird welcher erstellt und für wen?</li>
 <li><strong>Drei-Punkt-Schätzung</strong> — Formel parat haben: <code>(O + 4×W + P) / 6</code></li>
 </ul>
+<div class="lz-interview-tip">
 <p><strong>Tipp für das Interview:</strong>
 „Beschreibe wie du einen Fehler dokumentierst" ist eine sehr häufige Frage. Deine Antwort sollte enthalten: ID, Titel, Schritte zur Reproduktion, erwartetes vs. tatsächliches Ergebnis, Schweregrad, Priorität, Screenshot. Du hast das in deinen Hausaufgaben (Fehlerbericht HA6) selbst gemacht — das ist dein Praxisbeispiel!</p>
-<hr />
-<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
+</div>
       </div>
     </article>
     
@@ -1688,8 +1708,8 @@ Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
       <div class="card-body">
         
 <h2 id="sec-kapitel-7">Kapitel 7: Testwerkzeuge</h2>
-<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 6</em>
-<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<p><em>Werkzeuge beschleunigen das Testen erheblich — aber nur wenn man weiß, wann man sie einsetzt und wann nicht.</em></p>
+<p>Entspricht CTFL v4.0.2, Kapitel 6 — Testwerkzeuge. Behandelt Werkzeugkategorien, Nutzen und Risiken der Testautomatisierung sowie Pilotprojekte zur Werkzeugeinführung. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
 <hr />
 <h2 id="sec-kap7-ueberblick">Überblick</h2>
 <div class="merksatz"><span class="merksatz-label">Merksatz</span>
@@ -1834,12 +1854,12 @@ Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
 <li><strong>Konkrete Werkzeuge kennen</strong> — Selenium, Cypress, JUnit, pytest, Jira, SonarQube, JMeter. Du musst sie nicht bedienen können, aber du solltest wissen, wofür sie eingesetzt werden.</li>
 <li><strong>CI/CD-Pipeline</strong> — welche Werkzeuge wo eingesetzt werden ist eine häufige Frage.</li>
 </ul>
+<div class="lz-interview-tip">
 <p><strong>Tipp für das Interview:</strong>
 „Warum sollte man nicht alles automatisieren?" ist eine Lieblingsinterviewfrage. Antwort: Hohe Anlaufkosten, Wartungsaufwand (besonders UI-Tests ändern sich häufig), manche Tests sind besser manuell (explorative Tests, Usability), und Automatisierung findet nicht alle Fehler. Automatisieren lohnt sich vor allem für stabile, häufig wiederholte Tests — klassischerweise Regressionstests.</p>
 <p><strong>Praxisbezug:</strong>
 Du hast in deiner Weiterbildung mit GitHub, Jira-ähnlichem Fehlermanagement und dem Webshop Grocery Mate gearbeitet. Das sind echte Werkzeuge aus Kapitel 7 — erwähne das im Interview.</p>
-<hr />
-<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
+</div>
       </div>
     </article>
     
