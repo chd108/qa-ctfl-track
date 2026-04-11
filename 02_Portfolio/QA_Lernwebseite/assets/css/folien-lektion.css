@@ -179,7 +179,7 @@ body.folien-lektion {
   stroke-width: 2.2px;
 }
 
-/* Drei Spalten — z. B. L1: 10+7+8; L2: 13+14+13; L6: 4+4+3; L7: 4+3+3; L8: 4+2+4 (je drei .folien-col im HTML) */
+/* Drei Spalten — gleiche Spaltenbreite für L1–L8 (je drei .folien-col im HTML). */
 .folien-lektion .folien-cols {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -187,18 +187,14 @@ body.folien-lektion {
   align-items: start;
 }
 
-/* L6 / L8: betroffene Spalte etwas breiter (nur 3-Spalten-Layout; verhindert „zu eng“ bei viel Text) */
-@media (min-width: 1201px) {
-  .folien-lektion--l6 .folien-cols {
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr) minmax(0, 1fr);
-  }
-
-  .folien-lektion--l8 .folien-cols {
-    grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr) minmax(0, 1fr);
-  }
+/* Grid-Track: min-width 0 erlaubt Schrumpfen; horizontales Scrollen auf Spaltenebene (nicht .folien-cols — der Container überläuft selten) */
+.folien-lektion .folien-col {
+  min-width: 0;
+  overflow-x: auto;
 }
 
-@media (max-width: 1200px) {
+/* 2-Spalten-Fallback unterhalb 961px — damit 3 Spalten auf typischen Laptops (Viewport minus body padding) greifen */
+@media (max-width: 960px) {
   .folien-lektion .folien-cols {
     grid-template-columns: 1fr 1fr;
   }
@@ -224,6 +220,7 @@ body.folien-lektion {
   padding: 0.6rem 0.9rem;
   margin-bottom: 0.6rem;
   background: rgba(255, 255, 255, 0.45);
+  overflow-x: auto;
 }
 
 .folien-lektion .folie-header {
