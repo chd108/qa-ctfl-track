@@ -44,6 +44,9 @@
   --praxis-bg: #f0dfc0;
   --advanced: #2a547c;
   --advanced-bg: #c4d8ee;
+  /* ADV-Rahmenfarben (folien-lektion.css) */
+  --advanced-border-light: rgba(42, 84, 124, 0.22);
+  --advanced-border-dark: rgba(14, 30, 48, 0.38);
   --extra: #8a5a6a;
   --extra-bg: #ead8de;
   /* C-SYLLABUS (ISTQB-Lehrplan / „grüne“ Chip-Familie) — Hintergrund + Text */
