@@ -23,7 +23,7 @@
   /* Formularseiten (Hausaufgaben-Druckversionen): leicht dunklere Nuance von --e3 */
   --e3form: #cfbdb6;
   /* Vertikaler Rhythmus: oben in Nav-Zone, zwischen Nav 1/2, unter Nav bis page-chrome */
-  --nav-vertical-rhythm: 1.75rem;
+  --nav-vertical-rhythm: 1.25rem;
   /* Logo im ersten Nav-Punkt (Startseite / Tab-Favicon-Asset) */
   --nav-inline-logo-height: 2rem;
 
@@ -248,7 +248,7 @@ main { width: 100%; }
   padding: 0;
 }
 .main-nav a {
-  font-size: 0.95rem;
+  font-size: 0.875rem;
   line-height: 1.35;
   color: var(--soft);
   text-decoration: none;
@@ -281,25 +281,7 @@ main { width: 100%; }
   outline-offset: 2px;
 }
 
-.main-nav--assignments a {
-  font-size: 0.875rem;
-  color: var(--mid);
-}
-.main-nav--assignments a:hover,
-.main-nav--assignments a.current {
-  color: var(--text);
-}
-
-/* Dritte Nav — Lernzusammenfassung / Kursfolien (MasterSchool); optisch wie Hausaufgaben-Leiste */
-.main-nav--summary a {
-  font-size: 0.875rem;
-  line-height: 1.35; /* wie .main-nav a — alle Einträge (Lernzusammenfassung + L1–L8) gleiche Metrik */
-  color: var(--mid);
-}
-.main-nav--summary a:hover,
-.main-nav--summary a.current {
-  color: var(--text);
-}
+/* Hausaufgaben- und Lernzusammenfassungs-Zeile: keine eigene Typo/Farbe mehr — identisch zu .main-nav a */
 
 /* Skip-Link: für Tastatur/Screenreader zum Hauptinhalt springen */
 .skip-link {
