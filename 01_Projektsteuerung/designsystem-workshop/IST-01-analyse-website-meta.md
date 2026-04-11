@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-28  
-Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-28  
+Letzte Aktualisierung: 2026-04-11 — **Nachtrag** (nach § „WAS FUNKTIONIERT“): Hinweis **IA später erweitert** — **kein** Eingriff in die **Stichproben-Bewertung vom 2026-03-28**. Zuvor **2026-04-02** — Metablock Variante B  
 Zweck: Meta-Analyse der Website (Stichproben) — IST/Roadmap-Bezug für späteres Designsystem.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / IST  
 Normative Orientierung: Ergänzt [IST-02-analyse-komponenten.md](IST-02-analyse-komponenten.md)
@@ -49,6 +49,10 @@ Normative Orientierung: Ergänzt [IST-02-analyse-komponenten.md](IST-02-analyse-
 - Kartenbasiertes Layout ist einladend
 - Kurzbeschreibungen geben Vorgeschmack
 - "Willkommen"-Text erklärt Kontext & Lizenz
+
+### Nachtrag (2026-04-11) — **nicht** Teil der Stichprobe vom 2026-03-28
+
+Die Bewertung oben bezieht sich auf den **Website-Stand bei den Stichproben**. **Später** wurde die Informationsarchitektur um eine **eigene Kopfzeile** und Einstiegskarten für **Lernzusammenfassung** ergänzt (`main-nav--summary`, `07-lernzusammenfassung.html` u. a.). Das **ändert nicht** die Aussagen zu **Lernmaterial vs. Hausaufgaben** in diesem Abschnitt — es ist eine **zusätzliche** Spur. Details: [03_Project_Standards.md](../03_Project_Standards.md) §6/§7.
 
 ### 2. INHALTLICHE QUALITÄT ⭐⭐⭐⭐⭐
 

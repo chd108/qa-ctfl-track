@@ -285,6 +285,16 @@ main { width: 100%; }
   color: var(--text);
 }
 
+/* Dritte Nav — Lernzusammenfassung / Kursfolien (MasterSchool); optisch wie Hausaufgaben-Leiste */
+.main-nav--summary a {
+  font-size: 0.875rem;
+  color: var(--mid);
+}
+.main-nav--summary a:hover,
+.main-nav--summary a.current {
+  color: var(--text);
+}
+
 /* Skip-Link: für Tastatur/Screenreader zum Hauptinhalt springen */
 .skip-link {
   position: absolute;

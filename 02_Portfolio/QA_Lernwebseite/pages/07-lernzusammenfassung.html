@@ -1,0 +1,1614 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../assets/qa-favicon-256.png" type="image/png">
+  <meta name="description" content="Lernzusammenfassung ISTQB CTFL v4.0.2 — Merksätze und Kapitelüberblicke (Spillner/Linz, Lehrplan).">
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/subpage.css">
+  <title>Lernzusammenfassung — QA Lernwebseite</title>
+  <style>
+
+/* ── Intro box ── */
+.intro-box {
+  display: flex;
+  gap: 1.25rem;
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  padding: .85rem 1rem;
+  margin-bottom: 1rem;
+  font-size: 12px;
+  line-height: 1.55;
+}
+.intro-main {
+  flex: 1;
+  min-width: 0;
+}
+.intro-main p {
+  margin: 0 0 .4rem;
+  color: #374151;
+}
+.intro-main p:last-child { margin-bottom: 0; }
+.intro-main a { color: #2563eb; }
+.intro-legend {
+  width: 220px;
+  flex-shrink: 0;
+  border-left: 1px solid #e2e8f0;
+  padding-left: 1rem;
+}
+.legend-heading {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #9ca3af;
+  margin: 0 0 .5rem;
+}
+.legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: .5rem;
+  margin-bottom: .45rem;
+  font-size: 11.5px;
+  color: #374151;
+  line-height: 1.4;
+}
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+.legend-dot.blue { background: #2563eb; }
+.legend-dot.yellow { background: #f59e0b; }
+
+    body { padding: 0 3rem 4rem; max-width: 1400px; margin: 0 auto; }
+
+/* ── Page layout ── */
+.page-wrap {
+  display: flex;
+  gap: 0.75rem;
+  max-width: 100%;
+  margin: 0;
+  padding: 0;
+  align-items: flex-start;
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* ── Sidebar ── */
+.sidebar {
+  position: sticky;
+  top: 4.5rem;
+  width: 150px;
+  flex-shrink: 0;
+  font-size: 12px;
+}
+.sidebar-heading {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--color-muted, #888);
+  margin: 0 0 .5rem .5rem;
+}
+.sidebar ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+.sidebar li + li { margin-top: 2px; }
+.nav-link {
+  display: flex;
+  flex-direction: column;
+  padding: .3rem .5rem;
+  border-radius: 5px;
+  text-decoration: none;
+  color: inherit;
+  transition: background .12s;
+  gap: 1px;
+}
+.nav-link:hover { background: var(--color-surface-hover, #f0f0f0); }
+.nav-link.active {
+  background: #eff6ff;
+  color: #1d4ed8;
+}
+.nav-s {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .06em;
+  color: #2563eb;
+  line-height: 1;
+}
+.nav-t {
+  font-size: 11.5px;
+  color: var(--color-text, #333);
+  line-height: 1.3;
+}
+.nav-link.active .nav-t { color: #1d4ed8; }
+
+.sidebar-resources {
+  margin-top: 1rem;
+  padding-top: .75rem;
+  border-top: 1px solid var(--color-border, #e5e7eb);
+}
+.sidebar-resources a {
+  display: block;
+  font-size: 11px;
+  padding: .3rem .6rem;
+  border-radius: 5px;
+  color: #2563eb;
+  text-decoration: none;
+  line-height: 1.4;
+}
+.sidebar-resources a:hover { background: #f0f4ff; }
+
+/* ── Main content ── */
+.main-content {
+  flex: 1;
+  min-width: 0;
+}
+
+/* ── 2-column grid ── */
+.chapters-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+/* ── Chapter card ── */
+.chapter-card {
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 8px;
+  overflow: hidden;
+  background: var(--color-bg, #fff);
+  display: flex;
+  flex-direction: column;
+}
+.card-header {
+  padding: .6rem .9rem;
+  background: var(--color-surface, #f8fafc);
+  border-bottom: 1px solid var(--color-border, #e2e8f0);
+  display: flex;
+  align-items: baseline;
+  gap: .5rem;
+}
+.card-kap {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #2563eb;
+  white-space: nowrap;
+}
+.card-title {
+  font-size: 13px;
+  font-weight: 600;
+  margin: 0;
+  color: var(--color-heading, #111);
+}
+.card-body {
+  padding: .75rem .9rem;
+  font-size: 12.5px;
+  line-height: 1.5;
+}
+
+/* ── Content elements inside card ── */
+.card-body h1 { display: none; }
+.card-body h2 {
+  font-size: 12.5px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .04em;
+  color: #374151;
+  margin: 1.25rem 0 .4rem;
+  padding-bottom: .25rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+.card-body h3 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: .9rem 0 .25rem;
+}
+.card-body p {
+  margin: 0 0 .5rem;
+}
+.card-body ul, .card-body ol {
+  padding-left: 1.25rem;
+  margin: 0 0 .5rem;
+}
+.card-body li {
+  margin-bottom: .15rem;
+}
+.card-body hr {
+  border: none;
+  border-top: 1px solid #f0f0f0;
+  margin: .75rem 0;
+}
+.card-body em {
+  font-style: italic;
+  color: #555;
+}
+.card-body strong {
+  font-weight: 600;
+}
+.card-body code {
+  font-size: 11px;
+  background: #f3f4f6;
+  padding: .1em .3em;
+  border-radius: 3px;
+}
+
+/* ── Tables ── */
+.card-body table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 11.5px;
+  margin: .5rem 0;
+}
+.card-body th {
+  background: #f8fafc;
+  padding: .3rem .5rem;
+  text-align: left;
+  border: 1px solid #e5e7eb;
+  font-weight: 600;
+}
+.card-body td {
+  padding: .3rem .5rem;
+  border: 1px solid #e5e7eb;
+  vertical-align: top;
+}
+.card-body tr:nth-child(even) td { background: #fafafa; }
+
+/* ── Merksatz box ── */
+.merksatz {
+  background: #eff6ff;
+  border-left: 3px solid #2563eb;
+  border-radius: 0 5px 5px 0;
+  padding: .4rem .65rem;
+  margin: .4rem 0 .6rem;
+  font-weight: 500;
+  color: #1e3a5f;
+  font-size: 12px;
+}
+.merksatz-label {
+  display: block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: #2563eb;
+  margin-bottom: 2px;
+}
+
+/* ── Blockquote = Claude tips ── */
+.card-body blockquote {
+  background: #fffbeb;
+  border-left: 3px solid #f59e0b;
+  border-radius: 0 5px 5px 0;
+  padding: .4rem .65rem;
+  margin: .4rem 0;
+  font-size: 11.5px;
+  color: #78350f;
+}
+.card-body blockquote p { margin: 0; }
+
+/* ── Interview section heading ── */
+.card-body h2:last-of-type {
+  color: #92400e;
+  border-color: #fde68a;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .chapters-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 680px) {
+  .page-wrap { flex-direction: column; }
+  .sidebar { position: static; width: 100%; }
+}
+@media print {
+  .sidebar { display: none; }
+  .page-wrap { display: block; }
+  .chapters-grid { grid-template-columns: 1fr; }
+  .card-body { max-height: none; overflow: visible; }
+}
+  </style>
+</head>
+<body>
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <div class="top-nav-zone__brand-row">
+    <div class="top-nav-zone__nav-stack">
+      <nav class="main-nav main-nav--learn" aria-label="Lernmaterial">
+    <ul>
+      <li><a href="../index.html" class="main-nav__home" aria-label="Zur Startseite QA Lernwebseite"><img class="main-nav__home-img" src="../assets/qa-favicon-256.png" alt="" width="48" height="48" decoding="async"></a></li>
+      <li><a href="01-landkarte.html">Landkarte</a></li>
+      <li><a href="01d-ctfl-baum.html">CTFL-Baum</a></li>
+      <li><a href="01a-glossar.html">Glossar</a></li>
+      <li><a href="01b-grundlagen.html">Grundlagen</a></li>
+      <li><a href="01c-testmittel.html">Testmittel</a></li>
+      <li><a href="02a-sdlc-statisch.html">SDLC statisch</a></li>
+      <li><a href="02b-sdlc-animiert.html">SDLC animiert</a></li>
+      <li><a href="02c-teststufen.html">Teststufen</a></li>
+      <li><a href="03-statisches-testen.html">Statisches Testen</a></li>
+      <li><a href="04-testverfahren.html">Testverfahren</a></li>
+      <li><a href="05-testmanagement.html">Testmanagement</a></li>
+      <li><a href="06-testwerkzeuge.html">Testwerkzeuge</a></li>
+      <li><a href="00b-standards.html">Standards</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--assignments" aria-label="Hausaufgaben">
+    <ul>
+      <li><a href="00a-ha-einordnung.html">HA-Einordnung</a></li>
+      <li><a href="04e-ha3-ueberdeckung.html">HA3 Überdeckung</a></li>
+      <li><a href="04a-ha4-anforderungsanalyse.html">HA4 Anforderungsanalyse</a></li>
+      <li><a href="04b-ha4-testbasisanalyse-a4.html">HA4 Testbasis-Analyse A4</a></li>
+      <li><a href="05a-ha5-testkonzept.html">HA5 Testkonzept</a></li>
+      <li><a href="05b-ha5-testkonzept-a4.html">HA5 Testkonzept A4</a></li>
+      <li><a href="04c-ha5-testfallentwurf.html">HA5 Testfallentwurf</a></li>
+      <li><a href="04d-ha5-testfallentwurf-a4.html">HA5 Testfallentwurf A4</a></li>
+      <li><a href="06a-ha6-testprotokoll-a4.html">HA6 Testprotokoll A4</a></li>
+      <li><a href="06b-ha6-fehlerbericht-a4.html">HA6 Fehlerbericht A4</a></li>
+      <li><a href="06c-ha6-testabschlussbericht-a4.html">HA6 Testabschlussbericht A4</a></li>
+    </ul>
+  </nav>
+  <nav class="main-nav main-nav--summary" aria-label="Lernzusammenfassung">
+    <ul>
+      <li><a href="07-lernzusammenfassung.html" class="current">Lernzusammenfassung</a></li>
+    </ul>
+  </nav>
+    </div>
+  </div>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Lernzusammenfassung ISTQB CTFL</h1>
+    <p>Spillner/Linz: Basiswissen Softwaretest (7. Aufl.) · ISTQB CTFL Lehrplan v4.0.2 (GTB, 01.03.2025) · April 2026</p>
+  </header>
+</div>
+
+<main id="main">
+  <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Inhalt nach ISTQB CTFL Lehrplan (Syllabus)"></span>
+    <span><strong>Quelle:</strong> Spillner/Linz · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</span>
+    <span><strong>Funktion:</strong> Lernzusammenfassung · Merksätze · Kap. 2–7</span>
+    <span><strong>Hinweis:</strong> Didaktische Aufbereitung; Prüfungsbasis ist der offizielle Lehrplan.</span>
+  </div>
+
+<div class="page-wrap">
+
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <p class="sidebar-heading">Kapitel</p>
+    <ul>
+<li><a href="#kap2" class="nav-link"><span class="nav-s">Kap. 2</span><span class="nav-t">Grundlagen des Softwaretestens</span></a></li>
+<li><a href="#kap3" class="nav-link"><span class="nav-s">Kap. 3</span><span class="nav-t">Testen im SDLC</span></a></li>
+<li><a href="#kap4" class="nav-link"><span class="nav-s">Kap. 4</span><span class="nav-t">Statischer Test</span></a></li>
+<li><a href="#kap5" class="nav-link"><span class="nav-s">Kap. 5</span><span class="nav-t">Dynamischer Test</span></a></li>
+<li><a href="#kap6" class="nav-link"><span class="nav-s">Kap. 6</span><span class="nav-t">Testmanagement</span></a></li>
+<li><a href="#kap7" class="nav-link"><span class="nav-s">Kap. 7</span><span class="nav-t">Testwerkzeuge</span></a></li>
+
+    </ul>
+    <div class="sidebar-resources">
+      <p class="sidebar-heading">Ressourcen</p>
+      <a href="https://www.gtb.de/trainingsschema/musterpruefungen/" target="_blank" rel="noopener">🎯 GTB Musterprüfungen</a>
+      <a href="https://isqi.org/media/df/57/f2/1741164051/ISTQB_CTFL_Lehrplan-2025_V4.0.2_DE_.pdf" target="_blank" rel="noopener">📄 Lehrplan v4.0.2 DE</a>
+      <a href="https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf" target="_blank" rel="noopener">📄 Syllabus v4.0.1 EN</a>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="main-content">
+
+    <div class="intro-box">
+      <div class="intro-main">
+        <p>
+          Diese Lernzusammenfassung basiert auf <strong>Spillner/Linz: Basiswissen Softwaretest (7. Auflage)</strong>
+          und orientiert sich am <strong>ISTQB CTFL Lehrplan v4.0.2</strong> (GTB/ATB/STB, 01.03.2025).
+          Sie entstand im Rahmen der Masterschool ISTQB CTFL Weiterbildung — April 2026.
+        </p>
+        <p>
+          <strong>Wichtig:</strong> Prüfungsgrundlage ist ausschließlich der offizielle GTB-Lehrplan —
+          nicht das Buch. Das Buch behandelt manche Themen tiefer oder in anderer Reihenfolge;
+          Abschnitte die über den Lehrplan hinausgehen sind dort als <em>Exkurs</em> gekennzeichnet.
+          Für die Prüfung empfiehlt das Buch zusätzlich das aktuelle ISTQB-Glossar zu studieren.
+        </p>
+        <p>
+          Für die Prüfungsvorbereitung stellt das German Testing Board kostenlose
+          <a href="https://www.gtb.de/trainingsschema/musterpruefungen/" target="_blank" rel="noopener">Musterprüfungen mit Musterlösungen und Begründungen</a>
+          zur Verfügung — eine der effektivsten Vorbereitungsressourcen.
+        </p>
+      </div>
+      <div class="intro-legend">
+        <p class="legend-heading">Legende</p>
+        <div class="legend-item legend-merksatz">
+          <span class="legend-dot blue"></span>
+          <span><strong>Merksatz</strong> — prägnante Kernaussage zum Einprägen</span>
+        </div>
+        <div class="legend-item legend-claude">
+          <span class="legend-dot yellow"></span>
+          <span><strong>Claude-Hinweis</strong> — Empfehlungen zur Prüfungs- und Interviewvorbereitung, erstellt von Claude (Anthropic). Kein Buchinhalt.</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="chapters-grid">
+
+    <article id="kap2" class="chapter-card">
+      <header class="card-header">
+        <span class="card-kap">Kap. 2</span>
+        <h2 class="card-title">Grundlagen des Softwaretestens</h2>
+      </header>
+      <div class="card-body">
+        
+<h2>Kapitel 2: Grundlagen des Softwaretestens</h2>
+<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 1</em>
+<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<hr />
+<h2>2.1 Begriffe und Motivation</h2>
+<h3>2.1.1 Fehlerbegriff</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Nicht jeder Fehler ist gleich — ISTQB unterscheidet drei Ebenen: Fehlhandlung → Fehlerzustand → Fehlerwirkung.</div>
+<p><strong>Erklärung:</strong>
+Eine <strong>Fehlhandlung</strong> (engl. <em>error</em>) ist ein menschlicher Irrtum, z. B. ein Denkfehler beim Programmieren. Sie erzeugt einen <strong>Fehlerzustand</strong> (<em>defect/bug</em>) im Code oder Dokument. Wird dieser Fehlerzustand ausgeführt, kann er eine <strong>Fehlerwirkung</strong> (<em>failure</em>) erzeugen — ein sichtbares Fehlverhalten des Systems. Zusätzlich gibt es die <strong>Grundursache</strong> (<em>root cause</em>): den eigentlichen Auslöser der Fehlhandlung, z. B. ein missverstandenes Requirement.</p>
+<hr />
+<h3>2.1.2 Testbegriff</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testen ist mehr als nur Ausführen — es umfasst Planung, Analyse, Entwurf, Durchführung und Abschluss.</div>
+<p><strong>Erklärung:</strong>
+Testen ist eine Reihe von Aktivitäten zur <strong>Aufdeckung von Fehlerzuständen</strong> und zur <strong>Bewertung der Qualität</strong> von Software-Artefakten. Es gibt zwei Arten: <strong>dynamisches Testen</strong> (Software wird ausgeführt) und <strong>statisches Testen</strong> (Dokumente oder Code werden geprüft, ohne Ausführung). Testen zeigt das Vorhandensein von Fehlern — nicht deren Abwesenheit.</p>
+<hr />
+<h3>2.1.3 Testartefakte und ihre Beziehungen</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testbasis → Testbedingung → Testfall → Testablauf — das ist die Kette vom Requirement zum ausführbaren Test.</div>
+<p><strong>Erklärung:</strong>
+Die <strong>Testbasis</strong> ist alles, woraus Testbedingungen abgeleitet werden (Anforderungen, Spezifikationen, Code). Daraus entstehen <strong>Testbedingungen</strong> (was soll getestet werden), dann <strong>Testfälle</strong> (wie genau) und schließlich <strong>Testabläufe</strong> (in welcher Reihenfolge ausführen). <strong>Verfolgbarkeit</strong> zwischen diesen Ebenen ermöglicht Überdeckungsanalyse und Auswirkungsanalyse bei Änderungen.</p>
+<hr />
+<h3>2.1.4 Aufwand für das Testen</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Frühes Testen spart Geld — je später ein Fehler gefunden wird, desto teurer ist seine Behebung.</div>
+<p><strong>Erklärung:</strong>
+Der Testaufwand hängt vom Projektkontext, Risiko, verfügbarer Zeit und den Qualitätszielen ab. Der klassische Grundsatz: Ein Fehler in der Anforderungsphase kostet ein Vielfaches weniger zu beheben als derselbe Fehler nach der Auslieferung. Das rechtfertigt Investitionen in frühes und kontinuierliches Testen (Shift-Left).</p>
+<hr />
+<h3>2.1.5 Testwissen frühzeitig und damit erfolgreich nutzen</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Shift-Left bedeutet: Tester sind von Anfang an dabei — nicht erst wenn der Code fertig ist.</div>
+<p><strong>Erklärung:</strong>
+Wenn Tester früh in Anforderungsreviews und Designphasen einbezogen werden, können Fehlerzustände gefunden werden, bevor sie in Code übersetzt werden. Das ist das <strong>Shift-Left-Prinzip</strong> (CTFL v4.0.2, Abschnitt 2.1.5). Frühzeitiges Feedback verbessert die Testbarkeit der Anforderungen und reduziert teure Nacharbeiten.</p>
+<hr />
+<h3>2.1.6 Grundsätze des Testens</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Die sieben Testgrundsätze sind Prüfungsstoff — alle kennen und verstehen.</div>
+<p><strong>Erklärung:</strong>
+Die sieben ISTQB-Grundsätze lauten:
+1. Testen zeigt die Anwesenheit von Fehlerzuständen — nicht deren Abwesenheit.
+2. Vollständiges Testen ist unmöglich.
+3. Frühes Testen spart Zeit und Geld.
+4. Fehlerzustände treten gehäuft auf (Fehlerhäufung / Defect Clustering).
+5. Tests nutzen sich ab (Pestizid-Paradoxon) — Testfälle müssen regelmäßig überarbeitet werden.
+6. Testen ist kontextabhängig — kein universelles Testverfahren.
+7. Trugschluss: „Keine Fehler" bedeutet kein brauchbares System (Absence-of-Defects Fallacy).</p>
+<hr />
+<h2>2.2 Softwarequalität</h2>
+<h3>2.2.1 Qualitätsmanagement und Qualitätssicherung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Qualitätssicherung verhindert Fehler — Testen findet sie. Beides zusammen ergibt Qualitätsmanagement.</div>
+<p><strong>Erklärung:</strong>
+<strong>Qualitätsmanagement</strong> umfasst alle Aktivitäten zur Steuerung und Verbesserung der Qualität. <strong>Qualitätssicherung</strong> (QA) fokussiert auf Prozesse — sie stellt sicher, dass Entwicklungs- und Testprozesse richtig ablaufen. <strong>Testen</strong> ist eine Form der Qualitätskontrolle — es prüft das Produkt selbst. Qualitätsmerkmale sind in der Norm <strong>ISO/IEC 25010</strong> definiert (z. B. Funktionalität, Zuverlässigkeit, Benutzbarkeit, Sicherheit).</p>
+<hr />
+<h2>2.3 Der Testprozess</h2>
+<div class="merksatz"><span class="merksatz-label">Überblick</span>
+Der ISTQB-Testprozess hat 7 Aktivitäten — Testplanung, Testüberwachung/-steuerung, Testanalyse, Testentwurf, Testrealisierung, Testdurchführung, Testabschluss.</div>
+<hr />
+<h3>2.3.1 Testplanung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Der Testplan ist das zentrale Steuerdokument — er definiert Was, Wie, Wer, Wann und Womit getestet wird.</div>
+<p><strong>Erklärung:</strong>
+In der Testplanung werden Testziele, Teststrategie, Ressourcen, Zeitplan, Risiken, Eingangs- und Endekriterien festgelegt. Das Ergebnis ist das <strong>Testkonzept</strong> (Testplan). Die Testplanung ist keine einmalige Aktivität — sie wird während des gesamten Projekts angepasst.</p>
+<hr />
+<h3>2.3.2 Testüberwachung und Teststeuerung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testüberwachung schaut hin — Teststeuerung greift ein. Beide laufen kontinuierlich parallel zu allen anderen Aktivitäten.</div>
+<p><strong>Erklärung:</strong>
+<strong>Testüberwachung</strong> vergleicht den tatsächlichen Fortschritt mit dem Plan (z. B. durch Metriken wie Testüberdeckung, Fehlerrate). <strong>Teststeuerung</strong> leitet korrigierende Maßnahmen ein, wenn Abweichungen festgestellt werden. Diese Aktivität ist die einzige im Testprozess, die nicht sequenziell ist, sondern durchgehend aktiv bleibt.</p>
+<hr />
+<h3>2.3.3 Testanalyse</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testanalyse beantwortet: „Was soll getestet werden?" — sie leitet Testbedingungen aus der Testbasis ab.</div>
+<p><strong>Erklärung:</strong>
+Die Testbasis (Anforderungen, Spezifikationen, Designs) wird analysiert, um testbare Merkmale und Testbedingungen zu identifizieren. Dabei werden auch Risiken berücksichtigt. Ergebnis sind priorisierte Testbedingungen, die mit der Testbasis rückverfolgbar sind.</p>
+<hr />
+<h3>2.3.4 Testentwurf</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testentwurf beantwortet: „Wie soll getestet werden?" — hier entstehen konkrete Testfälle aus den Testbedingungen.</div>
+<p><strong>Erklärung:</strong>
+Im Testentwurf werden Testbedingungen in <strong>Testfälle</strong> und andere Testmittel ausgearbeitet. Dazu werden <strong>Testentwurfsverfahren</strong> eingesetzt (Blackbox: Äquivalenzklassenbildung, Grenzwertanalyse, Zustandsübergangstest etc.; Whitebox: Anweisungstest, Zweigtest; erfahrungsbasiert). Außerdem werden Testdatenanforderungen definiert.</p>
+<hr />
+<h3>2.3.5 Testrealisierung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testrealisierung ist die Vorbereitung der Ausführung — alles wird bereitgestellt, bevor der erste Test läuft.</div>
+<p><strong>Erklärung:</strong>
+In der Testrealisierung werden Testfälle zu <strong>Testabläufen</strong> organisiert, Testdaten erstellt, die Testumgebung aufgebaut und Testwerkzeuge konfiguriert. Smoke-Tests prüfen, ob die Umgebung grundsätzlich funktioniert. Erst wenn die Eingangs­kriterien erfüllt sind, beginnt die Testdurchführung.</p>
+<hr />
+<h3>2.3.6 Testdurchführung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+In der Testdurchführung werden Testfälle ausgeführt, Ergebnisse dokumentiert und Fehler gemeldet.</div>
+<p><strong>Erklärung:</strong>
+Die Testfälle werden gemäß Testablaufplan ausgeführt — manuell oder automatisiert. Abweichungen zwischen erwartetem und tatsächlichem Ergebnis werden als <strong>Anomalien</strong> festgehalten. Bestätigte Fehler werden als <strong>Fehlerberichte</strong> dokumentiert und dem Entwicklungsteam übergeben.</p>
+<hr />
+<h3>2.3.7 Testabschluss</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Der Testabschluss sichert Wissen und bewertet: Wurden die Endekriterien erfüllt? Was lernten wir?</div>
+<p><strong>Erklärung:</strong>
+Im Testabschluss wird geprüft, ob die <strong>Endekriterien</strong> (z. B. alle geplanten Tests ausgeführt, kritische Fehler behoben) erfüllt sind. Es wird ein <strong>Testabschlussbericht</strong> erstellt. Testartefakte werden archiviert, Lessons Learned dokumentiert und Prozessverbesserungen für zukünftige Projekte festgehalten.</p>
+<hr />
+<h3>2.3.8 Verfolgbarkeit</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Verfolgbarkeit verbindet Anforderungen mit Testfällen — sie zeigt, was getestet ist und was nicht.</div>
+<p><strong>Erklärung:</strong>
+<strong>Verfolgbarkeit</strong> (Traceability) ist die Nachverfolgbarkeit zwischen Testbasis-Elementen (Anforderungen), Testbedingungen, Testfällen und Testergebnissen. Sie ermöglicht die Überdeckungsmessung, Auswirkungsanalyse bei Änderungen, und erleichtert Testberichte und Audits.</p>
+<hr />
+<h3>2.3.9 Einfluss des Kontextes auf den Testprozess</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Kontext ist alles — kein Testprozess passt universell auf jedes Projekt.</div>
+<p><strong>Erklärung:</strong>
+Der Testprozess wird maßgeblich beeinflusst durch das gewählte <strong>SDLC-Modell</strong> (Wasserfall, Scrum, DevOps), die Projektgröße, das Domänenrisiko, regulatorische Anforderungen und die verfügbaren Ressourcen. Ein sicherheitskritisches Medizinsystem wird anders getestet als eine agile Mobile App. Das ist auch der 6. Grundsatz: Testen ist kontextabhängig.</p>
+<hr />
+<h2>2.4 Psychologie, Denkweisen und Kompetenzen</h2>
+<h3>2.4.1 Denkweisen und Kompetenzen von Testern und Entwicklern</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Entwickler bauen — Tester zerstören. Beide Denkweisen sind notwendig und ergänzen sich.</div>
+<p><strong>Erklärung:</strong>
+Entwickler denken konstruktiv: Sie wollen, dass ihr Code funktioniert. Tester denken destruktiv: Sie suchen aktiv nach Fehlern. Diese unterschiedlichen Denkweisen sind ein Grund, warum <strong>Unabhängigkeit des Testens</strong> wertvoll ist — je unabhängiger der Tester vom Entwickler, desto objektiver die Prüfung. Gleichzeitig betont CTFL v4.0.2 den <strong>Whole-Team-Ansatz</strong>: Qualität ist Verantwortung des gesamten Teams, nicht allein der Tester.</p>
+<p>Wichtige Kompetenzen eines Testers:
+- Analytisches Denken und kritische Beurteilung
+- Kommunikationsfähigkeit (Fehler konstruktiv kommunizieren)
+- Sorgfalt und Detailgenauigkeit
+- Technisches Verständnis
+- Domänenwissen</p>
+<hr />
+<h2>2.5 Zusammenfassung</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Kapitel 2 in einem Satz: Testen ist eine systematische, geplante Aktivität zur Qualitätsbewertung — nicht das zufällige Ausprobieren von Software.</div>
+<p><strong>Kernpunkte zum Wiederholen:</strong>
+- Fehlhandlung → Fehlerzustand → Fehlerwirkung (+ Grundursache)
+- 7 Grundsätze des Testens (auswendig lernen!)
+- 7 Aktivitäten des Testprozesses (Reihenfolge kennen)
+- Testüberwachung/-steuerung läuft kontinuierlich — nicht sequenziell
+- Verfolgbarkeit verbindet Testbasis mit Testergebnissen
+- Qualitätssicherung (Prozess) vs. Testen (Produkt)
+- Kontext bestimmt den Testprozess</p>
+<hr />
+<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
+<hr />
+<h2>Hinweise zur Prüfungs- und Interviewvorbereitung <em>(Claude)</em></h2>
+<blockquote>
+<p>Dieser Abschnitt enthält Empfehlungen von Claude zur Priorisierung beim Lernen.
+Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
+</blockquote>
+<p><strong>Besonders prüfungsrelevant aus Kapitel 2:</strong></p>
+<ul>
+<li><strong>Die 7 Grundsätze des Testens</strong> — werden sehr häufig abgefragt, am besten auswendig kennen. Besonders der Pestizid-Paradoxon-Grundsatz (Nr. 5) und der Absence-of-Defects-Grundsatz (Nr. 7) sind gerne Gegenstand von Fragen.</li>
+<li><strong>Fehlhandlung / Fehlerzustand / Fehlerwirkung</strong> — die Unterscheidung dieser drei Begriffe ist ein Klassiker im Interview. Dazu die Grundursache nicht vergessen.</li>
+<li><strong>Testüberwachung vs. Teststeuerung</strong> — der Unterschied wird oft verwechselt: Überwachung = messen/vergleichen, Steuerung = eingreifen.</li>
+<li><strong>Verfolgbarkeit</strong> — klingt technisch, ist aber konzeptuell wichtig: Was verbindet Anforderung mit Testergebnis?</li>
+<li><strong>Qualitätssicherung vs. Testen</strong> — QA sichert Prozesse, Testen prüft Produkte. Diese Unterscheidung kommt im Interview häufig vor.</li>
+</ul>
+<p><strong>Tipp für das Interview:</strong>
+Wenn du nach „Testen" gefragt wirst, nenne immer den vollständigen Testprozess (7 Aktivitäten) — das zeigt, dass du nicht nur „Tests ausführen" denkst, sondern den gesamten Prozess verstehst.</p>
+      </div>
+    </article>
+    
+    <article id="kap3" class="chapter-card">
+      <header class="card-header">
+        <span class="card-kap">Kap. 3</span>
+        <h2 class="card-title">Testen im SDLC</h2>
+      </header>
+      <div class="card-body">
+        
+<h2>Kapitel 3: Testen im Softwareentwicklungslebenszyklus</h2>
+<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 2</em>
+<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<hr />
+<h2>3.1 Sequenzielle Entwicklungsmodelle</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Sequenzielle Modelle durchlaufen Phasen nacheinander — Testen kommt spät, Fehler werden teuer.</div>
+<h3>3.1.1 Das Wasserfallmodell</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Im Wasserfall folgt jede Phase der vorherigen — Anforderungen, Design, Implementierung, Test, Betrieb.</div>
+<p><strong>Erklärung:</strong>
+Das Wasserfallmodell ist linear: Jede Phase muss abgeschlossen sein, bevor die nächste beginnt. Testen findet erst nach der Implementierung statt. Fehler aus frühen Phasen werden dadurch spät — und damit teuer — entdeckt. Das Modell eignet sich nur für Projekte mit sehr stabilen, vollständig bekannten Anforderungen.</p>
+<hr />
+<h3>3.1.2 Das V-Modell</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Das V-Modell spiegelt Entwicklung und Testen — jeder Entwicklungsphase entspricht eine Teststufe.</div>
+<p><strong>Erklärung:</strong>
+Der linke Ast des V steht für Entwicklungsphasen (Anforderungen → Systementwurf → Architektur → Implementierung), der rechte Ast für die zugehörigen Teststufen (Abnahmetest ← Systemtest ← Integrationstest ← Komponententest). Entscheidend: Testplanung und Testfallentwurf beginnen bereits auf dem linken Ast — parallel zur Entwicklung. Das V-Modell ist die konzeptionelle Grundlage der ISTQB-Teststufen.</p>
+<hr />
+<h2>3.2 Iterativ-inkrementelle und agile Entwicklung</h2>
+<h3>3.2.1 Klassische iterativ-inkrementelle Entwicklung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Iterativ = Wiederholung von Zyklen. Inkrementell = schrittweiser Aufbau des Produkts.</div>
+<p><strong>Erklärung:</strong>
+In iterativ-inkrementellen Modellen wird das System in mehreren kurzen Zyklen (Iterationen) entwickelt und nach jeder Iteration ein lauffähiges Inkrement ausgeliefert. Testen findet in jeder Iteration statt — nicht erst am Ende. Das erlaubt frühes Feedback und schnellere Fehlerkorrektur.</p>
+<hr />
+<h3>3.2.2 Agile Softwareentwicklung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Agil bedeutet: kurze Sprints, schnelles Feedback, Qualität als gemeinsame Teamverantwortung.</div>
+<p><strong>Erklärung:</strong>
+Agile Methoden (z. B. Scrum, Kanban) betonen Zusammenarbeit, Anpassungsfähigkeit und häufige Auslieferung funktionierender Software. In Scrum wird in Sprints (meist 1–4 Wochen) gearbeitet. Testen ist kein separater Schritt, sondern Teil jedes Sprints. Der Tester arbeitet eng mit Entwicklern und Product Owner zusammen — das entspricht dem <strong>Whole-Team-Ansatz</strong> aus CTFL v4.0.2, Abschnitt 1.5.2.</p>
+<hr />
+<h3>3.2.3 Zusammenarbeit in der agilen Anforderungsermittlung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+In agilen Projekten schreiben Tester User Stories mit — und stellen kritische Fragen zu Akzeptanzkriterien.</div>
+<p><strong>Erklärung:</strong>
+Anforderungen werden in agilen Projekten als <strong>User Stories</strong> formuliert: „Als [Rolle] möchte ich [Funktion], damit [Nutzen]." Tester tragen dazu bei, testbare <strong>Akzeptanzkriterien</strong> zu definieren. Methoden wie <strong>ATDD</strong> (Abnahmetestgetriebene Entwicklung) und <strong>BDD</strong> (Behavior-Driven Development mit Gherkin: Given/When/Then) formalisieren diese Zusammenarbeit.</p>
+<hr />
+<h2>3.3 Softwareentwicklung im Projekt- und Produktkontext</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Projektentwicklung endet mit der Auslieferung — Produktentwicklung läuft kontinuierlich weiter.</div>
+<p><strong>Erklärung:</strong>
+Im <strong>Projektkontext</strong> gibt es einen definierten Start und ein Enddatum. Im <strong>Produktkontext</strong> (z. B. SaaS-Produkte) wird kontinuierlich entwickelt, getestet und ausgeliefert. Der Testansatz muss sich dem jeweiligen Kontext anpassen — bei kontinuierlicher Produktentwicklung gewinnen Testautomatisierung und Regressionstests besondere Bedeutung.</p>
+<hr />
+<h2>3.4 Teststufen</h2>
+<div class="merksatz"><span class="merksatz-label">Überblick</span>
+Die vier Teststufen — Komponente, Integration, System, Abnahme — testen das System auf zunehmend höheren Abstraktionsebenen.</div>
+<hr />
+<h3>3.4.1 Komponententest</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Komponententest (Unit Test) prüft einzelne Software-Einheiten isoliert — meist von Entwicklern.</div>
+<p><strong>Erklärung:</strong>
+Der Komponententest (auch: Modultest, Unit Test) testet die kleinsten testbaren Einheiten einer Software (z. B. eine Funktion, eine Klasse, ein Modul) isoliert von anderen Komponenten. Er wird typischerweise von Entwicklern durchgeführt, oft mit Frameworks wie JUnit (Java) oder pytest (Python). Ziel ist es, Fehlerzustände früh — und damit günstig — zu finden.</p>
+<hr />
+<h3>3.4.2 (Komponenten-)Integrationstest</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Der Integrationstest prüft das Zusammenspiel von Komponenten — nicht die Komponenten selbst.</div>
+<p><strong>Erklärung:</strong>
+Nachdem einzelne Komponenten getestet wurden, prüft der Integrationstest ihre <strong>Schnittstellen und Interaktionen</strong>. Typische Fehler sind falsch definierte Schnittstellen, Datentypprobleme oder falsche Annahmen über den Aufruf anderer Komponenten. Es gibt verschiedene Integrationsstrategien: Big-Bang, Top-Down, Bottom-Up oder inkrementell.</p>
+<hr />
+<h3>3.4.3 Systemtest und Systemintegrationstest</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Der Systemtest prüft das gesamte System gegen die Anforderungen — aus Benutzerperspektive.</div>
+<p><strong>Erklärung:</strong>
+Der <strong>Systemtest</strong> bewertet das vollständige, integrierte System gegen funktionale und nicht-funktionale Anforderungen. Er wird typischerweise von einem unabhängigen Testteam in einer produktionsnahen Umgebung durchgeführt. Der <strong>Systemintegrationstest</strong> prüft darüber hinaus die Interaktion des Systems mit externen Systemen (z. B. APIs, Datenbanken, Fremdsystemen).</p>
+<hr />
+<h3>3.4.4 Abnahmetest</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Der Abnahmetest prüft, ob das System für den Einsatz beim Kunden geeignet ist — oft mit echten Benutzern.</div>
+<p><strong>Erklärung:</strong>
+Der Abnahmetest (Acceptance Test) wird durchgeführt, um zu entscheiden, ob das System vom Auftraggeber oder Benutzer abgenommen wird. Formen des Abnahmetests: <strong>UAT</strong> (User Acceptance Test — durch Endbenutzer), <strong>Alpha-Test</strong> (beim Hersteller mit Testbenutzern), <strong>Beta-Test</strong> (beim Kunden in realer Umgebung). Er ist die letzte Qualitätssicherungsstufe vor der Produktionsfreigabe.</p>
+<hr />
+<h2>3.5 Testarten</h2>
+<div class="merksatz"><span class="merksatz-label">Überblick</span>
+Testarten beschreiben WAS getestet wird — unabhängig davon, auf welcher Teststufe.</div>
+<hr />
+<h3>3.5.1 Funktionale Tests</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Funktionale Tests prüfen: Tut das System das, was es tun soll?</div>
+<p><strong>Erklärung:</strong>
+Funktionale Tests prüfen das <strong>nach außen sichtbare Verhalten</strong> des Systems gegen funktionale Anforderungen und Spezifikationen. Sie fragen: Liefert das System bei gegebener Eingabe das korrekte Ergebnis? Funktionale Tests können auf allen Teststufen durchgeführt werden. Sie sind typischerweise <strong>Blackbox-Tests</strong> — die interne Implementierung ist nicht relevant.</p>
+<hr />
+<h3>3.5.2 Nicht funktionale Tests</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Nicht funktionale Tests prüfen: Wie gut tut das System das, was es tut?</div>
+<p><strong>Erklärung:</strong>
+Nicht funktionale Tests prüfen <strong>Qualitätsmerkmale</strong> wie Performanz, Skalierbarkeit, Sicherheit, Zuverlässigkeit und Benutzbarkeit — also Eigenschaften, die über die reine Funktionalität hinausgehen. Die relevanten Qualitätsmerkmale sind in <strong>ISO/IEC 25010</strong> normiert. Nicht funktionale Tests werden oft auf Systemtestebene durchgeführt und erfordern spezialisierte Werkzeuge (z. B. JMeter für Lasttests).</p>
+<hr />
+<h3>3.5.3 Anforderungsbezogener und strukturbezogener Test</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Anforderungsbezogen = Blackbox (Was?). Strukturbezogen = Whitebox (Wie?).</div>
+<p><strong>Erklärung:</strong>
+<strong>Anforderungsbezogene Tests</strong> (Blackbox-Tests) leiten Testfälle aus den Spezifikationen ab — ohne Kenntnis der internen Implementierung. <strong>Strukturbezogene Tests</strong> (Whitebox-Tests) basieren auf der internen Struktur des Codes (z. B. Kontrollflussgraph) und messen Überdeckungsgrade wie Anweisungs- oder Zweigüberdeckung. Beide Ansätze ergänzen sich und werden in CTFL Kapitel 4 vertieft.</p>
+<hr />
+<h2>3.6 Test nach Änderung und Weiterentwicklung</h2>
+<h3>3.6.1 Testen nach Softwarewartung und -pflege</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Wartung ändert bestehenden Code — also muss getestet werden, ob Bestehendes noch funktioniert.</div>
+<p><strong>Erklärung:</strong>
+Softwarewartung umfasst Fehlerbehebung, Anpassung an neue Umgebungen und Optimierungen. Jede Änderung an bestehender Software birgt das Risiko, unbeabsichtigt andere Funktionen zu beeinträchtigen. Daher sind nach Wartungsarbeiten immer <strong>Regressionstests</strong> notwendig.</p>
+<hr />
+<h3>3.6.2 Testen nach Weiterentwicklung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Neue Funktionen brauchen neue Tests — und alte Tests müssen erneut ausgeführt werden.</div>
+<p><strong>Erklärung:</strong>
+Bei der Weiterentwicklung werden neue Features hinzugefügt. Neben dem Testen der neuen Funktionalität muss sichergestellt werden, dass bestehende Funktionen durch die Änderungen nicht beeinträchtigt wurden. Die Kombination aus neuen Tests und Regressionstests ist Standard in agilen Projekten nach jedem Sprint.</p>
+<hr />
+<h3>3.6.3 Regressionstest</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Regressionstests prüfen, ob nach einer Änderung noch alles funktioniert, was vorher funktioniert hat.</div>
+<p><strong>Erklärung:</strong>
+Ein <strong>Regressionstest</strong> wird nach jeder Änderung (Fehlerbehebung, neue Funktion, Konfigurationsänderung) ausgeführt, um sicherzustellen, dass keine neuen Fehler eingeführt wurden. Da Regressionstests mit zunehmendem Projektfortschritt umfangreicher werden, sind sie ein zentraler Treiber für <strong>Testautomatisierung</strong>. In CI/CD-Pipelines laufen Regressionstests automatisch bei jedem Code-Commit.</p>
+<hr />
+<h2>3.7 Verbesserung und Automatisierung des Softwareentwicklungsprozesses</h2>
+<h3>3.7.1 Testgetriebene Entwicklung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+TDD: Erst den Test schreiben, dann den Code — der Test definiert das gewünschte Verhalten.</div>
+<p><strong>Erklärung:</strong>
+Bei <strong>TDD</strong> (Test-Driven Development) wird der Testfall geschrieben, bevor der eigentliche Code existiert. Der Zyklus lautet: Test schreiben (schlägt fehl) → Code schreiben (Test besteht) → Refactoring. Verwandte Ansätze: <strong>BDD</strong> (Behavior-Driven Development) formuliert Tests als natürlichsprachliche Szenarien (Given/When/Then), <strong>ATDD</strong> (Acceptance Test-Driven Development) leitet Testfälle aus Akzeptanzkriterien ab.</p>
+<hr />
+<h3>3.7.2 Continuous Integration, Continuous Delivery, Continuous Deployment</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+CI/CD bedeutet: Code wird kontinuierlich integriert, getestet und ausgeliefert — automatisiert.</div>
+<p><strong>Erklärung:</strong>
+<strong>Continuous Integration (CI):</strong> Entwickler integrieren Code häufig (mehrmals täglich) in ein gemeinsames Repository. Jeder Commit löst automatisch Build und Tests aus.
+<strong>Continuous Delivery (CD):</strong> Software ist jederzeit in einem auslieferbaren Zustand — die Freigabe erfolgt manuell.
+<strong>Continuous Deployment:</strong> Jeder erfolgreiche Build wird automatisch in die Produktionsumgebung ausgerollt. Testen ist in CI/CD-Pipelines nicht optional — es ist der Kern.</p>
+<hr />
+<h3>3.7.3 DevOps</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+DevOps vereint Entwicklung und Betrieb — Testen ist dabei durchgehend eingebettet, nicht nachgelagert.</div>
+<p><strong>Erklärung:</strong>
+<strong>DevOps</strong> ist eine Kultur und Praxis, die Entwicklung (Dev) und IT-Betrieb (Ops) zusammenbringt, um Software schneller und zuverlässiger bereitzustellen. Testen ist fester Bestandteil der DevOps-Pipeline. <strong>Shift-Left</strong> (früh testen) und <strong>Shift-Right</strong> (Testen in der Produktionsumgebung, z. B. A/B-Tests, Monitoring) sind beide relevant. CI/CD ist die technische Umsetzung von DevOps.</p>
+<hr />
+<h3>3.7.4 Retrospektiven und Prozessverbesserung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Retrospektiven schauen zurück — um den Prozess für den nächsten Zyklus zu verbessern.</div>
+<p><strong>Erklärung:</strong>
+In agilen Teams findet nach jeder Iteration eine <strong>Retrospektive</strong> statt: Was lief gut? Was soll verbessert werden? Für Tester sind Retrospektiven eine Gelegenheit, Testprozesse, Testwerkzeuge und die Zusammenarbeit im Team zu optimieren. Im CTFL v4.0.2 (Abschnitt 2.1.6) wird die Retrospektive explizit als Instrument der Prozessverbesserung genannt.</p>
+<hr />
+<h2>3.8 Zusammenfassung</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Kapitel 3 in einem Satz: Das SDLC-Modell bestimmt wann, wo und wie getestet wird — Testen auf jeder Stufe, in jeder Testart, nach jeder Änderung.</div>
+<p><strong>Kernpunkte zum Wiederholen:</strong>
+- V-Modell: Jeder Entwicklungsphase entspricht eine Teststufe
+- 4 Teststufen: Komponente → Integration → System → Abnahme
+- Testarten: funktional vs. nicht-funktional; Blackbox vs. Whitebox
+- Regressionstest: nach jeder Änderung — Treiber für Automatisierung
+- TDD/BDD/ATDD: Test first — Code second
+- CI/CD: Automatisiertes Bauen, Testen, Ausliefern
+- DevOps: Shift-Left + Shift-Right
+- Retrospektiven: kontinuierliche Prozessverbesserung</p>
+<hr />
+<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
+<hr />
+<h2>Hinweise zur Prüfungs- und Interviewvorbereitung <em>(Claude)</em></h2>
+<blockquote>
+<p>Dieser Abschnitt enthält Empfehlungen von Claude zur Priorisierung beim Lernen.
+Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
+</blockquote>
+<p><strong>Besonders prüfungsrelevant aus Kapitel 3:</strong></p>
+<ul>
+<li><strong>V-Modell</strong> — wird fast immer abgefragt. Kernaussage: Jeder Entwicklungsphase entspricht eine Teststufe, und Testplanung beginnt parallel zur Entwicklung.</li>
+<li><strong>Die 4 Teststufen</strong> — Reihenfolge und was jede testet kennen: Komponente → Integration → System → Abnahme. Wer testet auf welcher Stufe? (Entwickler, QA-Team, Endbenutzer)</li>
+<li><strong>Regressionstest</strong> — Definition sicher können und den Bezug zur Testautomatisierung herstellen können. In CI/CD-Pipelines ist der Regressionstest der wichtigste automatisierte Test.</li>
+<li><strong>CI/CD + DevOps</strong> — sehr praxisrelevant, kommt in Interviews fast immer vor. Unterschied CI vs. CD vs. Continuous Deployment kennen.</li>
+<li><strong>TDD/BDD/ATDD</strong> — Konzepte kennen, nicht nur Abkürzungen. Besonders BDD mit Given/When/Then ist in agilen Teams Alltag.</li>
+<li><strong>Testarten vs. Teststufen</strong> — häufige Verwechslung: Teststufe = wo im Prozess (Komponente, System...), Testart = was wird geprüft (funktional, nicht-funktional...).</li>
+</ul>
+<p><strong>Tipp für das Interview:</strong>
+Wenn du nach agilen Testmethoden gefragt wirst, verbinde immer: Scrum → Sprint → Whole-Team-Ansatz → ATDD/BDD → CI/CD. Das zeigt Zusammenhänge, nicht nur isoliertes Wissen.</p>
+      </div>
+    </article>
+    
+    <article id="kap4" class="chapter-card">
+      <header class="card-header">
+        <span class="card-kap">Kap. 4</span>
+        <h2 class="card-title">Statischer Test</h2>
+      </header>
+      <div class="card-body">
+        
+<h2>Kapitel 4: Statischer Test</h2>
+<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 3</em>
+<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<hr />
+<h2>Überblick</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Statisches Testen prüft Software-Artefakte, ohne die Software auszuführen — Fehler werden durch Lesen, Analysieren und Prüfen gefunden.</div>
+<p><strong>Erklärung:</strong>
+Im Gegensatz zum dynamischen Test (Software wird ausgeführt) prüft der statische Test Dokumente, Code, Anforderungen und andere Artefakte direkt. Er kann sehr früh im Entwicklungsprozess eingesetzt werden — noch bevor ausführbarer Code existiert. Zwei Hauptformen: <strong>Reviews</strong> (menschliche Prüfung) und <strong>statische Analyse</strong> (werkzeuggestützte Prüfung).</p>
+<hr />
+<h2>4.1 Was kann analysiert und geprüft werden?</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Fast alles kann statisch geprüft werden — Anforderungen, Designs, Code, Testfälle, Projektpläne.</div>
+<p><strong>Erklärung:</strong>
+Typische Artefakte für statische Tests sind: Anforderungsspezifikationen, User Stories, Architektur- und Designdokumente, Quellcode, Testpläne und Testfälle, Benutzerhandbücher. Statische Prüfung findet Fehlerzustände wie Inkonsistenzen, fehlende Anforderungen, nicht testbare Formulierungen oder Verletzungen von Coding-Standards — oft früher und günstiger als dynamische Tests.</p>
+<hr />
+<h2>4.2 Vorgehen beim Review</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Ein Review ist eine strukturierte Prüfung eines Artefakts durch eine oder mehrere Personen, um Fehlerzustände zu finden.</div>
+<p><strong>Erklärung:</strong>
+Reviews können von einem einzelnen Gutachter (informell) bis hin zu formellen Inspektionen mit definierten Rollen und Prozessen reichen. Das Ziel ist stets: Fehler im Artefakt frühzeitig zu entdecken, bevor sie in spätere Phasen übernommen werden. Frühzeitiges Stakeholder-Feedback verbessert außerdem die Qualität der Anforderungen und reduziert Nacharbeit.</p>
+<hr />
+<h2>4.3 Der Reviewprozess</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Ein formeller Reviewprozess hat definierte Phasen — Planung, Kick-off, individuelle Prüfung, Kommunikation, Überarbeitung, Abschluss.</div>
+<h3>4.3.1 Aktivitäten im Reviewprozess</h3>
+<p><strong>Erklärung:</strong>
+Der formelle Reviewprozess umfasst laut CTFL v4.0.2:
+1. <strong>Planung</strong> — Umfang, Aufwand, Rollen, Eingangs- und Endekriterien festlegen
+2. <strong>Kick-off</strong> — Ziele, Dokument und Prüfkriterien erklären
+3. <strong>Individuelle Prüfung</strong> — jeder Gutachter prüft das Artefakt selbstständig
+4. <strong>Kommunikation und Analyse</strong> — Befunde werden besprochen und bewertet
+5. <strong>Überarbeitung</strong> — Autor behebt gefundene Fehlerzustände
+6. <strong>Abschluss</strong> — Prüfung ob Endekriterien erfüllt sind</p>
+<hr />
+<h3>4.3.2 Unterschiedliche Vorgehensweisen beim individuellen Review</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Beim individuellen Review gibt es verschiedene Prüftechniken — z. B. ad hoc, checklisten-basiert, szenariobasiert, perspektivenbasiert.</div>
+<p><strong>Erklärung:</strong>
+- <strong>Ad-hoc:</strong> Der Gutachter prüft ohne Vorbereitung oder Struktur — wenig systematisch.
+- <strong>Checklisten-basiert:</strong> Strukturierte Prüfung anhand einer Checkliste bekannter Fehlertypen.
+- <strong>Szenariobasiert:</strong> Prüfung aus der Perspektive eines bestimmten Anwendungsfalls.
+- <strong>Perspektivenbasiert (Role-based):</strong> Jeder Gutachter nimmt eine andere Rolle ein (z. B. Benutzer, Entwickler, Tester) — deckt unterschiedliche Fehlertypen ab.
+- <strong>Durchlesen (Read-through):</strong> Lineares Lesen ohne spezifische Prüftechnik.</p>
+<hr />
+<h3>4.3.3 Rollen und Verantwortlichkeiten im Reviewprozess</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Im formellen Review gibt es feste Rollen — Manager, Moderator, Autor, Gutachter, Protokollant.</div>
+<p><strong>Erklärung:</strong>
+- <strong>Manager:</strong> Entscheidet über Ressourcen und Zeitplan für das Review.
+- <strong>Moderator (Review-Leiter):</strong> Leitet den Review-Prozess, sorgt für effektive Durchführung.
+- <strong>Autor:</strong> Hat das zu prüfende Artefakt erstellt; behebt gefundene Fehlerzustände.
+- <strong>Gutachter:</strong> Prüft das Artefakt und meldet Befunde — z. B. Entwickler, Tester, Fachexperte.
+- <strong>Protokollant (Schreiber):</strong> Dokumentiert Befunde und Entscheidungen.</p>
+<hr />
+<h2>4.4 Reviewarten</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Es gibt vier formelle Reviewarten — informelles Review, Walkthrough, technisches Review, Inspektion.</div>
+<p><strong>Erklärung:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Reviewart</th>
+<th>Formalitätsgrad</th>
+<th>Wer leitet?</th>
+<th>Ziel</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Informelles Review</strong></td>
+<td>Sehr niedrig</td>
+<td>Kein Moderator</td>
+<td>Schnelles Feedback, z. B. Peer Review</td>
+</tr>
+<tr>
+<td><strong>Walkthrough</strong></td>
+<td>Niedrig bis mittel</td>
+<td>Autor</td>
+<td>Verstehen fördern, Fragen klären</td>
+</tr>
+<tr>
+<td><strong>Technisches Review</strong></td>
+<td>Mittel</td>
+<td>Moderator</td>
+<td>Technische Qualität bewerten</td>
+</tr>
+<tr>
+<td><strong>Inspektion</strong></td>
+<td>Sehr hoch</td>
+<td>Moderator</td>
+<td>Maximale Fehlerfindung, formell dokumentiert</td>
+</tr>
+</tbody>
+</table>
+<p>Die <strong>Inspektion</strong> ist die formellste und effektivste Reviewart — sie hat definierte Eingangs-/Endekriterien, Metriken und Rollen. Der Walkthrough ist didaktisch wertvoll, weil der Autor das Artefakt erklärt und dabei selbst Fehler entdeckt.</p>
+<hr />
+<h2>4.5 Erfolgsfaktoren, Vorteile und Grenzen</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Reviews sind effektiv, wenn sie gut vorbereitet, offen kommuniziert und konstruktiv durchgeführt werden.</div>
+<p><strong>Erklärung:</strong>
+<strong>Erfolgsfaktoren laut CTFL v4.0.2:</strong>
+- Klare Ziele und messbare Endekriterien
+- Geeignete Reviewart für den Kontext wählen
+- Kleine Artefakte prüfen (max. ~10 Seiten pro Sitzung)
+- Fehlerzustände sachlich und konstruktiv kommunizieren
+- Ausreichend Vorbereitungszeit für Gutachter
+- Management-Unterstützung und Unternehmenskultur die Qualität fördert</p>
+<p><strong>Grenzen:</strong> Reviews finden keine Laufzeitfehler (z. B. Performanzprobleme unter Last), die nur durch dynamische Tests sichtbar werden.</p>
+<hr />
+<h2>4.6 Werkzeuggestützte statische Analyse</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Statische Analysewerkzeuge prüfen Code automatisch — ohne ihn auszuführen.</div>
+<p><strong>Erklärung:</strong>
+Werkzeuge wie <strong>SonarQube</strong>, <strong>ESLint</strong> oder <strong>Checkstyle</strong> analysieren Quellcode auf Coding-Standard-Verletzungen, potenzielle Fehlerzustände, Sicherheitslücken, toten Code und Komplexitätsmetriken. Sie ergänzen manuelle Reviews, ersetzen sie aber nicht — sie finden andere Fehlertypen. In CI/CD-Pipelines sind statische Analysewerkzeuge oft als automatisierter Quality-Gate integriert.</p>
+<hr />
+<h2>4.7 Unterschiede zwischen statischen und dynamischen Tests</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Statisch = Artefakt lesen und analysieren. Dynamisch = Software ausführen und Verhalten beobachten.</div>
+<p><strong>Erklärung:</strong></p>
+<table>
+<thead>
+<tr>
+<th>Merkmal</th>
+<th>Statischer Test</th>
+<th>Dynamischer Test</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Software wird ausgeführt</td>
+<td>Nein</td>
+<td>Ja</td>
+</tr>
+<tr>
+<td>Zeitpunkt</td>
+<td>Früh im SDLC</td>
+<td>Nach Implementierung</td>
+</tr>
+<tr>
+<td>Artefakte</td>
+<td>Dokumente, Code, Pläne</td>
+<td>Ausführbare Software</td>
+</tr>
+<tr>
+<td>Methoden</td>
+<td>Review, statische Analyse</td>
+<td>Blackbox, Whitebox, erfahrungsbasiert</td>
+</tr>
+<tr>
+<td>Typische Fehler</td>
+<td>Inkonsistenzen, Coding-Verstöße</td>
+<td>Laufzeitfehler, Fehlverhalten</td>
+</tr>
+</tbody>
+</table>
+<p>Beide Methoden ergänzen sich — statische Tests finden Fehler früher, dynamische Tests bestätigen das Verhalten zur Laufzeit.</p>
+<hr />
+<h2>4.8 Zusammenfassung</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Kapitel 4 in einem Satz: Statisches Testen findet Fehler frühzeitig durch Prüfen ohne Ausführung — Reviews und statische Analyse sind die zwei Hauptmethoden.</div>
+<p><strong>Kernpunkte zum Wiederholen:</strong>
+- Statisch = kein Ausführen; dynamisch = Ausführen
+- Zwei Formen: manuelles Review + werkzeuggestützte statische Analyse
+- 4 Reviewarten kennen (informell, Walkthrough, technisch, Inspektion)
+- Rollen im Review: Manager, Moderator, Autor, Gutachter, Protokollant
+- Aktivitäten im Reviewprozess: Planung → Kick-off → individuelle Prüfung → Kommunikation → Überarbeitung → Abschluss
+- Erfolgsfaktoren für Reviews kennen</p>
+<hr />
+<h2>Hinweise zur Prüfungs- und Interviewvorbereitung <em>(Claude)</em></h2>
+<blockquote>
+<p>Dieser Abschnitt enthält Empfehlungen von Claude zur Priorisierung beim Lernen.
+Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
+</blockquote>
+<p><strong>Besonders prüfungsrelevant aus Kapitel 4:</strong></p>
+<ul>
+<li><strong>Die 4 Reviewarten</strong> — werden fast immer abgefragt. Besonders: Unterschied zwischen Walkthrough und Inspektion kennen. Die Inspektion ist die formellste, der Walkthrough wird vom Autor geleitet.</li>
+<li><strong>Statisch vs. dynamisch</strong> — die Tabelle in 4.7 ist eine perfekte Antwortstruktur für Interviewfragen.</li>
+<li><strong>Rollen im Reviewprozess</strong> — Moderator vs. Autor vs. Gutachter klar unterscheiden können.</li>
+<li><strong>Werkzeuge</strong> — SonarQube als Beispiel nennen können; zeigt Praxisbezug.</li>
+</ul>
+<p><strong>Tipp für das Interview:</strong>
+Wenn du nach statischem Testen gefragt wirst, nenne konkret: „Reviews und statische Analyse sind die zwei Hauptformen. Reviews sind menschlich, statische Analyse ist werkzeuggestützt. Beide finden Fehler ohne die Software auszuführen." Das ist eine präzise, strukturierte Antwort.</p>
+<hr />
+<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
+      </div>
+    </article>
+    
+    <article id="kap5" class="chapter-card">
+      <header class="card-header">
+        <span class="card-kap">Kap. 5</span>
+        <h2 class="card-title">Dynamischer Test</h2>
+      </header>
+      <div class="card-body">
+        
+<h2>Kapitel 5: Dynamischer Test</h2>
+<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 4</em>
+<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<hr />
+<h2>Überblick</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Dynamisches Testen führt die Software aus — Testverfahren helfen dabei, systematisch Testfälle zu entwerfen.</div>
+<p><strong>Erklärung:</strong>
+Testverfahren (auch: Testentwurfsverfahren) sind systematische Methoden zur Ableitung von Testfällen. ISTQB unterscheidet drei Kategorien:
+- <strong>Blackbox-Testverfahren</strong> — basieren auf der Spezifikation, ohne Kenntnis des Codes
+- <strong>Whitebox-Testverfahren</strong> — basieren auf der internen Struktur des Codes
+- <strong>Erfahrungsbasierte Verfahren</strong> — basieren auf dem Wissen und der Intuition des Testers</p>
+<hr />
+<h2>5.1 Blackbox-Testverfahren</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Blackbox-Tests prüfen das System von außen — nur Ein- und Ausgaben sind relevant, nicht der Code.</div>
+<h3>5.1.1 Äquivalenzklassenbildung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Äquivalenzklassenbildung teilt Eingabewerte in Gruppen — ein Wert pro Gruppe reicht als repräsentativer Test.</div>
+<p><strong>Erklärung:</strong>
+Die <strong>Äquivalenzklassenbildung</strong> (ÄKB) teilt den Eingabebereich in Klassen auf, bei denen angenommen wird, dass das System alle Werte einer Klasse gleich verarbeitet. Es gibt <strong>gültige Klassen</strong> (Werte die das System verarbeiten soll) und <strong>ungültige Klassen</strong> (Werte die abgelehnt werden sollen). Pro Klasse wird mindestens ein Testfall erstellt.</p>
+<p><strong>Beispiel:</strong> Altersfeld mit Mindestanforderung 18 Jahre:
+- Gültige Klasse: Alter ≥ 18 (z. B. 25)
+- Ungültige Klasse: Alter &lt; 18 (z. B. 15)
+- Ungültige Klasse: Keine Zahl / leer</p>
+<p><strong>Überdeckung:</strong> Anzahl getesteter Klassen / Gesamtzahl Klassen × 100 %</p>
+<hr />
+<h3>5.1.2 Grenzwertanalyse</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Grenzwertanalyse testet die Grenzen von Äquivalenzklassen — dort passieren die meisten Fehler.</div>
+<p><strong>Erklärung:</strong>
+Entwickler machen besonders häufig Fehler an den Grenzen von Wertebereichen (z. B. ≤ statt &lt;). Die <strong>Grenzwertanalyse</strong> (GWA) testet genau diese Grenzwerte.</p>
+<p><strong>2-Wert-GWA:</strong> Für jeden Grenzwert zwei Testwerte: der Grenzwert selbst und sein nächster Nachbar in der angrenzenden Klasse.</p>
+<p><strong>3-Wert-GWA:</strong> Für jeden Grenzwert drei Testwerte: Grenzwert, Nachbar darunter, Nachbar darüber. Strenger und deckt mehr Fehler ab.</p>
+<p><strong>Beispiel:</strong> Zeichenbegrenzung max. 100:
+- 2-Wert: 100 (gültig), 101 (ungültig)
+- 3-Wert: 99 (gültig), 100 (gültig), 101 (ungültig)</p>
+<hr />
+<h3>5.1.3 Zustandsbasierter Test</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Der zustandsbasierte Test prüft alle möglichen Zustände eines Systems und die Übergänge zwischen ihnen.</div>
+<p><strong>Erklärung:</strong>
+Ein <strong>Zustandsdiagramm</strong> modelliert das Systemverhalten als Zustände und Übergänge. Ein <strong>Zustandsübergang</strong> wird durch ein Ereignis ausgelöst und kann eine Aktion auslösen. Testfälle werden aus dem Diagramm oder der Zustandstabelle abgeleitet.</p>
+<p><strong>Drei Überdeckungskriterien (CTFL v4.0.2, Abschnitt 4.2.4):</strong>
+1. <strong>Überdeckung aller Zustände</strong> — alle Zustände mindestens einmal besucht (schwächstes Kriterium)
+2. <strong>Überdeckung der gültigen Übergänge</strong> (0-Switch-Überdeckung) — alle gültigen Übergänge ausgeführt
+3. <strong>Überdeckung aller Übergänge</strong> — gültige + ungültige Übergänge getestet (stärkstes Kriterium)</p>
+<hr />
+<h3>5.1.4 Entscheidungstabellentests</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Entscheidungstabellen prüfen alle Kombinationen von Bedingungen und ihre Auswirkungen — kein Fall wird vergessen.</div>
+<p><strong>Erklärung:</strong>
+Eine <strong>Entscheidungstabelle</strong> hat Bedingungen (oben) und Aktionen (unten) als Zeilen. Jede Spalte ist eine Regel — eine eindeutige Kombination von Bedingungswerten und der zugehörigen Aktion. Entscheidungstabellen sind ideal für komplexe Geschäftsregeln mit mehreren voneinander abhängigen Bedingungen.</p>
+<p><strong>Beispiel:</strong> Versandkostenregel (Preis &gt; 50 € UND Mitglied → Kostenlos):</p>
+<table>
+<thead>
+<tr>
+<th>Bedingung 1: Preis &gt; 50 €</th>
+<th>T</th>
+<th>T</th>
+<th>F</th>
+<th>F</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Bedingung 2: Mitglied</td>
+<td>T</td>
+<td>F</td>
+<td>T</td>
+<td>F</td>
+</tr>
+<tr>
+<td>Aktion: Kostenlos</td>
+<td>X</td>
+<td>X</td>
+<td>X</td>
+<td>—</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Überdeckung:</strong> Anzahl getesteter Regeln / Gesamtzahl ausführbarer Regeln × 100 %</p>
+<hr />
+<h3>5.1.5 Kombinatorisches Testen</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Kombinatorisches Testen reduziert die Anzahl benötigter Testfälle bei vielen Parametern — durch Paarweises Testen (Pairwise Testing).</div>
+<p><strong>Erklärung:</strong>
+Wenn viele Parameter mit vielen Werten kombiniert werden müssen, explodiert die Anzahl der Testfälle. <strong>Pairwise Testing</strong> (auch: All-Pairs) stellt sicher, dass jede Kombination zweier Parameter mindestens einmal getestet wird — das deckt die meisten Fehler ab mit deutlich weniger Testfällen als ein vollständiger Test aller Kombinationen.</p>
+<hr />
+<h3>5.1.6 Anwendungsfallbasierter Test</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Use-Case-Tests leiten Testfälle aus Anwendungsfällen ab — sie prüfen vollständige Benutzerszenarien.</div>
+<p><strong>Erklärung:</strong>
+Ein <strong>Use Case</strong> (Anwendungsfall) beschreibt eine Interaktion zwischen einem Akteur und dem System zur Erreichung eines Ziels. Testfälle decken den <strong>Normalablauf</strong> (Happy Path) und <strong>Alternativabläufe</strong> sowie <strong>Fehlerabläufe</strong> ab. Use-Case-Tests sind besonders wertvoll für Abnahmetests und die Kommunikation mit Stakeholdern.</p>
+<hr />
+<h3>5.1.7 Allgemeine Bewertung der Blackbox-Verfahren</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Kein einzelnes Blackbox-Verfahren ist allein ausreichend — sie ergänzen sich.</div>
+<p><strong>Erklärung:</strong>
+Äquivalenzklassenbildung und Grenzwertanalyse werden fast immer kombiniert. Entscheidungstabellen sind stark bei komplexer Logik. Zustandsbasierter Test ist ideal für zustandsbehaftete Systeme. In der Praxis wählt der Tester das Verfahren anhand des zu testenden Artefakts und des Risikos.</p>
+<hr />
+<h2>5.2 Whitebox-Testverfahren</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Whitebox-Tests schauen in den Code — sie messen, welche Teile des Codes durch Tests ausgeführt werden.</div>
+<h3>5.2.1 Anweisungstest und Anweisungsüberdeckung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Anweisungsüberdeckung misst: Welcher Anteil der ausführbaren Code-Anweisungen wurde mindestens einmal ausgeführt?</div>
+<p><strong>Erklärung:</strong>
+Beim <strong>Anweisungstest</strong> ist jede ausführbare Anweisung ein Überdeckungselement. 100 % Anweisungsüberdeckung bedeutet: Jede Zeile wurde mindestens einmal ausgeführt. Das ist das schwächste Whitebox-Kriterium — es garantiert nicht, dass alle Verzweigungen getestet wurden.</p>
+<p><strong>Formel:</strong> Ausgeführte Anweisungen / Gesamtzahl ausführbarer Anweisungen × 100 %</p>
+<hr />
+<h3>5.2.2 Zweigtest und Zweigüberdeckung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Zweigüberdeckung misst alle Kanten im Kontrollflussgraphen — nicht nur Anweisungen, sondern auch bedingungslose Übergänge.</div>
+<p><strong>Erklärung:</strong>
+Ein <strong>Kontrollflussgraph (KFG)</strong> stellt Code als Knoten (Anweisungen) und Kanten (Übergänge) dar. Beim <strong>Zweigtest</strong> ist jede Kante ein Überdeckungselement — das schließt TRUE- und FALSE-Zweige von Entscheidungen ein, aber auch bedingungslose Übergänge.</p>
+<p><strong>Wichtig:</strong> 100 % Zweigüberdeckung garantiert 100 % Anweisungsüberdeckung — umgekehrt gilt das nicht.</p>
+<p><strong>Formel:</strong> Ausgeführte Kanten / Gesamtzahl Kanten im KFG × 100 %</p>
+<p><strong>Abgrenzung:</strong>
+- Anweisungsüberdeckung ≈ Überdeckung aller Zustände (BB-Analogie)
+- Zweigüberdeckung ≈ Überdeckung der gültigen Übergänge (BB-Analogie)
+- „Entscheidungsüberdeckung" ist ein älterer Begriff — im CTFL v4.0.2 nicht mehr verwendet</p>
+<hr />
+<h3>5.2.3 Test der Bedingungen</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Bedingungsüberdeckung geht tiefer als Zweigüberdeckung — sie prüft die einzelnen Teilbedingungen innerhalb einer Entscheidung.</div>
+<p><strong>Erklärung:</strong>
+Bei komplexen Bedingungen (z. B. <code>if (A AND B)</code>) reicht Zweigüberdeckung nicht aus — die Entscheidung kann TRUE ergeben, ohne dass alle Teilbedingungen einzeln geprüft wurden. Höhere Kriterien:
+- <strong>Einfache Bedingungsüberdeckung:</strong> Jede atomare Bedingung einmal TRUE und einmal FALSE
+- <strong>Mehrfach-Bedingungsüberdeckung (MC/DC):</strong> Jede Bedingung beeinflusst das Gesamtergebnis unabhängig — Standard in sicherheitskritischer Software (Luftfahrt, Medizin)</p>
+<hr />
+<h3>5.2.4 Allgemeine Bewertung der Whitebox-Verfahren</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Whitebox-Tests ergänzen Blackbox-Tests — sie finden Fehler im Code, die kein Blackbox-Test erreicht.</div>
+<p><strong>Erklärung:</strong>
+Whitebox-Tests können toten Code, unerreichbare Pfade und unbeabsichtigte Funktionalität aufdecken — Dinge, die in keiner Spezifikation beschrieben sind und daher von Blackbox-Tests nicht gefunden werden. Ihre Schwäche: Sie testen nur was implementiert wurde — fehlende Funktionalität bleibt unsichtbar.</p>
+<hr />
+<h2>5.3 Erfahrungsbasierte Testfallermittlung</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Erfahrungsbasierte Tests nutzen das Wissen des Testers — nicht Spezifikationen oder Code.</div>
+<p><strong>Erklärung:</strong>
+Drei Formen laut CTFL v4.0.2 (Abschnitt 4.4):</p>
+<p><strong>Intuitive Testfallermittlung (Error Guessing):</strong>
+Der Tester nutzt Erfahrung, um häufige Fehlerquellen zu identifizieren und gezielt zu testen — z. B. leere Felder, Nullwerte, Sonderzeichen. Kann durch <strong>Fehlererwartungslisten</strong> strukturiert werden.</p>
+<p><strong>Explorativer Test:</strong>
+Simultanes Lernen, Testdesign und Testdurchführung. Der Tester erkundet das System ohne vordefinierte Testfälle. Wird durch <strong>Test-Chartas</strong> strukturiert, die Ziel und Zeitrahmen einer Testsitzung definieren.</p>
+<p><strong>Checklistenbasierter Test:</strong>
+Testfälle werden aus Checklisten bekannter Fehlertypen oder Qualitätsmerkmale abgeleitet. Checklisten basieren auf Erfahrung und können wiederverwendet werden.</p>
+<hr />
+<h2>5.4 Auswahl von Testverfahren</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Die Wahl des Testverfahrens hängt von Kontext, Risiko, verfügbarer Dokumentation und Komplexität ab.</div>
+<p><strong>Erklärung:</strong>
+In der Praxis werden Testverfahren kombiniert:
+- Äquivalenzklassenbildung + Grenzwertanalyse fast immer gemeinsam
+- Entscheidungstabellen für komplexe Geschäftslogik
+- Zustandsbasierter Test für zustandsbehaftete Systeme
+- Whitebox-Tests für sicherheitskritische Bereiche oder zur Überdeckungsmessung
+- Erfahrungsbasierte Tests als Ergänzung, besonders in agilen Projekten</p>
+<p>Die Risikoanalyse (Eintrittswahrscheinlichkeit × Auswirkung) leitet die Priorisierung: Hochrisiko-Bereiche bekommen mehr und intensivere Tests.</p>
+<hr />
+<h2>5.5 Zusammenfassung</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Kapitel 5 in einem Satz: Testverfahren sind das Handwerkszeug des Testers — Blackbox, Whitebox und erfahrungsbasiert ergänzen sich zu einer vollständigen Teststrategie.</div>
+<p><strong>Kernpunkte zum Wiederholen:</strong>
+- Äquivalenzklassenbildung: gültige + ungültige Klassen, ein Wert pro Klasse
+- Grenzwertanalyse: 2-Wert vs. 3-Wert, Grenzen sind fehleranfällig
+- Zustandsbasierter Test: 3 Überdeckungskriterien (Zustände / gültige Übergänge / alle Übergänge)
+- Entscheidungstabellen: alle Kombinationen von Bedingungen
+- Anweisungsüberdeckung &lt; Zweigüberdeckung (Zweig garantiert Anweisung, nicht umgekehrt)
+- Zweigüberdeckung = alle Kanten im KFG (inkl. bedingungslose Übergänge)
+- Exploratives Testen: Test-Charta, simultanes Lernen und Testen
+- Verfahren werden kombiniert — kein einzelnes Verfahren ist ausreichend</p>
+<hr />
+<h2>Hinweise zur Prüfungs- und Interviewvorbereitung <em>(Claude)</em></h2>
+<blockquote>
+<p>Dieser Abschnitt enthält Empfehlungen von Claude zur Priorisierung beim Lernen.
+Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
+</blockquote>
+<p><strong>Besonders prüfungsrelevant aus Kapitel 5:</strong></p>
+<ul>
+<li><strong>Äquivalenzklassenbildung + Grenzwertanalyse</strong> — die beiden werden fast immer zusammen abgefragt und in der Praxis immer kombiniert. Konkrete Beispiele parat haben.</li>
+<li><strong>Zustandsbasierter Test mit den 3 Überdeckungskriterien</strong> — die genauen deutschen CTFL-Begriffe kennen: <em>Überdeckung aller Zustände</em>, <em>Überdeckung der gültigen Übergänge</em>, <em>Überdeckung aller Übergänge</em>.</li>
+<li><strong>Zweigüberdeckung vs. Anweisungsüberdeckung</strong> — der Unterschied (Kanten vs. Knoten im KFG) wird gerne abgefragt. Merksatz: Zweigüberdeckung ist stärker.</li>
+<li><strong>Exploratives Testen</strong> — in agilen Projekten sehr praxisrelevant, wird im Interview gerne als Praxisfrage gestellt: „Wie würdest du eine neue Funktion ohne Spezifikation testen?"</li>
+<li><strong>Entscheidungstabellen</strong> — wenn du eine Tabelle mit Bedingungen und Aktionen siehst, ist das eine Entscheidungstabelle. Kannst du erklären, wie eine Regel entsteht?</li>
+</ul>
+<p><strong>Tipp für das Interview:</strong>
+Wenn du nach Testverfahren gefragt wirst, strukturiere deine Antwort sofort: „Es gibt drei Kategorien — Blackbox, Whitebox und erfahrungsbasiert." Dann nenne pro Kategorie je ein oder zwei Verfahren mit einem Satz Erklärung. Das zeigt sofort, dass du systematisch denkst.</p>
+<p><strong>Verbindung zu eigenen Hausaufgaben:</strong>
+Du hast in Lektion 7 Äquivalenzklassenbildung und Grenzwertanalyse am Beispiel Altersverifikation (16 Jahre) und Zeichenbegrenzung (100 Zeichen) selbst angewendet — das sind deine eigenen Praxisbeispiele für das Interview!</p>
+<hr />
+<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
+      </div>
+    </article>
+    
+    <article id="kap6" class="chapter-card">
+      <header class="card-header">
+        <span class="card-kap">Kap. 6</span>
+        <h2 class="card-title">Testmanagement</h2>
+      </header>
+      <div class="card-body">
+        
+<h2>Kapitel 6: Testmanagement</h2>
+<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 5</em>
+<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<hr />
+<h2>Überblick</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testmanagement plant, steuert und überwacht alle Testaktivitäten — es sorgt dafür, dass Testen zielgerichtet, effizient und nachvollziehbar abläuft.</div>
+<hr />
+<h2>6.1 Testorganisation</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testorganisation regelt, wer testet, wie unabhängig und mit welchen Qualifikationen.</div>
+<h3>6.1.1 Unabhängiges Testen</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Je unabhängiger der Tester vom Entwickler, desto objektiver — aber Unabhängigkeit hat Kosten.</div>
+<p><strong>Erklärung:</strong>
+CTFL v4.0.2 (Abschnitt 1.5.3) definiert verschiedene Grade der Unabhängigkeit:
+- <strong>Kein unabhängiges Testen:</strong> Entwickler testet eigenen Code — wenig effektiv, aber billig
+- <strong>Unabhängige Tester im Team:</strong> Tester im selben Team wie Entwickler
+- <strong>Unabhängiges Testteam:</strong> Eigene Testabteilung im Unternehmen
+- <strong>Externes Testteam:</strong> Externe Dienstleister — maximale Unabhängigkeit</p>
+<p>Vorteile der Unabhängigkeit: andere Sichtweise, keine Betriebsblindheit, objektivere Bewertung.
+Nachteile: Kommunikationsaufwand, Informationsverlust, mögliche Entfremdung vom Entwicklungsteam.</p>
+<hr />
+<h3>6.1.2 Rollen, Aufgaben und Qualifikation</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testmanager plant und steuert — Tester analysiert und führt durch. Beide Rollen erfordern unterschiedliche Kompetenzen.</div>
+<p><strong>Erklärung:</strong>
+- <strong>Testmanager:</strong> Verantwortlich für Testplanung, Ressourcen, Kommunikation mit Stakeholdern, Testberichte und Prozessverbesserung.
+- <strong>Tester:</strong> Verantwortlich für Testanalyse, Testentwurf, Testrealisierung, Testdurchführung und Fehlermeldung.</p>
+<p>In agilen Teams sind diese Rollen oft weniger scharf getrennt — Tester übernehmen teils Planungsaufgaben, Entwickler übernehmen teils Testaufgaben (Whole-Team-Ansatz).</p>
+<hr />
+<h2>6.2 Teststrategie</h2>
+<h3>6.2.1 Teststrategie und Testkonzept</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Die Teststrategie beschreibt den Ansatz — das Testkonzept (Testplan) beschreibt die Umsetzung für ein konkretes Projekt.</div>
+<p><strong>Erklärung:</strong>
+Die <strong>Teststrategie</strong> ist ein übergeordnetes Dokument auf Organisationsebene: Sie legt fest, wie Tests im Unternehmen grundsätzlich durchgeführt werden (z. B. welche Teststufen, welche Verfahren, welche Werkzeuge). Das <strong>Testkonzept</strong> (Testplan) konkretisiert die Strategie für ein bestimmtes Projekt — mit Umfang, Ressourcen, Zeitplan und Risiken.</p>
+<hr />
+<h3>6.2.2 Auswahl der Teststrategie</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Die Teststrategie wird aus Kontext, Risiko und verfügbaren Ressourcen abgeleitet — es gibt keine universelle Strategie.</div>
+<p><strong>Erklärung:</strong>
+Faktoren für die Strategieauswahl: Projektrisiko, regulatorische Anforderungen, verfügbares Budget, SDLC-Modell, Erfahrung des Teams und Qualitätsanforderungen. In sicherheitskritischen Systemen (Medizin, Luftfahrt) ist eine formellere Strategie mit höheren Überdeckungsanforderungen notwendig als in einer agilen Web-App.</p>
+<hr />
+<h3>6.2.3 Verschiedene konkrete Strategien</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Bekannte Teststrategien sind: analytisch, modellbasiert, methodisch, prozess-/standardkonform, reaktiv, regressionsorientiert, risikobasiert.</div>
+<p><strong>Erklärung:</strong>
+- <strong>Risikobasiert:</strong> Tests werden nach Risikoprioritäten geplant — Hochrisiko zuerst
+- <strong>Analytisch:</strong> Anforderungsanalyse oder Risikoanalyse als Basis
+- <strong>Reaktiv:</strong> Tests werden erst während oder nach der Entwicklung definiert (z. B. exploratives Testen)
+- <strong>Methodisch:</strong> Systematische Nutzung definierter Testverfahren oder Checklisten
+- <strong>Regressionsorientiert:</strong> Fokus auf Wiederverwendung bestehender Tests</p>
+<hr />
+<h3>6.2.4 Testen und Risiko</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Risikobasiertes Testen priorisiert — nicht alles kann gleich intensiv getestet werden.</div>
+<p><strong>Erklärung:</strong>
+<strong>Produktrisiken</strong> betreffen die Qualität der Software (z. B. Absturz, Sicherheitslücke). <strong>Projektrisiken</strong> betreffen den Projekterfolg (z. B. Ressourcenmangel, Zeitverzug). Die <strong>Produktrisikoanalyse</strong> bewertet jeden Bereich nach: <strong>Eintrittswahrscheinlichkeit × Auswirkung</strong>. Hochrisiko-Bereiche bekommen mehr Testtiefe und frühere Testdurchführung. Diese Informationen fließen in den Testplan ein.</p>
+<hr />
+<h3>6.2.5 Testaufwand und Testkosten</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testaufwand hängt von Produktkomplexität, Qualitätsanforderungen, Teamkompetenz und Testverfahren ab.</div>
+<p><strong>Erklärung:</strong>
+Faktoren die den Testaufwand erhöhen: hohe Qualitätsanforderungen, komplexes System, neue Technologien, viele Schnittstellen, kritische Domäne, mangelnde Testbarkeit der Anforderungen. Faktoren die ihn reduzieren: gute Anforderungsqualität, erfahrenes Testteam, gute Testwerkzeuge, frühzeitiges Testen.</p>
+<hr />
+<h3>6.2.6 Schätzverfahren zum Testaufwand</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testaufwand schätzen ist schwierig — Erfahrungswerte, Metriken und Schätzmethoden helfen.</div>
+<p><strong>Erklärung:</strong>
+Gebräuchliche Schätzverfahren:
+- <strong>Experteneinschätzung:</strong> Erfahrene Tester schätzen auf Basis vergangener Projekte
+- <strong>Drei-Punkt-Schätzung:</strong> Optimistisch + Wahrscheinlich + Pessimistisch → gewichteter Mittelwert: <code>(O + 4×W + P) / 6</code>
+- <strong>Analogieschätzung:</strong> Vergleich mit ähnlichem Vorgängerprojekt
+- <strong>Metriken aus Vergangenheitsdaten:</strong> Fehlerrate, Testdichte usw.</p>
+<hr />
+<h3>6.2.7 Testkosten vs. Fehlerkosten</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Fehler früh finden ist billiger als Fehler spät finden — Testkosten sind Investition, keine reinen Kosten.</div>
+<p><strong>Erklärung:</strong>
+Die klassische Regel: Ein Fehler der in der Anforderungsphase gefunden wird, kostet einen Bruchteil dessen, was derselbe Fehler nach der Auslieferung kostet. Testkosten müssen daher den Fehlerkosten gegenübergestellt werden — nicht isoliert betrachtet werden. Dieses Argument rechtfertigt Investitionen in frühes Testen und Testautomatisierung.</p>
+<hr />
+<h2>6.3 Testplanung, Teststeuerung und Testüberwachung</h2>
+<h3>6.3.1 Testplanung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Der Testplan dokumentiert: Scope, Strategie, Ressourcen, Zeitplan, Risiken, Eingangs- und Endekriterien.</div>
+<p><strong>Erklärung:</strong>
+Der Testplan (Testkonzept) ist das zentrale Steuerungsdokument für alle Testaktivitäten. Typische Inhalte laut CTFL v4.0.2 (Abschnitt 5.1.1):
+- Kontext und Testziele
+- Teststrategie und Testverfahren
+- Zu testende und nicht zu testende Features
+- Ressourcen (Personal, Umgebungen, Werkzeuge)
+- Zeitplan und Meilensteine
+- Risiken und Gegenmaßnahmen
+- Eingangs- und Endekriterien</p>
+<hr />
+<h3>6.3.2 Teststeuerung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Teststeuerung greift ein, wenn der Ist-Zustand vom Plan abweicht — sie steuert aktiv nach.</div>
+<p><strong>Erklärung:</strong>
+Wenn Testüberwachung eine Abweichung zeigt (z. B. zu viele offene Fehler, Zeitverzug), leitet die <strong>Teststeuerung</strong> korrigierende Maßnahmen ein: Ressourcen umschichten, Scope reduzieren, Prioritäten anpassen oder Endekriterien neu verhandeln. Die Teststeuerung kommuniziert Statusänderungen an Stakeholder.</p>
+<hr />
+<h3>6.3.3 Testüberwachung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testüberwachung vergleicht laufend Ist mit Plan — mit Metriken wie Testüberdeckung, Fehlerrate und Fortschritt.</div>
+<p><strong>Erklärung:</strong>
+Typische Testmetriken (CTFL v4.0.2, Abschnitt 5.3.1):
+- Anzahl geplanter / ausgeführter / bestandener / fehlgeschlagener Testfälle
+- Fehleranzahl nach Schweregrad und Status
+- Testüberdeckung (Anforderungen, Code)
+- Testfortschritt (%) gegenüber Zeitplan
+- Kosten und Aufwand</p>
+<p>Diese Metriken bilden die Grundlage für <strong>Testfortschrittsberichte</strong> und den <strong>Testabschlussbericht</strong>.</p>
+<hr />
+<h3>6.3.4 Testberichte</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testberichte kommunizieren den Teststatus — für unterschiedliche Zielgruppen unterschiedlich aufbereitet.</div>
+<p><strong>Erklärung:</strong>
+Zwei Haupttypen laut CTFL v4.0.2 (Abschnitt 5.3.2):
+- <strong>Testfortschrittsbericht:</strong> Laufend während der Testdurchführung — zeigt aktuellen Status, Fortschritt, Risiken.
+- <strong>Testabschlussbericht:</strong> Am Ende einer Testphase — fasst alle Aktivitäten zusammen, bewertet Qualität, gibt Empfehlung zur Freigabe.</p>
+<p>Zielgruppen: Management (kompakt, Risikofokus), technisches Team (detailliert, Fehler-Fokus).</p>
+<hr />
+<h2>6.4 Fehlermanagement</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Fehlermanagement verfolgt jeden gefundenen Fehler von der Entdeckung bis zur Behebung — strukturiert und nachvollziehbar.</div>
+<h3>6.4.1 Testprotokoll auswerten</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Das Testprotokoll dokumentiert was ausgeführt wurde — die Auswertung zeigt, was gefunden wurde.</div>
+<p><strong>Erklärung:</strong>
+Nach der Testdurchführung wird das Testprotokoll (Testlog) ausgewertet: Welche Tests bestanden, welche schlugen fehl, welche wurden blockiert? Fehlgeschlagene Tests werden auf echte Fehlerzustände vs. Testinfrastrukturprobleme untersucht.</p>
+<hr />
+<h3>6.4.2 Fehlermeldung erstellen</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Eine gute Fehlermeldung ist vollständig, reproduzierbar und präzise — damit der Entwickler den Fehler finden und beheben kann.</div>
+<p><strong>Erklärung:</strong>
+Inhalte einer Fehlermeldung (CTFL v4.0.2, Abschnitt 5.5):
+- Eindeutige ID und Titel
+- Datum, Umgebung, Tester
+- Schritte zur Reproduktion
+- Erwartetes Ergebnis vs. tatsächliches Ergebnis
+- Schweregrad (Severity) und Priorität
+- Screenshots oder Logs
+- Status (Neu, In Bearbeitung, Behoben, Verifiziert, Geschlossen)</p>
+<hr />
+<h3>6.4.3 Fehlerwirkungen klassifizieren</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Schweregrad (Severity) beschreibt die technische Auswirkung — Priorität beschreibt die Dringlichkeit der Behebung.</div>
+<p><strong>Erklärung:</strong>
+- <strong>Schweregrad (Severity):</strong> Wie stark beeinträchtigt der Fehler das System? (z. B. Kritisch, Hoch, Mittel, Niedrig)
+- <strong>Priorität:</strong> Wie dringend muss der Fehler behoben werden? (businesskritisch kann niedrigen Schweregrad haben, wenn es z. B. ein Logo-Fehler auf der Homepage ist)</p>
+<p>Beide Klassifikationen können unterschiedlich sein — ein kosmetischer Fehler auf der Login-Seite kann hohe Priorität haben, auch wenn der Schweregrad niedrig ist.</p>
+<hr />
+<h3>6.4.4 Fehlerstatus verfolgen</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Jeder Fehler durchläuft einen Lebenszyklus — von Neu bis Geschlossen.</div>
+<p><strong>Erklärung:</strong>
+Typischer Fehler-Lebenszyklus:
+<strong>Neu</strong> → <strong>Zugewiesen</strong> → <strong>In Bearbeitung</strong> → <strong>Behoben</strong> → <strong>Zur Verifikation</strong> → <strong>Verifiziert</strong> → <strong>Geschlossen</strong></p>
+<p>Oder alternativ: <strong>Abgelehnt</strong> (kein Fehler) / <strong>Verschoben</strong> (nicht in diesem Release). Werkzeuge wie <strong>Jira</strong> unterstützen die Fehlerverfolgung in der Praxis.</p>
+<hr />
+<h3>6.4.5 Auswertungen und Berichte</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Fehlermetriken zeigen die Produktqualität und den Testfortschritt — z. B. Fehleranzahl, Fehlerrate, offene Fehler nach Schweregrad.</div>
+<p><strong>Erklärung:</strong>
+Typische Auswertungen: Fehlertrend über Zeit (sinkt die Fehlerrate?), Fehlerverteilung nach Komponente (wo sind die meisten Fehler?), Fehlerbehebungsrate (wie schnell werden Fehler behoben?). Diese Auswertungen fließen in Testberichte ein und helfen bei der Freigabeentscheidung.</p>
+<hr />
+<h2>6.5 Konfigurationsmanagement</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Konfigurationsmanagement stellt sicher, dass getestet wird, was auch wirklich ausgeliefert wird — und dass Testergebnisse rückverfolgbar sind.</div>
+<p><strong>Erklärung:</strong>
+<strong>Konfigurationsmanagement</strong> verwaltet alle Versionen von Software-Artefakten (Code, Testfälle, Anforderungen, Testumgebungen). Es stellt sicher, dass der Tester immer die richtige Version testet und dass Testergebnisse eindeutig einer bestimmten Software-Version zugeordnet werden können. Werkzeuge: <strong>Git</strong> (Versionsverwaltung), <strong>Jenkins</strong> (CI), <strong>Docker</strong> (Umgebungsmanagement).</p>
+<hr />
+<h2>6.6 Relevante Normen und Standards</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Normen schaffen eine gemeinsame Sprache und definieren Mindestanforderungen — besonders in regulierten Industrien.</div>
+<p><strong>Erklärung:</strong>
+Relevante Normen im Softwaretest:
+- <strong>ISO/IEC/IEEE 29119:</strong> Internationale Norm für Softwaretest — definiert Testprozesse, Dokumentation und Testverfahren
+- <strong>ISO/IEC 25010:</strong> Qualitätsmodell für Software (Qualitätsmerkmale wie Funktionalität, Zuverlässigkeit, Sicherheit)
+- <strong>ISO/IEC 20246:</strong> Norm für Reviews und Inspektionen
+- <strong>IEEE 829:</strong> Älterer Standard für Testdokumentation (weitgehend durch ISO/IEC 29119 ersetzt)</p>
+<hr />
+<h2>6.7 Zusammenfassung</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Kapitel 6 in einem Satz: Testmanagement sorgt dafür, dass Testen planbar, steuerbar, messbar und nachvollziehbar ist.</div>
+<p><strong>Kernpunkte zum Wiederholen:</strong>
+- Unabhängigkeit des Testens: Grade kennen, Vor- und Nachteile
+- Teststrategie vs. Testkonzept (Testplan): übergeordnet vs. projektspezifisch
+- Risikobasiertes Testen: Eintrittswahrscheinlichkeit × Auswirkung
+- Drei-Punkt-Schätzung: Formel kennen
+- Schweregrad vs. Priorität: wichtige Unterscheidung
+- Fehler-Lebenszyklus: Neu → Behoben → Verifiziert → Geschlossen
+- Testfortschrittsbericht vs. Testabschlussbericht</p>
+<hr />
+<h2>Hinweise zur Prüfungs- und Interviewvorbereitung <em>(Claude)</em></h2>
+<blockquote>
+<p>Dieser Abschnitt enthält Empfehlungen von Claude zur Priorisierung beim Lernen.
+Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
+</blockquote>
+<p><strong>Besonders prüfungsrelevant aus Kapitel 6:</strong></p>
+<ul>
+<li><strong>Schweregrad vs. Priorität</strong> — wird sehr häufig im Interview abgefragt. Der Unterschied ist nicht intuitiv: Schweregrad = technische Auswirkung, Priorität = Dringlichkeit der Behebung. Ein niedriger Schweregrad kann hohe Priorität haben.</li>
+<li><strong>Risikobasiertes Testen</strong> — „Wie priorisierst du Testfälle?" ist eine klassische Interviewfrage. Antwort: Risikoanalyse, Eintrittswahrscheinlichkeit × Auswirkung.</li>
+<li><strong>Fehler-Lebenszyklus</strong> — die Stati kennen und erklären können. Jira als Werkzeug nennen.</li>
+<li><strong>Testfortschrittsbericht vs. Testabschlussbericht</strong> — wann wird welcher erstellt und für wen?</li>
+<li><strong>Drei-Punkt-Schätzung</strong> — Formel parat haben: <code>(O + 4×W + P) / 6</code></li>
+</ul>
+<p><strong>Tipp für das Interview:</strong>
+„Beschreibe wie du einen Fehler dokumentierst" ist eine sehr häufige Frage. Deine Antwort sollte enthalten: ID, Titel, Schritte zur Reproduktion, erwartetes vs. tatsächliches Ergebnis, Schweregrad, Priorität, Screenshot. Du hast das in deinen Hausaufgaben (Fehlerbericht HA6) selbst gemacht — das ist dein Praxisbeispiel!</p>
+<hr />
+<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
+      </div>
+    </article>
+    
+    <article id="kap7" class="chapter-card">
+      <header class="card-header">
+        <span class="card-kap">Kap. 7</span>
+        <h2 class="card-title">Testwerkzeuge</h2>
+      </header>
+      <div class="card-body">
+        
+<h2>Kapitel 7: Testwerkzeuge</h2>
+<p><em>Orientierung: ISTQB CTFL v4.0.2, Kapitel 6</em>
+<em>Erstellt zur Vorbereitung auf das Job-Interview — April 2026</em></p>
+<hr />
+<h2>Überblick</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testwerkzeuge unterstützen Testaktivitäten — sie ersetzen weder menschliches Urteilsvermögen noch vollständige Tests, aber sie erhöhen Effizienz und Wiederholbarkeit erheblich.</div>
+<hr />
+<h2>7.1 Testwerkzeugtypen</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Es gibt Werkzeuge für jede Phase des Testprozesses — von der Planung bis zur Auswertung.</div>
+<h3>7.1.1 Werkzeuge für Management und Steuerung von Tests</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testmanagement-Werkzeuge verwalten Testfälle, Testläufe, Anforderungen und Fehlerberichte zentral.</div>
+<p><strong>Erklärung:</strong>
+Diese Werkzeuge unterstützen Testplanung, Testfallverwaltung, Verfolgbarkeit zwischen Anforderungen und Tests sowie Fehlerverfolgung.</p>
+<p>Beispiele:
+- <strong>Jira</strong> (mit Xray oder Zephyr-Plugin) — Projektmanagement + Testmanagement
+- <strong>TestRail</strong> — dediziertes Testfallmanagement
+- <strong>Azure Test Plans</strong> — integriert in Microsoft DevOps</p>
+<hr />
+<h3>7.1.2 Werkzeuge zur Testspezifikation</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testspezifikationswerkzeuge helfen beim systematischen Entwurf von Testfällen — z. B. aus Anforderungen oder Modellen.</div>
+<p><strong>Erklärung:</strong>
+Diese Werkzeuge unterstützen die modellbasierte Testfallgenerierung (MBT) — Testfälle werden aus formalen Modellen (z. B. Zustandsdiagrammen, Entscheidungstabellen) automatisch oder halbautomatisch abgeleitet. In ATDD/BDD-Umgebungen helfen Werkzeuge wie <strong>Cucumber</strong> oder <strong>SpecFlow</strong> beim Übersetzen von Gherkin-Szenarien in ausführbare Tests.</p>
+<hr />
+<h3>7.1.3 Werkzeuge für statischen Test</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Werkzeuge für statische Tests analysieren Code ohne Ausführung — sie finden Coding-Verstöße, Sicherheitslücken und Komplexitätsprobleme.</div>
+<p><strong>Erklärung:</strong>
+- <strong>SonarQube</strong> — umfassende Code-Qualitätsanalyse, technische Schulden, Sicherheitslücken
+- <strong>ESLint / Checkstyle / PMD</strong> — Coding-Standard-Prüfung für JavaScript / Java
+- <strong>Linting-Werkzeuge</strong> in IDEs — Echtzeitanalyse während des Programmierens</p>
+<p>Diese Werkzeuge sind oft in CI/CD-Pipelines als automatischer Quality-Gate integriert.</p>
+<hr />
+<h3>7.1.4 Werkzeuge zur Automatisierung dynamischer Tests</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testautomatisierungswerkzeuge führen Testfälle automatisch aus — besonders wertvoll für Regressionstests.</div>
+<p><strong>Erklärung:</strong>
+Kategorien:
+- <strong>UI-Testautomatisierung</strong> (Browser/Web): Selenium, Cypress, Playwright
+- <strong>API-Tests:</strong> Postman, REST Assured, SoapUI
+- <strong>Unit-Test-Frameworks:</strong> JUnit (Java), pytest (Python), Jest (JavaScript)
+- <strong>Mobile Testautomatisierung:</strong> Appium</p>
+<p>Das <strong>Page Object Model (POM)</strong> ist ein Entwurfsmuster für wartbare UI-Tests — jede Seite wird als Klasse modelliert.</p>
+<hr />
+<h3>7.1.5 Werkzeuge für nicht funktionale Tests</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Nicht funktionale Tests brauchen spezialisierte Werkzeuge — für Performance, Sicherheit und Benutzbarkeit.</div>
+<p><strong>Erklärung:</strong>
+- <strong>Lasttests / Performanztests:</strong> JMeter, k6, Gatling
+- <strong>Sicherheitstests:</strong> OWASP ZAP, Burp Suite
+- <strong>Benutzbarkeit:</strong> UserTesting, Hotjar (Heatmaps)
+- <strong>Barrierefreiheit:</strong> Axe, Lighthouse</p>
+<hr />
+<h3>7.1.6 Werkzeuge in der CI/CD- und DevOps-Pipeline</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+In CI/CD-Pipelines laufen Tests automatisch bei jedem Code-Commit — Werkzeuge integrieren Testen in den Entwicklungsfluss.</div>
+<p><strong>Erklärung:</strong>
+Typische Werkzeuge in einer CI/CD-Pipeline:
+- <strong>Jenkins / GitHub Actions / GitLab CI</strong> — Pipeline-Orchestrierung
+- <strong>Docker</strong> — konsistente Testumgebungen
+- <strong>SonarQube</strong> — statische Analyse als Quality-Gate
+- <strong>Selenium / pytest / JUnit</strong> — automatische Testausführung
+- <strong>Allure / HTML-Reports</strong> — Testergebnis-Visualisierung</p>
+<p>Jeder erfolgreiche Commit durchläuft: Build → statische Analyse → Unit-Tests → Integrationstests → ggf. UI-Tests.</p>
+<hr />
+<h2>7.2 Nutzen und Risiken der Testautomatisierung</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Testautomatisierung spart langfristig Zeit — aber sie hat Anlaufkosten, Wartungsaufwand und Risiken.</div>
+<p><strong>Erklärung:</strong></p>
+<p><strong>Nutzen laut CTFL v4.0.2 (Abschnitt 6.2):</strong>
+- Zeitersparnis bei Regressionstests
+- Konsistenz und Wiederholbarkeit
+- Schnellere Rückmeldung (Feedback)
+- Objektive Messungen (Überdeckung, Fehlerrate)
+- Mehr Zeit für explorative Tests und Testanalyse</p>
+<p><strong>Risiken laut CTFL v4.0.2 (Abschnitt 6.2):</strong>
+- Unrealistische Erwartungen (Automatisierung findet nicht alle Fehler)
+- Hohe initiale Investitionskosten
+- Wartungsaufwand bei häufigen UI-Änderungen
+- Abhängigkeit vom Anbieter / Werkzeug
+- Zu starkes Vertrauen ins Werkzeug — manuelles Testen wird vernachlässigt
+- Inkompatibilität mit Entwicklungsplattform
+- Open-Source-Risiken (fehlender Support, Sicherheitslücken)</p>
+<p><strong>Goldene Regel:</strong> Nicht alles automatisieren — nur was sich lohnt (stabile, häufig wiederholte Tests).</p>
+<hr />
+<h2>7.3 Effektive Nutzung von Werkzeugen</h2>
+<h3>7.3.1 Auswahl und Einführung von Testwerkzeugen</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Werkzeugeinführung ist ein Projekt — sie braucht Planung, Pilotierung und Change Management.</div>
+<p><strong>Erklärung:</strong>
+Die Einführung eines Testwerkzeugs scheitert häufig nicht an der Technik, sondern an organisatorischen Faktoren: fehlendes Buy-in, mangelndes Training, unrealistische Erwartungen. Ein strukturierter Einführungsprozess reduziert diese Risiken.</p>
+<hr />
+<h3>7.3.2 Werkzeugauswahl</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Das richtige Werkzeug hängt vom Kontext ab — Technologie, Team, Budget und Integration in bestehende Infrastruktur.</div>
+<p><strong>Erklärung:</strong>
+Kriterien für die Werkzeugauswahl:
+- Kompatibilität mit der Technologieplattform (Java, Python, Web...)
+- Integration in bestehende CI/CD-Pipeline und Entwicklungsumgebung
+- Kosten (Lizenz, Schulung, Wartung)
+- Reifegrad und Community-Support
+- Benutzerfreundlichkeit und Lernkurve
+- Skalierbarkeit</p>
+<hr />
+<h3>7.3.3 Pilotprojekt zur Werkzeugeinführung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Ein Pilotprojekt testet das Werkzeug in kleinem Maßstab — bevor es breit eingeführt wird.</div>
+<p><strong>Erklärung:</strong>
+Im Pilotprojekt wird das Werkzeug an einem repräsentativen, aber begrenzten Projekt erprobt. Ziele: technische Machbarkeit prüfen, Aufwand realistisch schätzen, Team schulen, Integrationsprobleme früh erkennen. Ergebnisse des Piloten fließen in die Entscheidung zur breiten Einführung ein.</p>
+<hr />
+<h3>7.3.4 Faktoren für die erfolgreiche Einführung und Nutzung</h3>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Erfolgsfaktoren für Werkzeugeinführung: klare Ziele, Schulung, Management-Support, schrittweise Einführung.</div>
+<p><strong>Erklärung:</strong>
+Kritische Erfolgsfaktoren laut CTFL v4.0.2:
+- Klare Ziele und Metriken für den Erfolg definieren
+- Ausreichende Schulung und Coaching des Teams
+- Unterstützung durch das Management
+- Schrittweise Einführung (nicht alles auf einmal)
+- Regelmäßige Überprüfung und Anpassung
+- Einen Werkzeug-Champion im Team benennen</p>
+<hr />
+<h2>7.4 Zusammenfassung</h2>
+<div class="merksatz"><span class="merksatz-label">Merksatz</span>
+Kapitel 7 in einem Satz: Testwerkzeuge sind unverzichtbare Helfer — aber ihr Nutzen hängt von der richtigen Auswahl, Einführung und Nutzung ab.</div>
+<p><strong>Kernpunkte zum Wiederholen:</strong>
+- 6 Werkzeugkategorien kennen (Management, Spezifikation, statisch, dynamisch, nicht-funktional, CI/CD)
+- Konkrete Werkzeuge nennen können: Jira, Selenium, Cypress, JUnit, pytest, SonarQube, JMeter
+- Nutzen UND Risiken der Testautomatisierung — beide Seiten kennen
+- Regressionstests sind der Haupttreiber für Automatisierung
+- Pilotprojekt vor breiter Einführung
+- Werkzeug ersetzt nicht das Testen — es unterstützt es</p>
+<hr />
+<h2>Hinweise zur Prüfungs- und Interviewvorbereitung <em>(Claude)</em></h2>
+<blockquote>
+<p>Dieser Abschnitt enthält Empfehlungen von Claude zur Priorisierung beim Lernen.
+Er ist Teil der Lernzusammenfassung und gehört zum Gesamtdokument.</p>
+</blockquote>
+<p><strong>Besonders prüfungsrelevant aus Kapitel 7:</strong></p>
+<ul>
+<li><strong>Nutzen UND Risiken der Testautomatisierung</strong> — beide Seiten werden im Interview abgefragt. Wer nur die Vorteile nennt, wirkt naiv. Die häufigsten Risiken: unrealistische Erwartungen, hoher Wartungsaufwand bei UI-Tests, zu starkes Vertrauen ins Werkzeug.</li>
+<li><strong>Konkrete Werkzeuge kennen</strong> — Selenium, Cypress, JUnit, pytest, Jira, SonarQube, JMeter. Du musst sie nicht bedienen können, aber du solltest wissen, wofür sie eingesetzt werden.</li>
+<li><strong>CI/CD-Pipeline</strong> — welche Werkzeuge wo eingesetzt werden ist eine häufige Frage.</li>
+</ul>
+<p><strong>Tipp für das Interview:</strong>
+„Warum sollte man nicht alles automatisieren?" ist eine Lieblingsinterviewfrage. Antwort: Hohe Anlaufkosten, Wartungsaufwand (besonders UI-Tests ändern sich häufig), manche Tests sind besser manuell (explorative Tests, Usability), und Automatisierung findet nicht alle Fehler. Automatisieren lohnt sich vor allem für stabile, häufig wiederholte Tests — klassischerweise Regressionstests.</p>
+<p><strong>Praxisbezug:</strong>
+Du hast in deiner Weiterbildung mit GitHub, Jira-ähnlichem Fehlermanagement und dem Webshop Grocery Mate gearbeitet. Das sind echte Werkzeuge aus Kapitel 7 — erwähne das im Interview.</p>
+<hr />
+<p><em>Quelle: Spillner/Linz, Basiswissen Softwaretest (neueste Ausgabe) · ISTQB CTFL v4.0.2 (GTB, 01.03.2025)</em></p>
+      </div>
+    </article>
+    
+    </div>
+
+  </div>
+
+</div>
+</main>
+
+<footer>
+  <p class="source-note">Lernzusammenfassung · Spillner/Linz · ISTQB CTFL v4.0.2 · QA Lernwebseite</p>
+</footer>
+
+<script>
+  const cards = document.querySelectorAll('.chapter-card');
+  const links = document.querySelectorAll('.nav-link');
+
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        links.forEach(l => l.classList.remove('active'));
+        const l = document.querySelector(`.nav-link[href="#${e.target.id}"]`);
+        if (l) l.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-10% 0px -60% 0px' });
+
+  cards.forEach(c => obs.observe(c));
+
+  links.forEach(link => {
+    link.addEventListener('click', e => {
+      e.preventDefault();
+      const t = document.querySelector(link.getAttribute('href'));
+      if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+</script>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-30  
-Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-30  
+Letzte Aktualisierung: 2026-04-11 — **Nachtrag:** Repo-Zählung **pages/** **25** + **`index`**; Nav siehe Abschnitt **3.1** (historische Zeile + **Nachtrag**). Zuvor **2026-04-02** — Metablock Variante B; inhaltlicher Stand 2026-03-30  
 Zweck: Technische Komponenten-Bestandsaufnahme (IST) — kanonisch in diesem Ordner neben [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md).  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / IST  
 Normative Orientierung: Grundlage für [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)
@@ -8,7 +8,7 @@ Normative Orientierung: Grundlage für [P03-mapping-ist-soll-token.md](P03-mappi
 
 # Komponenten-Bestandsaufnahme — QA_Lernwebseite
 
-**Umfang:** `index.html`, alle Dateien unter `pages/` (**23** Seiten) — **ohne** `templates/` und **ohne** `archive/`.  
+**Umfang:** `index.html`, alle Dateien unter `pages/` (**25** Seiten) — **ohne** `templates/` und **ohne** `archive/`.  
 **Quellen:** HTML-Dateien sowie `assets/css/` (**base.css**, **subpage.css**, **doc-a4.css**; ergänzend **index.css** als Legacy-/Referenzdatei); **seitenlokales `<style>`** (häufig duplizierte Komponenten wie `.info-box`, `.meta-bar`).  
 **Bezug:** Ergänzt [IST-01-analyse-website-meta.md](IST-01-analyse-website-meta.md) (IST/Roadmap); fokussiert auf **technische und konzeptuelle Wiederholungen** als Grundlage für ein späteres **Designsystem light** (vgl. P1 in `01_Projektsteuerung/02_Project_Status.md`).
 
@@ -21,7 +21,7 @@ Normative Orientierung: Grundlage für [P03-mapping-ist-soll-token.md](P03-mappi
 | Typ | Kriterium | Anzahl | Dateien |
 |-----|-----------|--------|---------|
 | **A4 / Dokumentmodus** | Einbindung `assets/css/doc-a4.css` | **6** | `04b-ha4-testbasisanalyse-a4.html`, `04d-ha5-testfallentwurf-a4.html`, `05b-ha5-testkonzept-a4.html`, `06a-ha6-testprotokoll-a4.html`, `06b-ha6-fehlerbericht-a4.html`, `06c-ha6-testabschlussbericht-a4.html` |
-| **Hauptsystem (Lernmaterial + Hausaufgaben-Web)** | `base.css` + `subpage.css`, kein `doc-a4.css` | **16** + **`index.html`** | Alle übrigen `pages/*.html` sowie `index.html` |
+| **Hauptsystem (Lernmaterial + Hausaufgaben-Web)** | `base.css` + `subpage.css`, kein `doc-a4.css` | **19** + **`index.html`** | Alle übrigen `pages/*.html` sowie `index.html` |
 
 *Hinweis:* `00b-standards.html` erwähnt `doc-a4.css` nur **inhaltlich** in einer Tabelle, lädt die Datei **nicht** — zählt zum **Hauptsystem**.
 
@@ -31,7 +31,7 @@ Normative Orientierung: Grundlage für [P03-mapping-ist-soll-token.md](P03-mappi
 
 | Datei | Rolle | Wesentliche benannte Bausteine |
 |-------|--------|---------------------------------|
-| **base.css** | Shell: Navigation, Skip-Link, Page-Chrome | `.top-nav-zone`, `.top-nav-zone--with-logo`, `.nav-logo-link`, `.main-nav`, `.main-nav--assignments`, `.page-chrome`, `.skip-link` |
+| **base.css** | Shell: Navigation, Skip-Link, Page-Chrome | `.top-nav-zone`, `.top-nav-zone--with-logo`, `.nav-logo-link`, `.main-nav`, `.main-nav--assignments`, `.page-chrome`, `.skip-link` (+ **Nachtrag:** `.main-nav--learn`, `.main-nav--summary`) |
 | **subpage.css** | Typo `header`/`footer`, Quellenzeile | `header`/`footer`-Regeln, `.source-note` |
 | **index.css** | **Legacy / Referenz** — laut Projekt-README lädt `index.html` derzeit **`base.css` + `subpage.css` + lokales `<style>`**, **nicht** `index.css` | Enthält u. a. `.intro`, `.main-unit`, `.card-grid`, `.card`, `.card-header`, … (potenziell für ältere/alternative Einstiegsvariante) |
 | **doc-a4.css** | A4-Blätter, Formular-/Tabellen-Layout | `.doc-mode`, `.doc-a4`, `.doc-header` (+ BEM `__left`/`__right`), `.doc-feature-strip`, `.doc-body`, `.form-meta` (+ Zellen/Spannen), `.form-field*`, `.doc-soft-note`, `.vague-block*`, `.section__subhead`, `.ref-table`, `.boundary-box`, `.chip` / `.chip-row`, `.open-box`, `.open-list`, `.status-badge*`, `.read-guide*`, `.doc-footer`, `.meta-bar` |
@@ -51,6 +51,8 @@ Normative Orientierung: Grundlage für [P03-mapping-ist-soll-token.md](P03-mappi
 
 **Zweck / Intention:** Einheitlicher Einstieg, Zweiteilung **Lernmaterial | Hausaufgaben**.  
 **Bereich:** Beide.
+
+**Nachtrag (Repo-Stand 2026-04-11):** Zusätzlich **dritte** horizontale Kopfzeile **`.main-nav--summary`** (*Lernzusammenfassung*); technische und steuerliche Einordnung: [03_Project_Standards.md](../03_Project_Standards.md) §6 — **ergänzt** die ursprüngliche **Doppel-Navigation**-Beschreibung, **ersetzt** sie historisch nicht.
 
 ---
 

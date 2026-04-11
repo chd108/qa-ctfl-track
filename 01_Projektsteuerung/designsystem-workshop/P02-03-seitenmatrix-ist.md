@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-30  
-Letzte Aktualisierung: 2026-04-02 — Metablock Variante B ergänzt; inhaltlicher Stand 2026-03-30  
+Letzte Aktualisierung: 2026-04-11 — **Nachtrag §1.1** (Repo-Abgleich: zusätzliche HTML-Dateien); **Tabelle §1** = unverändierter **Matrix-Durchlauf 2026-03-30** (**23** Zeilen). Zuvor **2026-04-02** — Metablock Variante B  
 Zweck: Vollständige Seitenmatrix (`index` + `pages/*.html`) als IST-Basis für Mapping und Rollout-Planung.  
 Klassifizierung: Projektsteuerung / Designsystem-Workshop / IST  
 Normative Orientierung: Faktenbasis für [P03-mapping-ist-soll-token.md](P03-mapping-ist-soll-token.md)
@@ -10,7 +10,7 @@ Normative Orientierung: Faktenbasis für [P03-mapping-ist-soll-token.md](P03-map
 
 **Workshop:** Designsystem — Bestandsaufnahme für Session 3/4  
 **Vorgänger:** [P02-01-taxonomie-information.md](P02-01-taxonomie-information.md), [P02-02-darstellung-patterns.md](P02-02-darstellung-patterns.md)  
-**Umfang:** `02_Portfolio/QA_Lernwebseite/index.html` + alle `pages/*.html` (**23** Seiten, **ohne** `templates/`).
+**Umfang (Matrix-Durchlauf 2026-03-30):** `02_Portfolio/QA_Lernwebseite/index.html` + alle `pages/*.html` (**23** Seiten **in dieser Tabelle**, **ohne** `templates/`). Aktuelle Dateianzahl siehe **§1.1**.
 
 ---
 
@@ -26,7 +26,7 @@ Normative Orientierung: Faktenbasis für [P03-mapping-ist-soll-token.md](P03-map
 
 ---
 
-## 1. Gesamt-Matrix (alle 23 Seiten)
+## 1. Gesamt-Matrix (23 Seiten — Stand manueller Durchlauf 2026-03-30)
 
 Legende **Patterns (kurz):** P-SECTION = Sektions-Container (`section` / `section__*` / `section-label`); P-TABELLE = HTML-`<table>` oder tabellarisches Raster; P-KARTEN = Karten-/Grid-Layouts (`entry-card`, `card`, `stufe-card`, `tool-card`, `analysis-card`, …); P-SVG = eingebettetes SVG; P-CANVAS = Canvas (+ ggf. JS); P-GRID-CSS = Matrix o. Ä. ohne klassisches `<table>` (z. B. `risk-matrix`).
 
@@ -55,6 +55,10 @@ Legende **Patterns (kurz):** P-SECTION = Sektions-Container (`section` / `sectio
 | 21 | `pages/06a-ha6-testprotokoll-a4.html` | **X-DOK**; **O-BEGRIFF** (`term-note` neben doc-a4) | doc-a4, `doc-info-box`, Spezialtabellen (`flow-summary-table`, `exec-log-table`, …) | **`term-note`** nur auf Screen — explizites Muster „Begriff vor Druck“. |
 | 22 | `pages/06b-ha6-fehlerbericht-a4.html` | **X-DOK** | doc-a4, P-TABELLE | Rein A4; Fehler-/BUG-Struktur — an 04d/06a gekoppelt. |
 | 23 | `pages/06c-ha6-testabschlussbericht-a4.html` | **X-DOK**; `doc-info-box` | doc-a4, P-TABELLE (`completion-summary-table`, Metriken, …) | Schlussbericht — Metrik-Tabellen als eigenes Unterpattern. |
+
+### 1.1 Nachtrag (Repo-Abgleich 2026-04-11)
+
+Die Tabelle oben bleibt der **historische** vollständige Durchlauf vom **2026-03-30**. Im Repo liegen inzwischen **zusätzliche** `pages/*.html` (u. a. **`01d-ctfl-baum.html`**, **`07-lernzusammenfassung.html`**) — **ohne** erneute Taxonomie-Zuordnung in dieser Datei. **Aktuelle** Seitenliste und IA: [README QA_Lernwebseite](../../02_Portfolio/QA_Lernwebseite/README.md); [03_Project_Standards.md](../03_Project_Standards.md) §6.
 
 ---
 

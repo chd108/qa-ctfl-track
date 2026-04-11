@@ -31,9 +31,10 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | Bereich | Inhalt |
 |--------|--------|
 | **Skip-Link** | Sprung zu `#main` (Tastatur/Screenreader). |
-| **`.top-nav-zone`** | Volle Viewport-Breite; **`.top-nav-zone__brand-row`** zentriert den Inhalt (`display: flex`, `justify-content: center`) und umschließt nur **`.top-nav-zone__nav-stack`** — **zwei** `<nav>` untereinander (**Lernmaterial** / **Hausaufgaben**). Kein separates Logo links außerhalb der Leisten. |
+| **`.top-nav-zone`** | Volle Viewport-Breite; **`.top-nav-zone__brand-row`** zentriert den Inhalt (`display: flex`, `justify-content: center`) und umschließt nur **`.top-nav-zone__nav-stack`** — **drei** `<nav>` untereinander (**Lernmaterial** / **Hausaufgaben** / **Lernzusammenfassung**). Kein separates Logo links außerhalb der Leisten. |
 | **Nav 1 — Lernmaterial** | `class="main-nav main-nav--learn"`, `aria-label="Lernmaterial"`: **erster Punkt** = **Startseite** als **Logo** (`class="main-nav__home"`, Bild `qa-favicon-256.png`, Höhe **`--nav-inline-logo-height`** in `base.css`), dann Landkarte, Glossar, … Standards. Auf der Startseite: `aria-current="page"` / `.current` am Logo-Link. |
 | **Nav 2 — Hausaufgaben** | `class="main-nav main-nav--assignments"`, `aria-label="Hausaufgaben"`: HA-Einordnung, HA3 Überdeckung, HA4–HA6 (Web- und A4-Seiten). Optisch: etwas **kleinere Schrift**, Linkfarbe **`var(--mid)`**; Hover und aktuelle Seite **`var(--text)`**. |
+| **Nav 3 — Lernzusammenfassung** | `class="main-nav main-nav--summary"`, `aria-label="Lernzusammenfassung"`: Kursfolien / ergänzende Zusammenfassungen (z. B. **`07-lernzusammenfassung.html`**); später weitere Lektionen. Optik wie Nav 2 (**`base.css`**: `.main-nav--summary`). |
 | **`.page-chrome`** | Kopf mit Seitentitel und Untertitel (`subpage.css`). |
 | **`main#main`** | Seiteninhalt. |
 
@@ -49,8 +50,8 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 
 | Pfad | Beschreibung |
 |------|----------------|
-| `index.html` | **Einstieg** — zwei Kartenbereiche (**Lernmaterial** / **Hausaufgaben**), **12** Verweiskarten Lernmaterial und **10** Hausaufgaben; layoutspezifisches CSS inline, sonst wie Hauptsystem. |
-| `pages/` | **22** aktive Lern- bzw. HA-Seiten (siehe Tabelle unten). |
+| `index.html` | **Einstieg** — zwei Kartenbereiche nebeneinander (**Lernmaterial** / **Hausaufgaben**) und darunter **Lernzusammenfassung** (eigener Kartenbereich); **12** Verweiskarten Lernmaterial, **10** Hausaufgaben, **1** Karte Lernzusammenfassung; layoutspezifisches CSS inline, sonst wie Hauptsystem. |
+| `pages/` | **23** aktive Lern- bzw. HA-Seiten (siehe Tabelle unten). |
 | `assets/qa-favicon-256.png` | **Favicon** (PNG 256×256, **QA**-Monogramm); dieselbe Datei als **Logo** im ersten Nav-Punkt (`main-nav__home`). In allen HTML-Seiten per `<link rel="icon" …>`. |
 | `assets/css/base.css` | Globale Variablen (`:root`), u. a. **`--nav-inline-logo-height`**, Body, **`.top-nav-zone`**, **`.main-nav`**, Skip-Link; **Pilot:** **`.meta-bar`**, **`.legend`**, **`--ok`/`--warn`**, **`.correction-bar`** (s. **P04-04**). **HA-Oberflächen:** [03 §6](../../01_Projektsteuerung/03_Project_Standards.md) / [P03 §2](../../01_Projektsteuerung/designsystem-workshop/P03-mapping-ist-soll-token.md). |
 | `assets/css/subpage.css` | Gemeinsame **`header`**-/`footer`-Typo für Unterseiten. |
@@ -94,8 +95,9 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | `00a-ha-einordnung.html` | Einordnung der Hausaufgaben im CTFL-Kontext | — |
 | `04e-ha3-ueberdeckung.html` | HA3 — Überdeckung (Pilot **0–6**, **`ha3p-*`**-Markup/CSS; DAG/SVG `assets/ha3-svg/`; **Lösung** zweispaltig: Aufgabe **1** \| Aufgaben **2+3**) | Kap. 4 |
 | `00b-standards.html` | Standards, Projektstatus, Referenzen | — |
+| `07-lernzusammenfassung.html` | **Lernzusammenfassung** — Merksätze und Kapitelüberblicke (Spillner/Linz, CTFL v4.0.2); Sidebar-Navigation zu Kap. 2–7 | Kap. 1–7 (Buch/Kurslogik) |
 
-**Ist-Stand:** Alle genannten Dateien sind vorhanden und in **beiden Nav-Leisten** sowie auf der **Einstiegsseite** verlinkt.
+**Ist-Stand:** Alle genannten Dateien sind vorhanden und in **allen drei Nav-Leisten** sowie auf der **Einstiegsseite** verlinkt.
 
 ---
 

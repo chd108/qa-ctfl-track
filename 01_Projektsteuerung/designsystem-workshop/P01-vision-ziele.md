@@ -38,7 +38,7 @@ Die *QA_Lernwebseite* ist im Programm **QA-Track** das **sichtbare digitale Haup
 | **Öffentliches Repo & Lizenz** | **CC BY-NC-SA 4.0**, GitHub Pages — explizit als **persönliches Lern- und Entwicklungsprojekt** mit Transparenz des Quelltexts ([index.html](../../02_Portfolio/QA_Lernwebseite/index.html)). |
 | **Standards-Seite** | `00b-standards.html` adressiert **Projekt-/Web-Standards und Status** — **außerhalb** der CTFL-Kapitel-Linie, aber Teil der Navigation ([README Website](../../02_Portfolio/QA_Lernwebseite/README.md)). |
 
-**Besonderheiten:** **Portfolio-taugliche** Web- und A4-Artefakte; **zweigleisige Navigation** (Lernmaterial | Hausaufgaben); **kein** Ersatz für offizielle MasterSchool-Abgaben ([Charter §4](../01_Project_Charter.md)).
+**Besonderheiten:** **Portfolio-taugliche** Web- und A4-Artefakte; **Kopf-Navigation** mit **zwei** Hauptspuren (**Lernmaterial** \| **Hausaufgaben**) und **dritter** Leiste *Lernzusammenfassung* (Stand **2026-04-11**, [Standards §6](../03_Project_Standards.md)); **kein** Ersatz für offizielle MasterSchool-Abgaben ([Charter §4](../01_Project_Charter.md)).
 
 **Quellen:** [01_Project_Charter.md](../01_Project_Charter.md) §1–5; [03_Project_Standards.md](../03_Project_Standards.md) §2; [README QA_Lernwebseite](../../02_Portfolio/QA_Lernwebseite/README.md); [index.html](../../02_Portfolio/QA_Lernwebseite/index.html).
 
@@ -92,7 +92,8 @@ Die *QA_Lernwebseite* ist im Programm **QA-Track** das **sichtbare digitale Haup
 
 1. **Lernmaterial** — `main-nav--learn`: Einstieg, Landkarte, Glossar, Grundlagen, Testmittel, SDLC, Teststufen, statisches Testen, Testverfahren, Testmanagement, Testwerkzeuge, **Standards** ([README Website](../../02_Portfolio/QA_Lernwebseite/README.md)).  
 2. **Hausaufgaben** — `main-nav--assignments`: HA-Einordnung, HA4–HA6 (Web- und A4-Seiten) ([README Website](../../02_Portfolio/QA_Lernwebseite/README.md)).  
-3. **Einstiegsseite** spiegelt dieselbe Zweiteilung in **zwei Kartenbereichen**; **Standards** ist inhaltlich **nicht** CTFL-Kapitel, sondern **Meta/Projekt** — im Orientierungstext der Startseite erklärt ([index.html](../../02_Portfolio/QA_Lernwebseite/index.html)).
+3. **Lernzusammenfassung** — `main-nav--summary`: Kursfolien/Merksätze, Start **`07-lernzusammenfassung.html`** ([README Website](../../02_Portfolio/QA_Lernwebseite/README.md); [Standards §6](../03_Project_Standards.md)).  
+4. **Einstiegsseite** spiegelt **Lernmaterial**, **Hausaufgaben** und **Lernzusammenfassung** in **drei** Kartenzeilen; **Standards** ist inhaltlich **nicht** CTFL-Kapitel, sondern **Meta/Projekt** — im Orientierungstext der Startseite erklärt ([index.html](../../02_Portfolio/QA_Lernwebseite/index.html)).
 
 **Informations-Typen (sprachlich im Projekt vorkommend):**
 

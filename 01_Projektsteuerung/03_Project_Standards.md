@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-05 — **HA3** **04e** (`pages/04e-ha3-ueberdeckung.html`): Content-Pilot **0–6** (**`ha3p-*`**, zweispaltige **Lösung**); Web-SVG **`assets/ha3-svg/HA3-Teil2_DAG.svg`**; **kein** separater Abschnitt **Quellen** (Links **meta-bar** + **Intro**). **HA-Farbregel** (ACTION vs. Lösungskopf): **§6** *CSS-Dateien* / **P03** §2. Zuvor **2026-04-04** Hausaufgaben-Tabelle **HA3** / SVG-Pfad; zuvor **2026-04-03** §6 **CSS-Dateien**; …  
+Letzte Aktualisierung: 2026-04-11 — **QA_Lernwebseite** — **dritte Kopf-Nav** *Lernzusammenfassung* (`main-nav--summary`), **dritte Kartenzeile** auf **`index.html`**, Seite **`pages/07-lernzusammenfassung.html`**; **§6** / **§7** (gemeinsamer Rahmen, Checkliste Nav/Index) nachgezogen. Zuvor **2026-04-05** **HA3** **04e** (`pages/04e-ha3-ueberdeckung.html`): Content-Pilot **0–6**; Web-SVG **`assets/ha3-svg/`**; **HA-Farbregel** **§6** / **P03** §2. Zuvor **2026-04-04** …  
 Zweck: Definiert Regeln und Standards für Repo-Struktur, Dokumentation und Qualität  
 Klassifizierung: Projektsteuerung / Standards  
 Normative Orientierung: ISO 21502, PMBOK, ISTQB CTFL Syllabus **v4.0.2**, **IEEE 829-2008**, **ISO/IEC/IEEE 29119-3** (jeweils im **Lern- und Portfolio-Kontext**, ohne Anspruch auf vollständige Normenzertifizierung).
@@ -262,7 +262,7 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 ### QA_Lernwebseite — gemeinsamer Seitenrahmen
 
 - **Unterseiten** nutzen den **gemeinsamen sichtbaren Rahmen** (Navigation, Titel, Untertitel, **meta-bar**, optional **Seitenlegende** `nav.legend`, Inhalt, Footer). **Technik und Platz** der Legende: **04d** Teil **B.12** (**F-LEGEND**); **keine** Standort-Ausnahmen pro Seite.  
-- **Index (`index.html`):** bewusste Ausnahme — **Einstiegs-/Übersichtsseite**; **Karten** ersetzen dort die **obere** Navigationslogik der Unterseiten.  
+- **Index (`index.html`):** bewusste Ausnahme — **Einstiegs-/Übersichtsseite**; **Karten** ersetzen dort die **obere** Navigationslogik der Unterseiten. **Drei** Kartenbereiche: **Lernmaterial** und **Hausaufgaben** nebeneinander, darunter **Lernzusammenfassung** (eigene Zeile; Kursfolien / ergänzende Zusammenfassungen — gleiche Kartenmaße wie in den oberen Bereichen, Raster **6** Spalten bei wenigen Einträgen).  
 - **Formular- / A4-Seiten:** kein eigener „Sondertyp“ im Sinne eines völlig freien Layouts außerhalb des Systems; **Abweichungen** primär im **lokalen Formular-/A4-Inhaltsbereich** (technisch gekapselt).  
 - **Dokument-/A4-Modus:** eigener **Präsentations-/Layoutmodus** innerhalb desselben Systems — Rahmen im **[01_Project_Charter.md](01_Project_Charter.md)**; Umsetzungs- und Konsistenzregeln in **diesem Dokument** (Abschnitt 6 und 7).
 
@@ -311,11 +311,12 @@ Wesentliche Änderungen an **Struktur, Regeln oder Prozessen** **zuerst** in den
 
 1. **Benennung & Pflichtfelder** gemäß **[01_Project_Charter.md](01_Project_Charter.md)** und **diesem Dokument** (Abschnitt 3 und 7; Benennungslogik, Root-`index.html`, `pages/`).  
 2. **Neue Datei** unter `pages/` anlegen; Anbindung: `assets/css/base.css`, `subpage.css`, bei A4/Formular **`doc-a4.css`** (Reihenfolge der `<link>`-Tags wie genannt); **Rollen** der Dateien: **Abschnitt 6**, Unterabschnitt *CSS-Dateien: Rollen*. **Skip-Link**, **`.page-chrome`**, `<main id="main">`, Footer mit Quellenzeile, sinnvolle **Meta-Description**. Orientierung: `templates/referenzvorlage-hauptsystem.html`.  
-3. **Kopfnavigation — zwei Leisten** in `.top-nav-zone` (gleiche Reihenfolge überall):  
+3. **Kopfnavigation — drei Leisten** in `.top-nav-zone` / `.top-nav-zone__nav-stack` (gleiche Reihenfolge überall):  
    - **Lernmaterial:** `nav.main-nav.main-nav--learn` · `aria-label="Lernmaterial"`  
    - **Hausaufgaben:** `nav.main-nav.main-nav--assignments` · `aria-label="Hausaufgaben"`  
+   - **Lernzusammenfassung:** `nav.main-nav.main-nav--summary` · `aria-label="Lernzusammenfassung"` (Kursfolien / ergänzende Seiten; Styling in **`base.css`**)  
    Neuen Link **in allen betroffenen** `pages/*.html` **und** in **`index.html`**, **`templates/referenzvorlage-hauptsystem.html`** eintragen, wenn die Kopfstruktur geteilt wird.  
-4. **Einstiegsseite:** neue **Karte** in `index.html` im passenden Bereich (Lernmaterial vs. Hausaufgaben), konsistent zu Nav und **[README.md](../02_Portfolio/QA_Lernwebseite/README.md)**.  
+4. **Einstiegsseite:** neue **Karte** in `index.html` im passenden Bereich (**Lernmaterial** vs. **Hausaufgaben** vs. **Lernzusammenfassung**), konsistent zu Nav und **[README.md](../02_Portfolio/QA_Lernwebseite/README.md)**.  
 5. **README** der QA_Lernwebseite (Struktur / Seitenliste) aktualisieren.  
 6. Bei **Architektur- oder Namensänderungen** **[01_Project_Charter.md](01_Project_Charter.md)** und **dieses Dokument** (Standards), wo betroffen, anpassen — ggf. **[02_Project_Status.md](02_Project_Status.md)** zum Ist-Stand.  
 7. **Workflow-Änderungen:** diesen Abschnitt in **`03_Project_Standards.md`** pflegen.
