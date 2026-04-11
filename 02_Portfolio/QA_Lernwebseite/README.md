@@ -10,7 +10,7 @@ Inhaltlich als **statische Website** umgesetzt: die Inhaltsseiten liegen unter *
 
 Die **HA4/HA5/HA6-Strecke** (Fallstudie **GroceryMate**) verbindet **Testbasis-Analyse**, **Testfallentwurf**, **Testkonzept**, **Testprotokoll** (Test Execution Log), **Fehlerbericht** (Incident Report) und **Testabschlussbericht** (Test Completion Report) und verweist dort, wo ausgewiesen, auf **ISO/IEC/IEEE 29119-3** und **IEEE 829-2008**.
 
-**Bereitstellung:** z. B. **GitHub Pages** oder beliebiger statischer Host — kein Build-Schritt nötig.
+**Bereitstellung:** z. B. **GitHub Pages** oder beliebiger statischer Host — **kein Pflicht-Build** für die Auslieferung. Die **Kopfnavigation** wird zentral über **`tools/main_nav.json`** gepflegt; **`python tools/build_main_nav.py`** (im Ordner `QA_Lernwebseite`) schreibt den Block **`.top-nav-zone`** in alle HTML-Seiten — nach Nav-Änderungen ausführen und mit committen.
 
 **Lizenz:** **CC BY-NC-SA 4.0** — Namensnennung, nicht kommerziell, Weitergabe unter gleichen Bedingungen. Textdatei: [`LICENSE`](../../LICENSE) im **Repository-Root** (Monorepo).
 
@@ -32,9 +32,9 @@ Auf **`index.html`**, allen Seiten unter **`pages/01-lerninhalte/`**, **`pages/0
 |--------|--------|
 | **Skip-Link** | Sprung zu `#main` (Tastatur/Screenreader). |
 | **`.top-nav-zone`** | Volle Viewport-Breite; **`.top-nav-zone__brand-row`** zentriert den Inhalt (`display: flex`, `justify-content: center`) und umschließt nur **`.top-nav-zone__nav-stack`** — **drei** `<nav>` untereinander (**Lernmaterial** / **Hausaufgaben** / **Lernzusammenfassung**). Kein separates Logo links außerhalb der Leisten. |
-| **Nav 1 — Lernmaterial** | `class="main-nav main-nav--learn"`, `aria-label="Lernmaterial"`: **erster Punkt** = **Startseite** als **Logo** (`class="main-nav__home"`, Bild `qa-favicon-256.png`, Höhe **`--nav-inline-logo-height`** in `base.css`), dann Landkarte, Glossar, … Standards. Auf der Startseite: `aria-current="page"` / `.current` am Logo-Link. |
-| **Nav 2 — Hausaufgaben** | `class="main-nav main-nav--assignments"`, `aria-label="Hausaufgaben"`: HA-Einordnung, HA3 Überdeckung, HA4–HA6 (Web- und A4-Seiten). Optisch: etwas **kleinere Schrift**, Linkfarbe **`var(--mid)`**; Hover und aktuelle Seite **`var(--text)`**. |
-| **Nav 3 — Lernzusammenfassung** | `class="main-nav main-nav--summary"`, `aria-label="Lernzusammenfassung und Kursfolien"`: **`07-lernzusammenfassung.html`** plus **L1–L8** mit Kurzbezeichnung und Stichwort (z. B. `L2 — SDLC &amp; statisches Testen`), dieselben Ziele wie die Dateien `lektion*.html` unter **`03-lektionen/`**. Auf allen Seiten (inkl. Folien-Lektionen) dieselbe Kopfzeile. Optik wie Nav 2 (**`base.css`**: `.main-nav--summary`). |
+| **Nav 1 — Lernmaterial** | `class="main-nav main-nav--learn"`, `aria-label="Lernmaterial"`: **erster Punkt** = **Startseite** als **Logo** (`class="main-nav__home"`, Bild `qa-favicon-256.png`, Höhe **`--nav-inline-logo-height`** in `base.css`), dann Landkarte, Glossar, … Standards. Auf der Startseite: `aria-current="page"` / `.current` am Logo-Link. Auf Unterseiten: der jeweils passende Lernmaterial-Link mit **`class="current"`** und **`aria-current="page"`** (Generator). |
+| **Nav 2 — Hausaufgaben** | `class="main-nav main-nav--assignments"`, `aria-label="Hausaufgaben"`: HA-Einordnung, HA3 Überdeckung, HA4–HA6 (Web- und A4-Seiten). Optisch: etwas **kleinere Schrift**, Linkfarbe **`var(--mid)`**; Hover und aktuelle Seite **`var(--text)`**. Aktive HA-Seite: **`class="current"`** und **`aria-current="page"`** (Generator). |
+| **Nav 3 — Lernzusammenfassung** | `class="main-nav main-nav--summary"`, `aria-label="Lernzusammenfassung und Kursfolien"`: **`07-lernzusammenfassung.html`** (Label **Lernzusammenfassung**) plus **L1–L8** mit Kurzbezeichnung und Stichwort (z. B. `L2 — SDLC &amp; statisches Testen`). Optik wie Nav 2 (**`base.css`**: `.main-nav--summary`). Aktive Seite: **`class="current"`** und **`aria-current="page"`** (Generator). |
 | **`.page-chrome`** | Kopf mit Seitentitel und Untertitel (`subpage.css`). |
 | **`main#main`** | Seiteninhalt. |
 
@@ -50,14 +50,17 @@ Auf **`index.html`**, allen Seiten unter **`pages/01-lerninhalte/`**, **`pages/0
 
 | Pfad | Beschreibung |
 |------|----------------|
+| `tools/main_nav.json` | **Eine** Nav-Definition für alle drei Kopf-`<nav>` (Lernmaterial inkl. Home-Logo, Hausaufgaben, Lernzusammenfassung & L1–L8) — **Quelle der Wahrheit** für Labels und Dateizuordnung. |
+| `tools/build_main_nav.py` | Ersetzt den Block **`.top-nav-zone`** in **`index.html`**, **`pages/**/*.html`** und **`templates/referenzvorlage-hauptsystem.html`**. Aufruf: `python tools/build_main_nav.py` (Arbeitsverzeichnis: `QA_Lernwebseite`). |
 | `index.html` | **Einstieg** — zwei Kartenbereiche nebeneinander (**Lernmaterial** / **Hausaufgaben**) und darunter **Lernzusammenfassung** (eigener Kartenbereich); **12** Verweiskarten Lernmaterial, **10** Hausaufgaben, **1** Karte Lernzusammenfassung; layoutspezifisches CSS inline, sonst wie Hauptsystem. |
 | `pages/01-lerninhalte/` | **13** Lernseiten (Landkarte, Glossar, Kap.-Seiten, Standards). |
 | `pages/02-hausaufgaben/` | **11** HA-Seiten (Web und A4). |
 | `pages/03-lektionen/` | **9** Seiten: **Lernzusammenfassung** + **8** Lektionsfolien (`lektion1`–`lektion8`). |
 | `pages/` *(gesamt)* | **33** HTML-Dateien (siehe Tabelle unten). |
 | `assets/qa-favicon-256.png` | **Favicon** (PNG 256×256, **QA**-Monogramm); dieselbe Datei als **Logo** im ersten Nav-Punkt (`main-nav__home`). In allen HTML-Seiten per `<link rel="icon" …>`. |
-| `assets/css/base.css` | Globale Variablen (`:root`), u. a. **`--nav-inline-logo-height`**, Body, **`.top-nav-zone`**, **`.main-nav`**, Skip-Link; **Pilot:** **`.meta-bar`**, **`.legend`**, **`--ok`/`--warn`**, **`.correction-bar`** (s. **P04-04**). **HA-Oberflächen:** [03 §6](../../01_Projektsteuerung/03_Project_Standards.md) / [P03 §2](../../01_Projektsteuerung/designsystem-workshop/P03-mapping-ist-soll-token.md). |
+| `assets/css/base.css` | Globale Variablen (`:root`), u. a. **`--nav-inline-logo-height`**, **`html { scrollbar-gutter: stable; }`** (weniger Layout-Sprung bei ein-/ausblendender Scrollleiste), Body, **`.top-nav-zone`**, **`.main-nav`**, Skip-Link; **Pilot:** **`.meta-bar`**, **`.legend`**, **`--ok`/`--warn`**, **`.correction-bar`** (s. **P04-04**). **HA-Oberflächen:** [03 §6](../../01_Projektsteuerung/03_Project_Standards.md) / [P03 §2](../../01_Projektsteuerung/designsystem-workshop/P03-mapping-ist-soll-token.md). |
 | `assets/css/subpage.css` | Gemeinsame **`header`**-/`footer`-Typo für Unterseiten. |
+| `assets/css/folien-lektion.css` | Nur **Lektionsfolien** (`body.folien-lektion`): Folien-Layout, Spalten, Diagramme — **keine** Overrides für **Kopf/Navigation**; Folien-Schriftgröße nur unter **`.folien-lektion__main`**, damit der Chrome mit **`base.css`** übereinstimmt. |
 | `assets/css/doc-a4.css` | **A4-/Dokumentmodus** inkl. Screen-`body`-Ränder; **Flex-Spalte** auf `.doc-a4` (`.doc-body` wächst, **`.doc-footer`** mit `margin-top: auto` am unteren Blattrand); Druck: `@page` A4, `min-height`/`width` angepasst; schmale Viewports: seitliches Scrollen statt Quetschen. Wird von HA-A4-Seiten zusätzlich eingebunden. |
 | `assets/css/index.css` | Ältere/alternative Einstiegs-Styles — **`index.html` lädt derzeit `base.css` + `subpage.css` und lokales `<style>`**; Datei bleibt im Repo zur Referenz und Standards-Doku. |
 | `assets/js/` | u. a. **`sdlc-hypocycle-animiert.js`** für die animierte SDLC-Seite. |

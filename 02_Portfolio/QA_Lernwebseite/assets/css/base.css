@@ -188,6 +188,11 @@
 
 *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
+/* Verhindert horizontalen „Sprung“, wenn die Scrollleiste je nach Seitenlänge ein-/ausblendet */
+html {
+  scrollbar-gutter: stable;
+}
+
 body {
   background: var(--bg);
   background-image: radial-gradient(circle, rgba(0,0,0,0.028) 1px, transparent 1px);
@@ -288,6 +293,7 @@ main { width: 100%; }
 /* Dritte Nav — Lernzusammenfassung / Kursfolien (MasterSchool); optisch wie Hausaufgaben-Leiste */
 .main-nav--summary a {
   font-size: 0.875rem;
+  line-height: 1.35; /* wie .main-nav a — alle Einträge (Lernzusammenfassung + L1–L8) gleiche Metrik */
   color: var(--mid);
 }
 .main-nav--summary a:hover,

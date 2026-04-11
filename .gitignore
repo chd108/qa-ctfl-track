@@ -40,3 +40,7 @@ node_modules/
 
 # Masterschool QA-Folien (Versionierung nur lokal im Ordner, nicht ins Hauptrepo)
 08_MS_QA-Folien/
+
+# Python (z. B. tools/build_main_nav.py)
+__pycache__/
+*.py[cod]

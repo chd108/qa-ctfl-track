@@ -1,0 +1,42 @@
+{
+  "learn": [
+    { "kind": "home" },
+    { "file": "01-landkarte.html", "label": "Landkarte" },
+    { "file": "01d-ctfl-baum.html", "label": "CTFL-Baum" },
+    { "file": "01a-glossar.html", "label": "Glossar" },
+    { "file": "01b-grundlagen.html", "label": "Grundlagen" },
+    { "file": "01c-testmittel.html", "label": "Testmittel" },
+    { "file": "02a-sdlc-statisch.html", "label": "SDLC statisch" },
+    { "file": "02b-sdlc-animiert.html", "label": "SDLC animiert" },
+    { "file": "02c-teststufen.html", "label": "Teststufen" },
+    { "file": "03-statisches-testen.html", "label": "Statisches Testen" },
+    { "file": "04-testverfahren.html", "label": "Testverfahren" },
+    { "file": "05-testmanagement.html", "label": "Testmanagement" },
+    { "file": "06-testwerkzeuge.html", "label": "Testwerkzeuge" },
+    { "file": "00b-standards.html", "label": "Standards" }
+  ],
+  "assignments": [
+    { "file": "00a-ha-einordnung.html", "label": "HA-Einordnung" },
+    { "file": "04e-ha3-ueberdeckung.html", "label": "HA3 Überdeckung" },
+    { "file": "04a-ha4-anforderungsanalyse.html", "label": "HA4 Anforderungsanalyse" },
+    { "file": "04b-ha4-testbasisanalyse-a4.html", "label": "HA4 Testbasis-Analyse A4" },
+    { "file": "05a-ha5-testkonzept.html", "label": "HA5 Testkonzept" },
+    { "file": "05b-ha5-testkonzept-a4.html", "label": "HA5 Testkonzept A4" },
+    { "file": "04c-ha5-testfallentwurf.html", "label": "HA5 Testfallentwurf" },
+    { "file": "04d-ha5-testfallentwurf-a4.html", "label": "HA5 Testfallentwurf A4" },
+    { "file": "06a-ha6-testprotokoll-a4.html", "label": "HA6 Testprotokoll A4" },
+    { "file": "06b-ha6-fehlerbericht-a4.html", "label": "HA6 Fehlerbericht A4" },
+    { "file": "06c-ha6-testabschlussbericht-a4.html", "label": "HA6 Testabschlussbericht A4" }
+  ],
+  "summary": [
+    { "file": "07-lernzusammenfassung.html", "label": "Lernzusammenfassung" },
+    { "file": "lektion1-grundlagen.html", "label": "L1 — Grundlagen" },
+    { "file": "lektion2-sdlc-statisches-testen.html", "label": "L2 — SDLC &amp; statisches Testen" },
+    { "file": "lektion3-testanalyse-testentwurf.html", "label": "L3 — Testanalyse &amp; Testentwurf" },
+    { "file": "lektion4-testverfahren-vertiefung.html", "label": "L4 — Testverfahren (Vertiefung)" },
+    { "file": "lektion5-testentwurfsverfahren.html", "label": "L5 — Testentwurfsverfahren" },
+    { "file": "lektion6-testprozess-testanalyse-testplanung.html", "label": "L6 — Testprozess (Analyse &amp; Planung)" },
+    { "file": "lektion7-testfallentwurf.html", "label": "L7 — Testfallentwurf" },
+    { "file": "lektion8-testumgebung-durchfuehrung-bericht.html", "label": "L8 — Umgebung · Durchführung · Bericht" }
+  ]
+}

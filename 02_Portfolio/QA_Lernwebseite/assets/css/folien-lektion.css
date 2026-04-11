@@ -1,21 +1,15 @@
 /*
  * Masterschool-Folien (08_MS_QA-Folien) — Lektions-HTML
  * Voraussetzung: base.css (+ subpage.css) geladen; body.folien-lektion
+ *
+ * Chrome (Skip-Link, .top-nav-zone, .page-chrome): nur base.css / subpage.css —
+ * keine Nav- oder Kopf-Overrides hier (vermeidet „Springen“/Drift gegenüber anderen Hauptseiten).
+ * Folien-Typografie: nur unterhalb .folien-lektion__main.
  */
 
-/* Aktive Lektion in Nav 3 (Hauptsystem; aria-current + .current wie base.css) */
-.folien-lektion .main-nav--summary a[aria-current="page"],
-.folien-lektion .main-nav--summary a.current {
-  color: var(--text);
-  font-weight: normal;
-  border-bottom-color: var(--text);
-}
-
-/* Wie HA3/Landkarte: seitliches Padding auf body; kein max-width auf body (Nav volle Breite) */
+/* Wie andere Hauptseiten: nur Seitenpadding am body — keine verkleinerte body-Schrift */
 body.folien-lektion {
   padding: 0 3rem 4rem;
-  font-size: 0.88rem;
-  line-height: 1.5;
 }
 
 @media (max-width: 720px) {
@@ -24,16 +18,13 @@ body.folien-lektion {
   }
 }
 
-/* Wie Landkarte: volle nutzbare Breite (nur Body-Seitenpadding begrenzt) */
-.folien-lektion .page-chrome,
-.folien-lektion__main,
-.folien-lektion > footer {
-  max-width: 100%;
-  margin-left: auto;
-  margin-right: auto;
+/* Folien-Fließtext nur im Hauptblock (Meta, Legende, Spalten) — nicht auf body */
+.folien-lektion .folien-lektion__main {
+  font-size: 0.88rem;
+  line-height: 1.5;
 }
 
-/* Untertitel wie bisher (subpage setzt header p auf --text) */
+/* Untertitel in page-chrome: optisch wie übrige Unterseiten (subpage), nur Farbe leicht angepasst */
 .folien-lektion .page-chrome header p {
   color: var(--soft);
   font-style: italic;

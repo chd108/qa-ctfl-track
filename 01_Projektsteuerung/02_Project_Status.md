@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-11 — **QA_Lernwebseite** — **IA:** Inhalts-HTML unter **`pages/01-lerninhalte/`**, **`pages/02-hausaufgaben/`**, **`pages/03-lektionen/`** (inkl. **Lernzusammenfassung**); Nav-, Asset- und **`index`**-Links sowie **README**, **dieses Dokument** und Querverweise (u. a. P03/P04) auf Repo-Pfade nachgezogen; **03_Project_Standards** §6/§7. **Dritte** Kopf-**`<nav>`** *Lernzusammenfassung* (`main-nav--summary`), **`index.html`** dritte Kartenzeile — unverändert fachlich. Zuvor **2026-04-05** **`02-hausaufgaben/04e-ha3-ueberdeckung.html`** nach **HA3-Pilot**; **README**, **pilot-ha3-…**, **03** §6, **P03** §2. Zuvor **2026-04-04** **HA3** Content-Pilot / **`assets/ha3-svg/`**; ältere Meilensteine siehe §2.  
+Letzte Aktualisierung: 2026-04-11 — **Steuerung:** Zukunftsvision **Eleventy (11ty)** / verschobene Build-Phase dokumentiert (**§6**). **QA_Lernwebseite** — **IA:** Inhalts-HTML unter **`pages/01-lerninhalte/`**, **`pages/02-hausaufgaben/`**, **`pages/03-lektionen/`** (inkl. **Lernzusammenfassung**); Nav-, Asset- und **`index`**-Links sowie **README**, **dieses Dokument** und Querverweise (u. a. P03/P04) auf Repo-Pfade nachgezogen; **03_Project_Standards** §6/§7. **Dritte** Kopf-**`<nav>`** *Lernzusammenfassung* (`main-nav--summary`), **`index.html`** dritte Kartenzeile — unverändert fachlich. Zuvor **2026-04-05** **`02-hausaufgaben/04e-ha3-ueberdeckung.html`** nach **HA3-Pilot**; **README**, **pilot-ha3-…**, **03** §6, **P03** §2. Zuvor **2026-04-04** **HA3** Content-Pilot / **`assets/ha3-svg/`**; ältere Meilensteine siehe §2.  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -313,6 +313,7 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 
 | Datum (ca.) | Entscheidung / Änderung |
 |-------------|-------------------------|
+| **2026-04-11** | ***QA_Lernwebseite* — Navigation / Build-Tooling:** **Kurzfristig** die **schnelle Variante** (Duplikate der Kopfnavigation weiterhin handgepflegt oder mit **minimalem Hilfsmittel**, z. B. kleines Skript — **ohne** vollständigen Static-Site-Stack). **Eleventy (11ty)** als **besprochene Zukunftsvision** (zentrale Partials/Layouts, skalierbar bei weiter wachsender Site) — **Phase bewusst verschoben**; Details und Begründung **§6** (*Zukunftsvision / verschobene Phase*). |
 | **2026-04-02** | ***QA_Lernwebseite* — Kopfnavigation:** Startseite als **Logo** im ersten Listenpunkt von Nav 1 (`main-nav__home`, Asset **`qa-favicon-256.png`**); kein zweites Logo links; **`base.css`**, **[README QA_Lernwebseite](../02_Portfolio/QA_Lernwebseite/README.md)**, **`index.html`**, **`pages/`**, **`templates/referenzvorlage-hauptsystem.html`**; Commit **`95d6f18`**; **02_Project_Status.md** (§1, §2) nachgezogen. |
 | **2026-04-02** | **Design-Taxonomie definiert (Pilot-Phase):** [P03-mapping-ist-soll-token.md](designsystem-workshop/P03-mapping-ist-soll-token.md) — IST→SOLL→Token über **C-/F-/P-/S-***; **ca. 15–30** konsolidierte CSS-Variablen **Zielgröße**; **Workshop-Ordner** bleibt **Referenz**; **Umsetzung** im Stylesheet = **Pilot**, nicht Abschluss. **Außerdem:** **02_Project_Status.md** — **einheitliches Narrativ** (**Session 3** *schriftlich* = Mapping **liegt vor**; **nächster technischer Schritt** = **Pilot** in CSS); §2–§4 und Fußnote §7 **abgestimmt**. |
 | **2026-04-02** | **`.gitignore`:** Top-Level **`07_Tests/`** ausgeschlossen; **[03_Project_Standards.md](03_Project_Standards.md)** (Geltungsbereich, §3, §8), **[04_Project_Guidelines.md](04_Project_Guidelines.md)**, **[05_Reference_Quick.md](05_Reference_Quick.md)** und **dieses Dokument** (Repo-Tabelle §2) **abgestimmt**. |
@@ -334,6 +335,16 @@ Die folgende **Ist-Struktur** im Arbeitsverzeichnis **`qa-ctfl-track/`** ersetzt
 ## 6. Nächste Schritte
 
 *(Priorisierte Reihenfolge — **nicht** Zeitachse der Entstehung.)*
+
+### Zukunftsvision / verschobene Phase — *QA_Lernwebseite* (Build & Navigation)
+
+**Kontext (besprochen, Stand 2026-04-11):** Die dreizeilige Kopfnavigation ist **faktisch mehrfach** in den HTML-Dateien vorhanden; eine **zentrale Pflege** wäre wartungsfreundlicher. Als **professionelle** und **zukunftsfähige** Option wurde **Eleventy (11ty)** mit **Layouts**, **Includes** für die Navigation und einem **definierten Build** (lokal / optional CI) betrachtet — **angemessen** für eine weiter wachsende statische Site.
+
+**Entscheidung:** Diese **Phase wird vorerst nicht** umgesetzt. **Gründe:** Lernaufwand (Node/npm, Projektstruktur `src`/Ausgabe), Umstellung vieler Seiten mit **Inline-CSS** — **kurzfristig** soll stattdessen die **schnelle Variante** gelten (Navigation **ohne** vollständigen SSG; bei Bedarf **minimales** Hilfsmittel).
+
+**Umsetzung (schnelle Variante):** Zentrale Nav-Definition **`tools/main_nav.json`**, Generator **`tools/build_main_nav.py`** ersetzt den HTML-Block **`.top-nav-zone`** in allen betroffenen Seiten der *QA_Lernwebseite* — siehe [README QA_Lernwebseite](../02_Portfolio/QA_Lernwebseite/README.md) (Projektstruktur, Bereitstellung).
+
+**Folge:** Die **Referenzvorlage** [`templates/referenzvorlage-hauptsystem.html`](../02_Portfolio/QA_Lernwebseite/templates/referenzvorlage-hauptsystem.html) wird **mit demselben Generator** wie die übrigen Hauptseiten mitgepflegt (kein separater manueller Nav-Block mehr nötig). **11ty** bleibt die **aktuelle Zukunftsvision** für einen vollständigen Site-Build — **nicht** verworfen.
 
 1. **P1 — Designsystem light:** **IST→SOLL→Token-Mapping** liegt in **[P03-mapping-ist-soll-token.md](designsystem-workshop/P03-mapping-ist-soll-token.md)** — **Pilot** (z. B. Chip-Skala + eine Callout-Familie) **ausführen** und **evaluieren**; **[03_Project_Standards.md](03_Project_Standards.md)** (Abschn. 6) bei Bedarf nach **Pilot** schärfen; **[01_Project_Charter.md](01_Project_Charter.md)** bei Bedarf nachziehen. **IST:** [IST-01-analyse-website-meta.md](designsystem-workshop/IST-01-analyse-website-meta.md) / [IST-02-analyse-komponenten.md](designsystem-workshop/IST-02-analyse-komponenten.md) weiterhin gültig.  
 2. **P2 — Globale Konsistenz:** Darstellungsregeln **über** HA4/HA5-Kernstrecke **erhöhen**; verbleibende Seiten/Module **einordnen**.  
