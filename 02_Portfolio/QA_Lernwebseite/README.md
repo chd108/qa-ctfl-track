@@ -1,12 +1,12 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-04-05 — **`pages/04e-ha3-ueberdeckung.html`** nach **HA3-Content-Pilot** ([`pilot-ha3-content-phasen.md`](../../01_Projektsteuerung/designsystem-workshop/pilot-ha3-content-phasen.md) **0–6**, Inhalt **`pilot-ha3-content.txt`**): **`ha3p-*`**, **Lösung** zweispaltig (DAG \| Aufgaben 2+3); Sprungmarken **Aufgabenstellung** / **Lösung**; **Notion-Links** in **meta-bar** und **Intro** (ohne separaten Abschnitt **Quellen**). **HA-Farben:** [03_Project_Standards §6](../../01_Projektsteuerung/03_Project_Standards.md) (*CSS-Dateien*) · [P03 §2](../../01_Projektsteuerung/designsystem-workshop/P03-mapping-ist-soll-token.md). Zuvor **2026-04-04** **Referenzvorlage** **`templates/referenzvorlage-hauptsystem.html`** (**`.meta-bar`**/**`.legend`**, **`body`** `max-width: 1400px`), **HA3**-SVG **`assets/ha3-svg/HA3-Teil2_DAG.svg`**; zuvor **2026-04-03** Nav/Index/Seitenliste; **Landkarte:** Kap. **6** (Syllabus **6.1**/**6.2**), **C-PRAXIS** kurz und **Ausführlich (Kürzel)**; **Smoke-Tests** grün **`ref` 5.1.7** (Kap. **5.1**) + Praxis Build-Gate (Kap. **2**); **SonarQube (Werkzeug, Kap. 6)** in Kap. **3**; Spec **P04-04** **A.0.1b/c**, **P03** §1, **02_Project_Status** nachgezogen. Zuvor: Kap. **4** TOC, Kopf Kap. **1–6**.
+> Zuletzt aktualisiert: 2026-04-11 — **Informationsarchitektur:** HTML unter **`pages/01-lerninhalte/`**, **`pages/02-hausaufgaben/`**, **`pages/03-lektionen/`** (Nav-/Asset-Pfade angepasst); Doku repogetreu. Zuvor **2026-04-05** — **`pages/02-hausaufgaben/04e-ha3-ueberdeckung.html`** nach **HA3-Content-Pilot** ([`pilot-ha3-content-phasen.md`](../../01_Projektsteuerung/designsystem-workshop/pilot-ha3-content-phasen.md) **0–6**, Inhalt **`pilot-ha3-content.txt`**): **`ha3p-*`**, **Lösung** zweispaltig (DAG \| Aufgaben 2+3); Sprungmarken **Aufgabenstellung** / **Lösung**; **Notion-Links** in **meta-bar** und **Intro** (ohne separaten Abschnitt **Quellen**). **HA-Farben:** [03_Project_Standards §6](../../01_Projektsteuerung/03_Project_Standards.md) (*CSS-Dateien*) · [P03 §2](../../01_Projektsteuerung/designsystem-workshop/P03-mapping-ist-soll-token.md). Zuvor **2026-04-04** **Referenzvorlage** **`templates/referenzvorlage-hauptsystem.html`** (**`.meta-bar`**/**`.legend`**, **`body`** `max-width: 1400px`), **HA3**-SVG **`assets/ha3-svg/HA3-Teil2_DAG.svg`**; zuvor **2026-04-03** Nav/Index/Seitenliste; **Landkarte:** Kap. **6** (Syllabus **6.1**/**6.2**), **C-PRAXIS** kurz und **Ausführlich (Kürzel)**; **Smoke-Tests** grün **`ref` 5.1.7** (Kap. **5.1**) + Praxis Build-Gate (Kap. **2**); **SonarQube (Werkzeug, Kap. 6)** in Kap. **3**; Spec **P04-04** **A.0.1b/c**, **P03** §1, **02_Project_Status** nachgezogen. Zuvor: Kap. **4** TOC, Kopf Kap. **1–6**.
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
 
 Öffentliches **Lern- und Referenzprojekt** zu Software Testing, QA und **ISTQB Certified Tester Foundation Level (CTFL) v4.0.2**.  
-Inhaltlich als **statische Website** umgesetzt: jedes Modul unter `pages/` ist eine eigenständige HTML-Seite entlang des CTFL-Lehrplans.
+Inhaltlich als **statische Website** umgesetzt: die Inhaltsseiten liegen unter **`pages/`** in drei Unterordnern — **`01-lerninhalte/`** (Lernmaterial), **`02-hausaufgaben/`** (HA), **`03-lektionen/`** (Lernzusammenfassung und Kursfolien **lektion1**–**lektion8**). Jede Datei ist eine eigenständige HTML-Seite entlang des CTFL-Lehrplans bzw. der Kurslogik.
 
 Die **HA4/HA5/HA6-Strecke** (Fallstudie **GroceryMate**) verbindet **Testbasis-Analyse**, **Testfallentwurf**, **Testkonzept**, **Testprotokoll** (Test Execution Log), **Fehlerbericht** (Incident Report) und **Testabschlussbericht** (Test Completion Report) und verweist dort, wo ausgewiesen, auf **ISO/IEC/IEEE 29119-3** und **IEEE 829-2008**.
 
@@ -26,7 +26,7 @@ Die **HA4/HA5/HA6-Strecke** (Fallstudie **GroceryMate**) verbindet **Testbasis-A
 
 ## Navigation und Seitenaufbau
 
-Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenzvorlage-hauptsystem.html`** gilt dieselbe Kopfstruktur:
+Auf **`index.html`**, allen Seiten unter **`pages/01-lerninhalte/`**, **`pages/02-hausaufgaben/`**, **`pages/03-lektionen/`** und der **`templates/referenzvorlage-hauptsystem.html`** gilt dieselbe Kopfstruktur:
 
 | Bereich | Inhalt |
 |--------|--------|
@@ -34,15 +34,15 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | **`.top-nav-zone`** | Volle Viewport-Breite; **`.top-nav-zone__brand-row`** zentriert den Inhalt (`display: flex`, `justify-content: center`) und umschließt nur **`.top-nav-zone__nav-stack`** — **drei** `<nav>` untereinander (**Lernmaterial** / **Hausaufgaben** / **Lernzusammenfassung**). Kein separates Logo links außerhalb der Leisten. |
 | **Nav 1 — Lernmaterial** | `class="main-nav main-nav--learn"`, `aria-label="Lernmaterial"`: **erster Punkt** = **Startseite** als **Logo** (`class="main-nav__home"`, Bild `qa-favicon-256.png`, Höhe **`--nav-inline-logo-height`** in `base.css`), dann Landkarte, Glossar, … Standards. Auf der Startseite: `aria-current="page"` / `.current` am Logo-Link. |
 | **Nav 2 — Hausaufgaben** | `class="main-nav main-nav--assignments"`, `aria-label="Hausaufgaben"`: HA-Einordnung, HA3 Überdeckung, HA4–HA6 (Web- und A4-Seiten). Optisch: etwas **kleinere Schrift**, Linkfarbe **`var(--mid)`**; Hover und aktuelle Seite **`var(--text)`**. |
-| **Nav 3 — Lernzusammenfassung** | `class="main-nav main-nav--summary"`, `aria-label="Lernzusammenfassung"`: Kursfolien / ergänzende Zusammenfassungen (z. B. **`07-lernzusammenfassung.html`**); später weitere Lektionen. Optik wie Nav 2 (**`base.css`**: `.main-nav--summary`). |
+| **Nav 3 — Lernzusammenfassung** | `class="main-nav main-nav--summary"`, `aria-label="Lernzusammenfassung"`: **`03-lektionen/07-lernzusammenfassung.html`** sowie die **Lektionsfolien** (`lektion*.html` im gleichen Ordner). Optik wie Nav 2 (**`base.css`**: `.main-nav--summary`). |
 | **`.page-chrome`** | Kopf mit Seitentitel und Untertitel (`subpage.css`). |
 | **`main#main`** | Seiteninhalt. |
 
 **Vertikaler Rhythmus** in der Kopfzone: CSS-Variable **`--nav-vertical-rhythm: 1.75rem`** in `base.css` — Abstand oben in der Zone, **zwischen** den beiden Nav-Leisten und **unter** der zweiten Leiste vor dem Seitentitel. **Horizontal:** Nav-Blöcke bleiben **zur Viewport-Mitte zentriert** (über die zentrierte **`.top-nav-zone__brand-row`**). In beiden **`.main-nav ul`** ist **`align-items: center`** gesetzt, damit **Logo** und **Textlinks** in einer Zeile optisch **mittig** zueinander stehen. Der **obere** Außenabstand der Seite kommt aus der Zone; **`body`** hat auf den betroffenen Seiten **`padding-top: 0`** (seitlich und unten bleiben die jeweiligen Seitenwerte).
 
-**Pfade:** der **erste Link** in Nav 1 zeigt von `pages/` aus auf **`../index.html`** (Logo, `aria-label="Zur Startseite QA Lernwebseite"`); auf **`index.html`** auf **`index.html`** (Startseite, mit `aria-label` / `aria-current` wie im Markup). Die Vorlage unter `templates/` nutzt dieselben relativen Pfade zu `index.html` und `pages/…`.
+**Pfade (relativ):** Von **`pages/01-lerninhalte/`**, **`pages/02-hausaufgaben/`** und **`pages/03-lektionen/`** führt das Logo in Nav 1 auf **`../../index.html`**; **CSS/Assets** auf **`../../assets/…`**. **Querverweise** zwischen den Ordnern nutzen **`../01-lerninhalte/…`**, **`../02-hausaufgaben/…`**, **`../03-lektionen/…`**. Auf **`index.html`** verweisen die Nav- und Karten-Links auf **`pages/01-lerninhalte/…`**, **`pages/02-hausaufgaben/…`**, **`pages/03-lektionen/…`**. Die Vorlage **`templates/referenzvorlage-hauptsystem.html`** (eine Ebene unter der Website-Root) nutzt **`../index.html`**, **`../assets/…`** und **`../pages/01-lerninhalte/…`** bzw. **`../pages/02-hausaufgaben/…`** / **`../pages/03-lektionen/…`**.
 
-**Referenzvorlage:** Meta und Legende nicht als eigenes Muster duplizieren — **`.meta-bar`** und **`.legend`** wie auf Lernseiten (z. B. **`pages/01c-testmittel.html`**, **`pages/04e-ha3-ueberdeckung.html`**).
+**Referenzvorlage:** Meta und Legende nicht als eigenes Muster duplizieren — **`.meta-bar`** und **`.legend`** wie auf Lernseiten (z. B. **`pages/01-lerninhalte/01c-testmittel.html`**, **`pages/02-hausaufgaben/04e-ha3-ueberdeckung.html`**).
 
 ---
 
@@ -51,15 +51,18 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | Pfad | Beschreibung |
 |------|----------------|
 | `index.html` | **Einstieg** — zwei Kartenbereiche nebeneinander (**Lernmaterial** / **Hausaufgaben**) und darunter **Lernzusammenfassung** (eigener Kartenbereich); **12** Verweiskarten Lernmaterial, **10** Hausaufgaben, **1** Karte Lernzusammenfassung; layoutspezifisches CSS inline, sonst wie Hauptsystem. |
-| `pages/` | **23** aktive Lern- bzw. HA-Seiten (siehe Tabelle unten). |
+| `pages/01-lerninhalte/` | **13** Lernseiten (Landkarte, Glossar, Kap.-Seiten, Standards). |
+| `pages/02-hausaufgaben/` | **11** HA-Seiten (Web und A4). |
+| `pages/03-lektionen/` | **9** Seiten: **Lernzusammenfassung** + **8** Lektionsfolien (`lektion1`–`lektion8`). |
+| `pages/` *(gesamt)* | **33** HTML-Dateien (siehe Tabelle unten). |
 | `assets/qa-favicon-256.png` | **Favicon** (PNG 256×256, **QA**-Monogramm); dieselbe Datei als **Logo** im ersten Nav-Punkt (`main-nav__home`). In allen HTML-Seiten per `<link rel="icon" …>`. |
 | `assets/css/base.css` | Globale Variablen (`:root`), u. a. **`--nav-inline-logo-height`**, Body, **`.top-nav-zone`**, **`.main-nav`**, Skip-Link; **Pilot:** **`.meta-bar`**, **`.legend`**, **`--ok`/`--warn`**, **`.correction-bar`** (s. **P04-04**). **HA-Oberflächen:** [03 §6](../../01_Projektsteuerung/03_Project_Standards.md) / [P03 §2](../../01_Projektsteuerung/designsystem-workshop/P03-mapping-ist-soll-token.md). |
 | `assets/css/subpage.css` | Gemeinsame **`header`**-/`footer`-Typo für Unterseiten. |
 | `assets/css/doc-a4.css` | **A4-/Dokumentmodus** inkl. Screen-`body`-Ränder; **Flex-Spalte** auf `.doc-a4` (`.doc-body` wächst, **`.doc-footer`** mit `margin-top: auto` am unteren Blattrand); Druck: `@page` A4, `min-height`/`width` angepasst; schmale Viewports: seitliches Scrollen statt Quetschen. Wird von HA-A4-Seiten zusätzlich eingebunden. |
 | `assets/css/index.css` | Ältere/alternative Einstiegs-Styles — **`index.html` lädt derzeit `base.css` + `subpage.css` und lokales `<style>`**; Datei bleibt im Repo zur Referenz und Standards-Doku. |
 | `assets/js/` | u. a. **`sdlc-hypocycle-animiert.js`** für die animierte SDLC-Seite. |
-| `assets/ha3-svg/` | **HA3** — **`HA3-Teil2_DAG.svg`** (DAG zu `is_shipping_free`); in **`04e-ha3-ueberdeckung.html`** per **`<object>`** (`../assets/ha3-svg/…`), linke Spalte der **Lösung** (Aufgabe 1). |
-| `assets/ha6-screenshots/` | **HA6** — Screenshots zur **Testausführung** im Testprotokoll (`06a-ha6-testprotokoll-a4.html`, PASS) sowie zu **BUG-001 / BUG-002** im Fehlerbericht (`06b-ha6-fehlerbericht-a4.html`); liegt im **Pages-Artifact** und ist öffentlich erreichbar. |
+| `assets/ha3-svg/` | **HA3** — **`HA3-Teil2_DAG.svg`** (DAG zu `is_shipping_free`); in **`pages/02-hausaufgaben/04e-ha3-ueberdeckung.html`** per **`<object>`** (`../../assets/ha3-svg/…`), linke Spalte der **Lösung** (Aufgabe 1). |
+| `assets/ha6-screenshots/` | **HA6** — Screenshots zur **Testausführung** im Testprotokoll (`pages/02-hausaufgaben/06a-ha6-testprotokoll-a4.html`, PASS) sowie zu **BUG-001 / BUG-002** im Fehlerbericht (`pages/02-hausaufgaben/06b-ha6-fehlerbericht-a4.html`); liegt im **Pages-Artifact** und ist öffentlich erreichbar. |
 | `templates/referenzvorlage-hauptsystem.html` | **Gerüst** wie echte Seiten: Kopf-Nav + **`.page-chrome`** + **`main#main`**. Im **`main`** zuerst kanonische **`base.css`**-Komponenten **`.meta-bar`** (F-META, Syllabus-Chip) und **`.legend`** (F-LEGEND) mit Platzhaltertext; die **`ref-*`**-Blöcke darunter sind nur **generische Strukturbeispiele** (Section, Card, Info, Tabelle), keine 1:1-Pflicht fürs Produktionsmarkup. **`body`:** `max-width: 1400px`, seitliche/untere Abstände wie typische Lernseiten. |
 | `archive/` | Nicht aktive ältere Versionen — nur Dokumentation. |
 
@@ -67,37 +70,50 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 
 ---
 
-## Lernmodule — `pages/`
+## Lernmodule — `pages/` *(Pfade relativ zu `pages/`)*
+
+### `01-lerninhalte/` — Lernmaterial
 
 | Datei | Inhalt | CTFL (Orientierung) |
 |-------|--------|----------------------|
-| `01-landkarte.html` | **Landkarte** — **ISTQB CTFL v4.0.2 (DE)**, Kap. **1–6**, **drei** Chip-Farben + **MS**; **Kopf** einheitlich (`section__header--landkarte-leit`). Kap. **4** ohne **`~Kap. 4`**; Kap. **5.3** **5.3.1–5.3.3**; Kap. **6** Syllabus **6.1**/**6.2** mit Stichpunkten/Nutzen/Risiken; **C-PRAXIS** kurz (**P04** **A.0.1b**); **Smoke-Tests** **C-SYLLABUS** **`ref` 5.1.7** + Praxis Kap. **2**; **SonarQube** Kap. **3**/**6**. **P04-04** A.0.1b/c. | Kap. 1–6 |
-| `01d-ctfl-baum.html` | **CTFL-Baum** — vollständige **Syllabus-Struktur** Kap. **1–6** als **Baumdiagramm** (Spalten je Kapitel); **Theorie/Praxis**-Kennzeichnung als didaktische Ergänzung | Kap. 1–6 |
-| `01a-glossar.html` | Schlüsselbegriffe CTFL v4.0.2; Zählung **97** eindeutige K1-Lemmata vs. **102** Tabellenzeilen; alphabetisches **A–Z**-Register | Kap. 1–6 |
-| `01b-grundlagen.html` | Grundlagen des Testens (Was/Warum, QA vs. Testen, Fehlerkette, Grundsätze, Aktivitäten) | Kap. 1 |
-| `01c-testmittel.html` | Testmittel und Testaktivitäten | Kap. 1.4.3 |
-| `02a-sdlc-statisch.html` | SDLC & ISTQB-Testprozess — statisch | Kap. 2 |
-| `02b-sdlc-animiert.html` | SDLC & ISTQB-Testprozess — animiert | Kap. 2 |
-| `02c-teststufen.html` | Teststufen, Testarten, Wartungstest | Kap. 2.2–2.3 |
-| `03-statisches-testen.html` | Statisches Testen, Reviews | Kap. 3 |
-| `04-testverfahren.html` | Testverfahren / Testentwurf im Überblick | Kap. 4 |
-| `04a-ha4-anforderungsanalyse.html` | HA4 — Anforderungsanalyse aus Tester-Sicht (= Testbasis-Analyse), GroceryMate | Kap. 4.1 |
-| `04b-ha4-testbasisanalyse-a4.html` | HA4 — Testbasis-Analyse **A4-/Dokumentmodus** | Kap. 4.1 |
-| `04c-ha5-testfallentwurf.html` | HA5 — Testfallentwurf (Web), GroceryMate | Kap. 4.2 |
-| `04d-ha5-testfallentwurf-a4.html` | HA5 — Testfallentwurf **A4** mit Traceability | Kap. 4.2 |
-| `05-testmanagement.html` | Testmanagement, Risiko, Planung | Kap. 5 |
-| `05a-ha5-testkonzept.html` | HA5 — Testkonzept (Web), GroceryMate | Kap. 5 |
-| `05b-ha5-testkonzept-a4.html` | HA5 — Testkonzept **A4** (u. a. IEEE-829-orientiert) | Kap. 5 |
-| `06a-ha6-testprotokoll-a4.html` | HA6 — Testprotokoll **A4** (Test Execution Log, 9 TC) | Kap. 5 |
-| `06b-ha6-fehlerbericht-a4.html` | HA6 — Fehlerbericht **A4** (Incident Report, Musterdokument BUG-001 / BUG-002, 4 Blätter) | Kap. 5 |
-| `06c-ha6-testabschlussbericht-a4.html` | HA6 — Testabschlussbericht **A4** (Test Completion Report, Blankovorlage) | Kap. 5 |
-| `06-testwerkzeuge.html` | Testwerkzeuge: Kategorien, Nutzen &amp; Risiken der Testautomatisierung | Kap. 6 |
-| `00a-ha-einordnung.html` | Einordnung der Hausaufgaben im CTFL-Kontext | — |
-| `04e-ha3-ueberdeckung.html` | HA3 — Überdeckung (Pilot **0–6**, **`ha3p-*`**-Markup/CSS; DAG/SVG `assets/ha3-svg/`; **Lösung** zweispaltig: Aufgabe **1** \| Aufgaben **2+3**) | Kap. 4 |
-| `00b-standards.html` | Standards, Projektstatus, Referenzen | — |
-| `07-lernzusammenfassung.html` | **Lernzusammenfassung** — Merksätze und Kapitelüberblicke (Spillner/Linz, CTFL v4.0.2); Sidebar-Navigation zu Kap. 2–7 | Kap. 1–7 (Buch/Kurslogik) |
+| `01-lerninhalte/01-landkarte.html` | **Landkarte** — **ISTQB CTFL v4.0.2 (DE)**, Kap. **1–6**, **drei** Chip-Farben + **MS**; **Kopf** einheitlich (`section__header--landkarte-leit`). Kap. **4** ohne **`~Kap. 4`**; Kap. **5.3** **5.3.1–5.3.3**; Kap. **6** Syllabus **6.1**/**6.2** mit Stichpunkten/Nutzen/Risiken; **C-PRAXIS** kurz (**P04** **A.0.1b**); **Smoke-Tests** **C-SYLLABUS** **`ref` 5.1.7** + Praxis Kap. **2**; **SonarQube** Kap. **3**/**6**. **P04-04** A.0.1b/c. | Kap. 1–6 |
+| `01-lerninhalte/01d-ctfl-baum.html` | **CTFL-Baum** — vollständige **Syllabus-Struktur** Kap. **1–6** als **Baumdiagramm** (Spalten je Kapitel); **Theorie/Praxis**-Kennzeichnung als didaktische Ergänzung | Kap. 1–6 |
+| `01-lerninhalte/01a-glossar.html` | Schlüsselbegriffe CTFL v4.0.2; Zählung **97** eindeutige K1-Lemmata vs. **102** Tabellenzeilen; alphabetisches **A–Z**-Register | Kap. 1–6 |
+| `01-lerninhalte/01b-grundlagen.html` | Grundlagen des Testens (Was/Warum, QA vs. Testen, Fehlerkette, Grundsätze, Aktivitäten) | Kap. 1 |
+| `01-lerninhalte/01c-testmittel.html` | Testmittel und Testaktivitäten | Kap. 1.4.3 |
+| `01-lerninhalte/02a-sdlc-statisch.html` | SDLC & ISTQB-Testprozess — statisch | Kap. 2 |
+| `01-lerninhalte/02b-sdlc-animiert.html` | SDLC & ISTQB-Testprozess — animiert | Kap. 2 |
+| `01-lerninhalte/02c-teststufen.html` | Teststufen, Testarten, Wartungstest | Kap. 2.2–2.3 |
+| `01-lerninhalte/03-statisches-testen.html` | Statisches Testen, Reviews | Kap. 3 |
+| `01-lerninhalte/04-testverfahren.html` | Testverfahren / Testentwurf im Überblick | Kap. 4 |
+| `01-lerninhalte/05-testmanagement.html` | Testmanagement, Risiko, Planung | Kap. 5 |
+| `01-lerninhalte/06-testwerkzeuge.html` | Testwerkzeuge: Kategorien, Nutzen & Risiken der Testautomatisierung | Kap. 6 |
+| `01-lerninhalte/00b-standards.html` | Standards, Projektstatus, Referenzen | — |
 
-**Ist-Stand:** Alle genannten Dateien sind vorhanden und in **allen drei Nav-Leisten** sowie auf der **Einstiegsseite** verlinkt.
+### `02-hausaufgaben/` — Hausaufgaben
+
+| Datei | Inhalt | CTFL (Orientierung) |
+|-------|--------|----------------------|
+| `02-hausaufgaben/00a-ha-einordnung.html` | Einordnung der Hausaufgaben im CTFL-Kontext | — |
+| `02-hausaufgaben/04e-ha3-ueberdeckung.html` | HA3 — Überdeckung (Pilot **0–6**, **`ha3p-*`**-Markup/CSS; DAG/SVG `assets/ha3-svg/`; **Lösung** zweispaltig: Aufgabe **1** \| Aufgaben **2+3**) | Kap. 4 |
+| `02-hausaufgaben/04a-ha4-anforderungsanalyse.html` | HA4 — Anforderungsanalyse aus Tester-Sicht (= Testbasis-Analyse), GroceryMate | Kap. 4.1 |
+| `02-hausaufgaben/04b-ha4-testbasisanalyse-a4.html` | HA4 — Testbasis-Analyse **A4-/Dokumentmodus** | Kap. 4.1 |
+| `02-hausaufgaben/04c-ha5-testfallentwurf.html` | HA5 — Testfallentwurf (Web), GroceryMate | Kap. 4.2 |
+| `02-hausaufgaben/04d-ha5-testfallentwurf-a4.html` | HA5 — Testfallentwurf **A4** mit Traceability | Kap. 4.2 |
+| `02-hausaufgaben/05a-ha5-testkonzept.html` | HA5 — Testkonzept (Web), GroceryMate | Kap. 5 |
+| `02-hausaufgaben/05b-ha5-testkonzept-a4.html` | HA5 — Testkonzept **A4** (u. a. IEEE-829-orientiert) | Kap. 5 |
+| `02-hausaufgaben/06a-ha6-testprotokoll-a4.html` | HA6 — Testprotokoll **A4** (Test Execution Log, 9 TC) | Kap. 5 |
+| `02-hausaufgaben/06b-ha6-fehlerbericht-a4.html` | HA6 — Fehlerbericht **A4** (Incident Report, Musterdokument BUG-001 / BUG-002, 4 Blätter) | Kap. 5 |
+| `02-hausaufgaben/06c-ha6-testabschlussbericht-a4.html` | HA6 — Testabschlussbericht **A4** (Test Completion Report, Blankovorlage) | Kap. 5 |
+
+### `03-lektionen/` — Lernzusammenfassung & Kursfolien
+
+| Datei | Inhalt | CTFL (Orientierung) |
+|-------|--------|----------------------|
+| `03-lektionen/07-lernzusammenfassung.html` | **Lernzusammenfassung** — Merksätze und Kapitelüberblicke (Spillner/Linz, CTFL v4.0.2); Sidebar-Navigation zu Kap. 2–7 | Kap. 1–7 (Buch/Kurslogik) |
+| `03-lektionen/lektion1-grundlagen.html` … `lektion8-testumgebung-durchfuehrung-bericht.html` | Acht **Lektionsfolien** (HTML, gemeinsames Folien-CSS); Dateinamen: `lektion2-sdlc-statisches-testen`, `lektion3-testanalyse-testentwurf`, `lektion4-testverfahren-vertiefung`, `lektion5-testentwurfsverfahren`, `lektion6-testprozess-testanalyse-testplanung`, `lektion7-testfallentwurf` | Kurs / Vertiefung |
+
+**Ist-Stand:** Alle genannten Dateien sind vorhanden und in **Nav 1–3** sowie auf der **Einstiegsseite** verlinkt (Lektionsfolien über die jeweiligen Einstiegs-/Nav-Muster auf der Lernzusammenfassung bzw. intern verknüpft).
 
 ---
 
@@ -129,13 +145,14 @@ Auf **`index.html`**, allen Seiten in **`pages/`** und der **`templates/referenz
 | | |
 |--|--|
 | **README erstellt** | 2026-03-12 |
-| **README zuletzt aktualisiert** | **2026-04-03** |
+| **README zuletzt aktualisiert** | **2026-04-11** |
 
-**Kurzüberblick (Stand 03.04.2026)**
+**Kurzüberblick (Stand 11.04.2026)**
 
-- **Hauptsystem:** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **02c** im gemeinsamen Section-Muster; **Chip-Tokens** (Landkarte, Teststufen-Tags) **zentral** in `base.css` (Pilot **P1**), inkl. **`.tag-group .tags + .tags`** für Zeilenabstand auf der Landkarte. **Landkarte:** Kap. **1–6** syllabus- und praxis-nah; **P04-04** **A.0.1b/c** (u. a. **C-PRAXIS**-Konvention, **Smoke**/**SonarQube**); Glossar Kap.-**4**-Überschrift **„Testanalyse und -entwurf“**.  
-- **HA4/HA5/HA6:** inhaltlich und formal gehärtet — Meta-Informationen, Kette Web ↔ A4, Terminologie **Testbasis-Analyse**; HA6 mit **Testprotokoll A4**, **Fehlerbericht A4** (Musterdokument BUG-001 / BUG-002), **Testabschlussbericht A4** (ISO/IEC/IEEE 29119-3); Ergänzungen in **`doc-a4.css`** (u. a. Status-Badge für Review).  
-- **Einstieg (`index.html`):** gleiche maximale Lesespalte wie die übrigen Hauptseiten (`max-width` 1400px), **zwei Bereichsüberschriften** (Lernmaterial / Hausaufgaben), kompaktes Intro und Orientierungshinweis; Kartenbeschreibungen mit **Kap.-Bezug** (Lernmaterial) bzw. **GroceryMate / Druck** (HA); HA-Meta **Thematisch · Kap. …** bzw. **Formular · A4** (Badge); Karten in jeder Rasterzeile **gleich hoch** (Flex-Spalte).  
-- **Kopfnavigation:** **Zwei Leisten** in `.top-nav-zone` — **Lernmaterial** vs. **Hausaufgaben**, semantisch getrennt, `aria-label`s; **Startseite** als **Logo** im ersten Punkt von Nav 1 (Favicon-Asset, **`--nav-inline-logo-height`**); kein zusätzliches Header-Logo links; Zeilen mit **`align-items: center`**; vertikaler Rhythmus **`--nav-vertical-rhythm` (1,75rem)**; HA-Leiste über **`.main-nav--assignments`** visuell abgesetzt.  
+- **Informationsarchitektur:** Inhalts-HTML unter **`pages/01-lerninhalte/`**, **`pages/02-hausaufgaben/`**, **`pages/03-lektionen/`**; relative Links und Asset-Pfade (`../../assets/`, `../../index.html`) sowie **`index.html`**-Verweise auf **`pages/01-lerninhalte/…`**, **`pages/02-hausaufgaben/…`**, **`pages/03-lektionen/…`** sind an diese Struktur angepasst; diese README beschreibt den **Ist-Pfad** im Repo.  
+- **Hauptsystem:** einheitliche Kopf-/Fuß- und Typo-Schicht (`base.css`, `subpage.css`); **Chip-Tokens** (Landkarte, Teststufen-Tags) **zentral** in `base.css` (Pilot **P1**). **Landkarte / Glossar:** syllabus- und praxis-nah (**P04-04**).  
+- **HA4/HA5/HA6:** Kette Web ↔ A4, Terminologie **Testbasis-Analyse**; HA6 mit **Testprotokoll A4**, **Fehlerbericht A4**, **Testabschlussbericht A4**.  
+- **Einstieg (`index.html`):** `max-width` 1400px; Karten für **Lernmaterial**, **Hausaufgaben**, **Lernzusammenfassung** mit korrekten **`pages/…`-Pfaden**.  
+- **Kopfnavigation:** **drei** `<nav>`-Leisten in `.top-nav-zone` — **Lernmaterial** / **Hausaufgaben** / **Lernzusammenfassung**; **Startseite** als **Logo** in Nav 1; vertikaler Rhythmus **`--nav-vertical-rhythm` (1,75rem)**.  
 
 Details und Historie: **Monorepo [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** (Branch `main`; Website-Pfad `02_Portfolio/QA_Lernwebseite/`).

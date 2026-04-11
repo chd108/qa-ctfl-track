@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../assets/qa-favicon-256.png" type="image/png">
+  <meta name="description" content="Lektion 4 — Testverfahren (Vertiefung) (Masterschool-Folien, HTML-Erfassung).">
+  <link rel="stylesheet" href="../../assets/css/base.css?v=folien-4-41">
+  <link rel="stylesheet" href="../../assets/css/subpage.css?v=folien-4-41">
+  <link rel="stylesheet" href="../../assets/css/folien-lektion.css?v=folien-4-41">
+  <title>Lektion 4 – Testverfahren (Vertiefung)</title>
+</head>
+<body class="folien-lektion folien-lektion--l4">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <div class="top-nav-zone__brand-row">
+    <div class="top-nav-zone__nav-stack">
+      <nav class="main-nav folien-lektion-nav" aria-label="QA Lernwebseite und aktuelle Folien-Lektion">
+    <ul>
+      <li><a href="../../index.html" class="main-nav__home" aria-label="Zur Startseite QA Lernwebseite"><img class="main-nav__home-img" src="../../assets/qa-favicon-256.png" alt="" width="48" height="48" decoding="async"></a></li>
+      <li><a href="lektion1-grundlagen.html">Lektion 1 — Grundlagen</a></li>
+      <li><a href="lektion2-sdlc-statisches-testen.html">Lektion 2 — SDLC &amp; Statisches Testen</a></li>
+      <li><a href="lektion3-testanalyse-testentwurf.html">Lektion 3 — Testanalyse &amp; Testentwurf</a></li>
+      <li><a href="lektion4-testverfahren-vertiefung.html" aria-current="page">Lektion 4 — Testverfahren (Vertiefung)</a></li>
+      <li><a href="lektion5-testentwurfsverfahren.html">Lektion 5 — Testentwurfsverfahren</a></li>
+      <li><a href="lektion6-testprozess-testanalyse-testplanung.html">Lektion 6 — Testprozess (Testanalyse &amp; Testplanung)</a></li>
+      <li><a href="lektion7-testfallentwurf.html">Lektion 7 — Testfallentwurf</a></li>
+      <li><a href="lektion8-testumgebung-durchfuehrung-bericht.html">Lektion 8 — Testumgebungen · Durchführung · Bericht</a></li>
+    </ul>
+  </nav>
+    </div>
+  </div>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Lektion 4 – Testverfahren (Vertiefung)</h1>
+    <p>Folien Masterschool · Blackbox-Testverfahren in Theorie und Beispiel · Aufbereitung aus Kursfolien · Stand: 07.04.2026</p>
+  </header>
+</div>
+
+<main id="main" class="folien-lektion__main">
+
+  <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Lernmaterial mit Bezug zum ISTQB CTFL Lehrplan (Syllabus)"></span>
+    <span><strong>Artefakt:</strong> Masterschool · 15 Folien Lektion 4 · HTML-Erfassung</span>
+    <span><strong>CTFL-Bezug:</strong> Äquivalenzklassen, Grenzwertanalyse, Entscheidungstabelle, zustandsbasierter Test (Auszug)</span>
+    <span><strong>Hinweis:</strong> Aufbereitung aus Kursrohdaten; Inhalt gegenüber der früheren Fassung didaktisch neu strukturiert.</span>
+  </div>
+
+  <div class="legend" role="region" aria-label="Legende Folientypen">
+    <span class="legend__item"><span class="legend__swatch legend__swatch--ctfl" aria-hidden="true"></span>Wichtige Lernfolie</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--praxis" aria-hidden="true"></span>Grafik vorhanden</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--neutral" aria-hidden="true"></span>Titelfolie / kein Lerninhalt</span>
+  </div>
+
+<div class="folien-cols">
+<div class="folien-col">
+
+<!-- F01 -->
+<div class="folie folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 01</span>
+    <span class="folie-titel">Testverfahren (Vertiefung)</span>
+  </div>
+  <p class="note" style="margin-top:0.45rem;">Wir vertiefen <strong>drei Blackbox-Testverfahren</strong> (Verhalten nach außen, Spezifikation — <strong>ohne</strong> innere Implementierung). Pro Verfahren: <strong>Theorie</strong>, <strong>vollständiges Beispiel</strong>, <strong>Hausaufgabe</strong>.</p>
+</div>
+
+<!-- F02 -->
+<div class="folie">
+  <div class="folie-header">
+    <span class="folie-nr">F 02</span>
+    <span class="folie-titel">Agenda</span>
+  </div>
+  <ol class="folie-glieder-list folie-glieder-list--agenda folie-glieder-list--agenda-haupt">
+    <li>
+      Äquivalenzklassenbildung + Grenzwertanalyse <span class="folie-glieder-list__range">F 03</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Äquivalenzklassenbildung: Theorie <span class="folie-glieder-list__range">F 04</span></li>
+        <li>Grenzwertanalyse: Theorie (2BVA / 3BVA) und Beispiel: Seniorenrabatt <span class="folie-glieder-list__range">F 05–06</span></li>
+      </ul>
+    </li>
+    <li>
+      Entscheidungstabellentest <span class="folie-glieder-list__range">F 07</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Entscheidungstabellentest: Theorie und Beispiel: Zutrittskontrollsystem <span class="folie-glieder-list__range">F 08–09</span></li>
+      </ul>
+    </li>
+    <li>
+      Zustandsbasierter Test <span class="folie-glieder-list__range">F 10</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Zustandsbasierter Test: Theorie und Beispiel: Lampe <span class="folie-glieder-list__range">F 11–12</span></li>
+      </ul>
+    </li>
+    <li>
+      Abschluss <span class="folie-glieder-list__range">F 13</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Zusammenfassung: Die drei Verfahren im Vergleich <span class="folie-glieder-list__range">F 14</span></li>
+        <li>Hausaufgaben <span class="folie-glieder-list__range">F 15</span></li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
+<!-- F03 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 03</span>
+    <span class="folie-titel">Äquivalenzklassenbildung + Grenzwertanalyse</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F04 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 04</span>
+    <span class="folie-titel">Äquivalenzklassenbildung: Theorie</span>
+  </div>
+  <p><strong>Was ist es?</strong></p>
+  <p style="margin-top:0.3rem;">Daten werden in Gruppen (Klassen) eingeteilt, bei denen davon ausgegangen wird, dass sich alle Werte innerhalb einer Klasse identisch verhalten. Statt jeden einzelnen Wert zu testen, reicht ein repräsentativer Wert pro Klasse.</p>
+  <p style="margin-top:0.45rem;"><strong>Gültige vs. ungültige Klassen</strong></p>
+  <ul>
+    <li><strong>Gültige Klassen:</strong> Eingaben, die das System akzeptiert und verarbeitet</li>
+    <li><strong>Ungültige Klassen:</strong> Eingaben, die das System ablehnen oder als Fehler behandeln soll</li>
+  </ul>
+  <p style="margin-top:0.45rem;"><strong>Wann einsetzen?</strong></p>
+  <p style="margin-top:0.25rem;">Immer wenn ein Eingabebereich klar definiert ist und viele mögliche Werte existieren — z. B. Altersangaben, Preise, Punktzahlen.</p>
+</div>
+
+<!-- F05 -->
+<div class="folie folie--wichtig folie--grafik folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 05</span>
+    <span class="folie-titel">Grenzwertanalyse: Theorie + Unterschied 2BVA / 3BVA</span>
+  </div>
+  <p><strong>Warum Grenzwerte?</strong></p>
+  <p style="margin-top:0.3rem;">Entwickler machen erfahrungsgemäß besonders häufig Fehler an den Grenzen von Äquivalenzklassen. Deshalb werden genau diese Werte gezielt getestet.</p>
+  <p style="margin-top:0.45rem;"><strong>Zwei-Wert-Grenzwertanalyse (2BVA)</strong></p>
+  <p style="margin-top:0.25rem;">Pro Grenzwert werden 2 Testwerte gewählt:</p>
+  <ul>
+    <li>Der Grenzwert selbst</li>
+    <li>Sein direkter Nachbar in der angrenzenden Klasse</li>
+  </ul>
+  <p style="margin-top:0.45rem;"><strong>Drei-Wert-Grenzwertanalyse (3BVA)</strong></p>
+  <p style="margin-top:0.25rem;">Pro Grenzwert werden 3 Testwerte gewählt:</p>
+  <ul>
+    <li>Der Wert direkt darunter</li>
+    <li>Der Grenzwert selbst</li>
+    <li>Der Wert direkt darüber</li>
+  </ul>
+  <p style="margin-top:0.45rem;"><strong>Wann welche Methode?</strong></p>
+  <ul>
+    <li><strong>2BVA:</strong> Standardfall, effizient, gut für die meisten Szenarien</li>
+    <li><strong>3BVA:</strong> Wenn besonders hohe Testabdeckung gefordert ist oder Off-by-One-Fehler (um ±1 verschobene Bedingungen) besonders kritisch sind</li>
+  </ul>
+  <p style="margin-top:0.45rem;"><strong>Wichtiger Hinweis — Codebeispiel:</strong></p>
+  <p style="margin-top:0.25rem;">Der folgende Code soll eine Warnung anzeigen, wenn <strong>mehr als 10</strong> Produkte gekauft werden. Er enthält jedoch einen Bug:</p>
+  <pre class="folie-code-block"><code>if (itemNr == 10)        // falsch: Warnung nur bei exakt 10
+{
+  showWarning();
+}</code></pre>
+  <p style="margin-top:0.35rem;">Korrekt wäre: <code>if (itemNr &gt; 10)</code></p>
+  <p style="margin-top:0.45rem;"><strong>Was passiert beim Testen?</strong></p>
+  <ul>
+    <li>2BVA testet die Werte 9 und 10 → PASS (der Bug bleibt unentdeckt)</li>
+    <li>3BVA testet die Werte 9, 10 und 11 → FAIL bei 11 (Bug wird gefunden!)</li>
+  </ul>
+  <p style="margin-top:0.35rem;">Das zeigt: 3BVA ist mächtiger, aber auch aufwändiger.</p>
+  <figure class="folie-diagram" role="img" aria-label="Zahlenstrahl: Grenze bei mehr als 10. Zwei-Wert-Grenzwertanalyse wählt die Testpunkte 9 und 10. Drei-Wert-Grenzwertanalyse zusätzlich 11; dort schlägt der Test fehl und deckt den Bug auf.">
+    <figcaption class="folie-diagram__caption">Zahlenstrahl · korrekte Bedingung <code>itemNr &gt; 10</code> — gewählte Testpunkte (Punkte auf der Achse):</figcaption>
+    <div class="folie-diagram__frame">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 376 132" aria-hidden="true">
+      <line x1="72" y1="42" x2="348" y2="42" stroke="currentColor" stroke-width="1.65"/>
+      <g stroke="currentColor" stroke-width="1.3">
+        <line x1="112" y1="35" x2="112" y2="49"/>
+        <line x1="220" y1="35" x2="220" y2="49"/>
+        <line x1="328" y1="35" x2="328" y2="49"/>
+      </g>
+      <g fill="currentColor" font-size="12" font-family="system-ui, Segoe UI, sans-serif" text-anchor="middle">
+        <text x="112" y="67">9</text>
+        <text x="220" y="67">10</text>
+        <text x="328" y="67">11</text>
+      </g>
+      <line x1="274" y1="21" x2="274" y2="77" stroke="currentColor" stroke-dasharray="4 4" opacity="0.45"/>
+      <text x="274" y="15" font-size="10" font-family="system-ui, Segoe UI, sans-serif" fill="currentColor" text-anchor="middle" opacity="0.88">Grenze &gt; 10</text>
+      <text x="38" y="87" font-size="11" font-family="system-ui, Segoe UI, sans-serif" fill="currentColor" text-anchor="end">2BVA</text>
+      <circle class="folie-diagram__mark" cx="112" cy="83" r="5.5"/>
+      <circle class="folie-diagram__mark" cx="220" cy="83" r="5.5"/>
+      <text x="38" y="117" font-size="11" font-family="system-ui, Segoe UI, sans-serif" fill="currentColor" text-anchor="end">3BVA</text>
+      <circle class="folie-diagram__mark" cx="112" cy="113" r="5.5"/>
+      <circle class="folie-diagram__mark" cx="220" cy="113" r="5.5"/>
+      <circle class="folie-diagram__mark folie-diagram__mark--highlight" cx="328" cy="113" r="5.5"/>
+    </svg>
+    </div>
+    <p class="folie-diagram__caption folie-diagram__caption--after-frame">Der zusätzliche Punkt bei <strong>11</strong> (rot umrandet) zeigt den Fehler — nur mit 3BVA wird er ausgelöst.</p>
+  </figure>
+</div>
+
+</div>
+<div class="folien-col">
+
+<!-- F06 -->
+<div class="folie folie--wichtig folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 06</span>
+    <span class="folie-titel">Vollständiges Beispiel: Seniorenrabatt</span>
+  </div>
+  <p><strong>Szenario</strong></p>
+  <p style="margin-top:0.25rem;">Eine Funktion prüft, ob eine Person für einen Seniorenrabatt berechtigt ist.</p>
+  <ul>
+    <li><strong>Eingabe:</strong> Ganzzahl (Alter)</li>
+    <li><strong>Ausgabe:</strong> <code>true</code> (berechtigt) wenn Alter ≥ 65, sonst <code>false</code> (nicht berechtigt)</li>
+    <li><strong>Sinnvoller Wertebereich:</strong> 0–120</li>
+  </ul>
+  <p style="margin-top:0.45rem;"><strong>Schritt 1 — Äquivalenzklassen identifizieren</strong></p>
+  <table>
+    <thead>
+      <tr><th>Klasse</th><th>Bereich</th><th>Typ</th><th>Erwartete Ausgabe</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Nicht berechtigt</td><td>0–64</td><td>Gültig</td><td>false</td></tr>
+      <tr><td>Berechtigt</td><td>65–120</td><td>Gültig</td><td>true</td></tr>
+      <tr><td>Unter Minimum</td><td>&lt; 0</td><td>Ungültig</td><td>Fehler</td></tr>
+      <tr><td>Über Maximum</td><td>&gt; 120</td><td>Ungültig</td><td>Fehler</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.45rem;"><strong>Schritt 2 — Grenzwerte bestimmen (2BVA)</strong></p>
+  <p style="margin-top:0.25rem;"><strong>Gültige Grenzen:</strong> 0 | 64/65 | 120<br><strong>Ungültige Grenzen:</strong> −1 (unter 0) | 121 (über 120)</p>
+  <figure class="folie-diagram" role="img" aria-label="Zahlenstrahl Alter: ungültig unter 0 und über 120. Gültige Bereiche 0 bis 64 ohne Rabatt und 65 bis 120 mit Rabatt. Grenzwerte für 2BVA bei minus 1, 0, 64, 65, 120 und 121.">
+    <figcaption class="folie-diagram__caption">Zahlenstrahl · Seniorenrabatt (<code>Alter</code>) — Partitionen und Grenzwerte (2BVA) bei <code>−1</code>, <code>0</code>, <code>64</code>, <code>65</code>, <code>120</code>, <code>121</code>:</figcaption>
+    <div class="folie-diagram__frame">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 108" aria-hidden="true">
+      <defs>
+        <linearGradient id="folie-l4-senior-invalid" x1="0" y1="0" x2="1" y2="0">
+          <stop offset="0%" stop-color="currentColor" stop-opacity="0.07"/>
+          <stop offset="100%" stop-color="currentColor" stop-opacity="0.02"/>
+        </linearGradient>
+      </defs>
+      <rect x="28" y="34" width="52" height="22" fill="url(#folie-l4-senior-invalid)" rx="2"/>
+      <rect x="92" y="34" width="108" height="22" fill="#f5d5d5" rx="2"/>
+      <rect x="206" y="34" width="108" height="22" fill="#cde8d2" rx="2"/>
+      <rect x="322" y="34" width="70" height="22" fill="url(#folie-l4-senior-invalid)" rx="2"/>
+      <line x1="32" y1="45" x2="388" y2="45" stroke="currentColor" stroke-width="1.65"/>
+      <g stroke="currentColor" stroke-width="1.25">
+        <line x1="54" y1="38" x2="54" y2="52"/>
+        <line x1="92" y1="38" x2="92" y2="52"/>
+        <line x1="146" y1="38" x2="146" y2="52"/>
+        <line x1="200" y1="38" x2="200" y2="52"/>
+        <line x1="260" y1="38" x2="260" y2="52"/>
+        <line x1="368" y1="38" x2="368" y2="52"/>
+      </g>
+      <g fill="currentColor" font-size="11" font-family="system-ui, Segoe UI, sans-serif" text-anchor="middle">
+        <text x="54" y="72">−1</text>
+        <text x="92" y="72">0</text>
+        <text x="146" y="72">64</text>
+        <text x="200" y="72">65</text>
+        <text x="260" y="72">120</text>
+        <text x="368" y="72">121</text>
+      </g>
+      <g fill="currentColor" font-size="9" font-family="system-ui, Segoe UI, sans-serif" text-anchor="middle" opacity="0.88">
+        <text x="60" y="24">&lt; 0</text>
+        <text x="146" y="24">0–64 · false</text>
+        <text x="260" y="24">65–120 · true</text>
+        <text x="345" y="24">&gt; 120</text>
+      </g>
+      <circle class="folie-diagram__mark" cx="54" cy="45" r="5"/>
+      <circle class="folie-diagram__mark" cx="92" cy="45" r="5"/>
+      <circle class="folie-diagram__mark" cx="146" cy="45" r="5"/>
+      <circle class="folie-diagram__mark" cx="200" cy="45" r="5"/>
+      <circle class="folie-diagram__mark" cx="260" cy="45" r="5"/>
+      <circle class="folie-diagram__mark" cx="368" cy="45" r="5"/>
+    </svg>
+    </div>
+    <p class="folie-diagram__caption folie-diagram__caption--after-frame">Markierungen = gewählte Grenzwerte für <strong>2BVA</strong> (Wechsel zwischen gültigen Klassen und zu den ungültigen Bereichen).</p>
+  </figure>
+  <p style="margin-top:0.45rem;"><strong>Schritt 3 — Testfälle ableiten</strong></p>
+  <table>
+    <thead>
+      <tr><th>TC</th><th>Beschreibung</th><th>Eingabe</th><th>Erwartete Ausgabe</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>TC1</td><td>Knapp unter Berechtigung (Grenze)</td><td>64</td><td>false</td></tr>
+      <tr><td>TC2</td><td>Repräsentativ nicht berechtigt</td><td>30</td><td>false</td></tr>
+      <tr><td>TC3</td><td>Untere sinnvolle Grenze</td><td>0</td><td>false</td></tr>
+      <tr><td>TC4</td><td>Exakt berechtigt (Grenze)</td><td>65</td><td>true</td></tr>
+      <tr><td>TC5</td><td>Repräsentativ berechtigt</td><td>70</td><td>true</td></tr>
+      <tr><td>TC6</td><td>Obere sinnvolle Grenze</td><td>120</td><td>true</td></tr>
+      <tr><td>TC7</td><td>Knapp unter unterem Limit</td><td>−1</td><td>Fehler</td></tr>
+      <tr><td>TC8</td><td>Knapp über oberem Limit</td><td>121</td><td>Fehler</td></tr>
+    </tbody>
+  </table>
+  <p class="folie-callout--ok">Ergebnis: 8 Testfälle decken sowohl EP als auch 2BVA vollständig ab.</p>
+</div>
+
+<!-- F07 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 07</span>
+    <span class="folie-titel">Entscheidungstabellentest</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F08 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 08</span>
+    <span class="folie-titel">Entscheidungstabellentest: Theorie</span>
+  </div>
+  <p><strong>Was ist es?</strong></p>
+  <p style="margin-top:0.3rem;">Ein Blackbox-Verfahren zur systematischen Erfassung aller möglichen Kombinationen von Bedingungen und deren Auswirkungen auf das Systemverhalten.</p>
+  <p style="margin-top:0.45rem;"><strong>Wann einsetzen?</strong></p>
+  <p style="margin-top:0.25rem;">Wenn mehrere Bedingungen gleichzeitig das Ergebnis beeinflussen und verschiedene Kombinationen zu unterschiedlichen Aktionen führen.</p>
+  <p style="margin-top:0.45rem;"><strong>Aufbau einer Entscheidungstabelle</strong></p>
+  <ul>
+    <li><strong>Zeilen:</strong> Bedingungen (oben) und Aktionen (unten)</li>
+    <li><strong>Spalten:</strong> Regeln (jede Spalte = eine Kombination)</li>
+    <li><strong>Anzahl Regeln bei booleschen Bedingungen:</strong> 2<sup>n</sup> (<i>n</i> = Anzahl Bedingungen)</li>
+  </ul>
+  <p style="margin-top:0.35rem;">Beispiel: 3 Bedingungen → 2³ = 8 Regeln</p>
+  <p style="margin-top:0.45rem;"><strong>Sonderfall: Enumerationen</strong></p>
+  <p style="margin-top:0.25rem;">Wenn eine Bedingung nicht nur Ja/Nein, sondern mehrere Werte annehmen kann (z. B. Tickettyp: Senior / Student / Normal), erhöht sich die Anzahl der Regeln entsprechend. Das Prinzip bleibt gleich.</p>
+</div>
+
+<!-- F09 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 09</span>
+    <span class="folie-titel">Vollständiges Beispiel: Zutrittskontrollsystem</span>
+  </div>
+  <p><strong>Szenario</strong></p>
+  <p style="margin-top:0.25rem;">Ein System gewährt oder verweigert Zugriff basierend auf drei Bedingungen:</p>
+  <ol>
+    <li>Ist der Benutzer angemeldet? (Ja/Nein)</li>
+    <li>Hat er Administratorrechte? (Ja/Nein)</li>
+    <li>Fordert er eine sichere Ressource an? (Ja/Nein)</li>
+  </ol>
+  <p style="margin-top:0.45rem;"><strong>Entscheidungstabelle (vollständig)</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Bedingung</th>
+        <th>R1</th><th>R2</th><th>R3</th><th>R4</th><th>R5</th><th>R6</th><th>R7</th><th>R8</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Angemeldet</td>
+        <td>Ja</td><td>Ja</td><td>Ja</td><td>Ja</td><td>Nein</td><td>Nein</td><td>Nein</td><td>Nein</td>
+      </tr>
+      <tr>
+        <td>Hat Administratorrechte</td>
+        <td>Ja</td><td>Ja</td><td>Nein</td><td>Nein</td><td>Ja</td><td>Ja</td><td>Nein</td><td>Nein</td>
+      </tr>
+      <tr>
+        <td>Fordert sichere Ressource an</td>
+        <td>Ja</td><td>Nein</td><td>Ja</td><td>Nein</td><td>Ja</td><td>Nein</td><td>Ja</td><td>Nein</td>
+      </tr>
+      <tr>
+        <td><strong>Aktion: Zugriff</strong></td>
+        <td>✅</td><td>✅</td><td>❌</td><td>✅</td><td>❌</td><td>❌</td><td>❌</td><td>❌</td>
+      </tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:0.35rem;">Legende: ✅ = Gewähren · ❌ = Verweigern</p>
+  <p style="margin-top:0.45rem;"><strong>Interpretation</strong></p>
+  <ul>
+    <li>Zugriff wird gewährt wenn: angemeldet + (Admin <strong>oder</strong> keine sichere Ressource)</li>
+    <li>Zugriff wird in allen anderen Fällen verweigert — insbesondere wenn der Benutzer nicht angemeldet ist, egal welche anderen Bedingungen zutreffen</li>
+  </ul>
+  <p style="margin-top:0.35rem;">Jede Regel entspricht einem Testfall → 8 Testfälle für 100&nbsp;% Abdeckung.</p>
+</div>
+
+<!-- F10 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 10</span>
+    <span class="folie-titel">Zustandsbasierter Test</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F11 -->
+<div class="folie folie--wichtig folie--grafik folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 11</span>
+    <span class="folie-titel">Zustandsbasierter Test: Theorie</span>
+  </div>
+  <p><strong>Was ist es?</strong></p>
+  <p style="margin-top:0.3rem;">Ein Testverfahren, das das Verhalten eines Systems modelliert, das sich in verschiedenen Zuständen befinden kann und durch Ereignisse zwischen diesen Zuständen wechselt.</p>
+  <figure class="folie-diagram folie-diagram--gap-after">
+    <figcaption class="folie-diagram__caption">In Kurzform <span style="font-weight:400">(schematisch)</span>:</figcaption>
+    <div class="folie-diagram__frame">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 420 56" aria-hidden="true">
+      <defs>
+        <marker id="folie-l4-f08-arrow" viewBox="0 0 6 6" refX="5" refY="3" markerWidth="6" markerHeight="6" orient="auto">
+          <path d="M0,0 L6,3 L0,6 Z" fill="currentColor"/>
+        </marker>
+      </defs>
+      <rect x="10" y="12" width="88" height="32" rx="5" fill="rgba(255,255,255,0.72)" stroke="currentColor" stroke-width="1.25"/>
+      <rect x="322" y="12" width="88" height="32" rx="5" fill="rgba(255,255,255,0.72)" stroke="currentColor" stroke-width="1.25"/>
+      <g fill="currentColor" font-size="11" font-family="system-ui, Segoe UI, sans-serif" text-anchor="middle">
+        <text x="54" y="31">Zustand A</text>
+        <text x="366" y="31">Zustand B</text>
+      </g>
+      <line x1="104" y1="28" x2="314" y2="28" stroke="currentColor" stroke-width="1.65" marker-end="url(#folie-l4-f08-arrow)"/>
+      <text x="209" y="22" text-anchor="middle" fill="currentColor" font-size="10" font-family="system-ui, Segoe UI, sans-serif">(Ereignis / Aktion)</text>
+      <text x="209" y="48" text-anchor="middle" fill="currentColor" font-size="9" font-family="system-ui, Segoe UI, sans-serif" opacity="0.88">Übergang = gesamter Pfeil</text>
+    </svg>
+    </div>
+    <div class="folie-diagram__kurzform-under">
+      <p class="folie-diagram__kurzform-line"><strong>Zustand A</strong> —(Ereignis / Aktion)—&gt; <strong>Zustand B</strong></p>
+      <p class="note">Der gesamte Pfeil in der Mitte ist der <strong>Übergang</strong>.</p>
+    </div>
+  </figure>
+  <p style="margin-top:0.42rem;"><strong>Bedeutung</strong> <span style="font-weight:400;color:var(--soft);">(die vier Begriffe)</span></p>
+  <ol>
+    <li><strong>Zustand:</strong> Die aktuelle Situation des Systems (z. B. „angemeldet“, „gesperrt“)</li>
+    <li><strong>Ereignis:</strong> Ein Auslöser, der einen Wechsel verursacht (z. B. „falsches Passwort“)</li>
+    <li><strong>Übergang:</strong> Der Wechsel vom Ausgangs- zum Zielzustand — in Diagrammen oft der gesamte Pfeil dazwischen</li>
+    <li><strong>Aktion:</strong> Was das System im Zuge dieses Übergangs ausführt bzw. sichtbar macht (z. B. Stromkreis schließen, Meldung anzeigen)</li>
+  </ol>
+  <p style="margin-top:0.45rem;"><strong>Kern der Sache</strong> <span style="font-weight:400;color:var(--soft);">(Merksatz)</span></p>
+  <p style="margin-top:0.25rem;">Ausgangspunkt ist der <strong>Zustand</strong>. Ein <strong>Ereignis</strong> löst aus; der <strong>Übergang</strong> führt zum neuen Zustand; die <strong>Aktion</strong> ist, was das System dabei technisch oder sichtbar erledigt.</p>
+  <p style="margin-top:0.45rem;"><strong>Hilfsmittel</strong></p>
+  <ul>
+    <li><strong>Zustandsübergangsdiagramm:</strong> Visuelle Darstellung aller Zustände und Übergänge</li>
+    <li><strong>Zustandsübergangstabelle:</strong> Tabellarische Darstellung — gut für die Ableitung von Testfällen</li>
+  </ul>
+</div>
+
+</div>
+<div class="folien-col">
+
+<!-- F12 -->
+<div class="folie folie--wichtig folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 12</span>
+    <span class="folie-titel">Vollständiges Beispiel: Lampe</span>
+  </div>
+  <p><strong>Szenario</strong></p>
+  <p style="margin-top:0.25rem;">Eine Lampe kann ein- oder ausgeschaltet werden. Ziel: Alle möglichen Zustandsübergänge testen.</p>
+  <p style="margin-top:0.45rem;"><strong>Schritt 1 — Elemente identifizieren</strong></p>
+  <ul>
+    <li><strong>Zustände:</strong> Z1 = Lampe AUS | Z2 = Lampe AN</li>
+    <li><strong>Ereignis (physisch):</strong> Schalter drücken — führt je nach Ausgangszustand zu unterschiedlichem Übergang</li>
+    <li><strong>Übergänge:</strong> Z1 → Z2 | Z2 → Z1</li>
+    <li><strong>Aktionen (technisch):</strong> Stromkreis schließen (zu AN) | Stromfluss unterbrechen (zu AUS) — sichtbar: Lampe leuchtet bzw. erlischt</li>
+  </ul>
+  <p style="margin-top:0.45rem;"><strong>Schritt 2 — Zustandsübergangstabelle</strong></p>
+  <p class="note" style="margin-top:0.3rem;">Spalten benennen die <strong>beabsichtigte Wirkung</strong> (Licht an / aus); ausgeführt wird jeweils <strong>Schalter drücken</strong>.</p>
+  <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th>Übergang zu AN <span style="font-weight:400">(„Einschalten“)</span></th>
+        <th>Übergang zu AUS <span style="font-weight:400">(„Ausschalten“)</span></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <th scope="row">Z1: Lampe AUS</th>
+        <td>→ Z2 / Stromkreis schließen</td>
+        <td>— (kein gültiger Übergang)</td>
+      </tr>
+      <tr>
+        <th scope="row">Z2: Lampe AN</th>
+        <td>— (kein gültiger Übergang)</td>
+        <td>→ Z1 / Stromfluss unterbrechen</td>
+      </tr>
+    </tbody>
+  </table>
+  <figure class="folie-diagram" aria-labelledby="cap-f09-zustandsdiagramm">
+    <figcaption class="folie-diagram__caption" id="cap-f09-zustandsdiagramm">Zustandsdiagramm · Lampe AUS/AN; Schalter drücken; Aktion Stromkreis schließen bzw. Stromfluss unterbrechen; Pfeil = Übergang.</figcaption>
+    <div class="folie-diagram__frame folie-diagram__frame--lampe">
+      <img src="../../assets/Lektion4_f09_zustandsuebergangsdiagramm_lampe.svg?v=folien-4-41" alt="" width="680" height="380" decoding="async" loading="lazy">
+    </div>
+  </figure>
+  <p style="margin-top:0.45rem;"><strong>Schritt 3 — Testfälle ableiten</strong></p>
+  <p class="note" style="margin-top:0.3rem;">In den Pfaden bedeuten „Einschalten“ / „Ausschalten“ die <strong>erwartete Wirkung</strong> (Licht an bzw. aus); der Auslöser bleibt <strong>Schalter drücken</strong> — wie in der Tabelle.</p>
+  <p style="margin-top:0.3rem;"><strong>Option A — Zwei Testfälle:</strong></p>
+  <ul>
+    <li>TF1: Z1 → Einschalten → Z2 → Ausschalten → Z1 (Z1–Z2–Z1)</li>
+    <li>TF2: Z2 → Ausschalten → Z1 → Einschalten → Z2 (Z2–Z1–Z2)</li>
+  </ul>
+  <p style="margin-top:0.35rem;"><strong>Option B — Ein kombinierter Testfall:</strong></p>
+  <ul>
+    <li>TF1: Z1 → Einschalten → Z2 → Ausschalten → Z1 → Einschalten → Z2 (Z1–Z2–Z1–Z2) — deckt alle Übergänge in einem Durchlauf ab</li>
+  </ul>
+  <p class="note" style="margin-top:0.35rem;">Beide Optionen sind gültig. Option B ist effizienter, Option A klarer lesbar.</p>
+</div>
+
+<!-- F13 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 13</span>
+    <span class="folie-titel">Abschluss</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F14 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 14</span>
+    <span class="folie-titel">Zusammenfassung: Die drei Verfahren im Vergleich</span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Verfahren</th><th>Ansatz</th><th>Einsatz wenn …</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Äquivalenzklassenbildung</td><td>Wertebereiche</td><td>Viele mögliche Eingaben, klare Partitionen</td></tr>
+      <tr><td>Grenzwertanalyse</td><td>Grenzwerte</td><td>Zahlenbereiche, Off-by-One-Fehler erwartet</td></tr>
+      <tr><td>Entscheidungstabellentest</td><td>Kombinationen</td><td>Mehrere Bedingungen beeinflussen das Ergebnis</td></tr>
+      <tr><td>Zustandsbasierter Test</td><td>Zustände</td><td>System reagiert unterschiedlich je nach Zustand</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.45rem;">Alle drei sind Blackbox-Verfahren: Das Innere des Systems bleibt unbekannt. Getestet wird das Verhalten anhand der Anforderungen.</p>
+</div>
+
+<!-- F15 -->
+<div class="folie folie--wichtig folie--adv-kopf-dunkel">
+  <div class="folie-header">
+    <span class="folie-nr">F 15</span>
+    <span class="folie-titel">Hausaufgaben</span>
+  </div>
+  <p><strong>Hausaufgabe 1: Äquivalenzklassenbildung + Grenzwertanalyse</strong></p>
+  <p style="margin-top:0.3rem;"><strong>Kontext:</strong> Funktion zur Einstufung von Schülern nach Punktzahl (0–100):</p>
+  <ul>
+    <li>0–49: „Nicht bestanden“</li>
+    <li>50–69: „Bestanden“</li>
+    <li>70–89: „Leistung“</li>
+    <li>90–100: „Auszeichnung“</li>
+  </ul>
+  <p style="margin-top:0.35rem;"><strong>Aufgaben:</strong></p>
+  <ol>
+    <li>Äquivalenzklassen identifizieren (gültig + ungültig)</li>
+    <li>Grenzwerte bestimmen (Zweiwert-Methode)</li>
+    <li>Testfälle ableiten — wie viele werden benötigt?</li>
+  </ol>
+  <p class="note" style="margin-top:0.35rem;">Ausführung und Abgabe im QA-Repo unter <code>03_Hausaufgaben/</code> (Lösung dort bzw. im Kurs).</p>
+  <p style="margin-top:0.55rem;"><strong>Hausaufgabe 2: Entscheidungstabellentest</strong></p>
+  <p style="margin-top:0.3rem;"><strong>Kontext:</strong> Zugticket-System mit kombinierbaren Rabatten:</p>
+  <ul>
+    <li>Senior (≥ 65 Jahre): 20&nbsp;% Rabatt</li>
+    <li>Student: 15&nbsp;% Rabatt</li>
+    <li>Reise außerhalb Hauptverkehrszeit: 10&nbsp;% Rabatt</li>
+    <li>Vielfahrerkarte: 5&nbsp;% Rabatt</li>
+    <li>Rabatte werden addiert</li>
+  </ul>
+  <p style="margin-top:0.35rem;"><strong>Aufgaben:</strong></p>
+  <ol>
+    <li>Alle Bedingungen identifizieren</li>
+    <li>Rabattprozentsätze je Bedingung festhalten</li>
+    <li>Entscheidungstabelle mit allen Kombinationen erstellen</li>
+    <li>Gesamtrabatt je Regel berechnen</li>
+  </ol>
+  <p class="note" style="margin-top:0.35rem;">Ausführung und Abgabe im QA-Repo unter <code>03_Hausaufgaben/</code>.</p>
+</div>
+
+</div>
+</div><!-- end folien-cols -->
+
+</main>
+
+<footer>
+  <p class="source-note">Lektion 4 · Folien Masterschool · Testverfahren (Vertiefung) · Aufbereitung aus Kursfolien · Stand: 07.04.2026</p>
+</footer>
+
+</body>
+</html>

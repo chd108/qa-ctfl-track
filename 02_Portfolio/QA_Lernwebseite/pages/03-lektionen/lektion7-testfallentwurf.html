@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../assets/qa-favicon-256.png" type="image/png">
+  <meta name="description" content="Lektion 7 — Testfallentwurf, Phase 3 des Testprozesses (Masterschool-Folien, HTML-Erfassung).">
+  <link rel="stylesheet" href="../../assets/css/base.css?v=folien-7-01">
+  <link rel="stylesheet" href="../../assets/css/subpage.css?v=folien-7-01">
+  <link rel="stylesheet" href="../../assets/css/folien-lektion.css?v=folien-7-01">
+  <title>Lektion 7 – Testfallentwurf</title>
+</head>
+<body class="folien-lektion folien-lektion--l7">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <div class="top-nav-zone__brand-row">
+    <div class="top-nav-zone__nav-stack">
+      <nav class="main-nav folien-lektion-nav" aria-label="QA Lernwebseite und aktuelle Folien-Lektion">
+    <ul>
+      <li><a href="../../index.html" class="main-nav__home" aria-label="Zur Startseite QA Lernwebseite"><img class="main-nav__home-img" src="../../assets/qa-favicon-256.png" alt="" width="48" height="48" decoding="async"></a></li>
+      <li><a href="lektion1-grundlagen.html">Lektion 1 — Grundlagen</a></li>
+      <li><a href="lektion2-sdlc-statisches-testen.html">Lektion 2 — SDLC &amp; Statisches Testen</a></li>
+      <li><a href="lektion3-testanalyse-testentwurf.html">Lektion 3 — Testanalyse &amp; Testentwurf</a></li>
+      <li><a href="lektion4-testverfahren-vertiefung.html">Lektion 4 — Testverfahren (Vertiefung)</a></li>
+      <li><a href="lektion5-testentwurfsverfahren.html">Lektion 5 — Testentwurfsverfahren</a></li>
+      <li><a href="lektion6-testprozess-testanalyse-testplanung.html">Lektion 6 — Testprozess (Testanalyse &amp; Testplanung)</a></li>
+      <li><a href="lektion7-testfallentwurf.html" aria-current="page">Lektion 7 — Testfallentwurf</a></li>
+      <li><a href="lektion8-testumgebung-durchfuehrung-bericht.html">Lektion 8 — Testumgebungen · Durchführung · Bericht</a></li>
+    </ul>
+  </nav>
+    </div>
+  </div>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Lektion 7 – Testfallentwurf</h1>
+    <p>Folien Masterschool · Lektion 7 — Neu strukturiert · Testfallentwurf — Phase 3 des Testprozesses · ISTQB CTFL v4.0.2 (GTB, 01.03.2025) — Abschnitt 1.4.1 · Reduzierung: 34 Folien → 10 Folien (-71%) · Aufbereitung aus Kursfolien · Stand: 06.04.2026</p>
+  </header>
+</div>
+
+<main id="main" class="folien-lektion__main">
+
+  <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Lernmaterial mit Bezug zum ISTQB CTFL Lehrplan (Syllabus)"></span>
+    <span><strong>Artefakt:</strong> Masterschool · 10 Folien Lektion 7 · HTML-Erfassung</span>
+    <span><strong>CTFL-Bezug:</strong> Abschnitt 1.4.1 (Testprozess, Phase Testentwurf); Verweise auf Kapitel 4 / 6</span>
+    <span><strong>Hinweis:</strong> Sichtbarer Inhalt aus <code>assets/Lektion7_Neu.txt</code> übernommen; keine inhaltliche Änderung.</span>
+  </div>
+
+  <div class="legend" role="region" aria-label="Legende Folientypen">
+    <span class="legend__item"><span class="legend__swatch legend__swatch--ctfl" aria-hidden="true"></span>Wichtige Lernfolie</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--praxis" aria-hidden="true"></span>Grafik vorhanden</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--neutral" aria-hidden="true"></span>Titelfolie / kein Lerninhalt</span>
+  </div>
+
+<div class="folien-cols">
+<div class="folien-col">
+
+<!-- F 01 -->
+<div class="folie folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 01</span>
+    <span class="folie-titel">Titel</span>
+  </div>
+  <p style="margin-top:0.35rem;">Testfallentwurf<br>
+Phase 3 des Testprozesses</p>
+  <p style="margin-top:0.35rem;">Einordnung: Wir befinden uns in Phase 3 des Testprozesses (CTFL v4.0.2, Abschnitt<br>
+1.4.1). Nach Testplanung (Phase 1/2) und Testanalyse folgt jetzt der Testentwurf —<br>
+die konkrete Ausarbeitung von Testfällen auf Basis der analysierten Anforderungen.</p>
+  <p style="margin-top:0.35rem;">Hinweis: In Praxiskontexten wird dieser Bereich häufig als „Erstellung von Testfällen&quot;<br>
+im STLC-Modell bezeichnet. Im ISTQB CTFL v4.0.2 heißt die entsprechende<br>
+Aktivität Testentwurf (Test design). Zur vollständigen Einordnung von STLC vs.<br>
+Testprozess: siehe Lektion 6.</p>
+</div>
+
+<!-- F 02 -->
+<div class="folie">
+  <div class="folie-header">
+    <span class="folie-nr">F 02</span>
+    <span class="folie-titel">Lernziele</span>
+  </div>
+  <p style="margin-top:0.35rem;">In dieser Lektion lernst du:</p>
+  <p style="margin-top:0.35rem;">1. Was ein Testfall ist und welche Bestandteile er hat<br>
+2. Wann und wie Testfälle entworfen werden<br>
+3. Was einen guten Testfall von einem schlechten unterscheidet<br>
+4. Wie Testentwurfsverfahren (Grenzwertanalyse, Äquivalenzklassenbildung)<br>
+   in der Praxis auf Testfälle angewendet werden<br>
+5. Was positive und negative Testfälle sind<br>
+6. Wie Testfälle in der Praxis verwaltet werden</p>
+</div>
+
+<!-- F 03 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 03</span>
+    <span class="folie-titel">Was ist ein Testfall?</span>
+  </div>
+  <p style="margin-top:0.35rem;">Ein Testfall beschreibt:<br>
+- Was getestet werden soll<br>
+- Wie es getestet werden soll<br>
+- Welches Ergebnis erwartet wird</p>
+  <p style="margin-top:0.35rem;">Ein Testfall ist detaillierter als der Testplan, aber weniger umfassend.<br>
+Er wird in der Regel in Form einer wiederverwendbaren Vorlage dokumentiert<br>
+und dient als Indikator für den Testfortschritt.</p>
+  <p style="margin-top:0.35rem;">Bestandteile eines Testfalls:</p>
+  <table>
+    <thead><tr><th>Feld</th><th>Beschreibung</th></tr></thead>
+    <tbody>
+      <tr><td>Testfall-ID</td><td>Eindeutige Kennung des Testfalls</td></tr>
+      <tr><td>Testfallbeschreibung</td><td>Kurze Beschreibung was getestet wird</td></tr>
+      <tr><td>Vorbedingungen</td><td>Zustand des Systems vor dem Test</td></tr>
+      <tr><td>Testschritte</td><td>Konkrete, nummerierte Handlungsschritte</td></tr>
+      <tr><td>Testdaten</td><td>Eingabewerte und Umgebungsparameter</td></tr>
+      <tr><td>Erwartetes Ergebnis</td><td>Messbares, konkretes Soll-Ergebnis</td></tr>
+      <tr><td>Nachbedingungen</td><td>Zustand des Systems nach dem Test</td></tr>
+      <tr><td>Tatsächliches Ergebnis</td><td>Wird bei Testdurchführung ausgefüllt</td></tr>
+      <tr><td>Status</td><td>z. B. Bestanden / Fehlgeschlagen / Blockiert</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.35rem;">Wichtig: Testfälle werden auf Basis von Testentwurfsverfahren entwickelt<br>
+(Blackbox, Whitebox, erfahrungsbasiert — CTFL Kapitel 4) und sollten sowohl<br>
+positive als auch negative Abläufe abdecken.</p>
+  <p style="margin-top:0.35rem;">Testfälle sollten enthalten:<br>
+- Ein einzelnes, detailliertes Szenario aus Geschäftssicht<br>
+- Exakte, messbare Testdaten<br>
+- Ein klares, überprüfbares erwartetes Ergebnis<br>
+- Wiederverwendbarkeit</p>
+</div>
+
+<!-- F 04 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 04</span>
+    <span class="folie-titel">Guter Testfall vs. schlechter Testfall</span>
+  </div>
+  <p style="margin-top:0.35rem;">Reflexionsfrage: Ist dies ein geeigneter Testfall?</p>
+  <p style="margin-top:0.35rem;">Negativ-Beispiel — Warum NEIN?</p>
+  <p style="margin-top:0.35rem;">Testfall-ID:           1<br>
+Testfallbeschreibung:  Benutzeroberfläche verifizieren<br>
+Vorbedingungen:        Webseite ist erreichbar<br>
+Testschritte:          1. Öffne Webseite  2. Finde Probleme<br>
+Testdaten:             https://grocerymate.masterschool.com/<br>
+Erwartetes Ergebnis:   Keine Probleme</p>
+  <p style="margin-top:0.35rem;">Probleme:<br>
+- „Finde Probleme&quot; ist kein Testschritt — es fehlt eine konkrete Handlungsanweisung<br>
+- „Keine Probleme&quot; ist kein messbares erwartetes Ergebnis<br>
+- Testfallbeschreibung zu vage — was genau wird geprüft?<br>
+- Tatsächliches Ergebnis und Status nicht ausgefüllt</p>
+  <p style="margin-top:0.35rem;">Auch als Testziel nicht geeignet:<br>
+- „Verifiziere, ob die Webseite ansprechend gestaltet ist&quot; → nicht messbar<br>
+- „Verifiziere, ob die Webseite schnell ist&quot; → nicht messbar<br>
+  Was bedeutet „ansprechend&quot;? Ab welcher Ladezeit gilt sie als „schnell&quot;?<br>
+  → Messbare Akzeptanzkriterien fehlen.</p>
+  <p style="margin-top:0.35rem;">---</p>
+  <p style="margin-top:0.35rem;">Positiv-Beispiel — Warum JA?</p>
+  <p style="margin-top:0.35rem;">Testfall-ID:           1<br>
+Testfallbeschreibung:  Überprüfen des Seiteninhalts auf der Login-Seite bei<br>
+                       verschiedenen Bildschirmgrößen<br>
+Vorbedingungen:        Benutzer ist ausgeloggt<br>
+Testschritte:          1. Navigiere zur Login-Seite<br>
+                       2. Öffne Chrome DevTools<br>
+                       3. Ändere die Bildschirmauflösung<br>
+                       4. Bestätige, dass keine Überlappungen sichtbar sind<br>
+Testdaten:             Web: 1024x768 · Tablet: 768x1024 · Mobile: 320x480<br>
+Erwartetes Ergebnis:   Die Webseite wird ohne Überlappungen angezeigt und passt<br>
+                       sich der Bildschirmgröße entsprechend den Mockups an.</p>
+  <p style="margin-top:0.35rem;">Warum gut:<br>
+- Konkrete, nummerierte Testschritte<br>
+- Messbare Testdaten (drei definierte Auflösungen)<br>
+- Klares, überprüfbares erwartetes Ergebnis<br>
+- Klare Vorbedingung</p>
+</div>
+</div>
+<div class="folien-col">
+
+<!-- F 05 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 05</span>
+    <span class="folie-titel">Testentwurfsverfahren in der Praxis</span>
+  </div>
+  <p style="margin-top:0.35rem;">Testfälle werden nicht willkürlich erstellt — sie basieren auf Testentwurfsverfahren<br>
+(CTFL Kapitel 4). Die wichtigsten für den Testfallentwurf:</p>
+  <p style="margin-top:0.35rem;">Grenzwertanalyse (4.2.2):<br>
+Testet die Grenzen von Äquivalenzklassen. Besonders relevant bei numerischen<br>
+Eingaben mit definierten Minimal- und Maximalwerten.<br>
+→ Beispiel Zeichenbegrenzung 100: Teste 99, 100 und 101 Zeichen.</p>
+  <p style="margin-top:0.35rem;">Äquivalenzklassenbildung (4.2.1):<br>
+Teilt Eingaben in Klassen, die gleichartig verarbeitet werden.<br>
+Gültige Klassen (positiver Ablauf) und ungültige Klassen (negativer Ablauf).<br>
+→ Beispiel: Teste einen Wert mitten in der gültigen Klasse (z. B. 50 Zeichen).</p>
+  <p style="margin-top:0.35rem;">Positiver Ablauf — Testfälle, die erwartetes korrektes Verhalten prüfen.<br>
+Negativer Ablauf — Testfälle, die abweichendes oder fehlerhaftes Verhalten prüfen.</p>
+  <p style="margin-top:0.35rem;">Hinweis — Syntaktisches Testen (Praxisbegriff, kein CTFL-Begriff):<br>
+In der Praxis wird für Eingabevalidierungen (Format, Zeichentypen, Pflichtfelder)<br>
+gelegentlich der Begriff „Syntaktisches Testen&quot; verwendet. Im ISTQB CTFL v4.0.2<br>
+ist das kein eigenständiges Verfahren — es fällt inhaltlich unter<br>
+Äquivalenzklassenbildung mit ungültigen Klassen. Für die ISTQB-Prüfung gilt<br>
+ausschließlich die CTFL-Terminologie.</p>
+</div>
+
+<!-- F 06 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 06</span>
+    <span class="folie-titel">Praxisbeispiel 1: Altersverifikation</span>
+  </div>
+  <p style="margin-top:0.35rem;">Szenario: Social-Media-Plattform — neues Gesetz der Regierung.</p>
+  <p style="margin-top:0.35rem;">Anforderung:<br>
+Ein Benutzerkonto darf nur erstellt werden, wenn der Nutzer mindestens 16 Jahre<br>
+alt ist.</p>
+  <p style="margin-top:0.35rem;">Gegebene Anforderungen:<br>
+- Während des Registrierungsprozesses müssen Benutzer ihr Geburtsdatum angeben.<br>
+- Das System soll validieren, dass der Benutzer am Tag der Kontoerstellung<br>
+  mindestens 16 Jahre alt ist.<br>
+- Wenn der Benutzer jünger als 16 Jahre ist, soll eine Fehlermeldung angezeigt<br>
+  und die Kontoerstellung verweigert werden.</p>
+  <p style="margin-top:0.35rem;">Testfälle — Positiver Ablauf:<br>
+- Benutzer im Alter von 16 Jahren soll ein Konto erfolgreich erstellen können.<br>
+- Benutzer im Alter von 17 Jahren soll ein Konto erfolgreich erstellen können.<br>
+Verfahren: Äquivalenzklassenbildung (gültige Klasse: Alter ≥ 16)<br>
+           Grenzwertanalyse (Grenzwert: 16 Jahre)</p>
+  <p style="margin-top:0.35rem;">Testfälle — Negativer Ablauf:<br>
+- Benutzer im Alter von 15 Jahren soll beim Erstellen eines Kontos eine<br>
+  Fehlermeldung erhalten.<br>
+- Benutzer im Alter von 14 Jahren soll beim Erstellen eines Kontos eine<br>
+  Fehlermeldung erhalten.<br>
+Verfahren: Äquivalenzklassenbildung (ungültige Klasse: Alter &lt; 16)<br>
+           Grenzwertanalyse (Grenzwert: 15 Jahre)</p>
+  <p style="margin-top:0.35rem;">Eingabevalidierung (negativer Ablauf):<br>
+- Der Benutzer darf keine alphabetischen Zeichen eingeben können.<br>
+- Der Benutzer darf kein ungültiges Alter eingeben können.<br>
+- Das Datumsfeld für das Alter darf nicht leer bleiben.<br>
+Verfahren: Äquivalenzklassenbildung (ungültige Klassen)<br>
+           In der Praxis auch als „Syntaktisches Testen&quot; bezeichnet<br>
+           (kein CTFL-Begriff — siehe Folie 5)</p>
+</div>
+
+<!-- F 07 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 07</span>
+    <span class="folie-titel">Praxisbeispiel 2: Kostenpflichtiges Abonnement</span>
+  </div>
+  <p style="margin-top:0.35rem;">Szenario: Social-Media-Plattform — kostenpflichtige werbefreie Mitgliedschaft.</p>
+  <p style="margin-top:0.35rem;">Anforderung:<br>
+Eine Option zur kostenpflichtigen Mitgliedschaft einführen, damit keine Werbung<br>
+mehr angezeigt wird.</p>
+  <p style="margin-top:0.35rem;">Gegebene Anforderungen:<br>
+- Benutzer sollen in ihren Kontoeinstellungen die Option haben, ein<br>
+  Premium-Abonnement abzuschließen.<br>
+- Nach erfolgreichem Abschluss und Bezahlung sollen Werbeanzeigen in allen<br>
+  Bereichen deaktiviert werden.<br>
+- Das System soll den Abonnementstatus verwalten, Erinnerungen zur Verlängerung<br>
+  einen Monat vor Ablauf senden und Szenarien bei Ablauf oder Kündigung behandeln.<br>
+- Die Kündigungsfrist beträgt einen Monat.</p>
+  <p style="margin-top:0.35rem;">Testfälle — Positiver Ablauf:<br>
+- Die Abonnementoption ist in den Kontoeinstellungen auffindbar.<br>
+- Beim Registrieren als neuer Nutzer ist die Abonnementoption verfügbar.<br>
+- Werbung ist bei nicht zahlenden Nutzern sichtbar.<br>
+- Werbung ist bei zahlenden Nutzern nicht sichtbar.<br>
+- Nach Kündigung des Abonnements wird Werbung wieder angezeigt.<br>
+- Die Verlängerungserinnerung wird 1 Monat vor Ablauf versendet.<br>
+- Nach Verlängerung des Abonnements wird keine Werbung angezeigt.</p>
+  <p style="margin-top:0.35rem;">Testfälle — Negativer Ablauf:<br>
+- Systemverhalten bei fehlgeschlagener Zahlung wird korrekt behandelt.</p>
+</div>
+</div>
+<div class="folien-col">
+
+<!-- F 08 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 08</span>
+    <span class="folie-titel">Praxisbeispiel 3: Persönliche Profilbeschreibung</span>
+  </div>
+  <p style="margin-top:0.35rem;">Szenario: Social-Media-Plattform — kurze persönliche Beschreibung im Profil.</p>
+  <p style="margin-top:0.35rem;">Anforderung:<br>
+Füge eine Option hinzu, unter dem Kontonamen eine kurze persönliche Beschreibung<br>
+(max. 100 Zeichen) einzugeben.</p>
+  <p style="margin-top:0.35rem;">Gegebene Anforderungen:<br>
+- Benutzer sollen in ihren Profileinstellungen ein Eingabefeld für eine persönliche<br>
+  Geschichte (Story) oder Kurzbiografie (Bio) haben.<br>
+- Das Feld soll maximal 100 Zeichen zulassen.<br>
+- Die persönliche Geschichte soll unter dem Kontonamen auf der Profilseite<br>
+  angezeigt werden.<br>
+- Das System soll eine Rückmeldung geben, wenn mehr als 100 Zeichen eingegeben<br>
+  werden, und das Speichern überschüssiger Zeichen verhindern.<br>
+- Die persönliche Geschichte ist für angemeldete Benutzer sichtbar, nicht für<br>
+  nicht angemeldete Benutzer.</p>
+  <p style="margin-top:0.35rem;">Testfälle — Positiver Ablauf:<br>
+- Grenzwertanalyse: Teste, ob man 99, 100 und 101 Zeichen eingeben kann.<br>
+- Äquivalenzklassenbildung: Teste, ob man eine Geschichte mit 50 Zeichen<br>
+  eingeben kann (Mitte der gültigen Klasse).<br>
+- Die persönliche Geschichte erscheint unter dem Kontonamen.<br>
+- Der Benutzer kann die persönliche Geschichte bearbeiten.<br>
+- Die Geschichte ist für andere registrierte Benutzer sichtbar.<br>
+- Die Geschichte ist für nicht registrierte Benutzer nicht sichtbar.</p>
+  <p style="margin-top:0.35rem;">Testfälle — Negativer Ablauf:<br>
+- Eingabevalidierung: Was passiert, wenn das Feld leer gelassen wird?<br>
+- Benutzersitzungsverhalten: Ein Benutzer bearbeitet seine Biografie und lässt<br>
+  die Sitzung ablaufen. Wird der Inhalt gespeichert, wenn der Benutzer sich<br>
+  erneut anmeldet?</p>
+</div>
+
+<!-- F 09 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 09</span>
+    <span class="folie-titel">Testwerkzeuge in der Praxis</span>
+  </div>
+  <p style="margin-top:0.35rem;">Wie werden Testfälle in der Praxis verwaltet?</p>
+  <p style="margin-top:0.35rem;">Testfälle werden in der Regel nicht in einfachen Tabellen verwaltet, sondern in<br>
+dedizierten Testwerkzeugen. Diese ermöglichen die strukturierte Ablage, Ausführung,<br>
+Nachverfolgung und Berichterstellung von Testfällen.</p>
+  <p style="margin-top:0.35rem;">Zephyr (von Smartbear) — https://smartbear.com/<br>
+Integration in Jira — Testfälle werden direkt im Projektmanagement-Tool verwaltet.<br>
+Übersicht über Testläufe, Status und Verlinkung zu Anforderungen und Fehlern.</p>
+  <p style="margin-top:0.35rem;">TestRail — https://testrail.com/<br>
+Eigenständiges Testmanagement-Werkzeug. Dashboard mit Testlauf-Übersicht,<br>
+Fortschrittsanzeige (Passed / Retest / Failed), detaillierte Testfall-Ansicht.</p>
+  <p style="margin-top:0.35rem;">Und noch mehr Anbieter: Xray, qTest, Azure Test Plans, PractiTest u. a.</p>
+  <p style="margin-top:0.35rem;">Hinweis: Die Auswahl des Werkzeugs hängt vom Projekt, dem Team und der<br>
+bestehenden Tool-Landschaft ab. Im ISTQB CTFL Kapitel 6 werden Werkzeuge<br>
+zur Testdurchführung und Testüberdeckung als eigene Kategorie geführt.</p>
+</div>
+
+<!-- F 10 -->
+<div class="folie folie--wichtig folie--adv-kopf-dunkel">
+  <div class="folie-header">
+    <span class="folie-nr">F 10</span>
+    <span class="folie-titel">Hausaufgaben</span>
+  </div>
+  <p style="margin-top:0.35rem;">Hausaufgabe 1 — Testplan</p>
+  <p style="margin-top:0.35rem;">Erstelle deinen eigenen Testplan für die neuen Funktionen des Webshops.</p>
+  <p style="margin-top:0.35rem;">Webshop: https://grocerymate.masterschool.com/<br>
+Beispiel-Testplan (Notion): https://www.notion.so/masterschool/Beispiel-Testplan-2219418319f380c0b62edceeed233013<br>
+Detaillierte Anforderungen (Notion): https://www.notion.so/masterschool/Anforderungen-2219418319f38015a4b2c3e37318618e</p>
+  <p style="margin-top:0.35rem;">Orientiere dich beim Aufbau an den acht Teilen des Testplans aus Lektion 6:<br>
+Produkt analysieren · Teststrategie entwerfen · Testziele festlegen ·<br>
+Testkriterien definieren · Ressourcenplanung · Testumgebung planen ·<br>
+Zeitplanung und Aufwandschätzung · Testartefakte bestimmen</p>
+  <p style="margin-top:0.35rem;">---</p>
+  <p style="margin-top:0.35rem;">Hausaufgabe 2 — Testfalldesign</p>
+  <p style="margin-top:0.35rem;">Entwirf deine Testfälle auf Basis der Funktionen, die für das kommende Release<br>
+des Online-Supermarkts entwickelt werden.</p>
+  <p style="margin-top:0.35rem;">- Erstelle mindestens drei Testfälle pro Funktion.<br>
+- Du musst die Testfälle nur entwerfen — die Ausführung erfolgt in einer<br>
+  späteren Phase.<br>
+- Gib, sofern anwendbar, die verwendete Testentwurfstechnik an.<br>
+- Ein Beispiel-Testfall ist auf GitHub verfügbar — den Link findest du in Notion.</p>
+  <p style="margin-top:0.35rem;">Verwende die Testfall-Vorlage mit allen Feldern:<br>
+Testfall-ID · Testfallbeschreibung · Vorbedingungen · Testschritte · Testdaten ·<br>
+Erwartetes Ergebnis · Nachbedingungen · Tatsächliches Ergebnis · Status</p>
+</div>
+
+</div>
+</div><!-- end folien-cols -->
+
+</main>
+
+<footer>
+  <p class="source-note">Lektion 7 · Folien Masterschool · Testfallentwurf · Aufbereitung aus Kursfolien · Stand: 06.04.2026</p>
+</footer>
+
+<script>
+(function () {
+  var main = document.getElementById('main');
+  if (!main) return;
+  main.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || a.closest('.folien-lektion-nav')) return;
+    var href = a.getAttribute('href');
+    if (!href || !/^https?:\/\//i.test(href)) return;
+    e.preventDefault();
+    var w = window.open(href, '_blank', 'noopener,noreferrer');
+    if (w) w.opener = null;
+  });
+})();
+</script>
+
+</body>
+</html>

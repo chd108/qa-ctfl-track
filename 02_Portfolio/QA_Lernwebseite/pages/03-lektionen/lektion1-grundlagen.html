@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../assets/qa-favicon-256.png" type="image/png">
+  <meta name="description" content="Lektion 1 — Kurseinführung und Grundlagen des Testens (Masterschool-Folien, HTML-Erfassung).">
+  <link rel="stylesheet" href="../../assets/css/base.css?v=folien-1-8">
+  <link rel="stylesheet" href="../../assets/css/subpage.css?v=folien-1-8">
+  <link rel="stylesheet" href="../../assets/css/folien-lektion.css?v=folien-1-8">
+  <title>Lektion 1 – Kurseinführung & Grundlagen des Testens</title>
+</head>
+<body class="folien-lektion folien-lektion--l1">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <div class="top-nav-zone__brand-row">
+    <div class="top-nav-zone__nav-stack">
+      <nav class="main-nav folien-lektion-nav" aria-label="QA Lernwebseite und aktuelle Folien-Lektion">
+    <ul>
+      <li><a href="../../index.html" class="main-nav__home" aria-label="Zur Startseite QA Lernwebseite"><img class="main-nav__home-img" src="../../assets/qa-favicon-256.png" alt="" width="48" height="48" decoding="async"></a></li>
+      <li><a href="lektion1-grundlagen.html" aria-current="page">Lektion 1 — Grundlagen</a></li>
+      <li><a href="lektion2-sdlc-statisches-testen.html">Lektion 2 — SDLC &amp; Statisches Testen</a></li>
+      <li><a href="lektion3-testanalyse-testentwurf.html">Lektion 3 — Testanalyse &amp; Testentwurf</a></li>
+      <li><a href="lektion4-testverfahren-vertiefung.html">Lektion 4 — Testverfahren (Vertiefung)</a></li>
+      <li><a href="lektion5-testentwurfsverfahren.html">Lektion 5 — Testentwurfsverfahren</a></li>
+      <li><a href="lektion6-testprozess-testanalyse-testplanung.html">Lektion 6 — Testprozess (Testanalyse &amp; Testplanung)</a></li>
+      <li><a href="lektion7-testfallentwurf.html">Lektion 7 — Testfallentwurf</a></li>
+      <li><a href="lektion8-testumgebung-durchfuehrung-bericht.html">Lektion 8 — Testumgebungen · Durchführung · Bericht</a></li>
+    </ul>
+  </nav>
+    </div>
+  </div>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Lektion 1 – Kurseinführung & Grundlagen des Testens</h1>
+    <p>Folien Masterschool · Teil 1 – Grundlagen des Testens und der Software-Testing-Lebenszyklus · Kursrohdaten · Stand: 07.04.2026</p>
+  </header>
+</div>
+
+<main id="main" class="folien-lektion__main">
+
+  <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Lernmaterial mit Bezug zum ISTQB CTFL Lehrplan (Syllabus)"></span>
+    <span><strong>Artefakt:</strong> Masterschool · 27 Folien Lektion 1 · HTML-Erfassung</span>
+    <span><strong>CTFL-Bezug:</strong> Grundlagen des Testens (Auszug)</span>
+    <span><strong>Hinweis:</strong> Die Agenda wurde didaktisch überarbeitet; Folien aus Rohdaten</span>
+  </div>
+
+  <div class="legend" role="region" aria-label="Legende Folientypen">
+    <span class="legend__item"><span class="legend__swatch legend__swatch--ctfl" aria-hidden="true"></span>Wichtige Lernfolie</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--praxis" aria-hidden="true"></span>Grafik vorhanden</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--neutral" aria-hidden="true"></span>Titelfolie / kein Lerninhalt</span>
+  </div>
+
+<div class="folien-cols">
+<div class="folien-col">
+<!-- F01 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 01</span>
+    <span class="folie-titel">Kurseinführung und Grundlagen des Testens</span>
+  </div>
+  <span class="tag-leer">Titelfolie · kein Lerninhalt</span>
+</div>
+
+<!-- F02 -->
+<div class="folie">
+  <div class="folie-header">
+    <span class="folie-nr">F 02</span>
+    <span class="folie-titel">Agenda</span>
+  </div>
+  <ol class="folie-glieder-list folie-glieder-list--agenda folie-glieder-list--agenda-haupt">
+    <li>
+      Kurseinführung <span class="folie-glieder-list__range">F 01</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Titelfolie und Agenda <span class="folie-glieder-list__range">F 01–02</span></li>
+      </ul>
+    </li>
+    <li>
+      Was ist Testing? <span class="folie-glieder-list__range">F 03</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Entwickler vs. Tester und Karrierepfad: Testerrollen <span class="folie-glieder-list__range">F 04–05</span></li>
+        <li>Warum Testen wichtig ist – Reale Beispiele <span class="folie-glieder-list__range">F 06–08</span></li>
+      </ul>
+    </li>
+    <li>
+      Kursübersicht <span class="folie-glieder-list__range">F 09</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Lehrplan / Kursübersicht <span class="folie-glieder-list__range">F 09–10</span></li>
+      </ul>
+    </li>
+    <li>
+      Tipps &amp; Tricks / Homepage &amp; Assessment Sheet <span class="folie-glieder-list__range">F 11</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Tipps &amp; Tricks <span class="folie-glieder-list__range">F 11–12</span></li>
+      </ul>
+    </li>
+    <li>
+      Grundlagen des Testings <span class="folie-glieder-list__range">F 13</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Begriff, Ziele, Erfolgsbeitrag, Testen vs. QA <span class="folie-glieder-list__range">F 14–17</span></li>
+      </ul>
+    </li>
+    <li>
+      Bugs &amp; Testing <span class="folie-glieder-list__range">F 18</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Fehlerhandlung / Zustand / Wirkung / Grundursachen; Testen und Debugging <span class="folie-glieder-list__range">F 19–20</span></li>
+      </ul>
+    </li>
+    <li>
+      Grundsätze des Testens <span class="folie-glieder-list__range">F 21</span>
+      <ul class="folie-glieder-list__sub">
+        <li>7 Grundsätze; Organisation; Aktivitäten; Kompetenzen; Whole-Team; Unabhängigkeit <span class="folie-glieder-list__range">F 22–27</span></li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
+<!-- F03 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 03</span>
+    <span class="folie-titel">Was ist Testing?</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F04 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 04</span>
+    <span class="folie-titel">Entwickler vs. Tester</span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Entwickler</th><th>Tester</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Schreibt Code</td><td>Software testen</td></tr>
+      <tr><td>Entwickelt Softwarelösungen</td><td>Fehler identifizieren</td></tr>
+      <tr><td>Debugging & Fehlerbehebung</td><td>Qualität & Zuverlässigkeit sichern</td></tr>
+      <tr><td>Funktionalitäten umsetzen</td><td>Gebrauchstauglichkeit & UX gewährleisten</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- F05 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 05</span>
+    <span class="folie-titel">Karrierepfad: Testerrollen</span>
+  </div>
+  <ol>
+    <li>Funktionaler Tester</li>
+    <li>Test Automation Engineer</li>
+    <li>Testkoordinator</li>
+    <li>Testmanager</li>
+  </ol>
+  <p class="note">Quelle: <a href="https://www.istqb.org/certifications/certified-tester-foundation-level" target="_blank">istqb.org/certifications/certified-tester-foundation-level</a></p>
+</div>
+
+<!-- F06–08 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 06–08</span>
+    <span class="folie-titel">Warum Testen wichtig ist – Reale Beispiele</span>
+  </div>
+  <p class="note" style="margin-bottom:0.3rem;">3 Folien → werden zu 1 zusammengefasst</p>
+  <ul>
+    <li><strong>A400M Airbus</strong> – Tödlicher Absturz wegen Softwareproblemen</li>
+    <li><strong>CrowdStrike-Update</strong> – Blue Screen of Death, Windows-PCs weltweit lahmgelegt; enormer Aufwand trotz Fix</li>
+    <li><strong>Tesla Rückruf</strong> – Fahrzeug-Firmware nicht ausreichend getestet → Rückruf wegen unbeabsichtigtem Öffnen der Fronthaube</li>
+  </ul>
+</div>
+
+<!-- F09 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 09</span>
+    <span class="folie-titel">Kursübersicht</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F10 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 10</span>
+    <span class="folie-titel">Lehrplan / Kursübersicht</span>
+  </div>
+  <p style="margin-bottom:0.3rem;"><strong>Wochen 1–4: Grundlagen & Portfolio</strong></p>
+  <table>
+    <thead><tr><th>Woche</th><th>Inhalte</th></tr></thead>
+    <tbody>
+      <tr><td>Woche 1</td><td>Grundlagen des Testings · Testing im Softwareentwicklungslebenszyklus · Statisches Testen</td></tr>
+      <tr><td>Woche 2</td><td>Testanalyse & Testdesign · Blackbox-Techniken</td></tr>
+      <tr><td>Woche 3</td><td>Whitebox-Techniken · Anforderungsanalyse, Testplan (+ Portfolio-Start)</td></tr>
+      <tr><td>Woche 4</td><td>Testfalldesign · Testumgebungen, Testausführung & Testberichte</td></tr>
+    </tbody>
+  </table>
+  <p style="margin: 0.5rem 0 0.3rem;"><strong>Wochen 5–8: Auswahl</strong></p>
+  <table>
+    <thead><tr><th>Auswahl: Testautomatisierung</th><th>Auswahl: Manueller Tester</th></tr></thead>
+    <tbody>
+      <tr><td>Pytest</td><td>Jira</td></tr>
+      <tr><td>XPass</td><td>DevTools</td></tr>
+      <tr><td>Selenium</td><td>Source Labs</td></tr>
+      <tr><td>Page Object Model</td><td>Postman</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.4rem;"><strong>Optional: ISTQB Zertifizierung (Woche 8–10)</strong><br>
+  Übungsstunden, Lernen & Üben · Übungstermin vereinbaren</p>
+</div>
+
+<!-- F11 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 11</span>
+    <span class="folie-titel">Tipps & Tricks / Homepage & Assessment Sheet</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F12 -->
+<div class="folie">
+  <div class="folie-header">
+    <span class="folie-nr">F 12</span>
+    <span class="folie-titel">Tipps & Tricks</span>
+  </div>
+  <ul>
+    <li>Auf Stunden vorbereiten</li>
+    <li>Portfolio: fleißig & genau pflegen → wird Teil der Bewerbung / von Arbeitgebern angesehen</li>
+    <li>Viele Fragen stellen & Ressourcen nutzen</li>
+  </ul>
+</div>
+
+</div>
+<div class="folien-col">
+
+<!-- F13 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 13</span>
+    <span class="folie-titel">Grundlagen des Testings</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F14 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 14</span>
+    <span class="folie-titel">Was ist Softwaretesting?</span>
+  </div>
+  <p><strong>Softwaretesting ist:</strong><br>
+  Eine Reihe von Aktivitäten zur Entdeckung von Fehlerzuständen und zur Bewertung der Qualität von Arbeitsergebnissen der Softwareentwicklung.</p>
+  <p style="margin-top:0.4rem;"><strong>Testing ist NICHT (häufige Fehlvorstellungen):</strong></p>
+  <ol>
+    <li>„Nur" Tests durchführen</li>
+    <li>Fokus nur auf Verifikation</li>
+    <li>Kann 100% automatisiert werden</li>
+    <li>Ermöglicht vollständig fehlerfreie Software</li>
+  </ol>
+</div>
+
+<!-- F15 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 15</span>
+    <span class="folie-titel">Ziele des Softwaretestings</span>
+  </div>
+  <ol>
+    <li>Evaluieren von Arbeitsergebnissen</li>
+    <li>Auslösen von Fehlerwirkungen & Finden von Fehlerzuständen</li>
+    <li>Verifizierung der Anforderungen</li>
+    <li>Bereitstellen von Informationen für Stakeholder</li>
+    <li><em class="note">⚠ 3 Unterpunkte fehlen noch – nachliefern</em></li>
+    <li>Aufbauen von Vertrauen</li>
+    <li><em class="note">⚠ 3 Unterpunkte fehlen noch – nachliefern</em></li>
+  </ol>
+</div>
+
+<!-- F16 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 16</span>
+    <span class="folie-titel">Testing als Beitrag zum Erfolg</span>
+  </div>
+  <ol>
+    <li>Testen ist ein kosteneffizientes Mittel zur Erkennung von Fehlerzuständen</li>
+    <li>Direkte Bewertung der Qualität eines Testobjekts</li>
+    <li>Indirekte Darstellung des Entwicklungsprojekts</li>
+    <li>Testen kann erforderlich sein, um vertragliche oder gesetzliche Anforderungen zu erfüllen</li>
+  </ol>
+</div>
+
+<!-- F17 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 17</span>
+    <span class="folie-titel">Testen vs. Qualitätssicherung (QA)</span>
+  </div>
+  <table>
+    <thead><tr><th></th><th>Qualitätssicherung (QA)</th><th>Testen</th></tr></thead>
+    <tbody>
+      <tr><td><strong>Ansatz</strong></td><td>Prozessorientiert & präventiv</td><td>Produktorientiert & korrigierend</td></tr>
+      <tr><td><strong>Fokus</strong></td><td>Implementierung & Verbesserung von Prozessen</td><td>Aktivitäten zur Erreichung eines angemessenen Qualitätsniveaus</td></tr>
+    </tbody>
+  </table>
+  <p class="note" style="margin-top:0.3rem;">Visualisierung: Testen ist eine Teilmenge von QA (großer Kreis = QA, kleiner innerer Kreis = Testen)</p>
+</div>
+
+<!-- F18 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 18</span>
+    <span class="folie-titel">Bugs & Testing</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F19 -->
+<div class="folie folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 19</span>
+    <span class="folie-titel">Fehlerhandlung · Fehlerzustand · Fehlerwirkung & Grundursachen</span>
+  </div>
+  <figure class="folie-grafik">
+    <img src="../../assets/screenshots/Lektion1_screenshots/F19_fehlerhandlung-zustand-wirkung_u_grundursachen.jpg" alt="Diagramm: Fehlerhandlung, Fehlerzustand, Fehlerwirkung und Grundursachen" loading="lazy" decoding="async">
+  </figure>
+</div>
+
+</div>
+<div class="folien-col">
+
+<!-- F20 -->
+<div class="folie folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 20</span>
+    <span class="folie-titel">Testen und Debugging</span>
+  </div>
+  <figure class="folie-grafik">
+    <img src="../../assets/screenshots/Lektion1_screenshots/F20_testen_und_debugging.jpg" alt="Grafik: Testen und Debugging" loading="lazy" decoding="async">
+  </figure>
+</div>
+
+<!-- F21 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 21</span>
+    <span class="folie-titel">Grundsätze des Testens</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F22 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 22</span>
+    <span class="folie-titel">Die 7 Grundsätze des Testens</span>
+  </div>
+  <ol>
+    <li>Testen zeigt das <strong>Vorhandensein</strong>, nicht die <strong>Abwesenheit</strong> von Fehlerzuständen</li>
+    <li>Vollständiges Testen ist <strong>unmöglich</strong></li>
+    <li>Frühes Testen <strong>spart Zeit und Geld</strong></li>
+    <li>Fehlerzustände treten <strong>gehäuft</strong> auf</li>
+    <li>Tests <strong>nutzen sich ab</strong></li>
+    <li>Testen ist <strong>kontextabhängig</strong></li>
+    <li>Trugschluss: <em>„Keine Fehler"</em> bedeutet <strong>kein</strong> brauchbares System</li>
+  </ol>
+</div>
+
+<!-- F23 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 23</span>
+    <span class="folie-titel">Testprozesse sind ein wichtiger Bestandteil der Organisation</span>
+  </div>
+  <p style="margin-bottom:0.3rem;">7 Einflussfaktoren auf den Testprozess:</p>
+  <ol>
+    <li><strong>Stakeholder</strong> – bestimmen Anforderungen & Erwartungen</li>
+    <li><strong>Organisatorische Faktoren</strong> – Budget, Struktur, Prioritäten</li>
+    <li><strong>Marktbedürfnisse</strong> – Kundenerwartungen</li>
+    <li><strong>Werkzeuge</strong> – verfügbare Test-Tools</li>
+    <li><strong>Software-Entwicklungslebenszyklus</strong> – Testphase im Prozess</li>
+    <li><strong>Teammitglieder</strong> – Kompetenzen & Zusammenarbeit</li>
+    <li><strong>Technische Faktoren</strong> – Technologien, Systeme, Komplexität</li>
+  </ol>
+  <p class="note" style="margin-top:0.3rem;">→ Testen ist kein Inselbetrieb, sondern eingebettet in die gesamte Organisation.</p>
+</div>
+
+<!-- F24 -->
+<div class="folie folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 24</span>
+    <span class="folie-titel">Testaktivitäten und Aufgaben</span>
+  </div>
+  <figure class="folie-grafik">
+    <img src="../../assets/screenshots/Lektion1_screenshots/F24_testaktivitaeten_u_aufgaben.jpg" alt="Diagramm: Testaktivitäten und Aufgaben" loading="lazy" decoding="async">
+  </figure>
+</div>
+
+<!-- F25 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 25</span>
+    <span class="folie-titel">Allgemeine Kompetenzen für Tester</span>
+  </div>
+  <ol>
+    <li>Testwissen</li>
+    <li>Gründlichkeit</li>
+    <li>Methodisches Vorgehen</li>
+    <li>Detailgenauigkeit</li>
+    <li>Kommunikationsfähigkeit</li>
+    <li>Analytisches und kritisches Denken</li>
+    <li>Technische Kenntnisse</li>
+    <li>Wissen in der Anwendungsdomäne</li>
+  </ol>
+  <p class="note">(+ weitere Kompetenzen möglich)</p>
+</div>
+
+<!-- F26 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 26</span>
+    <span class="folie-titel">Whole-Team-Ansatz</span>
+  </div>
+  <ul>
+    <li>Jedes Teammitglied, das über die erforderlichen Kompetenzen verfügt, kann jede Aufgabe ausführen</li>
+    <li>Jeder ist für die Qualität verantwortlich</li>
+  </ul>
+</div>
+
+<!-- F27 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 27</span>
+    <span class="folie-titel">Unabhängigkeit des Testens</span>
+  </div>
+  <p>Ein gewisser Grad an Unabhängigkeit macht den Tester effektiver bei der Fehlerfindung, da sich die Voreingenommenheit <em>(kognitive Verzerrungen)</em> zwischen Autor und Tester unterscheidet.</p>
+</div>
+
+</div>
+</div><!-- end folien-cols -->
+
+</main>
+
+<footer>
+  <p class="source-note">Lektion 1 · Folien Masterschool · Teil 1 – Grundlagen des Testens und der Software-Testing-Lebenszyklus · Kursrohdaten · Stand: 07.04.2026</p>
+</footer>
+
+</body>
+</html>

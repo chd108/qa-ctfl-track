@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../assets/qa-favicon-256.png" type="image/png">
+  <meta name="description" content="Lektion 3 — Testanalyse und Testentwurf (Masterschool-Folien, HTML-Erfassung).">
+  <link rel="stylesheet" href="../../assets/css/base.css?v=folien-3-22">
+  <link rel="stylesheet" href="../../assets/css/subpage.css?v=folien-3-22">
+  <link rel="stylesheet" href="../../assets/css/folien-lektion.css?v=folien-3-22">
+  <title>Lektion 3 – Testanalyse &amp; Testentwurf</title>
+</head>
+<body class="folien-lektion folien-lektion--l3">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <div class="top-nav-zone__brand-row">
+    <div class="top-nav-zone__nav-stack">
+      <nav class="main-nav folien-lektion-nav" aria-label="QA Lernwebseite und aktuelle Folien-Lektion">
+    <ul>
+      <li><a href="../../index.html" class="main-nav__home" aria-label="Zur Startseite QA Lernwebseite"><img class="main-nav__home-img" src="../../assets/qa-favicon-256.png" alt="" width="48" height="48" decoding="async"></a></li>
+      <li><a href="lektion1-grundlagen.html">Lektion 1 — Grundlagen</a></li>
+      <li><a href="lektion2-sdlc-statisches-testen.html">Lektion 2 — SDLC &amp; Statisches Testen</a></li>
+      <li><a href="lektion3-testanalyse-testentwurf.html" aria-current="page">Lektion 3 — Testanalyse &amp; Testentwurf</a></li>
+      <li><a href="lektion4-testverfahren-vertiefung.html">Lektion 4 — Testverfahren (Vertiefung)</a></li>
+      <li><a href="lektion5-testentwurfsverfahren.html">Lektion 5 — Testentwurfsverfahren</a></li>
+      <li><a href="lektion6-testprozess-testanalyse-testplanung.html">Lektion 6 — Testprozess (Testanalyse &amp; Testplanung)</a></li>
+      <li><a href="lektion7-testfallentwurf.html">Lektion 7 — Testfallentwurf</a></li>
+      <li><a href="lektion8-testumgebung-durchfuehrung-bericht.html">Lektion 8 — Testumgebungen · Durchführung · Bericht</a></li>
+    </ul>
+  </nav>
+    </div>
+  </div>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Lektion 3 – Testanalyse &amp; Testentwurf</h1>
+    <p>Folien Masterschool · Erfahrungsbasiertes, Blackbox- und Whitebox-Testen · Abnahmekriterien &amp; ATDD · Kursrohdaten · Stand: 07.04.2026</p>
+  </header>
+</div>
+
+<main id="main" class="folien-lektion__main">
+
+  <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Lernmaterial mit Bezug zum ISTQB CTFL Lehrplan (Syllabus)"></span>
+    <span><strong>Artefakt:</strong> Masterschool · 35 Folien Lektion 3 · HTML-Erfassung</span>
+    <span><strong>CTFL-Bezug:</strong> Testtechniken, Testentwurf, Akzeptanztest (Auszug)</span>
+    <span><strong>Hinweis:</strong> Die Agenda wurde didaktisch überarbeitet; Folien aus Rohdaten</span>
+  </div>
+
+  <div class="legend" role="region" aria-label="Legende Folientypen">
+    <span class="legend__item"><span class="legend__swatch legend__swatch--ctfl" aria-hidden="true"></span>Wichtige Lernfolie</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--praxis" aria-hidden="true"></span>Grafik vorhanden</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--neutral" aria-hidden="true"></span>Titelfolie / kein Lerninhalt</span>
+  </div>
+
+<div class="folien-cols">
+<div class="folien-col">
+
+<!-- F01 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 01</span>
+    <span class="folie-titel">Testanalyse und Testentwurf</span>
+  </div>
+  <span class="tag-leer">Titelfolie · kein Lerninhalt</span>
+</div>
+
+<!-- F02 -->
+<div class="folie">
+  <div class="folie-header">
+    <span class="folie-nr">F 02</span>
+    <span class="folie-titel">Agenda</span>
+  </div>
+  <ol class="folie-glieder-list folie-glieder-list--agenda folie-glieder-list--agenda-haupt">
+    <li>
+      Titelfolie <span class="folie-glieder-list__range">F 01</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Lektionstitel und Agenda <span class="folie-glieder-list__range">F 01–02</span></li>
+      </ul>
+    </li>
+    <li>
+      Testanalyse und Testentwurf <span class="folie-glieder-list__range">F 03</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Übersicht der Testverfahren; Testverfahren (Blackbox vs. Whitebox) <span class="folie-glieder-list__range">F 04–05</span></li>
+      </ul>
+    </li>
+    <li>
+      Erfahrungsbasiertes Testen <span class="folie-glieder-list__range">F 06</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Erfahrungsbasierte Testtechniken (Übersicht) <span class="folie-glieder-list__range">F 07</span></li>
+        <li>Intuitive Testfallermittlung und Fault-Attacks <span class="folie-glieder-list__range">F 08–09</span></li>
+        <li>Exploratives Testen; Checklistenbasiertes Testen <span class="folie-glieder-list__range">F 10–11</span></li>
+      </ul>
+    </li>
+    <li>
+      Der Blackbox-Test <span class="folie-glieder-list__range">F 12</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Blackbox-Testentwurfsverfahren (Übersicht) <span class="folie-glieder-list__range">F 13</span></li>
+        <li>Äquivalenzklassenbildung: Theorie und Beispiel (Versandkosten) <span class="folie-glieder-list__range">F 14–15</span></li>
+        <li>Grenzwertanalyse und 2-/3-Werte-Methode <span class="folie-glieder-list__range">F 16–18</span></li>
+        <li>Entscheidungstabellen-Test: Theorie und Beispiel (Login) <span class="folie-glieder-list__range">F 19–20</span></li>
+        <li>Zustandsbasierter Test <span class="folie-glieder-list__range">F 21</span></li>
+      </ul>
+    </li>
+    <li>
+      Whitebox-Tests <span class="folie-glieder-list__range">F 22</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Whitebox-Testverfahren; Anweisungstest und Anweisungsüberdeckung (Theorie und Beispiel) <span class="folie-glieder-list__range">F 23–25</span></li>
+        <li>Zweigtest und Zweigüberdeckung (Theorie und Beispiel) <span class="folie-glieder-list__range">F 26–27</span></li>
+        <li>Der Nutzen von Whitebox-Tests <span class="folie-glieder-list__range">F 28</span></li>
+      </ul>
+    </li>
+    <li>
+      Abnahmekriterien <span class="folie-glieder-list__range">F 29</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Zusammenarbeit; Abnahmekriterien; ATDD <span class="folie-glieder-list__range">F 30–32</span></li>
+      </ul>
+    </li>
+    <li>
+      Hausaufgaben <span class="folie-glieder-list__range">F 33</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Hausaufgabe 1 und 2 <span class="folie-glieder-list__range">F 34–35</span></li>
+      </ul>
+    </li>
+    <li>
+      Zusammenfassung
+      <ul class="folie-glieder-list__sub">
+        <li class="folie-glieder-list__sub--meta">Mündlich · ohne Folie</li>
+      </ul>
+    </li>
+  </ol>
+  <p class="note" style="margin-top:0.45rem;">Hinweis: Reihenfolge in der Original-Agenda war teils anders — hier der korrigierte Ablauf aus den Kursrohdaten.</p>
+</div>
+
+<!-- F03 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 03</span>
+    <span class="folie-titel">Testanalyse und Testentwurf</span>
+  </div>
+  <span class="tag-leer">Abschnittstitel · kein weiterer Inhalt</span>
+</div>
+
+<!-- F04 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 04</span>
+    <span class="folie-titel">Übersicht der Testverfahren</span>
+  </div>
+  <p><strong>Erfahrungsbasierte Testtechnik:</strong></p>
+  <ul>
+    <li>Nutzt das Wissen und die Erfahrung der Tester</li>
+    <li>Kann Fehlerzustände aufdecken, die mit Blackbox- und Whitebox-Testtechniken möglicherweise übersehen werden</li>
+    <li>Ergänzt die Blackbox- und Whitebox-Testtechniken</li>
+  </ul>
+</div>
+
+<!-- F05 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 05</span>
+    <span class="folie-titel">Testverfahren</span>
+  </div>
+  <ul>
+    <li><strong>Blackbox-Testverfahren</strong> (spezifikationsbasiert): Wir wissen nicht, was sich im Inneren des Systems befindet. Wir überprüfen das Verhalten anhand der Anforderungen.</li>
+    <li><strong>Whitebox-Testverfahren</strong> (strukturbasiert): Wir kennen die innere Struktur des Systems und leiten unsere Tests aus dieser Struktur ab.</li>
+  </ul>
+</div>
+
+<!-- F06 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 06</span>
+    <span class="folie-titel">Erfahrungsbasiertes Testen</span>
+  </div>
+  <span class="tag-leer">Abschnittstitel · kein weiterer Inhalt</span>
+</div>
+
+<!-- F07 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 07</span>
+    <span class="folie-titel">Erfahrungsbasierte Testtechniken</span>
+  </div>
+  <ol>
+    <li>Intuitive Testfallermittlung</li>
+    <li>Exploratives Testen</li>
+    <li>Checklistenbasiertes Testen</li>
+  </ol>
+</div>
+
+<!-- F08 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 08</span>
+    <span class="folie-titel">Intuitive Testfallermittlung</span>
+  </div>
+  <p>Ein Testentwurfsverfahren, bei dem die Erfahrung und das Wissen des Testers genutzt wird, um das Auftreten von Fehlhandlungen, Fehlerzuständen und Fehlerwirkungen vorherzusagen.</p>
+  <p style="margin-top:0.4rem;"><strong>Dabei wird das Wissen des Testers zu folgenden Punkten verwendet:</strong></p>
+  <ol>
+    <li>Wie arbeitet das Softwaresystem?</li>
+    <li>Welche Fehlhandlungen kommen bei den Entwicklern häufig vor?</li>
+    <li>Welche Fehlhandlungen kommen in ähnlichen Systemen vor?</li>
+  </ol>
+</div>
+
+<!-- F09 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 09</span>
+    <span class="folie-titel">Intuitive Testfallermittlung: Fault-Attacks</span>
+  </div>
+  <p><strong>Fault-Attacks</strong> sind ein methodischer Ansatz zur Umsetzung der intuitiven Testfallermittlung.</p>
+  <p style="margin-top:0.35rem;">Der Tester erstellt oder beschafft eine Liste möglicher Fehlhandlungen, Fehlerzustände und Fehlerwirkungen und entwirft Tests, die Fehlerzustände aufdecken sollen, die mit diesen Fehlhandlungen in Zusammenhang stehen.</p>
+</div>
+
+<!-- F10 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 10</span>
+    <span class="folie-titel">Exploratives Testen</span>
+  </div>
+  <p><strong>Ziel:</strong> Mehr über das Produkt erfahren und ungetestete Bereiche identifizieren.</p>
+  <ul style="margin-top:0.35rem;">
+    <li>Exploratives Testen kann in zeitlich festgelegten Sitzungen (<strong>Timeboxes</strong>) erfolgen.</li>
+    <li>Es ist besonders nützlich, wenn nur wenige oder unzureichende Spezifikationen vorliegen oder ein erheblicher Zeitdruck besteht.</li>
+  </ul>
+</div>
+
+<!-- F11 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 11</span>
+    <span class="folie-titel">Checklistenbasiertes Testen</span>
+  </div>
+  <p>Checklisten können auf Grundlage von Erfahrungen und Wissen darüber, was für den Benutzer wichtig ist, oder einem Verständnis darüber, warum und wie Software versagt, erstellt werden.</p>
+  <p style="margin-top:0.35rem;">Wir erstellen eine Checkliste dessen, was getestet werden muss und was möglicherweise schiefgehen kann.</p>
+</div>
+
+<!-- F12 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 12</span>
+    <span class="folie-titel">Der Blackbox-Test</span>
+  </div>
+  <span class="tag-leer">Abschnittstitel · kein weiterer Inhalt</span>
+</div>
+
+<!-- F13 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 13</span>
+    <span class="folie-titel">Blackbox-Testentwurfsverfahren</span>
+  </div>
+  <ol>
+    <li>Äquivalenzklassenbildung</li>
+    <li>Grenzwertanalyse</li>
+    <li>Entscheidungstabellentest</li>
+    <li>Zustandsbasierter Test</li>
+  </ol>
+</div>
+
+<!-- F14 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 14</span>
+    <span class="folie-titel">Äquivalenzklassenbildung</span>
+  </div>
+  <p>Daten werden in Äquivalenzklassen unterteilt, basierend auf der Annahme, dass alle Elemente einer Klasse gleich behandelt werden.</p>
+  <p style="margin-top:0.35rem;">Daher reicht es aus, jeweils ein Beispiel aus jeder Äquivalenzklasse zu testen.</p>
+</div>
+
+</div>
+<div class="folien-col">
+
+<!-- F15 -->
+<div class="folie folie--wichtig folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 15</span>
+    <span class="folie-titel">Äquivalenzklassenbildung: Beispiel</span>
+  </div>
+  <div class="folie-text-neben-grafik folie-text-neben-grafik--zwei-spalten">
+    <div class="folie-text-neben-grafik__text">
+      <p><strong>Beispiel:</strong> Kostenloser Versand über 50 Euro</p>
+      <ul>
+        <li>&lt; 50 € → Versandkosten</li>
+        <li>&gt; 50 € → Versandkostenfrei</li>
+      </ul>
+    </div>
+    <figure class="folie-text-neben-grafik__fig">
+      <img src="../../assets/screenshots/Lektion3_screenshots/f15_aequivalenzklassenbildung_versandkosten.jpg" alt="Diagramm: Äquivalenzklassen am Beispiel Versandkosten — Schwellwert 50 Euro, gültige und ungültige Bereiche" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</div>
+
+<!-- F16 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 16</span>
+    <span class="folie-titel">Grenzwertanalyse</span>
+  </div>
+  <ul>
+    <li>Wir müssen die Grenzen unserer Äquivalenzklassen analysieren</li>
+    <li>Die Minimal- und Maximalwerte einer Äquivalenzklasse sind ihre Grenzwerte</li>
+    <li>Entwickler machen bei diesen Grenzwerten mit höherer Wahrscheinlichkeit Fehler</li>
+    <li>Deshalb müssen wir genau diese Werte testen</li>
+  </ul>
+</div>
+
+<!-- F17 -->
+<div class="folie folie--wichtig folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 17</span>
+    <span class="folie-titel">Grenzwertanalyse: Zwei-Werte-Methode</span>
+  </div>
+  <div class="folie-text-neben-grafik folie-text-neben-grafik--zwei-spalten">
+    <div class="folie-text-neben-grafik__text">
+      <p>Für jeden Grenzwert gibt es zwei Überdeckungselemente: den Grenzwert selbst und seinen nächstgelegenen Nachbarn, der zur angrenzenden Äquivalenzpartition gehört.</p>
+    </div>
+    <figure class="folie-text-neben-grafik__fig">
+      <img src="../../assets/screenshots/Lektion3_screenshots/f17_2-wert-gwa.jpg" alt="Diagramm: Zwei-Werte-Grenzwertanalyse an Partitionen — Grenzwert und angrenzender Nachbar je Partition" loading="lazy" decoding="async">
+    </figure>
+  </div>
+  <p class="note">Quelle: <a href="https://www.stickyminds.com/article/using-equivalence-partitioning-and-boundary-value-analysis-black-box-testing" target="_blank" rel="noopener noreferrer">stickyminds.com — Equivalence Partitioning and Boundary Value Analysis</a></p>
+</div>
+
+<!-- F18 -->
+<div class="folie folie--wichtig folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 18</span>
+    <span class="folie-titel">Grenzwertanalyse: Drei-Werte-Methode</span>
+  </div>
+  <div class="folie-text-neben-grafik folie-text-neben-grafik--zwei-spalten">
+    <div class="folie-text-neben-grafik__text">
+      <p>Für jeden Grenzwert gibt es drei Überdeckungselemente: den Grenzwert selbst und beide seiner Nachbarn. Daher sind bei der Drei-Werte-Grenzwertanalyse manche der Überdeckungselemente möglicherweise keine Grenzwerte.</p>
+    </div>
+    <figure class="folie-text-neben-grafik__fig">
+      <img src="../../assets/screenshots/Lektion3_screenshots/f18_3-wert-gwa.jpg" alt="Diagramm: Drei-Werte-Grenzwertanalyse — Grenzwert und beide Nachbarn je Partition" loading="lazy" decoding="async">
+    </figure>
+  </div>
+  <p class="note">Quelle: siehe Folie 17 (gleicher Artikel-Link).</p>
+</div>
+
+<!-- F19 -->
+<div class="folie folie--wichtig folie--grafik folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 19</span>
+    <span class="folie-titel">Entscheidungstabellen-Test</span>
+  </div>
+  <div class="folie-text-neben-grafik folie-text-neben-grafik--zwei-spalten">
+    <div class="folie-text-neben-grafik__text">
+      <p>Entscheidungstabellen werden verwendet, um die Umsetzung von Systemanforderungen zu testen, die festlegen, wie unterschiedliche Kombinationen von Bedingungen zu unterschiedlichen Aktionen führen.</p>
+      <p style="margin-top:0.35rem;"><strong>Elemente der Entscheidungstabelle:</strong></p>
+      <ul>
+        <li><strong>Zeilen:</strong> Bedingungen, Aktionen</li>
+        <li><strong>Spalten:</strong> Entscheidungsregeln</li>
+      </ul>
+    </div>
+    <figure class="folie-text-neben-grafik__fig">
+      <img src="../../assets/screenshots/Lektion3_screenshots/f19_entscheidungstabellentest.jpg" alt="Schematische Entscheidungstabelle: Bedingungen, Aktionen und Entscheidungsregeln als Spalten" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</div>
+
+<!-- F20 -->
+<div class="folie folie--wichtig folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 20</span>
+    <span class="folie-titel">Entscheidungstabellen-Test: Beispiel</span>
+  </div>
+  <div class="folie-text-neben-grafik folie-text-neben-grafik--zwei-spalten">
+    <div class="folie-text-neben-grafik__text">
+      <p>Wir müssen die Login-Seite testen. Gibt der Benutzer korrekte Zugangsdaten (Login und Passwort) ein, wird die Profilseite des Benutzers geöffnet. Sind Login oder Passwort falsch, erscheint eine Fehlermeldung.</p>
+    </div>
+    <figure class="folie-text-neben-grafik__fig">
+      <img src="../../assets/screenshots/Lektion3_screenshots/f20_entscheidungstabellentest.jpg" alt="Entscheidungstabelle: Login-Szenario mit Bedingungen Login und Passwort und Aktionen Profil bzw. Fehlermeldung" loading="lazy" decoding="async">
+    </figure>
+  </div>
+</div>
+
+<!-- F21 -->
+<div class="folie folie--wichtig folie--grafik folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 21</span>
+    <span class="folie-titel">Zustandsbasierter Test</span>
+  </div>
+  <div class="folie-text-neben-grafik folie-text-neben-grafik--zwei-spalten">
+    <div class="folie-text-neben-grafik__text">
+      <p>Ein Zustandsübergangsdiagramm modelliert das Verhalten eines Systems, indem es dessen mögliche Zustände und gültige Zustandsübergänge darstellt.</p>
+      <p class="note" style="margin-top:0.4rem;"><em>„Bitte bezieht euch auf den Online-Kurs, um ein tieferes Verständnis des Themas zu erlangen!“</em></p>
+    </div>
+    <figure class="folie-text-neben-grafik__fig">
+      <img src="../../assets/screenshots/Lektion3_screenshots/f21_zustandsbasierter-test.jpg" alt="Zustandsübergangsdiagramm: Zustände und erlaubte Übergänge eines Systems" loading="lazy" decoding="async">
+    </figure>
+  </div>
+  <p class="note">Quelle: <a href="https://testsigma.com/blog/state-transition-testing/" target="_blank" rel="noopener noreferrer">testsigma.com — State Transition Testing</a></p>
+</div>
+
+<!-- F22 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 22</span>
+    <span class="folie-titel">Whitebox-Tests</span>
+  </div>
+  <span class="tag-leer">Abschnittstitel · kein weiterer Inhalt</span>
+</div>
+
+<!-- F23 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 23</span>
+    <span class="folie-titel">Whitebox-Testverfahren</span>
+  </div>
+  <p>Fokus auf Code bzw. codebezogene Techniken:</p>
+  <ol>
+    <li>Anweisungstest</li>
+    <li>Zweigtest</li>
+  </ol>
+  <p class="note" style="margin-top:0.45rem;">Hinweis: Es gibt weitere Whitebox-Testtechniken auf höheren Ebenen, aber diese liegen außerhalb des Geltungsbereichs des ISTQB Foundation Level.</p>
+</div>
+
+<!-- F24 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 24</span>
+    <span class="folie-titel">Anweisungstest und Anweisungsüberdeckung</span>
+  </div>
+  <p>Das Ziel besteht darin, Testfälle so zu entwerfen, dass die Anweisungen im Code ausgeführt werden, bis ein akzeptables Maß an Anweisungsüberdeckung erreicht ist.</p>
+  <p style="margin-top:0.35rem;"><strong>Anweisungsüberdeckung</strong> = (Anzahl der ausgeführten Anweisungen / Gesamtanzahl der Anweisungen) × 100&nbsp;%</p>
+</div>
+
+<!-- F25 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 25</span>
+    <span class="folie-titel">Beispiel: Anweisungsüberdeckung</span>
+  </div>
+  <div class="folie-text-neben-grafik folie-text-neben-grafik--zwei-spalten folie-text-neben-grafik--code-liste">
+    <div class="folie-text-neben-grafik__text folie-text-neben-grafik__text--code">
+      <pre class="folie-code-block"><code>def calculate_sum(a, b):
+    if a &gt; b:
+        result = a + b
+    else:
+        result = a - b
+    return result</code></pre>
+    </div>
+    <div class="folie-text-neben-grafik__text folie-text-neben-grafik__text--analyse">
+      <ul>
+        <li>Wie viele Anweisungen? Insgesamt <strong>5</strong> (Definition, Bedingung, beide Zuweisungen, <code>return</code>).</li>
+        <li>Testfall <strong>A = 7, B = 5</strong>: Bedingung wahr → <code>else</code> wird nicht ausgeführt.</li>
+        <li>Ausgeführte Anweisungen: <strong>3 von 5</strong> → <strong>60&nbsp;%</strong> Anweisungsüberdeckung.</li>
+        <li>Für <strong>100&nbsp;%</strong> mindestens zwei Testfälle (if- und else-Zweig), z. B. <strong>A = 4, B = 1</strong> und <strong>A = 1, B = 4</strong>.</li>
+      </ul>
+    </div>
+  </div>
+  <p class="note" style="margin-top:0.45rem;">Redaktion: Original war auf mehrere Folien verteilt und enthielt einen Zählfehler — hier eine durchgängige Fassung.</p>
+</div>
+
+</div>
+<div class="folien-col">
+
+<!-- F26 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 26</span>
+    <span class="folie-titel">Zweigtest und Zweigüberdeckung</span>
+  </div>
+  <p>Ein <strong>Zweig</strong> ist eine Kontrollflussverzweigung zwischen zwei Knoten im Kontrollflussgraphen, der die möglichen Abläufe zeigt, in denen Quellcode-Anweisungen im Testobjekt ausgeführt werden.</p>
+  <p style="margin-top:0.35rem;">Die <strong>Zweigüberdeckung</strong> ist ein Maß dafür, wie viel Prozent der Zweige (Entscheidungspunkte im Quellcode) während des Testprozesses ausgeführt wurden.</p>
+</div>
+
+<!-- F27 -->
+<div class="folie folie--wichtig folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 27</span>
+    <span class="folie-titel">Beispiel: Zweigüberdeckung</span>
+  </div>
+  <div class="folie-text-neben-grafik folie-text-neben-grafik--zwei-spalten folie-text-neben-grafik--code-liste">
+    <div class="folie-text-neben-grafik__text folie-text-neben-grafik__text--code">
+      <pre class="folie-code-block"><code>Read A
+Read B
+IF A + B &gt; 10 THEN
+    print "A + B is large"
+ENDIF
+
+IF A &gt; 5 THEN
+    print "A large"
+ENDIF</code></pre>
+    </div>
+    <div class="folie-text-neben-grafik__text folie-text-neben-grafik__text--analyse">
+      <ul>
+        <li><strong>Ziel:</strong> Alle möglichen Wahr/Falsch-Entscheidungen abdecken.</li>
+        <li><strong>Zweige:</strong> Zwei unabhängige IF-Blöcke mit je true/false → <strong>4 Zweige</strong>.</li>
+        <li>Kein einzelner Testfall deckt alle Zweige ab — mindestens <strong>zwei Testfälle</strong> nötig.</li>
+        <li><strong>Testfall 1:</strong> (1) 1A → 2C → 3D → E → 4G → 5H</li>
+        <li><strong>Testfall 2:</strong> (2) 1A → 2B → E → 4F</li>
+        <li><strong>Ergebnis:</strong> 100&nbsp;% Zweigüberdeckung.</li>
+      </ul>
+    </div>
+  </div>
+  <figure class="folie-grafik" style="margin-top:0.45rem;">
+    <img src="https://www.tutorialspoint.com/software_testing_dictionary/images/branch_testing.jpg" alt="Kontrollflussgraf zum Zweigtest (schematisch)" loading="lazy" decoding="async" width="400" height="220">
+  </figure>
+  <p class="note">Grafik / Kontext: <a href="https://www.tutorialspoint.com/software_testing_dictionary/branch_testing.htm" target="_blank" rel="noopener noreferrer">tutorialspoint.com — Branch Testing</a> · externe Abbildung kann sich ändern.</p>
+  <p class="note" style="margin-top:0.35rem;">Redaktion: Originalinhalt war auf drei Folien verteilt — hier zusammengefasst.</p>
+</div>
+
+<!-- F28 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 28</span>
+    <span class="folie-titel">Der Nutzen von Whitebox-Tests</span>
+  </div>
+  <p><strong>Vorteile:</strong></p>
+  <ol>
+    <li>Die gesamte Softwareimplementierung wird berücksichtigt</li>
+    <li>Wird im statischen Test eingesetzt, z. B. zur Überprüfung von Code, der noch nicht ausführbar ist</li>
+    <li>Liefert eine objektive Messung der Überdeckung</li>
+  </ol>
+  <p style="margin-top:0.45rem;"><strong>Wichtiger Nachteil:</strong> Wenn die Software eine oder mehrere Anforderungen nicht implementiert, kann Whitebox-Testing die daraus resultierenden Auslassungsfehler möglicherweise nicht erkennen.</p>
+  <p style="margin-top:0.35rem;"><strong>Weiterer Nachteil:</strong> Whitebox-Tests erkennen nicht immer datenbezogene Fehler (z. B. Division durch Null), insbesondere bei speziellen Randbedingungen.</p>
+</div>
+
+<!-- F29 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 29</span>
+    <span class="folie-titel">Abnahmekriterien</span>
+  </div>
+  <span class="tag-leer">Abschnittstitel · kein weiterer Inhalt</span>
+</div>
+
+<!-- F30 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 30</span>
+    <span class="folie-titel">Auf Zusammenarbeit basierender Testansatz</span>
+  </div>
+  <p>Ziel ist es nicht nur, Fehlerzustände zu entdecken, sondern sie durch Zusammenarbeit und Kommunikation zu vermeiden.</p>
+</div>
+
+<!-- F31 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 31</span>
+    <span class="folie-titel">Abnahmekriterien</span>
+  </div>
+  <p>Abnahmekriterien werden verwendet, um:</p>
+  <ol>
+    <li>Den Umfang der User Story zu definieren</li>
+    <li>Einen Konsens zwischen den Stakeholdern zu erzielen</li>
+    <li>Sowohl positive als auch negative Szenarien zu beschreiben</li>
+    <li>Als Grundlage für den Abnahmetest der User Story zu dienen</li>
+    <li>Eine präzise Planung und Aufwandschätzung zu ermöglichen</li>
+  </ol>
+</div>
+
+<!-- F32 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 32</span>
+    <span class="folie-titel">Akzeptanzgetriebene Entwicklung (ATDD)</span>
+  </div>
+  <p><strong>ATDD</strong> ist ein testgetriebener Ansatz. Testfälle werden vor der Implementierung der User Story erstellt.</p>
+  <p style="margin-top:0.35rem;"><strong>Schritte der ATDD:</strong></p>
+  <ol>
+    <li>Analyse der User Story und der Abnahmekriterien</li>
+    <li>Erstellung von Testfällen (normalerweise zuerst positive, dann negative)</li>
+    <li>Abdeckung nicht-funktionaler Qualitätsmerkmale</li>
+  </ol>
+  <p class="note" style="margin-top:0.4rem;">Die Testfälle müssen alle Merkmale der User Story abdecken, dürfen aber nicht über den Umfang der Story hinausgehen.</p>
+</div>
+
+<!-- F33 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 33</span>
+    <span class="folie-titel">Hausaufgaben</span>
+  </div>
+  <span class="tag-leer">Abschnittstitel · kein weiterer Inhalt</span>
+</div>
+
+<!-- F34 -->
+<div class="folie folie--wichtig folie--adv-kopf-dunkel">
+  <div class="folie-header">
+    <span class="folie-nr">F 34</span>
+    <span class="folie-titel">Hausaufgabe 1</span>
+  </div>
+  <p><strong>Thema:</strong> 100&nbsp;% Zwei-Werte-Grenzwertanalyse — Versandkosten</p>
+  <p class="note" style="margin-top:0.4rem;">Ausführung und Abgabe im QA-Repo unter <code>03_Hausaufgaben/</code> (konkrete Aufgabenstellung dort bzw. im Kurs).</p>
+</div>
+
+<!-- F35 -->
+<div class="folie folie--wichtig folie--adv-kopf-dunkel">
+  <div class="folie-header">
+    <span class="folie-nr">F 35</span>
+    <span class="folie-titel">Hausaufgabe 2</span>
+  </div>
+  <p><strong>Thema:</strong> Anwendung des ATDD-Ansatzes</p>
+  <p style="margin-top:0.35rem;"><strong>Szenario:</strong> Hotelbesitzer reserviert alle Zimmer einer Etage, bevor er zur nächsten übergeht, um die Effizienz des Reinigungspersonals zu maximieren.</p>
+  <p class="note" style="margin-top:0.4rem;">Ausführung und Abgabe im QA-Repo unter <code>03_Hausaufgaben/</code>.</p>
+</div>
+
+</div>
+</div><!-- end folien-cols -->
+
+</main>
+
+<footer>
+  <p class="source-note">Lektion 3 · Folien Masterschool · Testanalyse &amp; Testentwurf · Kursrohdaten · Stand: 07.04.2026</p>
+</footer>
+
+</body>
+</html>

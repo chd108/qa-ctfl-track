@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../assets/qa-favicon-256.png" type="image/png">
+  <meta name="description" content="Lektion 5 — Testentwurfsverfahren: detaillierte Betrachtung (Masterschool-Folien, HTML-Erfassung).">
+  <link rel="stylesheet" href="../../assets/css/base.css?v=folien-5-36">
+  <link rel="stylesheet" href="../../assets/css/subpage.css?v=folien-5-36">
+  <link rel="stylesheet" href="../../assets/css/folien-lektion.css?v=folien-5-36">
+  <title>Lektion 5 – Testentwurfsverfahren (detaillierte Betrachtung)</title>
+</head>
+<body class="folien-lektion folien-lektion--l5">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <div class="top-nav-zone__brand-row">
+    <div class="top-nav-zone__nav-stack">
+      <nav class="main-nav folien-lektion-nav" aria-label="QA Lernwebseite und aktuelle Folien-Lektion">
+    <ul>
+      <li><a href="../../index.html" class="main-nav__home" aria-label="Zur Startseite QA Lernwebseite"><img class="main-nav__home-img" src="../../assets/qa-favicon-256.png" alt="" width="48" height="48" decoding="async"></a></li>
+      <li><a href="lektion1-grundlagen.html">Lektion 1 — Grundlagen</a></li>
+      <li><a href="lektion2-sdlc-statisches-testen.html">Lektion 2 — SDLC &amp; Statisches Testen</a></li>
+      <li><a href="lektion3-testanalyse-testentwurf.html">Lektion 3 — Testanalyse &amp; Testentwurf</a></li>
+      <li><a href="lektion4-testverfahren-vertiefung.html">Lektion 4 — Testverfahren (Vertiefung)</a></li>
+      <li><a href="lektion5-testentwurfsverfahren.html" aria-current="page">Lektion 5 — Testentwurfsverfahren</a></li>
+      <li><a href="lektion6-testprozess-testanalyse-testplanung.html">Lektion 6 — Testprozess (Testanalyse &amp; Testplanung)</a></li>
+      <li><a href="lektion7-testfallentwurf.html">Lektion 7 — Testfallentwurf</a></li>
+      <li><a href="lektion8-testumgebung-durchfuehrung-bericht.html">Lektion 8 — Testumgebungen · Durchführung · Bericht</a></li>
+    </ul>
+  </nav>
+    </div>
+  </div>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Lektion 5 – Testentwurfsverfahren (detaillierte Betrachtung)</h1>
+    <p>Folien Masterschool · Überdeckung, Erfahrungsbasiertes Testen · Aufbereitung aus Kursfolien · Stand: 07.04.2026</p>
+  </header>
+</div>
+
+<main id="main" class="folien-lektion__main">
+
+  <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Lernmaterial mit Bezug zum ISTQB CTFL Lehrplan (Syllabus)"></span>
+    <span><strong>Artefakt:</strong> Masterschool · 16 Folien Lektion 5 · HTML-Erfassung</span>
+    <span><strong>CTFL-Bezug:</strong> Überdeckung (Anweisung/Zweig), erfahrungsbasierte Techniken, Blackbox-Vertiefung (Auszug)</span>
+    <span><strong>Hinweis:</strong> Aufbereitung aus Kursrohdaten; Inhalt gegenüber der früheren Fassung didaktisch neu strukturiert.</span>
+  </div>
+
+  <div class="legend" role="region" aria-label="Legende Folientypen">
+    <span class="legend__item"><span class="legend__swatch legend__swatch--ctfl" aria-hidden="true"></span>Wichtige Lernfolie</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--praxis" aria-hidden="true"></span>Grafik vorhanden</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--neutral" aria-hidden="true"></span>Titelfolie / kein Lerninhalt</span>
+  </div>
+
+<div class="folien-cols">
+<div class="folien-col">
+
+<!-- F01 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 01</span>
+    <span class="folie-titel">Testentwurfsverfahren — detaillierte Betrachtung</span>
+  </div>
+  <span class="tag-leer">Titelfolie · kein Lerninhalt</span>
+</div>
+
+<!-- F02 -->
+<div class="folie">
+  <div class="folie-header">
+    <span class="folie-nr">F 02</span>
+    <span class="folie-titel">Agenda</span>
+  </div>
+  <ol class="folie-glieder-list folie-glieder-list--agenda folie-glieder-list--agenda-haupt">
+    <li>
+      Rückblick: Zustandsbasierter Test <span class="folie-glieder-list__range">F 03</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Rückblick: Zustandsbasierter Test <span class="folie-glieder-list__range">F 04</span></li>
+      </ul>
+    </li>
+    <li>
+      Überdeckung im Zustandsmodell <span class="folie-glieder-list__range">F 05</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Anweisungsüberdeckung: Theorie + Beispiel <span class="folie-glieder-list__range">F 06</span></li>
+        <li>Zweigüberdeckung: Theorie und Beispiel: Login-System <span class="folie-glieder-list__range">F 07–08</span></li>
+        <li>Unterschied: Anweisungs- vs. Zweigüberdeckung <span class="folie-glieder-list__range">F 09</span></li>
+      </ul>
+    </li>
+    <li>
+      Erfahrungsbasiertes Testen <span class="folie-glieder-list__range">F 10</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Erfahrungsbasiertes Testen: Exploratives Testen <span class="folie-glieder-list__range">F 11</span></li>
+        <li>Erfahrungsbasiertes Testen: Intuitive Testfallermittlung <span class="folie-glieder-list__range">F 12</span></li>
+      </ul>
+    </li>
+    <li>
+      Praxis &amp; Abschluss <span class="folie-glieder-list__range">F 13</span>
+      <ul class="folie-glieder-list__sub">
+        <li>Praktische Übung: Fehlercheckliste <span class="folie-glieder-list__range">F 14</span></li>
+        <li>Zusammenfassung: Alle Testtechniken im Überblick <span class="folie-glieder-list__range">F 15</span></li>
+        <li>Hausaufgaben <span class="folie-glieder-list__range">F 16</span></li>
+      </ul>
+    </li>
+    <li>
+      Zusammenfassung
+      <ul class="folie-glieder-list__sub">
+        <li class="folie-glieder-list__sub--meta">Mündlich · ohne Folie</li>
+      </ul>
+    </li>
+  </ol>
+</div>
+
+<!-- F03 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 03</span>
+    <span class="folie-titel">Rückblick: Zustandsbasierter Test</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F04 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 04</span>
+    <span class="folie-titel">Rückblick: Zustandsbasierter Test</span>
+  </div>
+  <p><strong>Was haben wir in der letzten Sitzung gelernt?</strong></p>
+  <p style="margin-top:0.3rem;">Ein Zustandsübergangsdiagramm modelliert das Verhalten eines Systems durch:</p>
+  <ul>
+    <li>Zustand → Ereignis → Übergang → Aktion</li>
+  </ul>
+  <p style="margin-top:0.45rem;"><strong>Heute vertiefen wir das Thema mit zwei Arten der Überdeckung:</strong></p>
+  <ul>
+    <li><strong>Anweisungsüberdeckung:</strong> Wurden alle Zustände mindestens einmal durchlaufen?</li>
+    <li><strong>Zweigüberdeckung:</strong> Wurden alle Übergänge (Zweige) mindestens einmal getestet?</li>
+  </ul>
+</div>
+
+<!-- F05 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 05</span>
+    <span class="folie-titel">Überdeckung im Zustandsmodell</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F06 -->
+<div class="folie folie--wichtig folie--grafik folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 06</span>
+    <span class="folie-titel">Anweisungsüberdeckung: Theorie + Beispiel</span>
+  </div>
+  <p><strong>Definition</strong></p>
+  <p style="margin-top:0.3rem;">Stelle sicher, dass alle Zustände (Anweisungen) im Zustandsübergangsdiagramm mindestens einmal durchlaufen werden.</p>
+  <p style="margin-top:0.45rem;"><strong>Testszenario: Login-System</strong></p>
+  <p style="margin-top:0.25rem;">Zustände: Start | Benutzername eingeben | Passwort eingeben | Eingeloggt | Fehler</p>
+  <div class="folie-text-neben-grafik folie-text-neben-grafik--zwei-spalten folie-text-neben-grafik--spalten-ausgewogen">
+    <div class="folie-text-neben-grafik__text folie-text-neben-grafik__text--code">
+      <p><strong>Code des Login-Systems</strong></p>
+      <pre class="folie-code-block"><code>startLogin()
+...
+disableContinueButton()
+var username = getUsername()
+requestPassword(username)
+...
+if(password == "neverUsePlaintextPwds")
+{ loginUser()
+  showProfileButton()
+}
+else {
+    showError()
+}
+...
+navigateHome()
+logoutUser()
+...</code></pre>
+    </div>
+    <div class="folie-text-neben-grafik__text folie-text-neben-grafik__text--analyse">
+      <p><strong>Testfälle für 100&nbsp;% Anweisungsüberdeckung</strong></p>
+      <ol>
+        <li>Start → Benutzername eingeben</li>
+        <li>Benutzername eingeben → Passwort eingeben</li>
+        <li>Passwort eingeben → Eingeloggt</li>
+        <li>Passwort eingeben → Fehler</li>
+        <li>Fehler → Passwort eingeben</li>
+        <li>Eingeloggt → Start</li>
+      </ol>
+    </div>
+  </div>
+  <figure class="folie-diagram folie-diagram--gap-after" aria-labelledby="cap-l5-f06-login">
+    <figcaption class="folie-diagram__caption" id="cap-l5-f06-login">Login-System · <strong>Anweisungsüberdeckung</strong> — <strong>Zustände</strong> farbig hervorgehoben (Fokus); Übergänge einheitlich neutral.</figcaption>
+    <div class="folie-diagram__frame folie-diagram__frame--login">
+      <img src="../../assets/Lektion5_f03_zustandsuebergangsdiagramm_login_anweisungsueberdeckung.svg?v=l5-f03-diagram-shift-2" alt="Login Zustandsdiagramm: Zustände hervorgehoben, Pfeile neutral — Anweisungsüberdeckung" width="680" height="400" decoding="async" loading="lazy">
+    </div>
+    <p class="folie-diagram__caption folie-diagram__caption--after-frame">Hier zählt: jeder <strong>Zustand</strong> mindestens einmal — nicht jeder einzelne Pfeil.</p>
+  </figure>
+  <p style="margin-top:0.45rem;"><strong>Ablaufpfade</strong></p>
+  <ul>
+    <li><strong>Pfad 1 (Erfolg):</strong> Start → Benutzername eingeben → Passwort eingeben → Eingeloggt → Start</li>
+    <li><strong>Pfad 2 (Fehler):</strong> Start → Benutzername eingeben → Passwort eingeben → Fehler → Passwort eingeben</li>
+  </ul>
+</div>
+
+</div>
+<div class="folien-col">
+
+<!-- F07 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 07</span>
+    <span class="folie-titel">Zweigüberdeckung: Theorie + Beispiel</span>
+  </div>
+  <p><strong>Definition</strong></p>
+  <p style="margin-top:0.3rem;">Stelle sicher, dass alle Übergänge (Zweige) zwischen den Zuständen mindestens einmal getestet werden. Zweigüberdeckung ist strenger als Anweisungsüberdeckung.</p>
+  <p style="margin-top:0.45rem;"><strong>Testfälle für 100&nbsp;% Zweigüberdeckung (Login-System)</strong></p>
+  <ol>
+    <li>Start → Benutzername eingeben</li>
+    <li>Benutzername eingeben → Passwort eingeben</li>
+    <li>Passwort eingeben → Eingeloggt</li>
+    <li>Passwort eingeben → Fehler</li>
+    <li>Fehler → Passwort eingeben</li>
+    <li>Eingeloggt → Start</li>
+    <li>Passwort eingeben → Fehler → Eingeloggt → Start</li>
+  </ol>
+  <p class="note" style="margin-top:0.35rem;">Testfall 7 stellt sicher, dass auch der Übergang nach einem Fehler zurück zum erfolgreichen Login abgedeckt ist — dieser Pfad wird bei der reinen Anweisungsüberdeckung möglicherweise übersehen.</p>
+</div>
+
+<!-- F08 -->
+<div class="folie folie--wichtig folie--grafik">
+  <div class="folie-header">
+    <span class="folie-nr">F 08</span>
+    <span class="folie-titel">Vollständiges Beispiel: Login-System</span>
+  </div>
+  <figure class="folie-diagram folie-diagram--gap-after" aria-labelledby="cap-l5-f08-login">
+    <figcaption class="folie-diagram__caption" id="cap-l5-f08-login">Login-System · <strong>Zweigüberdeckung</strong> — <strong>nummerierte Übergänge</strong> (teal) = jeder Pfeil zählt; Zustände neutral.</figcaption>
+    <div class="folie-diagram__frame folie-diagram__frame--login">
+      <img src="../../assets/Lektion5_f05_zustandsuebergangsdiagramm_login_zweiguberdeckung.svg?v=l5-f05-diagram-shift-1" alt="Login Zustandsdiagramm: sechs nummerierte Übergänge hervorgehoben — Zweigüberdeckung" width="680" height="400" decoding="async" loading="lazy">
+    </div>
+    <p class="folie-diagram__caption folie-diagram__caption--after-frame">Passt zu F 07: alle <strong>Zweige</strong> (hier 1–6) mindestens einmal testen — strenger als reine Anweisungsüberdeckung.</p>
+  </figure>
+  <div class="folie-doppelspalte-listen">
+    <div class="folie-doppelspalte-listen__col">
+      <p><strong>Zustände (5)</strong></p>
+      <ul>
+        <li>Start</li>
+        <li>Benutzername eingeben</li>
+        <li>Passwort eingeben</li>
+        <li>Eingeloggt</li>
+        <li>Fehler</li>
+      </ul>
+    </div>
+    <div class="folie-doppelspalte-listen__col">
+      <p><strong>Übergänge (6)</strong></p>
+      <ol>
+        <li>Start → Benutzername eingeben: Benutzer startet Eingabe</li>
+        <li>Benutzername eingeben → Passwort: Benutzername übermittelt</li>
+        <li>Passwort → Eingeloggt: Korrektes Passwort eingegeben</li>
+        <li>Passwort → Fehler: Falsches Passwort eingegeben</li>
+        <li>Fehler → Passwort: Erneut versuchen</li>
+        <li>Eingeloggt → Start: Abmelden (Annahme)</li>
+      </ol>
+    </div>
+  </div>
+  <p style="margin-top:0.45rem;"><strong>Zustandsübergangstabelle</strong></p>
+  <table>
+    <thead>
+      <tr>
+        <th>Aktueller Zustand</th>
+        <th>Ereignis</th>
+        <th>Nächster Zustand</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>Start</td><td>Benutzer startet</td><td>Benutzername eingeben</td></tr>
+      <tr><td>Benutzername eingeben</td><td>Name übermittelt</td><td>Passwort eingeben</td></tr>
+      <tr><td>Passwort eingeben</td><td>Korrektes Passwort</td><td>Eingeloggt</td></tr>
+      <tr><td>Passwort eingeben</td><td>Falsches Passwort</td><td>Fehler</td></tr>
+      <tr><td>Fehler</td><td>Erneut versuchen</td><td>Passwort eingeben</td></tr>
+      <tr><td>Eingeloggt</td><td>Abmelden</td><td>Start</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- F09 -->
+<div class="folie folie--wichtig folie--grafik folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 09</span>
+    <span class="folie-titel">Unterschied: Anweisungs- vs. Zweigüberdeckung</span>
+  </div>
+  <p><strong>Was ist der Unterschied?</strong></p>
+  <div class="folie-doppelspalte-listen folie-doppelspalte-listen--code-analyse">
+    <div class="folie-doppelspalte-listen__col">
+      <p><strong>Codebeispiel</strong></p>
+      <pre class="folie-code-block"><code>if (condition) {
+    if (condition2) {
+        System.out.println("Hey!");
+    }
+}</code></pre>
+    </div>
+    <div class="folie-doppelspalte-listen__col">
+      <p><strong>Analyse</strong></p>
+      <ul>
+        <li><code>true</code>, <code>true</code> → <code>"Hey!"</code> wird ausgeführt → 100&nbsp;% Anweisungsüberdeckung</li>
+        <li><code>true</code>, <code>false</code> → keine Anweisung im inneren Block wird ausgeführt</li>
+      </ul>
+    </div>
+  </div>
+  <p style="margin-top:0.45rem;">Mit nur dem Testfall (<code>true</code>, <code>true</code>) wurden alle Anweisungen ausgeführt — aber der Zweig (<code>true</code>, <code>false</code>) wurde nie getestet!</p>
+  <hr class="folie-pause-line" aria-hidden="true">
+  <div class="folie-doppelspalte-listen folie-doppelspalte-listen--diagramm-merksaetze">
+    <div class="folie-doppelspalte-listen__col">
+      <figure class="folie-diagram folie-diagram--f06-venn-kompakt" role="img" aria-label="Zweigüberdeckung umfasst Anweisungsüberdeckung: größeres Oval für Zweig, kleineres für Anweisung">
+        <figcaption class="folie-diagram__caption">Überdeckung · Zweigüberdeckung schließt Anweisungsüberdeckung ein</figcaption>
+        <div class="folie-diagram__frame folie-diagram__frame--f06-venn">
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 140" aria-hidden="true">
+            <ellipse cx="160" cy="72" rx="124" ry="60" fill="rgba(42,84,124,0.08)" stroke="currentColor" stroke-width="1.35"/>
+            <ellipse cx="160" cy="72" rx="86" ry="27" fill="rgba(255,255,255,0.75)" stroke="currentColor" stroke-width="1.2"/>
+            <text x="160" y="36" text-anchor="middle" font-size="13" font-family="system-ui, Segoe UI, sans-serif" fill="currentColor">Zweigüberdeckung</text>
+            <text x="160" y="72" text-anchor="middle" dominant-baseline="middle" font-size="12" font-family="system-ui, Segoe UI, sans-serif" fill="currentColor">Anweisungsüberdeckung</text>
+          </svg>
+        </div>
+      </figure>
+    </div>
+    <div class="folie-doppelspalte-listen__col">
+      <p><strong>Merksätze</strong></p>
+      <ul>
+        <li>Anweisungsüberdeckung garantiert <strong>keine</strong> Zweigüberdeckung!</li>
+        <li>100&nbsp;% Zweigüberdeckung garantiert 100&nbsp;% Anweisungsüberdeckung!</li>
+      </ul>
+      <p style="margin-top:0.35rem;">Zweigüberdeckung ist die stärkere der beiden Methoden.</p>
+    </div>
+  </div>
+</div>
+
+</div>
+<div class="folien-col">
+
+<!-- F10 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 10</span>
+    <span class="folie-titel">Erfahrungsbasiertes Testen</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F11 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 11</span>
+    <span class="folie-titel">Erfahrungsbasiertes Testen: Exploratives Testen</span>
+  </div>
+  <p><strong>Was ist es?</strong></p>
+  <p style="margin-top:0.3rem;">Ziel: Mehr über das Produkt lernen und ungetestete Bereiche entdecken.</p>
+  <p style="margin-top:0.35rem;">Exploratives Testen kann in zeitlich begrenzten Sessions (Timeboxes) durchgeführt werden.</p>
+  <p style="margin-top:0.45rem;"><strong>Wann einsetzen?</strong></p>
+  <ul>
+    <li>Wenn nur wenige oder unzureichende Spezifikationen vorliegen</li>
+    <li>Bei erheblichem Zeitdruck</li>
+    <li>Zur Ergänzung strukturierter Testverfahren</li>
+  </ul>
+  <p style="margin-top:0.45rem;"><strong>Unterschied zu strukturierten Tests</strong></p>
+  <p style="margin-top:0.25rem;">Beim explorativen Testen werden Testplanung und Testdurchführung gleichzeitig durchgeführt — der Tester lernt das System während des Testens kennen und passt seine Tests laufend an.</p>
+</div>
+
+<!-- F12 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 12</span>
+    <span class="folie-titel">Erfahrungsbasiertes Testen: Intuitive Testfallermittlung</span>
+  </div>
+  <p><strong>Was ist es?</strong></p>
+  <p style="margin-top:0.3rem;">Der Tester nutzt Erfahrung und Intuition, um Fehlerzustände vorherzusagen und gezielt zu testen.</p>
+  <p style="margin-top:0.45rem;"><strong>Wann einsetzen?</strong></p>
+  <ol>
+    <li>Nach strukturiertem Testen — um weitere übersehene Befunde aufzudecken</li>
+    <li>Während des explorativen Testens</li>
+    <li>Bei begrenztem Zeitrahmen</li>
+  </ol>
+  <p style="margin-top:0.45rem;"><strong>Unterschied zum explorativen Testen</strong></p>
+  <ul>
+    <li><strong>Exploratives Testen:</strong> offen, lernend, ohne vordefinierten Plan</li>
+    <li><strong>Intuitive Testfallermittlung:</strong> gezielt, basierend auf bekannten Fehlermustern und Erfahrungswissen</li>
+  </ul>
+  <p style="margin-top:0.35rem;">Beide ergänzen sich und gehören zur Kategorie des erfahrungsbasierten Testens.</p>
+</div>
+
+<!-- F13 -->
+<div class="folie folie--leer folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 13</span>
+    <span class="folie-titel">Praxis &amp; Abschluss</span>
+  </div>
+  <span class="tag-leer">Abschnittsfolie · kein weiterer Inhalt</span>
+</div>
+
+<!-- F14 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 14</span>
+    <span class="folie-titel">Praktische Übung: Fehlercheckliste</span>
+  </div>
+  <p><strong>Szenario</strong></p>
+  <p style="margin-top:0.25rem;">Der erste Entwurf der Webseite MarketMade muss heute in die Produktion überführt werden. Alles wurde getestet — außer der wichtigsten neuen Funktion: der „In den Warenkorb“-Funktionalität.</p>
+  <p style="margin-top:0.45rem;"><strong>Aufgabe</strong></p>
+  <p style="margin-top:0.25rem;">Erstelle eine Fehlercheckliste, die anschließend unter deinen Kollegen aufgeteilt und getestet wird.</p>
+  <p style="margin-top:0.45rem;"><strong>Vorgehen</strong></p>
+  <ol>
+    <li>Nimm ein Notizbuch oder schreibe am Laptop mit</li>
+    <li>Öffne die Testseite: <a href="https://grocerymate.masterschool.com/" target="_blank" rel="noopener noreferrer">grocerymate.masterschool.com</a></li>
+    <li>Nehmt euch 10 Minuten, schreibt eure Liste und besprecht das Ergebnis mit dem Mentor</li>
+    <li>Achtung: Die Tests erst in einem zweiten Schritt durchführen!</li>
+  </ol>
+  <p style="margin-top:0.45rem;"><strong>Nach der Übung</strong></p>
+  <ul>
+    <li>Führe einige Tests aus deiner Fehlercheckliste durch</li>
+    <li>Hast du Fehler gefunden?</li>
+  </ul>
+</div>
+
+<!-- F15 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 15</span>
+    <span class="folie-titel">Zusammenfassung: Alle Testtechniken im Überblick</span>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Technik</th><th>Art</th><th>Wann einsetzen</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>Äquivalenzklassenbildung</td><td>Blackbox</td><td>Viele mögliche Eingaben, klare Partitionen</td></tr>
+      <tr><td>Grenzwertanalyse</td><td>Blackbox</td><td>Zahlenbereiche, Off-by-One-Fehler</td></tr>
+      <tr><td>Entscheidungstabellentest</td><td>Blackbox</td><td>Mehrere Bedingungen, kombinierte Regeln</td></tr>
+      <tr><td>Zustandsbasierter Test</td><td>Blackbox</td><td>Systemverhalten je nach Zustand</td></tr>
+      <tr><td>Anweisungsüberdeckung</td><td>Whitebox</td><td>Alle Zustände/Anweisungen abdecken</td></tr>
+      <tr><td>Zweigüberdeckung</td><td>Whitebox</td><td>Alle Übergänge/Zweige abdecken</td></tr>
+      <tr><td>Exploratives Testen</td><td>Blackbox</td><td>Wenig Spezifikation, Zeitdruck</td></tr>
+      <tr><td>Intuitive Testfallermittlung</td><td>Blackbox</td><td>Ergänzung strukturierter Tests</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.45rem;"><strong>Was wir in dieser Lektion gelernt haben</strong></p>
+  <ul>
+    <li>Zwei Arten der Überdeckung im zustandsbasierten Testen</li>
+    <li>Den Unterschied zwischen Anweisungs- und Zweigüberdeckung</li>
+    <li>Erfahrungsbasiertes Testen in der Praxis angewendet</li>
+  </ul>
+</div>
+
+<!-- F16 -->
+<div class="folie folie--wichtig folie--adv-kopf-dunkel">
+  <div class="folie-header">
+    <span class="folie-nr">F 16</span>
+    <span class="folie-titel">Hausaufgaben</span>
+  </div>
+  <p><strong>Hausaufgabe 1: Zustandsübergangstest — ATM</strong></p>
+  <p style="margin-top:0.3rem;"><strong>Szenario:</strong> Geldautomat (ATM). Der Benutzer sieht zunächst den Startbildschirm, danach den „Warten auf PIN“-Bildschirm. Er hat drei Versuche. Bei korrekter PIN erhält er Zugang zum Konto. Bei zu vielen Fehlversuchen wird die Karte einbehalten.</p>
+  <p style="margin-top:0.35rem;"><strong>Aufgaben:</strong></p>
+  <ol>
+    <li>Bestimme die Zustände, Übergänge und Ereignisse</li>
+    <li>Erstelle die Zustandsübergangstabelle</li>
+    <li>Erstelle das Zustandsübergangsdiagramm</li>
+  </ol>
+  <p style="margin-top:0.35rem;"><a href="https://masterschool.notion.site/Take-home-assignment-a1563a1d94684f5680a5db539fe3aec1" target="_blank" rel="noopener noreferrer">Aufgabe (Englisch)</a> · <a href="https://masterschool.notion.site/1-Hausaufgabe-Zustands-bergangstest-2219418319f380e6ad92e72ae1e9a21c" target="_blank" rel="noopener noreferrer">Aufgabe (Deutsch)</a></p>
+  <p style="margin-top:0.55rem;"><strong>Hausaufgabe 2: Überdeckung berechnen</strong></p>
+  <p style="margin-top:0.3rem;"><strong>Szenario:</strong> Ein Entwickler fragt dich, ob seine Unit-Tests seinen gesamten Code abdecken. Zur Vereinfachung wurde ein Teil des Codes durch <code>println("Anweisung x")</code> ersetzt.</p>
+  <p style="margin-top:0.35rem;"><strong>Aufgaben:</strong></p>
+  <ol>
+    <li>Zeichne ein Zustandsübergangsdiagramm für diesen Codeteil</li>
+    <li>Berechne die Anweisungsüberdeckung und die Zweigüberdeckung</li>
+    <li>Berechne beides erneut — ohne die Zeile <code>print("Zusätzliche Anweisung 5")</code></li>
+  </ol>
+  <p style="margin-top:0.35rem;"><a href="https://masterschool.notion.site/1-Hausaufgabe-Zustands-bergangstest-2219418319f380e6ad92e72ae1e9a21c" target="_blank" rel="noopener noreferrer">Aufgabe (Deutsch)</a> <span style="color:var(--soft);">(Teil 1 = Zustandsübergangstest / Teil 2 = Überdeckung)</span></p>
+  <p class="note" style="margin-top:0.4rem;">Im Original war ein falscher Link zur Beispielaufgabe verlinkt; korrekt ist die deutschsprachige Seite oben. Der alte Link: <span style="word-break:break-all;">masterschool.notion.site/Beispielaufgabe-Zustands-bergangstest-berdeckung-2219418319f380bcb362e37dfdc07e98</span></p>
+  <p style="margin-top:0.55rem;"><strong>Abschlusstest</strong></p>
+  <p style="margin-top:0.25rem;">Der Test zu Abschnitt 4 ist verfügbar — bitte bis zur nächsten Sitzung bearbeiten:</p>
+  <p style="margin-top:0.3rem;"><a href="https://forms.masterschool.com/to/k8toDQiJ?typeform-source=docs.google.com" target="_blank" rel="noopener noreferrer">Zum Abschlusstest (Typeform)</a></p>
+  <p class="note" style="margin-top:0.35rem;">Ausführung und Abgabe der Hausaufgaben im QA-Repo unter <code>03_Hausaufgaben/</code>, soweit im Kurs vorgesehen.</p>
+</div>
+
+</div>
+</div><!-- end folien-cols -->
+
+</main>
+
+<footer>
+  <p class="source-note">Lektion 5 · Folien Masterschool · Testentwurfsverfahren · Aufbereitung aus Kursfolien · Stand: 07.04.2026</p>
+</footer>
+
+<script>
+(function () {
+  var main = document.getElementById('main');
+  if (!main) return;
+  main.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || a.closest('.folien-lektion-nav')) return;
+    var href = a.getAttribute('href');
+    if (!href || !/^https?:\/\//i.test(href)) return;
+    e.preventDefault();
+    var w = window.open(href, '_blank', 'noopener,noreferrer');
+    if (w) w.opener = null;
+  });
+})();
+</script>
+
+</body>
+</html>

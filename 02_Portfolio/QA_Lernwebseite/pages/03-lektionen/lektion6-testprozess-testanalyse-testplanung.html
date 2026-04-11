@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../assets/qa-favicon-256.png" type="image/png">
+  <meta name="description" content="Lektion 6 — Testprozess, Testanalyse und Testplanung (Masterschool-Folien, HTML-Erfassung).">
+  <link rel="stylesheet" href="../../assets/css/base.css?v=folien-6-01">
+  <link rel="stylesheet" href="../../assets/css/subpage.css?v=folien-6-01">
+  <link rel="stylesheet" href="../../assets/css/folien-lektion.css?v=folien-6-01">
+  <title>Lektion 6 – Testprozess (Testanalyse &amp; Testplanung)</title>
+</head>
+<body class="folien-lektion folien-lektion--l6">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <div class="top-nav-zone__brand-row">
+    <div class="top-nav-zone__nav-stack">
+      <nav class="main-nav folien-lektion-nav" aria-label="QA Lernwebseite und aktuelle Folien-Lektion">
+    <ul>
+      <li><a href="../../index.html" class="main-nav__home" aria-label="Zur Startseite QA Lernwebseite"><img class="main-nav__home-img" src="../../assets/qa-favicon-256.png" alt="" width="48" height="48" decoding="async"></a></li>
+      <li><a href="lektion1-grundlagen.html">Lektion 1 — Grundlagen</a></li>
+      <li><a href="lektion2-sdlc-statisches-testen.html">Lektion 2 — SDLC &amp; Statisches Testen</a></li>
+      <li><a href="lektion3-testanalyse-testentwurf.html">Lektion 3 — Testanalyse &amp; Testentwurf</a></li>
+      <li><a href="lektion4-testverfahren-vertiefung.html">Lektion 4 — Testverfahren (Vertiefung)</a></li>
+      <li><a href="lektion5-testentwurfsverfahren.html">Lektion 5 — Testentwurfsverfahren</a></li>
+      <li><a href="lektion6-testprozess-testanalyse-testplanung.html" aria-current="page">Lektion 6 — Testprozess (Testanalyse &amp; Testplanung)</a></li>
+      <li><a href="lektion7-testfallentwurf.html">Lektion 7 — Testfallentwurf</a></li>
+      <li><a href="lektion8-testumgebung-durchfuehrung-bericht.html">Lektion 8 — Testumgebungen · Durchführung · Bericht</a></li>
+    </ul>
+  </nav>
+    </div>
+  </div>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Lektion 6 – Testprozess (Testanalyse &amp; Testplanung)</h1>
+    <p>Folien Masterschool · Lektion 6 — Neu strukturiert · Testprozess — Phase 1: Testanalyse und Phase 2: Testplanung · ISTQB CTFL v4.0.2 (GTB, 01.03.2025) — Abschnitt 1.4.1 · Reduzierung: 32 Folien → 11 Folien (-66%) · Aufbereitung aus Kursfolien · Stand: 06.04.2026</p>
+  </header>
+</div>
+
+<main id="main" class="folien-lektion__main">
+
+  <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Lernmaterial mit Bezug zum ISTQB CTFL Lehrplan (Syllabus)"></span>
+    <span><strong>Artefakt:</strong> Masterschool · 11 Folien Lektion 6 · HTML-Erfassung</span>
+    <span><strong>CTFL-Bezug:</strong> Abschnitt 1.4.1 (Testprozess); in den Folien außerdem Abschnitt 2.1.5 genannt</span>
+    <span><strong>Hinweis:</strong> Sichtbarer Inhalt aus <code>assets/Lektion6_Neu.txt</code> übernommen; keine inhaltliche Änderung.</span>
+  </div>
+
+  <div class="legend" role="region" aria-label="Legende Folientypen">
+    <span class="legend__item"><span class="legend__swatch legend__swatch--ctfl" aria-hidden="true"></span>Wichtige Lernfolie</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--praxis" aria-hidden="true"></span>Grafik vorhanden</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--neutral" aria-hidden="true"></span>Titelfolie / kein Lerninhalt</span>
+  </div>
+
+<div class="folien-cols">
+<div class="folien-col">
+
+<!-- F 01 -->
+<div class="folie folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 01</span>
+    <span class="folie-titel">Titel</span>
+  </div>
+  <p style="margin-top:0.35rem;">Testprozess<br>
+Phase 1: Testanalyse · Phase 2: Testplanung</p>
+  <p style="margin-top:0.35rem;">Hinweis: Der ursprüngliche Lektionstitel „Softwaretest-Lebenszyklus (STLC)&quot; entspricht nicht<br>
+der offiziellen deutschen ISTQB-Terminologie. Der korrekte Begriff lautet Testprozess<br>
+(CTFL v4.0.2, Abschnitt 1.4).</p>
+</div>
+
+<!-- F 02 -->
+<div class="folie">
+  <div class="folie-header">
+    <span class="folie-nr">F 02</span>
+    <span class="folie-titel">Lernziele</span>
+  </div>
+  <p style="margin-top:0.35rem;">In dieser Lektion lernst du:</p>
+  <p style="margin-top:0.35rem;">1. Was der Testprozess ist und wie er sich in die ISTQB-Terminologie einordnet<br>
+2. Was in der Phase Testanalyse passiert und welche Rolle der Tester dabei hat<br>
+3. Wie man als Tester kritische Fragen zu Anforderungen stellt<br>
+4. Was ein Testplan ist, wie er aufgebaut ist und was er enthält<br>
+5. Welche Testumgebungen es gibt und wie sie zusammenhängen</p>
+</div>
+
+<!-- F 03 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 03</span>
+    <span class="folie-titel">Der Testprozess im Überblick</span>
+  </div>
+  <p style="margin-top:0.35rem;">Der Testprozess beschreibt alle Aktivitäten, die beim Testen systematisch durchgeführt werden.<br>
+Laut ISTQB CTFL v4.0.2 (Abschnitt 1.4.1) umfasst er sieben Aktivitäten:</p>
+  <p style="margin-top:0.35rem;">1. Testplanung<br>
+2. Testüberwachung und -steuerung  ← läuft kontinuierlich parallel zu allen anderen Aktivitäten<br>
+3. Testanalyse<br>
+4. Testentwurf<br>
+5. Testrealisierung<br>
+6. Testdurchführung<br>
+7. Testabschluss</p>
+  <p style="margin-top:0.35rem;">Hinweis — STLC vs. Testprozess:<br>
+In der Praxis und in englischsprachigen Kursen wird häufig der Begriff STLC (Software Testing<br>
+Life Cycle) verwendet. STLC ist kein normierter Standard, sondern ein verbreitetes Praxismodell.<br>
+Es unterscheidet sich vom ISTQB-Testprozess in zwei wesentlichen Punkten:</p>
+  <table>
+    <thead><tr><th>STLC (Praxismodell)</th><th>Testprozess (ISTQB CTFL v4.0.2 DE)</th><th>Test Process (CTFL v4.0.1 EN)</th></tr></thead>
+    <tbody>
+      <tr><td>Anforderungsanalyse</td><td>Testanalyse</td><td>Test analysis</td></tr>
+      <tr><td>Testplanung</td><td>Testplanung</td><td>Test planning</td></tr>
+      <tr><td>Testentwurf</td><td>Testentwurf</td><td>Test design</td></tr>
+      <tr><td>Testumgebung</td><td>Testrealisierung</td><td>Test implementation</td></tr>
+      <tr><td>Testdurchführung</td><td>Testdurchführung</td><td>Test execution</td></tr>
+      <tr><td>Testabschluss</td><td>Testabschluss</td><td>Test completion</td></tr>
+      <tr><td>(nicht vorhanden)</td><td>Testüberwachung und -steuerung</td><td>Test monitoring and test control</td></tr>
+      <tr><td></td><td>(kontinuierlich)</td><td>(continuous)</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.35rem;">Für die ISTQB-Prüfung gilt ausschließlich die GTB-Terminologie.</p>
+  <p style="margin-top:0.35rem;">Quellen:<br>
+- CTFL v4.0.2 (DE): https://www.gtb.de/wp-content/uploads/2025/02/ISTQB_CTFL_Lehrplan-2025_V4.0.2_DE.pdf<br>
+- CTFL v4.0.1 (EN): https://istqb.org/wp-content/uploads/2024/11/ISTQB_CTFL_Syllabus_v4.0.1.pdf</p>
+</div>
+
+<!-- F 04 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 04</span>
+    <span class="folie-titel">Phase 1: Testanalyse — Grundlagen</span>
+  </div>
+  <p style="margin-top:0.35rem;">Was ist Testanalyse?<br>
+Die Testanalyse ist die Phase, in der der Tester die Testbasis (Anforderungen, Spezifikationen,<br>
+User Stories) analysiert, um testbare Merkmale zu identifizieren und Testbedingungen abzuleiten.<br>
+Die Testanalyse beantwortet die Frage: „Was soll getestet werden?&quot;</p>
+  <p style="margin-top:0.35rem;">Ziele der Testanalyse:<br>
+- Anforderungen des Unternehmens vollständig verstehen<br>
+- Zweifel und Unklarheiten klären<br>
+- Sicherstellen, dass Anforderungen prüfbar und testbar sind</p>
+  <p style="margin-top:0.35rem;">Die Rolle des Testers in der Testanalyse:<br>
+- Anforderungen gründlich lesen und verstehen<br>
+- Kritische Fragen an die Stakeholder stellen<br>
+- Testbare Anforderungen identifizieren<br>
+- Unklarheiten aktiv ansprechen und dokumentieren</p>
+  <p style="margin-top:0.35rem;">Wichtig — wann beginnt die Testanalyse?<br>
+Die Testanalyse beginnt so früh wie möglich — idealerweise bevor die Entwicklung startet.<br>
+Das entspricht dem Shift-Left-Prinzip (CTFL v4.0.2, Abschnitt 2.1.5): Je früher Unklarheiten<br>
+in Anforderungen gefunden werden, desto günstiger ist es, sie zu beheben. Ein Fehler, der<br>
+in der Anforderungsphase entdeckt wird, kostet ein Vielfaches weniger als einer, der erst<br>
+nach der Entwicklung im Test auffällt.</p>
+  <p style="margin-top:0.35rem;">In der Praxis findet die Testanalyse häufig in einer Verfeinerungssitzung (Refinement) statt —<br>
+einem Meeting, in dem das Team Anforderungen gemeinsam durchgeht und präzisiert.</p>
+</div>
+</div>
+<div class="folien-col">
+
+<!-- F 05 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 05</span>
+    <span class="folie-titel">Phase 1: Testanalyse — Praxisbeispiel</span>
+  </div>
+  <p style="margin-top:0.35rem;">Szenario: Eine bestehende Social-Media-Plattform erhält drei neue Funktionen.</p>
+  <p style="margin-top:0.35rem;">Funktion 1 — Altersbeschränkung<br>
+Anforderung: Ein Konto darf nur erstellt werden, wenn der Nutzer mindestens 16 Jahre alt ist<br>
+(gesetzliche Vorgabe).</p>
+  <p style="margin-top:0.35rem;">Kritische Fragen als Tester:<br>
+- Wie soll die Altersverifikation umgesetzt werden? (z. B. Eingabe des Geburtsdatums)<br>
+- Welches Format soll das Geburtsdatum haben? (z. B. MM.TT.JJJJ)<br>
+- Welche Fehlermeldung soll angezeigt werden, wenn der Nutzer unter 16 ist?<br>
+- Gibt es rechtliche Hinweise oder Datenschutzerklärungen, die erforderlich sind?</p>
+  <p style="margin-top:0.35rem;">Funktion 2 — Werbefreies Abonnement<br>
+Anforderung: Es soll eine Option geben, ein kostenpflichtiges Abonnement abzuschließen,<br>
+das die Nutzung der Plattform ohne Werbung ermöglicht.</p>
+  <p style="margin-top:0.35rem;">Kritische Fragen als Tester:<br>
+- Wo soll die Abonnement-Option angezeigt werden? (z. B. Kontoeinstellungen, Startseite)<br>
+- Welche Zahlungsmethoden werden unterstützt?<br>
+- Was soll passieren, wenn die Zahlung fehlschlägt?<br>
+- Wie soll das System mit Verlängerungen und Kündigungen umgehen?<br>
+- Welche Preismodelle werden angeboten?</p>
+  <p style="margin-top:0.35rem;">Funktion 3 — Kurzbeschreibung im Profil<br>
+Anforderung: Nutzer können einen kurzen Text (max. 100 Zeichen) unter dem Kontonamen<br>
+im Profil anzeigen lassen.</p>
+  <p style="margin-top:0.35rem;">Kritische Fragen als Tester:<br>
+- Wo soll das Eingabefeld angezeigt werden?<br>
+- Soll es Formatierungsoptionen geben? (z. B. Fett, Kursiv)<br>
+- Was soll passieren, wenn der Nutzer die 100-Zeichen-Grenze überschreitet?<br>
+  (z. B. Fehlermeldung, Text wird abgeschnitten)<br>
+- Gibt es Einschränkungen für den Inhalt? (z. B. Schimpfwortfilter)</p>
+</div>
+
+<!-- F 06 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 06</span>
+    <span class="folie-titel">Phase 2: Testplanung — Grundlagen</span>
+  </div>
+  <p style="margin-top:0.35rem;">Was ist ein Testplan?<br>
+Ein Testplan ist das zentrale Dokument der Testplanung. Er beschreibt, was getestet wird,<br>
+wie getestet wird, wer testet und wann getestet wird. In der Regel wird er vom Testmanager<br>
+erstellt. Inhalt und Umfang können je nach Unternehmen und Projekt variieren.</p>
+  <p style="margin-top:0.35rem;">Ein Testplan besteht typischerweise aus acht Teilen:</p>
+  <p style="margin-top:0.35rem;">1. Produkt analysieren<br>
+2. Teststrategie entwerfen<br>
+3. Testziele festlegen<br>
+4. Testkriterien definieren<br>
+5. Ressourcenplanung<br>
+6. Testumgebung planen<br>
+7. Zeitplanung und Aufwandschätzung<br>
+8. Testartefakte bestimmen</p>
+</div>
+
+<!-- F 07 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 07</span>
+    <span class="folie-titel">Testplan Teil 1: Produkt und Teststrategie</span>
+  </div>
+  <p style="margin-top:0.35rem;">1. Produkt analysieren<br>
+- Was ist das Ziel des Produkts?<br>
+  - Welches Problem löst das Produkt?<br>
+- Nutzer<br>
+  - Wer sind unsere Nutzer?<br>
+  - Wie ist ihre IT-Erfahrung?<br>
+  - Welche Vorlieben oder Anforderungen haben sie?<br>
+- Hardware- und Softwarespezifikationen<br>
+- Funktionalitäten<br>
+  - Welche Funktionen und Features stehen insgesamt zur Verfügung?</p>
+  <p style="margin-top:0.35rem;">2. Teststrategie entwerfen<br>
+- Festlegen, was im Testumfang ist und was nicht<br>
+  - Welche Features sind Bestandteil der Tests?<br>
+  - Welche Arten von Tests werden durchgeführt?<br>
+    (z. B. funktional, nicht funktional, Regressionstest)<br>
+- Risiken und Probleme identifizieren<br>
+- Logistik klären<br>
+  - Wer führt die Tests durch?<br>
+  - Was wird getestet?<br>
+  - Wann finden die Tests statt?</p>
+</div>
+
+<!-- F 08 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 08</span>
+    <span class="folie-titel">Testplan Teil 2: Ziele, Kriterien und Ressourcen</span>
+  </div>
+  <p style="margin-top:0.35rem;">3. Testziele festlegen<br>
+- Was machen wir als Tester im Rahmen dieses Testprozesses?<br>
+- Welchen Mehrwert oder welches Ergebnis bringt das Testergebnis für unsere Benutzer?</p>
+  <p style="margin-top:0.35rem;">4. Testkriterien definieren<br>
+- Aussetzungskriterien: Was sind gültige Gründe, um Tests vorübergehend zu unterbrechen?<br>
+  (z. B. kritische Fehler, instabile Testumgebung)<br>
+- Abnahmekriterien (Beendigungskriterien): Was sind gültige Gründe, um Tests endgültig zu beenden?<br>
+  (z. B. alle geplanten Tests abgeschlossen, alle kritischen Fehler behoben)</p>
+  <p style="margin-top:0.35rem;">5. Ressourcenplanung<br>
+- Personelle Ressourcen: Wer ist beteiligt und wie viel Zeit wird jeweils benötigt?<br>
+- Hardware, Software und Infrastruktur: Welche Geräte, Server und Software werden benötigt?</p>
+</div>
+</div>
+<div class="folien-col">
+
+<!-- F 09 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 09</span>
+    <span class="folie-titel">Testplan Teil 3: Umgebungen, Zeitplan und Artefakte</span>
+  </div>
+  <p style="margin-top:0.35rem;">6. Testumgebung planen<br>
+Beschreibung, welche Umgebungen verfügbar sein müssen:<br>
+- Wie bringen wir den Code zum Laufen in der Umgebung?<br>
+- Wie sieht unsere Umgebung aus?</p>
+  <p style="margin-top:0.35rem;">Umgebungspipeline:</p>
+  <p style="margin-top:0.35rem;">Rolle:       Developer          Tester            UAT (Abnahme)     Users<br>
+Umgebung:    Entwicklungs-  →   Testumgebung  →   Abnahme-      →   Produktions-<br>
+             umgebung      CI/CD              CI/CD umgebung    CI/CD umgebung</p>
+  <p style="margin-top:0.35rem;">7. Zeitplanung und Aufwandschätzung<br>
+Beispiel-Zeitplan mit Testaktivitäten:</p>
+  <table>
+    <thead><tr><th>Aktivität</th><th>Activity (EN)</th><th>Startdatum</th><th>Enddatum</th><th>Umgebung</th><th>Verantwortlich</th><th>Aufwand</th></tr></thead>
+    <tbody>
+      <tr><td>Testplanung</td><td>Test Planning</td><td>01.08.2024</td><td>05.08.2024</td><td>Alle</td><td>Testmanager</td><td>20 Std.</td></tr>
+      <tr><td>Testfallentwurf</td><td>Test Case Design</td><td>06.08.2024</td><td>15.08.2024</td><td>Alle</td><td>QA-Team</td><td>40 Std.</td></tr>
+      <tr><td>Komponententest</td><td>Unit Testing</td><td>16.08.2024</td><td>25.08.2024</td><td>DEV</td><td>Entwicklungsteam</td><td>60 Std.</td></tr>
+      <tr><td>Integrationstest</td><td>Integration Testing</td><td>26.08.2024</td><td>30.08.2024</td><td>TEST</td><td>QA-Team</td><td>30 Std.</td></tr>
+      <tr><td>Systemtest</td><td>System Testing</td><td>01.09.2024</td><td>10.09.2024</td><td>TEST</td><td>QA-Team</td><td>80 Std.</td></tr>
+      <tr><td>Regressionstest</td><td>Regression Testing</td><td>11.09.2024</td><td>15.09.2024</td><td>TEST</td><td>QA-Team</td><td>40 Std.</td></tr>
+      <tr><td>Performancetest</td><td>Performance Testing</td><td>16.09.2024</td><td>18.09.2024</td><td>TEST</td><td>QA-Team</td><td>20 Std.</td></tr>
+      <tr><td>Sicherheitstest</td><td>Security Testing</td><td>19.09.2024</td><td>21.09.2024</td><td>TEST</td><td>QA-Team</td><td>20 Std.</td></tr>
+      <tr><td>Abnahmetest (UAT)</td><td>UAT</td><td>22.09.2024</td><td>30.09.2024</td><td>ACC</td><td>Endnutzer</td><td>50 Std.</td></tr>
+      <tr><td>Produktionsfreigabe</td><td>Production Release</td><td>01.10.2024</td><td>01.10.2024</td><td>PROD</td><td>DevOps-Team</td><td>10 Std.</td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.35rem;">8. Testartefakte bestimmen<br>
+Die Dokumente und Werkzeuge, die erstellt werden müssen, um die Testaktivität zu unterstützen:<br>
+- Testplandokument<br>
+- Testfälle und Testskripte<br>
+- Testdaten<br>
+- Testberichte<br>
+- Fehlerberichte (Defect Reports)<br>
+- UAT-Abnahmeprotokoll (User Acceptance Test Sign-Off-Dokument)</p>
+</div>
+
+<!-- F 10 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 10</span>
+    <span class="folie-titel">Portfolio-Grundlage: Der Grocery-Mate-Webshop</span>
+  </div>
+  <p style="margin-top:0.35rem;">Ab dieser Lektion beginnt dein Testportfolio. Du wirst alle Testphasen anhand eines echten<br>
+Webshops durchlaufen, mit dem du direkt interagieren kannst.</p>
+  <p style="margin-top:0.35rem;">Der Webshop — bereits implementierte und getestete Funktionen:<br>
+1. Registrierungs- und Login-Funktionalität<br>
+2. Produktsuche, Sortierung nach Preis, Produktkategorien<br>
+3. Produkte zu Favoriten hinzufügen<br>
+4. Produkte in den Warenkorb legen<br>
+5. Checkout-Prozess:<br>
+   - Eingabe von Rechnungs- und Versandinformationen über ein Formular<br>
+   - Auswahl der Zahlungsmethode<br>
+   - Kostenberechnung: Gesamtsumme wird automatisch berechnet</p>
+  <p style="margin-top:0.35rem;">Neue Funktionen (noch nicht vollständig spezifiziert — Grundlage der Hausaufgaben):<br>
+1. Produktbewertungssystem<br>
+   Benutzer sollen Produkte mit einem 5-Sterne-System bewerten können und die Möglichkeit<br>
+   haben, eine schriftliche Rückmeldung hinzuzufügen.</p>
+  <p style="margin-top:0.35rem;">2. Altersverifikation für alkoholische Produkte<br>
+   Alkoholische Produkte erfordern eine Altersverifikation. Beim Aufruf der Kategorie soll ein<br>
+   Modal erscheinen, das den Nutzer fragt, ob er 18 Jahre oder älter ist. Nutzer müssen ihr<br>
+   Alter eingeben, bevor sie Zugriff auf die alkoholischen Produkte erhalten.</p>
+  <p style="margin-top:0.35rem;">3. Änderungen der Versandkosten<br>
+   Kostenloser Versand für Bestellungen über einem bestimmten Betrag. Für Bestellungen<br>
+   unter diesem Betrag fallen Versandkosten an.<br>
+   Hinweis: Konkreter Betrag und Höhe der Versandkosten sind in der Anforderung nicht<br>
+   spezifiziert — das ist Teil der Aufgabe.</p>
+</div>
+
+<!-- F 11 -->
+<div class="folie folie--wichtig folie--adv-kopf-dunkel">
+  <div class="folie-header">
+    <span class="folie-nr">F 11</span>
+    <span class="folie-titel">Hausaufgaben</span>
+  </div>
+  <p style="margin-top:0.35rem;">Hausaufgabe 1 — Anforderungsanalyse</p>
+  <p style="margin-top:0.35rem;">Aufgabe: Führe für alle drei neuen Webshop-Funktionen eine Verfeinerung durch.<br>
+Konkret:<br>
+- Erstelle eine Liste der funktionalen Anforderungen basierend auf den Featurebeschreibungen.<br>
+- Stelle dir als Tester kritische Fragen zu jeder Funktion.<br>
+- Identifiziere Randfälle und Unklarheiten.<br>
+- Kläre offene Fragen mit deinem Mentor.<br>
+- Schreibe für jede der 3 Funktionen eine vollständige, testbare Anforderung.</p>
+  <p style="margin-top:0.35rem;">Die drei Funktionen: Produktbewertungssystem · Altersverifikation für alkoholische Produkte ·<br>
+Änderungen der Versandkosten</p>
+  <p style="margin-top:0.35rem;">---</p>
+  <p style="margin-top:0.35rem;">Hausaufgabe 2 — Testplan</p>
+  <p style="margin-top:0.35rem;">Was ist ein Testplan? Lies zunächst Folie 6–9 dieser Lektion nochmals durch.<br>
+Ein Testplan besteht aus acht Teilen: Produkt analysieren · Teststrategie entwerfen ·<br>
+Testziele festlegen · Testkriterien definieren · Ressourcenplanung · Testumgebung planen ·<br>
+Zeitplanung und Aufwandschätzung · Testartefakte bestimmen.</p>
+  <p style="margin-top:0.35rem;">Aufgabe: Erstelle deinen eigenen Testplan für die drei neuen Funktionen des Webshops.<br>
+Orientiere dich dabei an der Vorlage und dem Beispiel in Notion.</p>
+</div>
+
+</div>
+</div><!-- end folien-cols -->
+
+</main>
+
+<footer>
+  <p class="source-note">Lektion 6 · Folien Masterschool · Testprozess (Testanalyse &amp; Testplanung) · Aufbereitung aus Kursfolien · Stand: 06.04.2026</p>
+</footer>
+
+<script>
+(function () {
+  var main = document.getElementById('main');
+  if (!main) return;
+  main.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || a.closest('.folien-lektion-nav')) return;
+    var href = a.getAttribute('href');
+    if (!href || !/^https?:\/\//i.test(href)) return;
+    e.preventDefault();
+    var w = window.open(href, '_blank', 'noopener,noreferrer');
+    if (w) w.opener = null;
+  });
+})();
+</script>
+
+</body>
+</html>

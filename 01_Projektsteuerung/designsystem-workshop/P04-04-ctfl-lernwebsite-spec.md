@@ -119,7 +119,7 @@ Die Klasse **`.praxis-box`** („In der Praxis …“) ist ein **Fließtext-Kast
 - **Zusätzlich punktuell** auf Seiten, wo es der Leser:in hilft — **nicht** nur in der meta-bar.
 - **Redundanz:** nicht als harte Obergrenze „CTFL nur einmal pro Seite“; siehe A.3.
 
-### A.2 Referenzseite: Testmittel (`02_Portfolio/QA_Lernwebseite/pages/01c-testmittel.html`)
+### A.2 Referenzseite: Testmittel (`02_Portfolio/QA_Lernwebseite/pages/01-lerninhalte/01c-testmittel.html`)
 
 Diese Seite ist das **kanonische Beispiel** für die Kombination **„meta-bar dicht + punktuelle CTFL-Markierung“** (ohne Landkarten-Chip-Flut).
 

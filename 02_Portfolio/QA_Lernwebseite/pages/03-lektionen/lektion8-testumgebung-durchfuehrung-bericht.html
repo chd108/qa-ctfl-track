@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" href="../../assets/qa-favicon-256.png" type="image/png">
+  <meta name="description" content="Lektion 8 — Testumgebungen, Testdurchführung, Testberichterstattung (Phasen 4–6, Masterschool-Folien).">
+  <link rel="stylesheet" href="../../assets/css/base.css?v=folien-8-01">
+  <link rel="stylesheet" href="../../assets/css/subpage.css?v=folien-8-01">
+  <link rel="stylesheet" href="../../assets/css/folien-lektion.css?v=folien-8-01">
+  <title>Lektion 8 – Testumgebungen · Testdurchführung · Testberichterstattung</title>
+</head>
+<body class="folien-lektion folien-lektion--l8">
+
+<a href="#main" class="skip-link">Zum Inhalt springen</a>
+
+<div class="top-nav-zone">
+  <div class="top-nav-zone__brand-row">
+    <div class="top-nav-zone__nav-stack">
+      <nav class="main-nav folien-lektion-nav" aria-label="QA Lernwebseite und aktuelle Folien-Lektion">
+    <ul>
+      <li><a href="../../index.html" class="main-nav__home" aria-label="Zur Startseite QA Lernwebseite"><img class="main-nav__home-img" src="../../assets/qa-favicon-256.png" alt="" width="48" height="48" decoding="async"></a></li>
+      <li><a href="lektion1-grundlagen.html">Lektion 1 — Grundlagen</a></li>
+      <li><a href="lektion2-sdlc-statisches-testen.html">Lektion 2 — SDLC &amp; Statisches Testen</a></li>
+      <li><a href="lektion3-testanalyse-testentwurf.html">Lektion 3 — Testanalyse &amp; Testentwurf</a></li>
+      <li><a href="lektion4-testverfahren-vertiefung.html">Lektion 4 — Testverfahren (Vertiefung)</a></li>
+      <li><a href="lektion5-testentwurfsverfahren.html">Lektion 5 — Testentwurfsverfahren</a></li>
+      <li><a href="lektion6-testprozess-testanalyse-testplanung.html">Lektion 6 — Testprozess (Testanalyse &amp; Testplanung)</a></li>
+      <li><a href="lektion7-testfallentwurf.html">Lektion 7 — Testfallentwurf</a></li>
+      <li><a href="lektion8-testumgebung-durchfuehrung-bericht.html" aria-current="page">Lektion 8 — Testumgebungen · Durchführung · Bericht</a></li>
+    </ul>
+  </nav>
+    </div>
+  </div>
+</div>
+
+<div class="page-chrome">
+  <header>
+    <h1>Lektion 8 – Testumgebungen · Testdurchführung · Testberichterstattung</h1>
+    <p>Folien Masterschool · Lektion 8 — Neu strukturiert · Testumgebungen, Testdurchführung und Testberichterstattung · Phasen 4–6 des Testprozesses · ISTQB CTFL v4.0.2 (GTB, 01.03.2025) — Abschnitt 1.4.1 · Aufbereitung aus Kursfolien · Stand: 06.04.2026</p>
+  </header>
+</div>
+
+<main id="main" class="folien-lektion__main">
+
+  <div class="meta-bar" role="region" aria-label="Seitenkontext">
+    <span class="chip chip--syllabus chip--syllabus-visual" aria-label="Lernmaterial mit Bezug zum ISTQB CTFL Lehrplan (Syllabus)"></span>
+    <span><strong>Artefakt:</strong> Masterschool · 10 Folien Lektion 8 · HTML-Erfassung</span>
+    <span><strong>CTFL-Bezug:</strong> Abschnitt 1.4.1 (Testrealisierung, Testdurchführung, Testabschluss)</span>
+    <span><strong>Hinweis:</strong> Sichtbarer Inhalt aus <code>assets/Lektion8_Neu.txt</code> übernommen; keine inhaltliche Änderung.</span>
+  </div>
+
+  <div class="legend" role="region" aria-label="Legende Folientypen">
+    <span class="legend__item"><span class="legend__swatch legend__swatch--ctfl" aria-hidden="true"></span>Wichtige Lernfolie</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--praxis" aria-hidden="true"></span>Grafik vorhanden</span>
+    <span class="legend__item"><span class="legend__swatch legend__swatch--neutral" aria-hidden="true"></span>Titelfolie / kein Lerninhalt</span>
+  </div>
+
+<div class="folien-cols">
+<div class="folien-col">
+
+<!-- F 01 -->
+<div class="folie folie--adv-kopf-hell">
+  <div class="folie-header">
+    <span class="folie-nr">F 01</span>
+    <span class="folie-titel">Titel</span>
+  </div>
+  <p style="margin-top:0.35rem;">Testumgebungen · Testdurchführung · Testberichterstattung<br>
+Phasen 4–6 des Testprozesses</p>
+  <p style="margin-top:0.35rem;">Einordnung: Wir befinden uns in den letzten drei Aktivitäten des Testprozesses<br>
+(CTFL v4.0.2, Abschnitt 1.4.1):<br>
+- Testrealisierung — Einrichtung der Testumgebung<br>
+- Testdurchführung — Ausführen der Testfälle, Dokumentation, Fehlererkennung<br>
+- Testabschluss — Testberichterstattung</p>
+  <p style="margin-top:0.35rem;">Hinweis: Im STLC-Praxismodell heißen diese Phasen „Einrichtung der Testumgebung&quot;,<br>
+„Testdurchführung&quot; und „Bericht und Testanalyse&quot;. Zur Einordnung von STLC vs.<br>
+Testprozess: siehe Lektion 6.</p>
+</div>
+
+<!-- F 02 -->
+<div class="folie">
+  <div class="folie-header">
+    <span class="folie-nr">F 02</span>
+    <span class="folie-titel">Lernziele</span>
+  </div>
+  <p style="margin-top:0.35rem;">In dieser Lektion lernst du:</p>
+  <p style="margin-top:0.35rem;">1. Welche Testumgebungen es gibt und wozu jede dient<br>
+2. Warum Testumgebungen notwendig sind<br>
+3. In welcher Umgebung welche Teststufe durchgeführt wird<br>
+4. Wie Testausführung dokumentiert wird<br>
+5. Was ein Fehlerbericht enthält und wie er erstellt wird<br>
+6. Wie du deine eigene Testausführung und Fehlerberichte für das Portfolio erstellst</p>
+</div>
+
+<!-- F 03 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 03</span>
+    <span class="folie-titel">Testumgebungen</span>
+  </div>
+  <p style="margin-top:0.35rem;">Eine Testumgebung ist ein kontrolliertes System, in dem Testobjekte gegen<br>
+Spezifikationen geprüft werden. In der Praxis gibt es üblicherweise vier Umgebungen,<br>
+die jeweils von unterschiedlichen Rollen genutzt werden:</p>
+  <p style="margin-top:0.35rem;">Entwicklungsumgebung (DEV)<br>
+- Genutzt von: Entwicklern<br>
+- Daten: Keine Kundendaten<br>
+- Zweck: Komponententests, erste Funktionsprüfungen</p>
+  <p style="margin-top:0.35rem;">Testumgebung (TEST)<br>
+- Genutzt von: QA-Engineers<br>
+- Daten: Keine Kundendaten<br>
+- Zweck: Testen neu hinzugefügter Funktionen gegen Spezifikationen</p>
+  <p style="margin-top:0.35rem;">Abnahmeumgebung (ACC / UAT)<br>
+- Genutzt von: QA-Engineers und Kunden<br>
+- Daten: Eingeschränkte produktive Daten<br>
+- Zweck: Benutzerabnahmetests und Regressionstests in produktionsnaher Umgebung</p>
+  <p style="margin-top:0.35rem;">Produktionsumgebung (PROD)<br>
+- Genutzt von: Endbenutzern im Live-Betrieb<br>
+- Daten: Vollständige produktive Daten<br>
+- Zweck: Live-System — kein Testen hier außer im Notfall</p>
+  <p style="margin-top:0.35rem;">Verbindung zwischen den Umgebungen:<br>
+DEV →(CI/CD)→ TEST →(CI/CD)→ ACC →(CI/CD)→ PROD</p>
+  <p style="margin-top:0.35rem;">Reflexionsfragen — Welche Umgebung wird genutzt für:<br>
+- Komponententests?              → Entwicklungsumgebung<br>
+- Neue Funktionen testen?        → Testumgebung<br>
+- Regressions-/Abnahmetests?     → Abnahmeumgebung<br>
+- Live-Betrieb für Endbenutzer?  → Produktionsumgebung</p>
+</div>
+
+<!-- F 04 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 04</span>
+    <span class="folie-titel">Warum benötigen wir Testumgebungen?</span>
+  </div>
+  <p style="margin-top:0.35rem;">Testumgebungen sind notwendig aus sechs Gründen:</p>
+  <p style="margin-top:0.35rem;">Isolation: Trennung von Entwicklung, Test und Produktivbetrieb — Fehler in der<br>
+Testumgebung betreffen keine Endbenutzer im Live-System.</p>
+  <p style="margin-top:0.35rem;">Testbarkeit: Bereitstellung einer kontrollierten Umgebung für strukturierte<br>
+Testdurchführung und Qualitätssicherung.</p>
+  <p style="margin-top:0.35rem;">Datensicherheit: Schutz sensibler Kundendaten, indem diese von der<br>
+Produktionsumgebung getrennt gehalten werden.</p>
+  <p style="margin-top:0.35rem;">CI/CD-Unterstützung: Ermöglicht automatisierte Testausführung und kontinuierliche<br>
+Bereitstellung über mehrere Stufen hinweg.</p>
+  <p style="margin-top:0.35rem;">Benutzervalidierung (Benutzerabnahmetest): Benutzer können neue Funktionen in<br>
+einer realitätsnahen Umgebung testen, bevor diese produktiv eingesetzt werden.</p>
+  <p style="margin-top:0.35rem;">Performancetest: Bewertung des Verhaltens des Testobjekts unter unterschiedlichen<br>
+Last- und Nutzungsbedingungen.</p>
+</div>
+</div>
+<div class="folien-col">
+
+<!-- F 05 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 05</span>
+    <span class="folie-titel">Dokumentation der Testausführung</span>
+  </div>
+  <p style="margin-top:0.35rem;">Was wird bei der Testausführung dokumentiert?</p>
+  <p style="margin-top:0.35rem;">Jeder Testfall wird beim Ausführen mit folgenden Informationen festgehalten:<br>
+- Testschritte (was wurde getan)<br>
+- Erwartetes Ergebnis (was sollte passieren)<br>
+- Screenshots (als Beleg)<br>
+- Ergebnisstatus (Bestanden / Nicht bestanden)<br>
+- URL der getesteten Anwendung<br>
+- Verweis auf Fehlerbericht (wenn Status: Nicht bestanden)</p>
+  <p style="margin-top:0.35rem;">Hinweis aus der Praxis: Wenn während der Testausführung weitere Testfälle einfallen,<br>
+werden sie einfach hinzugefügt — das ist in der Praxis ganz normal und Teil des<br>
+iterativen Testprozesses.</p>
+  <p style="margin-top:0.35rem;">Beispiel 1 — Fehlerfreier Ablauf:<br>
+Szenario: Als Benutzer von FindMate kann ich mich registrieren und anmelden,<br>
+wenn ich 16 Jahre alt bin.</p>
+  <table>
+    <thead><tr><th>Schritt</th><th>Testschritt</th><th>Erwartetes Ergebnis</th><th>Status</th><th>URL</th><th>Fehlerbericht</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Zur Anmeldeseite navigieren</td><td>Anmeldeseite wird angezeigt</td><td>✅</td><td>https://findmate.masterschool.com/</td><td></td></tr>
+      <tr><td>2</td><td>Auf „Registrieren&quot; klicken</td><td>Weiterleitung zur Registrierungsseite</td><td>✅</td><td>/auth</td><td></td></tr>
+      <tr><td>3a</td><td>„RandomUsername&quot; eingeben</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>3b</td><td>„18.08.2008&quot; als Geburtsdatum eingeben</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>3c</td><td>„This is my Bio&quot; als Biografie eintragen</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>3d</td><td>„karin@faculty.masterschool.com&quot; als E-Mail eingeben</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>3e</td><td>Passwort: „RandomPassword1&quot;</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>4</td><td>Auf „Registrieren&quot; klicken</td><td>Weiterleitung zur Anmeldeseite. E-Mail und Passwort vorausgefüllt.</td><td>✅</td><td></td><td></td></tr>
+      <tr><td>5</td><td>Auf „Anmelden&quot; klicken</td><td>Erfolgreich angemeldet</td><td>✅</td><td>https://findmate.masterschool.com/</td><td></td></tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.35rem;">Beispiel 2 — Fehler-Szenario:<br>
+Szenario: Als Benutzer von FindMate kann ich mich nicht registrieren, wenn ein<br>
+ungültiges Geburtsdatum eingegeben wird.</p>
+  <table>
+    <thead><tr><th>Schritt</th><th>Testschritt</th><th>Erwartetes Ergebnis</th><th>Status</th><th>URL</th><th>Fehlerbericht</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Zur Anmeldeseite navigieren</td><td>Anmeldeseite wird angezeigt</td><td>✅</td><td>https://findmate.masterschool.com/</td><td></td></tr>
+      <tr><td>2</td><td>Auf „Registrieren&quot; klicken</td><td>Weiterleitung zur Registrierungsseite</td><td>✅</td><td>/auth</td><td></td></tr>
+      <tr><td>3a</td><td>„InputValidationTest&quot; als Benutzername eingeben</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>3b</td><td>„19-08-1820&quot; als Geburtsdatum eingeben</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>3c-3e</td><td>Bio, E-Mail, Passwort eingeben</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>4</td><td>Auf „Registrieren&quot; klicken</td><td>Fehlermeldung erwartet (200 Jahre alt ist nicht möglich)</td><td>❌</td><td></td><td>https://github.com/software-engineering-ms/example-portfolio/issues/2</td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- F 06 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 06</span>
+    <span class="folie-titel">Fehlerbericht</span>
+  </div>
+  <p style="margin-top:0.35rem;">Wenn ein Test fehlschlägt, wird ein Fehlerbericht erstellt.</p>
+  <p style="margin-top:0.35rem;">Reflexionsfrage: Was sollte ein Fehlerbericht enthalten?</p>
+  <p style="margin-top:0.35rem;">Ein vollständiger Fehlerbericht enthält:<br>
+- Titel<br>
+- Umgebung (Informationen über Software und/oder Hardware)<br>
+- Beschreibung<br>
+- Schritte zur Reproduktion<br>
+- Erwartetes Ergebnis vs. tatsächliches Ergebnis<br>
+- Screenshots<br>
+- Priorität<br>
+- Zusätzliche Informationen<br>
+- Name des Erfassenden und Datum</p>
+  <p style="margin-top:0.35rem;">Beispiel auf GitHub:<br>
+https://github.com/software-engineering-ms/example-portfolio/issues/2</p>
+</div>
+</div>
+<div class="folien-col">
+
+<!-- F 07 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 07</span>
+    <span class="folie-titel">Praxisbeispiel: Testausführung Abonnement</span>
+  </div>
+  <p style="margin-top:0.35rem;">Szenario: Als registrierter Benutzer kann ich ein kostenpflichtiges Abonnement<br>
+hinzufügen, und anschließend wird mir keine Werbung mehr angezeigt.</p>
+  <p style="margin-top:0.35rem;">Entworfene Testfälle:<br>
+- Die Abonnementoption ist in den Kontoeinstellungen verfügbar.<br>
+- Beim Registrieren ist das Abonnement auswählbar.<br>
+- Nicht zahlende Benutzer sehen Werbung.<br>
+- Zahlende Benutzer sehen keine Werbung.<br>
+- Nach Kündigung wird Werbung wieder angezeigt.<br>
+- Verlängerungserinnerung erfolgt 1 Monat vor Ablauf.<br>
+- Nach Verlängerung wird weiterhin keine Werbung angezeigt.<br>
+- Systemverhalten bei fehlgeschlagener Zahlung.</p>
+  <p style="margin-top:0.35rem;">Testausführung — Fehler-Szenario:</p>
+  <table>
+    <thead><tr><th>Schritt</th><th>Testschritt</th><th>Erwartetes Ergebnis</th><th>Status</th><th>URL</th><th>Fehlerbericht</th></tr></thead>
+    <tbody>
+      <tr><td>1</td><td>Anmelden und zur Startseite navigieren</td><td>Feed wird angezeigt</td><td>✅</td><td>https://findmate.masterschool.com/</td><td></td></tr>
+      <tr><td>2</td><td>Zur Profilseite navigieren</td><td>Profilseite wird angezeigt</td><td>✅</td><td>https://findmate.masterschool.com/profile/TestSzenario2</td><td></td></tr>
+      <tr><td>3</td><td>Auf „Tarif upgraden&quot; klicken</td><td>Upgrade-Fenster wird angezeigt</td><td>✅</td><td></td><td></td></tr>
+      <tr><td>4a–4d</td><td>Kartendaten eingeben (Test User, 12345678, 01/28, CVC 111)</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>5</td><td>Auf „Bezahlen&quot; klicken</td><td></td><td></td><td></td><td></td></tr>
+      <tr><td>6</td><td>Zum Feed navigieren</td><td>Es wird keine Werbung angezeigt</td><td>❌</td><td>https://findmate.masterschool.com/</td><td></td></tr>
+    </tbody>
+  </table>
+</div>
+
+<!-- F 08 -->
+<div class="folie folie--wichtig">
+  <div class="folie-header">
+    <span class="folie-nr">F 08</span>
+    <span class="folie-titel">Praxisbeispiel: Testfälle Kurzbeschreibung</span>
+  </div>
+  <p style="margin-top:0.35rem;">Szenario: Es soll eine Option hinzugefügt werden, mit der man unter dem Kontonamen<br>
+eine kurze Beschreibung über sich selbst (max. 100 Zeichen) schreiben kann.</p>
+  <p style="margin-top:0.35rem;">Entworfene Testfälle:<br>
+- Grenzwertanalyse: Testen, ob Eingaben mit 99, 100 und 101 Zeichen akzeptiert<br>
+  oder abgelehnt werden.<br>
+- Äquivalenzklassenbildung: Testen, ob eine Eingabe mit 50 Zeichen akzeptiert wird.<br>
+- Kurzbeschreibung erscheint unter dem Kontonamen.<br>
+- Benutzer kann die Beschreibung aktualisieren.<br>
+- Beschreibung ist für registrierte Benutzer sichtbar.<br>
+- Beschreibung ist für nicht registrierte Benutzer nicht sichtbar.<br>
+- Eingabevalidierung: Was passiert, wenn das Feld leer bleibt?<br>
+- Sitzungsverhalten: Wird der Text nach Sitzungsablauf und erneuter Anmeldung<br>
+  gespeichert?</p>
+</div>
+
+<!-- F 09 -->
+<div class="folie folie--wichtig folie--kopf-block">
+  <div class="folie-header">
+    <span class="folie-nr">F 09</span>
+    <span class="folie-titel">Zusammenfassung: Testprozess Phasen 4–6</span>
+  </div>
+  <p style="margin-top:0.35rem;">Überblick über die drei abgeschlossenen Phasen:</p>
+  <p style="margin-top:0.35rem;">Phase 4 — Testrealisierung (Einrichtung der Testumgebung)<br>
+Ziel: Die richtige Umgebung für die Testdurchführung bereitstellen.<br>
+Ergebnis: Testumgebung eingerichtet, Testdaten vorbereitet, Testwerkzeuge konfiguriert.</p>
+  <p style="margin-top:0.35rem;">Phase 5 — Testdurchführung<br>
+Ziel: Testfälle ausführen, Ergebnisse dokumentieren, Fehler erfassen.<br>
+Ergebnis: Ausgefüllte Testausführungsdokumentation, Fehlerberichte für alle<br>
+fehlgeschlagenen Tests.</p>
+  <p style="margin-top:0.35rem;">Phase 6 — Testabschluss (Testberichterstattung)<br>
+Ziel: Testergebnisse zusammenfassen und kommunizieren.<br>
+Ergebnis: Testbericht mit Überblick über ausgeführte Tests, gefundene Fehler<br>
+und Qualitätsstatus.</p>
+  <p style="margin-top:0.35rem;">Vollständiger CTFL-Testprozess (alle 7 Aktivitäten):<br>
+Testplanung · Testüberwachung und -steuerung (kontinuierlich) · Testanalyse ·<br>
+Testentwurf · Testrealisierung · Testdurchführung · Testabschluss<br>
+Quelle: CTFL v4.0.2, Abschnitt 1.4.1</p>
+</div>
+
+<!-- F 10 -->
+<div class="folie folie--wichtig folie--adv-kopf-dunkel">
+  <div class="folie-header">
+    <span class="folie-nr">F 10</span>
+    <span class="folie-titel">Hausaufgaben</span>
+  </div>
+  <p style="margin-top:0.35rem;">1. Hausaufgabe — Einrichten der Testumgebung</p>
+  <p style="margin-top:0.35rem;">Du führst diese Aufgabe durch, nachdem du deine automatisierten Testfälle erstellt<br>
+hast. Eine Anleitung findest du in diesem Video:<br>
+https://www.youtube.com/watch?v=5XfgT9A9PHw</p>
+  <p style="margin-top:0.35rem;">---</p>
+  <p style="margin-top:0.35rem;">2. Hausaufgabe — Testausführung</p>
+  <p style="margin-top:0.35rem;">Führe deine Testfälle auf Basis der von dir entworfenen Testfälle aus.<br>
+- Wenn dir während der Ausführung weitere Testfälle einfallen, füge sie hinzu —<br>
+  das ist in der Praxis ganz normal.<br>
+- Erstelle die Dokumentation der Testausführung gemäß dem Beispiel auf GitHub:<br>
+  https://github.com/software-engineering-ms/example-portfolio/issues/2</p>
+  <p style="margin-top:0.35rem;">---</p>
+  <p style="margin-top:0.35rem;">3. Hausaufgabe — Fehlerberichte</p>
+  <p style="margin-top:0.35rem;">Bei der Ausführung deiner Testfälle bist du vermutlich auf einige Fehler gestoßen.<br>
+- Erstelle für jeden Fehler einen separaten Fehlerbericht gemäß dem Beispiel auf<br>
+  GitHub: https://github.com/software-engineering-ms/example-portfolio/issues/2<br>
+- Die Fehler findest du unter dem Reiter „Issues&quot;.</p>
+</div>
+
+</div>
+</div><!-- end folien-cols -->
+
+</main>
+
+<footer>
+  <p class="source-note">Lektion 8 · Folien Masterschool · Testumgebungen · Testdurchführung · Testberichterstattung · Aufbereitung aus Kursfolien · Stand: 06.04.2026</p>
+</footer>
+
+<script>
+(function () {
+  var main = document.getElementById('main');
+  if (!main) return;
+  main.addEventListener('click', function (e) {
+    if (e.defaultPrevented) return;
+    if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+    var a = e.target.closest && e.target.closest('a[href]');
+    if (!a || a.closest('.folien-lektion-nav')) return;
+    var href = a.getAttribute('href');
+    if (!href || !/^https?:\/\//i.test(href)) return;
+    e.preventDefault();
+    var w = window.open(href, '_blank', 'noopener,noreferrer');
+    if (w) w.opener = null;
+  });
+})();
+</script>
+
+</body>
+</html>
