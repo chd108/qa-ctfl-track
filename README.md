@@ -1,6 +1,6 @@
 # QA-Track
 
-> Zuletzt aktualisiert: 2026-04-02
+> Zuletzt aktualisiert: 2026-04-11
 
 **Quality Assurance — Software Testing** · ISTQB CTFL-orientiertes Lern- und Arbeitsrepository (MasterSchool).
 
