@@ -3,8 +3,9 @@
  * Voraussetzung: base.css (+ subpage.css) geladen; body.folien-lektion
  */
 
-/* Aktive Lektion in der Folien-Nav (aria-current, kein .current-Klassenpflicht) */
-.folien-lektion-nav a[aria-current="page"] {
+/* Aktive Lektion in Nav 3 (Hauptsystem; aria-current + .current wie base.css) */
+.folien-lektion .main-nav--summary a[aria-current="page"],
+.folien-lektion .main-nav--summary a.current {
   color: var(--text);
   font-weight: normal;
   border-bottom-color: var(--text);
