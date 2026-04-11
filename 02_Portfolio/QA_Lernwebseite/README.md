@@ -22,6 +22,8 @@ Die **HA4/HA5/HA6-Strecke** (Fallstudie **GroceryMate**) verbindet **Testbasis-A
 - **Formate:** **Web-Ansicht** für Lesen und Üben; **A4-/Dokumentmodus** (`doc-a4.css`) für ausgewählte HA-Abgaben und Druck.  
 - **Wartbarkeit:** ein gemeinsames **Hauptsystem** (Navigation, Typo, Farbvariablen), konsistente Datei- und Seitennamen.
 
+**CSS-Schichten, zentrale `body`-Basis, Breakpoint-Kanon und Rollen der Stylesheets** sind normativ in **[03_Project_Standards.md §6](../../01_Projektsteuerung/03_Project_Standards.md#6-qualitäts--und-konsistenzregeln)** beschrieben — hier keine zweite Vollständigkeit.
+
 ---
 
 ## Navigation und Seitenaufbau

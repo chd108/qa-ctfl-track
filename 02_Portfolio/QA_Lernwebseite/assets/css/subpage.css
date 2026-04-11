@@ -1,5 +1,6 @@
 /* Gemeinsame Layout-Schicht für alle Unterseiten (pages/)
-   Überschrift und Untertitel einheitlich. */
+   Überschrift und Untertitel einheitlich.
+   Konventionen: 01_Projektsteuerung/03_Project_Standards.md §6 */
 
 /* Seitenbreite & Außenabstand — Standard-Unterseiten */
 body {

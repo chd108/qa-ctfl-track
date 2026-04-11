@@ -1,6 +1,7 @@
 /*
  * Masterschool-Folien (08_MS_QA-Folien) — Lektions-HTML
  * Voraussetzung: base.css (+ subpage.css) geladen; body.folien-lektion
+ * Konventionen: 01_Projektsteuerung/03_Project_Standards.md §6
  *
  * Chrome (Skip-Link, .top-nav-zone, .page-chrome): nur base.css / subpage.css —
  * keine Nav- oder Kopf-Overrides hier (vermeidet „Springen“/Drift gegenüber anderen Hauptseiten).
