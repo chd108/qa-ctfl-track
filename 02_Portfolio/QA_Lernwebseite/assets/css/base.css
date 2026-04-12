@@ -13,6 +13,8 @@
   --subtitle-margin-top: 0.4rem;
   --header-margin-bottom: 2rem;
   --footer-note-margin-top: 1.5rem;
+  /* Basis-Schriftgröße Unterseiten (lokale --fs-Definitionen entfallen) */
+  --fs: 14px;
   /* Gemeinsame Karten-/Ebenen-Palette (Index, Glossar, Testuniversum, HA4-Anforderungsanalyse) */
   --e1: #d8e4d0;
   --e2: #bad1dc;
