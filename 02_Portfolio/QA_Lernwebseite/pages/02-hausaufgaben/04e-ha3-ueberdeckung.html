@@ -182,6 +182,7 @@ is_shipping_free(50,1,False)</code></pre>
       <div class="ha3p-prose">
         <p>Die folgenden <strong>Indizes 1–10</strong> entsprechen der Auszählung in der Lösung (ohne die Zeile <code>def …</code>); sie ordnen die <strong>Ausführungspfad-Tabellen</strong> unten dem Code zu.</p>
       </div>
+      <div class="ha3p-table-scroll">
       <table class="ha3p-table ha3p-table--stmt-index">
         <caption>Zuordnung Statement-Index zu Element im Code</caption>
         <thead>
@@ -203,8 +204,10 @@ is_shipping_free(50,1,False)</code></pre>
           <tr><td class="ha3p-table__num">10</td><td><code>print("Additional Statement 5")</code> — <strong>unerreichbar</strong> (toter Code nach <code>return True</code>)</td></tr>
         </tbody>
       </table>
+      </div>
 
       <h4 class="ha3p-h4--coverage">Anweisungsüberdeckung (Statement Coverage)</h4>
+      <div class="ha3p-table-scroll">
       <table class="ha3p-table">
         <caption>Anweisungsüberdeckung — ausgeführte Statement-Indizes je Test</caption>
         <thead>
@@ -221,12 +224,14 @@ is_shipping_free(50,1,False)</code></pre>
           <tr><td>T4</td><td><code>(50, 1, False)</code></td><td>1, 2, 4, 5, 9</td></tr>
         </tbody>
       </table>
+      </div>
       <div class="ha3p-prose">
         <p>Über alle vier Tests hinweg werden die Anweisungen mit den Indizes <strong>1–9</strong> jeweils mindestens einmal durchlaufen. <strong>Index 10</strong> taucht in keinem Test auf: die zugehörige Zeile steht im Code nach <code>return True</code> und ist damit unerreichbar. <strong>Die Vereinigung</strong> aller über die Tests ausgeführten Anweisungen ist also genau {1, …, 9} — ohne den Index 10.</p>
       </div>
       <p class="ha3p-metric"><strong>Statement Coverage:</strong> <strong>9 / 10 = 90 %</strong></p>
 
       <h4 class="ha3p-h4--coverage">Zweigüberdeckung (Branch Coverage)</h4>
+      <div class="ha3p-table-scroll">
       <table class="ha3p-table">
         <caption>Zweigüberdeckung — Kanten und Abdeckung durch die vier Tests</caption>
         <thead>
@@ -249,6 +254,7 @@ is_shipping_free(50,1,False)</code></pre>
           <tr><td>S4 → <code>return False</code></td><td>T2, T3</td></tr>
         </tbody>
       </table>
+      </div>
       <div class="ha3p-prose">
         <p>Für <strong>jede der 11 Kanten</strong> steht in der Tabelle, welche der vier Tests sie durchlaufen — so lässt sich die Zweigabdeckung ablesen.<br><strong>Fehlender Zweig:</strong> Kante <strong>D3 → <code>return True</code></strong> (z.&nbsp;B. abdeckbar mit <strong><code>(15, 2, False)</code></strong> — Rabattpfad ausgeschlossen, aber kein kostenloser Versand über die zweite <code>if</code>-Bedingung).</p>
       </div>

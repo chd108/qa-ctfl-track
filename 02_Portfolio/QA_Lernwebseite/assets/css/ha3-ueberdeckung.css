@@ -1,4 +1,4 @@
-/*
+﻿/*
  * ha3-ueberdeckung.css — Styles für 04e-ha3-ueberdeckung.html
  * Voraussetzung: base.css + subpage.css geladen.
  * Abhängige base.css-Variablen: --bdr, --text, --mid, --soft,
@@ -167,6 +167,18 @@
     .ha3p-loesung-cols__left,
     .ha3p-loesung-cols__right {
       min-width: 0;
+    }
+    /* Teil 2: je Abschnitt eigene horizontale Scrollbar (Zuordnung / Statement / Zweig) */
+    .ha3p-loesung-cols__right .ha3p-table-scroll {
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+      margin: 1rem 0 1.5rem;
+    }
+    .ha3p-loesung-cols__right .ha3p-table-scroll .ha3p-table {
+      margin: 0;
+      width: max-content;
+      min-width: 100%;
+      box-sizing: border-box;
     }
     /* Mindestens ~7 Fließtextzeilen (1.62) frei unter Spalte 1, wenn Spalte 2 höher ist */
     .ha3p-loesung-cols__left {
