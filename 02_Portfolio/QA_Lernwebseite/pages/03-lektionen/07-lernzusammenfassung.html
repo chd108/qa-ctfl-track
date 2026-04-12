@@ -444,6 +444,32 @@
   outline-offset: 1px;
 }
 
+/*
+ * TEST nur kap2 (#lz-acc-kap2-root): Unterpunkt-Zeilen (H3, z. B. 2.1.1) mit
+ * hellstem Grün aus der Site-Palette (--e1). Kapitel-Ebene H2 (Überblick, 2.1, …) unverändert.
+ */
+#lz-acc-kap2-root .lz-acc--h3 > .lz-acc__summary--h3 {
+  background: var(--e1, #d8e4d0);
+  border: 1px solid rgba(74, 124, 89, 0.18);
+  border-left: 2px solid rgba(74, 124, 89, 0.35);
+}
+#lz-acc-kap2-root .lz-acc--h3 > .lz-acc__summary--h3:hover {
+  background: rgba(216, 228, 208, 0.97);
+}
+#lz-acc-kap2-root .lz-acc--h3[open] > .lz-acc__summary--h3 {
+  background: rgba(216, 228, 208, 0.94);
+  border-color: rgba(74, 124, 89, 0.24);
+  border-left-color: rgba(74, 124, 89, 0.48);
+}
+#lz-acc-kap2-root .lz-acc--h3[open] > .lz-acc__summary--h3::before {
+  border-color: rgba(74, 124, 89, 0.65);
+}
+#lz-acc-kap2-root .lz-acc__summary--h3 h3 {
+  font-size: inherit;
+  font-family: inherit;
+  font-weight: 700;
+}
+
 /* ── Content elements inside card ── */
 .card-body h1 { display: none; }
 .card-body h2:not(:is(.lz-acc__summary--h2 h2)) {
