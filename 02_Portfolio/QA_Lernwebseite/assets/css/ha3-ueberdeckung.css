@@ -1,0 +1,399 @@
+/*
+ * ha3-ueberdeckung.css — Styles für 04e-ha3-ueberdeckung.html
+ * Voraussetzung: base.css + subpage.css geladen.
+ * Abhängige base.css-Variablen: --bdr, --text, --mid, --soft,
+ *   --e3, --surface-loesung-kopf-bg, --ctfl, --ok, --ok-bg,
+ *   --surface-handlung-*, --callout-chain-*
+ */
+
+    /* HA3 04e — Presentation Patterns (Pilot Phase 6, pilot-ha3-content-phasen.md). Tokens: base.css :root */
+
+    /* Wie Landkarte / 00b-standards: volle Breite — globales body max-width aus subpage.css aufheben */
+    body { max-width: none; margin: 0; }
+
+    /* Ab ~1400px Viewport: Aufgabenstellung | Lösung (innere DAG|Coverage bleibt 2 Spalten bis 960px-Regel) */
+    .ha3p-aufgabe-loesung-cols {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      align-items: start;
+    }
+    .ha3p-aufgabe-loesung-cols > .ha3p-sheet { margin-bottom: 0; }
+    @media (min-width: 1400px) {
+      .ha3p-aufgabe-loesung-cols {
+        grid-template-columns: 2fr 3fr; /* Aufgabe ~40 %, Lösung ~60 % (je 10 %-Punkte ggü. 50/50) */
+        gap: 1rem 1.35rem;
+      }
+    }
+
+    /* Aufgabe-Kopf --e3; Lösungs-Kopf --surface-loesung-kopf-bg (global base.css) */
+    .ha3p-sheet {
+      margin-bottom: 2rem;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+      border: 1px solid var(--bdr);
+    }
+    .ha3p-sheet__header {
+      padding: 0.7rem 1.2rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      border-bottom: 1px solid var(--bdr);
+    }
+    .ha3p-sheet--task .ha3p-sheet__header { background: var(--e3); }
+    .ha3p-sheet--answer .ha3p-sheet__header { background: var(--surface-loesung-kopf-bg); }
+    .ha3p-sheet__header h2 {
+      margin: 0;
+      font-size: 1rem;
+      font-weight: 700;
+      letter-spacing: 0.04em;
+      line-height: 1.35;
+      color: var(--text);
+    }
+    .ha3p-sheet__body {
+      padding: 1rem 1.25rem 1.35rem;
+      background: rgba(255, 255, 255, 0.38);
+    }
+
+    .ha3p-sheet__body h3 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--mid);
+      margin-top: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    .ha3p-sheet__body h3:first-child { margin-top: 0; }
+    .ha3p-sheet__body h4 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--mid);
+      margin-top: 1.25rem;
+      margin-bottom: 0.5rem;
+    }
+    /* Coverage-Unterabschnitte: zarte Linie darüber (Statement / Branch) */
+    .ha3p-sheet__body h4.ha3p-h4--coverage {
+      border-top: 2px solid rgba(40, 53, 53, 0.35);
+      padding-top: 1rem;
+      margin-top: 1.45rem;
+    }
+
+    /* Prose-Links in Lösung (z. B. Repo-Pfad SVG): Kurslink-Optik wie Meta-Bar */
+    #loesung .ha3p-prose a {
+      color: var(--ctfl);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
+    }
+    #loesung .ha3p-prose a:hover { border-bottom-color: var(--ctfl); }
+
+    /* 2 — Fließtext */
+    .ha3p-prose p {
+      line-height: 1.7;
+      margin: 0 0 1rem;
+      color: var(--text);
+    }
+    .ha3p-prose strong { font-weight: 600; }
+    /* Inline-Code: schwarzer Text, 1px Rand schwarz */
+    .ha3p-prose code,
+    .ha3p-table code,
+    .ha3p-table caption code,
+    .ha3p-action code,
+    .ha3p-figcaption code,
+    .ha3p-cognition code {
+      font-family: "Courier New", Courier, monospace;
+      font-size: 0.92em;
+      color: #000;
+      background: rgba(255, 255, 255, 0.92);
+      padding: 0.12em 0.35em;
+      border-radius: 4px;
+      border: 1px solid #000;
+    }
+
+    /* 3 — Codeblöcke */
+    pre.ha3p-code {
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid #000;
+      border-radius: 6px;
+      padding: 1rem 1.2rem;
+      margin: 1rem 0;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      overflow-x: auto;
+      color: #000;
+    }
+    pre.ha3p-code code {
+      font-family: "Courier New", Courier, monospace;
+      display: block;
+      white-space: pre;
+      color: inherit;
+      background: none;
+      border: 0;
+      padding: 0;
+    }
+    .ha3p-codepair {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem 1.35rem;
+      align-items: start;
+      margin: 0 0 0.25rem;
+    }
+    .ha3p-codepair__col { min-width: 0; }
+    /* Spezifität > .ha3p-sheet__body h4, sonst margin-top 1.25rem unter „Code & Testfälle“ */
+    .ha3p-sheet__body .ha3p-code-label {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.05rem;
+      font-weight: 400;
+      color: var(--mid);
+      margin: 0 0 0.65rem;
+      line-height: 1.35;
+    }
+    .ha3p-codepair__col pre.ha3p-code { margin-top: 0; }
+    /* Aufgabenstellung: Code links ~2/3, Testfälle rechts ~1/3 */
+    #aufgabenstellung .ha3p-codepair {
+      grid-template-columns: 2fr 1fr;
+    }
+    @media (max-width: 960px) {
+      .ha3p-codepair { grid-template-columns: 1fr; }
+      .ha3p-codepair__col + .ha3p-codepair__col .ha3p-code-label { margin-top: 1.25rem; }
+    }
+
+    /* Lösung: links DAG etwas schmaler (~45 %), rechts Coverage etc. (~55 %) */
+    .ha3p-loesung-cols {
+      display: grid;
+      grid-template-columns: 9fr 11fr;
+      gap: 1rem 1.35rem;
+      align-items: start;
+    }
+    .ha3p-loesung-cols__left,
+    .ha3p-loesung-cols__right {
+      min-width: 0;
+    }
+    /* Mindestens ~7 Fließtextzeilen (1.62) frei unter Spalte 1, wenn Spalte 2 höher ist */
+    .ha3p-loesung-cols__left {
+      padding-bottom: calc(7 * 1.62em);
+    }
+    .ha3p-loesung-cols__left > h3:first-child,
+    .ha3p-loesung-cols__right > h3:first-child {
+      margin-top: 0;
+    }
+    @media (max-width: 960px) {
+      .ha3p-loesung-cols {
+        grid-template-columns: 1fr;
+      }
+      .ha3p-loesung-cols__right > h3:first-child {
+        margin-top: 1.5rem;
+      }
+    }
+
+    /* 4 — ACTION / Aufgaben (nummerierte Liste); Fallbacks = gleiche Hex wie base.css (falls alte CSS-Datei gecacht / Token fehlt) */
+    .ha3p-action {
+      background: var(--surface-handlung-bg, #e7dac0);
+      border: 1px solid var(--surface-handlung-border-outer, rgba(156, 106, 42, 0.14));
+      border-left: 4px solid var(--surface-handlung-accent, #9f7a4e);
+      border-radius: 8px;
+      padding: 1rem 1.25rem;
+      margin: 1.25rem 0;
+    }
+    .ha3p-action ol {
+      margin: 0;
+      padding-left: 1.35rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .ha3p-action li { margin-bottom: 0.35rem; }
+
+    /* 5 — Tabellen (Sans wie Captions/Hx; Body ist Serif — sonst wirkt Tabellentext „fremd“) */
+    .ha3p-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 1rem 0 1.5rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.9rem;
+      background: rgba(255, 255, 255, 0.5);
+      border: 1px solid var(--bdr);
+      border-radius: 8px;
+      overflow: hidden;
+    }
+    .ha3p-table th,
+    .ha3p-table td {
+      padding: 0.7rem 1rem;
+      text-align: left;
+      border-bottom: 1px solid var(--bdr);
+      vertical-align: top;
+    }
+    .ha3p-table th {
+      background: rgba(0, 0, 0, 0.04);
+      font-weight: 600;
+      color: var(--soft);
+    }
+    .ha3p-table tr:last-child td { border-bottom: none; }
+    .ha3p-table caption {
+      caption-side: top;
+      text-align: left;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: var(--mid);
+      padding: 0 0 0.55rem;
+      line-height: 1.4;
+    }
+    .ha3p-table .ha3p-table__num {
+      text-align: right;
+      font-variant-numeric: tabular-nums;
+    }
+    /* Statement-Index-Tabelle: Zeileneinrückung wie im Code-Block */
+    .ha3p-table--stmt-index tbody td:nth-child(2) code {
+      white-space: pre;
+    }
+    /* Fehlende Kante: gleiche Flächenfarbe wie Knoten „return False“ im DAG-SVG (#ead8de) */
+    .ha3p-table__row--hl td {
+      background: rgba(234, 216, 222, 0.55);
+    }
+    /* Kennzahlen „100 % Statement“: gleiche OK-Fläche wie .ha3p-metric */
+    .ha3p-table td.ha3p-table__cell--ok {
+      background: var(--ok-bg);
+      box-shadow: inset 4px 0 0 var(--ok);
+    }
+    .ha3p-table td.ha3p-table__cell--ok strong { color: var(--ok); }
+
+    /* Rechte Spalte Lösung: flachere Tabellenzeilen (Statement-Index, Coverage, Variante) */
+    .ha3p-loesung-cols__right .ha3p-table th,
+    .ha3p-loesung-cols__right .ha3p-table td {
+      padding: 0.4rem 0.75rem;
+      line-height: 1.35;
+    }
+    .ha3p-loesung-cols__right .ha3p-table caption {
+      padding: 0 0 0.35rem;
+    }
+    .ha3p-loesung-teil3-full .ha3p-table th,
+    .ha3p-loesung-teil3-full .ha3p-table td {
+      padding: 0.4rem 0.75rem;
+      line-height: 1.35;
+    }
+    .ha3p-loesung-teil3-full .ha3p-table caption {
+      padding: 0 0 0.35rem;
+    }
+    .ha3p-loesung-teil3-full {
+      margin-bottom: 0;
+    }
+    .ha3p-loesung-teil3-full .ha3p-cognition {
+      margin-bottom: 0;
+    }
+
+    /* Kennzahlen-Zeilen (APPLICATION, kein ACTION-Kasten) — flacher als Standard, nur vertikal */
+    .ha3p-metric {
+      background: var(--ok-bg);
+      border: 1px solid rgba(74, 124, 89, 0.25);
+      border-left: 4px solid var(--ok);
+      border-radius: 8px;
+      padding: 0.45rem 1.15rem;
+      margin: 0.85rem 0 1.1rem;
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      color: var(--text);
+      line-height: 1.45;
+    }
+    .ha3p-metric strong { color: var(--ok); }
+
+    /* 6 — Figure / SVG */
+    .ha3p-figure { margin: 1rem 0 1.5rem; }
+    .ha3p-dag-aspect {
+      margin: 0 auto;
+      max-width: 540px;
+      width: 100%;
+      aspect-ratio: 539.646 / 1368.65;
+    }
+    .ha3p-dag-aspect object {
+      display: block;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .ha3p-figcaption {
+      margin: 0.5rem 0 0;
+      font-size: 0.85rem;
+      color: var(--soft);
+      text-align: center;
+      line-height: 1.4;
+    }
+
+    /* Knoten-Zeile: Fortsetzung bündig unter „Start“ */
+    .ha3p-knoten {
+      display: grid;
+      grid-template-columns: max-content 1fr;
+      column-gap: 0.35rem;
+      row-gap: 0;
+      margin: 0 0 1rem;
+      line-height: 1.7;
+      color: var(--text);
+    }
+    .ha3p-knoten__label {
+      grid-column: 1;
+      grid-row: 1 / span 2;
+      align-self: start;
+    }
+    .ha3p-knoten__row {
+      grid-column: 2;
+      margin: 0;
+    }
+
+    /* 7 — COGNITION / Begründung */
+    .ha3p-cognition {
+      background: var(--callout-chain-bg);
+      border: 1px solid var(--callout-chain-border-outer);
+      border-left: var(--callout-chain-accent-width) solid var(--callout-chain-border-accent);
+      border-radius: var(--callout-chain-radius);
+      padding: var(--callout-chain-padding-y) var(--callout-chain-padding-x);
+      margin: 1rem 0 0;
+    }
+    .ha3p-cognition ul {
+      margin: 0;
+      padding-left: 1.35rem;
+      line-height: 1.65;
+      color: var(--text);
+    }
+    .ha3p-cognition li { margin-bottom: 0.35rem; }
+
+    /* Fließtext UI-Sans wie Sachverhalt (Aufgabenstellung + Lösung) */
+    #aufgabenstellung .ha3p-sheet__body .ha3p-prose,
+    #loesung .ha3p-sheet__body .ha3p-prose {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.9375rem;
+      line-height: 1.62;
+    }
+    #aufgabenstellung .ha3p-sheet__body .ha3p-prose strong,
+    #loesung .ha3p-sheet__body .ha3p-prose strong { font-weight: 600; }
+
+    /* Begründungsliste (Lösung): gleiche Schriftgröße/Zeilenführung wie Fließtext */
+    #loesung .ha3p-sheet__body .ha3p-cognition ul {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.9375rem;
+      line-height: 1.62;
+    }
+    #loesung .ha3p-sheet__body .ha3p-cognition strong { font-weight: 600; }
+
+    /* Aufgaben (ACTION): gleiche Schrift wie Sachverhalt-Fließtext */
+    #aufgabenstellung .ha3p-action ol {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 0.9375rem;
+      line-height: 1.62;
+    }
+    #aufgabenstellung .ha3p-action strong { font-weight: 600; }
+
+    /* HA3 Abschnitts-H3: Aufgabe (direkte Kinder) + Lösung (2 Spalten + Teil 3 volle Breite) — Bullet, Linie, Typo */
+    #aufgabenstellung .ha3p-sheet__body > h3,
+    #loesung .ha3p-sheet__body .ha3p-loesung-cols h3,
+    #loesung .ha3p-sheet__body .ha3p-loesung-teil3-full > h3 {
+      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+      font-size: 1.1rem;
+      font-weight: 600;
+      color: var(--mid);
+      padding-bottom: 0.2rem;
+      border-bottom: 1px solid #000;
+    }
+    #aufgabenstellung .ha3p-sheet__body > h3::before,
+    #loesung .ha3p-sheet__body .ha3p-loesung-cols h3::before,
+    #loesung .ha3p-sheet__body .ha3p-loesung-teil3-full > h3::before {
+      content: "•";
+      margin-right: 0.45em;
+      color: var(--mid);
+    }
