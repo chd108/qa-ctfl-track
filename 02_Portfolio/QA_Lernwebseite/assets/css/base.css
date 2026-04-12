@@ -14,7 +14,7 @@
   --header-margin-bottom: 2rem;
   --footer-note-margin-top: 1.5rem;
   /* Basis-Schriftgröße Unterseiten (lokale --fs-Definitionen entfallen) */
-  --fs: 14px;
+  --fs: 15px;
   /* Gemeinsame Karten-/Ebenen-Palette (Index, Glossar, Testuniversum, HA4-Anforderungsanalyse) */
   --e1: #d8e4d0;
   --e2: #bad1dc;
@@ -46,6 +46,9 @@
   --praxis-bg: #f0dfc0;
   --advanced: #2a547c;
   --advanced-bg: #c4d8ee;
+  /* Semantischer Alias: Note = ADV-Blau (--advanced / --advanced-bg) */
+  --note:    var(--advanced);
+  --note-bg: var(--advanced-bg);
   /* ADV-Rahmenfarben (folien-lektion.css) */
   --advanced-border-light: rgba(42, 84, 124, 0.22);
   --advanced-border-dark: rgba(14, 30, 48, 0.38);
@@ -575,3 +578,31 @@ main { width: 100%; }
     gap: 0.75rem;
   }
 }
+
+/* aha-box / warn-box — Hinweisboxen (03-statisches-testen,
+   05-testmanagement, teststufen.css) */
+.aha-box {
+  background: var(--note-bg);
+  border-left: 3px solid var(--note);
+  border-radius: 0 8px 8px 0;
+  padding: .75rem 1.1rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: var(--note);
+  line-height: 1.6;
+  margin-top: .8rem;
+}
+.aha-box strong { font-weight: 700; }
+
+.warn-box {
+  background: var(--warn-bg);
+  border-left: 3px solid var(--warn);
+  border-radius: 0 8px 8px 0;
+  padding: .75rem 1.1rem;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  font-size: 12px;
+  color: var(--warn);
+  line-height: 1.6;
+  margin-top: .8rem;
+}
+.warn-box strong { font-weight: 700; }

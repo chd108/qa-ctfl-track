@@ -1,6 +1,6 @@
 # QA Lernwebseite
 
-> Zuletzt aktualisiert: 2026-04-11 — **Kopf-Navigation:** alle drei `<nav>`-Zeilen **einheitliche** Textlink-Typo und Farbe (`base.css`; **`--nav-vertical-rhythm: 1.25rem`**). **Lernzusammenfassung** (`07-lernzusammenfassung.html`): Interview-Kästen **Kap. 5–7** mit Verweisen auf Lerninhalte, Lektionen und Hausaufgaben (HA5/HA6). Steuerungs-Doku (Root-README, **02_Project_Status**, **03_Project_Standards**) abgestimmt. Zuvor **2026-04-10** — Assets/Folien/Lernzusammenfassung Kap. 2/3; zuvor **2026-04-11** IA-Unterordner unter **`pages/`**; zuvor **2026-04-05** HA3 **04e** (Pilot **0–6**).
+> Zuletzt aktualisiert: 2026-04-12 — **`00b-standards.html`:** Living Doc / öffentlicher Ist-Spiegel zu Projekt- und Web-Standards (Kanon **`03_Project_Standards.md`**); Meta-Bar und README-Querverweise angeglichen. Zuvor **2026-04-11** — **Kopf-Navigation:** alle drei `<nav>`-Zeilen **einheitliche** Textlink-Typo und Farbe (`base.css`; **`--nav-vertical-rhythm: 1.25rem`**). **Lernzusammenfassung** (`07-lernzusammenfassung.html`): Interview-Kästen **Kap. 5–7** mit Verweisen auf Lerninhalte, Lektionen und Hausaufgaben (HA5/HA6). Steuerungs-Doku (Root-README, **02_Project_Status**, **03_Project_Standards**) abgestimmt. Zuvor **2026-04-10** — Assets/Folien/Lernzusammenfassung Kap. 2/3; zuvor **2026-04-11** IA-Unterordner unter **`pages/`**; zuvor **2026-04-05** HA3 **04e** (Pilot **0–6**).
 
 **Teil des Monorepos [qa-ctfl-track](https://github.com/chd108/qa-ctfl-track)** — Pfad im Repo: **`02_Portfolio/QA_Lernwebseite/`**.  
 **Öffentliche Ansicht:** [chd108.github.io/qa-ctfl-track](https://chd108.github.io/qa-ctfl-track/) (GitHub Pages aus demselben Repository).
@@ -95,7 +95,7 @@ Auf **`index.html`**, allen Seiten unter **`pages/01-lerninhalte/`**, **`pages/0
 | `01-lerninhalte/04-testverfahren.html` | Testverfahren / Testentwurf im Überblick | Kap. 4 |
 | `01-lerninhalte/05-testmanagement.html` | Testmanagement, Risiko, Planung | Kap. 5 |
 | `01-lerninhalte/06-testwerkzeuge.html` | Testwerkzeuge: Kategorien, Nutzen & Risiken der Testautomatisierung | Kap. 6 |
-| `01-lerninhalte/00b-standards.html` | Standards, Projektstatus, Referenzen | — |
+| `01-lerninhalte/00b-standards.html` | **Living Doc:** Web-/Repo-Standards und Ist-Checkliste (Spiegel zu **`01_Projektsteuerung/03_Project_Standards.md`**) | — |
 
 ### `02-hausaufgaben/` — Hausaufgaben
 

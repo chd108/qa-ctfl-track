@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-11 — Schnellnavigation: Pfade **SDLC** / **Testverfahren** mit **`pages/01-lerninhalte/`** angeglichen; **HA-Einordnung** mit **`pages/02-hausaufgaben/`**, **Standards-Seite** mit **`pages/01-lerninhalte/`**. Zuvor **2026-04-02** — `.gitignore`: **07_Tests/** ergänzt (Hinweis Abschnitt mit Repo-Check); vormals 2026-03-29: Repo_Health_Check-Prompt, kein Zweit-Remote „website“  
+Letzte Aktualisierung: 2026-04-12 — **Standards-Seite** (`00b`): in Schnellnavigation als **Living Doc** / Ist-Spiegel gekennzeichnet (siehe **[03_Project_Standards.md](03_Project_Standards.md)** §6). Zuvor **2026-04-11** — Schnellnavigation: Pfade **SDLC** / **Testverfahren** mit **`pages/01-lerninhalte/`** angeglichen; **HA-Einordnung** mit **`pages/02-hausaufgaben/`**, **Standards-Seite** mit **`pages/01-lerninhalte/`**. Zuvor **2026-04-02** — `.gitignore`: **07_Tests/** ergänzt (Hinweis Abschnitt mit Repo-Check); vormals 2026-03-29: Repo_Health_Check-Prompt, kein Zweit-Remote „website“  
 Zweck: Schnellzugriff auf Pfade, Prompts und externe Ressourcen  
 Klassifizierung: Projektsteuerung / Referenz  
 Normative Orientierung: ISO 21502 — Zugänglichkeit von Projektinformationen.
@@ -32,7 +32,7 @@ Dieses Dokument bündelt **Schnellnavigation** („Aktion → Ort“), **externe
 | **SDLC (ISTQB) — animiert / statisch** | `02_Portfolio/QA_Lernwebseite/pages/01-lerninhalte/02b-sdlc-animiert.html` · `02_Portfolio/QA_Lernwebseite/pages/01-lerninhalte/02a-sdlc-statisch.html` |
 | **Testverfahren (CTFL Kap. 4)** | `02_Portfolio/QA_Lernwebseite/pages/01-lerninhalte/04-testverfahren.html` |
 | **HA-Einordnung (Testverfahren ↔ Hausaufgaben)** | `02_Portfolio/QA_Lernwebseite/pages/02-hausaufgaben/00a-ha-einordnung.html` |
-| **Normen & Konsistenz (Website)** | `02_Portfolio/QA_Lernwebseite/pages/01-lerninhalte/00b-standards.html` |
+| **Normen & Konsistenz (Website — Living Doc / Ist-Spiegel)** | `02_Portfolio/QA_Lernwebseite/pages/01-lerninhalte/00b-standards.html` — Regeln kanonisch in **03_Project_Standards.md** |
 | **Lernwebsite — README & Struktur** | [../02_Portfolio/QA_Lernwebseite/README.md](../02_Portfolio/QA_Lernwebseite/README.md) |
 | **ISTQB-Materialien (PDFs, Sample Exams)** | `04_Referenzen/ISTQB/` |
 | **HA1** | `03_Hausaufgaben/HA1_Aequivalenzklassen_Grenzwertanalyse/` |

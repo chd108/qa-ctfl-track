@@ -1,8 +1,10 @@
 # Projektsteuerung — QA-Track
 
-> Zuletzt aktualisiert: 2026-04-11
+> Zuletzt aktualisiert: 2026-04-12
 
 Dieser Ordner enthält die **kanonische Steuerung** des Arbeitsverzeichnisses **`qa-ctfl-track/`** (Monorepo): Programmrahmen, aktueller Stand, Regeln für Repo und Website (u. a. **QA_Lernwebseite** — **03_Project_Standards** §6/§7), Leitlinien für KI/Git sowie Schnellzugriff auf Pfade und Prompts.  
+
+**Öffentliche Standards-Übersicht (Living Doc, kein Ersatz für die Steuerung):** [`02_Portfolio/QA_Lernwebseite/pages/01-lerninhalte/00b-standards.html`](../02_Portfolio/QA_Lernwebseite/pages/01-lerninhalte/00b-standards.html) — Ist-Spiegel zu Web-/Repo-Checklisten; maßgeblich bleiben **`03_Project_Standards.md`** und die Project\_*-Serie.
 
 Alle Dateien folgen der Namenskonvention **`NN_Project_<Thema>.md`** — sie ersetzen die frühere nummerierte Steuerreihe (`01_Projektsteuerung.md` … `12_SYSTEMKONZEPT.md`), die unter **`06_Archiv/Projektsteuerung_alt/`** abgelegt ist.
 

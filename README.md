@@ -1,6 +1,6 @@
 # QA-Track
 
-> Zuletzt aktualisiert: 2026-04-11
+> Zuletzt aktualisiert: 2026-04-12 — Projektsteuerung: Verweis **Standards-Seite** (Living Doc) in **README** `01_Projektsteuerung/` und **`03_Project_Standards`** §6. Zuvor **2026-04-11**
 
 **Quality Assurance — Software Testing** · ISTQB CTFL-orientiertes Lern- und Arbeitsrepository (MasterSchool).
 

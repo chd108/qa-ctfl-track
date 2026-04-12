@@ -4,6 +4,7 @@
 
 /* Seitenbreite & Außenabstand — Standard-Unterseiten */
 body {
+  font-size: var(--fs);
   padding: 0 3rem 4rem;
   max-width: 1400px;
   margin: 0 auto;

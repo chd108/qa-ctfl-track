@@ -1,5 +1,5 @@
 Datei erstellt: 2026-03-23  
-Letzte Aktualisierung: 2026-04-11 — **Website-CSS:** Refactoring (**Folien** `folien-lektion.css`, zentrale **`body`-Regel** in **`subpage.css`**, Breakpoint-Kanon, lokale `body`-Bereinigung) **abgeschlossen** — **[03_Project_Standards.md §6](03_Project_Standards.md#6-qualitäts--und-konsistenzregeln)**. **Steuerung:** Zukunftsvision **Eleventy (11ty)** / verschobene Build-Phase dokumentiert (**§6**). **QA_Lernwebseite** — **IA:** Inhalts-HTML unter **`pages/01-lerninhalte/`**, **`pages/02-hausaufgaben/`**, **`pages/03-lektionen/`** (inkl. **Lernzusammenfassung**); Nav-, Asset- und **`index`**-Links sowie **README**, **dieses Dokument** und Querverweise (u. a. P03/P04) auf Repo-Pfade nachgezogen; **03_Project_Standards** §6/§7. **Dritte** Kopf-**`<nav>`** *Lernzusammenfassung* (`main-nav--summary`), **`index.html`** dritte Kartenzeile — unverändert fachlich. **Nachzug (11.04.):** **`base.css`** — einheitliche Linkdarstellung aller drei Nav-Zeilen; **`--nav-vertical-rhythm: 1.25rem`**; **`07-lernzusammenfassung.html`** — Interview-Module **Kap. 5–7** mit Lerninhalt-/Lektions-/HA-Verlinkungen; Root- **README** / Website-**README** / **03** Metazeile abgestimmt. Zuvor **2026-04-05** **`02-hausaufgaben/04e-ha3-ueberdeckung.html`** nach **HA3-Pilot**; **README**, **pilot-ha3-…**, **03** §6, **P03** §2. Zuvor **2026-04-04** **HA3** Content-Pilot / **`assets/ha3-svg/`**; ältere Meilensteine siehe §2.  
+Letzte Aktualisierung: 2026-04-12 — **Doku:** **Standards-Seite** (`00b-standards.html`) — Living-Doc-/Ist-Spiegel; Verweise und **README** (Projektsteuerung, **QA_Lernwebseite**) sowie **03_Project_Standards** §6 angeglichen. Zuvor **2026-04-11** — **Website-CSS:** Refactoring (**Folien** `folien-lektion.css`, zentrale **`body`-Regel** in **`subpage.css`**, Breakpoint-Kanon, lokale `body`-Bereinigung) **abgeschlossen** — **[03_Project_Standards.md §6](03_Project_Standards.md#6-qualitäts--und-konsistenzregeln)**. **Steuerung:** Zukunftsvision **Eleventy (11ty)** / verschobene Build-Phase dokumentiert (**§6**). **QA_Lernwebseite** — **IA:** Inhalts-HTML unter **`pages/01-lerninhalte/`**, **`pages/02-hausaufgaben/`**, **`pages/03-lektionen/`** (inkl. **Lernzusammenfassung**); Nav-, Asset- und **`index`**-Links sowie **README**, **dieses Dokument** und Querverweise (u. a. P03/P04) auf Repo-Pfade nachgezogen; **03_Project_Standards** §6/§7. **Dritte** Kopf-**`<nav>`** *Lernzusammenfassung* (`main-nav--summary`), **`index.html`** dritte Kartenzeile — unverändert fachlich. **Nachzug (11.04.):** **`base.css`** — einheitliche Linkdarstellung aller drei Nav-Zeilen; **`--nav-vertical-rhythm: 1.25rem`**; **`07-lernzusammenfassung.html`** — Interview-Module **Kap. 5–7** mit Lerninhalt-/Lektions-/HA-Verlinkungen; Root- **README** / Website-**README** / **03** Metazeile abgestimmt. Zuvor **2026-04-05** **`02-hausaufgaben/04e-ha3-ueberdeckung.html`** nach **HA3-Pilot**; **README**, **pilot-ha3-…**, **03** §6, **P03** §2. Zuvor **2026-04-04** **HA3** Content-Pilot / **`assets/ha3-svg/`**; ältere Meilensteine siehe §2.  
 Zweck: Dokumentiert aktuellen Projektstand und nächste Schritte  
 Klassifizierung: Projektsteuerung / Status  
 Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen-Projekt.
@@ -8,7 +8,7 @@ Normative Orientierung: ISO 21502, PMBOK — angepasst an Lern- und Ein-Personen
 
 # Project Status — QA-Track
 
-**Berichtsstichtag:** 2026-04-11 · **Projektinhaber (Alias):** chd108  
+**Berichtsstichtag:** 2026-04-12 · **Projektinhaber (Alias):** chd108  
 
 *Kurzkontext:* QA-Track ist das **gesamte** ISTQB-CTFL-orientierte Lernprogramm (Material, Hausaufgaben, Portfolio, Website, Notizen, Referenzen, Steuerung). **Vision, Ziele und Scope** siehe [01_Project_Charter.md](01_Project_Charter.md); **Ablage, Benennung, Repo-Struktur und Health Check** siehe [03_Project_Standards.md](03_Project_Standards.md) (insb. Abschnitt 3 und 8).
 
@@ -43,6 +43,11 @@ Technische Basis und Benennungsmatrix der *QA_Lernwebseite* gelten als **abgesch
 *(Chronologisch **absteigend**: zuerst das Neueste / zuletzt Abgeschlossene.)*
 
 **So ist dieser Abschnitt gemeint:** Hier steht, **was** im Projekt **schon erledigt** ist — mit Datum und oft mit Fachbegriffen (Git, Phasen, Dateinamen). Nach vielen Blöcken folgt ein kurzer Absatz **„In Klartext“**: was das **praktisch** bedeutet, **ohne** dass man alle Kürzel kennen muss.
+
+### 2026-04-12 — *Doku* / **Standards-Seite** (`00b-standards.html`, Living Doc)
+
+- **Website:** [`00b-standards.html`](../02_Portfolio/QA_Lernwebseite/pages/01-lerninhalte/00b-standards.html) — Ist-Spiegel und Checklisten; kanonische Regeln bleiben in **`03_Project_Standards.md`** (Project\_*-Serie).  
+- **Steuerung:** **[03_Project_Standards.md](03_Project_Standards.md)** §6 (Bullet *Standards-Seite*); **README** [Projektsteuerung](README.md), [Repo-Root](../README.md), [QA_Lernwebseite](../02_Portfolio/QA_Lernwebseite/README.md).
 
 ### 2026-04-11 — *QA_Lernwebseite* / IA **Lernzusammenfassung** (dritte Nav, `07-lernzusammenfassung`)
 

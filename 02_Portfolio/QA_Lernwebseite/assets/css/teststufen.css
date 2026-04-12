@@ -4,7 +4,7 @@
  * Abhängige base.css-Variablen: --bdr, --text, --mid, --soft,
  *   --ctfl-bg, --praxis-bg, --advanced-bg, --extra-bg
  * Lokales :root: --ts1–ts5 / --ts1d–ts5d (Teststufen-Palette)
- * Redundanz zu base.css: --ok/--warn/--note* als Hex gespiegelt (Werte identisch zu --ctfl/--praxis/--advanced); später konsolidierbar.
+ * Redundanz --note/--warn/--ok entfernt — kommen jetzt aus base.css
  */
 
     :root {
@@ -20,18 +20,9 @@
       --ts3d: #6a4e1a;
       --ts4d: #4a2a6a;
       --ts5d: #6a2a2a;
-
-      /* CTFL-Chips: --ctfl … --chip-* aus base.css (Pilot P1) */
-      --warn:     #9c6a2a;  --warn-bg:    #f0dfc0;
-      --note:     #2a547c;  --note-bg:    #c4d8ee;
-      --ok:       #4a7c59;  --ok-bg:      #cde8d2;
     }
 
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-    body {
-      font-size: 14px;
-    }
 
     /* ── Sections (System: section + section__header + section__title) ── */
     .section { margin-bottom: 1.5rem; margin-top: 2.2rem; }
@@ -75,24 +66,6 @@
     .tdot { width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0; }
     /* Domain-Chip-Farben: .tag--* in assets/css/base.css (hier keine .tag-ctfl-… Duplikate) */
     .ref { font-size: 10px; opacity: .55; font-weight: 600; letter-spacing: .04em; }
-
-    /* ── Hinweis-Boxen (optisch an .info-box angeglichen) ── */
-    .aha-box {
-      background: var(--note-bg); border-left: 4px solid var(--note);
-      border-radius: 4px; padding: .9rem 1.1rem;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 0.9rem; color: var(--note); line-height: 1.5;
-      margin-top: .8rem; margin-bottom: 1rem;
-    }
-    .aha-box strong { font-weight: 700; }
-    .warn-box {
-      background: var(--warn-bg); border-left: 4px solid var(--warn);
-      border-radius: 4px; padding: .9rem 1.1rem;
-      font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
-      font-size: 0.9rem; color: var(--warn); line-height: 1.5;
-      margin-top: .8rem; margin-bottom: 1rem;
-    }
-    .warn-box strong { font-weight: 700; }
 
     /* ══════════════════════════════════════════
        TESTSTUFEN — Hauptkarten
