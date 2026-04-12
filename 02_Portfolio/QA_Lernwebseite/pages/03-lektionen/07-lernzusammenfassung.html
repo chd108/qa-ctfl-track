@@ -276,6 +276,7 @@
   flex-direction: column;
 }
 .card-header {
+  margin-bottom: 0;
   padding: .6rem .9rem;
   background: var(--color-surface, #f8fafc);
   border-bottom: 1px solid var(--color-border, #e2e8f0);
@@ -298,7 +299,7 @@
   color: var(--color-heading, #111);
 }
 .card-body {
-  padding: .75rem .9rem;
+  padding: 0.25rem .9rem .75rem .9rem;
   font-size: 12.5px;
   line-height: 1.5;
 }
@@ -455,7 +456,11 @@
   padding-bottom: .25rem;
   border-bottom: 1px solid #e5e7eb;
 }
-.card-body h3 {
+.card-body > h2:first-child:not(:is(.lz-acc__summary--h2 h2)),
+.card-body > h2:first-of-type:not(:is(.lz-acc__summary--h2 h2)) {
+  margin-top: 0;
+}
+.card-body h3:not(:is(.lz-acc__summary--h3 h3)) {
   font-size: 12px;
   font-weight: 600;
   color: #1f2937;
@@ -577,6 +582,9 @@
   margin: .35rem 0 .55rem;
   font-size: 12.5px;
   line-height: 1.5;
+}
+.card-body > blockquote.lz-chapter-lead:first-child {
+  margin-top: 0;
 }
 
 /* ── Interview section heading ── */
@@ -884,9 +892,7 @@ Anhang
         <h2 class="card-title">Grundlagen des Softwaretestens</h2>
       </header>
       <div class="card-body">
-        
-<h2 id="sec-kapitel-2">Kapitel 2: Grundlagen des Softwaretestens</h2>
-<blockquote class="lz-chapter-lead">
+        <blockquote class="lz-chapter-lead">
 <p><em>Wer Software testet, braucht eine gemeinsame Sprache — denn ohne präzise Begriffe entstehen Missverständnisse, die teurer sind als die Fehler selbst.</em></p>
 </blockquote>
 <p>Entspricht CTFL v4.0.2, Kapitel 1 — Grundlagen des Testens. Behandelt Fehlerbegriff, Testprozess, die sieben Grundsätze und Qualitätssicherung. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
@@ -1121,12 +1127,10 @@ Wenn du nach „Testen" gefragt wirst, nenne immer den <a href="../01-lerninhalt
     <article id="kap3" class="chapter-card">
       <header class="card-header">
         <span class="card-kap">Kap. 3</span>
-        <h2 class="card-title">Testen im SDLC</h2>
+        <h2 class="card-title">Testen im Softwareentwicklungslebenszyklus</h2>
       </header>
       <div class="card-body">
-        
-<h2 id="sec-kapitel-3">Kapitel 3: Testen im Softwareentwicklungslebenszyklus</h2>
-<blockquote class="lz-chapter-lead">
+        <blockquote class="lz-chapter-lead">
 <p><em>Testen ist kein Schritt am Ende — es ist ein roter Faden, der sich durch den gesamten Entwicklungsprozess zieht.</em></p>
 </blockquote>
 <p>Entspricht CTFL v4.0.2, Kapitel 2 — Testen im Softwareentwicklungslebenszyklus. Behandelt Entwicklungsmodelle, die vier Teststufen, Testarten sowie Regressions- und agiles Testen. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
@@ -1397,9 +1401,7 @@ Wenn du nach agilen Testmethoden gefragt wirst, verbinde immer: Scrum → Sprint
         <h2 class="card-title">Statischer Test</h2>
       </header>
       <div class="card-body">
-        
-<h2 id="sec-kapitel-4">Kapitel 4: Statischer Test</h2>
-<blockquote class="lz-chapter-lead">
+        <blockquote class="lz-chapter-lead">
 <p><em>Fehler lassen sich finden, bevor auch nur eine Zeile Code ausgeführt wird — durch das Lesen, Analysieren und Prüfen von Dokumenten.</em></p>
 </blockquote>
 <p>Entspricht CTFL v4.0.2, Kapitel 3 — Statischer Test. Behandelt Reviews, Reviewarten, Rollen im Reviewprozess und werkzeuggestützte statische Analyse. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
@@ -1634,9 +1636,7 @@ Wenn du nach statischem Testen gefragt wirst, nenne konkret: „Reviews und stat
         <h2 class="card-title">Dynamischer Test</h2>
       </header>
       <div class="card-body">
-        
-<h2 id="sec-kapitel-5">Kapitel 5: Dynamischer Test</h2>
-<blockquote class="lz-chapter-lead">
+        <blockquote class="lz-chapter-lead">
 <p><em>Testfälle entstehen nicht zufällig — systematische Verfahren stellen sicher, dass die richtigen Dinge mit der richtigen Tiefe getestet werden.</em></p>
 </blockquote>
 <p>Entspricht CTFL v4.0.2, Kapitel 4 — Testentwurfsverfahren. Behandelt Blackbox-, Whitebox- und erfahrungsbasierte Verfahren. Das prüfungsrelevanteste Kapitel des Lehrplans. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
@@ -1895,9 +1895,7 @@ Du hast in <a href="lektion7-testfallentwurf.html">Lektion 7</a> Äquivalenzklas
         <h2 class="card-title">Testmanagement</h2>
       </header>
       <div class="card-body">
-        
-<h2 id="sec-kapitel-6">Kapitel 6: Testmanagement</h2>
-<blockquote class="lz-chapter-lead">
+        <blockquote class="lz-chapter-lead">
 <p><em>Gutes Testen braucht nicht nur Technik, sondern auch Planung, Priorisierung und die Fähigkeit, Qualität messbar zu machen.</em></p>
 </blockquote>
 <p>Entspricht CTFL v4.0.2, Kapitel 5 — Testmanagement. Behandelt Teststrategie, Risikobasiertes Testen, Fehlermanagement und Testberichte. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
@@ -2206,9 +2204,7 @@ Strategie, Planung und Überwachung hast du im <a href="../02-hausaufgaben/05a-h
         <h2 class="card-title">Testwerkzeuge</h2>
       </header>
       <div class="card-body">
-        
-<h2 id="sec-kapitel-7">Kapitel 7: Testwerkzeuge</h2>
-<blockquote class="lz-chapter-lead">
+        <blockquote class="lz-chapter-lead">
 <p><em>Werkzeuge beschleunigen das Testen erheblich — aber nur wenn man weiß, wann man sie einsetzt und wann nicht.</em></p>
 </blockquote>
 <p>Entspricht CTFL v4.0.2, Kapitel 6 — Testwerkzeuge. Behandelt Werkzeugkategorien, Nutzen und Risiken der Testautomatisierung sowie Pilotprojekte zur Werkzeugeinführung. Eine visuelle Einordnung bietet die <a href="../01-lerninhalte/01-landkarte.html">Landkarte</a>.</p>
