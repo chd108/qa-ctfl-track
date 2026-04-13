@@ -502,6 +502,29 @@
   margin-bottom: 2px;
 }
 
+/* ISTQB-Grundsätze 2.1.6: Kern-Satz inkl. Nummer hellgelb, ohne Rand (Nummer per Zähler im Span) */
+.card-body .lz-grundsatz-liste {
+  list-style: none;
+  counter-reset: lz-grundsatz;
+  padding-left: 0;
+  margin-left: 0;
+}
+.card-body .lz-grundsatz-liste > li {
+  counter-increment: lz-grundsatz;
+}
+.card-body .lz-grundsatz-liste > li > .lz-grundsatz-kern {
+  display: inline;
+  background: #fffbeb;
+  padding: 0.12em 0.35em;
+  border-radius: 3px;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+.card-body .lz-grundsatz-liste > li > .lz-grundsatz-kern::before {
+  content: counter(lz-grundsatz) ". ";
+  font-weight: 600;
+}
+
 /* ── Blockquote = Claude tips ── */
 .card-body blockquote {
   background: #fffbeb;
@@ -897,14 +920,42 @@ Wenn Tester früh in Anforderungsreviews und Designphasen einbezogen werden, kö
 <div class="merksatz"><span class="merksatz-label">Merksatz</span>
 Die sieben Testgrundsätze sind Prüfungsstoff — alle kennen und verstehen.</div>
 <p><strong>Erklärung:</strong> Die sieben ISTQB-Grundsätze lauten:</p>
-<ol>
-<li>Testen zeigt die Anwesenheit von Fehlerzuständen — nicht deren Abwesenheit.</li>
-<li>Vollständiges Testen ist unmöglich.</li>
-<li>Frühes Testen spart Zeit und Geld.</li>
-<li>Fehlerzustände treten gehäuft auf (Fehlerhäufung / Defect Clustering).</li>
-<li>Tests nutzen sich ab (Pestizid-Paradoxon) — Testfälle müssen regelmäßig überarbeitet werden.</li>
-<li>Testen ist kontextabhängig — kein universelles Testverfahren.</li>
-<li>Trugschluss: „Keine Fehler“ bedeutet kein brauchbares System (Absence-of-Defects Fallacy).</li>
+<ol class="lz-grundsatz-liste">
+<li><span class="lz-grundsatz-kern">Testen zeigt die Anwesenheit von Fehlerzuständen — nicht deren Abwesenheit.</span>
+<ul>
+<li>Testen kann nur Risiken sichtbar machen, nie vollständige Sicherheit erzeugen.</li>
+</ul>
+</li>
+<li><span class="lz-grundsatz-kern">Vollständiges Testen ist unmöglich.</span>
+<ul>
+<li>Weil Systeme zu viele Kombinationen haben, kann man nur gezielt auswählen statt vollständig prüfen.</li>
+</ul>
+</li>
+<li><span class="lz-grundsatz-kern">Frühes Testen spart Zeit und Geld.</span>
+<ul>
+<li>Je früher ein Fehler gefunden wird, desto geringer sind die Kosten seiner Behebung.</li>
+</ul>
+</li>
+<li><span class="lz-grundsatz-kern">Fehlerzustände treten gehäuft auf (Fehlerhäufung / Defect Clustering).</span>
+<ul>
+<li>Fehler häufen sich nicht zufällig – sie entstehen dort, wo Systeme komplex, vernetzt und ständig verändert sind.</li>
+</ul>
+</li>
+<li><span class="lz-grundsatz-kern">Tests nutzen sich ab (Pestizid-Paradoxon) — Testfälle müssen regelmäßig überarbeitet werden.</span>
+<ul>
+<li>Tests „altern“, weil sie nur bekannte Wege prüfen – neue Fehler entstehen genau dort, wo du noch nicht hingeschaut hast.</li>
+</ul>
+</li>
+<li><span class="lz-grundsatz-kern">Testen ist kontextabhängig — kein universelles Testverfahren.</span>
+<ul>
+<li>Testen richtet sich immer nach Zweck und Risiko des Systems – nicht nach einer festen Standardmethode.</li>
+</ul>
+</li>
+<li><span class="lz-grundsatz-kern">Trugschluss: „Keine Fehler“ bedeutet ein brauchbares System (Absence-of-Defects Fallacy).</span>
+<ul>
+<li>Fehlerfreiheit allein macht kein gutes System – entscheidend ist, ob es für den Nutzer seinen Zweck erfüllt.</li>
+</ul>
+</li>
 </ol>
 </div>
 </details>
