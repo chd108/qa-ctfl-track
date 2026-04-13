@@ -68,8 +68,14 @@
       max-width: 100%;
       margin: 1.25rem auto;
       flex: 0 0 820px;
+      overflow: visible;
+      z-index: 1;
     }
-    .diagram-wrap canvas { display: block; }
+    .diagram-wrap canvas {
+      display: block;
+      position: relative;
+      z-index: 0;
+    }
 
     .cycle-note {
       margin-top: 0.5rem;
@@ -81,7 +87,7 @@
     }
     .cycle-note span { color: var(--mid); font-weight: 600; }
 
-    /* Hinweise / Fußnoten */
+    /* Hinweise zur Darstellung (Abschnitt unten) */
     .footnotes {
       margin-top: 2rem;
       padding: 1rem 1.25rem;
@@ -100,15 +106,11 @@
       margin: 0 0 0.75rem 0;
       color: var(--text);
     }
-    .footnotes ol {
-      margin: 0;
-      padding-left: 1.4rem;
-    }
-    .footnotes ol li {
-      margin-bottom: 0.65rem;
+    .footnotes p {
+      margin: 0 0 0.65rem 0;
       color: var(--soft);
     }
-    .footnotes ol li:last-child { margin-bottom: 0; }
+    .footnotes p:last-child { margin-bottom: 0; }
     .footnotes strong { color: var(--text); }
 
     @media (max-width: 900px) {
@@ -214,7 +216,7 @@
       </div>
       <p>Die Seite veranschaulicht den Softwareentwicklungslebenszyklus (SDLC)
       mit seinen sechs Phasen (Requirements / Anforderungsanalyse, Design / Systementwurf,
-      Implementation / Implementierung, Integration&#x202F;&#x00B9;, Test,
+      Implementation / Implementierung, Integration, Test,
       Operations &amp; Maintenance / Betrieb und Wartung) und den ISTQB&#x2011;Testprozess
       (Foundation Level) mit seinen sieben Aktivit&#xe4;ten (Testplanung,
       Test&#xfc;berwachung &amp; &#x2011;steuerung, Testanalyse, Testentwurf, Testrealisierung,
@@ -248,46 +250,40 @@
       <strong>einmalig beim Laden</strong> auf einem HTML5&#x2011;<code>canvas</code>&#x2011;Element
       (820&#x202F;&times;&#x202F;800&#x202F;px) gezeichnet &#x2014; es gibt keine Animation und
       keine Steuerelemente. Der dargestellte Zustand ist fest: Kontaktpunkt bei 12&#x202F;Uhr
-      (Anforderungsanalyse &#x2194; Testplanung). Die Geometrie entspricht dem Modell der Hypozykloide
-      (Radien, Verh&#xe4;ltnis 16&#x202F;:&#x202F;11); Segmente sind Kreisring&#x2011;Sektoren
+      (Anforderungsanalyse &#x2194; Testplanung). Die Abbildung nutzt Kreisring&#x2011;Sektoren
       (<code>arc</code>&#x2011;Pfade). Schrift: Helvetica Neue (sans-serif), passend zur
-      &#xfc;brigen Website. SDLC&#x2011;Segmente zeigen englische und deutsche Begriffe;
-      Phase&#x202F;4 (Integration) tr&#xe4;gt einen Fu&#xdf;notenhinweis.</p>
+      &#xfc;brigen Website. SDLC&#x2011;Segmente zeigen englische und deutsche Begriffe.</p>
     </section>
   </div>
 
   <p class="cycle-note">
-    Vollst&#xe4;ndiger Zyklus nach <span>16 SDLC&#x2011;Umdrehungen</span> =
-    <span>11 ISTQB&#x2011;Umdrehungen</span> &#x2014;
-    <span>42 m&#xf6;gliche Kombinationen</span> (6&#x202F;&#xd7;&#x202F;7).
+    <span>42 m&#xf6;gliche Kombinationen</span> (6&#x202F;&#xd7;&#x202F;7) aus sechs SDLC&#x2011;Phasen und sieben ISTQB&#x2011;Testprozess&#x2011;Aktivit&#xe4;ten.
   </p>
 
   <section class="footnotes" role="note" aria-label="Hinweise zur Darstellung">
     <h2>Hinweise zur Darstellung</h2>
-    <ol>
-      <li id="fn1">
-        <strong>&#x00B9;&#x202F;Integration</strong> —
-        Im englischsprachigen Wasserfallmodell wird Integration häufig als eigenständige SDLC-Phase dargestellt,
-        da separat entwickelte Komponenten dort in einem diskreten Schritt zusammengeführt werden.
-        Nach <strong>ISO/IEC/IEEE&#x202F;12207:2017</strong> (<em>System und Software-Engineering –
-        Prozesse im Lebenszyklus von Software</em>) ist Integration jedoch kein Phasenbegriff,
-        sondern ein technischer Prozess (<em>Software Integration Process</em>).
-        Im V-Modell und laut ISTQB CTFL v4.0.2 ist der <strong>Integrationstest</strong>
-        eine Teststufe (zwischen Komponenten- und Systemtest), keine Entwicklungsphase.
-        In agilen Methoden und DevOps findet Integration kontinuierlich statt (Continuous Integration).
-        Die Phase ist in dieser Darstellung bewusst beibehalten, um die Herkunft aus englischsprachigen
-        Lehrmaterialien transparent zu machen.
-      </li>
-      <li id="fn2">
-        <strong>&#x00B2;&#x202F;Äußerer Ring — Phasenbenennung</strong> —
-        Die deutschen Begriffe folgen einer gängigen Interpretation nach
-        <strong>ISO/IEC/IEEE&#x202F;12207:2017</strong> (<em>System und Software-Engineering –
-        Prozesse im Lebenszyklus von Software</em>).
-        Die Norm legt keine festen Phasennamen fest, sondern definiert Prozesse;
-        die Phaseneinteilung ist modellabhängig (Wasserfall, V-Modell, Scrum&#x202F;usw.).
-        Englische Originalbegriffe stammen aus den Masterschool-Lehrmaterialien.
-      </li>
-    </ol>
+    <p>
+      <strong>Äußerer Ring — Phasenbenennung (<em>Requirements</em>)</strong> —
+      Die deutschen Begriffe folgen einer gängigen Interpretation nach
+      <strong>ISO/IEC/IEEE&#x202F;12207:2017</strong> (<em>System und Software-Engineering –
+      Prozesse im Lebenszyklus von Software</em>).
+      Die Norm legt keine festen Phasennamen fest, sondern definiert Prozesse;
+      die Phaseneinteilung ist modellabhängig (Wasserfall, V-Modell, Scrum&#x202F;usw.).
+      Englische Originalbegriffe stammen aus den Masterschool-Lehrmaterialien.
+    </p>
+    <p>
+      <strong>Phase&#x202F;4 Integration:</strong>
+      Im englischsprachigen Wasserfallmodell wird Integration häufig als eigenständige SDLC-Phase dargestellt,
+      da separat entwickelte Komponenten dort in einem diskreten Schritt zusammengeführt werden.
+      Nach <strong>ISO/IEC/IEEE&#x202F;12207:2017</strong> (<em>System und Software-Engineering –
+      Prozesse im Lebenszyklus von Software</em>) ist Integration jedoch kein Phasenbegriff,
+      sondern ein technischer Prozess (<em>Software Integration Process</em>).
+      Im V-Modell und laut ISTQB CTFL v4.0.2 ist der <strong>Integrationstest</strong>
+      eine Teststufe (zwischen Komponenten- und Systemtest), keine Entwicklungsphase.
+      In agilen Methoden und DevOps findet Integration kontinuierlich statt (Continuous Integration).
+      Die Phase ist in dieser Darstellung bewusst beibehalten, um die Herkunft aus englischsprachigen
+      Lehrmaterialien transparent zu machen.
+    </p>
   </section>
 </main>
 

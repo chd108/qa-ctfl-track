@@ -16,6 +16,8 @@
   var T2A = '#b8922e';
 
   var FONT = '"Helvetica Neue", Helvetica, Arial, sans-serif';
+  /** Einheitliche Schriftgröße für SDLC-Bögen und ISTQB-Ring-Labels (px) */
+  var LABEL_FONT_PX = 17;
 
   // ── Äußerer Ring: Gebogene Beschriftung ───────────────────────
   // rOuter = Englisch (außen), rInner = Deutsch ISO 12207 (innen)
@@ -24,7 +26,7 @@
     'Requirements',
     'Design',
     'Implementation',
-    'Integration \u00B9',
+    'Integration',
     'Testing',
     'Operations \u0026 Maintenance'
   ];
@@ -36,10 +38,9 @@
     'Test',
     'Betrieb und Wartung'
   ];
+  var N_SDLC = SDLC_OUTER.length;
 
-  // ── Innerer Kreis: 7 Aktivitäten (CTFL v4.0.2) ───────────────
-  var N_ISTQB = 7;
-  var ISTQB_NUMS  = ['1','2','3','4','5','6','7'];
+  // ── Innerer Kreis: Aktivitäten (CTFL v4.0.2), Anzahl aus Daten ─
   var ISTQB_LINES = [
     ['Testplanung'],
     ['Test-','\u00FCberwachung','& -steuerung'],
@@ -49,6 +50,11 @@
     ['Testdurch-','f\u00FChrung'],
     ['Test-','abschluss']
   ];
+  var N_ISTQB = ISTQB_LINES.length;
+  var ISTQB_NUMS = [];
+  for (var ni = 0; ni < N_ISTQB; ni++) {
+    ISTQB_NUMS.push(String(ni + 1));
+  }
 
   var canvas = document.getElementById('c');
   var ctx    = canvas.getContext('2d');
@@ -123,60 +129,10 @@
     ctx.restore();
   }
 
-  /**
-   * Wie drawArcString, aber mehrere Teile hintereinander auf demselben Bogen
-   * (z. B. normaler Text + hochgestellte Ziffer in anderer Schriftgröße).
-   */
-  function drawArcComposite(parts, cx, cy, radius, centerAngle, cw) {
-    var spacing = 0.8;
-    var totalSpan = 0;
-    var i, p, charW, charA;
-    for (p = 0; p < parts.length; p++) {
-      ctx.font = parts[p].font;
-      for (i = 0; i < parts[p].text.length; i++) {
-        totalSpan += (ctx.measureText(parts[p].text[i]).width + spacing) / radius;
-      }
-    }
-    ctx.save();
-    ctx.textAlign = 'center';
-    ctx.textBaseline = 'middle';
-    if (cw) {
-      var a = centerAngle - totalSpan / 2;
-      for (p = 0; p < parts.length; p++) {
-        ctx.font = parts[p].font;
-        for (i = 0; i < parts[p].text.length; i++) {
-          charW = ctx.measureText(parts[p].text[i]).width + spacing;
-          charA = a + charW / (2 * radius);
-          ctx.save();
-          ctx.translate(cx + radius * Math.sin(charA), cy - radius * Math.cos(charA));
-          ctx.rotate(charA);
-          ctx.fillText(parts[p].text[i], 0, 0);
-          ctx.restore();
-          a += charW / radius;
-        }
-      }
-    } else {
-      a = centerAngle + totalSpan / 2;
-      for (p = 0; p < parts.length; p++) {
-        ctx.font = parts[p].font;
-        for (i = 0; i < parts[p].text.length; i++) {
-          charW = ctx.measureText(parts[p].text[i]).width + spacing;
-          charA = a - charW / (2 * radius);
-          ctx.save();
-          ctx.translate(cx + radius * Math.sin(charA), cy - radius * Math.cos(charA));
-          ctx.rotate(charA + Math.PI);
-          ctx.fillText(parts[p].text[i], 0, 0);
-          ctx.restore();
-          a -= charW / radius;
-        }
-      }
-    }
-    ctx.restore();
-  }
-
   function segIdxSDLC(angleRad) {
-    var deg = ((angleRad * 180 / Math.PI) % 360 + 360) % 360;
-    return Math.floor((deg + 30) / 60) % 6;
+    var segDeg = 360 / N_SDLC;
+    var deg    = ((angleRad * 180 / Math.PI) % 360 + 360) % 360;
+    return Math.floor((deg + segDeg / 2) / segDeg) % N_SDLC;
   }
 
   function segIdxISTQB(angleRad) {
@@ -203,9 +159,9 @@
   }
 
   function drawSDLC(actSeg) {
-    var seg = Math.PI / 3;
-    for (var i = 0; i < 6; i++) {
-      var a1 = -Math.PI/6 + i*seg, a2 = a1 + seg, active = (i === actSeg);
+    var seg = 2 * Math.PI / N_SDLC;
+    for (var i = 0; i < N_SDLC; i++) {
+      var a1 = -seg / 2 + i * seg, a2 = a1 + seg, active = (i === actSeg);
       annSector(CX, CY, R, R2, a1, a2);
       ctx.fillStyle = active ? SCA[i%2] : SC[i%2];
       if (active) { ctx.shadowColor = SCA[i%2]; ctx.shadowBlur = 14; }
@@ -217,14 +173,13 @@
   }
 
   function drawSDLCLabels(actSeg) {
-    var seg    = Math.PI / 3;
+    var seg    = 2 * Math.PI / N_SDLC;
     var rOuter = 326;  // Englisch  — nach innen (+ Phase-Bogen gleich weit)
     var rInner = 282;  // Deutsch   — nahe innerem Rand
     var rPhase = rOuter + 24;  // „Phase X:“ mit Abstand zum englischen Bogen
-    var fSize  = 17;
-    var integAccent = '#8a6a2e';  // Integration ¹ — T2-nah, Sonderstellung
+    var integAccent = '#8a6a2e';  // Phase 4 (Integration) — Akzentfarbe
 
-    for (var i = 0; i < 6; i++) {
+    for (var i = 0; i < N_SDLC; i++) {
       var centerAngle = i * seg;
       var active = (i === actSeg);
 
@@ -236,34 +191,16 @@
       var rPh = cw ? rPhase : rOuter;
       var rEn = cw ? rOuter : rPhase;
 
-      // Phase-Zeile
-      ctx.font = fSize + 'px ' + FONT;
-      if (i === 3) {
-        ctx.fillStyle = integAccent;
-      } else {
-        ctx.fillStyle = active ? '#1a4a30' : '#4e6060';
-      }
+      // Phase-Zeile und englischer Begriff: gleiche Farblogik (Integration = Akzent)
+      var phaseEnFill = (i === 3) ? integAccent : (active ? '#1a4a30' : '#4e6060');
+      ctx.font = LABEL_FONT_PX + 'px ' + FONT;
+      ctx.fillStyle = phaseEnFill;
       drawArcString('Phase ' + (i + 1) + ':', CX, CY, rPh, centerAngle, cw);
-
-      // Englischer Begriff (Integration: ¹ größer, eigener Teil)
-      if (i === 3) {
-        ctx.fillStyle = integAccent;
-        drawArcComposite(
-          [
-            { text: 'Integration ', font: fSize + 'px ' + FONT },
-            { text: '\u00B9', font: fSize + 4 + 'px ' + FONT }
-          ],
-          CX, CY, rEn, centerAngle, cw
-        );
-      } else {
-        ctx.font = fSize + 'px ' + FONT;
-        ctx.fillStyle = active ? '#1a4a30' : '#4e6060';
-        drawArcString(SDLC_OUTER[i], CX, CY, rEn, centerAngle, cw);
-      }
+      drawArcString(SDLC_OUTER[i], CX, CY, rEn, centerAngle, cw);
 
       // Deutscher Begriff (innerer Bogen, fett) — nur wenn vorhanden
       if (SDLC_INNER[i]) {
-        ctx.font = 'bold ' + fSize + 'px ' + FONT;
+        ctx.font = 'bold ' + LABEL_FONT_PX + 'px ' + FONT;
         ctx.fillStyle = active ? '#112b1a' : '#283535';
         drawArcString(SDLC_INNER[i], CX, CY, rInner, centerAngle, cw);
       }
@@ -298,9 +235,9 @@
     for (var i = 0; i < N_ISTQB; i++) {
       var p      = polar(icx, icy, rL, wRot + i * seg);
       var active = (i === actSeg), isT2 = (i === 1), lines = ISTQB_LINES[i];
-      ctx.font      = '17px ' + FONT;
+      ctx.font      = LABEL_FONT_PX + 'px ' + FONT;
       ctx.fillStyle = active ? (isT2 ? '#3e2400' : '#071e2e') : (isT2 ? '#7a5518' : '#283535');
-      var numY = p.y - 17 - (lines.length - 1) * 6.5;
+      var numY = p.y - LABEL_FONT_PX - (lines.length - 1) * 6.5;
       ctx.fillText(ISTQB_NUMS[i], p.x, numY);
       multiText(lines, p.x, p.y + 1, lineH);
     }
@@ -321,7 +258,16 @@
     ctx.beginPath(); ctx.arc(cp.x, cp.y, 4, 0, Math.PI*2);
     ctx.fillStyle = 'rgba(78,96,96,0.62)'; ctx.fill();
     var labelX = 818, labelY = 24;
-    var ax1 = 520, ay1 = 50;
+    ctx.textAlign = 'right';
+    ctx.textBaseline = 'middle';
+    ctx.font = '14px ' + FONT;
+    var labelPad = 8;
+    var maxLabelW = Math.max(
+      ctx.measureText('Kontaktpunkt').width,
+      ctx.measureText('Anforderungsanalyse \u2194 Testplanung').width
+    );
+    var ax1 = labelX - maxLabelW - labelPad;
+    var ay1 = labelY;
     var dx = cp.x - ax1, dy = cp.y - ay1;
     var len = Math.sqrt(dx*dx + dy*dy);
     var ux = dx/len, uy = dy/len;
@@ -341,10 +287,11 @@
     ctx.closePath();
     ctx.fillStyle = 'rgba(78,96,96,0.45)'; ctx.fill();
     ctx.restore();
-    ctx.textAlign = 'right'; ctx.textBaseline = 'middle';
-    ctx.font = '14px ' + FONT;
     ctx.fillStyle = 'rgba(78,96,96,0.45)';
-    ctx.fillText('Kontaktpunkt', labelX, labelY - 12);
+    var labelLeft = labelX - maxLabelW;
+    ctx.textAlign = 'left';
+    ctx.fillText('Kontaktpunkt', labelLeft, labelY - 12);
+    ctx.textAlign = 'right';
     ctx.fillText('Anforderungsanalyse \u2194 Testplanung', labelX, labelY + 12);
   }
 
