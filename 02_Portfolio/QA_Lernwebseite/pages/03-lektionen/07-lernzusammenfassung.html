@@ -7,6 +7,7 @@
   <meta name="description" content="Lernzusammenfassung ISTQB CTFL v4.0.2 — Merksätze und Kapitelüberblicke (Spillner/Linz, Lehrplan).">
   <link rel="stylesheet" href="../../assets/css/base.css">
   <link rel="stylesheet" href="../../assets/css/subpage.css">
+  <link rel="stylesheet" href="../../assets/css/lernzusammenfassung-toc.css">
   <title>Lernzusammenfassung — QA Lernwebseite</title>
   <style>
 
@@ -170,74 +171,6 @@
   min-width: 0;
 }
 
-/* ── Buch-Inhaltsverzeichnis (statisch) ── */
-.toc-static-section {
-  margin-bottom: 1.25rem;
-  border: 1px solid var(--color-border, #e2e8f0);
-  border-radius: 8px;
-  background: #fafbfc;
-  padding: .75rem 1rem 1rem;
-}
-.toc-static-heading {
-  font-size: 14px;
-  font-weight: 700;
-  margin: 0 0 .5rem;
-  color: var(--color-heading, #111);
-}
-/* Rahmen ums Inhaltsverzeichnis; kein eigenes Scroll-Fenster (gesamte Seite scrollt) */
-.toc-static-pre-wrap {
-  background: #fff;
-  border: 1px solid #e5e7eb;
-  border-radius: 6px;
-}
-.toc-static-cols {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0 .85rem;
-  padding: .6rem .75rem;
-  align-items: start;
-}
-@media (max-width: 52rem) {
-  .toc-static-cols { grid-template-columns: 1fr; }
-  .toc-static-pre--split2 { border-left: 0 !important; padding-left: 0 !important; }
-}
-.toc-static-pre--split2 {
-  border-left: 1px solid #e5e7eb;
-  padding-left: 0.75rem;
-}
-.toc-static-pre {
-  margin: 0;
-  padding: 0;
-  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", Consolas, monospace;
-  font-size: 11px;
-  line-height: 0.92;
-  white-space: pre;
-  overflow-x: auto;
-  color: #374151;
-  border: 0;
-  min-width: 0;
-}
-.toc-static-pre a.toc-iv-link {
-  display: block;
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  line-height: 0.92;
-  color: #2563eb;
-  text-decoration: none;
-  vertical-align: baseline;
-}
-.toc-static-pre a.toc-iv-link:hover,
-.toc-static-pre a.toc-iv-link:focus-visible {
-  color: #1d4ed8;
-  text-decoration: underline;
-  text-underline-offset: 2px;
-}
-/* ISBN-Zeile: Link inline (nicht display:block wie Kapitelzeilen) */
-.toc-static-pre a.toc-iv-link--external {
-  display: inline;
-}
 .buch-anhang-hinweis {
   margin: 1rem 0 0;
   padding: .65rem .85rem;
@@ -751,17 +684,17 @@ ISBN: <a class="toc-iv-link toc-iv-link--external" href="https://dpunkt.de/produ
 ─────────────────────────────────────
 
 1   Einleitung
-<a class="toc-iv-link" href="#kap2">2   Grundlagen des Softwaretestens</a>
-<a class="toc-iv-link" href="#sec-2-1">    2.1   Begriffe und Motivation</a>
+<a class="toc-iv-link toc-iv-link--kap" href="#kap2">2   Grundlagen des Softwaretestens</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-2-1">    2.1   Begriffe und Motivation</a>
 <a class="toc-iv-link" href="#sec-2-1-1">    2.1.1   Fehlerbegriff</a>
 <a class="toc-iv-link" href="#sec-2-1-2">    2.1.2   Testbegriff</a>
 <a class="toc-iv-link" href="#sec-2-1-3">    2.1.3   Testartefakte und ihre Beziehungen</a>
 <a class="toc-iv-link" href="#sec-2-1-4">    2.1.4   Aufwand für das Testen</a>
 <a class="toc-iv-link" href="#sec-2-1-5">    2.1.5   Testwissen frühzeitig und damit erfolgreich nutzen</a>
 <a class="toc-iv-link" href="#sec-2-1-6">    2.1.6   Grundsätze des Testens</a>
-<a class="toc-iv-link" href="#sec-2-2">    2.2   Softwarequalität</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-2-2">    2.2   Softwarequalität</a>
 <a class="toc-iv-link" href="#sec-2-2-1">    2.2.1   Qualitätsmanagement und Qualitätssicherung</a>
-<a class="toc-iv-link" href="#sec-2-3">    2.3   Der Testprozess</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-2-3">    2.3   Der Testprozess</a>
 <a class="toc-iv-link" href="#sec-2-3-1">    2.3.1   Testplanung</a>
 <a class="toc-iv-link" href="#sec-2-3-2">    2.3.2   Testüberwachung und Teststeuerung</a>
 <a class="toc-iv-link" href="#sec-2-3-3">    2.3.3   Testanalyse</a>
@@ -771,51 +704,51 @@ ISBN: <a class="toc-iv-link toc-iv-link--external" href="https://dpunkt.de/produ
 <a class="toc-iv-link" href="#sec-2-3-7">    2.3.7   Testabschluss</a>
 <a class="toc-iv-link" href="#sec-2-3-8">    2.3.8   Verfolgbarkeit</a>
 <a class="toc-iv-link" href="#sec-2-3-9">    2.3.9   Einfluss des Kontextes auf den Testprozess</a>
-<a class="toc-iv-link" href="#sec-2-4">    2.4   Psychologie, Denkweisen und Kompetenzen</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-2-4">    2.4   Psychologie, Denkweisen und Kompetenzen</a>
 <a class="toc-iv-link" href="#sec-2-4-1">    2.4.1   Denkweisen und Kompetenzen von Testern und Entwicklern</a>
-<a class="toc-iv-link" href="#sec-2-5">    2.5   Zusammenfassung</a>
-<a class="toc-iv-link" href="#kap3">3   Testen im Softwareentwicklungslebenszyklus</a>
-<a class="toc-iv-link" href="#sec-3-1">    3.1   Sequenzielle Entwicklungsmodelle</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-2-5">    2.5   Zusammenfassung</a>
+<a class="toc-iv-link toc-iv-link--kap" href="#kap3">3   Testen im Softwareentwicklungslebenszyklus</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-3-1">    3.1   Sequenzielle Entwicklungsmodelle</a>
 <a class="toc-iv-link" href="#sec-3-1-1">    3.1.1   Das Wasserfallmodell</a>
 <a class="toc-iv-link" href="#sec-3-1-2">    3.1.2   Das V-Modell</a>
-<a class="toc-iv-link" href="#sec-3-2">    3.2   Iterativ-inkrementelle und agile Entwicklung</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-3-2">    3.2   Iterativ-inkrementelle und agile Entwicklung</a>
 <a class="toc-iv-link" href="#sec-3-2-1">    3.2.1   Klassische iterativ-inkrementelle Entwicklung</a>
 <a class="toc-iv-link" href="#sec-3-2-2">    3.2.2   Agile Softwareentwicklung</a>
 <a class="toc-iv-link" href="#sec-3-2-3">    3.2.3   Zusammenarbeit in der agilen Anforderungsermittlung</a>
-<a class="toc-iv-link" href="#sec-3-3">    3.3   Softwareentwicklung im Projekt- und Produktkontext</a>
-<a class="toc-iv-link" href="#sec-3-4">    3.4   Teststufen</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-3-3">    3.3   Softwareentwicklung im Projekt- und Produktkontext</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-3-4">    3.4   Teststufen</a>
 <a class="toc-iv-link" href="#sec-3-4-1">    3.4.1   Komponententest</a>
 <a class="toc-iv-link" href="#sec-3-4-2">    3.4.2   (Komponenten-)Integrationstest</a>
 <a class="toc-iv-link" href="#sec-3-4-3">    3.4.3   Systemtest und Systemintegrationstest</a>
 <a class="toc-iv-link" href="#sec-3-4-4">    3.4.4   Abnahmetest</a>
-<a class="toc-iv-link" href="#sec-3-5">    3.5   Testarten</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-3-5">    3.5   Testarten</a>
 <a class="toc-iv-link" href="#sec-3-5-1">    3.5.1   Funktionale Tests</a>
 <a class="toc-iv-link" href="#sec-3-5-2">    3.5.2   Nicht funktionale Tests</a>
 <a class="toc-iv-link" href="#sec-3-5-3">    3.5.3   Anforderungsbezogener und strukturbezogener Test</a>
-<a class="toc-iv-link" href="#sec-3-6">    3.6   Test nach Änderung und Weiterentwicklung</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-3-6">    3.6   Test nach Änderung und Weiterentwicklung</a>
 <a class="toc-iv-link" href="#sec-3-6-1">    3.6.1   Testen nach Softwarewartung und -pflege</a>
 <a class="toc-iv-link" href="#sec-3-6-2">    3.6.2   Testen nach Weiterentwicklung</a>
 <a class="toc-iv-link" href="#sec-3-6-3">    3.6.3   Regressionstest</a>
-<a class="toc-iv-link" href="#sec-3-7">    3.7   Verbesserung und Automatisierung des Softwareentwicklungsprozesses</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-3-7">    3.7   Verbesserung und Automatisierung des Softwareentwicklungsprozesses</a>
 <a class="toc-iv-link" href="#sec-3-7-1">    3.7.1   Testgetriebene Entwicklung</a>
 <a class="toc-iv-link" href="#sec-3-7-2">    3.7.2   Continuous Integration, Continuous Delivery, Continuous Deployment</a>
 <a class="toc-iv-link" href="#sec-3-7-3">    3.7.3   DevOps</a>
 <a class="toc-iv-link" href="#sec-3-7-4">    3.7.4   Retrospektiven und Prozessverbesserung</a>
-<a class="toc-iv-link" href="#sec-3-8">    3.8   Zusammenfassung</a>
-<a class="toc-iv-link" href="#kap4">4   Statischer Test</a>
-<a class="toc-iv-link" href="#sec-4-1">    4.1   Was kann analysiert und geprüft werden?</a>
-<a class="toc-iv-link" href="#sec-4-2">    4.2   Vorgehen beim Review</a>
-<a class="toc-iv-link" href="#sec-4-3">    4.3   Der Reviewprozess</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-3-8">    3.8   Zusammenfassung</a>
+<a class="toc-iv-link toc-iv-link--kap" href="#kap4">4   Statischer Test</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-4-1">    4.1   Was kann analysiert und geprüft werden?</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-4-2">    4.2   Vorgehen beim Review</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-4-3">    4.3   Der Reviewprozess</a>
 <a class="toc-iv-link" href="#sec-4-3-1">    4.3.1   Aktivitäten im Reviewprozess</a>
 <a class="toc-iv-link" href="#sec-4-3-2">    4.3.2   Unterschiedliche Vorgehensweisen beim individuellen Review</a>
 <a class="toc-iv-link" href="#sec-4-3-3">    4.3.3   Rollen und Verantwortlichkeiten im Reviewprozess</a>
-<a class="toc-iv-link" href="#sec-4-4">    4.4   Reviewarten</a>
-<a class="toc-iv-link" href="#sec-4-5">    4.5   Erfolgsfaktoren, Vorteile und Grenzen</a>
-<a class="toc-iv-link" href="#sec-4-6">    4.6   Werkzeuggestützte statische Analyse</a>
-<a class="toc-iv-link" href="#sec-4-7">    4.7   Unterschiede zwischen statischen und dynamischen Tests</a>
-<a class="toc-iv-link" href="#sec-4-8">    4.8   Zusammenfassung</a></pre>
-          <pre class="toc-static-pre toc-static-pre--split2" aria-label="Inhaltsverzeichnis Teil 2: Kapitel 5 bis Anhang"><a class="toc-iv-link" href="#kap5">5   Dynamischer Test</a>
-<a class="toc-iv-link" href="#sec-5-1">    5.1   Blackbox-Testverfahren</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-4-4">    4.4   Reviewarten</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-4-5">    4.5   Erfolgsfaktoren, Vorteile und Grenzen</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-4-6">    4.6   Werkzeuggestützte statische Analyse</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-4-7">    4.7   Unterschiede zwischen statischen und dynamischen Tests</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-4-8">    4.8   Zusammenfassung</a></pre>
+          <pre class="toc-static-pre toc-static-pre--split2" aria-label="Inhaltsverzeichnis Teil 2: Kapitel 5 bis Anhang"><a class="toc-iv-link toc-iv-link--kap" href="#kap5">5   Dynamischer Test</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-5-1">    5.1   Blackbox-Testverfahren</a>
 <a class="toc-iv-link" href="#sec-5-1-1">    5.1.1   Äquivalenzklassenbildung</a>
 <a class="toc-iv-link" href="#sec-5-1-2">    5.1.2   Grenzwertanalyse</a>
 <a class="toc-iv-link" href="#sec-5-1-3">    5.1.3   Zustandsbasierter Test</a>
@@ -823,19 +756,19 @@ ISBN: <a class="toc-iv-link toc-iv-link--external" href="https://dpunkt.de/produ
 <a class="toc-iv-link" href="#sec-5-1-5">    5.1.5   Kombinatorisches Testen</a>
 <a class="toc-iv-link" href="#sec-5-1-6">    5.1.6   Anwendungsfallbasierter Test</a>
 <a class="toc-iv-link" href="#sec-5-1-7">    5.1.7   Allgemeine Bewertung der Blackbox-Verfahren</a>
-<a class="toc-iv-link" href="#sec-5-2">    5.2   Whitebox-Testverfahren</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-5-2">    5.2   Whitebox-Testverfahren</a>
 <a class="toc-iv-link" href="#sec-5-2-1">    5.2.1   Anweisungstest und Anweisungsüberdeckung</a>
 <a class="toc-iv-link" href="#sec-5-2-2">    5.2.2   Zweigtest und Zweigüberdeckung</a>
 <a class="toc-iv-link" href="#sec-5-2-3">    5.2.3   Test der Bedingungen</a>
 <a class="toc-iv-link" href="#sec-5-2-4">    5.2.4   Allgemeine Bewertung der Whitebox-Verfahren</a>
-<a class="toc-iv-link" href="#sec-5-3">    5.3   Erfahrungsbasierte Testfallermittlung</a>
-<a class="toc-iv-link" href="#sec-5-4">    5.4   Auswahl von Testverfahren</a>
-<a class="toc-iv-link" href="#sec-5-5">    5.5   Zusammenfassung</a>
-<a class="toc-iv-link" href="#kap6">6   Testmanagement</a>
-<a class="toc-iv-link" href="#sec-6-1">    6.1   Testorganisation</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-5-3">    5.3   Erfahrungsbasierte Testfallermittlung</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-5-4">    5.4   Auswahl von Testverfahren</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-5-5">    5.5   Zusammenfassung</a>
+<a class="toc-iv-link toc-iv-link--kap" href="#kap6">6   Testmanagement</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-6-1">    6.1   Testorganisation</a>
 <a class="toc-iv-link" href="#sec-6-1-1">    6.1.1   Unabhängiges Testen</a>
 <a class="toc-iv-link" href="#sec-6-1-2">    6.1.2   Rollen, Aufgaben und Qualifikation</a>
-<a class="toc-iv-link" href="#sec-6-2">    6.2   Teststrategie</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-6-2">    6.2   Teststrategie</a>
 <a class="toc-iv-link" href="#sec-6-2-1">    6.2.1   Teststrategie und Testkonzept</a>
 <a class="toc-iv-link" href="#sec-6-2-2">    6.2.2   Auswahl der Teststrategie</a>
 <a class="toc-iv-link" href="#sec-6-2-3">    6.2.3   Verschiedene konkrete Strategien</a>
@@ -843,35 +776,35 @@ ISBN: <a class="toc-iv-link toc-iv-link--external" href="https://dpunkt.de/produ
 <a class="toc-iv-link" href="#sec-6-2-5">    6.2.5   Testaufwand und Testkosten</a>
 <a class="toc-iv-link" href="#sec-6-2-6">    6.2.6   Schätzverfahren zum Testaufwand</a>
 <a class="toc-iv-link" href="#sec-6-2-7">    6.2.7   Testkosten vs. Fehlerkosten</a>
-<a class="toc-iv-link" href="#sec-6-3">    6.3   Testplanung, Teststeuerung und Testüberwachung</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-6-3">    6.3   Testplanung, Teststeuerung und Testüberwachung</a>
 <a class="toc-iv-link" href="#sec-6-3-1">    6.3.1   Testplanung</a>
 <a class="toc-iv-link" href="#sec-6-3-2">    6.3.2   Teststeuerung</a>
 <a class="toc-iv-link" href="#sec-6-3-3">    6.3.3   Testüberwachung</a>
 <a class="toc-iv-link" href="#sec-6-3-4">    6.3.4   Testberichte</a>
-<a class="toc-iv-link" href="#sec-6-4">    6.4   Fehlermanagement</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-6-4">    6.4   Fehlermanagement</a>
 <a class="toc-iv-link" href="#sec-6-4-1">    6.4.1   Testprotokoll auswerten</a>
 <a class="toc-iv-link" href="#sec-6-4-2">    6.4.2   Fehlermeldung erstellen</a>
 <a class="toc-iv-link" href="#sec-6-4-3">    6.4.3   Fehlerwirkungen klassifizieren</a>
 <a class="toc-iv-link" href="#sec-6-4-4">    6.4.4   Fehlerstatus verfolgen</a>
 <a class="toc-iv-link" href="#sec-6-4-5">    6.4.5   Auswertungen und Berichte</a>
-<a class="toc-iv-link" href="#sec-6-5">    6.5   Konfigurationsmanagement</a>
-<a class="toc-iv-link" href="#sec-6-6">    6.6   Relevante Normen und Standards</a>
-<a class="toc-iv-link" href="#sec-6-7">    6.7   Zusammenfassung</a>
-<a class="toc-iv-link" href="#kap7">7   Testwerkzeuge</a>
-<a class="toc-iv-link" href="#sec-7-1">    7.1   Testwerkzeugtypen</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-6-5">    6.5   Konfigurationsmanagement</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-6-6">    6.6   Relevante Normen und Standards</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-6-7">    6.7   Zusammenfassung</a>
+<a class="toc-iv-link toc-iv-link--kap" href="#kap7">7   Testwerkzeuge</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-7-1">    7.1   Testwerkzeugtypen</a>
 <a class="toc-iv-link" href="#sec-7-1-1">    7.1.1   Werkzeuge für Management und Steuerung von Tests</a>
 <a class="toc-iv-link" href="#sec-7-1-2">    7.1.2   Werkzeuge zur Testspezifikation</a>
 <a class="toc-iv-link" href="#sec-7-1-3">    7.1.3   Werkzeuge für statischen Test</a>
 <a class="toc-iv-link" href="#sec-7-1-4">    7.1.4   Werkzeuge zur Automatisierung dynamischer Tests</a>
 <a class="toc-iv-link" href="#sec-7-1-5">    7.1.5   Werkzeuge für nicht funktionale Tests</a>
 <a class="toc-iv-link" href="#sec-7-1-6">    7.1.6   Werkzeuge in der CI/CD- und DevOps-Pipeline</a>
-<a class="toc-iv-link" href="#sec-7-2">    7.2   Nutzen und Risiken der Testautomatisierung</a>
-<a class="toc-iv-link" href="#sec-7-3">    7.3   Effektive Nutzung von Werkzeugen</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-7-2">    7.2   Nutzen und Risiken der Testautomatisierung</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-7-3">    7.3   Effektive Nutzung von Werkzeugen</a>
 <a class="toc-iv-link" href="#sec-7-3-1">    7.3.1   Auswahl und Einführung von Testwerkzeugen</a>
 <a class="toc-iv-link" href="#sec-7-3-2">    7.3.2   Werkzeugauswahl</a>
 <a class="toc-iv-link" href="#sec-7-3-3">    7.3.3   Pilotprojekt zur Werkzeugeinführung</a>
 <a class="toc-iv-link" href="#sec-7-3-4">    7.3.4   Faktoren für die erfolgreiche Einführung und Nutzung</a>
-<a class="toc-iv-link" href="#sec-7-4">    7.4   Zusammenfassung</a>
+<a class="toc-iv-link toc-iv-link--sec" href="#sec-7-4">    7.4   Zusammenfassung</a>
 
 ─────────────────────────────────────
 Anhang

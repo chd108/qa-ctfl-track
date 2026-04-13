@@ -1,0 +1,114 @@
+/*
+ * Statisches Inhaltsverzeichnis — nur 07-lernzusammenfassung.html
+ * Nutzt Variablen aus base.css (--callout-chain-bg, --e3-RGB für Kapitelzeilen).
+ */
+
+/* ── Buch-Inhaltsverzeichnis (statisch) ── */
+.toc-static-section {
+  margin-bottom: 1.25rem;
+  border: 1px solid var(--color-border, #e2e8f0);
+  border-radius: 8px;
+  background: #fafbfc;
+  padding: .75rem 1rem 1rem;
+}
+.toc-static-heading {
+  font-size: 14px;
+  font-weight: 700;
+  margin: 0 0 .5rem;
+  color: var(--color-heading, #111);
+}
+/* Rahmen ums Inhaltsverzeichnis; kein eigenes Scroll-Fenster (gesamte Seite scrollt) */
+.toc-static-pre-wrap {
+  background: #fff;
+  border: 1px solid #e5e7eb;
+  border-radius: 6px;
+}
+.toc-static-cols {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0 .85rem;
+  padding: .6rem .75rem;
+  align-items: start;
+}
+@media (max-width: 52rem) {
+  .toc-static-cols { grid-template-columns: 1fr; }
+  .toc-static-pre--split2 { border-left: 0 !important; padding-left: 0 !important; }
+}
+.toc-static-pre--split2 {
+  border-left: 1px solid #e5e7eb;
+  padding-left: 0.75rem;
+}
+.toc-static-pre {
+  margin: 0;
+  padding: 0;
+  font-family: ui-monospace, "Cascadia Code", "Segoe UI Mono", Consolas, monospace;
+  font-size: 11px;
+  line-height: 0.92;
+  white-space: pre;
+  overflow-x: auto;
+  color: #374151;
+  border: 0;
+  min-width: 0;
+}
+.toc-static-pre a.toc-iv-link {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font: inherit;
+  line-height: 0.92;
+  color: #2563eb;
+  text-decoration: none;
+  vertical-align: baseline;
+}
+.toc-static-pre a.toc-iv-link:hover,
+.toc-static-pre a.toc-iv-link:focus-visible {
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* H2-Abschnittszeilen im TOC (2.1 … 7.4): wie H2-Akkordeon, volle Spaltenbreite */
+.toc-static-pre a.toc-iv-link.toc-iv-link--sec {
+  display: block;
+  width: calc(100% - 0.75rem);
+  max-width: 100%;
+  box-sizing: border-box;
+  background: var(--callout-chain-bg);
+  border: none;
+  border-radius: 4px;
+  padding: 0.18rem 0.5rem 0.18rem 0.4rem;
+}
+.toc-static-pre a.toc-iv-link.toc-iv-link--sec:hover,
+.toc-static-pre a.toc-iv-link.toc-iv-link--sec:focus-visible {
+  background: #fff;
+  border: none;
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* Hauptkapitel 2–7: --e3 halbtransparent */
+.toc-static-pre a.toc-iv-link.toc-iv-link--kap {
+  display: block;
+  width: calc(100% - 0.75rem);
+  max-width: 100%;
+  box-sizing: border-box;
+  background: rgba(224, 206, 200, 0.5);
+  border: none;
+  border-radius: 4px;
+  padding: 0.18rem 0.5rem 0.18rem 0.4rem;
+}
+.toc-static-pre a.toc-iv-link.toc-iv-link--kap:hover,
+.toc-static-pre a.toc-iv-link.toc-iv-link--kap:focus-visible {
+  background: #fff;
+  border: none;
+  color: #1d4ed8;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+/* ISBN-Zeile: Link inline (nicht display:block wie Kapitelzeilen) */
+.toc-static-pre a.toc-iv-link--external {
+  display: inline;
+}
