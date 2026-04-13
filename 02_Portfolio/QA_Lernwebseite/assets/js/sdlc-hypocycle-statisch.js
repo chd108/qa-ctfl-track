@@ -263,7 +263,7 @@
     ctx.font = '14px ' + FONT;
     var labelPad = 8;
     var maxLabelW = Math.max(
-      ctx.measureText('Kontaktpunkt').width,
+      ctx.measureText('Kontaktpunkt - Start').width,
       ctx.measureText('Anforderungsanalyse \u2194 Testplanung').width
     );
     var ax1 = labelX - maxLabelW - labelPad;
@@ -290,7 +290,7 @@
     ctx.fillStyle = 'rgba(78,96,96,0.45)';
     var labelLeft = labelX - maxLabelW;
     ctx.textAlign = 'left';
-    ctx.fillText('Kontaktpunkt', labelLeft, labelY - 12);
+    ctx.fillText('Kontaktpunkt - Start', labelLeft, labelY - 12);
     ctx.textAlign = 'right';
     ctx.fillText('Anforderungsanalyse \u2194 Testplanung', labelX, labelY + 12);
   }
