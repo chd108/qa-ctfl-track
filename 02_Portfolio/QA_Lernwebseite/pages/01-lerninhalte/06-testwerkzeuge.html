@@ -152,6 +152,26 @@
       margin-bottom: 0.7rem;
       line-height: 1.6;
     }
+    /* Praxisbeispiele als Unterpunkte (6.2) — cremeweiß wie F-CHAIN in base.css */
+    .benefits-box ul ul,
+    .risks-box ul ul {
+      list-style: disc;
+      margin: 0.45rem 0 0.35rem 0;
+      padding: 0.5rem 0.75rem 0.45rem 1.15rem;
+      background: var(--callout-chain-bg);
+      border: 1px solid var(--callout-chain-border-outer);
+      border-radius: 4px;
+      border-left: 3px solid rgba(106, 157, 90, 0.45);
+    }
+    .risks-box ul ul {
+      border-left-color: rgba(157, 90, 74, 0.48);
+    }
+    .benefits-box ul ul li,
+    .risks-box ul ul li {
+      margin-bottom: 0.35rem;
+      font-size: 0.92rem;
+      color: #000;
+    }
     /* .meta-bar + Syllabus-Chip: assets/css/base.css (B.11) */
   </style>
 </head>
@@ -301,38 +321,82 @@
       <div class="benefits-box">
         <h3>Potenzieller Nutzen</h3>
         <ul>
-          <li><strong>Zeitersparnis:</strong> Verringerung sich wiederholender manueller Arbeiten (z.B. Ausführung von Regressionstests, erneute Eingabe derselben Testdaten, Vergleich von erwarteten und tatsächlichen Ergebnissen)</li>
-          
-          <li><strong>Konsistenz und Wiederholbarkeit:</strong> Vermeidung einfacher menschlicher Fehlhandlungen – Tests werden konsequent aus Anforderungen abgeleitet, Testdaten systematisch erstellt und Tests in gleicher Reihenfolge und Häufigkeit ausgeführt</li>
-          
-          <li><strong>Objektivere Bewertung:</strong> Bereitstellung von Messungen (z.B. Überdeckung), die für Menschen zu kompliziert in ihrer Ermittlung sind</li>
-          
-          <li><strong>Leichterer Zugang zu Informationen:</strong> Unterstützung des Testmanagements und der Berichterstattung durch Statistiken, Diagramme und aggregierte Daten über Testfortschritt, Ausfallraten und Testdauer</li>
-          
-          <li><strong>Verkürzte Testdurchführungszeiten:</strong> Frühere Erkennung von Fehlerzuständen, schnellere Rückmeldungen und kürzere Produkteinführungszeiten</li>
-          
-          <li><strong>Mehr Zeit für anspruchsvolle Tests:</strong> Tester haben mehr Zeit, um neue, intensivere und effektivere Tests zu entwerfen</li>
+          <li><strong>Zeitersparnis:</strong> Verringerung sich wiederholender manueller Arbeiten (z.B. Ausführung von Regressionstests, erneute Eingabe derselben Testdaten, Vergleich von erwarteten und tatsächlichen Ergebnissen)
+            <ul>
+              <li>Ein Online-Shop hat 200 Regressionstests für den Checkout &#x2014; statt zwei Tage manuell laufen sie automatisiert jede Nacht in 30&#x202F;Minuten.</li>
+            </ul>
+          </li>
+          <li><strong>Konsistenz und Wiederholbarkeit:</strong> Vermeidung einfacher menschlicher Fehlhandlungen – Tests werden konsequent aus Anforderungen abgeleitet, Testdaten systematisch erstellt und Tests in gleicher Reihenfolge und Häufigkeit ausgeführt
+            <ul>
+              <li>Ein Login-Test wird jeden Tag exakt gleich mit denselben Daten ausgeführt &#x2014; es fehlt nichts, weil ein Tester heute etwas „vergessen“ hat.</li>
+            </ul>
+          </li>
+          <li><strong>Objektivere Bewertung:</strong> Bereitstellung von Messungen (z.B. Überdeckung), die für Menschen zu kompliziert in ihrer Ermittlung sind
+            <ul>
+              <li>Das Werkzeug meldet Code Coverage: „75&#x202F;% der Funktionen getestet“ &#x2014; so eine Zahl ließe sich manuell kaum zuverlässig nachrechnen.</li>
+            </ul>
+          </li>
+          <li><strong>Leichterer Zugang zu Informationen:</strong> Unterstützung des Testmanagements und der Berichterstattung durch Statistiken, Diagramme und aggregierte Daten über Testfortschritt, Ausfallraten und Testdauer
+            <ul>
+              <li>In Jira sieht das Team sofort: „20 offene Bugs, 5 kritisch, Testfortschritt 80&#x202F;%“.</li>
+            </ul>
+          </li>
+          <li><strong>Verkürzte Testdurchführungszeiten:</strong> Frühere Erkennung von Fehlerzuständen, schnellere Rückmeldungen und kürzere Produkteinführungszeiten
+            <ul>
+              <li>Nach einer Code-Änderung laufen automatisierte Tests sofort &#x2014; der Entwickler erhält nach etwa 5&#x202F;Minuten Feedback statt erst am nächsten Tag.</li>
+            </ul>
+          </li>
+          <li><strong>Mehr Zeit für anspruchsvolle Tests:</strong> Tester haben mehr Zeit, um neue, intensivere und effektivere Tests zu entwerfen
+            <ul>
+              <li>Wer Standard-Formular-Tests nicht mehr manuell wiederholen muss, kann sich auf komplexe Themen konzentrieren &#x2014; etwa Sicherheitslücken oder Grenzfälle.</li>
+            </ul>
+          </li>
         </ul>
       </div>
       
       <div class="risks-box">
         <h3>Potenzielle Risiken</h3>
         <ul>
-          <li><strong>Unrealistische Erwartungen:</strong> Überschätzung der Vorteile eines Werkzeugs (Funktionalität und leichte Handhabung)</li>
-          
-          <li><strong>Ungenaue Schätzungen:</strong> Zeit, Kosten und Aufwand für Einführung, Pflege von Testskripten und Änderung des bestehenden manuellen Testprozesses werden unterschätzt</li>
-          
-          <li><strong>Ungeeigneter Einsatz:</strong> Verwendung eines Testwerkzeugs, wenn manuelles Testen besser geeignet wäre</li>
-          
-          <li><strong>Übermäßiges Vertrauen:</strong> Zu starkes Vertrauen in ein Werkzeug, Vernachlässigung der Notwendigkeit menschlichen kritischen Denkens</li>
-          
-          <li><strong>Abhängigkeit vom Anbieter:</strong> Anbieter stellt möglicherweise Geschäftstätigkeit ein, nimmt Werkzeug vom Markt, verkauft an anderen Anbieter oder bietet schlechten Support</li>
-          
-          <li><strong>Open-Source-Risiken:</strong> Open-Source-Software wird möglicherweise nicht mehr weiterentwickelt – keine weiteren Updates verfügbar, oder interne Komponenten müssen häufig angepasst werden</li>
-          
-          <li><strong>Inkompatibilität:</strong> Automatisierungswerkzeug ist nicht mit der Entwicklungsplattform kompatibel</li>
-          
-          <li><strong>Ungeeignete Werkzeugwahl:</strong> Werkzeug entspricht nicht den regulatorischen Anforderungen und/oder Sicherheitsstandards</li>
+          <li><strong>Unrealistische Erwartungen:</strong> Überschätzung der Vorteile eines Werkzeugs (Funktionalität und leichte Handhabung)
+            <ul>
+              <li>Das Team meint: „Mit Selenium testen wir alles automatisch“ &#x2014; später wird klar: Viele Szenarien sind schwer oder gar nicht sinnvoll automatisierbar.</li>
+            </ul>
+          </li>
+          <li><strong>Ungenaue Schätzungen:</strong> Zeit, Kosten und Aufwand für Einführung, Pflege von Testskripten und Änderung des bestehenden manuellen Testprozesses werden unterschätzt
+            <ul>
+              <li>Die Einführung soll zwei Wochen dauern &#x2014; tatsächlich werden es zwei Monate, weil Testskripte ständig angepasst werden müssen.</li>
+            </ul>
+          </li>
+          <li><strong>Ungeeigneter Einsatz:</strong> Verwendung eines Testwerkzeugs, wenn manuelles Testen besser geeignet wäre
+            <ul>
+              <li>Die Benutzeroberfläche ändert sich häufig &#x2014; automatisierte UI-Tests brechen ständig; exploratives oder manuelles Testen wäre hier oft sinnvoller.</li>
+            </ul>
+          </li>
+          <li><strong>Übermäßiges Vertrauen:</strong> Zu starkes Vertrauen in ein Werkzeug, Vernachlässigung der Notwendigkeit menschlichen kritischen Denkens
+            <ul>
+              <li>Alle automatisierten Tests sind grün &#x2014; trotzdem fällt der Login im echten Browser aus, weil ein wichtiges Szenario nie abgedeckt war.</li>
+            </ul>
+          </li>
+          <li><strong>Abhängigkeit vom Anbieter:</strong> Anbieter stellt möglicherweise Geschäftstätigkeit ein, nimmt Werkzeug vom Markt, verkauft an anderen Anbieter oder bietet schlechten Support
+            <ul>
+              <li>Der Anbieter stellt den Support ein &#x2014; die Firma kann das Tool kaum noch aktualisieren oder anpassen.</li>
+            </ul>
+          </li>
+          <li><strong>Open-Source-Risiken:</strong> Open-Source-Software wird möglicherweise nicht mehr weiterentwickelt – keine weiteren Updates verfügbar, oder interne Komponenten müssen häufig angepasst werden
+            <ul>
+              <li>Das Open-Source-Testtool wird nicht mehr gepflegt &#x2014; mit einer neuen Browser-Version funktioniert es nicht mehr zuverlässig.</li>
+            </ul>
+          </li>
+          <li><strong>Inkompatibilität:</strong> Automatisierungswerkzeug ist nicht mit der Entwicklungsplattform kompatibel
+            <ul>
+              <li>Das Automatisierungstool unterstützt die verwendete Programmiersprache oder Plattform nicht &#x2014; die Integration scheitert.</li>
+            </ul>
+          </li>
+          <li><strong>Ungeeignete Werkzeugwahl:</strong> Werkzeug entspricht nicht den regulatorischen Anforderungen und/oder Sicherheitsstandards
+            <ul>
+              <li>Das Tool erfüllt keine Sicherheitsanforderungen &#x2014; in einem Bankprojekt darf es nicht eingesetzt werden.</li>
+            </ul>
+          </li>
         </ul>
       </div>
     </div>
